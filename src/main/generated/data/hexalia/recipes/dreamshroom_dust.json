@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hexalia:mortar_and_pestle"
+    },
+    {
+      "item": "hexalia:dreamshroom"
+    }
+  ],
+  "result": {
+    "item": "hexalia:dreamshroom_dust"
+  }
+}

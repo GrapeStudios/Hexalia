@@ -39,7 +39,7 @@ public class ModBlocks {
     public static final Block SALT_BLOCK = registerBlock("salt_block",
             new Block(FabricBlockSettings.copyOf(Blocks.COAL_BLOCK)));
 
-    // Functional
+    // Registries
     public static void registerBlockProperties() {
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.SPIRIT_BLOOM, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.DREAMSHROOM, 0.5F);

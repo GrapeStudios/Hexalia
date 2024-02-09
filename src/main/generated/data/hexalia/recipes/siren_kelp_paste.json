@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hexalia:mortar_and_pestle"
+    },
+    {
+      "item": "hexalia:siren_kelp"
+    }
+  ],
+  "result": {
+    "item": "hexalia:siren_kelp_paste"
+  }
+}
