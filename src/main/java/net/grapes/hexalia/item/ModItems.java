@@ -3,6 +3,7 @@ package net.grapes.hexalia.item;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.item.custom.MortarAndPestleItem;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -35,7 +36,7 @@ public class ModItems {
 
     // Tools
     public static final Item MORTAR_AND_PESTLE = registerItem("mortar_and_pestle",
-            new Item(new FabricItemSettings().maxDamage(32)));
+            new MortarAndPestleItem(new FabricItemSettings()));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(HexaliaMod.MOD_ID, name), item);
