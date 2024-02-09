@@ -29,7 +29,7 @@ public class ModItems {
             new Item(new FabricItemSettings()));
     public static final Item SPIRIT_BLOOM_DUST = registerItem("spirit_bloom_dust",
             new Item(new FabricItemSettings()));
-    public static final Item DREAMSHROOM_PASTE = registerItem("dreamshroom_dust",
+    public static final Item DREAMSHROOM_PASTE = registerItem("dreamshroom_paste",
             new Item(new FabricItemSettings()));
 
     // Tools
