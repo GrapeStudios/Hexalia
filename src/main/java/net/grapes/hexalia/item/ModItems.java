@@ -14,8 +14,6 @@ import net.minecraft.util.Identifier;
 public class ModItems {
 
     // Resources
-    public static final Item SPIRIT_BLOOM_PETAL = registerItem("spirit_bloom_petal",
-            new Item(new FabricItemSettings()));
     public static final Item SALT = registerItem("salt",
             new Item(new FabricItemSettings()));
     public static final Item SIREN_KELP = registerItem("siren_kelp",
@@ -31,7 +29,7 @@ public class ModItems {
             new Item(new FabricItemSettings()));
     public static final Item SPIRIT_BLOOM_DUST = registerItem("spirit_bloom_dust",
             new Item(new FabricItemSettings()));
-    public static final Item DREAMSHROOM_DUST = registerItem("dreamshroom_dust",
+    public static final Item DREAMSHROOM_PASTE = registerItem("dreamshroom_dust",
             new Item(new FabricItemSettings()));
 
     // Tools

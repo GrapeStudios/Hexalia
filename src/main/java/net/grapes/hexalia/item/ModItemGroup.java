@@ -16,11 +16,10 @@ public class ModItemGroup {
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.hexalia"))
                     .icon(() -> new ItemStack(ModItems.MANDRAKE)).entries((displayContext, entries) -> {
                         entries.add(ModBlocks.SPIRIT_BLOOM);
-                        entries.add(ModItems.SPIRIT_BLOOM_PETAL);
                         entries.add(ModItems.SPIRIT_BLOOM_DUST);
 
                         entries.add(ModBlocks.DREAMSHROOM);
-                        entries.add(ModItems.DREAMSHROOM_DUST);
+                        entries.add(ModItems.DREAMSHROOM_PASTE);
 
                         entries.add(ModItems.SIREN_KELP);
                         entries.add(ModItems.SIREN_KELP_PASTE);

@@ -28,10 +28,9 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
-        itemModelGenerator.register(ModItems.SPIRIT_BLOOM_PETAL, Models.GENERATED);
         itemModelGenerator.register(ModItems.SPIRIT_BLOOM_DUST, Models.GENERATED);
         itemModelGenerator.register(ModItems.SALT, Models.GENERATED);
-        itemModelGenerator.register(ModItems.DREAMSHROOM_DUST, Models.GENERATED);
+        itemModelGenerator.register(ModItems.DREAMSHROOM_PASTE, Models.GENERATED);
         itemModelGenerator.register(ModItems.MORTAR_AND_PESTLE, Models.GENERATED);
         itemModelGenerator.register(ModItems.SIREN_KELP_PASTE, Models.GENERATED);
         itemModelGenerator.register(ModItems.MANDRAKE, Models.GENERATED);
