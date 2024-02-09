@@ -1,0 +1,23 @@
+{
+  "itemgroup.hexalia": "Hexalia",
+
+  "block.hexalia.spirit_bloom": "Spirit Bloom",
+  "item.hexalia.spirit_bloom_petal": "Spirit Bloom Petal",
+  "item.hexalia.spirit_bloom_dust": "Spirit Bloom Dust",
+
+  "block.hexalia.dreamshroom": "Dreamshroom",
+  "item.hexalia.dreamshroom_dust": "Dreamshroom Dust",
+
+  "block.hexalia.siren_kelp": "Siren Kelp",
+  "item.hexalia.siren_kelp": "Siren Kelp",
+  "item.hexalia.siren_kelp_paste": "Siren Kelp Paste",
+
+  "item.hexalia.mandrake": "Mandrake",
+  "item.hexalia.mandrake_seeds": "Mandrake Seeds",
+
+  "item.hexalia.mortar_and_pestle": "Mortar and Pestle",
+
+  "block.hexalia.salt_ore": "Salt Ore",
+  "block.hexalia.salt_block": "Salt Block",
+  "item.hexalia.salt": "Salt"
+}

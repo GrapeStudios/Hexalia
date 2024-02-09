@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_spirit_bloom": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexalia:spirit_bloom"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:spirit_bloom_petal_from_spirit_bloom"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_spirit_bloom",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:spirit_bloom_petal_from_spirit_bloom"
+    ]
+  },
+  "sends_telemetry_event": false
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "component",
+  "ingredients": [
+    {
+      "item": "hexalia:spirit_bloom"
+    }
+  ],
+  "result": {
+    "item": "hexalia:spirit_bloom_petal"
+  }
+}

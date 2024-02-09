@@ -1,0 +1,47 @@
+package net.grapes.hexalia.item;
+
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
+import net.grapes.hexalia.HexaliaMod;
+import net.grapes.hexalia.block.ModBlocks;
+import net.minecraft.item.AliasedBlockItem;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.Item;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
+import net.minecraft.util.Identifier;
+
+public class ModItems {
+
+    // Resources
+    public static final Item SPIRIT_BLOOM_PETAL = registerItem("spirit_bloom_petal",
+            new Item(new FabricItemSettings()));
+    public static final Item SALT = registerItem("salt",
+            new Item(new FabricItemSettings()));
+    public static final Item SIREN_KELP = registerItem("siren_kelp",
+            new BlockItem(ModBlocks.SIREN_KELP, new FabricItemSettings()));
+
+    public static final Item MANDRAKE = registerItem("mandrake",
+            new Item(new FabricItemSettings()));
+    public static final Item MANDRAKE_SEEDS = registerItem("mandrake_seeds",
+            new AliasedBlockItem(ModBlocks.MANDRAKE_CROP, new FabricItemSettings()));
+
+    // Refined Resources
+    public static final Item SIREN_KELP_PASTE = registerItem("siren_kelp_paste",
+            new Item(new FabricItemSettings()));
+    public static final Item SPIRIT_BLOOM_DUST = registerItem("spirit_bloom_dust",
+            new Item(new FabricItemSettings()));
+    public static final Item DREAMSHROOM_DUST = registerItem("dreamshroom_dust",
+            new Item(new FabricItemSettings()));
+
+    // Tools
+    public static final Item MORTAR_AND_PESTLE = registerItem("mortar_and_pestle",
+            new Item(new FabricItemSettings().maxDamage(32)));
+
+    private static Item registerItem(String name, Item item) {
+        return Registry.register(Registries.ITEM, new Identifier(HexaliaMod.MOD_ID, name), item);
+    }
+
+    public static void registerModItems() {
+        HexaliaMod.LOGGER.info("Registering Mod Items for " + HexaliaMod.MOD_ID);
+    }
+}

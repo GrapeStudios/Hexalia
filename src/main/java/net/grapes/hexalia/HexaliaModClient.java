@@ -1,0 +1,18 @@
+package net.grapes.hexalia;
+
+import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.grapes.hexalia.block.ModBlocks;
+import net.minecraft.client.render.RenderLayer;
+
+public class HexaliaModClient implements ClientModInitializer {
+    @Override
+    public void onInitializeClient() {
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SPIRIT_BLOOM, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_SPIRIT_BLOOM, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DREAMSHROOM, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_DREAMSHROOM, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SIREN_KELP, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MANDRAKE_CROP, RenderLayer.getCutout());
+    }
+}

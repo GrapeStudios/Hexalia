@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "hexalia:block/mandrake_crop_stage0"
+  }
+}
