@@ -25,7 +25,7 @@ public class ModItems {
             new AliasedBlockItem(ModBlocks.MANDRAKE_CROP, new FabricItemSettings()));
 
     public static final Item CHILLBERRY = registerItem("chillberry",
-            new BlockItem(ModBlocks.CHILLBERRY_BUSH, new FabricItemSettings()));
+            new BlockItem(ModBlocks.CHILLBERRY_BUSH, new FabricItemSettings().food(ModFoodComponents.CHILLBERRY)));
 
     // Refined Resources
     public static final Item SIREN_KELP_PASTE = registerItem("siren_kelp_paste",
