@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_spirit_bloom": {
+    "has_mortar_and_pestle": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:spirit_bloom"
+              "hexalia:mortar_and_pestle"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:spirit_bloom_petal_from_spirit_bloom"
+        "recipe": "hexalia:dreamshroom_paste"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_spirit_bloom",
+      "has_mortar_and_pestle",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:spirit_bloom_petal_from_spirit_bloom"
+      "hexalia:dreamshroom_paste"
     ]
   },
   "sends_telemetry_event": false

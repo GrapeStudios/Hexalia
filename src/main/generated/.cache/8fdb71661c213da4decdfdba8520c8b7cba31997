@@ -1,13 +1,11 @@
-// 1.20.1	2024-02-09T01:25:46.3012066	Hexalia/Recipes
-9d66a2a2caadbeb6c3b9b433506294117cf5055d data\hexalia\recipes\spirit_bloom_petal_from_spirit_bloom.json
+// 1.20.1	2024-02-13T10:55:51.2719964	Hexalia/Recipes
 3e64e8ec8dce362140d548819110ccaf4c7d5894 data\hexalia\recipes\salt_block.json
 f3ab8c2757c5b055ed0656f83cbe705b5ce1637d data\hexalia\advancements\recipes\misc\siren_kelp_paste.json
-177f454aebc702d446728296e9a25a663213c0c0 data\hexalia\recipes\spirit_bloom_dust.json
-7cec72c7b5054d48d7a94f8d8a2ff27dda7ef20b data\hexalia\advancements\recipes\misc\salt_block.json
-5630c43cedd210ae5c12929579b327764ed48e04 data\hexalia\advancements\recipes\misc\spirit_bloom_petal_from_spirit_bloom.json
-5ac4a0105a1812deb18bc8872094db5b8ffc54d7 data\hexalia\advancements\recipes\misc\dreamshroom_dust.json
-b9cd32e5d91d3c11290b56d09c31b4b4a71058e3 data\hexalia\recipes\salt.json
 87083bcc40148aa4854279266f5e08c78f75cb90 data\hexalia\recipes\siren_kelp_paste.json
-941dcfcc46a4cff7a1fc3022b8519c6065a45e9b data\hexalia\recipes\dreamshroom_dust.json
+4c0fb0716ea833cfd261cc399bb5d0271437ea40 data\hexalia\recipes\spirit_bloom_dust.json
+7cec72c7b5054d48d7a94f8d8a2ff27dda7ef20b data\hexalia\advancements\recipes\misc\salt_block.json
 ae2e141c27245c4b7f89bf48662e756135ba60de data\hexalia\advancements\recipes\misc\salt.json
+2988db002d0f47febe3deffb2c86b0b5ee3eb337 data\hexalia\recipes\dreamshroom_paste.json
+82b40fd0f7dd4de905f094da178650fbe4ad3cbc data\hexalia\advancements\recipes\misc\dreamshroom_paste.json
+b9cd32e5d91d3c11290b56d09c31b4b4a71058e3 data\hexalia\recipes\salt.json
 0829ba9b0f86776face40788c5e29ca5d69e1f0c data\hexalia\advancements\recipes\misc\spirit_bloom_dust.json

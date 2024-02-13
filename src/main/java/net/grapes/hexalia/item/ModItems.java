@@ -24,6 +24,9 @@ public class ModItems {
     public static final Item MANDRAKE_SEEDS = registerItem("mandrake_seeds",
             new AliasedBlockItem(ModBlocks.MANDRAKE_CROP, new FabricItemSettings()));
 
+    public static final Item CHILLBERRY = registerItem("chillberry",
+            new BlockItem(ModBlocks.CHILLBERRY_BUSH, new FabricItemSettings()));
+
     // Refined Resources
     public static final Item SIREN_KELP_PASTE = registerItem("siren_kelp_paste",
             new Item(new FabricItemSettings()));
