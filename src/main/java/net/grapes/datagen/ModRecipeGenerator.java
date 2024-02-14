@@ -5,8 +5,11 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.item.ModItems;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
+import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
+import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.util.Identifier;
 
 import java.util.function.Consumer;
 
@@ -40,6 +43,14 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input(ModItems.MORTAR_AND_PESTLE)
                 .input(ModBlocks.DREAMSHROOM)
                 .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.CHILLBERRY_PIE, 1)
+                .input(ModItems.CHILLBERRY)
+                .input(Items.SUGAR)
+                .input(Items.EGG)
+                .input(Items.WHEAT)
+                .criterion(hasItem(ModItems.CHILLBERRY), conditionsFromItem(ModItems.CHILLBERRY))
                 .offerTo(exporter);
     }
 }
