@@ -6,7 +6,6 @@ import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.item.custom.MortarAndPestleItem;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.BlockItem;
-import net.minecraft.item.FoodComponents;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -27,8 +26,8 @@ public class ModItems {
 
     public static final Item CHILLBERRY = registerItem("chillberry",
             new BlockItem(ModBlocks.CHILLBERRY_BUSH, new FabricItemSettings().food(ModFoodComponents.CHILLBERRY)));
-    public static final Item CHILLBERRY_PIE = registerItem("chillberry_pie",
-            new Item(new FabricItemSettings().food(ModFoodComponents.CHILLBERRY_PIE)));
+    public static final Item CHILLBERRY_CUPCAKE = registerItem("chillberry_cupcake",
+            new Item(new FabricItemSettings().food(ModFoodComponents.CHILLBERRY_CUPCAKE)));
 
     // Refined Resources
     public static final Item SIREN_KELP_PASTE = registerItem("siren_kelp_paste",

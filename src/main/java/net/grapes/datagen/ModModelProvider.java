@@ -34,6 +34,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.MORTAR_AND_PESTLE, Models.GENERATED);
         itemModelGenerator.register(ModItems.SIREN_KELP_PASTE, Models.GENERATED);
         itemModelGenerator.register(ModItems.MANDRAKE, Models.GENERATED);
-        itemModelGenerator.register(ModItems.CHILLBERRY_PIE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.CHILLBERRY_CUPCAKE, Models.GENERATED);
     }
 }

@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "hexalia:chillberry_pie"
+        "recipe": "hexalia:chillberry_cupcake"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "hexalia:chillberry_pie"
+      "hexalia:chillberry_cupcake"
     ]
   },
   "sends_telemetry_event": false
