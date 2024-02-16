@@ -29,6 +29,7 @@ public class ModItemGroup {
 
                         entries.add(ModItems.MANDRAKE);
                         entries.add(ModItems.MANDRAKE_SEEDS);
+                        entries.add(ModItems.MANDRAKE_STEW);
 
                         entries.add(ModBlocks.SALT_ORE);
                         entries.add(ModItems.SALT);

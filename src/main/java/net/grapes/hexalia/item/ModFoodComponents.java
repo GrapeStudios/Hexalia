@@ -9,4 +9,5 @@ public class ModFoodComponents {
             .statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 200), 1f).build();
     public static final FoodComponent CHILLBERRY_CUPCAKE = new FoodComponent.Builder().hunger(6).saturationModifier(0.8f)
             .statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 1200, 1), 1f).build();
+    public static final FoodComponent MANDRAKE_STEW = new FoodComponent.Builder().hunger(10).saturationModifier(1.0f).build();
 }

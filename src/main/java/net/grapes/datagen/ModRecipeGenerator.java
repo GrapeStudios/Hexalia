@@ -57,5 +57,13 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input(Items.WHEAT)
                 .criterion(hasItem(ModItems.CHILLBERRY), conditionsFromItem(ModItems.CHILLBERRY))
                 .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.MANDRAKE_STEW, 1)
+                .input(ModItems.MANDRAKE)
+                .input(Items.BOWL)
+                .input(Items.CARROT)
+                .input(Items.POTATO)
+                .criterion(hasItem(ModItems.MANDRAKE), conditionsFromItem(ModItems.MANDRAKE))
+                .offerTo(exporter);
     }
 }

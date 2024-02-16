@@ -7,6 +7,7 @@ import net.grapes.hexalia.item.custom.MortarAndPestleItem;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.StewItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -23,6 +24,8 @@ public class ModItems {
             new Item(new FabricItemSettings()));
     public static final Item MANDRAKE_SEEDS = registerItem("mandrake_seeds",
             new AliasedBlockItem(ModBlocks.MANDRAKE_CROP, new FabricItemSettings()));
+    public static final Item MANDRAKE_STEW = registerItem("mandrake_stew",
+            new StewItem(new FabricItemSettings().food(ModFoodComponents.MANDRAKE_STEW)));
 
     public static final Item CHILLBERRY = registerItem("chillberry",
             new BlockItem(ModBlocks.CHILLBERRY_BUSH, new FabricItemSettings().food(ModFoodComponents.CHILLBERRY)));
