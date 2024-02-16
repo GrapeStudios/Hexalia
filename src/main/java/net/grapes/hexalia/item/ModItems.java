@@ -32,6 +32,11 @@ public class ModItems {
     public static final Item CHILLBERRY_CUPCAKE = registerItem("chillberry_cupcake",
             new Item(new FabricItemSettings().food(ModFoodComponents.CHILLBERRY_CUPCAKE)));
 
+    public static final Item SUNFIRE_TOMATO = registerItem("sunfire_tomato",
+            new Item(new FabricItemSettings().food(ModFoodComponents.SUNFIRE_TOMATO)));
+    public static final Item SUNFIRE_TOMATO_SEEDS = registerItem("sunfire_tomato_seeds",
+            new AliasedBlockItem(ModBlocks.SUNFIRE_TOMATO_CROP, new FabricItemSettings()));
+
     // Refined Resources
     public static final Item SIREN_KELP_PASTE = registerItem("siren_kelp_paste",
             new Item(new FabricItemSettings()));

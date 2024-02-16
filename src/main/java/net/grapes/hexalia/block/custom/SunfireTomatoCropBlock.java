@@ -18,7 +18,7 @@ public class SunfireTomatoCropBlock extends CropBlock {
 
     @Override
     protected ItemConvertible getSeedsItem() {
-        return ModItems.MANDRAKE_SEEDS;
+        return ModItems.SUNFIRE_TOMATO_SEEDS;
     }
 
     @Override

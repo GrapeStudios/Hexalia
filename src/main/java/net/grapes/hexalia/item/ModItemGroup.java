@@ -31,6 +31,9 @@ public class ModItemGroup {
                         entries.add(ModItems.MANDRAKE_SEEDS);
                         entries.add(ModItems.MANDRAKE_STEW);
 
+                        entries.add(ModItems.SUNFIRE_TOMATO);
+                        entries.add(ModItems.SUNFIRE_TOMATO_SEEDS);
+
                         entries.add(ModBlocks.SALT_ORE);
                         entries.add(ModItems.SALT);
                         entries.add(ModBlocks.SALT_BLOCK);

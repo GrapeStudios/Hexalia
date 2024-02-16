@@ -27,5 +27,9 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         BlockStatePropertyLootCondition.Builder builder2 = BlockStatePropertyLootCondition.builder(ModBlocks.MANDRAKE_CROP)
                 .properties(StatePredicate.Builder.create().exactMatch(MandrakeCropBlock.AGE, 3));
         this.addDrop(ModBlocks.MANDRAKE_CROP, this.cropDrops(ModBlocks.MANDRAKE_CROP, ModItems.MANDRAKE, ModItems.MANDRAKE_SEEDS, builder2));
+
+        BlockStatePropertyLootCondition.Builder builder3 = BlockStatePropertyLootCondition.builder(ModBlocks.SUNFIRE_TOMATO_CROP)
+                .properties(StatePredicate.Builder.create().exactMatch(MandrakeCropBlock.AGE, 3));
+        this.addDrop(ModBlocks.SUNFIRE_TOMATO_CROP, this.cropDrops(ModBlocks.SUNFIRE_TOMATO_CROP, ModItems.SUNFIRE_TOMATO, ModItems.SUNFIRE_TOMATO_SEEDS, builder3));
     }
 }

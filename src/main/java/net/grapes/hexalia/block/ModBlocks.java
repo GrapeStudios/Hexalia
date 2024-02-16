@@ -5,10 +5,7 @@ import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.grapes.hexalia.HexaliaMod;
-import net.grapes.hexalia.block.custom.ChillberryBushBlock;
-import net.grapes.hexalia.block.custom.HexKelpBlock;
-import net.grapes.hexalia.block.custom.HexMushroomBlock;
-import net.grapes.hexalia.block.custom.MandrakeCropBlock;
+import net.grapes.hexalia.block.custom.*;
 import net.minecraft.block.*;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
@@ -33,6 +30,9 @@ public class ModBlocks {
 
     public static final Block MANDRAKE_CROP = registerBlockWithoutBlockItem("mandrake_crop",
             new MandrakeCropBlock(FabricBlockSettings.copyOf(Blocks.CARROTS)));
+
+    public static final Block SUNFIRE_TOMATO_CROP = registerBlockWithoutBlockItem("sunfire_tomato_crop",
+            new SunfireTomatoCropBlock(FabricBlockSettings.copyOf(Blocks.CARROTS)));
 
     public static final Block CHILLBERRY_BUSH = registerBlockWithoutBlockItem("chillberry_bush",
             new ChillberryBushBlock(FabricBlockSettings.copyOf(Blocks.SWEET_BERRY_BUSH)));
