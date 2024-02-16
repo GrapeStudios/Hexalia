@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.item.ModItems;
+import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.Items;
@@ -23,7 +24,13 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.SALT,
                 RecipeCategory.MISC, ModBlocks.SALT_BLOCK);
 
-        // Shapeless Recipe for Mortar & Pestle
+        // Shapeless Recipe for Mortar & Pestle, and Mortar & Pestle Resources
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MORTAR_AND_PESTLE, 1)
+                .input(Items.BOWL)
+                .input(Items.STONE)
+                .criterion(hasItem(Items.BOWL), conditionsFromItem(Items.BOWL))
+                .offerTo(exporter);
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SPIRIT_BLOOM_DUST, 1)
                 .input(ModItems.MORTAR_AND_PESTLE)
