@@ -25,7 +25,7 @@ public class ModItems {
     public static final Item MANDRAKE_SEEDS = registerItem("mandrake_seeds",
             new AliasedBlockItem(ModBlocks.MANDRAKE_CROP, new FabricItemSettings()));
     public static final Item MANDRAKE_STEW = registerItem("mandrake_stew",
-            new StewItem(new FabricItemSettings().food(ModFoodComponents.MANDRAKE_STEW)));
+            new StewItem(new FabricItemSettings().food(ModFoodComponents.MANDRAKE_STEW).maxCount(1)));
 
     public static final Item CHILLBERRY = registerItem("chillberry",
             new BlockItem(ModBlocks.CHILLBERRY_BUSH, new FabricItemSettings().food(ModFoodComponents.CHILLBERRY)));
