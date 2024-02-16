@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/crop",
+  "textures": {
+    "crop": "hexalia:block/sunfire_tomato_crop_stage2"
+  }
+}
