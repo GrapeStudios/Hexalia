@@ -6,6 +6,7 @@ import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.item.ModItemGroup;
 import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.util.ModRegistries;
+import net.grapes.hexalia.world.gen.ModWorldGeneration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,5 +21,6 @@ public class HexaliaMod implements ModInitializer {
 		ModBlocks.registerModBlocks();
 		ModBlocks.registerBlockProperties();
 		ModRegistries.registerModStuff();
+		ModWorldGeneration.generateModWorldGeneration();
 	}
 }
