@@ -1,3 +1,5 @@
-// 1.20.1	2024-02-17T10:33:26.199984	Hexalia/World Gen
-9269a2f34879f5ea3870fe5b682f9225f5c5dc83 data\hexalia\worldgen\placed_feature\salt_ore_placed.json
-2907a756b07129530aa86da40138f31b1e0c764f data\hexalia\worldgen\configured_feature\salt_ore.json
+// 1.20.1	2024-02-17T14:24:29.5803765	Hexalia/World Gen
+d09a727b05c5d8ddc4160ef6dff7dc7ff75d581f data\hexalia\worldgen\placed_feature\salt_ore_placed.json
+9f38d78441b1e40c205e314e36e92484929ba221 data\hexalia\worldgen\placed_feature\spirit_bloom_placed.json
+e5976493f4e30288bfd2447f9c9568284f8fe0d2 data\hexalia\worldgen\configured_feature\salt_ore.json
+e4818e60f9b971d9e4275e2f113bb0994d49f779 data\hexalia\worldgen\configured_feature\spirit_bloom.json
