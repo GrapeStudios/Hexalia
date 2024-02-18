@@ -33,6 +33,7 @@ public class ModItemGroup {
 
                         entries.add(ModItems.SUNFIRE_TOMATO);
                         entries.add(ModItems.SUNFIRE_TOMATO_SEEDS);
+                        entries.add(ModItems.SPICY_SANDWICH);
 
                         entries.add(ModBlocks.SALT_ORE);
                         entries.add(ModItems.SALT);

@@ -5,9 +5,9 @@ import net.minecraft.block.ComposterBlock;
 
 public class ModRegistries {
     public static void registerModStuff(){
-        registerModCompostables();
+        registerModCompostable();
     }
-    private static void registerModCompostables() {
+    private static void registerModCompostable() {
         ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(ModItems.SIREN_KELP, 0.5f);
         ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(ModItems.MANDRAKE, 0.5f);
         ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(ModItems.MANDRAKE_SEEDS, 0.25f);

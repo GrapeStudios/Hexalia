@@ -19,5 +19,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SALT_ORE);
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.SALT_ORE);
+        getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS)
+                .add(ModBlocks.SPIRIT_BLOOM);
     }
 }
