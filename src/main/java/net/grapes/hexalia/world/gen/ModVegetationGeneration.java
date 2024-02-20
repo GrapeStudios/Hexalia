@@ -11,5 +11,8 @@ public class ModVegetationGeneration {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.SWAMP,
                         BiomeKeys.MANGROVE_SWAMP),
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.SPIRIT_BLOOM_PLACED_KEY);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.SNOWY_TAIGA),
+                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.CHILLBERRY_PLACED_KEY);
     }
 }

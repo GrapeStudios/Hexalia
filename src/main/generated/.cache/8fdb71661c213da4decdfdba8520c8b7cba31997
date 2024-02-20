@@ -1,4 +1,4 @@
-// 1.20.1	2024-02-18T07:16:23.7276691	Hexalia/Recipes
+// 1.20.1	2024-02-19T23:27:25.9127643	Hexalia/Recipes
 0829ba9b0f86776face40788c5e29ca5d69e1f0c data\hexalia\advancements\recipes\misc\spirit_bloom_dust.json
 31ee8755e235a6d4b7e8e3d99ff410f683dbf527 data\hexalia\recipes\mortar_and_pestle.json
 82b40fd0f7dd4de905f094da178650fbe4ad3cbc data\hexalia\advancements\recipes\misc\dreamshroom_paste.json
@@ -18,6 +18,6 @@ f3ab8c2757c5b055ed0656f83cbe705b5ce1637d data\hexalia\advancements\recipes\misc\
 87083bcc40148aa4854279266f5e08c78f75cb90 data\hexalia\recipes\siren_kelp_paste.json
 3e64e8ec8dce362140d548819110ccaf4c7d5894 data\hexalia\recipes\salt_block.json
 09230c4ac8c984c104055442aeb9fd4962ce8024 data\hexalia\recipes\mandrake_stew.json
-43babe8da8fc45563b2ff7e9809f238fd108395a data\hexalia\advancements\recipes\food\mandrake_stew.json
 10f0d1ebeeddf6a34f673fa092eaa7e3cca74222 data\hexalia\recipes\spicy_sandwich.json
+43babe8da8fc45563b2ff7e9809f238fd108395a data\hexalia\advancements\recipes\food\mandrake_stew.json
 df6f3e5b910cef10fd6e7a20aabbef2c8c9928c8 data\hexalia\advancements\recipes\misc\mandrake_seeds.json
