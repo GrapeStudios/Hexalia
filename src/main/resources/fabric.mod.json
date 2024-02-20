@@ -8,8 +8,8 @@
 		"Grapes Studios"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/GrapeStudios/",
+		"sources": "https://github.com/GrapeStudios/Hexalia"
 	},
 	"license": "MIT",
 	"icon": "assets/hexalia/icon.png",
