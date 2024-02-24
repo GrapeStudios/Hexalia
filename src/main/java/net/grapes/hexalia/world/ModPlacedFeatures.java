@@ -19,6 +19,7 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> SPIRIT_BLOOM_PLACED_KEY = registerKey("spirit_bloom_placed");
     public static final RegistryKey<PlacedFeature> CHILLBERRY_PLACED_KEY = registerKey("chillberry_placed");
     public static final RegistryKey<PlacedFeature> DREAMSHROOM_PLACED_KEY = registerKey("dreamshroom_placed");
+    public static final RegistryKey<PlacedFeature> FERAL_SUNFIRE_TOMATO_PLACED_KEY = registerKey("feral_sunfire_tomato_placed");
 
     public static void bootstrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -35,6 +36,9 @@ public class ModPlacedFeatures {
 
         register(context, DREAMSHROOM_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.DREAMSHROOM_KEY),
                 RarityFilterPlacementModifier.of(15), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
+
+        register(context, FERAL_SUNFIRE_TOMATO_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.FERAL_SUNFIRE_TOMATO),
+                RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
     }
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {

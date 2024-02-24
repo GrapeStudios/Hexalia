@@ -21,6 +21,9 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addPottedPlantDrops(ModBlocks.POTTED_DREAMSHROOM);
         addDrop(ModBlocks.SIREN_KELP, drops(ModItems.SIREN_KELP));
 
+        addDrop(ModBlocks.FERAL_SUNFIRE_TOMATO);
+        this.addDrop(ModBlocks.FERAL_SUNFIRE_TOMATO, ModItems.SUNFIRE_TOMATO_SEEDS);
+
         addDrop(ModBlocks.SALT_BLOCK);
         addDrop(ModBlocks.SALT_ORE, oreDrops(ModBlocks.SALT_ORE, ModItems.SALT));
 

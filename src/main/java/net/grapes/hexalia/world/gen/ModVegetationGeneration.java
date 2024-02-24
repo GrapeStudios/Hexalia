@@ -17,5 +17,8 @@ public class ModVegetationGeneration {
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.DARK_FOREST),
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.DREAMSHROOM_PLACED_KEY);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.SAVANNA),
+                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.FERAL_SUNFIRE_TOMATO_PLACED_KEY);
     }
 }

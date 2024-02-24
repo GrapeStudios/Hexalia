@@ -21,6 +21,7 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> SPIRIT_BLOOM_KEY = registerKey("spirit_bloom");
     public static final RegistryKey<ConfiguredFeature<?, ?>> CHILLBERRY_KEY = registerKey("chillberry");
     public static final RegistryKey<ConfiguredFeature<?, ?>> DREAMSHROOM_KEY = registerKey("dreamshroom");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> FERAL_SUNFIRE_TOMATO = registerKey("feral_sunfire_tomato");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplaceables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
@@ -41,6 +42,10 @@ public class ModConfiguredFeatures {
         register(context, DREAMSHROOM_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(10,
                 PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
                         new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.DREAMSHROOM)))));
+
+        register(context, FERAL_SUNFIRE_TOMATO, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
+                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
+                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.FERAL_SUNFIRE_TOMATO)))));
     }
     public static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name) {
         return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, new Identifier(HexaliaMod.MOD_ID, name));

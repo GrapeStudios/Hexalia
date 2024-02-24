@@ -27,6 +27,8 @@ public class ModModelProvider extends FabricModelProvider {
                 MandrakeCropBlock.AGE, 0, 1, 2, 3);
         blockStateModelGenerator.registerCrop(ModBlocks.SUNFIRE_TOMATO_CROP,
                 SunfireTomatoCropBlock.AGE, 0, 1, 2, 3);
+        blockStateModelGenerator.registerTintableCross(ModBlocks.FERAL_SUNFIRE_TOMATO,
+                BlockStateModelGenerator.TintType.NOT_TINTED);
     }
 
     @Override
