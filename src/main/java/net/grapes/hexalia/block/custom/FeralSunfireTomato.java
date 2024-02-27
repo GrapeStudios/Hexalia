@@ -1,7 +1,7 @@
 package net.grapes.hexalia.block.custom;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.PlantBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -12,10 +12,11 @@ import net.minecraft.world.World;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class FeralSunfireTomato extends Block {
+public class FeralSunfireTomato extends PlantBlock {
     public FeralSunfireTomato(Settings settings) {
         super(settings);
     }
+
 
     @Override
     public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {

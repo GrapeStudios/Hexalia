@@ -34,7 +34,7 @@ public class ModBlocks {
     public static final Block SUNFIRE_TOMATO_CROP = registerBlockWithoutBlockItem("sunfire_tomato_crop",
             new SunfireTomatoCropBlock(FabricBlockSettings.copyOf(Blocks.CARROTS)));
     public static final Block FERAL_SUNFIRE_TOMATO = registerBlock("feral_sunfire_tomato",
-            new FeralSunfireTomato(FabricBlockSettings.copyOf(Blocks.CORNFLOWER).luminance(8).nonOpaque()));
+            new FeralSunfireTomato(FabricBlockSettings.copyOf(Blocks.CORNFLOWER).luminance(16).nonOpaque()));
 
     public static final Block CHILLBERRY_BUSH = registerBlockWithoutBlockItem("chillberry_bush",
             new ChillberryBushBlock(FabricBlockSettings.copyOf(Blocks.SWEET_BERRY_BUSH)));
