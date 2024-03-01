@@ -7,19 +7,21 @@ import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.particle.ModParticles;
 import net.grapes.hexalia.particle.SporeParticle;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.scoreboard.ScoreboardCriterion;
 
 public class HexaliaModClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SPIRIT_BLOOM, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_SPIRIT_BLOOM, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.DREAMSHROOM, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.POTTED_DREAMSHROOM, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SIREN_KELP, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MANDRAKE_CROP, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CHILLBERRY_BUSH, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.SUNFIRE_TOMATO_CROP, RenderLayer.getCutout());
-        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FERAL_SUNFIRE_TOMATO, RenderLayer.getCutout());
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),
+                ModBlocks.SPIRIT_BLOOM,
+                ModBlocks.POTTED_SPIRIT_BLOOM,
+                ModBlocks.DREAMSHROOM,
+                ModBlocks.POTTED_DREAMSHROOM,
+                ModBlocks.SIREN_KELP,
+                ModBlocks.MANDRAKE_CROP,
+                ModBlocks.CHILLBERRY_BUSH,
+                ModBlocks.SUNFIRE_TOMATO_CROP,
+                ModBlocks.FERAL_SUNFIRE_TOMATO);
 
         ParticleFactoryRegistry.getInstance().register(ModParticles.SPORE_PARTICLE, SporeParticle.Factory::new);
     }
