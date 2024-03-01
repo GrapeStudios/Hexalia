@@ -7,8 +7,8 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 
-public class HexKelpBlock extends SeagrassBlock {
-    public HexKelpBlock(Settings settings) {
+public class SirenKelpBlock extends SeagrassBlock {
+    public SirenKelpBlock(Settings settings) {
         super(settings);
     }
 
