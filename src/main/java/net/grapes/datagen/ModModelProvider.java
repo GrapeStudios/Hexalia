@@ -29,6 +29,8 @@ public class ModModelProvider extends FabricModelProvider {
                 SunfireTomatoCropBlock.AGE, 0, 1, 2, 3);
         blockStateModelGenerator.registerTintableCross(ModBlocks.FERAL_SUNFIRE_TOMATO,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerTintableCross(ModBlocks.FERAL_MANDRAKE,
+                BlockStateModelGenerator.TintType.NOT_TINTED);
     }
 
     @Override
