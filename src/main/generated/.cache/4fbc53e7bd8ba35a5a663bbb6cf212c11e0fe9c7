@@ -1,10 +1,10 @@
-// 1.20.1	2024-03-02T20:20:49.5779853	Hexalia/Model Definitions
+// 1.20.1	2024-03-04T06:27:27.0412381	Hexalia/Model Definitions
 962023670799b93fa2ba78448ce6465701d5a680 assets\hexalia\models\item\spirit_bloom.json
 868aea410d5d3b8da81e3d5b497ebb8739b03d21 assets\hexalia\models\item\dreamshroom_paste.json
 7f08f13d7427f7379f7f67a2df1da92a31aea2d0 assets\hexalia\models\item\salt_block.json
 44b770c6b2620f3ebaadb8ceb43b46185336916e assets\hexalia\models\block\sunfire_tomato_crop_stage3.json
-d7c05d73be69a69f2a31d70da198538829cb2d82 assets\hexalia\models\item\spirit_bloom_dust.json
 71f146c3cd8f89ff28b07811c12186ab801fb851 assets\hexalia\models\item\mandrake_stew.json
+d7c05d73be69a69f2a31d70da198538829cb2d82 assets\hexalia\models\item\spirit_bloom_dust.json
 3477cddd02d549549387040d8305f5064de59848 assets\hexalia\models\block\mandrake_crop_stage0.json
 61528b15831a64cf27a55765a5308f8e38c462cd assets\hexalia\blockstates\dreamshroom.json
 f145194580619ba85540bf343caf7dbafdd1bd2c assets\hexalia\models\block\sunfire_tomato_crop_stage0.json
@@ -38,7 +38,6 @@ f1f5a55bb68ede5294a77493547dd5573a8b935c assets\hexalia\models\block\mandrake_cr
 d5e01551c2808f9f1a88831b2387db48ea665d56 assets\hexalia\blockstates\salt_block.json
 0587d714a9028dab9cf4c8391a083dfa883b80a7 assets\hexalia\models\block\feral_mandrake.json
 821a2ac4b14a011097350a83d29566e06bc8ebb1 assets\hexalia\models\item\spicy_sandwich.json
-330c9e79319a109913256098b51e09602550b87c assets\hexalia\models\item\feral_mandrake.json
 35912a9a72e9cc261d4fe5be6d1fe7da2592bc6f assets\hexalia\models\item\salt_ore.json
 aad6deef60e8d355645d734acdad1bb69c42c45a assets\hexalia\blockstates\mandrake_crop.json
 2cd881f07488f5fecc15019af23a5b7cf30448ea assets\hexalia\models\block\mandrake_crop_stage3.json

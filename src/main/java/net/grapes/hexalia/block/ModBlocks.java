@@ -32,7 +32,7 @@ public class ModBlocks {
     public static final Block MANDRAKE_CROP = registerBlockWithoutBlockItem("mandrake_crop",
             new MandrakeCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
 
-    public static final Block FERAL_MANDRAKE = registerBlockWithoutBlockItem("feral_mandrake",
+    public static final Block FERAL_MANDRAKE = registerBlock("feral_mandrake",
             new FlowerBlock(StatusEffects.LEVITATION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
 
     public static final Block SUNFIRE_TOMATO_CROP = registerBlockWithoutBlockItem("sunfire_tomato_crop",
