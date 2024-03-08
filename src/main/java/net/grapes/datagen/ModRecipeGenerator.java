@@ -1,13 +1,19 @@
 package net.grapes.datagen;
 
+import com.mojang.datafixers.types.templates.Tag;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.item.ModItems;
+import net.grapes.hexalia.util.ModTags;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.Items;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.registry.tag.TagEntry;
+import net.minecraft.registry.tag.TagKey;
 
 import java.util.function.Consumer;
 
@@ -79,7 +85,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.SPICY_SANDWICH, 1)
                 .input(Items.BREAD)
                 .input(ModItems.SUNFIRE_TOMATO)
-                .input(Items.COOKED_CHICKEN)
+                .input(ModTags.Items.COOKED_MEAT)
                 .criterion(hasItem(ModItems.MANDRAKE), conditionsFromItem(ModItems.MANDRAKE))
                 .offerTo(exporter);
     }

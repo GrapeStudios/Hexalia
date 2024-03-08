@@ -9,7 +9,7 @@
       "item": "hexalia:sunfire_tomato"
     },
     {
-      "item": "minecraft:cooked_chicken"
+      "tag": "hexalia:cooked_meat"
     }
   ],
   "result": {
