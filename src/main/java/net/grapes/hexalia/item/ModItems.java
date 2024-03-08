@@ -56,6 +56,6 @@ public class ModItems {
     }
 
     public static void registerModItems() {
-        HexaliaMod.LOGGER.info("Registering Mod Items for " + HexaliaMod.MOD_ID);
+        HexaliaMod.LOGGER.info("Registering Items for " + HexaliaMod.MOD_ID);
     }
 }

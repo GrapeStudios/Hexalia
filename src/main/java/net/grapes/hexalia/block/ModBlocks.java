@@ -14,7 +14,7 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModBlocks {
-    // Plants-related blocks, including mushrooms..
+    // Plants-related blocks, including mushrooms...
     public static final Block SPIRIT_BLOOM = registerBlock("spirit_bloom",
             new FlowerBlock(StatusEffects.LEVITATION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
     public static final Block POTTED_SPIRIT_BLOOM = registerBlockWithoutBlockItem("potted_spirit_bloom",
@@ -28,7 +28,7 @@ public class ModBlocks {
     public static final Block SIREN_KELP = registerBlockWithoutBlockItem("siren_kelp",
             new SirenKelpBlock(FabricBlockSettings.copyOf(Blocks.SEAGRASS)));
 
-    // Crop-related blocks.
+    // Crop-related blocks
     public static final Block MANDRAKE_CROP = registerBlockWithoutBlockItem("mandrake_crop",
             new MandrakeCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
 
@@ -75,6 +75,6 @@ public class ModBlocks {
     }
 
     public static void registerModBlocks() {
-        HexaliaMod.LOGGER.info("Registering ModBlocks for " + HexaliaMod.MOD_ID);
+        HexaliaMod.LOGGER.info("Registering Blocks for " + HexaliaMod.MOD_ID);
     }
 }
