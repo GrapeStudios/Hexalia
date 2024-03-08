@@ -1,6 +1,5 @@
 package net.grapes.hexalia.world;
 
-
 import net.grapes.hexalia.HexaliaMod;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
@@ -20,6 +19,7 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> CHILLBERRY_PLACED_KEY = registerKey("chillberry_placed");
     public static final RegistryKey<PlacedFeature> DREAMSHROOM_PLACED_KEY = registerKey("dreamshroom_placed");
     public static final RegistryKey<PlacedFeature> FERAL_SUNFIRE_TOMATO_PLACED_KEY = registerKey("feral_sunfire_tomato_placed");
+    public static final RegistryKey<PlacedFeature> SIREN_KELP_PLACED_KEY = registerKey("siren_kelp_placed");
 
     public static void bootstrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -37,8 +37,11 @@ public class ModPlacedFeatures {
         register(context, DREAMSHROOM_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.DREAMSHROOM_KEY),
                 RarityFilterPlacementModifier.of(15), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
 
-        register(context, FERAL_SUNFIRE_TOMATO_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.FERAL_SUNFIRE_TOMATO),
+        register(context, FERAL_SUNFIRE_TOMATO_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.FERAL_SUNFIRE_TOMATO_KEY),
                 RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
+
+        register(context, SIREN_KELP_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SIREN_KELP_KEY),
+                CountPlacementModifier.of(3), SquarePlacementModifier.of(), PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP, BiomePlacementModifier.of());
     }
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {

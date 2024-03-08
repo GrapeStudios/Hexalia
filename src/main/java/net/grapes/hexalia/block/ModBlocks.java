@@ -26,7 +26,7 @@ public class ModBlocks {
             new FlowerPotBlock(DREAMSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM).luminance(4)));
 
     public static final Block SIREN_KELP = registerBlockWithoutBlockItem("siren_kelp",
-            new SirenKelpBlock(FabricBlockSettings.copyOf(Blocks.SEAGRASS).nonOpaque().noCollision()));
+            new SirenKelpBlock(FabricBlockSettings.copyOf(Blocks.SEAGRASS)));
 
     // Crop-related blocks.
     public static final Block MANDRAKE_CROP = registerBlockWithoutBlockItem("mandrake_crop",
