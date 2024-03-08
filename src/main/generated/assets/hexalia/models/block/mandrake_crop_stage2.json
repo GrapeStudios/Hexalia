@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/crop",
+  "parent": "minecraft:block/cross",
   "textures": {
-    "crop": "hexalia:block/mandrake_crop_stage2"
+    "cross": "hexalia:block/mandrake_crop_stage2"
   }
 }
