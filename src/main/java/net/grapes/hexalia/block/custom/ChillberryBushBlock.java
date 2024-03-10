@@ -28,7 +28,7 @@ public class ChillberryBushBlock extends SweetBerryBushBlock {
 
     @Override
     public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
-        return new ItemStack(ModItems.CHILLBERRY);
+        return new ItemStack(ModItems.CHILLBERRIES);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class ChillberryBushBlock extends SweetBerryBushBlock {
             return ActionResult.PASS;
         }
         int j = 1 + world.random.nextInt(2);
-        ChillberryBushBlock.dropStack(world, pos, new ItemStack(ModItems.CHILLBERRY, j + 1));
+        ChillberryBushBlock.dropStack(world, pos, new ItemStack(ModItems.CHILLBERRIES, j + 1));
         world.playSound(null, pos, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0f, 0.8f + world.random.nextFloat() * 0.4f);
         BlockState blockState = (BlockState)state.with(AGE, 1);
         world.setBlockState(pos, blockState, Block.NOTIFY_LISTENERS);

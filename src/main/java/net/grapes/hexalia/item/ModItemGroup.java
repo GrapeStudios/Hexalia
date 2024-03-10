@@ -24,7 +24,7 @@ public class ModItemGroup {
                         entries.add(ModItems.SIREN_KELP);
                         entries.add(ModItems.SIREN_KELP_PASTE);
 
-                        entries.add(ModItems.CHILLBERRY);
+                        entries.add(ModItems.CHILLBERRIES);
                         entries.add(ModItems.CHILLBERRY_CUPCAKE);
 
                         entries.add(ModItems.MANDRAKE);

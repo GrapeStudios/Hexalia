@@ -11,7 +11,7 @@
   "item.hexalia.siren_kelp": "Siren Kelp",
   "item.hexalia.siren_kelp_paste": "Siren Kelp Paste",
 
-  "block.hexalia.chillberry_bush": "Chillberry",
+  "block.hexalia.chillberry_bush": "Chillberries",
   "item.hexalia.chillberry": "Chillberry",
   "item.hexalia.chillberry_cupcake": "Chillberry Cupcake",
 
@@ -31,5 +31,7 @@
   "block.hexalia.salt_block": "Salt Block",
   "item.hexalia.salt": "Salt",
 
-  "effect.hexalia.effect_a": "Effect A"
+  "effect.hexalia.effect_a": "Effect A",
+  "block.hexalia.small_cauldron": "Small Cauldron",
+  "block.hexalia.salt_lamp": "Salt Lamp"
 }

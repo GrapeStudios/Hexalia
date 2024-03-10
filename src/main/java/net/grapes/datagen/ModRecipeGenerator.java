@@ -1,6 +1,5 @@
 package net.grapes.datagen;
 
-import com.mojang.datafixers.types.templates.Tag;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.grapes.hexalia.block.ModBlocks;
@@ -9,11 +8,7 @@ import net.grapes.hexalia.util.ModTags;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.Items;
-import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.registry.tag.TagEntry;
-import net.minecraft.registry.tag.TagKey;
 
 import java.util.function.Consumer;
 
@@ -67,11 +62,11 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
 
         // Shapeless Recipe for Food Items
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.CHILLBERRY_CUPCAKE, 1)
-                .input(ModItems.CHILLBERRY)
+                .input(ModItems.CHILLBERRIES)
                 .input(Items.SUGAR)
                 .input(Items.EGG)
                 .input(Items.WHEAT)
-                .criterion(hasItem(ModItems.CHILLBERRY), conditionsFromItem(ModItems.CHILLBERRY))
+                .criterion(hasItem(ModItems.CHILLBERRIES), conditionsFromItem(ModItems.CHILLBERRIES))
                 .offerTo(exporter);
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.MANDRAKE_STEW, 1)

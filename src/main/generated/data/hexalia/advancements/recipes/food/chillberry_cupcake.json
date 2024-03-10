@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_chillberry": {
+    "has_chillberries": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:chillberry"
+              "hexalia:chillberries"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_chillberry",
+      "has_chillberries",
       "has_the_recipe"
     ]
   ],
