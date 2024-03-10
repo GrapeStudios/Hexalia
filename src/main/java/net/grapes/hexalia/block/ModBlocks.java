@@ -7,10 +7,12 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.custom.*;
 import net.minecraft.block.*;
+import net.minecraft.block.enums.Instrument;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
 public class ModBlocks {
@@ -49,6 +51,13 @@ public class ModBlocks {
     public static final Block SALT_BLOCK = registerBlock("salt_block",
             new Block(FabricBlockSettings.copyOf(Blocks.COAL_BLOCK)));
 
+    public static final Block SMALL_CAULDRON = registerBlock("small_cauldron",
+            new SmallCauldronBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+
+    public static final Block SALT_LAMP = registerBlock("salt_lamp",
+            new SaltLampBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BASEDRUM)
+                    .strength(4f).requiresTool().luminance(state -> 12)));
+
     // Registries
     public static void registerBlockProperties() {
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.SPIRIT_BLOOM, 0.5F);
@@ -57,6 +66,8 @@ public class ModBlocks {
         FlammableBlockRegistry instance = FlammableBlockRegistry.getDefaultInstance();
         instance.add(ModBlocks.SPIRIT_BLOOM, 100, 60);
         instance.add(ModBlocks.DREAMSHROOM, 100, 60);
+        instance.add(ModBlocks.CHILLBERRY_BUSH, 100, 60);
+        instance.add(ModBlocks.FERAL_MANDRAKE, 100, 60);
     }
 
     // Methods

@@ -2,8 +2,8 @@ package net.grapes.hexalia;
 
 import net.fabricmc.api.ModInitializer;
 
-import net.grapes.effects.ModEffects;
 import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.effect.ModEffects;
 import net.grapes.hexalia.item.ModItemGroup;
 import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.particle.ModParticles;

@@ -1,4 +1,4 @@
-package net.grapes.effects;
+package net.grapes.hexalia.effect;
 
 import net.grapes.hexalia.HexaliaMod;
 import net.minecraft.entity.attribute.EntityAttributeModifier;

@@ -3,6 +3,7 @@ package net.grapes.hexalia.item;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.item.custom.MandrakeItem;
 import net.grapes.hexalia.item.custom.MortarAndPestleItem;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.BlockItem;
@@ -21,7 +22,7 @@ public class ModItems {
             new BlockItem(ModBlocks.SIREN_KELP, new FabricItemSettings()));
 
     public static final Item MANDRAKE = registerItem("mandrake",
-            new Item(new FabricItemSettings()));
+            new MandrakeItem(new FabricItemSettings()));
     public static final Item MANDRAKE_SEEDS = registerItem("mandrake_seeds",
             new AliasedBlockItem(ModBlocks.MANDRAKE_CROP, new FabricItemSettings()));
     public static final Item MANDRAKE_STEW = registerItem("mandrake_stew",

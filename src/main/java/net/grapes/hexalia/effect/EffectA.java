@@ -1,4 +1,4 @@
-package net.grapes.effects;
+package net.grapes.hexalia.effect;
 
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.effect.StatusEffect;
