@@ -2,6 +2,7 @@ package net.grapes.hexalia;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.grapes.effects.ModEffects;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.item.ModItemGroup;
 import net.grapes.hexalia.item.ModItems;
@@ -24,5 +25,6 @@ public class HexaliaMod implements ModInitializer {
 		ModRegistries.registerModStuff();
 		ModWorldGeneration.generateModWorldGeneration();
 		ModParticles.registerParticles();
+		ModEffects.registerEffects();
 	}
 }

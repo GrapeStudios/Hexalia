@@ -29,5 +29,7 @@
 
   "block.hexalia.salt_ore": "Salt Ore",
   "block.hexalia.salt_block": "Salt Block",
-  "item.hexalia.salt": "Salt"
+  "item.hexalia.salt": "Salt",
+
+  "effect.hexalia.effect_a": "Effect A"
 }
