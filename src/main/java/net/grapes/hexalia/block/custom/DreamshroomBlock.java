@@ -10,7 +10,9 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
 
 public class DreamshroomBlock extends MushroomPlantBlock {
+
     public DreamshroomBlock(Settings settings) {
+
         super(settings, TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM);
     }
 
