@@ -1,6 +1,7 @@
 package net.grapes.hexalia.item.custom;
 
 import net.grapes.hexalia.effect.ModEffects;
+import net.grapes.hexalia.sound.ModSounds;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -40,12 +41,12 @@ public class MandrakeItem extends Item {
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         if (!world.isClient() && user instanceof PlayerEntity player) {
-            List<Entity> entities = world.getOtherEntities(player, player.getBoundingBox().expand(6.0));
+            List<Entity> entities = world.getOtherEntities(player, player.getBoundingBox().expand(4.0));
             for (Entity entity : entities) {
                 if (entity instanceof LivingEntity livingEntity) {
-                    livingEntity.addStatusEffect(new StatusEffectInstance(ModEffects.STUNNED, 160, 0));
+                    livingEntity.addStatusEffect(new StatusEffectInstance(ModEffects.STUNNED, 60, 0));
                 }
-            world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.BLOCK_WET_GRASS_HIT, SoundCategory.PLAYERS, 1.0f, 1.0f);
+            world.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.MANDRAKE_SCREAM, SoundCategory.PLAYERS, 0.5f, 1.0f);
             if(!player.isCreative()) {
                 stack.decrement(1);
             }
