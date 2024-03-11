@@ -40,7 +40,7 @@ public class ModItemGroup {
                         entries.add(ModBlocks.SALT_BLOCK);
 
                         entries.add(ModItems.MORTAR_AND_PESTLE);
-                        entries.add(ModBlocks.SMALL_CAULDRON);
+                        entries.add(ModItems.SMALL_CAULDRON);
                         entries.add(ModBlocks.SALT_LAMP);
                     }).build());
     public static void registerItemGroups(){

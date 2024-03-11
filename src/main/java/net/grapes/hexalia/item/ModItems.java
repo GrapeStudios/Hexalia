@@ -48,9 +48,11 @@ public class ModItems {
     public static final Item DREAMSHROOM_PASTE = registerItem("dreamshroom_paste",
             new Item(new FabricItemSettings()));
 
-    // Tools
+    // Tools & Others
     public static final Item MORTAR_AND_PESTLE = registerItem("mortar_and_pestle",
             new MortarAndPestleItem(new FabricItemSettings()));
+    public static final Item SMALL_CAULDRON = registerItem("small_cauldron",
+            new BlockItem(ModBlocks.SMALL_CAULDRON, new FabricItemSettings()));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(HexaliaMod.MOD_ID, name), item);

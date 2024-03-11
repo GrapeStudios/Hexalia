@@ -51,7 +51,7 @@ public class ModBlocks {
     public static final Block SALT_BLOCK = registerBlock("salt_block",
             new Block(FabricBlockSettings.copyOf(Blocks.COAL_BLOCK)));
 
-    public static final Block SMALL_CAULDRON = registerBlock("small_cauldron",
+    public static final Block SMALL_CAULDRON = registerBlockWithoutBlockItem("small_cauldron",
             new SmallCauldronBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 
     public static final Block SALT_LAMP = registerBlock("salt_lamp",

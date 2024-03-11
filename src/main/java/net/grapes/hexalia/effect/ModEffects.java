@@ -18,7 +18,7 @@ public class ModEffects {
     public static final StatusEffect STUNNED = registerStatusEffect("stunned",
             new StunnedEffect(StatusEffectCategory.HARMFUL, 0xFFFFDD));
 
-    public static final StatusEffect STUFFED = registerStatusEffect("stuff",
+    public static final StatusEffect STUFFED = registerStatusEffect("stuffed",
             new StuffedEffect(StatusEffectCategory.BENEFICIAL, 0xDCD789));
 
     private static StatusEffect registerStatusEffect(String name, StatusEffect statusEffect) {
