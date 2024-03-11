@@ -6,9 +6,9 @@ import net.minecraft.item.FoodComponent;
 
 public class ModFoodComponents {
     public static final FoodComponent CHILLBERRIES = new FoodComponent.Builder().hunger(4).saturationModifier(0.3f)
-            .statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 200), 1f).build();
+            .statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 100), 1f).build();
     public static final FoodComponent CHILLBERRY_CUPCAKE = new FoodComponent.Builder().hunger(6).saturationModifier(0.8f)
-            .statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 400, 1), 1f).build();
+            .statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 200, 1), 1f).build();
 
     public static final FoodComponent MANDRAKE_STEW = new FoodComponent.Builder().hunger(10).saturationModifier(1.0f).build();
 
