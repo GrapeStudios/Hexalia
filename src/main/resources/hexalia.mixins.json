@@ -3,7 +3,8 @@
 	"package": "net.grapes.hexalia.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
-		"ExampleMixin"
+		"ExampleMixin",
+		"accesors.ExhaustionAccesorMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

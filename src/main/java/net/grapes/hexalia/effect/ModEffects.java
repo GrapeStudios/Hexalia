@@ -16,9 +16,10 @@ public class ModEffects {
                             EntityAttributeModifier.Operation.ADDITION));
 
     public static final StatusEffect STUNNED = registerStatusEffect("stunned",
-            new StunnedEffect(StatusEffectCategory.HARMFUL, 0xFFFFDD)
-                    .addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED, "648D7064-6A60-4F59-8ABE-C2C23A6DD79A", -0.0,
-                            EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
+            new StunnedEffect(StatusEffectCategory.HARMFUL, 0xFFFFDD));
+
+    public static final StatusEffect STUFFED = registerStatusEffect("stuff",
+            new StuffedEffect(StatusEffectCategory.BENEFICIAL, 0xDCD789));
 
     private static StatusEffect registerStatusEffect(String name, StatusEffect statusEffect) {
         return Registry.register(Registries.STATUS_EFFECT, new Identifier(HexaliaMod.MOD_ID, name), statusEffect);
