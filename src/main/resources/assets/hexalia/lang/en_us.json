@@ -35,5 +35,7 @@
   "effect.hexalia.stunned": "Stunned",
 
   "block.hexalia.small_cauldron": "Small Cauldron",
-  "block.hexalia.salt_lamp": "Salt Lamp"
+  "block.hexalia.salt_lamp": "Salt Lamp",
+
+  "sounds.hexalia.mandrake_scream": "Mandrake Screams"
 }

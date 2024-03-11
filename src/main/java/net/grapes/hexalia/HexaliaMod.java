@@ -7,6 +7,7 @@ import net.grapes.hexalia.effect.ModEffects;
 import net.grapes.hexalia.item.ModItemGroup;
 import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.particle.ModParticles;
+import net.grapes.hexalia.sound.ModSounds;
 import net.grapes.hexalia.util.ModRegistries;
 import net.grapes.hexalia.world.gen.ModWorldGeneration;
 import org.slf4j.Logger;
@@ -26,5 +27,6 @@ public class HexaliaMod implements ModInitializer {
 		ModWorldGeneration.generateModWorldGeneration();
 		ModParticles.registerParticles();
 		ModEffects.registerEffects();
+		ModSounds.registerSounds();
 	}
 }
