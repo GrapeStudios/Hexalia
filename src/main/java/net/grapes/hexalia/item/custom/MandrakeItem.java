@@ -1,8 +1,9 @@
 package net.grapes.hexalia.item.custom;
 
+import net.grapes.hexalia.effect.ModEffects;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -13,6 +14,8 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
+
+import java.util.List;
 
 public class MandrakeItem extends Item {
     public MandrakeItem(Settings settings) {
@@ -37,12 +40,18 @@ public class MandrakeItem extends Item {
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         if (!world.isClient() && user instanceof PlayerEntity player) {
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.RESISTANCE, 200, 0));
+            List<Entity> entities = world.getOtherEntities(player, player.getBoundingBox().expand(6.0));
+            for (Entity entity : entities) {
+                if (entity instanceof LivingEntity livingEntity) {
+                    livingEntity.addStatusEffect(new StatusEffectInstance(ModEffects.STUNNED, 160, 0));
+                }
             world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.BLOCK_WET_GRASS_HIT, SoundCategory.PLAYERS, 1.0f, 1.0f);
             if(!player.isCreative()) {
                 stack.decrement(1);
             }
         }
+        return stack;
+    }
         return stack;
     }
 }
