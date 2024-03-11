@@ -32,6 +32,8 @@
   "item.hexalia.salt": "Salt",
 
   "effect.hexalia.effect_a": "Effect A",
+  "effect.hexalia.stunned": "Stunned",
+
   "block.hexalia.small_cauldron": "Small Cauldron",
   "block.hexalia.salt_lamp": "Salt Lamp"
 }
