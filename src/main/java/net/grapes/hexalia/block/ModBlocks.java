@@ -12,7 +12,6 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
-import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 
 public class ModBlocks {

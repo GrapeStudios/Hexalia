@@ -1,7 +1,6 @@
 package net.grapes.hexalia.block.custom;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.item.ItemPlacementContext;

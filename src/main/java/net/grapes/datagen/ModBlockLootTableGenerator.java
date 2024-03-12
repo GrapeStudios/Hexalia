@@ -3,7 +3,6 @@ package net.grapes.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.grapes.hexalia.block.ModBlocks;
-import net.grapes.hexalia.block.custom.ChillberryBushBlock;
 import net.grapes.hexalia.block.custom.MandrakeCropBlock;
 import net.grapes.hexalia.block.custom.SunfireTomatoCropBlock;
 import net.grapes.hexalia.item.ModItems;

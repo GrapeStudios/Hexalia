@@ -59,7 +59,7 @@ public class SunfireTomatoCropBlock extends CropBlock {
         int j = 1 + world.random.nextInt(1);
         SunfireTomatoCropBlock.dropStack(world, pos, new ItemStack(ModItems.SUNFIRE_TOMATO, j + 1));
         world.playSound(null, pos, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PICK_BERRIES, SoundCategory.BLOCKS, 1.0f, 0.8f + world.random.nextFloat() * 0.4f);
-        BlockState blockState = (BlockState)state.with(AGE, 1);
+        BlockState blockState = state.with(AGE, 1);
         world.setBlockState(pos, blockState, Block.NOTIFY_LISTENERS);
         world.emitGameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Emitter.of(player, blockState));
         return ActionResult.success(world.isClient);

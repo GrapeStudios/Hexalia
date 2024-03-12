@@ -7,7 +7,6 @@ import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.particle.ModParticles;
 import net.grapes.hexalia.particle.SporeParticle;
 import net.minecraft.client.render.RenderLayer;
-import net.minecraft.scoreboard.ScoreboardCriterion;
 
 public class HexaliaModClient implements ClientModInitializer {
     @Override

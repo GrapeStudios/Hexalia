@@ -3,8 +3,6 @@ package net.grapes.hexalia.world;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.block.custom.ChillberryBushBlock;
-import net.minecraft.block.Waterloggable;
-import net.minecraft.item.PlaceableOnWaterItem;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -12,11 +10,8 @@ import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.structure.rule.RuleTest;
 import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.gen.blockpredicate.MatchingBlockTagPredicate;
 import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.placementmodifier.PlacementModifier;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
-import net.minecraft.world.gen.stateprovider.PredicatedStateProvider;
 
 import java.util.List;
 
