@@ -40,6 +40,6 @@
   "block.hexalia.salt_lamp": "Salt Lamp",
 
   "sounds.hexalia.mandrake_scream": "Mandrake Screams",
-  "tooltip.hexalia.hold_shift": "Hold [Shift] for more info",
+  "tooltip.hexalia.hold_shift": "Hold [Shift] for info",
   "tooltip.hexalia.mandrake": "Hold [RMB] to make the Mandrake scream."
 }
