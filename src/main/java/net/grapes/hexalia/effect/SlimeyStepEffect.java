@@ -30,7 +30,6 @@ public class SlimeyStepEffect extends StatusEffect {
                         (double) a3, 0.0D, 0.0D, 0.0D);
             }
 
-            super.applyUpdateEffect(entity, amplifier);
         }
         entity.fallDistance = 0.0F;
         // Climbing effect on the player
