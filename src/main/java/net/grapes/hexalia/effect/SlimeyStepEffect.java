@@ -8,17 +8,17 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
-public class SoaringEffect extends StatusEffect {
-    protected SoaringEffect(StatusEffectCategory category, int color) {
+public class SlimeyStepEffect extends StatusEffect {
+    protected SlimeyStepEffect(StatusEffectCategory category, int color) {
         super(category, color);
     }
 
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         // Bounce effect on the player
-        if (entity.isOnGround()) {
+        if (entity.isOnGround() && entity.bypassesLandingEffects()) {
             Vec3d movement = entity.getVelocity();
-            entity.setVelocity(movement.x, 1.5D, movement.z);
+            entity.setVelocity(movement.x, 1D, movement.z);
             entity.velocityDirty = true;
             entity.playSound(SoundEvents.ENTITY_SLIME_JUMP, 1.0F, 1.0F);
             for (int i = 0; i < 8; ++i) {
@@ -29,6 +29,8 @@ public class SoaringEffect extends StatusEffect {
                 entity.getWorld().addParticle(ParticleTypes.ITEM_SLIME, entity.getX() + (double) a2, entity.getY(), entity.getZ() +
                         (double) a3, 0.0D, 0.0D, 0.0D);
             }
+
+            super.applyUpdateEffect(entity, amplifier);
         }
         entity.fallDistance = 0.0F;
         // Climbing effect on the player

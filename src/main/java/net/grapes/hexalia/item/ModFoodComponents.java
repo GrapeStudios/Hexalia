@@ -17,5 +17,5 @@ public class ModFoodComponents {
     public static final FoodComponent SUNFIRE_TOMATO = new FoodComponent.Builder().hunger(4).saturationModifier(0.3f).build();
 
     public static final FoodComponent SPICY_SANDWICH = new FoodComponent.Builder().hunger(6).saturationModifier(0.6f)
-            .statusEffect(new StatusEffectInstance(StatusEffects.STRENGTH, 200, 0), 1f).build();
+            .statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 200, 0), 1f).build();
 }
