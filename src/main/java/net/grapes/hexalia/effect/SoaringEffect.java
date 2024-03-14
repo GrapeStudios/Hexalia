@@ -15,6 +15,7 @@ public class SoaringEffect extends StatusEffect {
 
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
+        // Bounce effect on the player
         if (entity.isOnGround()) {
             Vec3d movement = entity.getVelocity();
             entity.setVelocity(movement.x, 1.5D, movement.z);
@@ -30,7 +31,7 @@ public class SoaringEffect extends StatusEffect {
             }
         }
         entity.fallDistance = 0.0F;
-
+        // Climbing effect on the player
         if(entity.horizontalCollision) {
             Vec3d intialVec = entity.getVelocity();
             Vec3d climbVec = new Vec3d(intialVec.x, 0.2D, intialVec.z);
