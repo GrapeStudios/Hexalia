@@ -15,7 +15,8 @@ public class ModEffects {
                     .addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, "648D7064-6A60-4F59-8ABE-C2C23A6DD7A9", 0.0,
                             EntityAttributeModifier.Operation.ADDITION));
 
-
+    public static final StatusEffect SOARING = registerStatusEffect("soaring",
+            new SoaringEffect(StatusEffectCategory.BENEFICIAL, 0x2CFB03));
 
     public static final StatusEffect STUNNED = registerStatusEffect("stunned",
             new StunnedEffect(StatusEffectCategory.HARMFUL, 0xFFFFDD));
