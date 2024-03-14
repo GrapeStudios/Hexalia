@@ -10,10 +10,12 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModEffects {
-    public static final StatusEffect EFFECT_A = registerStatusEffect("effect_a",
-            new EffectA(StatusEffectCategory.BENEFICIAL, 0xFFFF00, 3.0)
+    public static final StatusEffect VIGOR = registerStatusEffect("vigor",
+            new VigorEffect(StatusEffectCategory.BENEFICIAL, 0xFFFF00, 3.0)
                     .addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, "648D7064-6A60-4F59-8ABE-C2C23A6DD7A9", 0.0,
                             EntityAttributeModifier.Operation.ADDITION));
+
+
 
     public static final StatusEffect STUNNED = registerStatusEffect("stunned",
             new StunnedEffect(StatusEffectCategory.HARMFUL, 0xFFFFDD));

@@ -4,10 +4,10 @@ import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 
-public class EffectA extends StatusEffect {
+public class VigorEffect extends StatusEffect {
     protected final double modifier;
 
-    protected EffectA(StatusEffectCategory category, int color, double modifier) {
+    protected VigorEffect(StatusEffectCategory category, int color, double modifier) {
         super(category, color);
         this.modifier = modifier;
     }
@@ -16,3 +16,6 @@ public class EffectA extends StatusEffect {
         return this.modifier * (double)(amplifier + 1);
     }
 }
+
+
+
