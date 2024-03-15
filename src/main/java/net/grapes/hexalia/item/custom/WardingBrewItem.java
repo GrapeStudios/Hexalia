@@ -23,16 +23,22 @@ public class WardingBrewItem extends Item {
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
+        super.finishUsing(stack, world, user);
         if (user instanceof ServerPlayerEntity) {
-            ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity) user;
+            ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)user;
             Criteria.CONSUME_ITEM.trigger(serverPlayerEntity, stack);
             serverPlayerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
         }
-        if (user instanceof PlayerEntity) {
+        if (!world.isClient) {
             user.addStatusEffect(new StatusEffectInstance(ModEffects.WARDING, 600));
+            stack.decrement(1);
         }
-        return stack.isEmpty() ? new ItemStack(Items.GLASS_BOTTLE) : stack;
+        if (stack.isEmpty()) {
+            return new ItemStack(Items.GLASS_BOTTLE);
+        }
+        return stack;
     }
+
     @Override
     public int getMaxUseTime(ItemStack stack) {
         return 32;
