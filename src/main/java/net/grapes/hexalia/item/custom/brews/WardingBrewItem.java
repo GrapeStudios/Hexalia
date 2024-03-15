@@ -1,10 +1,9 @@
-package net.grapes.hexalia.item.custom;
+package net.grapes.hexalia.item.custom.brews;
 
 import net.grapes.hexalia.effect.ModEffects;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,8 +16,8 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
-public class SlimeyStepBrewItem extends Item {
-    public SlimeyStepBrewItem(Settings settings) {
+public class WardingBrewItem extends Item {
+    public WardingBrewItem(Settings settings) {
         super(settings);
     }
 
@@ -31,7 +30,7 @@ public class SlimeyStepBrewItem extends Item {
             serverPlayerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
         }
         if (!world.isClient) {
-            user.addStatusEffect(new StatusEffectInstance(ModEffects.SLIMEY_STEP, 600));
+            user.addStatusEffect(new StatusEffectInstance(ModEffects.WARDING, 600));
             stack.decrement(1);
         }
         if (stack.isEmpty()) {

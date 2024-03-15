@@ -1,4 +1,4 @@
-package net.grapes.hexalia.item.custom;
+package net.grapes.hexalia.item.custom.brews;
 
 import net.grapes.hexalia.effect.ModEffects;
 import net.minecraft.advancement.criterion.Criteria;
@@ -16,8 +16,8 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
-public class WardingBrewItem extends Item {
-    public WardingBrewItem(Settings settings) {
+public class VigorBrewItem extends Item {
+    public VigorBrewItem(Settings settings) {
         super(settings);
     }
 
@@ -30,7 +30,7 @@ public class WardingBrewItem extends Item {
             serverPlayerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
         }
         if (!world.isClient) {
-            user.addStatusEffect(new StatusEffectInstance(ModEffects.WARDING, 600));
+            user.addStatusEffect(new StatusEffectInstance(ModEffects.VIGOR, 600));
             stack.decrement(1);
         }
         if (stack.isEmpty()) {

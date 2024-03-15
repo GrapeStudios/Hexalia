@@ -4,6 +4,9 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.item.custom.*;
+import net.grapes.hexalia.item.custom.brews.SlimeyStepBrewItem;
+import net.grapes.hexalia.item.custom.brews.VigorBrewItem;
+import net.grapes.hexalia.item.custom.brews.WardingBrewItem;
 import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -47,6 +50,7 @@ public class ModItems {
     public static final Item DREAMSHROOM_PASTE = registerItem("dreamshroom_paste",
             new Item(new FabricItemSettings()));
 
+    // Brews
     public static final Item BREW_OF_WARDING = registerItem("brew_of_warding",
             new WardingBrewItem(new FabricItemSettings()));
     public static final Item BREW_OF_VIGOR = registerItem("brew_of_vigor",
