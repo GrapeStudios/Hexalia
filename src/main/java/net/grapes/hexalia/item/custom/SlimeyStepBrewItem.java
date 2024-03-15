@@ -8,6 +8,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsage;
+import net.minecraft.item.Items;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.Hand;
@@ -30,7 +31,7 @@ public class SlimeyStepBrewItem extends Item {
         if (user instanceof PlayerEntity) {
             user.addStatusEffect(new StatusEffectInstance(ModEffects.SLIMEY_STEP, 600));
         }
-        return stack;
+        return stack.isEmpty() ? new ItemStack(Items.GLASS_BOTTLE) : stack;
     }
     @Override
     public int getMaxUseTime(ItemStack stack) {
