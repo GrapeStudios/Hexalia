@@ -37,6 +37,10 @@
   "effect.hexalia.slimey_step": "Slimey Step",
   "effect.hexalia.warding": "Warding",
 
+  "item.hexalia.brew_of_vigor": "Brew Of Vigor",
+  "item.hexalia.brew_of_slimey_step": "Brew Of Slimey Step",
+  "item.hexalia.brew_of_warding": "Brew Of Warding",
+
   "block.hexalia.small_cauldron": "Small Cauldron",
   "item.hexalia.small_cauldron": "Small Cauldron",
   "block.hexalia.salt_lamp": "Salt Lamp",
