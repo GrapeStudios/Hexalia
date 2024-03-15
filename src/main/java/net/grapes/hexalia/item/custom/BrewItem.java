@@ -28,7 +28,7 @@ public class BrewItem extends Item {
             serverPlayerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
         }
         if (user instanceof PlayerEntity) {
-            user.addStatusEffect(new StatusEffectInstance(ModEffects.WARDING, 200));
+            user.addStatusEffect(new StatusEffectInstance(ModEffects.WARDING, 400));
         }
         return stack;
     }
