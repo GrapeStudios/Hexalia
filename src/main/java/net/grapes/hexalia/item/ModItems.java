@@ -3,6 +3,7 @@ package net.grapes.hexalia.item;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.item.custom.BrewItem;
 import net.grapes.hexalia.item.custom.MandrakeItem;
 import net.grapes.hexalia.item.custom.MortarAndPestleItem;
 import net.minecraft.item.AliasedBlockItem;
@@ -47,6 +48,9 @@ public class ModItems {
             new Item(new FabricItemSettings()));
     public static final Item DREAMSHROOM_PASTE = registerItem("dreamshroom_paste",
             new Item(new FabricItemSettings()));
+
+    public static final Item BREW = registerItem("brew",
+            new BrewItem(new FabricItemSettings()));
 
     // Tools & Others
     public static final Item MORTAR_AND_PESTLE = registerItem("mortar_and_pestle",
