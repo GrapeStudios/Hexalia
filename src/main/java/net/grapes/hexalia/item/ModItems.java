@@ -52,17 +52,19 @@ public class ModItems {
 
     // Brews
     public static final Item BREW_OF_WARDING = registerItem("brew_of_warding",
-            new WardingBrewItem(new FabricItemSettings()));
+            new WardingBrewItem(new FabricItemSettings().recipeRemainder(ModItems.RUSTIC_BOTTLE).maxCount(16)));
     public static final Item BREW_OF_VIGOR = registerItem("brew_of_vigor",
-            new VigorBrewItem(new FabricItemSettings()));
+            new VigorBrewItem(new FabricItemSettings().recipeRemainder(ModItems.RUSTIC_BOTTLE).maxCount(16)));
     public static final Item BREW_OF_SLIMEY_STEP = registerItem("brew_of_slimey_step",
-            new SlimeyStepBrewItem(new FabricItemSettings()));
+            new SlimeyStepBrewItem(new FabricItemSettings().recipeRemainder(ModItems.RUSTIC_BOTTLE).maxCount(16)));
 
     // Tools & Others
     public static final Item MORTAR_AND_PESTLE = registerItem("mortar_and_pestle",
             new MortarAndPestleItem(new FabricItemSettings()));
     public static final Item SMALL_CAULDRON = registerItem("small_cauldron",
             new BlockItem(ModBlocks.SMALL_CAULDRON, new FabricItemSettings()));
+    public static final Item RUSTIC_BOTTLE = registerItem("rustic_bottle",
+            new Item(new FabricItemSettings()));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(HexaliaMod.MOD_ID, name), item);

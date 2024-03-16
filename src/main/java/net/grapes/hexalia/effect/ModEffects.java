@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 
 public class ModEffects {
     public static final StatusEffect VIGOR = registerStatusEffect("vigor",
-            new VigorEffect(StatusEffectCategory.BENEFICIAL, 0xFFFF00, 3.0)
+            new VigorEffect(StatusEffectCategory.BENEFICIAL, 0xB02B2B, 3.0)
                     .addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, "648D7064-6A60-4F59-8ABE-C2C23A6DD7A9", 0.0,
                             EntityAttributeModifier.Operation.ADDITION));
 
@@ -25,7 +25,7 @@ public class ModEffects {
             new StuffedEffect(StatusEffectCategory.BENEFICIAL, 0xDCD789));
 
     public static final StatusEffect WARDING = registerStatusEffect("warding",
-            new WardingEffect(StatusEffectCategory.BENEFICIAL,0xDCD789, 3.0)
+            new WardingEffect(StatusEffectCategory.BENEFICIAL,0xB9B7B7, 3.0)
                     .addAttributeModifier(EntityAttributes.GENERIC_ARMOR, "5F2E9B81-3C47-4A90-BE2F-8D55E7A1F0D2", 0.0,
                             EntityAttributeModifier.Operation.ADDITION));
 

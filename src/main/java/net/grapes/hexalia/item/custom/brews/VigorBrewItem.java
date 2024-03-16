@@ -1,6 +1,7 @@
 package net.grapes.hexalia.item.custom.brews;
 
 import net.grapes.hexalia.effect.ModEffects;
+import net.grapes.hexalia.item.ModItems;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -25,16 +26,23 @@ public class VigorBrewItem extends Item {
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         super.finishUsing(stack, world, user);
         if (user instanceof ServerPlayerEntity) {
-            ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity)user;
+            ServerPlayerEntity serverPlayerEntity = (ServerPlayerEntity) user;
             Criteria.CONSUME_ITEM.trigger(serverPlayerEntity, stack);
             serverPlayerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
         }
         if (!world.isClient) {
             user.addStatusEffect(new StatusEffectInstance(ModEffects.VIGOR, 600));
-            stack.decrement(1);
         }
         if (stack.isEmpty()) {
-            return new ItemStack(Items.GLASS_BOTTLE);
+            return new ItemStack(ModItems.RUSTIC_BOTTLE);
+        }
+        if (user instanceof PlayerEntity && !((PlayerEntity)user).getAbilities().creativeMode) {
+            ItemStack itemStack = new ItemStack(ModItems.RUSTIC_BOTTLE);
+            PlayerEntity playerEntity = (PlayerEntity)user;
+            stack.decrement(1);
+            if (!playerEntity.getInventory().insertStack(itemStack)) {
+                playerEntity.dropItem(itemStack, false);
+            }
         }
         return stack;
     }
