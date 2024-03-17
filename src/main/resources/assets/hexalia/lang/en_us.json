@@ -30,6 +30,7 @@
   "block.hexalia.salt_ore": "Salt Ore",
   "block.hexalia.salt_block": "Salt Block",
   "item.hexalia.salt": "Salt",
+  "block.hexalia.salt_lamp": "Salt Lamp",
 
   "effect.hexalia.vigor": "Vigor",
   "effect.hexalia.stunned": "Stunned",
@@ -44,9 +45,8 @@
 
   "block.hexalia.small_cauldron": "Small Cauldron",
   "item.hexalia.small_cauldron": "Small Cauldron",
-  "block.hexalia.salt_lamp": "Salt Lamp",
 
   "sounds.hexalia.mandrake_scream": "Mandrake Screams",
-  "tooltip.hexalia.hold_shift": "Hold [Shift] for info",
-  "tooltip.hexalia.mandrake": "Hold [RMB] to make the Mandrake scream."
+  "tooltip.hexalia.hold_shift": "Hold §e[SHIFT]§r for more info",
+  "tooltip.hexalia.mandrake": "Hold §e[RMB]§r to make the Mandrake scream."
 }
