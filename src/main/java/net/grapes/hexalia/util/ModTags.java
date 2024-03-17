@@ -22,6 +22,8 @@ public class ModTags {
     }
     public static class Blocks {
 
+        public static final TagKey<Block> HEATING_BLOCK = createBlockTag("heating_block");
+
         private static TagKey<Block> createBlockTag(String name) {
             return TagKey.of(RegistryKeys.BLOCK, new Identifier(HexaliaMod.MOD_ID, name));
         }

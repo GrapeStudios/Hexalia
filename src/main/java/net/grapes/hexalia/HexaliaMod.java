@@ -2,10 +2,12 @@ package net.grapes.hexalia;
 
 import net.fabricmc.api.ModInitializer;
 import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.block.entity.ModBlockEntities;
 import net.grapes.hexalia.effect.ModEffects;
 import net.grapes.hexalia.item.ModItemGroup;
 import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.particle.ModParticles;
+import net.grapes.hexalia.screen.ModScreenHandler;
 import net.grapes.hexalia.sound.ModSounds;
 import net.grapes.hexalia.util.ModRegistries;
 import net.grapes.hexalia.world.gen.ModWorldGeneration;
@@ -27,5 +29,7 @@ public class HexaliaMod implements ModInitializer {
 		ModParticles.registerParticles();
 		ModEffects.registerEffects();
 		ModSounds.registerSounds();
+		ModBlockEntities.registerBlockEntities();
+		ModScreenHandler.registerScreenHandlers();
 	}
 }

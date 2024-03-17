@@ -6,6 +6,9 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.particle.ModParticles;
 import net.grapes.hexalia.particle.SporeParticle;
+import net.grapes.hexalia.screen.ModScreenHandler;
+import net.grapes.hexalia.screen.SmallCauldronScreen;
+import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
 
 public class HexaliaModClient implements ClientModInitializer {
@@ -24,5 +27,6 @@ public class HexaliaModClient implements ClientModInitializer {
                 ModBlocks.FERAL_SUNFIRE_TOMATO);
 
         ParticleFactoryRegistry.getInstance().register(ModParticles.SPORE_PARTICLE, SporeParticle.Factory::new);
+        HandledScreens.register(ModScreenHandler.SMALL_CAULDRON_SCREEN_HANDLER, SmallCauldronScreen::new);
     }
 }
