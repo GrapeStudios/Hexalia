@@ -77,7 +77,7 @@ public class SmallCauldronBlock extends BlockWithEntity implements BlockEntityPr
         }
         if (particleFrequency > 0 && random.nextInt(5) < particleFrequency) {
             for (int i = 0; i < random.nextInt(1) + 1; ++i) {
-                world.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE,
+                world.addParticle(ParticleTypes.BUBBLE_POP,
                         (double)pos.getX() + 0.5,
                         (double)pos.getY() + 1.0,
                         (double)pos.getZ() + 0.5,
