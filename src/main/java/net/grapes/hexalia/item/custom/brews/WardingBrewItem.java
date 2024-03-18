@@ -30,7 +30,7 @@ public class WardingBrewItem extends Item {
             serverPlayerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
         }
         if (!world.isClient) {
-            user.addStatusEffect(new StatusEffectInstance(ModEffects.WARDING, 600));
+            user.addStatusEffect(new StatusEffectInstance(ModEffects.WARDING, 2400));
         }
         if (stack.isEmpty()) {
             return new ItemStack(ModItems.RUSTIC_BOTTLE);

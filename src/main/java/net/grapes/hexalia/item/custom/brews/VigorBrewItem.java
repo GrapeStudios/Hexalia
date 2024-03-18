@@ -30,7 +30,7 @@ public class VigorBrewItem extends Item {
             serverPlayerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
         }
         if (!world.isClient) {
-            user.addStatusEffect(new StatusEffectInstance(ModEffects.VIGOR, 600));
+            user.addStatusEffect(new StatusEffectInstance(ModEffects.VIGOR, 2400));
         }
         if (stack.isEmpty()) {
             return new ItemStack(ModItems.RUSTIC_BOTTLE);

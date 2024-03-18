@@ -30,7 +30,7 @@ public class SlimeyStepBrewItem extends Item {
             serverPlayerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
         }
         if (!world.isClient) {
-            user.addStatusEffect(new StatusEffectInstance(ModEffects.SLIMEY_STEP, 600));
+            user.addStatusEffect(new StatusEffectInstance(ModEffects.SLIMEY_STEP, 2400));
         }
         if (stack.isEmpty()) {
             return new ItemStack(ModItems.RUSTIC_BOTTLE);
