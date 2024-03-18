@@ -31,8 +31,6 @@ public class ModModelProvider extends FabricModelProvider {
                 BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerTintableCross(ModBlocks.FERAL_MANDRAKE,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
-
-        blockStateModelGenerator.registerSimpleState(ModBlocks.SALT_LAMP);
     }
 
     @Override
@@ -47,7 +45,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.CHILLBERRY_CUPCAKE, Models.GENERATED);
         itemModelGenerator.register(ModItems.SUNFIRE_TOMATO, Models.GENERATED);
         itemModelGenerator.register(ModItems.SPICY_SANDWICH, Models.GENERATED);
-
         itemModelGenerator.register(ModItems.RUSTIC_BOTTLE, Models.GENERATED);
         itemModelGenerator.register(ModItems.BREW_OF_SLIMEY_STEP, Models.GENERATED);
         itemModelGenerator.register(ModItems.BREW_OF_WARDING, Models.GENERATED);

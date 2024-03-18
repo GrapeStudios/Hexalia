@@ -20,27 +20,22 @@ public class ModBlocks {
             new FlowerBlock(StatusEffects.LEVITATION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
     public static final Block POTTED_SPIRIT_BLOOM = registerBlockWithoutBlockItem("potted_spirit_bloom",
             new FlowerPotBlock(SPIRIT_BLOOM, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
-
     public static final Block DREAMSHROOM = registerBlock("dreamshroom",
             new DreamshroomBlock(FabricBlockSettings.copyOf(Blocks.BROWN_MUSHROOM).luminance(4).nonOpaque().noCollision()));
     public static final Block POTTED_DREAMSHROOM = registerBlockWithoutBlockItem("potted_dreamshroom",
             new FlowerPotBlock(DREAMSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM).luminance(4)));
-
     public static final Block SIREN_KELP = registerBlockWithoutBlockItem("siren_kelp",
             new SirenKelpBlock(FabricBlockSettings.copyOf(Blocks.SEAGRASS)));
 
     // Crop blocks
     public static final Block MANDRAKE_CROP = registerBlockWithoutBlockItem("mandrake_crop",
             new MandrakeCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
-
     public static final Block FERAL_MANDRAKE = registerBlock("feral_mandrake",
             new FlowerBlock(StatusEffects.LEVITATION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
-
     public static final Block SUNFIRE_TOMATO_CROP = registerBlockWithoutBlockItem("sunfire_tomato_crop",
             new SunfireTomatoCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
     public static final Block FERAL_SUNFIRE_TOMATO = registerBlock("feral_sunfire_tomato",
             new FeralSunfireTomato(FabricBlockSettings.copyOf(Blocks.CORNFLOWER).luminance(16).nonOpaque()));
-
     public static final Block CHILLBERRY_BUSH = registerBlockWithoutBlockItem("chillberry_bush",
             new ChillberryBushBlock(FabricBlockSettings.copyOf(Blocks.SWEET_BERRY_BUSH)));
 
@@ -49,12 +44,10 @@ public class ModBlocks {
             new Block(FabricBlockSettings.copyOf(Blocks.COAL_ORE)));
     public static final Block SALT_BLOCK = registerBlock("salt_block",
             new Block(FabricBlockSettings.copyOf(Blocks.COAL_BLOCK)));
-
     public static final Block SMALL_CAULDRON = registerBlockWithoutBlockItem("small_cauldron",
             new SmallCauldronBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
-
-    public static final Block SALT_LAMP = registerBlock("salt_lamp",
-            new SaltLampBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BASEDRUM)
+    public static final Block SALT_LAMP = registerBlockWithoutBlockItem("salt_lamp",
+            new SaltLampBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BANJO)
                     .strength(4f).requiresTool().luminance(state -> 12)));
 
     // Registries

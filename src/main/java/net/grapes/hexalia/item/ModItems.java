@@ -22,19 +22,16 @@ public class ModItems {
             new Item(new FabricItemSettings()));
     public static final Item SIREN_KELP = registerItem("siren_kelp",
             new BlockItem(ModBlocks.SIREN_KELP, new FabricItemSettings()));
-
     public static final Item MANDRAKE = registerItem("mandrake",
             new MandrakeItem(new FabricItemSettings()));
     public static final Item MANDRAKE_SEEDS = registerItem("mandrake_seeds",
             new AliasedBlockItem(ModBlocks.MANDRAKE_CROP, new FabricItemSettings()));
     public static final Item MANDRAKE_STEW = registerItem("mandrake_stew",
             new StewItem(new FabricItemSettings().food(ModFoodComponents.MANDRAKE_STEW).maxCount(1)));
-
     public static final Item CHILLBERRIES = registerItem("chillberries",
             new BlockItem(ModBlocks.CHILLBERRY_BUSH, new FabricItemSettings().food(ModFoodComponents.CHILLBERRIES)));
     public static final Item CHILLBERRY_CUPCAKE = registerItem("chillberry_cupcake",
             new Item(new FabricItemSettings().food(ModFoodComponents.CHILLBERRY_CUPCAKE)));
-
     public static final Item SUNFIRE_TOMATO = registerItem("sunfire_tomato",
             new Item(new FabricItemSettings().food(ModFoodComponents.SUNFIRE_TOMATO)));
     public static final Item SUNFIRE_TOMATO_SEEDS = registerItem("sunfire_tomato_seeds",
@@ -63,6 +60,8 @@ public class ModItems {
             new MortarAndPestleItem(new FabricItemSettings()));
     public static final Item SMALL_CAULDRON = registerItem("small_cauldron",
             new BlockItem(ModBlocks.SMALL_CAULDRON, new FabricItemSettings()));
+    public static final Item SALT_LAMP = registerItem("salt_lamp",
+            new BlockItem(ModBlocks.SALT_LAMP, new FabricItemSettings()));
     public static final Item RUSTIC_BOTTLE = registerItem("rustic_bottle",
             new Item(new FabricItemSettings()));
 
