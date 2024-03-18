@@ -5,11 +5,11 @@ import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.screen.SmallCauldronScreenHandler;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.GlassBlock;
+import net.minecraft.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
@@ -142,15 +142,6 @@ public class SmallCauldronBlockEntity extends BlockEntity implements ExtendedScr
             return false;
         }
         return isHeated(world, pos);
-    }
-
-    @Override
-    public boolean isValid(int slot, ItemStack stack) {
-        if (stack == null || stack.isEmpty()) return false; // Added null check
-        if (slot == BOTTLE_SLOT) {
-            return stack.getItem() instanceof BlockItem && ((BlockItem) stack.getItem()).getBlock() instanceof GlassBlock;
-        }
-        return false;
     }
 
     private boolean canInsertOutputSlot() {

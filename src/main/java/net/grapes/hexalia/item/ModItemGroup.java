@@ -27,17 +27,17 @@ public class ModItemGroup {
                         entries.add(ModItems.CHILLBERRIES);
                         entries.add(ModItems.CHILLBERRY_CUPCAKE);
 
-                        entries.add(ModItems.MANDRAKE);
                         entries.add(ModItems.MANDRAKE_SEEDS);
+                        entries.add(ModItems.MANDRAKE);
                         entries.add(ModItems.MANDRAKE_STEW);
 
-                        entries.add(ModItems.SUNFIRE_TOMATO);
                         entries.add(ModItems.SUNFIRE_TOMATO_SEEDS);
+                        entries.add(ModItems.SUNFIRE_TOMATO);
                         entries.add(ModItems.SPICY_SANDWICH);
 
                         entries.add(ModBlocks.SALT_ORE);
-                        entries.add(ModItems.SALT);
                         entries.add(ModBlocks.SALT_BLOCK);
+                        entries.add(ModItems.SALT);
                         entries.add(ModItems.SALT_LAMP);
 
                         entries.add(ModItems.MORTAR_AND_PESTLE);
