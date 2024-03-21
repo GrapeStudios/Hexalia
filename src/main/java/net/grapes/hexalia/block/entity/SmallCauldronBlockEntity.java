@@ -23,11 +23,12 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class SmallCauldronBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory, HeatingBlockEntity {
-    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(3, ItemStack.EMPTY);
+    private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(8, ItemStack.EMPTY);
 
     public static int INPUT_SLOTS = 0;
-    public static int OUTPUT_SLOT = 1;
-    public static int BOTTLE_SLOT = 2;
+
+    public static int OUTPUT_SLOT = 6;
+    public static int BOTTLE_SLOT = 7;
 
     protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
