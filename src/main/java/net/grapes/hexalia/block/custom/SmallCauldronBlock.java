@@ -36,8 +36,8 @@ public class SmallCauldronBlock extends BlockWithEntity implements BlockEntityPr
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
 
-    public static final VoxelShape SHAPE = VoxelShapes.union(Block.createCuboidShape(5.0, 0.0, 5.0, 11.0, 7.0, 11.0),
-            Block.createCuboidShape(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
+    protected static final VoxelShape SHAPE = VoxelShapes.union(Block.createCuboidShape(2.0, 0, 2.0, 14.0, 11.0, 14.0),
+            Block.createCuboidShape(3.0, 1.0, 3.0, 13.0, 12.0, 13.0));
 
     public SmallCauldronBlock(Settings settings) {
         super(settings);

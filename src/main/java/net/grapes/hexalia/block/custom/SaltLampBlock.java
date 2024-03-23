@@ -9,8 +9,8 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
 public class SaltLampBlock extends Block {
-    public static final VoxelShape SHAPE = VoxelShapes.union(Block.createCuboidShape(5.0, 0.0, 5.0, 11.0, 7.0, 11.0),
-            Block.createCuboidShape(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
+    public static final VoxelShape SHAPE = VoxelShapes.union(Block.createCuboidShape(4.0, 0, 4.0, 12.0, 10.0, 12.0),
+            Block.createCuboidShape(5.0, 2.0, 5.0, 11.0, 11.0, 11.0));
 
     public SaltLampBlock(Settings settings) {
         super(settings);
