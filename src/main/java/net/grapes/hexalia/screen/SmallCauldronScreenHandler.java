@@ -37,15 +37,16 @@ public class SmallCauldronScreenHandler extends ScreenHandler {
         this.addSlot(new Slot(inventory, 0, 30, 17));
         this.addSlot(new Slot(inventory, 1, 48, 17));
         this.addSlot(new Slot(inventory, 2, 66, 17));
+
         this.addSlot(new Slot(inventory, 3, 30, 35));
         this.addSlot(new Slot(inventory, 4, 48, 35));
         this.addSlot(new Slot(inventory, 5, 66, 35));
 
         // Output Slot
-        this.addSlot(new Slot(inventory, 6, 124, 28));
+        this.addSlot(new SlotOutputOnly(inventory, 6, 124, 28));
 
         // Rustic Bottle Slot
-        this.addSlot(new Slot(inventory, 7, 66, 55));
+        this.addSlot(new SmallCauldronBlockEntity.RusticBottleSlot(inventory, 7, 66, 55));
 
         addPlayerInventory(playerInventory);
         addPlayerHotbar(playerInventory);
@@ -60,8 +61,8 @@ public class SmallCauldronScreenHandler extends ScreenHandler {
 
     public int getScaledProgress() {
         int progress = this.propertyDelegate.get(0);
-        int maxProgress = this.propertyDelegate.get(1);  // Max Progress
-        int progressArrowSize = 26; // This is the width in pixels of your arrow
+        int maxProgress = this.propertyDelegate.get(1);
+        int progressArrowSize = 26;
 
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
     }
@@ -77,12 +78,14 @@ public class SmallCauldronScreenHandler extends ScreenHandler {
                 if (!this.insertItem(originalStack, this.inventory.size(), this.slots.size(), true)) {
                     return ItemStack.EMPTY;
                 }
+
             } else if (!this.insertItem(originalStack, 0, this.inventory.size(), false)) {
                 return ItemStack.EMPTY;
             }
 
             if (originalStack.isEmpty()) {
                 slot.setStack(ItemStack.EMPTY);
+
             } else {
                 slot.markDirty();
             }
@@ -94,6 +97,17 @@ public class SmallCauldronScreenHandler extends ScreenHandler {
     @Override
     public boolean canUse(PlayerEntity player) {
         return this.inventory.canPlayerUse(player);
+    }
+
+    private static class SlotOutputOnly extends Slot {
+        public SlotOutputOnly(Inventory inventory, int index, int x, int y) {
+            super(inventory, index, x, y);
+        }
+
+        @Override
+        public boolean canInsert(ItemStack stack) {
+            return false;
+        }
     }
 
     private void addPlayerInventory(PlayerInventory playerInventory) {

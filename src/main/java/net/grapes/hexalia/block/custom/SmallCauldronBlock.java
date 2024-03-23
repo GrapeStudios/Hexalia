@@ -26,6 +26,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -34,7 +35,9 @@ public class SmallCauldronBlock extends BlockWithEntity implements BlockEntityPr
 
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
-    public static final VoxelShape SHAPE = Block.createCuboidShape(2, 0, 2, 14, 12, 14);
+
+    public static final VoxelShape SHAPE = VoxelShapes.union(Block.createCuboidShape(5.0, 0.0, 5.0, 11.0, 7.0, 11.0),
+            Block.createCuboidShape(6.0, 7.0, 6.0, 10.0, 9.0, 10.0));
 
     public SmallCauldronBlock(Settings settings) {
         super(settings);
