@@ -21,7 +21,7 @@ public class ModItems {
     public static final Item SALT = registerItem("salt",
             new Item(new FabricItemSettings()));
     public static final Item SIREN_KELP = registerItem("siren_kelp",
-            new BlockItem(ModBlocks.SIREN_KELP, new FabricItemSettings()));
+            new BlockItem(ModBlocks.SIREN_KELP, new FabricItemSettings().food(ModFoodComponents.SIREN_KELP)));
     public static final Item MANDRAKE = registerItem("mandrake",
             new MandrakeItem(new FabricItemSettings()));
     public static final Item MANDRAKE_SEEDS = registerItem("mandrake_seeds",
