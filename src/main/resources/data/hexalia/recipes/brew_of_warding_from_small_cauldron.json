@@ -1,0 +1,18 @@
+{
+  "type": "hexalia:small_cauldron",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hexalia:dreamshroom_paste"
+    },
+    {
+      "item": "hexalia:spirit_bloom_dust"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    }
+  ],
+  "output": {
+    "item": "hexalia:brew_of_warding"
+  }
+}

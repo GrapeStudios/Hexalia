@@ -2,14 +2,14 @@ package net.grapes.hexalia.block.entity;
 
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.grapes.hexalia.item.ModItems;
+import net.grapes.hexalia.recipe.SmallCauldronRecipe;
 import net.grapes.hexalia.screen.SmallCauldronScreenHandler;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.GlassBlock;
-import net.minecraft.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
@@ -22,10 +22,15 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
+import java.util.Optional;
+
 public class SmallCauldronBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory, HeatingBlockEntity {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(8, ItemStack.EMPTY);
 
-    public static int INPUT_SLOTS = 0;
+    public static int INPUT_SLOT_1 = 0;
+    public static int INPUT_SLOT_2 = 1;
+    public static int INPUT_SLOT_3 = 2;
 
     public static int OUTPUT_SLOT = 6;
     public static int BOTTLE_SLOT = 7;
@@ -112,10 +117,15 @@ public class SmallCauldronBlockEntity extends BlockEntity implements ExtendedScr
     }
 
     private void craftItem() {
-        this.removeStack(INPUT_SLOTS, 1);
+        Optional<SmallCauldronRecipe> recipe = getCurrentRecipe();
+
+        this.removeStack(INPUT_SLOT_1, 1);
+        this.removeStack(INPUT_SLOT_2, 1);
+        this.removeStack(INPUT_SLOT_3, 1);
         this.removeStack(BOTTLE_SLOT, 1);
-        this.setStack(OUTPUT_SLOT, new ItemStack(ModItems.BREW_OF_SLIMEY_STEP,
-                this.getStack(OUTPUT_SLOT).getCount() + 1));
+
+        this.setStack(OUTPUT_SLOT, new ItemStack(recipe.get().getOutput(null).getItem(),
+                this.getStack(OUTPUT_SLOT).getCount() + recipe.get().getOutput(null).getCount()));
     }
 
     private void resetProgress() {
@@ -131,7 +141,31 @@ public class SmallCauldronBlockEntity extends BlockEntity implements ExtendedScr
     }
 
     private boolean hasRecipe() {
-        return this.getStack(INPUT_SLOTS).getItem() == ModItems.SIREN_KELP_PASTE;
+        Optional<SmallCauldronRecipe> recipe = getCurrentRecipe();
+
+        if (recipe.isEmpty()) {
+            return false;
+        }
+        ItemStack output = recipe.get().getOutput(null);
+
+        return canInsertAmountIntoOutputSlot(output.getCount()) &&
+                canInsertItemIntoOutputSlot(output);
+    }
+
+    private boolean canInsertItemIntoOutputSlot(ItemStack output) {
+        return this.getStack(OUTPUT_SLOT).isEmpty() || this.getStack(OUTPUT_SLOT).getItem() == output.getItem();
+    }
+
+    private boolean canInsertAmountIntoOutputSlot(int count) {
+        return this.getStack(OUTPUT_SLOT).getMaxCount() >= this.getStack(OUTPUT_SLOT).getCount() + count;
+    }
+
+    private Optional<SmallCauldronRecipe> getCurrentRecipe() {
+        SimpleInventory inventory = new SimpleInventory((this.size()));
+        for (int i = 0; i < this.size(); i++) {
+            inventory.setStack(i, this.getStack(i));
+        }
+        return Objects.requireNonNull(this.getWorld().getRecipeManager().getFirstMatch(SmallCauldronRecipe.Type.INSTANCE, inventory, this.getWorld()));
     }
 
     private boolean hasRusticBottle() {

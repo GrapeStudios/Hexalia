@@ -7,6 +7,7 @@ import net.grapes.hexalia.effect.ModEffects;
 import net.grapes.hexalia.item.ModItemGroup;
 import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.particle.ModParticles;
+import net.grapes.hexalia.recipe.ModRecipes;
 import net.grapes.hexalia.screen.ModScreenHandler;
 import net.grapes.hexalia.sound.ModSounds;
 import net.grapes.hexalia.util.ModRegistries;
@@ -31,5 +32,6 @@ public class HexaliaMod implements ModInitializer {
 		ModSounds.registerSounds();
 		ModBlockEntities.registerBlockEntities();
 		ModScreenHandler.registerScreenHandlers();
+		ModRecipes.registerRecipes();
 	}
 }

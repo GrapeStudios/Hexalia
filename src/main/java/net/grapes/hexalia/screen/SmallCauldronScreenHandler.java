@@ -28,16 +28,15 @@ public class SmallCauldronScreenHandler extends ScreenHandler {
     public SmallCauldronScreenHandler(int syncId, PlayerInventory playerInventory,
                                       BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
         super(ModScreenHandler.SMALL_CAULDRON_SCREEN_HANDLER, syncId);
-        checkSize(((Inventory) blockEntity), 8);
+        checkSize(((Inventory) blockEntity), 6);
         this.inventory = (Inventory)blockEntity;
         this.propertyDelegate = arrayPropertyDelegate;
         this.blockEntity = ((SmallCauldronBlockEntity) blockEntity);
 
-        // Input Slot
+        // Input Slots
         this.addSlot(new Slot(inventory, 0, 30, 17));
         this.addSlot(new Slot(inventory, 1, 48, 17));
         this.addSlot(new Slot(inventory, 2, 66, 17));
-
         this.addSlot(new Slot(inventory, 3, 30, 35));
         this.addSlot(new Slot(inventory, 4, 48, 35));
         this.addSlot(new Slot(inventory, 5, 66, 35));

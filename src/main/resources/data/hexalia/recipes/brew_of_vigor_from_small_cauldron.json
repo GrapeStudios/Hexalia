@@ -1,0 +1,18 @@
+{
+  "type": "hexalia:small_cauldron",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hexalia:spirit_bloom_dust"
+    },
+    {
+      "item": "hexalia:siren_kelp_paste"
+    },
+    {
+      "item": "minecraft:redstone"
+    }
+  ],
+  "output": {
+    "item": "hexalia:brew_of_vigor"
+  }
+}

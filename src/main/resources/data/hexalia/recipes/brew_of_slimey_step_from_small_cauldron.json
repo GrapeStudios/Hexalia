@@ -1,0 +1,18 @@
+{
+  "type": "hexalia:small_cauldron",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hexalia:siren_kelp_paste"
+    },
+    {
+      "item": "hexalia:dreamshroom_paste"
+    },
+    {
+      "item": "minecraft:slime_ball"
+    }
+  ],
+  "output": {
+    "item": "hexalia:brew_of_slimey_step"
+  }
+}
