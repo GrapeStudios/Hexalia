@@ -46,6 +46,8 @@ public class ModItems {
             new Item(new FabricItemSettings()));
     public static final Item DREAMSHROOM_PASTE = registerItem("dreamshroom_paste",
             new Item(new FabricItemSettings()));
+    public static final Item PURIFYING_SALTS = registerItem("purifying_salts",
+            new PurifyingSaltsItem(new FabricItemSettings().maxCount(16)));
 
     // Brews
     public static final Item BREW_OF_WARDING = registerItem("brew_of_warding",

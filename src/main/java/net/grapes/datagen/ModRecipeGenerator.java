@@ -56,7 +56,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
                 .offerTo(exporter);
 
-        // Shapeless Recipe for Food Items
+        // Shapeless Recipe for Other Items
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.CHILLBERRY_PIE, 1)
                 .input(ModItems.CHILLBERRIES)
                 .input(Items.SUGAR)
@@ -75,7 +75,13 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input(Items.BREAD)
                 .input(ModItems.SUNFIRE_TOMATO)
                 .input(ModTags.Items.COOKED_MEAT)
-                .criterion(hasItem(ModItems.MANDRAKE), conditionsFromItem(ModItems.MANDRAKE))
+                .criterion(hasItem(ModItems.SUNFIRE_TOMATO), conditionsFromItem(ModItems.SUNFIRE_TOMATO))
+                .offerTo(exporter);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.PURIFYING_SALTS, 1)
+                .input(ModItems.SALT)
+                .input(Items.LEATHER)
+                .input(ModTags.Items.CRUSHED_PLANTS)
+                .criterion(hasItem(ModItems.SALT), conditionsFromItem(ModItems.SALT))
                 .offerTo(exporter);
     }
 }

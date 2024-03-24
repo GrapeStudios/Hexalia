@@ -39,6 +39,7 @@ public class ModItemGroup {
                         entries.add(ModBlocks.SALT_BLOCK);
                         entries.add(ModItems.SALT);
                         entries.add(ModItems.SALT_LAMP);
+                        entries.add(ModItems.PURIFYING_SALTS);
 
                         entries.add(ModItems.MORTAR_AND_PESTLE);
                         entries.add(ModItems.SMALL_CAULDRON);

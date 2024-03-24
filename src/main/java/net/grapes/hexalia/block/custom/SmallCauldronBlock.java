@@ -35,10 +35,8 @@ public class SmallCauldronBlock extends BlockWithEntity implements BlockEntityPr
 
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
-
     protected static final VoxelShape SHAPE = VoxelShapes.union(Block.createCuboidShape(2.0, 0, 2.0, 14.0, 11.0, 14.0),
             Block.createCuboidShape(3.0, 1.0, 3.0, 13.0, 12.0, 13.0));
-
     public SmallCauldronBlock(Settings settings) {
         super(settings);
     }
@@ -69,11 +67,11 @@ public class SmallCauldronBlock extends BlockWithEntity implements BlockEntityPr
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         boolean isHeated = isHeated(world, pos);
         if (isHeated) {
-            createSmokeParticle(world, pos, random, 3);
+            createBrewingParticle(world, pos, random, 3);
         }
     }
 
-    public static void createSmokeParticle(World world, BlockPos pos, Random random, int particleFrequency) {
+    public static void createBrewingParticle(World world, BlockPos pos, Random random, int particleFrequency) {
         if (random.nextInt(10) == 0) {
             world.playSound((double)pos.getX() + 0.5, (double)pos.getY() + 0.5, (double)pos.getZ() + 0.5,
                     SoundEvents.BLOCK_CAMPFIRE_CRACKLE, SoundCategory.BLOCKS, 0.5f + random.nextFloat(), random.nextFloat() * 0.7f + 0.6f, false);
@@ -89,6 +87,11 @@ public class SmallCauldronBlock extends BlockWithEntity implements BlockEntityPr
                         random.nextGaussian() * 0.02);
             }
         }
+    }
+
+    @Override
+    public FluidState getFluidState(BlockState state) {
+        return Boolean.TRUE.equals(state.get(WATERLOGGED)) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
 
     // Block Entity
@@ -125,11 +128,6 @@ public class SmallCauldronBlock extends BlockWithEntity implements BlockEntityPr
             }
         }
         return ActionResult.SUCCESS;
-    }
-
-    @Override
-    public FluidState getFluidState(BlockState state) {
-        return Boolean.TRUE.equals(state.get(WATERLOGGED)) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
 
     @Nullable
