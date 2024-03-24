@@ -20,5 +20,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                         Items.COOKED_MUTTON, Items.COOKED_PORKCHOP,
                         Items.COOKED_RABBIT, Items.COOKED_COD,
                         Items.COOKED_SALMON);
+
+        getOrCreateTagBuilder(ModTags.Items.CRUSHED_PLANTS)
+                .add(ModItems.DREAMSHROOM_PASTE, ModItems.SIREN_KELP_PASTE,
+                        ModItems.SPIRIT_BLOOM_POWDER);
     }
 }

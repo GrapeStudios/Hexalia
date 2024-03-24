@@ -24,6 +24,15 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
 
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.RUSTIC_BOTTLE)
+                .pattern("S S")
+                .pattern(" P ")
+                .input('S', Items.CLAY_BALL)
+                .input('P', Blocks.GLASS)
+                .criterion(hasItem(Items.CLAY_BALL), conditionsFromItem(Items.CLAY_BALL))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.RUSTIC_BOTTLE) + "_"));
+
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.SALT,
                 RecipeCategory.MISC, ModBlocks.SALT_BLOCK);
 
@@ -86,35 +95,5 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input(ModTags.Items.CRUSHED_PLANTS)
                 .criterion(hasItem(ModItems.SALT), conditionsFromItem(ModItems.SALT))
                 .offerTo(exporter);
-
-        // Shapeless Recipe for Rustic Bottle
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.RUSTIC_BOTTLE)
-                .pattern("S S")
-                .pattern(" P ")
-                .input('S', Items.CLAY_BALL)
-                .input('P', Blocks.GLASS)
-                .criterion(hasItem(Items.CLAY_BALL), conditionsFromItem(Items.CLAY_BALL))
-                .offerTo(exporter, new Identifier(getRecipeName(ModItems.RUSTIC_BOTTLE) + "_"));
-
-        // Shapeless Recipe for Small Cauldron
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.SMALL_CAULDRON)
-                .pattern("S S")
-                .pattern("P P")
-                .pattern("SSS")
-                .input('P', Items.COPPER_INGOT)
-                .input('S', Items.IRON_INGOT)
-                .criterion(hasItem(Items.COPPER_INGOT), conditionsFromItem(Items.COPPER_INGOT))
-                .offerTo(exporter, new Identifier(getRecipeName(ModItems.SMALL_CAULDRON) + "_"));
-
-        //Shapeless Recipe for Salt Lamp
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.SALT_LAMP)
-                .pattern(" A ")
-                .pattern(" P ")
-                .pattern(" S ")
-                .input('A', Items.GLOWSTONE_DUST)
-                .input('P', ModBlocks.SALT_BLOCK)
-                .input('S', Items.COPPER_INGOT)
-                .criterion(hasItem(Items.GLOWSTONE_DUST), conditionsFromItem(Items.GLOWSTONE_DUST))
-                .offerTo(exporter, new Identifier(getRecipeName(ModItems.SALT_LAMP) + "_"));
     }
 }
