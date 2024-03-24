@@ -50,7 +50,8 @@ public class MandrakeItem extends Item {
                 if (entity instanceof LivingEntity livingEntity) {
                     livingEntity.addStatusEffect(new StatusEffectInstance(ModEffects.STUNNED, 60, 0));
                 }
-            world.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.MANDRAKE_SCREAM, SoundCategory.PLAYERS, 0.5f, 1.0f);
+            world.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.MANDRAKE_SCREAM,
+                    SoundCategory.PLAYERS, 0.5f, 1.0f);
             if(!player.isCreative()) {
                 stack.decrement(1);
             }
