@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_sunfire_tomato": {
+    "has_clay_ball": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:sunfire_tomato"
+              "minecraft:clay_ball"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "hexalia:spicy_sandwich"
+        "recipe": "minecraft:rustic_bottle_"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_sunfire_tomato",
+      "has_clay_ball",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "hexalia:spicy_sandwich"
+      "minecraft:rustic_bottle_"
     ]
   },
   "sends_telemetry_event": false

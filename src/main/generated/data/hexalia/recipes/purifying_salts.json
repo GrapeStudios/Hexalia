@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hexalia:salt"
+    },
+    {
+      "item": "minecraft:leather"
+    },
+    {
+      "tag": "hexalia:cooked_meat"
+    }
+  ],
+  "result": {
+    "item": "hexalia:purifying_salts"
+  }
+}

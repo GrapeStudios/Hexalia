@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_sunfire_tomato": {
+    "has_salt": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:sunfire_tomato"
+              "hexalia:salt"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "hexalia:spicy_sandwich"
+        "recipe": "hexalia:purifying_salts"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_sunfire_tomato",
+      "has_salt",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "hexalia:spicy_sandwich"
+      "hexalia:purifying_salts"
     ]
   },
   "sends_telemetry_event": false
