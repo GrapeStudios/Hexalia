@@ -29,7 +29,6 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input(ModItems.MANDRAKE)
                 .criterion(hasItem(ModItems.MANDRAKE), conditionsFromItem(ModItems.MANDRAKE))
                 .offerTo(exporter);
-
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SUNFIRE_TOMATO_SEEDS)
                 .input(ModItems.SUNFIRE_TOMATO)
                 .criterion(hasItem(ModItems.SUNFIRE_TOMATO), conditionsFromItem(ModItems.SUNFIRE_TOMATO))
@@ -41,19 +40,16 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input(Items.STONE)
                 .criterion(hasItem(Items.BOWL), conditionsFromItem(Items.BOWL))
                 .offerTo(exporter);
-
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SPIRIT_BLOOM_DUST, 1)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SPIRIT_BLOOM_POWDER, 1)
                 .input(ModItems.MORTAR_AND_PESTLE)
                 .input(ModBlocks.SPIRIT_BLOOM)
                 .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
                 .offerTo(exporter);
-
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SIREN_KELP_PASTE, 1)
                 .input(ModItems.MORTAR_AND_PESTLE)
                 .input(ModItems.SIREN_KELP)
                 .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
                 .offerTo(exporter);
-
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.DREAMSHROOM_PASTE, 1)
                 .input(ModItems.MORTAR_AND_PESTLE)
                 .input(ModBlocks.DREAMSHROOM)
@@ -68,7 +64,6 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input(Items.WHEAT)
                 .criterion(hasItem(ModItems.CHILLBERRIES), conditionsFromItem(ModItems.CHILLBERRIES))
                 .offerTo(exporter);
-
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.MANDRAKE_STEW, 1)
                 .input(ModItems.MANDRAKE)
                 .input(Items.BOWL)
@@ -76,7 +71,6 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input(Items.POTATO)
                 .criterion(hasItem(ModItems.MANDRAKE), conditionsFromItem(ModItems.MANDRAKE))
                 .offerTo(exporter);
-
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.SPICY_SANDWICH, 1)
                 .input(Items.BREAD)
                 .input(ModItems.SUNFIRE_TOMATO)

@@ -42,7 +42,7 @@ public class ModItems {
     // Refined Resources
     public static final Item SIREN_KELP_PASTE = registerItem("siren_kelp_paste",
             new Item(new FabricItemSettings()));
-    public static final Item SPIRIT_BLOOM_DUST = registerItem("spirit_bloom_dust",
+    public static final Item SPIRIT_BLOOM_POWDER = registerItem("spirit_bloom_powder",
             new Item(new FabricItemSettings()));
     public static final Item DREAMSHROOM_PASTE = registerItem("dreamshroom_paste",
             new Item(new FabricItemSettings()));

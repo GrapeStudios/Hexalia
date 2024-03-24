@@ -2,29 +2,23 @@
   "itemgroup.hexalia": "Hexalia",
 
   "block.hexalia.spirit_bloom": "Spirit Bloom",
-  "item.hexalia.spirit_bloom_dust": "Spirit Bloom Dust",
-
+  "item.hexalia.spirit_bloom_powder": "Spirit Bloom Powder",
   "block.hexalia.dreamshroom": "Dreamshroom",
   "item.hexalia.dreamshroom_paste": "Dreamshroom Paste",
-
   "block.hexalia.siren_kelp": "Siren Kelp",
   "item.hexalia.siren_kelp": "Siren Kelp",
   "item.hexalia.siren_kelp_paste": "Siren Kelp Paste",
-
   "block.hexalia.chillberry_bush": "Chillberries",
   "item.hexalia.chillberry": "Chillberry",
   "item.hexalia.chillberry_cupcake": "Chillberry Cupcake",
-
   "item.hexalia.mandrake": "Mandrake",
   "item.hexalia.mandrake_seeds": "Mandrake Seeds",
   "item.hexalia.mandrake_stew": "Mandrake Stew",
   "block.hexalia.feral_mandrake": "Feral Mandrake",
-
   "item.hexalia.sunfire_tomato": "Sunfire Tomato",
   "item.hexalia.sunfire_tomato_seeds": "Sunfire Tomato Seeds",
   "block.hexalia.feral_sunfire_tomato": "Feral Sunfire Tomato",
   "item.hexalia.spicy_sandwich": "Spicy Sandwich",
-
   "item.hexalia.mortar_and_pestle": "Mortar and Pestle",
 
   "block.hexalia.salt_ore": "Salt Ore",
@@ -49,5 +43,5 @@
 
   "sounds.hexalia.mandrake_scream": "Mandrake Screams",
   "tooltip.hexalia.hold_shift": "Hold §e[SHIFT]§r for more info",
-  "tooltip.hexalia.mandrake": "Hold §e[RMB]§r to make the Mandrake scream."
+  "tooltip.hexalia.mandrake": "Hold §e[RMB]§r to make it scream."
 }
