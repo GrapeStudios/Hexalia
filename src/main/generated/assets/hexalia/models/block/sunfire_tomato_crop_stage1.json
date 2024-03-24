@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/crop",
+  "parent": "minecraft:block/cross",
   "textures": {
-    "crop": "hexalia:block/sunfire_tomato_crop_stage1"
+    "cross": "hexalia:block/sunfire_tomato_crop_stage1"
   }
 }
