@@ -57,7 +57,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .offerTo(exporter);
 
         // Shapeless Recipe for Food Items
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.CHILLBERRY_CUPCAKE, 1)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.CHILLBERRY_PIE, 1)
                 .input(ModItems.CHILLBERRIES)
                 .input(Items.SUGAR)
                 .input(Items.EGG)

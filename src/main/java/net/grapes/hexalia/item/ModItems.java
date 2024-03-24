@@ -30,8 +30,8 @@ public class ModItems {
             new StewItem(new FabricItemSettings().food(ModFoodComponents.MANDRAKE_STEW).maxCount(1)));
     public static final Item CHILLBERRIES = registerItem("chillberries",
             new BlockItem(ModBlocks.CHILLBERRY_BUSH, new FabricItemSettings().food(ModFoodComponents.CHILLBERRIES)));
-    public static final Item CHILLBERRY_CUPCAKE = registerItem("chillberry_cupcake",
-            new Item(new FabricItemSettings().food(ModFoodComponents.CHILLBERRY_CUPCAKE)));
+    public static final Item CHILLBERRY_PIE = registerItem("chillberry_pie",
+            new Item(new FabricItemSettings().food(ModFoodComponents.CHILLBERR_PIE)));
     public static final Item SUNFIRE_TOMATO = registerItem("sunfire_tomato",
             new Item(new FabricItemSettings().food(ModFoodComponents.SUNFIRE_TOMATO)));
     public static final Item SUNFIRE_TOMATO_SEEDS = registerItem("sunfire_tomato_seeds",
