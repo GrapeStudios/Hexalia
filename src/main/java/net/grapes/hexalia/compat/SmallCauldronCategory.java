@@ -1,4 +1,4 @@
-package net.grapes.hexalia.compat.rei;
+package net.grapes.hexalia.compat;
 
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;

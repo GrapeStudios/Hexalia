@@ -24,6 +24,25 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.SMALL_CAULDRON)
+                .pattern("S S")
+                .pattern("P P")
+                .pattern("SSS")
+                .input('P', Items.COPPER_INGOT)
+                .input('S', Items.IRON_INGOT)
+                .criterion(hasItem(Items.COPPER_INGOT), conditionsFromItem(Items.COPPER_INGOT))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.SMALL_CAULDRON) + "_"));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.SALT_LAMP)
+                .pattern(" A ")
+                .pattern(" P ")
+                .pattern(" S ")
+                .input('A', Items.GLOWSTONE_DUST)
+                .input('P', ModBlocks.SALT_BLOCK)
+                .input('S', Items.COPPER_INGOT)
+                .criterion(hasItem(Items.GLOWSTONE_DUST), conditionsFromItem(Items.GLOWSTONE_DUST))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.SALT_LAMP) + "_"));
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.RUSTIC_BOTTLE)
                 .pattern("S S")
                 .pattern(" P ")

@@ -11,7 +11,7 @@ public class ModTags {
     public static class Items {
 
         public static final TagKey<Item> COOKED_MEAT = createItemTag("cooked_meat");
-        public static final TagKey<Item> CRUSHED_PLANTS = createItemTag("cooked_meat");
+        public static final TagKey<Item> CRUSHED_PLANTS = createItemTag("crushed_plants");
 
         private static TagKey<Item> createItemTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(HexaliaMod.MOD_ID, name));

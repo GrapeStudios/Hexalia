@@ -23,6 +23,9 @@
 		],
 		"client": [
 			"net.grapes.hexalia.HexaliaModClient"
+		],
+		"rei_client": [
+			"net.grapes.hexalia.compat.HexaliaREIClientPlugin"
 		]
 	},
 	"mixins": [

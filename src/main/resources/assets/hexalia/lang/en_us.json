@@ -46,5 +46,9 @@
 
   "tooltip.hexalia.hold_shift": "Hold §e[SHIFT]§r for more info",
   "tooltip.hexalia.mandrake": "Hold §e[RMB]§r to make it scream",
-  "tooltip.hexalia.purifying_salts": "Hold §e[RMB]§r to remove effects"
+  "tooltip.hexalia.purifying_salts": "Hold §e[RMB]§r to remove effects",
+
+  "tooltip.hexalia.needs_heat": "Requires a heating block below",
+  "tooltip.hexalia.needs_rustic_bottle": "Requires Rustic Bottles to craft"
+
 }
