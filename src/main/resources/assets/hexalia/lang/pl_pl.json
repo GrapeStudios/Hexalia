@@ -1,0 +1,53 @@
+{
+  "itemgroup.hexalia": "Hexalia",
+
+  "block.hexalia.spirit_bloom": "Kwiat Duszy",
+  "item.hexalia.spirit_bloom_powder": "Proszek z Kwiatu Duszy",
+  "block.hexalia.dreamshroom": "Grzyb Snów",
+  "item.hexalia.dreamshroom_paste": "Pasta z Grzyba Snów",
+  "block.hexalia.siren_kelp": "Wodorost Syren",
+  "item.hexalia.siren_kelp": "Wodorost Syren",
+  "item.hexalia.siren_kelp_paste": "Pasta z Wodorostu Syren",
+  "block.hexalia.chillberry_bush": "Krzewy Chłodnicy",
+  "item.hexalia.chillberry": "Chłodnica",
+  "item.hexalia.chillberry_pie": "Ciasto z Chłodnic",
+  "item.hexalia.mandrake": "Mandragora",
+  "item.hexalia.mandrake_seeds": "Nasiona Mandragory",
+  "item.hexalia.mandrake_stew": "Gulasz z Mandragory",
+  "block.hexalia.feral_mandrake": "Dzika Mandragora",
+  "item.hexalia.sunfire_tomato": "Pomidor Słoneczny Ogień",
+  "item.hexalia.sunfire_tomato_seeds": "Nasiona Pomidora Słoneczny Ogień",
+  "block.hexalia.feral_sunfire_tomato": "Dziki Pomidor Słoneczny Ogień",
+  "item.hexalia.spicy_sandwich": "Pikantna Kanapka",
+  "item.hexalia.mortar_and_pestle": "Moździerz i Słupek",
+
+  "block.hexalia.salt_ore": "Ruda Soli",
+  "block.hexalia.salt_block": "Blok Soli",
+  "item.hexalia.salt": "Sól",
+  "block.hexalia.salt_lamp": "Lampa Solna",
+  "item.hexalia.salt_lamp": "Lampa Solna",
+  "item.hexalia.purifying_salts": "Oczyszczająca Sól",
+
+  "effect.hexalia.vigor": "Wigor",
+  "effect.hexalia.stunned": "Oszołomiony",
+  "effect.hexalia.stuffed": "Przepełniony",
+  "effect.hexalia.slimey_step": "Śliski Krok",
+  "effect.hexalia.warding": "Odpierający",
+
+  "item.hexalia.rustic_bottle": "Wiejska Butelka",
+  "item.hexalia.brew_of_vigor": "Eliksir Wigoru",
+  "item.hexalia.brew_of_slimey_step": "Eliksir Śliskiego Kroku",
+  "item.hexalia.brew_of_warding": "Eliksir Odpierający",
+
+  "block.hexalia.small_cauldron": "Mały Kociołek",
+  "item.hexalia.small_cauldron": "Mały Kociołek",
+
+  "sounds.hexalia.mandrake_scream": "Krzyk Mandragory",
+
+  "tooltip.hexalia.hold_shift": "Przytrzymaj §e[SHIFT]§r aby uzyskać więcej informacji",
+  "tooltip.hexalia.mandrake": "Przytrzymaj §e[PPM]§r aby krzyknęła",
+  "tooltip.hexalia.purifying_salts": "Przytrzymaj §e[PPM]§r aby usunąć efekty",
+
+  "tooltip.hexalia.needs_heat": "Wymaga bloku ogrzewającego poniżej",
+  "tooltip.hexalia.needs_rustic_bottle": "Wymaga Wiejskich Butelek do stworzenia"
+}
