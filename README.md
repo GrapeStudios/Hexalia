@@ -20,4 +20,6 @@ These are the features added in the current version of the mod
 This mod is still a work in progress, more features will be added eventually. As another note, this mod is being developed as we learn how to code, model and textures, make sure to join us throughout our progress.
 
 
-[Discord](https://discord.gg/fcbH6BqW3X) | [GitHub](https://github.com/GrapeStudios/Hexalia)
+[Discord](https://discord.gg/fcbH6BqW3X) 
+
+The mod is available on [Modrinth](https://modrinth.com/mod/hexalia) and [CurseForge](https://www.curseforge.com/minecraft/mc-mods/hexalia)
