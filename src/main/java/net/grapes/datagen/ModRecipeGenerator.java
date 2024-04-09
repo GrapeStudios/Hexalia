@@ -9,6 +9,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
+import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.util.Identifier;
@@ -29,7 +30,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .pattern("P P")
                 .pattern("SSS")
                 .input('P', Items.COPPER_INGOT)
-                .input('S', Items.IRON_INGOT)
+                .input('S', Items.COBBLED_DEEPSLATE)
                 .criterion(hasItem(Items.COPPER_INGOT), conditionsFromItem(Items.COPPER_INGOT))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.SMALL_CAULDRON) + "_"));
 
