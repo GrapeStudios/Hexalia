@@ -29,11 +29,30 @@ public class SmallCauldronRecipe implements Recipe<SimpleInventory> {
         if (world.isClient()) {
             return false;
         }
-            return brewingRecipes(inventory, world);
-    }
 
-    private boolean brewingRecipes(SimpleInventory inventory, World world) {
-        return recipeItems.get(0).test(inventory.getStack(0)) && recipeItems.get(1).test(inventory.getStack(1)) && recipeItems.get(2).test(inventory.getStack(2));
+        boolean[] slotsMatched = new boolean[inventory.size()];
+        for (int i = 0; i < slotsMatched.length; i++) {
+            slotsMatched[i] = false;
+        }
+
+        for (Ingredient ingredient : recipeItems) {
+            boolean foundIngredient = false;
+            for (int i = 0; i < inventory.size(); i++) {
+                if (slotsMatched[i]) {
+                    continue;
+                }
+
+                if (ingredient.test(inventory.getStack(i))) {
+                    foundIngredient = true;
+                    slotsMatched[i] = true;
+                    break;
+                }
+            }
+            if (!foundIngredient) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
