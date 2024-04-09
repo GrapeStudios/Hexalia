@@ -24,6 +24,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SALT_ORE);
         getOrCreateTagBuilder(ModTags.Blocks.HEATING_BLOCK)
                 .add(Blocks.MAGMA_BLOCK, Blocks.LAVA,
-                        Blocks.CAMPFIRE, Blocks.FIRE);
+                        Blocks.CAMPFIRE, Blocks.FIRE, ModBlocks.RUSTIC_OVEN);
     }
 }

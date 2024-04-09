@@ -44,6 +44,8 @@ public class ModItemGroup {
                         entries.add(ModItems.MORTAR_AND_PESTLE);
                         entries.add(ModItems.SMALL_CAULDRON);
 
+                        entries.add(ModBlocks.RUSTIC_OVEN);
+
                         entries.add(ModItems.RUSTIC_BOTTLE);
                         entries.add(ModItems.BREW_OF_WARDING);
                         entries.add(ModItems.BREW_OF_VIGOR);

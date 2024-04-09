@@ -31,6 +31,8 @@ public class ModModelProvider extends FabricModelProvider {
                 BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerTintableCross(ModBlocks.FERAL_MANDRAKE,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
+
+
     }
 
     @Override

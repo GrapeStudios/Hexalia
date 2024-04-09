@@ -4,6 +4,7 @@
     "minecraft:magma_block",
     "minecraft:lava",
     "minecraft:campfire",
-    "minecraft:fire"
+    "minecraft:fire",
+    "hexalia:rustic_oven"
   ]
 }

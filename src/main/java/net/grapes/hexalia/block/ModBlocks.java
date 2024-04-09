@@ -49,6 +49,8 @@ public class ModBlocks {
     public static final Block SALT_LAMP = registerBlockWithoutBlockItem("salt_lamp",
             new SaltLampBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BANJO)
                     .strength(4f).requiresTool().luminance(state -> 12)));
+    public static final Block RUSTIC_OVEN = registerBlock("rustic_oven",
+            new RusticOven(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
 
     // Registries
     public static void registerBlockProperties() {
