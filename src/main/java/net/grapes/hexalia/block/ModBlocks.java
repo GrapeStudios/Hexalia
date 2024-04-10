@@ -10,6 +10,7 @@ import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.ToolItem;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -50,7 +51,8 @@ public class ModBlocks {
             new SaltLampBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BANJO)
                     .strength(4f).requiresTool().luminance(state -> 12)));
     public static final Block RUSTIC_OVEN = registerBlock("rustic_oven",
-            new RusticOven(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
+            new RusticOven(FabricBlockSettings.create().mapColor(MapColor.ORANGE).instrument(Instrument.BASEDRUM)
+                    .strength(4f).requiresTool().luminance(state -> 12)));
 
     // Registries
     public static void registerBlockProperties() {
