@@ -3,14 +3,17 @@
   "category": "misc",
   "key": {
     "P": {
-      "tag": "minecraft:coal_ores"
+      "tag": "minecraft:coals"
     },
     "S": {
       "item": "minecraft:cobbled_deepslate"
+    },
+    "T": {
+      "item": "minecraft:iron_ingot"
     }
   },
   "pattern": [
-    "SSS",
+    "STS",
     "SPS",
     "SSS"
   ],

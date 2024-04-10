@@ -54,11 +54,12 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.RUSTIC_BOTTLE) + "_"));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.RUSTIC_OVEN)
-                .pattern("SSS")
+                .pattern("STS")
                 .pattern("SPS")
                 .pattern("SSS")
-                .input('P', ItemTags.COAL_ORES)
+                .input('P', ItemTags.COALS)
                 .input('S', Items.COBBLED_DEEPSLATE)
+                .input('T', Items.IRON_INGOT)
                 .criterion(hasItem(Items.COBBLED_DEEPSLATE), conditionsFromItem(Items.COBBLED_DEEPSLATE))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.RUSTIC_OVEN) + "_"));
 
