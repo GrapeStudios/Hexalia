@@ -12,6 +12,7 @@ import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 
 import java.util.function.Consumer;
@@ -51,6 +52,15 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input('P', Blocks.GLASS)
                 .criterion(hasItem(Items.CLAY_BALL), conditionsFromItem(Items.CLAY_BALL))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.RUSTIC_BOTTLE) + "_"));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.RUSTIC_OVEN)
+                .pattern("SSS")
+                .pattern("SPS")
+                .pattern("SSS")
+                .input('P', ItemTags.COAL_ORES)
+                .input('S', Items.COBBLED_DEEPSLATE)
+                .criterion(hasItem(Items.COBBLED_DEEPSLATE), conditionsFromItem(Items.COBBLED_DEEPSLATE))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.RUSTIC_OVEN) + "_"));
 
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.SALT,
                 RecipeCategory.MISC, ModBlocks.SALT_BLOCK);

@@ -1,0 +1,54 @@
+{
+  "itemgroup.hexalia": "Hexalia",
+
+  "block.hexalia.spirit_bloom": "Flor Espíritu",
+  "item.hexalia.spirit_bloom_powder": "Polvo de Flor Espíritu",
+  "block.hexalia.dreamshroom": "Champiñón de Ensueño",
+  "item.hexalia.dreamshroom_paste": "Pasta de Champiñón de Ensueño",
+  "block.hexalia.siren_kelp": "Alga de Sirena",
+  "item.hexalia.siren_kelp": "Alga de Sirena",
+  "item.hexalia.siren_kelp_paste": "Pasta de Alga Sirena",
+  "block.hexalia.chillberry_bush": "Arbusto de Bayas Frías",
+  "item.hexalia.chillberry": "Baya Fría",
+  "item.hexalia.chillberry_pie": "Tarta de Bayas Frías",
+  "item.hexalia.mandrake": "Mandrágora",
+  "item.hexalia.mandrake_seeds": "Semillas de Mandrágora",
+  "item.hexalia.mandrake_stew": "Estofado de Mandrágora",
+  "block.hexalia.feral_mandrake": "Mandrágora Salvaje",
+  "item.hexalia.sunfire_tomato": "Tomate de Fuego Solar",
+  "item.hexalia.sunfire_tomato_seeds": "Semillas de Tomate de Fuego Solar",
+  "block.hexalia.feral_sunfire_tomato": "Tomate de Fuego Solar Salvaje",
+  "item.hexalia.spicy_sandwich": "Sándwich Picante",
+  "item.hexalia.mortar_and_pestle": "Pilón y Mortero",
+
+  "block.hexalia.salt_ore": "Mena de Sal",
+  "block.hexalia.salt_block": "Bloque de Sal",
+  "item.hexalia.salt": "Sal",
+  "block.hexalia.salt_lamp": "Lámpara de Sal",
+  "item.hexalia.salt_lamp": "Lámpara de Sal",
+  "item.hexalia.purifying_salts": "Sales Purificantes",
+
+  "effect.hexalia.vigor": "Vigor",
+  "effect.hexalia.stunned": "Aturdido",
+  "effect.hexalia.stuffed": "Saciable",
+  "effect.hexalia.slimey_step": "Paso Pegajoso",
+  "effect.hexalia.warding": "Resguardo",
+
+  "item.hexalia.rustic_bottle": "Botella Rústica",
+  "item.hexalia.brew_of_vigor": "Brebaje de Vigor",
+  "item.hexalia.brew_of_slimey_step": "Brebaje de Paso Pegajoso",
+  "item.hexalia.brew_of_warding": "Brebaje de Resguardo",
+
+  "block.hexalia.small_cauldron": "Caldero Pequeño",
+  "item.hexalia.small_cauldron": "Caldero Pequeño",
+  "block.hexalia.rustic_oven": "Horno Rústico",
+
+  "sounds.hexalia.mandrake_scream": "Grito de Mandrágora",
+
+  "tooltip.hexalia.hold_shift": "Mantén §e[SHIFT]§r para más información",
+  "tooltip.hexalia.mandrake": "Mantén §e[RMB]§r para hacerla gritar",
+  "tooltip.hexalia.purifying_salts": "Mantén §e[RMB]§r para quitar efectos",
+
+  "tooltip.hexalia.needs_heat": "Requiere un bloque calefactor debajo",
+  "tooltip.hexalia.needs_rustic_bottle": "Requiere una Botella Rústica"
+}
