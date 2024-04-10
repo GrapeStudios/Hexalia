@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "tag": "minecraft:coal_ores"
+    },
+    "S": {
+      "item": "minecraft:cobbled_deepslate"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "SPS",
+    "SSS"
+  ],
+  "result": {
+    "item": "hexalia:rustic_oven"
+  },
+  "show_notification": true
+}
