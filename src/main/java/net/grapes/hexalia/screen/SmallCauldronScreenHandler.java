@@ -29,14 +29,14 @@ public class SmallCauldronScreenHandler extends ScreenHandler {
                                       BlockEntity blockEntity, PropertyDelegate arrayPropertyDelegate) {
         super(ModScreenHandler.SMALL_CAULDRON_SCREEN_HANDLER, syncId);
         checkSize(((Inventory) blockEntity), 3);
-        this.inventory = (Inventory)blockEntity;
+        this.inventory = (Inventory) blockEntity;
         this.propertyDelegate = arrayPropertyDelegate;
         this.blockEntity = ((SmallCauldronBlockEntity) blockEntity);
 
         // Input Slots
-        this.addSlot(new Slot(inventory, 0, 30, 27));
-        this.addSlot(new Slot(inventory, 1, 48, 27));
-        this.addSlot(new Slot(inventory, 2, 66, 27));
+        this.addSlot(new SmallCauldronBlockEntity.RusticBottleSlot.IngredientSlot(inventory, 0, 30, 27));
+        this.addSlot(new SmallCauldronBlockEntity.RusticBottleSlot.IngredientSlot(inventory, 1, 48, 27));
+        this.addSlot(new SmallCauldronBlockEntity.RusticBottleSlot.IngredientSlot(inventory, 2, 66, 27));
 
         // Output Slot
         this.addSlot(new SlotOutputOnly(inventory, 6, 124, 28));
@@ -48,7 +48,6 @@ public class SmallCauldronScreenHandler extends ScreenHandler {
         addPlayerHotbar(playerInventory);
 
         addProperties(arrayPropertyDelegate);
-
     }
 
     public boolean isCrafting() {
@@ -120,7 +119,7 @@ public class SmallCauldronScreenHandler extends ScreenHandler {
         }
     }
 
-    @Environment(value= EnvType.CLIENT)
+    @Environment(value = EnvType.CLIENT)
     public boolean isHeated() {
         return blockEntity.isHeated();
     }

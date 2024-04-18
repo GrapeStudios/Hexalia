@@ -56,8 +56,12 @@ public class SmallCauldronBlockEntity extends BlockEntity implements ExtendedScr
             @Override
             public void set(int index, int value) {
                 switch (index) {
-                    case 0: SmallCauldronBlockEntity.this.progress = value;
-                    case 1: SmallCauldronBlockEntity.this.maxProgress = value;
+                    case 0:
+                        SmallCauldronBlockEntity.this.progress = value;
+                        break;
+                    case 1:
+                        SmallCauldronBlockEntity.this.maxProgress = value;
+                        break;
                 }
             }
 
@@ -89,7 +93,6 @@ public class SmallCauldronBlockEntity extends BlockEntity implements ExtendedScr
         return this.inventory;
     }
 
-
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
@@ -109,7 +112,7 @@ public class SmallCauldronBlockEntity extends BlockEntity implements ExtendedScr
         if (canInsertOutputSlot() && hasRecipe() && hasRusticBottle() && isHeated) {
             increaseCraftingProgress();
             markDirty(world, pos, state);
-            if(hasCraftingFinished()) {
+            if (hasCraftingFinished()) {
                 craftItem();
                 resetProgress();
             }
@@ -191,9 +194,15 @@ public class SmallCauldronBlockEntity extends BlockEntity implements ExtendedScr
             super(inventory, index, x, y);
         }
 
-        @Override
-        public boolean canInsert(ItemStack stack) {
-            return stack.getItem() == ModItems.RUSTIC_BOTTLE;
+        public static class IngredientSlot extends Slot {
+            public IngredientSlot(Inventory inventory, int index, int x, int y) {
+                super(inventory, index, x, y);
+            }
+
+            @Override
+            public boolean canInsert(ItemStack stack) {
+                return stack.getItem() != ModItems.RUSTIC_BOTTLE;
+            }
         }
 
         @Override
