@@ -16,13 +16,8 @@ public class ModItemGroup {
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.hexalia"))
                     .icon(() -> new ItemStack(ModItems.SMALL_CAULDRON)).entries((displayContext, entries) -> {
                         entries.add(ModBlocks.SPIRIT_BLOOM);
-                        entries.add(ModItems.SPIRIT_BLOOM_POWDER);
-
                         entries.add(ModBlocks.DREAMSHROOM);
-                        entries.add(ModItems.DREAMSHROOM_PASTE);
-
                         entries.add(ModItems.SIREN_KELP);
-                        entries.add(ModItems.SIREN_KELP_PASTE);
 
                         entries.add(ModItems.CHILLBERRIES);
                         entries.add(ModItems.CHILLBERRY_PIE);
@@ -42,9 +37,12 @@ public class ModItemGroup {
                         entries.add(ModItems.PURIFYING_SALTS);
 
                         entries.add(ModItems.MORTAR_AND_PESTLE);
-                        entries.add(ModItems.SMALL_CAULDRON);
+                        entries.add(ModItems.SIREN_KELP_PASTE);
+                        entries.add(ModItems.SPIRIT_BLOOM_POWDER);
+                        entries.add(ModItems.DREAMSHROOM_PASTE);
 
                         entries.add(ModBlocks.RUSTIC_OVEN);
+                        entries.add(ModItems.SMALL_CAULDRON);
 
                         entries.add(ModItems.RUSTIC_BOTTLE);
                         entries.add(ModItems.BREW_OF_WARDING);
