@@ -49,5 +49,17 @@
   "tooltip.hexalia.purifying_salts": "Przytrzymaj §e[PPM]§r aby usunąć efekty",
 
   "tooltip.hexalia.needs_heat": "Wymaga bloku ogrzewającego poniżej",
-  "tooltip.hexalia.needs_rustic_bottle": "Wymaga Wiejskich Butelek do stworzenia"
+  "tooltip.hexalia.needs_rustic_bottle": "Wymaga Wiejskich Butelek do stworzenia",
+  "advancements.hexalia.root.title": "Добро пожаловать в Хексалию",
+  "advancements.hexalia.root.description": "Спасибо за скачивание нашего мода",
+  "advancements.hexalia.small_cauldron.title": "Маленький, но могучий",
+  "advancements.hexalia.small_cauldron.description": "Создайте свою собственную станцию для варки",
+  "advancements.hexalia.mortar_and_pestle.title": "Теперь раздави это",
+  "advancements.hexalia.mortar_and_pestle.description": "Создайте инструмент для измельчения растений",
+  "advancements.hexalia.slimey_brew.title": "Скользкий, скользкий!",
+  "advancements.hexalia.slimey_brew.description": "Сварите зелье, чтобы подпрыгивать как слизень",
+  "advancements.hexalia.salt_item.title": "Щепотка соли",
+  "advancements.hexalia.salt_item.description": "Получите соль из блоков руды соли",
+  "advancements.hexalia.purifying_salts.title": "Я не переношу лактозу",
+  "advancements.hexalia.purifying_salts.description": "Создайте предмет, чтобы удалить все эффекты"
 }
