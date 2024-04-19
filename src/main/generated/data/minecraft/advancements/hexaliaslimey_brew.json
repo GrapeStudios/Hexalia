@@ -1,0 +1,39 @@
+{
+  "parent": "hexalia:small_cauldron",
+  "criteria": {
+    "has_slimey_step_brew": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexalia:brew_of_slimey_step"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "hexalia:textures/block/salt_block.png",
+    "description": {
+      "translate": "advancements.hexalia.slimey_brew.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "hexalia:brew_of_slimey_step"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.hexalia.slimey_brew.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_slimey_step_brew"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

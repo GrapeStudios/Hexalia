@@ -1,0 +1,39 @@
+{
+  "parent": "minecraft:hexaliasalt",
+  "criteria": {
+    "has_purifying_salts": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexalia:purifying_salts"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "hexalia:textures/block/salt_block.png",
+    "description": {
+      "translate": "advancements.hexalia.purifying_salts.description"
+    },
+    "frame": "goal",
+    "hidden": false,
+    "icon": {
+      "item": "hexalia:purifying_salts"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.hexalia.purifying_salts.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_purifying_salts"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

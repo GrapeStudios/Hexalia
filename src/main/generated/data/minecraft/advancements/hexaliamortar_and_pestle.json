@@ -1,0 +1,39 @@
+{
+  "parent": "hexalia:root",
+  "criteria": {
+    "has_mortar_and_pestle": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexalia:mortar_and_pestle"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "hexalia:textures/block/salt_block.png",
+    "description": {
+      "translate": "advancements.hexalia.mortar_and_pestle.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "hexalia:mortar_and_pestle"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.hexalia.mortar_and_pestle.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_mortar_and_pestle"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -50,6 +50,18 @@
   "tooltip.hexalia.purifying_salts": "Hold §e[RMB]§r to remove effects",
 
   "tooltip.hexalia.needs_heat": "Requires a heating block below",
-  "tooltip.hexalia.needs_rustic_bottle": "Requires a Rustic Bottle"
+  "tooltip.hexalia.needs_rustic_bottle": "Requires a Rustic Bottle",
 
+  "advancements.hexalia.root.title": "Welcome to Hexalia",
+  "advancements.hexalia.root.description": "Thank you for downloading our mod",
+  "advancements.hexalia.small_cauldron.title": "Small, but mighty",
+  "advancements.hexalia.small_cauldron.description": "Craft your own brewing station",
+  "advancements.hexalia.mortar_and_pestle.title": "Now, crush this",
+  "advancements.hexalia.mortar_and_pestle.description": "Craft a tool to crush plants",
+  "advancements.hexalia.slimey_brew.title": "Slimey slimey!",
+  "advancements.hexalia.slimey_brew.description": "Brew a potion to bounce like a slime",
+  "advancements.hexalia.salt_item.title": "A Pinch of Salt",
+  "advancements.hexalia.salt_item.description": "Obtain Salt from Salt Ore blocks",
+  "advancements.hexalia.purifying_salts.title": "I am Lactose Intolerant",
+  "advancements.hexalia.purifying_salts.description": "Craft an item to remove all effects"
 }
