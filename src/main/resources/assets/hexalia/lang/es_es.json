@@ -50,5 +50,18 @@
   "tooltip.hexalia.purifying_salts": "Mantén §e[RMB]§r para quitar efectos",
 
   "tooltip.hexalia.needs_heat": "Requiere un bloque calefactor debajo",
-  "tooltip.hexalia.needs_rustic_bottle": "Requiere una Botella Rústica"
+  "tooltip.hexalia.needs_rustic_bottle": "Requiere una Botella Rústica",
+
+  "advancements.hexalia.root.title": "Esto es Hexalia!",
+  "advancements.hexalia.root.description": "Gracias por descargar nuestro mod!",
+  "advancements.hexalia.small_cauldron.title": "Pequeño, pero poderoso",
+  "advancements.hexalia.small_cauldron.description": "Crea tu propio caldero de pociones",
+  "advancements.hexalia.mortar_and_pestle.title": "Ahora, muele esto",
+  "advancements.hexalia.mortar_and_pestle.description": "Crea una herramienta para moler plantas",
+  "advancements.hexalia.slimey_brew.title": "Slimey, slimey",
+  "advancements.hexalia.slimey_brew.description": "Crea la poción que te hace saltar como slime",
+  "advancements.hexalia.salt_item.title": "Una Pizca de Sal",
+  "advancements.hexalia.salt_item.description": "Obtén Sal de las Menas de Sal",
+  "advancements.hexalia.purifying_salts.title": "Soy Intolerante a la Lactosa",
+  "advancements.hexalia.purifying_salts.description": "Crea un objeto que remueve todos los efectos"
 }
