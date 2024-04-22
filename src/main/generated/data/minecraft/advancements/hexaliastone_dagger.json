@@ -1,0 +1,40 @@
+{
+  "parent": "hexalia:root",
+  "criteria": {
+    "has_stone_dagger": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexalia:stone_dagger"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "hexalia:textures/block/salt_block.png",
+    "description": {
+      "translate": "advancements.hexalia.stone_dagger.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "hexalia:stone_dagger",
+      "nbt": "{Damage:0}"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.hexalia.stone_dagger.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_stone_dagger"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
