@@ -63,5 +63,7 @@
   "advancements.hexalia.salt_item.title": "Щепотка соли",
   "advancements.hexalia.salt_item.description": "Получите соль из блоков руды соли",
   "advancements.hexalia.purifying_salts.title": "Я не переношу лактозу",
-  "advancements.hexalia.purifying_salts.description": "Создайте предмет, чтобы удалить все эффекты"
+  "advancements.hexalia.purifying_salts.description": "Создайте предмет, чтобы удалить все эффекты",
+  "advancements.hexalia.stone_dagger.title": "Липкая ситуация",
+  "advancements.hexalia.stone_dagger.description": "Создайте предмет для сбора смолы с дубов тёмного леса"
 }

@@ -66,5 +66,7 @@
   "advancements.hexalia.salt_item.title": "Una Pizca de Sal",
   "advancements.hexalia.salt_item.description": "Obtén Sal de las Menas de Sal",
   "advancements.hexalia.purifying_salts.title": "Soy Intolerante a la Lactosa",
-  "advancements.hexalia.purifying_salts.description": "Crea un objeto que remueve todos los efectos"
+  "advancements.hexalia.purifying_salts.description": "Crea un objeto que remueve todos los efectos",
+  "advancements.hexalia.stone_dagger.title": "Situación Pegajosa",
+  "advancements.hexalia.stone_dagger.description": "Crea un objeto para recolectar resina de Robles Oscuros"
 }

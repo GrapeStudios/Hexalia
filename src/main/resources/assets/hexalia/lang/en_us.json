@@ -67,5 +67,7 @@
   "advancements.hexalia.salt_item.title": "A Pinch of Salt",
   "advancements.hexalia.salt_item.description": "Obtain Salt from Salt Ore blocks",
   "advancements.hexalia.purifying_salts.title": "I am Lactose Intolerant",
-  "advancements.hexalia.purifying_salts.description": "Craft an item to remove all effects"
+  "advancements.hexalia.purifying_salts.description": "Craft an item to remove all effects",
+  "advancements.hexalia.stone_dagger.title": "Sticky Situation",
+  "advancements.hexalia.stone_dagger.description": "Craft an item to gather resin from Dark Oak Trees"
 }
