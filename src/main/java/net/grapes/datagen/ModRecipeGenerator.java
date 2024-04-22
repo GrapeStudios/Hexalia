@@ -53,6 +53,14 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(Items.CLAY_BALL), conditionsFromItem(Items.CLAY_BALL))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.RUSTIC_BOTTLE) + "_"));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.STONE_DAGGER)
+                .pattern(" S ")
+                .pattern(" P ")
+                .input('S', Blocks.COBBLESTONE)
+                .input('P', Items.STICK)
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.STONE_DAGGER) + "_"));
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.RUSTIC_OVEN)
                 .pattern("STS")
                 .pattern("SPS")

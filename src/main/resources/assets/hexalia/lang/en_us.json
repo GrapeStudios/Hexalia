@@ -28,6 +28,9 @@
   "item.hexalia.salt_lamp": "Salt Lamp",
   "item.hexalia.purifying_salts": "Purifying Salts",
 
+  "item.hexalia.stone_dagger": "Stone Dagger",
+  "item.hexalia.resin": "Resin",
+
   "effect.hexalia.vigor": "Vigor",
   "effect.hexalia.stunned": "Stunned",
   "effect.hexalia.stuffed": "Stuffed",
@@ -38,6 +41,7 @@
   "item.hexalia.brew_of_vigor": "Brew Of Vigor",
   "item.hexalia.brew_of_slimey_step": "Brew Of Slimey Step",
   "item.hexalia.brew_of_warding": "Brew Of Warding",
+  "item.hexalia.brew_of_homestead": "Brew Of Homestead",
 
   "block.hexalia.small_cauldron": "Small Cauldron",
   "item.hexalia.small_cauldron": "Small Cauldron",

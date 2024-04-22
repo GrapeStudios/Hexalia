@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.item.custom.*;
+import net.grapes.hexalia.item.custom.brews.HomesteadBrewItem;
 import net.grapes.hexalia.item.custom.brews.SlimeyStepBrewItem;
 import net.grapes.hexalia.item.custom.brews.VigorBrewItem;
 import net.grapes.hexalia.item.custom.brews.WardingBrewItem;
@@ -38,6 +39,8 @@ public class ModItems {
             new AliasedBlockItem(ModBlocks.SUNFIRE_TOMATO_CROP, new FabricItemSettings()));
     public static final Item SPICY_SANDWICH = registerItem("spicy_sandwich",
             new Item(new FabricItemSettings().food(ModFoodComponents.SPICY_SANDWICH)));
+    public static final Item RESIN = registerItem("resin",
+            new Item(new FabricItemSettings()));
 
     // Refined Resources
     public static final Item SIREN_KELP_PASTE = registerItem("siren_kelp_paste",
@@ -56,6 +59,8 @@ public class ModItems {
             new VigorBrewItem(new FabricItemSettings().recipeRemainder(ModItems.RUSTIC_BOTTLE).maxCount(16)));
     public static final Item BREW_OF_SLIMEY_STEP = registerItem("brew_of_slimey_step",
             new SlimeyStepBrewItem(new FabricItemSettings().recipeRemainder(ModItems.RUSTIC_BOTTLE).maxCount(16)));
+    public static final Item BREW_OF_HOMESTEAD = registerItem("brew_of_homestead",
+            new HomesteadBrewItem(new FabricItemSettings().recipeRemainder(ModItems.RUSTIC_BOTTLE).maxCount(16)));
 
     // Tools & Others
     public static final Item MORTAR_AND_PESTLE = registerItem("mortar_and_pestle",
@@ -66,6 +71,8 @@ public class ModItems {
             new BlockItem(ModBlocks.SALT_LAMP, new FabricItemSettings()));
     public static final Item RUSTIC_BOTTLE = registerItem("rustic_bottle",
             new Item(new FabricItemSettings()));
+    public static final Item STONE_DAGGER = registerItem("stone_dagger",
+            new StoneDaggerItem(new FabricItemSettings().maxDamage(16)));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(HexaliaMod.MOD_ID, name), item);

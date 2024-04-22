@@ -52,5 +52,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.BREW_OF_SLIMEY_STEP, Models.GENERATED);
         itemModelGenerator.register(ModItems.BREW_OF_WARDING, Models.GENERATED);
         itemModelGenerator.register(ModItems.BREW_OF_VIGOR, Models.GENERATED);
+        itemModelGenerator.register(ModItems.BREW_OF_HOMESTEAD, Models.GENERATED);
+        itemModelGenerator.register(ModItems.STONE_DAGGER, Models.GENERATED);
+        itemModelGenerator.register(ModItems.RESIN, Models.GENERATED);
     }
 }

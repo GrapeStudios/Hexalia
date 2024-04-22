@@ -41,6 +41,9 @@ public class ModItemGroup {
                         entries.add(ModItems.SPIRIT_BLOOM_POWDER);
                         entries.add(ModItems.DREAMSHROOM_PASTE);
 
+                        entries.add(ModItems.STONE_DAGGER);
+                        entries.add(ModItems.RESIN);
+
                         entries.add(ModBlocks.RUSTIC_OVEN);
                         entries.add(ModItems.SMALL_CAULDRON);
 
@@ -48,6 +51,7 @@ public class ModItemGroup {
                         entries.add(ModItems.BREW_OF_WARDING);
                         entries.add(ModItems.BREW_OF_VIGOR);
                         entries.add(ModItems.BREW_OF_SLIMEY_STEP);
+                        entries.add(ModItems.BREW_OF_HOMESTEAD);
 
                     }).build());
     public static void registerItemGroups(){
