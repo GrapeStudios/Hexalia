@@ -41,6 +41,11 @@ public class ModItems {
             new Item(new FabricItemSettings().food(ModFoodComponents.SPICY_SANDWICH)));
     public static final Item RESIN = registerItem("resin",
             new Item(new FabricItemSettings()));
+    public static final Item ANCIENT_SEED = registerItem("ancient_seed",
+            new Item(new FabricItemSettings()));
+    public static final Item GERMINATED_ANCIENT_SEED = registerItem("germinated_ancient_seed",
+            new AliasedBlockItem(ModBlocks.ELDERLEAF_CROP, new FabricItemSettings()));
+
 
     // Refined Resources
     public static final Item SIREN_KELP_PASTE = registerItem("siren_kelp_paste",

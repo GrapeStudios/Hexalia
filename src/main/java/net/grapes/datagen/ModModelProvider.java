@@ -3,6 +3,7 @@ package net.grapes.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.block.custom.ElderleafCropBlock;
 import net.grapes.hexalia.block.custom.MandrakeCropBlock;
 import net.grapes.hexalia.block.custom.SunfireTomatoCropBlock;
 import net.grapes.hexalia.item.ModItems;
@@ -31,6 +32,8 @@ public class ModModelProvider extends FabricModelProvider {
                 BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerTintableCross(ModBlocks.FERAL_MANDRAKE,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerCrop(ModBlocks.ELDERLEAF_CROP,
+                ElderleafCropBlock.AGE, 0, 1, 2, 3);
 
 
     }
@@ -55,5 +58,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.BREW_OF_HOMESTEAD, Models.GENERATED);
         itemModelGenerator.register(ModItems.STONE_DAGGER, Models.GENERATED);
         itemModelGenerator.register(ModItems.RESIN, Models.GENERATED);
+        itemModelGenerator.register(ModItems.ANCIENT_SEED, Models.GENERATED);
     }
 }
