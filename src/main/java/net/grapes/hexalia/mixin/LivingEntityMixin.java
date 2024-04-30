@@ -1,6 +1,7 @@
 package net.grapes.hexalia.mixin;
 
 import net.grapes.hexalia.effect.ModEffects;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
@@ -32,14 +33,13 @@ public class LivingEntityMixin {
     }
 
     @Inject(at = @At("TAIL"), method = "modifyAppliedDamage", cancellable = true)
-    public void returnDamage(DamageSource source, float amount, CallbackInfoReturnable<Float> cir){
+    public void returnDamage(DamageSource source, float amount, CallbackInfoReturnable<Float> cir) {
         float newAmount = cir.getReturnValue();
-        LivingEntity attacker = (LivingEntity) source.getAttacker();
-        if(livingEntity.hasStatusEffect(ModEffects.WARDING)){
-            if(attacker != null) {
-                attacker.damage(attacker.getDamageSources().indirectMagic(attacker, livingEntity), (float) (newAmount * 0.2)
-                        + Objects.requireNonNull(livingEntity.getStatusEffect(ModEffects.WARDING)).getAmplifier() + 1);
-            }
+        Entity attacker = source.getAttacker();
+        if (livingEntity.hasStatusEffect(ModEffects.WARDING) && attacker instanceof LivingEntity livingAttacker) {
+            livingAttacker.damage(livingAttacker.getDamageSources().indirectMagic(livingAttacker, livingEntity),
+                    (float) (newAmount * 0.2)
+                            + Objects.requireNonNull(livingEntity.getStatusEffect(ModEffects.WARDING)).getAmplifier() + 1);
         }
     }
 }
