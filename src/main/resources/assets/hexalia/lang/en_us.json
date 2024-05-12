@@ -23,6 +23,9 @@
   "item.hexalia.ancient_seed": "Ancient Seed",
   "item.hexalia.germinated_ancient_seed": "Germinated Ancient Seed",
 
+  "block.hexalia.infused_dirt": "Infused Dirt",
+  "block.hexalia.infused_farmland": "Infused Farmland",
+
   "block.hexalia.salt_ore": "Salt Ore",
   "block.hexalia.salt_block": "Salt Block",
   "item.hexalia.salt": "Salt",

@@ -21,6 +21,9 @@
   "item.hexalia.spicy_sandwich": "Pikantna Kanapka",
   "item.hexalia.mortar_and_pestle": "Moździerz i Słupek",
 
+  "block.hexalia.infused_dirt": "Przetyczone Ziemi",
+  "block.hexalia.infused_farmland": "Przetyczne Pole Uprawne",
+
   "block.hexalia.salt_ore": "Ruda Soli",
   "block.hexalia.salt_block": "Blok Soli",
   "item.hexalia.salt": "Sól",

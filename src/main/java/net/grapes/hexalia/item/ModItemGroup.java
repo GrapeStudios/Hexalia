@@ -19,6 +19,9 @@ public class ModItemGroup {
                         entries.add(ModBlocks.DREAMSHROOM);
                         entries.add(ModItems.SIREN_KELP);
 
+                        entries.add(ModBlocks.INFUSED_DIRT);
+                        entries.add(ModBlocks.INFUSED_FARMLAND);
+
                         entries.add(ModItems.CHILLBERRIES);
                         entries.add(ModItems.CHILLBERRY_PIE);
 

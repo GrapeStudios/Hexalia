@@ -5,6 +5,7 @@
 	"mixins": [
 		"ExampleMixin",
 		"accesors.ExhaustionAccesorMixin",
+		"InfusedPlantingMixin",
 		"LivingEntityMixin"
 	],
 	"injectors": {

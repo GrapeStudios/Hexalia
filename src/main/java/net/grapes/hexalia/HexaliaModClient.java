@@ -4,6 +4,7 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.particle.BubbleParticle;
 import net.grapes.hexalia.particle.ModParticles;
 import net.grapes.hexalia.particle.SporeParticle;
 import net.grapes.hexalia.screen.ModScreenHandler;
@@ -28,6 +29,7 @@ public class HexaliaModClient implements ClientModInitializer {
                 ModBlocks.ELDERLEAF_CROP);
 
         ParticleFactoryRegistry.getInstance().register(ModParticles.SPORE_PARTICLE, SporeParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.BUBBLE_PARTICLE, BubbleParticle.Factory::new);
         HandledScreens.register(ModScreenHandler.SMALL_CAULDRON_SCREEN_HANDLER, SmallCauldronScreen::new);
     }
 }

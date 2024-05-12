@@ -8,8 +8,8 @@ import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class ModParticles {
-    public static final DefaultParticleType SPORE_PARTICLE =
-            registerParticle("spore_particle", FabricParticleTypes.simple());
+    public static final DefaultParticleType SPORE_PARTICLE = registerParticle("spore_particle", FabricParticleTypes.simple());
+    public static final DefaultParticleType BUBBLE_PARTICLE = registerParticle("bubble_particle", FabricParticleTypes.simple());
 
 
     private static DefaultParticleType registerParticle(String name, DefaultParticleType particleType) {

@@ -21,6 +21,9 @@
   "item.hexalia.spicy_sandwich": "Острый Сэндвич",
   "item.hexalia.mortar_and_pestle": "Ступка и Пестик",
 
+  "block.hexalia.infused_dirt": "Пропитанная почва",
+  "block.hexalia.infused_farmland": "Пропитанное поле",
+
   "block.hexalia.salt_ore": "Соляная Руда",
   "block.hexalia.salt_block": "Соляной Блок",
   "item.hexalia.salt": "Соль",

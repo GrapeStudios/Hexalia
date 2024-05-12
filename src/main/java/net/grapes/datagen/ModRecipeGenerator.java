@@ -53,6 +53,14 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(Items.CLAY_BALL), conditionsFromItem(Items.CLAY_BALL))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.RUSTIC_BOTTLE) + "_"));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.INFUSED_DIRT)
+                .pattern("SP")
+                .pattern("PS")
+                .input('S', Blocks.DIRT)
+                .input('P', ModItems.SIREN_KELP)
+                .criterion(hasItem(ModItems.SIREN_KELP), conditionsFromItem(ModItems.SIREN_KELP))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.INFUSED_DIRT)  + "_"));
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.STONE_DAGGER)
                 .pattern(" S ")
                 .pattern(" P ")
