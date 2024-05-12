@@ -57,8 +57,6 @@ public class ModItemGroup {
                         entries.add(ModItems.BREW_OF_HOMESTEAD);
 
                         entries.add(ModItems.ANCIENT_SEED);
-                        entries.add(ModItems.GERMINATED_ANCIENT_SEED);
-
                     }).build());
     public static void registerItemGroups(){
     }
