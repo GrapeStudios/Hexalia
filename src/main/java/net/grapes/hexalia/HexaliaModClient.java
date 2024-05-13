@@ -25,8 +25,7 @@ public class HexaliaModClient implements ClientModInitializer {
                 ModBlocks.CHILLBERRY_BUSH,
                 ModBlocks.SUNFIRE_TOMATO_CROP,
                 ModBlocks.FERAL_MANDRAKE,
-                ModBlocks.FERAL_SUNFIRE_TOMATO,
-                ModBlocks.ELDERLEAF_CROP);
+                ModBlocks.FERAL_SUNFIRE_TOMATO);
 
         ParticleFactoryRegistry.getInstance().register(ModParticles.SPORE_PARTICLE, SporeParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.BUBBLE_PARTICLE, BubbleParticle.Factory::new);

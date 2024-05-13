@@ -57,6 +57,7 @@ public class ModItemGroup {
                         entries.add(ModItems.BREW_OF_HOMESTEAD);
 
                         entries.add(ModItems.ANCIENT_SEED);
+                        entries.add(ModItems.KELPWEAVE_BLADE);
                     }).build());
     public static void registerItemGroups(){
     }

@@ -8,10 +8,8 @@ import net.grapes.hexalia.item.custom.brews.HomesteadBrewItem;
 import net.grapes.hexalia.item.custom.brews.SlimeyStepBrewItem;
 import net.grapes.hexalia.item.custom.brews.VigorBrewItem;
 import net.grapes.hexalia.item.custom.brews.WardingBrewItem;
-import net.minecraft.item.AliasedBlockItem;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.StewItem;
+import net.grapes.hexalia.util.ModToolMaterials;
+import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -75,6 +73,9 @@ public class ModItems {
             new Item(new FabricItemSettings()));
     public static final Item STONE_DAGGER = registerItem("stone_dagger",
             new StoneDaggerItem(new FabricItemSettings().maxDamage(16)));
+
+    public static final Item KELPWEAVE_BLADE = registerItem("kelpweave_blade",
+            new KelpweaveBladeItem(ModToolMaterials.ANCIENT_SEED, 3, -2f, new FabricItemSettings()));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(HexaliaMod.MOD_ID, name), item);
