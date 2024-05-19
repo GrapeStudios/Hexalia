@@ -20,6 +20,11 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(DisplayBlockEntity::new,
                             ModBlocks.SUMMONING_TABLE).build(null));
 
+    public static final BlockEntityType<SaltBlockEntity> SALT_BE =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(HexaliaMod.MOD_ID, "salt_block_entity"),
+                    FabricBlockEntityTypeBuilder.create(SaltBlockEntity::new,
+                            ModBlocks.SALT).build(null));
+
     public static void registerBlockEntities() {
         HexaliaMod.LOGGER.info("Registering Block Entities for " + HexaliaMod.MOD_ID);
     }

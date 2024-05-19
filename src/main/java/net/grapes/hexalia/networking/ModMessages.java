@@ -8,7 +8,6 @@ import net.minecraft.util.Identifier;
 public class ModMessages {
     public static final Identifier SYNC_ITEM = new Identifier(HexaliaMod.MOD_ID, "item_sync");
 
-
     public static void registerS2CPackets() {
         ClientPlayNetworking.registerGlobalReceiver(SYNC_ITEM, ItemStackSyncS2CPacket::receive);
     }

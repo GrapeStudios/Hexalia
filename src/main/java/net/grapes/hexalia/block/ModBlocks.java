@@ -59,7 +59,8 @@ public class ModBlocks {
     public static final Block RUSTIC_OVEN = registerBlock("rustic_oven",
             new RusticOven(FabricBlockSettings.create().mapColor(MapColor.ORANGE).instrument(Instrument.BASEDRUM)
                     .strength(4f).requiresTool().luminance(state -> 12)));
-
+    public static final Block SALT = registerBlockWithoutBlockItem("salt",
+            new SaltBlock(FabricBlockSettings.copyOf(Blocks.REDSTONE_WIRE)));
     public static final Block SUMMONING_TABLE = registerBlockWithoutBlockItem("summoning_table",
             new SummoningTableBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE).nonOpaque()));
 

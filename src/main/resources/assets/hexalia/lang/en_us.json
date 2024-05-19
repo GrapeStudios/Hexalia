@@ -21,7 +21,6 @@
   "item.hexalia.spicy_sandwich": "Spicy Sandwich",
   "item.hexalia.mortar_and_pestle": "Mortar and Pestle",
   "item.hexalia.ancient_seed": "Ancient Seed",
-  "item.hexalia.germinated_ancient_seed": "Germinated Ancient Seed",
 
   "block.hexalia.infused_dirt": "Infused Dirt",
   "block.hexalia.infused_farmland": "Infused Farmland",
@@ -29,6 +28,7 @@
   "block.hexalia.salt_ore": "Salt Ore",
   "block.hexalia.salt_block": "Salt Block",
   "item.hexalia.salt": "Salt",
+  "block.hexalia.salt": "Salt",
   "block.hexalia.salt_lamp": "Salt Lamp",
   "item.hexalia.salt_lamp": "Salt Lamp",
   "item.hexalia.purifying_salts": "Purifying Salts",

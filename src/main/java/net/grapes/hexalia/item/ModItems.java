@@ -1,6 +1,5 @@
 package net.grapes.hexalia.item;
 
-import dev.architectury.platform.Mod;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
@@ -19,7 +18,7 @@ public class ModItems {
 
     // Resources
     public static final Item SALT = registerItem("salt",
-            new Item(new FabricItemSettings()));
+            new BlockItem(ModBlocks.SALT, new FabricItemSettings()));
     public static final Item SIREN_KELP = registerItem("siren_kelp",
             new BlockItem(ModBlocks.SIREN_KELP, new FabricItemSettings().food(ModFoodComponents.SIREN_KELP)));
     public static final Item MANDRAKE = registerItem("mandrake",
