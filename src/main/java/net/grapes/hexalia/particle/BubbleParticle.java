@@ -15,7 +15,7 @@ public class BubbleParticle extends SpriteBillboardParticle {
         this.velocityZ = zd;
 
         this.scale *= 0.5f;
-        this.maxAge = 10;
+        this.maxAge = 20;
         this.setSpriteForAge(spriteSet);
     }
 
@@ -28,7 +28,7 @@ public class BubbleParticle extends SpriteBillboardParticle {
     @Override
     public float getSize(float tickDelta) {
         float f = ((float)this.age + tickDelta) / (float)this.maxAge;
-        return this.scale * (1.0f - f * f * 0.5f);
+        return this.scale * (1.0f - f * f * 0.3f);
     }
 
     @Override
