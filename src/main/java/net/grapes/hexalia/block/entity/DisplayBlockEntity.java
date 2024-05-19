@@ -11,10 +11,14 @@ import net.minecraft.inventory.Inventories;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import org.jetbrains.annotations.Nullable;
 
 public class DisplayBlockEntity extends BlockEntity implements ImplementedInventory {
 
@@ -64,6 +68,10 @@ public class DisplayBlockEntity extends BlockEntity implements ImplementedInvent
         super.markDirty();
     }
 
+    public ItemStack getRenderStack() {
+        return this.getStack(0);
+    }
+
     public void setInventory(DefaultedList<ItemStack> list) {
         for(int i = 0; i < list.size(); i++) {
             this.inventory.set(i, list.get(i));
@@ -91,5 +99,16 @@ public class DisplayBlockEntity extends BlockEntity implements ImplementedInvent
 
     public ItemStack getStoredItem() {
         return getStack(0);
+    }
+
+    @Override
+    public NbtCompound toInitialChunkDataNbt() {
+        return createNbt();
+    }
+
+    @Nullable
+    @Override
+    public Packet<ClientPlayPacketListener> toUpdatePacket() {
+        return BlockEntityUpdateS2CPacket.create(this);
     }
 }
