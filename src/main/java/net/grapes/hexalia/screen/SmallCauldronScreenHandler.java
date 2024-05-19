@@ -34,9 +34,9 @@ public class SmallCauldronScreenHandler extends ScreenHandler {
         this.blockEntity = ((SmallCauldronBlockEntity) blockEntity);
 
         // Input Slots
-        this.addSlot(new SmallCauldronBlockEntity.RusticBottleSlot.IngredientSlot(inventory, 0, 30, 27));
-        this.addSlot(new SmallCauldronBlockEntity.RusticBottleSlot.IngredientSlot(inventory, 1, 48, 27));
-        this.addSlot(new SmallCauldronBlockEntity.RusticBottleSlot.IngredientSlot(inventory, 2, 66, 27));
+        this.addSlot(new SmallCauldronBlockEntity.IngredientSlot(inventory, 0, 30, 27));
+        this.addSlot(new SmallCauldronBlockEntity.IngredientSlot(inventory, 1, 48, 27));
+        this.addSlot(new SmallCauldronBlockEntity.IngredientSlot(inventory, 2, 66, 27));
 
         // Output Slot
         this.addSlot(new SlotOutputOnly(inventory, 6, 124, 28));

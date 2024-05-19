@@ -23,6 +23,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class MandrakeItem extends Item {
+
     public MandrakeItem(Settings settings) {
         super(settings);
     }
@@ -44,29 +45,28 @@ public class MandrakeItem extends Item {
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        if (!world.isClient() && user instanceof PlayerEntity player) {
+        if (!world.isClient && user instanceof PlayerEntity player) {
             List<Entity> entities = world.getOtherEntities(player, player.getBoundingBox().expand(5.0));
             for (Entity entity : entities) {
                 if (entity instanceof LivingEntity livingEntity) {
                     livingEntity.addStatusEffect(new StatusEffectInstance(ModEffects.STUNNED, 60, 0));
                 }
+            }
             world.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.MANDRAKE_SCREAM,
                     SoundCategory.PLAYERS, 0.5f, 1.0f);
-            if(!player.isCreative()) {
+            if (!player.isCreative()) {
                 stack.decrement(1);
             }
-                return stack;
-            }
         }
-        return stack;
+        return stack.isEmpty() ? ItemStack.EMPTY : stack;
     }
 
     @Override
-       public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        if(Screen.hasShiftDown()) {
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        if (Screen.hasShiftDown()) {
             tooltip.add(Text.translatable("tooltip.hexalia.mandrake").formatted(Formatting.DARK_GREEN));
         } else {
-            tooltip.add(Text.translatable("tooltip.hexalia.hold_shift"));
+            tooltip.add(Text.translatable("tooltip.hexalia.hold_shift").formatted(Formatting.GRAY));
         }
     }
 }

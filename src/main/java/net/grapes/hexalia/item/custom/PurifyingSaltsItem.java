@@ -23,6 +23,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class PurifyingSaltsItem extends Item {
+
     public PurifyingSaltsItem(Settings settings) {
         super(settings);
     }
@@ -34,19 +35,23 @@ public class PurifyingSaltsItem extends Item {
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        if (user instanceof ServerPlayerEntity serverPlayerEntity) {
-            Criteria.CONSUME_ITEM.trigger(serverPlayerEntity, stack);
-            serverPlayerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
+        if (user instanceof ServerPlayerEntity serverPlayer) {
+            Criteria.CONSUME_ITEM.trigger(serverPlayer, stack);
+            serverPlayer.incrementStat(Stats.USED.getOrCreateStat(this));
         }
-        if (user instanceof PlayerEntity && !((PlayerEntity)user).getAbilities().creativeMode) {
+
+        if (user instanceof PlayerEntity player && !player.getAbilities().creativeMode) {
             stack.decrement(1);
         }
+
         world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ITEM_BONE_MEAL_USE,
                 SoundCategory.PLAYERS, 0.5f, 1.0f);
+
         if (!world.isClient) {
             user.clearStatusEffects();
         }
-        return stack;
+
+        return stack.isEmpty() ? ItemStack.EMPTY : stack;
     }
 
     @Override
@@ -56,7 +61,7 @@ public class PurifyingSaltsItem extends Item {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        if(Screen.hasShiftDown()) {
+        if (Screen.hasShiftDown()) {
             tooltip.add(Text.translatable("tooltip.hexalia.purifying_salts").formatted(Formatting.DARK_GREEN));
         } else {
             tooltip.add(Text.translatable("tooltip.hexalia.hold_shift"));

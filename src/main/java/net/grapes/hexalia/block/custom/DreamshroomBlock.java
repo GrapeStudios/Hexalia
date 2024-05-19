@@ -11,8 +11,14 @@ import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
 
 public class DreamshroomBlock extends MushroomPlantBlock {
 
-    public DreamshroomBlock(Settings settings) {
+    // Constants for particle
+    private static final double MAX_HORIZONTAL_OFFSET = 0.1;
+    private static final double PARTICLE_START_Y_OFFSET = 0.3;
+    private static final double PARTICLE_FALL_SPEED = -0.02;
+    private static final double PARTICLE_MOTION_VARIANCE = 0.02;
+    private static final int PARTICLE_FREQUENCY = 5;
 
+    public DreamshroomBlock(Settings settings) {
         super(settings, TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM);
     }
 
@@ -23,7 +29,7 @@ public class DreamshroomBlock extends MushroomPlantBlock {
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        createSporeParticles(world, pos, random,5);
+        createSporeParticles(world, pos, random, PARTICLE_FREQUENCY);
     }
 
     @Override
@@ -32,21 +38,18 @@ public class DreamshroomBlock extends MushroomPlantBlock {
     }
 
     public static void createSporeParticles(World world, BlockPos pos, Random random, int particleFrequency) {
-        final double maxHorizontalOffset = 0.1;
         double centerX = pos.getX() + 0.5;
         double centerZ = pos.getZ() + 0.5;
 
-        for (double y = pos.getY() + 0.3; y > pos.getY(); y -= 0.1) {
+        // Generate particles falling from the top of the block
+        for (double y = pos.getY() + PARTICLE_START_Y_OFFSET; y > pos.getY(); y -= 0.1) {
             if (random.nextInt(particleFrequency) == 0) {
-                double x = centerX + random.nextDouble() * 2 * maxHorizontalOffset - maxHorizontalOffset;
-                double z = centerZ + random.nextDouble() * 2 * maxHorizontalOffset - maxHorizontalOffset;
-                double motionX = random.nextGaussian() * 0.02;
-                double motionY = random.nextGaussian() * 0.02;
-                double motionZ = random.nextGaussian() * 0.02;
-                world.addParticle(ModParticles.SPORE_PARTICLE, x, y, z, motionX, motionY, motionZ);
+                double x = centerX + random.nextDouble() * 2 * MAX_HORIZONTAL_OFFSET - MAX_HORIZONTAL_OFFSET;
+                double z = centerZ + random.nextDouble() * 2 * MAX_HORIZONTAL_OFFSET - MAX_HORIZONTAL_OFFSET;
+                double motionX = random.nextGaussian() * PARTICLE_MOTION_VARIANCE;
+                double motionZ = random.nextGaussian() * PARTICLE_MOTION_VARIANCE;
+                world.addParticle(ModParticles.SPORE_PARTICLE, x, y, z, motionX, PARTICLE_FALL_SPEED, motionZ);
             }
         }
     }
-
-
 }

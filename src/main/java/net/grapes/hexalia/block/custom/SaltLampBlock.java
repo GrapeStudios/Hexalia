@@ -1,5 +1,6 @@
 package net.grapes.hexalia.block.custom;
 
+import net.grapes.hexalia.particle.ModParticles;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShapeContext;
@@ -22,11 +23,21 @@ import org.jetbrains.annotations.Nullable;
 
 public class SaltLampBlock extends Block {
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
-    public static final VoxelShape SHAPE = VoxelShapes.union(Block.createCuboidShape(4.0, 0, 4.0, 12.0, 10.0, 12.0),
-            Block.createCuboidShape(5.0, 2.0, 5.0, 11.0, 11.0, 11.0));
+
+    private static final double MIN_X = 0.25;
+    private static final double MAX_X = 0.75;
+    private static final double MIN_Y = 0.0;
+    private static final double MID_Y = 0.125;
+    private static final double MAX_Y = 0.6875;
+
+    public static final VoxelShape SHAPE = VoxelShapes.union(
+            VoxelShapes.cuboid(MIN_X, MIN_Y, MIN_X, MAX_X, MID_Y, MAX_X),
+            VoxelShapes.cuboid(MIN_X, MID_Y, MIN_X, MAX_X, 0.625, MAX_X),
+            VoxelShapes.cuboid(MIN_X, 0.625, MIN_X, MAX_X, MAX_Y, MAX_X));
 
     public SaltLampBlock(Settings settings) {
         super(settings);
+        setDefaultState(getStateManager().getDefaultState().with(WATERLOGGED, false));
     }
 
     @Override
@@ -45,21 +56,16 @@ public class SaltLampBlock extends Block {
         BlockPos blockPos = ctx.getBlockPos();
         World world = ctx.getWorld();
         FluidState fluidState = world.getFluidState(blockPos);
-        return getDefaultState()
-                .with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
+        return getDefaultState().with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        super.appendProperties(builder);
         builder.add(WATERLOGGED);
     }
 
     @Override
     public FluidState getFluidState(BlockState state) {
-        if (state.get(WATERLOGGED)) {
-            return Fluids.WATER.getStill(false);
-        }
-        return super.getFluidState(state);
+        return state.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
 }

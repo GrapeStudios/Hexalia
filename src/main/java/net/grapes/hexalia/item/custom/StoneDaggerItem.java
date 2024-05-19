@@ -22,28 +22,26 @@ public class StoneDaggerItem extends Item {
     @Override
     public ActionResult useOnBlock(ItemUsageContext context) {
         World world = context.getWorld();
-        PlayerEntity playerEntity = context.getPlayer();
+        PlayerEntity player = context.getPlayer();
         BlockPos pos = context.getBlockPos();
         BlockState state = world.getBlockState(pos);
 
-        if (world.getBlockState(pos).getBlock() == Blocks.DARK_OAK_LOG) {
+        if (state.getBlock() == Blocks.DARK_OAK_LOG) {
             world.playSound(null, pos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0f, 1.0f);
-            world.setBlockState(pos, Blocks.STRIPPED_DARK_OAK_LOG.getDefaultState().with(PillarBlock.AXIS,
-                    state.get(PillarBlock.AXIS)));
-            if (playerEntity != null) {
-                playerEntity.giveItemStack(new ItemStack(ModItems.RESIN));
-            }
-            if (playerEntity != null) {
+            world.setBlockState(pos, Blocks.STRIPPED_DARK_OAK_LOG.getDefaultState().with(PillarBlock.AXIS, state.get(PillarBlock.AXIS)));
+            if (player != null) {
+                player.giveItemStack(new ItemStack(ModItems.RESIN));
                 ItemStack stack = context.getStack();
-                if (!playerEntity.isCreative() && stack.isDamageable()) {
-                    stack.damage(1, playerEntity, (p) -> playerEntity.sendToolBreakStatus(context.getHand()));
+                if (!player.isCreative() && stack.isDamageable()) {
+                    stack.damage(1, player, (p) -> p.sendToolBreakStatus(context.getHand()));
                     if (stack.isEmpty()) {
-                        playerEntity.setStackInHand(context.getHand(), ItemStack.EMPTY);
+                        player.setStackInHand(context.getHand(), ItemStack.EMPTY);
                     }
                 }
             }
             return ActionResult.SUCCESS;
         }
+
         return super.useOnBlock(context);
     }
 }

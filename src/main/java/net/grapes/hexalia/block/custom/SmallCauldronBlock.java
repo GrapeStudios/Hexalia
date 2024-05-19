@@ -90,8 +90,6 @@ public class SmallCauldronBlock extends BlockWithEntity implements BlockEntityPr
         return Boolean.TRUE.equals(state.get(WATERLOGGED)) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
     }
 
-    // Block Entity
-
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {

@@ -1,38 +1,38 @@
 package net.grapes.hexalia.particle;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
 
-public class SporeParticle extends SpriteBillboardParticle {
-    public SporeParticle(ClientWorld world, double xCoord, double yCoord, double zCoord,
-                              SpriteProvider spriteSet, double xd, double yd, double zd) {
-        super(world, xCoord, yCoord, zCoord, xd, yd, zd);
-
-        this.velocityMultiplier = 0.3f;
-        this.velocityX = xd;
-        this.velocityY = yd;
-        this.velocityZ = zd;
-
-        this.scale *= 0.15f;
-        this.maxAge = 10;
-        this.setSpriteForAge(spriteSet);
+public class SporeParticle extends AnimatedParticle {
+    public SporeParticle(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteProvider spriteProvider) {
+        super(world, x, y, z, spriteProvider, 0.0125F);
+        this.velocityX = velocityX;
+        this.velocityY = velocityY;
+        this.velocityZ = velocityZ;
+        this.scale *= 0.1f;
+        this.maxAge = 40 + this.random.nextInt(12);
+        this.setTargetColor(15916745);
+        this.setSpriteForAge(spriteProvider);
     }
 
-    @Override
-    public ParticleTextureSheet getType() {
-        return ParticleTextureSheet.PARTICLE_SHEET_TRANSLUCENT;
+    public void move(double dx, double dy, double dz) {
+        this.setBoundingBox(this.getBoundingBox().offset(dx, dy, dz));
+        this.repositionFromBoundingBox();
     }
 
+    @Environment(EnvType.CLIENT)
     public static class Factory implements ParticleFactory<DefaultParticleType> {
-        private final SpriteProvider sprites;
+        private final SpriteProvider spriteProvider;
 
         public Factory(SpriteProvider spriteProvider) {
-            this.sprites = spriteProvider;
+            this.spriteProvider = spriteProvider;
         }
-        public Particle createParticle(DefaultParticleType particleType, ClientWorld clientWorld, double x, double y,
-                                       double z, double xd, double yd, double zd){
-            return new SporeParticle(clientWorld, x, y, z, this.sprites, xd, yd, zd);
+
+        public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double d, double e, double f, double g, double h, double i) {
+            return new SporeParticle(clientWorld, d, e, f, g, h, i, this.spriteProvider);
         }
     }
 }

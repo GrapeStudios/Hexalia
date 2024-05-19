@@ -30,46 +30,41 @@ import java.util.Optional;
 public class SmallCauldronBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ImplementedInventory, HeatingBlockEntity {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(8, ItemStack.EMPTY);
 
-    public static int INPUT_SLOT_1 = 0;
-    public static int INPUT_SLOT_2 = 1;
-    public static int INPUT_SLOT_3 = 2;
+    public static final int INPUT_SLOT_1 = 0;
+    public static final int INPUT_SLOT_2 = 1;
+    public static final int INPUT_SLOT_3 = 2;
+    public static final int OUTPUT_SLOT = 6;
+    public static final int BOTTLE_SLOT = 7;
 
-    public static int OUTPUT_SLOT = 6;
-    public static int BOTTLE_SLOT = 7;
-
-    protected final PropertyDelegate propertyDelegate;
     private int progress = 0;
     private int maxProgress = 72;
 
+    protected final PropertyDelegate propertyDelegate = new PropertyDelegate() {
+        @Override
+        public int get(int index) {
+            return switch (index) {
+                case 0 -> SmallCauldronBlockEntity.this.progress;
+                case 1 -> SmallCauldronBlockEntity.this.maxProgress;
+                default -> 0;
+            };
+        }
+
+        @Override
+        public void set(int index, int value) {
+            switch (index) {
+                case 0 -> SmallCauldronBlockEntity.this.progress = value;
+                case 1 -> SmallCauldronBlockEntity.this.maxProgress = value;
+            }
+        }
+
+        @Override
+        public int size() {
+            return 2;
+        }
+    };
+
     public SmallCauldronBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.SMALL_CAULDRON_BE, pos, state);
-        this.propertyDelegate = new PropertyDelegate() {
-            @Override
-            public int get(int index) {
-                return switch (index) {
-                    case 0 -> SmallCauldronBlockEntity.this.progress;
-                    case 1 -> SmallCauldronBlockEntity.this.maxProgress;
-                    default -> 0;
-                };
-            }
-
-            @Override
-            public void set(int index, int value) {
-                switch (index) {
-                    case 0:
-                        SmallCauldronBlockEntity.this.progress = value;
-                        break;
-                    case 1:
-                        SmallCauldronBlockEntity.this.maxProgress = value;
-                        break;
-                }
-            }
-
-            @Override
-            public int size() {
-                return 2;
-            }
-        };
     }
 
     @Override
@@ -108,8 +103,7 @@ public class SmallCauldronBlockEntity extends BlockEntity implements ExtendedScr
     }
 
     public void brewingTick(World world, BlockPos pos, BlockState state) {
-        boolean isHeated = isHeated(world, pos);
-        if (canInsertOutputSlot() && hasRecipe() && hasRusticBottle() && isHeated) {
+        if (isHeated() && canInsertOutputSlot() && hasRecipe() && hasRusticBottle()) {
             increaseCraftingProgress();
             markDirty(world, pos, state);
             if (hasCraftingFinished()) {
@@ -122,15 +116,15 @@ public class SmallCauldronBlockEntity extends BlockEntity implements ExtendedScr
     }
 
     private void craftItem() {
-        Optional<SmallCauldronRecipe> recipe = getCurrentRecipe();
+        getCurrentRecipe().ifPresent(recipe -> {
+            removeStack(INPUT_SLOT_1, 1);
+            removeStack(INPUT_SLOT_2, 1);
+            removeStack(INPUT_SLOT_3, 1);
+            removeStack(BOTTLE_SLOT, 1);
 
-        this.removeStack(INPUT_SLOT_1, 1);
-        this.removeStack(INPUT_SLOT_2, 1);
-        this.removeStack(INPUT_SLOT_3, 1);
-        this.removeStack(BOTTLE_SLOT, 1);
-
-        this.setStack(OUTPUT_SLOT, new ItemStack(recipe.get().getOutput(null).getItem(),
-                this.getStack(OUTPUT_SLOT).getCount() + recipe.get().getOutput(null).getCount()));
+            ItemStack output = recipe.getOutput(null);
+            setStack(OUTPUT_SLOT, new ItemStack(output.getItem(), getStack(OUTPUT_SLOT).getCount() + output.getCount()));
+        });
     }
 
     private void resetProgress() {
@@ -146,15 +140,10 @@ public class SmallCauldronBlockEntity extends BlockEntity implements ExtendedScr
     }
 
     private boolean hasRecipe() {
-        Optional<SmallCauldronRecipe> recipe = getCurrentRecipe();
-
-        if (recipe.isEmpty()) {
-            return false;
-        }
-        ItemStack output = recipe.get().getOutput(null);
-
-        return canInsertAmountIntoOutputSlot(output.getCount()) &&
-                canInsertItemIntoOutputSlot(output);
+        return getCurrentRecipe().map(recipe -> {
+            ItemStack output = recipe.getOutput(null);
+            return canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output);
+        }).orElse(false);
     }
 
     private boolean canInsertItemIntoOutputSlot(ItemStack output) {
@@ -166,11 +155,11 @@ public class SmallCauldronBlockEntity extends BlockEntity implements ExtendedScr
     }
 
     private Optional<SmallCauldronRecipe> getCurrentRecipe() {
-        SimpleInventory inventory = new SimpleInventory((this.size()));
+        SimpleInventory inventory = new SimpleInventory(this.size());
         for (int i = 0; i < this.size(); i++) {
             inventory.setStack(i, this.getStack(i));
         }
-        return Objects.requireNonNull(this.getWorld().getRecipeManager().getFirstMatch(SmallCauldronRecipe.Type.INSTANCE, inventory, this.getWorld()));
+        return this.getWorld().getRecipeManager().getFirstMatch(SmallCauldronRecipe.Type.INSTANCE, inventory, this.getWorld());
     }
 
     private boolean hasRusticBottle() {
@@ -178,15 +167,11 @@ public class SmallCauldronBlockEntity extends BlockEntity implements ExtendedScr
     }
 
     public boolean isHeated() {
-        if (world == null) {
-            return false;
-        }
-        return isHeated(world, pos);
+        return world != null && isHeated(world, pos);
     }
 
     private boolean canInsertOutputSlot() {
-        return this.getStack(OUTPUT_SLOT).isEmpty() ||
-                this.getStack(OUTPUT_SLOT).getCount() < this.getStack(OUTPUT_SLOT).getMaxCount();
+        return this.getStack(OUTPUT_SLOT).isEmpty() || this.getStack(OUTPUT_SLOT).getCount() < this.getStack(OUTPUT_SLOT).getMaxCount();
     }
 
     public static class RusticBottleSlot extends Slot {
@@ -194,20 +179,20 @@ public class SmallCauldronBlockEntity extends BlockEntity implements ExtendedScr
             super(inventory, index, x, y);
         }
 
-        public static class IngredientSlot extends Slot {
-            public IngredientSlot(Inventory inventory, int index, int x, int y) {
-                super(inventory, index, x, y);
-            }
-
-            @Override
-            public boolean canInsert(ItemStack stack) {
-                return stack.getItem() != ModItems.RUSTIC_BOTTLE;
-            }
-        }
-
         @Override
         public int getMaxItemCount(ItemStack stack) {
             return 64;
+        }
+    }
+
+    public static class IngredientSlot extends Slot {
+        public IngredientSlot(Inventory inventory, int index, int x, int y) {
+            super(inventory, index, x, y);
+        }
+
+        @Override
+        public boolean canInsert(ItemStack stack) {
+            return stack.getItem() != ModItems.RUSTIC_BOTTLE;
         }
     }
 }
