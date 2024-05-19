@@ -54,11 +54,14 @@ public class ModBlocks {
     public static final Block SMALL_CAULDRON = registerBlockWithoutBlockItem("small_cauldron",
             new SmallCauldronBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
     public static final Block SALT_LAMP = registerBlockWithoutBlockItem("salt_lamp",
-            new SaltLampBlock(FabricBlockSettings.create().mapColor(MapColor.PALE_YELLOW).instrument(Instrument.BANJO)
+            new SaltLampBlock(FabricBlockSettings.create().mapColor(MapColor.WHITE).instrument(Instrument.BANJO)
                     .strength(4f).requiresTool().luminance(state -> 12)));
     public static final Block RUSTIC_OVEN = registerBlock("rustic_oven",
             new RusticOven(FabricBlockSettings.create().mapColor(MapColor.ORANGE).instrument(Instrument.BASEDRUM)
                     .strength(4f).requiresTool().luminance(state -> 12)));
+
+    public static final Block SUMMONING_TABLE = registerBlockWithoutBlockItem("summoning_table",
+            new SummoningTableBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE).nonOpaque()));
 
     // Registries
     public static void registerBlockProperties() {

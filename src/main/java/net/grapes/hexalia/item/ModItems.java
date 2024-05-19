@@ -1,5 +1,6 @@
 package net.grapes.hexalia.item;
 
+import dev.architectury.platform.Mod;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
@@ -30,7 +31,7 @@ public class ModItems {
     public static final Item CHILLBERRIES = registerItem("chillberries",
             new BlockItem(ModBlocks.CHILLBERRY_BUSH, new FabricItemSettings().food(ModFoodComponents.CHILLBERRIES)));
     public static final Item CHILLBERRY_PIE = registerItem("chillberry_pie",
-            new Item(new FabricItemSettings().food(ModFoodComponents.CHILLBERR_PIE)));
+            new Item(new FabricItemSettings().food(ModFoodComponents.CHILLBERRY_PIE)));
     public static final Item SUNFIRE_TOMATO = registerItem("sunfire_tomato",
             new Item(new FabricItemSettings().food(ModFoodComponents.SUNFIRE_TOMATO)));
     public static final Item SUNFIRE_TOMATO_SEEDS = registerItem("sunfire_tomato_seeds",
@@ -73,7 +74,10 @@ public class ModItems {
             new Item(new FabricItemSettings()));
     public static final Item STONE_DAGGER = registerItem("stone_dagger",
             new StoneDaggerItem(new FabricItemSettings().maxDamage(16)));
+    public static final Item SUMMONING_TABLE = registerItem("summoning_table",
+            new BlockItem(ModBlocks.SUMMONING_TABLE, new FabricItemSettings()));
 
+    // Weapons & Armor
     public static final Item KELPWEAVE_BLADE = registerItem("kelpweave_blade",
             new KelpweaveBladeItem(ModToolMaterials.ANCIENT_SEED, 3, -2f, new FabricItemSettings()));
 

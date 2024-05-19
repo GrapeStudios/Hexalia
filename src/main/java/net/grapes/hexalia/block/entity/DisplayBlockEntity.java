@@ -1,0 +1,95 @@
+package net.grapes.hexalia.block.entity;
+
+
+import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
+import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.grapes.hexalia.networking.ModMessages;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.inventory.Inventories;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.PacketByteBuf;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.collection.DefaultedList;
+import net.minecraft.util.math.BlockPos;
+
+public class DisplayBlockEntity extends BlockEntity implements ImplementedInventory {
+
+    private final DefaultedList<ItemStack> inventory;
+
+    public DisplayBlockEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntities.DISPLAY_BE, pos, state);
+        this.inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
+    }
+
+    @Override
+    public DefaultedList<ItemStack> getItems() {
+        return inventory;
+    }
+
+    @Override
+    protected void writeNbt(NbtCompound nbt) {
+        super.writeNbt(nbt);
+        Inventories.writeNbt(nbt, inventory);
+    }
+
+    @Override
+    public void readNbt(NbtCompound nbt) {
+        Inventories.readNbt(nbt, inventory);
+        super.readNbt(nbt);
+    }
+
+    @Override
+    public int getMaxCountPerStack() {
+        return 1;
+    }
+
+    @Override
+    public void markDirty() {
+        if(!world.isClient()) {
+            PacketByteBuf data = PacketByteBufs.create();
+            data.writeInt(inventory.size());
+            for(int i = 0; i < inventory.size(); i++) {
+                data.writeItemStack(inventory.get(i));
+            }
+            data.writeBlockPos(getPos());
+
+            for(ServerPlayerEntity player : PlayerLookup.tracking((ServerWorld) world, getPos())) {
+                ServerPlayNetworking.send(player, ModMessages.SYNC_ITEM, data);
+            }
+        }
+        super.markDirty();
+    }
+
+    public void setInventory(DefaultedList<ItemStack> list) {
+        for(int i = 0; i < list.size(); i++) {
+            this.inventory.set(i, list.get(i));
+        }
+    }
+
+    public boolean addItem(ItemStack itemStack) {
+        if (isEmpty() && !itemStack.isEmpty()) {
+            setStack(0, itemStack.split(1));
+            return true;
+        }
+        return false;
+    }
+
+    public ItemStack removeItem() {
+        if (!isEmpty()) {
+            return getStoredItem().split(1);
+        }
+        return ItemStack.EMPTY;
+    }
+
+    public boolean isEmpty() {
+        return getStack(0).isEmpty();
+    }
+
+    public ItemStack getStoredItem() {
+        return getStack(0);
+    }
+}

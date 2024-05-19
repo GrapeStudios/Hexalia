@@ -15,6 +15,11 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(SmallCauldronBlockEntity::new,
                             ModBlocks.SMALL_CAULDRON).build(null));
 
+    public static final BlockEntityType<DisplayBlockEntity> DISPLAY_BE =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(HexaliaMod.MOD_ID, "display_block_entity"),
+                    FabricBlockEntityTypeBuilder.create(DisplayBlockEntity::new,
+                            ModBlocks.SUMMONING_TABLE).build(null));
+
     public static void registerBlockEntities() {
         HexaliaMod.LOGGER.info("Registering Block Entities for " + HexaliaMod.MOD_ID);
     }

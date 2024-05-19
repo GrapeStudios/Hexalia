@@ -53,6 +53,9 @@
   "item.hexalia.small_cauldron": "Small Cauldron",
   "block.hexalia.rustic_oven": "Rustic Oven",
 
+  "block.hexalia.summoning_table": "Summoning Table",
+  "item.hexalia.summoning_table": "Summoning Table",
+
   "sounds.hexalia.mandrake_scream": "Mandrake Screams",
 
   "tooltip.hexalia.hold_shift": "Hold §e[SHIFT]§r for more info",
