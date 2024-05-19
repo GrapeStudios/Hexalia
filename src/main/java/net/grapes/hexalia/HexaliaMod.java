@@ -11,6 +11,7 @@ import net.grapes.hexalia.particle.ModParticles;
 import net.grapes.hexalia.recipe.ModRecipes;
 import net.grapes.hexalia.screen.ModScreenHandler;
 import net.grapes.hexalia.sound.ModSounds;
+import net.grapes.hexalia.util.ModLootTableModifiers;
 import net.grapes.hexalia.util.ModRegistries;
 import net.grapes.hexalia.world.gen.ModWorldGeneration;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
@@ -35,6 +36,7 @@ public class HexaliaMod implements ModInitializer {
 		ModBlockEntities.registerBlockEntities();
 		ModScreenHandler.registerScreenHandlers();
 		ModRecipes.registerRecipes();
+		ModLootTableModifiers.modifyLootTables();
 
 		BlockEntityRendererFactories.register(ModBlockEntities.DISPLAY_BE, DisplayBlockEntityRenderer::new);
 	}
