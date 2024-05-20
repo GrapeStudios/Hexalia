@@ -20,9 +20,9 @@ public class DisplayBlockEntityRenderer implements BlockEntityRenderer<DisplayBl
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
         ItemStack stack = entity.getRenderStack();
         matrices.push();
-        matrices.translate(0.5, 1.25, 0.5);
+        matrices.translate(0.5f, 1.1f, 0.5f);
         matrices.scale(1f, 1f, 1f);
-        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees((float)(System.currentTimeMillis() / 10 % 360)));
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees((float)(System.currentTimeMillis() / 30 % 360)));
 
         itemRenderer.renderItem(stack, ModelTransformationMode.GROUND, light, overlay, matrices, vertexConsumers, entity.getWorld(), 1);
             matrices.pop();
