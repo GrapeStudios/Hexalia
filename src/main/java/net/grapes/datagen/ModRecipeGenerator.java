@@ -26,6 +26,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
     @Override
     public void generate(Consumer<RecipeJsonProvider> exporter) {
 
+        // Shaped Recipe for Items & Blocks
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.SMALL_CAULDRON)
                 .pattern("S S")
                 .pattern("P P")
@@ -79,6 +80,17 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(Items.COBBLED_DEEPSLATE), conditionsFromItem(Items.COBBLED_DEEPSLATE))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.RUSTIC_OVEN) + "_"));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.RITUAL_TABLE)
+                .pattern("STS")
+                .pattern(" S ")
+                .pattern("SSS")
+                .input('S', Items.COBBLED_DEEPSLATE)
+                .input('T', Items.MOSS_CARPET)
+                .criterion(hasItem(Items.COBBLED_DEEPSLATE), conditionsFromItem(Items.COBBLED_DEEPSLATE))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.RITUAL_TABLE) + "_"));
+
+
+        // Reversible Compacting Recipes for Blocks
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.SALT,
                 RecipeCategory.MISC, ModBlocks.SALT_BLOCK);
 
@@ -114,7 +126,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
                 .offerTo(exporter);
 
-        // Shapeless Recipe for Other Items
+        // Shapeless Recipe for Items & Blocks
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.CHILLBERRY_PIE, 1)
                 .input(ModItems.CHILLBERRIES)
                 .input(Items.SUGAR)
