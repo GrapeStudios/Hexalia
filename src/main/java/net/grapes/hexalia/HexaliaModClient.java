@@ -4,6 +4,9 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.block.entity.ModBlockEntities;
+import net.grapes.hexalia.block.entity.renderer.RitualTableBlockEntityRenderer;
+import net.grapes.hexalia.block.entity.renderer.SaltBlockEntityRenderer;
 import net.grapes.hexalia.networking.ModMessages;
 import net.grapes.hexalia.particle.BubbleParticle;
 import net.grapes.hexalia.particle.ModParticles;
@@ -12,6 +15,7 @@ import net.grapes.hexalia.screen.ModScreenHandler;
 import net.grapes.hexalia.screen.SmallCauldronScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
 
 public class HexaliaModClient implements ClientModInitializer {
     @Override
@@ -28,6 +32,9 @@ public class HexaliaModClient implements ClientModInitializer {
                 ModBlocks.FERAL_MANDRAKE,
                 ModBlocks.FERAL_SUNFIRE_TOMATO,
                 ModBlocks.SALT);
+
+        BlockEntityRendererFactories.register(ModBlockEntities.RITUAL_TABLE_BE, RitualTableBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.SALT_BE, SaltBlockEntityRenderer::new);
 
         ParticleFactoryRegistry.getInstance().register(ModParticles.SPORE_PARTICLE, SporeParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.BUBBLE_PARTICLE, BubbleParticle.Factory::new);
