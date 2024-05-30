@@ -1,6 +1,6 @@
 package net.grapes.hexalia.block.custom;
 
-import net.grapes.hexalia.block.entity.DisplayBlockEntity;
+import net.grapes.hexalia.block.entity.RitualTableBlockEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -23,12 +23,12 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class SummoningTableBlock extends BlockWithEntity implements BlockEntityProvider {
+public class RitualTableBlock extends BlockWithEntity implements BlockEntityProvider {
 
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final VoxelShape SHAPE = createShape();
 
-    public SummoningTableBlock(Settings settings) {
+    public RitualTableBlock(Settings settings) {
         super(settings);
     }
 
@@ -68,14 +68,14 @@ public class SummoningTableBlock extends BlockWithEntity implements BlockEntityP
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
-        return new DisplayBlockEntity(pos, state);
+        return new RitualTableBlockEntity(pos, state);
     }
 
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
-            if (world.getBlockEntity(pos) instanceof DisplayBlockEntity displayBlockEntity) {
-                ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), displayBlockEntity.getStoredItem());
+            if (world.getBlockEntity(pos) instanceof RitualTableBlockEntity ritualTableBlockEntity) {
+                ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), ritualTableBlockEntity.getStoredItem());
                 world.updateComparators(pos, this);
             }
             super.onStateReplaced(state, world, pos, newState, moved);
@@ -87,21 +87,21 @@ public class SummoningTableBlock extends BlockWithEntity implements BlockEntityP
         ActionResult result = ActionResult.PASS;
 
         BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (!(blockEntity instanceof DisplayBlockEntity displayBlockEntity)) {
+        if (!(blockEntity instanceof RitualTableBlockEntity ritualTableBlockEntity)) {
             return result;
         }
 
-        if (displayBlockEntity.isEmpty()) {
-            result = addItemFromHand(world, displayBlockEntity, player, hand);
+        if (ritualTableBlockEntity.isEmpty()) {
+            result = addItemFromHand(world, ritualTableBlockEntity, player, hand);
         } else if (hand.equals(Hand.MAIN_HAND)) {
-            removeItemFromTable(world, displayBlockEntity, player);
+            removeItemFromTable(world, ritualTableBlockEntity, player);
             result = ActionResult.SUCCESS;
         }
 
         return result;
     }
 
-    private ActionResult addItemFromHand(World world, DisplayBlockEntity displayBlockEntity, PlayerEntity player, Hand hand) {
+    private ActionResult addItemFromHand(World world, RitualTableBlockEntity ritualTableBlockEntity, PlayerEntity player, Hand hand) {
         ItemStack heldItem = player.getStackInHand(hand);
         ItemStack offHandItem = player.getOffHandStack();
 
@@ -115,19 +115,19 @@ public class SummoningTableBlock extends BlockWithEntity implements BlockEntityP
         }
         if (heldItem.isEmpty()) {
             return ActionResult.PASS;
-        } else if (displayBlockEntity.addItem(player.getAbilities().creativeMode ? heldItem.copy() : heldItem)) {
-            playPlaceSound(world, displayBlockEntity.getPos());
+        } else if (ritualTableBlockEntity.addItem(player.getAbilities().creativeMode ? heldItem.copy() : heldItem)) {
+            playPlaceSound(world, ritualTableBlockEntity.getPos());
             return ActionResult.SUCCESS;
         }
         return ActionResult.PASS;
     }
 
-    private void removeItemFromTable(World world, DisplayBlockEntity displayBlockEntity, PlayerEntity player) {
-        BlockPos pos = displayBlockEntity.getPos();
+    private void removeItemFromTable(World world, RitualTableBlockEntity ritualTableBlockEntity, PlayerEntity player) {
+        BlockPos pos = ritualTableBlockEntity.getPos();
         if (player.isCreative()) {
-            displayBlockEntity.removeItem();
-        } else if (!player.getInventory().insertStack(displayBlockEntity.removeItem())) {
-            ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), displayBlockEntity.removeItem());
+            ritualTableBlockEntity.removeItem();
+        } else if (!player.getInventory().insertStack(ritualTableBlockEntity.removeItem())) {
+            ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), ritualTableBlockEntity.removeItem());
         }
         playRemoveSound(world, pos);
     }

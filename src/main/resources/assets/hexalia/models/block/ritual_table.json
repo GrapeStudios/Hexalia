@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "hexalia:block/summoning_table_texture",
+		"0": "hexalia:block/ritual_table_texture",
 		"particle": "minecraft:block/deepslate"
 	},
 	"elements": [

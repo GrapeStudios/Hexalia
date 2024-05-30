@@ -20,12 +20,12 @@ import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 
-public class DisplayBlockEntity extends BlockEntity implements ImplementedInventory {
+public class RitualTableBlockEntity extends BlockEntity implements ImplementedInventory {
 
     private final DefaultedList<ItemStack> inventory;
 
-    public DisplayBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.DISPLAY_BE, pos, state);
+    public RitualTableBlockEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntities.RITUAL_TABLE_BE, pos, state);
         this.inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
     }
 

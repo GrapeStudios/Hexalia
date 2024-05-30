@@ -25,6 +25,9 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.INFUSED_DIRT);
         addDrop(ModBlocks.INFUSED_FARMLAND, drops(ModBlocks.INFUSED_DIRT));
 
+        addDrop(ModBlocks.RITUAL_TABLE, drops(ModItems.RITUAL_TABLE));
+        addDrop(ModBlocks.SALT);
+
         addDrop(ModBlocks.FERAL_SUNFIRE_TOMATO);
         this.addDrop(ModBlocks.FERAL_SUNFIRE_TOMATO, ModItems.SUNFIRE_TOMATO_SEEDS);
 

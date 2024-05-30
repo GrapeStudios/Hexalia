@@ -1,7 +1,7 @@
 package net.grapes.hexalia.networking.packet;
 
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
-import net.grapes.hexalia.block.entity.DisplayBlockEntity;
+import net.grapes.hexalia.block.entity.RitualTableBlockEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.item.ItemStack;
@@ -19,7 +19,7 @@ public class ItemStackSyncS2CPacket {
         }
         BlockPos position = buf.readBlockPos();
 
-        if(client.world.getBlockEntity(position) instanceof DisplayBlockEntity blockEntity) {
+        if(client.world.getBlockEntity(position) instanceof RitualTableBlockEntity blockEntity) {
             blockEntity.setInventory(list);
         }
     }

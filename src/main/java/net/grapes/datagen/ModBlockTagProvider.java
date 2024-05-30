@@ -19,9 +19,22 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
-                .add(ModBlocks.SALT_ORE);
+                .add(ModBlocks.SALT_ORE)
+                .add(ModBlocks.SALT_BLOCK)
+                .add(ModBlocks.SALT_LAMP)
+                .add(ModBlocks.RUSTIC_OVEN)
+                .add(ModBlocks.RITUAL_TABLE);
+
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
-                .add(ModBlocks.SALT_ORE);
+                .add(ModBlocks.SALT_ORE)
+                .add(ModBlocks.SALT_BLOCK)
+                .add(ModBlocks.SALT_LAMP);
+
+        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
+                .add(ModBlocks.SMALL_CAULDRON)
+                .add(ModBlocks.RUSTIC_OVEN)
+                .add(ModBlocks.RITUAL_TABLE);
+
         getOrCreateTagBuilder(ModTags.Blocks.HEATING_BLOCK)
                 .add(Blocks.MAGMA_BLOCK, Blocks.LAVA,
                         Blocks.CAMPFIRE, Blocks.FIRE, ModBlocks.RUSTIC_OVEN);

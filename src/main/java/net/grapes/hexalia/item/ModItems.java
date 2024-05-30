@@ -73,8 +73,8 @@ public class ModItems {
             new Item(new FabricItemSettings()));
     public static final Item STONE_DAGGER = registerItem("stone_dagger",
             new StoneDaggerItem(new FabricItemSettings().maxDamage(16)));
-    public static final Item SUMMONING_TABLE = registerItem("summoning_table",
-            new BlockItem(ModBlocks.SUMMONING_TABLE, new FabricItemSettings()));
+    public static final Item RITUAL_TABLE = registerItem("ritual_table",
+            new BlockItem(ModBlocks.RITUAL_TABLE, new FabricItemSettings()));
 
     // Weapons & Armor
     public static final Item KELPWEAVE_BLADE = registerItem("kelpweave_blade",

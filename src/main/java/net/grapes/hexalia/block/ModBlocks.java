@@ -61,8 +61,8 @@ public class ModBlocks {
                     .strength(4f).requiresTool().luminance(state -> 12)));
     public static final Block SALT = registerBlockWithoutBlockItem("salt",
             new SaltBlock(FabricBlockSettings.copyOf(Blocks.REDSTONE_WIRE)));
-    public static final Block SUMMONING_TABLE = registerBlockWithoutBlockItem("summoning_table",
-            new SummoningTableBlock(FabricBlockSettings.copyOf(Blocks.DEEPSLATE).nonOpaque()));
+    public static final Block RITUAL_TABLE = registerBlockWithoutBlockItem("ritual_table",
+            new RitualTableBlock(FabricBlockSettings.copyOf(Blocks.STONE).nonOpaque()));
 
     // Registries
     public static void registerBlockProperties() {

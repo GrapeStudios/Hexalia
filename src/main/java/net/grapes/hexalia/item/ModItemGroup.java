@@ -59,7 +59,7 @@ public class ModItemGroup {
                         entries.add(ModItems.ANCIENT_SEED);
                         entries.add(ModItems.KELPWEAVE_BLADE);
 
-                        entries.add(ModItems.SUMMONING_TABLE);
+                        entries.add(ModItems.RITUAL_TABLE);
                     }).build());
     public static void registerItemGroups(){
     }

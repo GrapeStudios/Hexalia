@@ -1,6 +1,6 @@
 package net.grapes.hexalia.block.entity.renderer;
 
-import net.grapes.hexalia.block.entity.DisplayBlockEntity;
+import net.grapes.hexalia.block.entity.RitualTableBlockEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
@@ -11,12 +11,12 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.RotationAxis;
 
-public class DisplayBlockEntityRenderer implements BlockEntityRenderer<DisplayBlockEntity> {
-    public DisplayBlockEntityRenderer(BlockEntityRendererFactory.Context context) {
+public class RitualTableBlockEntityRenderer implements BlockEntityRenderer<RitualTableBlockEntity> {
+    public RitualTableBlockEntityRenderer(BlockEntityRendererFactory.Context context) {
     }
 
     @Override
-    public void render(DisplayBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
+    public void render(RitualTableBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
         ItemStack stack = entity.getRenderStack();
         matrices.push();
