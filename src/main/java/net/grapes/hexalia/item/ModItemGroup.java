@@ -60,6 +60,7 @@ public class ModItemGroup {
                         entries.add(ModItems.KELPWEAVE_BLADE);
 
                         entries.add(ModItems.RITUAL_TABLE);
+                        entries.add(ModBlocks.BREW_SHELF);
                     }).build());
     public static void registerItemGroups(){
     }

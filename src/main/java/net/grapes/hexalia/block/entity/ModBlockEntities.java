@@ -25,6 +25,11 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(SaltBlockEntity::new,
                             ModBlocks.SALT).build(null));
 
+    public static final BlockEntityType<BrewShelfBlockEntity> BREW_SHELF_BE =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(HexaliaMod.MOD_ID, "brew_shelf_block_entity"),
+                    FabricBlockEntityTypeBuilder.create(BrewShelfBlockEntity::new,
+                            ModBlocks.BREW_SHELF).build(null));
+
     public static void registerBlockEntities() {
         HexaliaMod.LOGGER.info("Registering Block Entities for " + HexaliaMod.MOD_ID);
     }

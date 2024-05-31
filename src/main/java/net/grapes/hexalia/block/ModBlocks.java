@@ -63,7 +63,8 @@ public class ModBlocks {
             new SaltBlock(FabricBlockSettings.copyOf(Blocks.REDSTONE_WIRE)));
     public static final Block RITUAL_TABLE = registerBlockWithoutBlockItem("ritual_table",
             new RitualTableBlock(FabricBlockSettings.copyOf(Blocks.STONE).nonOpaque()));
-
+    public static final Block BREW_SHELF = registerBlock("brew_shelf",
+            new BrewShelfBlock(FabricBlockSettings.copyOf(Blocks.CHISELED_BOOKSHELF).nonOpaque()));
     // Registries
     public static void registerBlockProperties() {
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.SPIRIT_BLOOM, 0.5F);
