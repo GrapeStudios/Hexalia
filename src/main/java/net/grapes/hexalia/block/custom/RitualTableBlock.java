@@ -94,7 +94,7 @@ public class RitualTableBlock extends BlockWithEntity implements BlockEntityProv
         if (ritualTableBlockEntity.isEmpty()) {
             result = addItemFromHand(world, ritualTableBlockEntity, player, hand);
         } else if (hand.equals(Hand.MAIN_HAND)) {
-            removeItemFromTable(world, ritualTableBlockEntity, player);
+            removeItemFromBlock(world, ritualTableBlockEntity, player);
             result = ActionResult.SUCCESS;
         }
 
@@ -122,7 +122,7 @@ public class RitualTableBlock extends BlockWithEntity implements BlockEntityProv
         return ActionResult.PASS;
     }
 
-    private void removeItemFromTable(World world, RitualTableBlockEntity ritualTableBlockEntity, PlayerEntity player) {
+    private void removeItemFromBlock(World world, RitualTableBlockEntity ritualTableBlockEntity, PlayerEntity player) {
         BlockPos pos = ritualTableBlockEntity.getPos();
         if (player.isCreative()) {
             ritualTableBlockEntity.removeItem();

@@ -78,7 +78,7 @@ public class SaltBlock extends BlockWithEntity implements BlockEntityProvider {
         if (saltBlockEntity.isEmpty()) {
             result = addItemFromHand(world, saltBlockEntity, player, hand);
         } else if (hand.equals(Hand.MAIN_HAND)) {
-            removeItemFromTable(world, saltBlockEntity, player);
+            removeItemFromBlock(world, saltBlockEntity, player);
             result = ActionResult.SUCCESS;
         }
 
@@ -106,7 +106,7 @@ public class SaltBlock extends BlockWithEntity implements BlockEntityProvider {
         return ActionResult.PASS;
     }
 
-    private void removeItemFromTable(World world, SaltBlockEntity saltBlockEntity, PlayerEntity player) {
+    private void removeItemFromBlock(World world, SaltBlockEntity saltBlockEntity, PlayerEntity player) {
         BlockPos pos = saltBlockEntity.getPos();
         if (player.isCreative()) {
             saltBlockEntity.removeItem();

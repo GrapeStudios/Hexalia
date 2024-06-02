@@ -1,6 +1,5 @@
 package net.grapes.hexalia.block.entity;
 
-
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -53,19 +52,25 @@ public class RitualTableBlockEntity extends BlockEntity implements ImplementedIn
 
     @Override
     public void markDirty() {
-        if(!world.isClient()) {
+        super.markDirty();
+        if (!world.isClient()) {
+            sync();
+        }
+    }
+
+    private void sync() {
+        if (world instanceof ServerWorld serverWorld) {
             PacketByteBuf data = PacketByteBufs.create();
             data.writeInt(inventory.size());
-            for(int i = 0; i < inventory.size(); i++) {
-                data.writeItemStack(inventory.get(i));
+            for (ItemStack itemStack : inventory) {
+                data.writeItemStack(itemStack);
             }
             data.writeBlockPos(getPos());
 
-            for(ServerPlayerEntity player : PlayerLookup.tracking((ServerWorld) world, getPos())) {
+            for (ServerPlayerEntity player : PlayerLookup.tracking(serverWorld, getPos())) {
                 ServerPlayNetworking.send(player, ModMessages.SYNC_ITEM, data);
             }
         }
-        super.markDirty();
     }
 
     public ItemStack getRenderStack() {
@@ -73,14 +78,16 @@ public class RitualTableBlockEntity extends BlockEntity implements ImplementedIn
     }
 
     public void setInventory(DefaultedList<ItemStack> list) {
-        for(int i = 0; i < list.size(); i++) {
+        for (int i = 0; i < list.size(); i++) {
             this.inventory.set(i, list.get(i));
         }
+        markDirty();
     }
 
     public boolean addItem(ItemStack itemStack) {
         if (isEmpty() && !itemStack.isEmpty()) {
             setStack(0, itemStack.split(1));
+            markDirty();
             return true;
         }
         return false;
@@ -88,7 +95,9 @@ public class RitualTableBlockEntity extends BlockEntity implements ImplementedIn
 
     public ItemStack removeItem() {
         if (!isEmpty()) {
-            return getStoredItem().split(1);
+            ItemStack itemStack = getStoredItem().split(1);
+            markDirty();
+            return itemStack;
         }
         return ItemStack.EMPTY;
     }

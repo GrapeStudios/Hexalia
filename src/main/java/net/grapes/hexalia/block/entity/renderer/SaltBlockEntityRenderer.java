@@ -21,7 +21,7 @@ public class SaltBlockEntityRenderer implements BlockEntityRenderer<SaltBlockEnt
         ItemStack stack = entity.getRenderStack();
         matrices.push();
         matrices.translate(0.5f, 0.25f, 0.5f);
-        matrices.scale(1f, 0.75f, 1f);
+        matrices.scale(1f, 1f, 1f);
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees((float)(System.currentTimeMillis() / 50 % 360)));
 
         itemRenderer.renderItem(stack, ModelTransformationMode.GROUND, light, overlay, matrices, vertexConsumers, entity.getWorld(), 1);
