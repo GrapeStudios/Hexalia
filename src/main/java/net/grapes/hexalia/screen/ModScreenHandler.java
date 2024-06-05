@@ -1,7 +1,9 @@
 package net.grapes.hexalia.screen;
 
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
+import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.grapes.hexalia.HexaliaMod;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.screen.ScreenHandlerType;

@@ -6,38 +6,54 @@ import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.mob.PiglinBrain;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
-import net.minecraft.util.ItemScatterer;
+import net.minecraft.state.property.Properties;
+import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.BlockMirror;
+import net.minecraft.util.BlockRotation;
+import net.minecraft.util.Hand;
+
 
 public class BrewShelfBlock extends BlockWithEntity {
-    public static final DirectionProperty FACING = DirectionProperty.of("facing", Direction.Type.HORIZONTAL);
+    public static final DirectionProperty FACING;
+    public static final BooleanProperty OPEN;
+
+    static {
+        FACING = Properties.HORIZONTAL_FACING;
+        OPEN = Properties.OPEN;
+    }
 
     public BrewShelfBlock(Settings settings) {
         super(settings);
-        setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(OPEN, false));
     }
 
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         Direction facing = ctx.getHorizontalPlayerFacing().getOpposite();
-        return getDefaultState().with(FACING, facing);
+        return this.getDefaultState().with(FACING, facing);
     }
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACING);
+        builder.add(FACING, OPEN);
     }
 
     @Override
@@ -53,46 +69,61 @@ public class BrewShelfBlock extends BlockWithEntity {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ActionResult result = ActionResult.PASS;
-
-        BlockEntity blockEntity = world.getBlockEntity(pos);
-        if (!(blockEntity instanceof BrewShelfBlockEntity brewShelfBlockEntity)) {
-            return result;
-        }
-
-        ItemStack heldItem = player.getStackInHand(hand);
-        if (heldItem.isEmpty()) {
-            ItemStack removedItem = brewShelfBlockEntity.removeItem();
-            if (!removedItem.isEmpty()) {
-                if (!player.giveItemStack(removedItem)) {
-                    ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), removedItem);
-                }
-                result = ActionResult.SUCCESS;
+        if (world.isClient) {
+            return ActionResult.SUCCESS;
+        } else {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof BrewShelfBlockEntity) {
+                player.openHandledScreen((BrewShelfBlockEntity) blockEntity);
+                player.incrementStat(Stats.OPEN_BARREL);
+                PiglinBrain.onGuardedBlockInteracted(player, true);
             }
-        } else if (brewShelfBlockEntity.addItem(heldItem)) {
-            if (!player.getAbilities().creativeMode) {
-                heldItem.decrement(1);
-            }
-            result = ActionResult.SUCCESS;
-        }
 
-        return result;
+            return ActionResult.CONSUME;
+        }
     }
 
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
-        if (state.getBlock() != newState.getBlock()) {
+        if (!state.isOf(newState.getBlock())) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof BrewShelfBlockEntity brewShelfBlockEntity) {
-                for (ItemStack itemStack : brewShelfBlockEntity.getItems()) {
-                    if (!itemStack.isEmpty()) {
-                        ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), itemStack);
-                    }
-                }
+            if (blockEntity instanceof BrewShelfBlockEntity) {
+                ItemScatterer.spawn(world, pos, (Inventory) blockEntity);
                 world.updateComparators(pos, this);
             }
+
             super.onStateReplaced(state, world, pos, newState, moved);
         }
+    }
+
+    @Override
+    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
+        if (itemStack.hasCustomName()) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof BrewShelfBlockEntity) {
+                ((BrewShelfBlockEntity) blockEntity).setCustomName(itemStack.getName());
+            }
+        }
+    }
+
+    @Override
+    public boolean hasComparatorOutput(BlockState state) {
+        return true;
+    }
+
+    @Override
+    public int getComparatorOutput(BlockState state, World world, BlockPos pos) {
+        return ScreenHandler.calculateComparatorOutput(world.getBlockEntity(pos));
+    }
+
+    @Override
+    public BlockState rotate(BlockState state, BlockRotation rotation) {
+        return state.with(FACING, rotation.rotate(state.get(FACING)));
+    }
+
+    @Override
+    public BlockState mirror(BlockState state, BlockMirror mirror) {
+        return state.rotate(mirror.getRotation(state.get(FACING)));
     }
 }
 

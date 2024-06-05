@@ -1,132 +1,147 @@
 package net.grapes.hexalia.block.entity;
 
+import net.grapes.hexalia.block.custom.BrewShelfBlock;
 import net.grapes.hexalia.item.custom.brews.HomesteadBrewItem;
 import net.grapes.hexalia.item.custom.brews.SlimeyStepBrewItem;
 import net.grapes.hexalia.item.custom.brews.VigorBrewItem;
 import net.grapes.hexalia.item.custom.brews.WardingBrewItem;
+import net.grapes.hexalia.util.ModTags;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.LootableContainerBlockEntity;
+import net.minecraft.block.entity.ViewerCountManager;
+import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.inventory.Inventory;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
-import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
+import net.minecraft.screen.GenericContainerScreenHandler;
+import net.minecraft.screen.ScreenHandler;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvent;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3i;
+import net.minecraft.world.World;
+import net.minecraft.text.Text;
 
-public class BrewShelfBlockEntity extends BlockEntity implements Inventory {
-    private final DefaultedList<ItemStack> items = DefaultedList.ofSize(16, ItemStack.EMPTY);
+public class BrewShelfBlockEntity extends LootableContainerBlockEntity {
+    private DefaultedList<ItemStack> inventory;
+    private final ViewerCountManager stateManager;
+    public static final int SIZE = 27;
 
     public BrewShelfBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.BREW_SHELF_BE, pos, state);
-    }
-
-    @Override
-    public int size() {
-        return items.size();
-    }
-
-    @Override
-    public boolean isEmpty() {
-        for (ItemStack itemStack : items) {
-            if (!itemStack.isEmpty()) {
-                return false;
+        this.inventory = DefaultedList.ofSize(SIZE, ItemStack.EMPTY);
+        this.stateManager = new ViewerCountManager() {
+            protected void onContainerOpen(World world, BlockPos pos, BlockState state) {
+                BrewShelfBlockEntity.this.playSound(state, SoundEvents.BLOCK_BARREL_OPEN);
+                BrewShelfBlockEntity.this.setOpen(state, true);
             }
+
+            protected void onContainerClose(World world, BlockPos pos, BlockState state) {
+                BrewShelfBlockEntity.this.playSound(state, SoundEvents.BLOCK_BARREL_CLOSE);
+                BrewShelfBlockEntity.this.setOpen(state, false);
+            }
+
+            protected void onViewerCountUpdate(World world, BlockPos pos, BlockState state, int oldViewerCount, int newViewerCount) {
+            }
+
+            protected boolean isPlayerViewing(PlayerEntity player) {
+                if (player.currentScreenHandler instanceof GenericContainerScreenHandler) {
+                    Inventory inventory = ((GenericContainerScreenHandler) player.currentScreenHandler).getInventory();
+                    return inventory == BrewShelfBlockEntity.this;
+                } else {
+                    return false;
+                }
+            }
+        };
+    }
+
+
+    protected void writeNbt(NbtCompound nbt) {
+        super.writeNbt(nbt);
+        if (!this.serializeLootTable(nbt)) {
+            Inventories.writeNbt(nbt, this.inventory);
         }
-        return true;
+
     }
 
-    @Override
-    public ItemStack getStack(int slot) {
-        return items.get(slot);
-    }
-
-    @Override
-    public ItemStack removeStack(int slot, int amount) {
-        return Inventories.splitStack(items, slot, amount);
-    }
-
-    @Override
-    public ItemStack removeStack(int slot) {
-        return Inventories.removeStack(items, slot);
-    }
-
-    @Override
-    public void setStack(int slot, ItemStack stack) {
-        items.set(slot, stack);
-        if (stack.getCount() > this.getMaxCountPerStack()) {
-            stack.setCount(this.getMaxCountPerStack());
-        }
-    }
-
-    @Override
-    public boolean canPlayerUse(PlayerEntity player) {
-        if (this.world.getBlockEntity(this.pos) != this) {
-            return false;
-        }
-        return player.squaredDistanceTo(this.pos.getX() + 0.5D, this.pos.getY() + 0.5D, this.pos.getZ() + 0.5D) <= 64.0D;
-    }
-
-    @Override
-    public void clear() {
-        items.clear();
-    }
-
-    @Override
     public void readNbt(NbtCompound nbt) {
         super.readNbt(nbt);
-        Inventories.readNbt(nbt, items);
+        this.inventory = DefaultedList.ofSize(this.size(), ItemStack.EMPTY);
+        if (!this.deserializeLootTable(nbt)) {
+            Inventories.readNbt(nbt, this.inventory);
+        }
     }
 
-    @Override
-    public void writeNbt(NbtCompound nbt) {
-        super.writeNbt(nbt);
-        Inventories.writeNbt(nbt, items);
+
+    public int size() {
+        return SIZE;
     }
 
-    public boolean addItem(ItemStack stack) {
-        if (!isAllowedItem(stack)) {
-            return false;
-        }
 
-        for (int i = 0; i < this.size(); i++) {
-            ItemStack itemStack = this.getStack(i);
-            if (itemStack.isEmpty()) {
-                this.setStack(i, stack.copy());
-                markDirty();
-                return true;
-            } else if (ItemStack.areItemsEqual(itemStack, stack) && itemStack.getCount() < itemStack.getMaxCount()) {
-                int newCount = Math.min(itemStack.getCount() + stack.getCount(), itemStack.getMaxCount());
-                itemStack.setCount(newCount);
-                markDirty();
-                return true;
-            }
+    protected DefaultedList<ItemStack> getInvStackList() {
+        return this.inventory;
+    }
+
+    protected void setInvStackList(DefaultedList<ItemStack> list) {
+        this.inventory = list;
+    }
+
+    protected Text getContainerName() {
+        return Text.translatable("container.brew_shelf");
+    }
+
+    protected ScreenHandler createScreenHandler(int syncId, PlayerInventory playerInventory) {
+        return GenericContainerScreenHandler.createGeneric9x3(syncId, playerInventory,this);
+    }
+
+    public void onOpen(PlayerEntity player) {
+        if (!this.removed && !player.isSpectator()) {
+            this.stateManager.openContainer(player, this.getWorld(), this.getPos(), this.getCachedState());
         }
-        return false;
+    }
+
+    public void onClose(PlayerEntity player) {
+        if (!this.removed && !player.isSpectator()) {
+            this.stateManager.closeContainer(player, this.getWorld(), this.getPos(), this.getCachedState());
+        }
+    }
+
+    public void tick() {
+        if (!this.removed) {
+            this.stateManager.updateViewerCount(this.getWorld(), this.getPos(), this.getCachedState());
+        }
+    }
+
+    void setOpen(BlockState state, boolean open) {
+        this.world.setBlockState(this.getPos(), state.with(BrewShelfBlock.OPEN, open), 3);
+    }
+
+
+    public NbtCompound toInitialChunkDataNbt() {
+        return createNbt();
+    }
+
+    public Packet<ClientPlayPacketListener> toUpdatePacket() {
+        return BlockEntityUpdateS2CPacket.create(this);
     }
 
     private boolean isAllowedItem(ItemStack stack) {
-        Item item = stack.getItem();
-        return item instanceof HomesteadBrewItem
-                || item instanceof SlimeyStepBrewItem || item instanceof VigorBrewItem
-                || item instanceof WardingBrewItem;
+        return stack.isIn(ModTags.Items.BREWS);
     }
 
-    public ItemStack removeItem() {
-        for (int i = this.size() - 1; i >= 0; i--) {
-            ItemStack itemStack = this.getStack(i);
-            if (!itemStack.isEmpty()) {
-                ItemStack toRemove = itemStack.copy();
-                this.setStack(i, ItemStack.EMPTY);
-                markDirty();
-                return toRemove;
-            }
-        }
-        return ItemStack.EMPTY;
-    }
-
-    public DefaultedList<ItemStack> getItems() {
-        return items;
+    void playSound(BlockState state, SoundEvent soundEvent) {
+        Vec3i vec3i = state.get(BrewShelfBlock.FACING).getVector();
+        double d = (double) this.pos.getX() + 0.5 + (double) vec3i.getX() / 2.0;
+        double e = (double) this.pos.getY() + 0.5 + (double) vec3i.getY() / 2.0;
+        double f = (double) this.pos.getZ() + 0.5 + (double) vec3i.getZ() / 2.0;
+        this.world.playSound(null, d, e, f, soundEvent, SoundCategory.BLOCKS, 0.5F, this.world.random.nextFloat() * 0.1F + 0.9F);
     }
 }

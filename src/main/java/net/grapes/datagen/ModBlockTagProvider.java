@@ -35,6 +35,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.RUSTIC_OVEN)
                 .add(ModBlocks.RITUAL_TABLE);
 
+        getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
+                .add(ModBlocks.BREW_SHELF);
+
         getOrCreateTagBuilder(ModTags.Blocks.HEATING_BLOCK)
                 .add(Blocks.MAGMA_BLOCK, Blocks.LAVA,
                         Blocks.CAMPFIRE, Blocks.FIRE, ModBlocks.RUSTIC_OVEN);

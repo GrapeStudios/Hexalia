@@ -5,7 +5,6 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.block.entity.ModBlockEntities;
-import net.grapes.hexalia.block.entity.renderer.BrewShelfBlockEntityRenderer;
 import net.grapes.hexalia.block.entity.renderer.RitualTableBlockEntityRenderer;
 import net.grapes.hexalia.block.entity.renderer.SaltBlockEntityRenderer;
 import net.grapes.hexalia.networking.ModMessages;
@@ -36,7 +35,6 @@ public class HexaliaModClient implements ClientModInitializer {
 
         BlockEntityRendererFactories.register(ModBlockEntities.RITUAL_TABLE_BE, RitualTableBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.SALT_BE, SaltBlockEntityRenderer::new);
-        BlockEntityRendererFactories.register(ModBlockEntities.BREW_SHELF_BE, BrewShelfBlockEntityRenderer::new);
 
         ParticleFactoryRegistry.getInstance().register(ModParticles.SPORE_PARTICLE, SporeParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.BUBBLE_PARTICLE, BubbleParticle.Factory::new);

@@ -1,6 +1,7 @@
 package net.grapes.hexalia.networking.packet;
 
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
+import net.grapes.hexalia.block.entity.BrewShelfBlockEntity;
 import net.grapes.hexalia.block.entity.RitualTableBlockEntity;
 import net.grapes.hexalia.block.entity.SaltBlockEntity;
 import net.minecraft.client.MinecraftClient;
