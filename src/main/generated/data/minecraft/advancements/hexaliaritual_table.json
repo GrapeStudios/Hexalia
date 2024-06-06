@@ -1,0 +1,39 @@
+{
+  "parent": "minecraft:hexaliasalt",
+  "criteria": {
+    "has_ritual_table": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexalia:ritual_table"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "hexalia:textures/block/salt_block.png",
+    "description": {
+      "translate": "advancements.hexalia.ritual_table.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "hexalia:ritual_table"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.hexalia.ritual_table.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_ritual_table"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -10,7 +10,9 @@ import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementDisplay;
 import net.minecraft.advancement.AdvancementFrame;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
+import net.minecraft.advancement.criterion.TickCriterion;
 import net.minecraft.item.ItemStack;
+import net.minecraft.predicate.entity.LocationPredicate;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
@@ -29,9 +31,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         Text.translatable("advancements.hexalia.root.description"),
                         new Identifier(HexaliaMod.MOD_ID, "textures/block/salt_block.png"), AdvancementFrame.TASK,
                         true, true, false))
-                .criterion("has_sunfire_seeds", InventoryChangedCriterion.Conditions.items(ModItems.SUNFIRE_TOMATO_SEEDS))
-                .criterion("has_mandrake_seeds", InventoryChangedCriterion.Conditions.items(ModItems.MANDRAKE_SEEDS))
-                .criterion("has_chillberries", InventoryChangedCriterion.Conditions.items(ModItems.CHILLBERRIES))
+                .criterion("player_joined", TickCriterion.Conditions.createLocation(LocationPredicate.ANY))
                 .build(consumer, HexaliaMod.MOD_ID + ":root");
 
         Advancement smallCauldron = Advancement.Builder.create()
@@ -87,5 +87,23 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         true, true, false))
                 .criterion("has_purifying_salts", InventoryChangedCriterion.Conditions.items(ModItems.PURIFYING_SALTS))
                 .parent(saltItem).build(consumer, HexaliaMod.MOD_ID + "purifying_salts");
+
+        Advancement ritualTable = Advancement.Builder.create()
+                .display(new AdvancementDisplay(new ItemStack(ModItems.RITUAL_TABLE),
+                        Text.translatable("advancements.hexalia.ritual_table.title"),
+                        Text.translatable("advancements.hexalia.ritual_table.description"),
+                        new Identifier(HexaliaMod.MOD_ID, "textures/block/salt_block.png"), AdvancementFrame.TASK,
+                        true, true, false))
+                .criterion("has_ritual_table", InventoryChangedCriterion.Conditions.items(ModItems.RITUAL_TABLE))
+                .parent(saltItem).build(consumer, HexaliaMod.MOD_ID + "ritual_table");
+
+        Advancement hexFocus = Advancement.Builder.create()
+                .display(new AdvancementDisplay(new ItemStack(ModItems.HEX_FOCUS),
+                        Text.translatable("advancements.hexalia.hex_focus.title"),
+                        Text.translatable("advancements.hexalia.hex_focus.description"),
+                        new Identifier(HexaliaMod.MOD_ID, "textures/block/salt_block.png"), AdvancementFrame.TASK,
+                        true, true, false))
+                .criterion("has_hex_focus", InventoryChangedCriterion.Conditions.items(ModItems.HEX_FOCUS))
+                .parent(ritualTable).build(consumer, HexaliaMod.MOD_ID + "hex_focus");
     }
 }
