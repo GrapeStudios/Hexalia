@@ -8,8 +8,8 @@ import net.grapes.hexalia.block.entity.ModBlockEntities;
 import net.grapes.hexalia.block.entity.renderer.RitualTableBlockEntityRenderer;
 import net.grapes.hexalia.block.entity.renderer.SaltBlockEntityRenderer;
 import net.grapes.hexalia.networking.ModMessages;
-import net.grapes.hexalia.particle.custom.TransmutationParticle;
 import net.grapes.hexalia.particle.ModParticles;
+import net.grapes.hexalia.particle.custom.InfusedBubbleParticle;
 import net.grapes.hexalia.particle.custom.SporeParticle;
 import net.grapes.hexalia.screen.ModScreenHandler;
 import net.grapes.hexalia.screen.SmallCauldronScreen;
@@ -37,7 +37,7 @@ public class HexaliaModClient implements ClientModInitializer {
         BlockEntityRendererFactories.register(ModBlockEntities.SALT_BE, SaltBlockEntityRenderer::new);
 
         ParticleFactoryRegistry.getInstance().register(ModParticles.SPORE_PARTICLE, SporeParticle.Factory::new);
-        ParticleFactoryRegistry.getInstance().register(ModParticles.BUBBLE_PARTICLE, TransmutationParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.INFUSED_BUBBLE_PARTICLE, InfusedBubbleParticle.Factory::new);
         HandledScreens.register(ModScreenHandler.SMALL_CAULDRON_SCREEN_HANDLER, SmallCauldronScreen::new);
         ModMessages.registerS2CPackets();
     }
