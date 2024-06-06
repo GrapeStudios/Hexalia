@@ -113,7 +113,9 @@ public class SaltBlockEntity extends BlockEntity implements ImplementedInventory
 
     @Override
     public NbtCompound toInitialChunkDataNbt() {
-        return createNbt();
+        NbtCompound nbtCompound = new NbtCompound();
+        Inventories.writeNbt(nbtCompound, inventory, true);
+        return nbtCompound;
     }
 
     @Nullable
