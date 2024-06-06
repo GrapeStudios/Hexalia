@@ -99,6 +99,15 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(Items.AMETHYST_SHARD), conditionsFromItem(Items.AMETHYST_SHARD))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.HEX_FOCUS) + "_"));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.BREW_SHELF)
+                .pattern("SSS")
+                .pattern("SPS")
+                .pattern("SSS")
+                .input('P', ModItems.RUSTIC_BOTTLE)
+                .input('S', ItemTags.PLANKS)
+                .criterion(hasItem(ModItems.RUSTIC_BOTTLE), conditionsFromItem(ModItems.RUSTIC_BOTTLE))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.BREW_SHELF) + "_"));
+
         // Recipes for vanilla items or blocks.
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.LEATHER)
