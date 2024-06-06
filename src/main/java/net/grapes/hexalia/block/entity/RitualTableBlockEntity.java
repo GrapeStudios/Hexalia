@@ -112,35 +112,14 @@ public class RitualTableBlockEntity extends BlockEntity implements ImplementedIn
 
     @Override
     public NbtCompound toInitialChunkDataNbt() {
-        return createNbt();
+        NbtCompound nbtCompound = new NbtCompound();
+        Inventories.writeNbt(nbtCompound, inventory, true);
+        return nbtCompound;
     }
 
     @Nullable
     @Override
     public Packet<ClientPlayPacketListener> toUpdatePacket() {
         return BlockEntityUpdateS2CPacket.create(this);
-    }
-
-    // Methods related to performing a ritual
-
-    // Insert item into inventory
-    public boolean addTransmutatedItem(ItemStack itemStack) {
-        if (isEmpty() && !itemStack.isEmpty()) {
-            setStack(0, itemStack.split(1));
-            markDirty();
-            return true;
-        }
-        return false;
-    }
-
-    // Remove transmutation item from inventory
-    public ItemStack removeTransmutableItem() {
-        if (!isEmpty()) {
-            ItemStack item = getStack(0).split(1);
-            setStack(0, ItemStack.EMPTY);
-            markDirty();
-            return item;
-        }
-        return ItemStack.EMPTY;
     }
 }

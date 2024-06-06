@@ -4,5 +4,12 @@
     "sounds": [
       "hexalia:mandrake_scream"
     ]
+  },
+
+  "completed_ritual": {
+    "subtitle": "sounds.hexalia.completed_ritual",
+    "sounds": [
+      "hexalia:completed_ritual"
+    ]
   }
 }

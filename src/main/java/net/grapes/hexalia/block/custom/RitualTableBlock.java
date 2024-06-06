@@ -4,6 +4,7 @@ import net.grapes.hexalia.block.entity.RitualTableBlockEntity;
 import net.grapes.hexalia.block.entity.SaltBlockEntity;
 import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.recipe.TransmutationRecipe;
+import net.grapes.hexalia.sound.ModSounds;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -105,7 +106,8 @@ public class RitualTableBlock extends BlockWithEntity implements BlockEntityProv
 
         if (heldItem.getItem().equals(ModItems.HEX_FOCUS)) {
             if (performTransmutation(ritualTableBlockEntity, world, pos)) {
-                spawnParticleEffect(world, pos, ParticleTypes.GLOW_SQUID_INK);
+                spawnParticleEffect(world, pos, ParticleTypes.ENCHANT);
+                playRitualCompletedSound(world, ritualTableBlockEntity.getPos());
                 return ActionResult.SUCCESS;
             } else {
                 spawnParticleEffect(world, pos, ParticleTypes.SMOKE);
@@ -152,7 +154,6 @@ public class RitualTableBlock extends BlockWithEntity implements BlockEntityProv
         ItemStack removedItem = ritualTableBlockEntity.removeItem();
 
         if (player.isCreative()) {
-            // Item is removed in creative mode without being added to the player's inventory
             ritualTableBlockEntity.removeItem();
         } else if (!player.getInventory().insertStack(removedItem)) {
             ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), removedItem);
@@ -161,38 +162,33 @@ public class RitualTableBlock extends BlockWithEntity implements BlockEntityProv
     }
 
     private void playPlaceSound(World world, BlockPos pos) {
-        world.playSound(null, pos, SoundEvents.ENTITY_ITEM_FRAME_ADD_ITEM, SoundCategory.BLOCKS, 1f, 1f);
+        world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 1f);
     }
 
     private void playRemoveSound(World world, BlockPos pos) {
         world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 1f);
     }
 
-    // Methods related to performing a ritual
+    private void playRitualCompletedSound(World world, BlockPos pos) {
+        world.playSound(null, pos, ModSounds.COMPLETED_RITUAL, SoundCategory.BLOCKS, 1.5f, 1f);
+    }
 
     private boolean performTransmutation(RitualTableBlockEntity ritualTable, World world, BlockPos pos) {
         ItemStack inputStack = ritualTable.getStack(0);
-        System.out.println("Performing transmutation with input: " + inputStack.getItem().getName().getString());
 
         Optional<TransmutationRecipe> recipeOptional = world.getRecipeManager().getFirstMatch(TransmutationRecipe.Type.INSTANCE, ritualTable, world);
 
         if (recipeOptional.isPresent()) {
             TransmutationRecipe recipe = recipeOptional.get();
-            System.out.println("Found transmutation recipe with output: " + recipe.getOutput(world.getRegistryManager()).getItem().getName().getString());
 
             if (checkSaltBlocks(world, pos, recipe)) {
-                System.out.println("Salt blocks have required items. Performing transmutation.");
                 consumeSaltBlocks(world, pos, recipe);
                 ritualTable.removeStack(0);
                 ritualTable.setStack(0, recipe.getOutput(world.getRegistryManager()).copy());
                 ritualTable.markDirty();
                 world.updateListeners(pos, world.getBlockState(pos), world.getBlockState(pos), Block.NOTIFY_ALL);
                 return true;
-            } else {
-                System.out.println("Salt blocks do not have the required items.");
             }
-        } else {
-            System.out.println("No matching transmutation recipe found.");
         }
         return false;
     }
@@ -243,6 +239,7 @@ public class RitualTableBlock extends BlockWithEntity implements BlockEntityProv
                     if (ItemStack.areItemsEqual(saltStack, requiredSaltItem)) {
                         saltBlockEntity.removeStack(0);
                         requiredSaltItems.remove(requiredSaltItem);
+                        saltBlockEntity.markDirty();
                         break;
                     }
                 }
