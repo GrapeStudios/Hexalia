@@ -54,5 +54,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.STONE_DAGGER, Models.GENERATED);
         itemModelGenerator.register(ModItems.RESIN, Models.GENERATED);
         itemModelGenerator.register(ModItems.ANCIENT_SEED, Models.GENERATED);
+        itemModelGenerator.register(ModItems.HEX_FOCUS, Models.HANDHELD);
     }
 }

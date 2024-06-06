@@ -61,6 +61,8 @@ public class ModItemGroup {
 
                         entries.add(ModItems.RITUAL_TABLE);
                         entries.add(ModBlocks.BREW_SHELF);
+
+                        entries.add(ModItems.HEX_FOCUS);
                     }).build());
     public static void registerItemGroups(){
     }

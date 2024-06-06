@@ -16,7 +16,8 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 
 public class ModBlocks {
-    // Herbology blocks
+
+    // Blocks related to herbology
     public static final Block SPIRIT_BLOOM = registerBlock("spirit_bloom",
             new FlowerBlock(StatusEffects.LEVITATION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
     public static final Block POTTED_SPIRIT_BLOOM = registerBlockWithoutBlockItem("potted_spirit_bloom",
@@ -33,7 +34,6 @@ public class ModBlocks {
     public static final Block INFUSED_FARMLAND = registerBlock("infused_farmland",
             new InfusedFarmland(FabricBlockSettings.copyOf(Blocks.FARMLAND).sounds(BlockSoundGroup.MUD)));
 
-    // Crop blocks
     public static final Block MANDRAKE_CROP = registerBlockWithoutBlockItem("mandrake_crop",
             new MandrakeCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
     public static final Block FERAL_MANDRAKE = registerBlock("feral_mandrake",
@@ -46,25 +46,28 @@ public class ModBlocks {
             new ChillberryBushBlock(FabricBlockSettings.copyOf(Blocks.SWEET_BERRY_BUSH)));
 
 
-    // Other blocks
+    // Blocks related to ore and minerals
     public static final Block SALT_ORE = registerBlock("salt_ore",
             new Block(FabricBlockSettings.copyOf(Blocks.COAL_ORE)));
     public static final Block SALT_BLOCK = registerBlock("salt_block",
             new Block(FabricBlockSettings.copyOf(Blocks.COAL_BLOCK)));
-    public static final Block SMALL_CAULDRON = registerBlockWithoutBlockItem("small_cauldron",
-            new SmallCauldronBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
     public static final Block SALT_LAMP = registerBlockWithoutBlockItem("salt_lamp",
             new SaltLampBlock(FabricBlockSettings.create().mapColor(MapColor.WHITE).instrument(Instrument.BANJO)
                     .strength(4f).requiresTool().luminance(state -> 12)));
+    public static final Block SALT = registerBlockWithoutBlockItem("salt",
+            new SaltBlock(FabricBlockSettings.copyOf(Blocks.TRIPWIRE)));
+
+    // Functional Blocks
+    public static final Block SMALL_CAULDRON = registerBlockWithoutBlockItem("small_cauldron",
+            new SmallCauldronBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
     public static final Block RUSTIC_OVEN = registerBlock("rustic_oven",
             new RusticOven(FabricBlockSettings.create().mapColor(MapColor.ORANGE).instrument(Instrument.BASEDRUM)
                     .strength(4f).requiresTool().luminance(state -> 12)));
-    public static final Block SALT = registerBlockWithoutBlockItem("salt",
-            new SaltBlock(FabricBlockSettings.copyOf(Blocks.REDSTONE_WIRE)));
     public static final Block RITUAL_TABLE = registerBlockWithoutBlockItem("ritual_table",
             new RitualTableBlock(FabricBlockSettings.copyOf(Blocks.STONE).nonOpaque()));
     public static final Block BREW_SHELF = registerBlock("brew_shelf",
             new BrewShelfBlock(FabricBlockSettings.copyOf(Blocks.CHISELED_BOOKSHELF).nonOpaque()));
+
     // Registries
     public static void registerBlockProperties() {
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.SPIRIT_BLOOM, 0.5F);

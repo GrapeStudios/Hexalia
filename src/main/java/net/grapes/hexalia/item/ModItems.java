@@ -53,6 +53,8 @@ public class ModItems {
             new PurifyingSaltsItem(new FabricItemSettings().maxCount(16)));
 
     // Brews
+    public static final Item RUSTIC_BOTTLE = registerItem("rustic_bottle",
+            new Item(new FabricItemSettings()));
     public static final Item BREW_OF_WARDING = registerItem("brew_of_warding",
             new WardingBrewItem(new FabricItemSettings().recipeRemainder(ModItems.RUSTIC_BOTTLE).maxCount(16)));
     public static final Item BREW_OF_VIGOR = registerItem("brew_of_vigor",
@@ -69,12 +71,12 @@ public class ModItems {
             new BlockItem(ModBlocks.SMALL_CAULDRON, new FabricItemSettings()));
     public static final Item SALT_LAMP = registerItem("salt_lamp",
             new BlockItem(ModBlocks.SALT_LAMP, new FabricItemSettings()));
-    public static final Item RUSTIC_BOTTLE = registerItem("rustic_bottle",
-            new Item(new FabricItemSettings()));
     public static final Item STONE_DAGGER = registerItem("stone_dagger",
             new StoneDaggerItem(new FabricItemSettings().maxDamage(16)));
     public static final Item RITUAL_TABLE = registerItem("ritual_table",
             new BlockItem(ModBlocks.RITUAL_TABLE, new FabricItemSettings()));
+    public static final Item HEX_FOCUS = registerItem("hex_focus",
+            new Item(new FabricItemSettings()));
 
     // Weapons & Armor
     public static final Item KELPWEAVE_BLADE = registerItem("kelpweave_blade",

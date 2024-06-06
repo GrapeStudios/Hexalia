@@ -55,6 +55,7 @@
 
   "block.hexalia.ritual_table": "Ritual Table",
   "item.hexalia.ritual_table": "Ritual Table",
+  "item.hexalia.hex_focus": "Hex Focus",
 
   "block.hexalia.brew_shelf": "Brew Shelf",
 
@@ -69,16 +70,20 @@
 
   "advancements.hexalia.root.title": "Welcome to Hexalia",
   "advancements.hexalia.root.description": "Thank you for downloading our mod",
-  "advancements.hexalia.small_cauldron.title": "Small, but mighty",
+  "advancements.hexalia.small_cauldron.title": "Small and Mighty",
   "advancements.hexalia.small_cauldron.description": "Craft your own brewing station",
-  "advancements.hexalia.mortar_and_pestle.title": "Now, crush this",
+  "advancements.hexalia.mortar_and_pestle.title": "Crush this!",
   "advancements.hexalia.mortar_and_pestle.description": "Craft a tool to crush plants",
-  "advancements.hexalia.slimey_brew.title": "Slimey slimey!",
+  "advancements.hexalia.slimey_brew.title": "Slimey, slimey!",
   "advancements.hexalia.slimey_brew.description": "Brew a potion to bounce like a slime",
   "advancements.hexalia.salt_item.title": "A Pinch of Salt",
   "advancements.hexalia.salt_item.description": "Obtain Salt from Salt Ore blocks",
-  "advancements.hexalia.purifying_salts.title": "I am Lactose Intolerant",
+  "advancements.hexalia.purifying_salts.title": "Lactose Intolerant",
   "advancements.hexalia.purifying_salts.description": "Craft an item to remove all effects",
   "advancements.hexalia.stone_dagger.title": "Sticky Situation",
-  "advancements.hexalia.stone_dagger.description": "Craft an item to gather resin from Dark Oak Trees"
+  "advancements.hexalia.stone_dagger.description": "Craft an item to gather resin from Dark Oak Trees",
+  "advancements.hexalia.ritual_table.title": "Witching Hour",
+  "advancements.hexalia.ritual_table.description": "Obtain the Pedestal Table, used to perform rituals",
+  "advancements.hexalia.hex_focus.title": "Little Witch, Little Steps.",
+  "advancements.hexalia.hex_focus.description": "Obtain a Hex Focus, a handy tool."
 }

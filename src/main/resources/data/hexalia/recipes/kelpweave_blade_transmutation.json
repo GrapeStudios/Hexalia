@@ -1,0 +1,24 @@
+{
+  "type": "hexalia:transmutation",
+  "input": {
+    "item": "hexalia:ancient_seed"
+  },
+  "salt_items": [
+    {
+      "item": "hexalia:resin"
+    },
+    {
+      "item": "hexalia:siren_kelp"
+    },
+    {
+      "item": "minecraft:iron_sword"
+    },
+    {
+      "item": "minecraft:string"
+    }
+  ],
+  "output": {
+    "item": "hexalia:kelpweave_blade",
+    "count": 1
+  }
+}

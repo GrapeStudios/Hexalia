@@ -89,6 +89,26 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(Items.COBBLED_DEEPSLATE), conditionsFromItem(Items.COBBLED_DEEPSLATE))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.RITUAL_TABLE) + "_"));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.HEX_FOCUS)
+                .pattern("  S")
+                .pattern(" P ")
+                .pattern("T  ")
+                .input('S', Items.AMETHYST_SHARD)
+                .input('P', ItemTags.LEAVES)
+                .input('T', Items.STICK)
+                .criterion(hasItem(Items.AMETHYST_SHARD), conditionsFromItem(Items.AMETHYST_SHARD))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.HEX_FOCUS) + "_"));
+
+        // Recipes for vanilla items or blocks.
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.LEATHER)
+                .pattern(" S ")
+                .pattern("STS")
+                .pattern(" S ")
+                .input('S', ModItems.SALT)
+                .input('T', Items.ROTTEN_FLESH)
+                .criterion(hasItem(ModItems.SALT), conditionsFromItem(ModItems.SALT))
+                .offerTo(exporter, new Identifier(getRecipeName(Items.LEATHER) + "_"));
 
         // Reversible Compacting Recipes for Blocks
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.SALT,
