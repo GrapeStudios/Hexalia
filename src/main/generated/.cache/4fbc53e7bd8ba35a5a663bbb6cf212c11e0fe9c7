@@ -1,4 +1,4 @@
-// 1.20.1	2024-05-30T10:09:25.0837787	Hexalia/Model Definitions
+// 1.20.1	2024-06-05T23:03:49.1105005	Hexalia/Model Definitions
 7f08f13d7427f7379f7f67a2df1da92a31aea2d0 assets\hexalia\models\item\salt_block.json
 44b770c6b2620f3ebaadb8ceb43b46185336916e assets\hexalia\models\block\sunfire_tomato_crop_stage3.json
 61528b15831a64cf27a55765a5308f8e38c462cd assets\hexalia\blockstates\dreamshroom.json
@@ -9,8 +9,8 @@ de057857ab724f3bce80348fd0c44f32822c1890 assets\hexalia\models\block\sunfire_tom
 9dafdb3fd87336955ab251b2d4a313c2b0fda78c assets\hexalia\models\item\mandrake.json
 7397384fe6d03cae97e29b2090133a1fe5cec963 assets\hexalia\models\item\chillberry_pie.json
 393d26eda14490491076ff7229e470a190e4e2d9 assets\hexalia\models\block\salt_block.json
-d23eec8d8e6a6d81a9e28310aebe1761faaab99e assets\hexalia\blockstates\feral_mandrake.json
 cc2751c1635c6a0924662efc740065e000fe6400 assets\hexalia\blockstates\sunfire_tomato_crop.json
+d23eec8d8e6a6d81a9e28310aebe1761faaab99e assets\hexalia\blockstates\feral_mandrake.json
 f78eebd5e0ccffa74122a1686696dfe32e6070b1 assets\hexalia\models\item\sunfire_tomato_seeds.json
 d274cf8b3c74eaac0cc381b50990ccb7f2d4c155 assets\hexalia\models\block\potted_spirit_bloom.json
 e8d85f5e60be5f3597586011084e1af232434997 assets\hexalia\models\item\siren_kelp_paste.json
@@ -18,6 +18,7 @@ e8d85f5e60be5f3597586011084e1af232434997 assets\hexalia\models\item\siren_kelp_p
 4729ffe0a388569340791097ef462c4595e3be26 assets\hexalia\models\item\feral_sunfire_tomato.json
 8fc7a0aa405443f2456962cbb7753edf873e3e3c assets\hexalia\models\item\mandrake_seeds.json
 35912a9a72e9cc261d4fe5be6d1fe7da2592bc6f assets\hexalia\models\item\salt_ore.json
+7a6fc76876f085935b42624638c791434ff71630 assets\hexalia\models\item\hex_focus.json
 2cd881f07488f5fecc15019af23a5b7cf30448ea assets\hexalia\models\block\mandrake_crop_stage3.json
 504c3675d305c801071b2a16645acc9d704633ff assets\hexalia\models\block\sunfire_tomato_crop_stage1.json
 15249bcc7b4d170a3f881d5072d7c1103423d8ed assets\hexalia\models\item\ancient_seed.json
@@ -48,7 +49,7 @@ b7287e64568f938d64453d7f916a278a05adad98 assets\hexalia\blockstates\spirit_bloom
 f1f5a55bb68ede5294a77493547dd5573a8b935c assets\hexalia\models\block\mandrake_crop_stage2.json
 d5e01551c2808f9f1a88831b2387db48ea665d56 assets\hexalia\blockstates\salt_block.json
 0587d714a9028dab9cf4c8391a083dfa883b80a7 assets\hexalia\models\block\feral_mandrake.json
-821a2ac4b14a011097350a83d29566e06bc8ebb1 assets\hexalia\models\item\spicy_sandwich.json
 e95a13b2856bc8663796a74400055435b7b2a936 assets\hexalia\models\item\brew_of_homestead.json
+821a2ac4b14a011097350a83d29566e06bc8ebb1 assets\hexalia\models\item\spicy_sandwich.json
 330c9e79319a109913256098b51e09602550b87c assets\hexalia\models\item\feral_mandrake.json
 aad6deef60e8d355645d734acdad1bb69c42c45a assets\hexalia\blockstates\mandrake_crop.json

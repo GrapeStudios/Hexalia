@@ -3,7 +3,7 @@
   "textures": {
     "top": "hexalia:block/brew_shelf_top",
     "side": "hexalia:block/brew_shelf_side",
-    "front": "hexalia:block/brew_shelf_empty",
+    "front": "hexalia:block/brew_shelf_front",
     "particle": "#top"
   },
   "elements": [
