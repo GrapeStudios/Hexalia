@@ -1,4 +1,4 @@
-package net.grapes.hexalia.particle;
+package net.grapes.hexalia.particle.custom;
 
 import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
@@ -44,7 +44,7 @@ public class BubbleParticle extends SpriteBillboardParticle {
         }
         public Particle createParticle(DefaultParticleType particleType, ClientWorld clientWorld, double x, double y,
                                        double z, double xd, double yd, double zd){
-            return new BubbleParticle(clientWorld, x, y, z, this.sprites, xd, yd, zd);
+            return new TransmutationParticle(clientWorld, x, y, z, this.sprites, xd, yd, zd);
         }
     }
 }

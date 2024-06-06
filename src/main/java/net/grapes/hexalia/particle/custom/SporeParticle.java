@@ -1,4 +1,4 @@
-package net.grapes.hexalia.particle;
+package net.grapes.hexalia.particle.custom;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
