@@ -87,7 +87,7 @@ public class InfusedFarmland extends Block {
             double x = pos.getX() + 0.5 + random.nextDouble(-PARTICLE_OFFSET, PARTICLE_OFFSET);
             double y = pos.getY() + 1.0;
             double z = pos.getZ() + 0.5 + random.nextDouble(-PARTICLE_OFFSET, PARTICLE_OFFSET);
-            world.addParticle(ModParticles.BUBBLE_PARTICLE, x, y, z, 0.0D, 0.05D, 0.0D);
+            world.addParticle(ModParticles.INFUSED_BUBBLE_PARTICLE, x, y, z, 0.0D, 0.05D, 0.0D);
         }
     }
 }

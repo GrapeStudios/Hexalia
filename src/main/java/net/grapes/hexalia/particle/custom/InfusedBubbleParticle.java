@@ -4,9 +4,9 @@ import net.minecraft.client.particle.*;
 import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
 
-public class BubbleParticle extends SpriteBillboardParticle {
-    public BubbleParticle(ClientWorld world, double xCoord, double yCoord, double zCoord,
-                          SpriteProvider spriteSet, double xd, double yd, double zd) {
+public class InfusedBubbleParticle extends SpriteBillboardParticle {
+    public InfusedBubbleParticle(ClientWorld world, double xCoord, double yCoord, double zCoord,
+                                 SpriteProvider spriteSet, double xd, double yd, double zd) {
         super(world, xCoord, yCoord, zCoord, xd, yd, zd);
 
         this.velocityMultiplier = 0.1f;
@@ -44,7 +44,7 @@ public class BubbleParticle extends SpriteBillboardParticle {
         }
         public Particle createParticle(DefaultParticleType particleType, ClientWorld clientWorld, double x, double y,
                                        double z, double xd, double yd, double zd){
-            return new TransmutationParticle(clientWorld, x, y, z, this.sprites, xd, yd, zd);
+            return new InfusedBubbleParticle(clientWorld, x, y, z, this.sprites, xd, yd, zd);
         }
     }
 }
