@@ -9,9 +9,7 @@ import net.minecraft.util.Identifier;
 
 public class ModParticles {
     public static final DefaultParticleType SPORE_PARTICLE = registerParticle("spore_particle", FabricParticleTypes.simple());
-    public static final DefaultParticleType BUBBLE_PARTICLE = registerParticle("bubble_particle", FabricParticleTypes.simple());
-    public static final DefaultParticleType TRANSMUTATION_PARTICLE = registerParticle("transmutation_particle", FabricParticleTypes.simple());
-
+    public static final DefaultParticleType INFUSED_BUBBLE_PARTICLE = registerParticle("infused_bubble_particle", FabricParticleTypes.simple());
 
     private static DefaultParticleType registerParticle(String name, DefaultParticleType particleType) {
         return Registry.register(Registries.PARTICLE_TYPE, new Identifier(HexaliaMod.MOD_ID, name), particleType);
