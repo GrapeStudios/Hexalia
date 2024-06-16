@@ -31,7 +31,8 @@ public class HexaliaModClient implements ClientModInitializer {
                 ModBlocks.SUNFIRE_TOMATO_CROP,
                 ModBlocks.FERAL_MANDRAKE,
                 ModBlocks.FERAL_SUNFIRE_TOMATO,
-                ModBlocks.SALT);
+                ModBlocks.SALT,
+                ModBlocks.RABBAGE_CROP);
 
         BlockEntityRendererFactories.register(ModBlockEntities.RITUAL_TABLE_BE, RitualTableBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.SALT_BE, SaltBlockEntityRenderer::new);

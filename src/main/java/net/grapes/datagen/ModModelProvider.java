@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.block.custom.MandrakeCropBlock;
+import net.grapes.hexalia.block.custom.RabbageCropBlock;
 import net.grapes.hexalia.block.custom.SunfireTomatoCropBlock;
 import net.grapes.hexalia.item.ModItems;
 import net.minecraft.data.client.BlockStateModelGenerator;
@@ -31,6 +32,8 @@ public class ModModelProvider extends FabricModelProvider {
                 BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerTintableCross(ModBlocks.FERAL_MANDRAKE,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerCrop(ModBlocks.RABBAGE_CROP,
+                RabbageCropBlock.AGE, 0, 1, 2, 3);
     }
 
     @Override
@@ -55,5 +58,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.RESIN, Models.GENERATED);
         itemModelGenerator.register(ModItems.ANCIENT_SEED, Models.GENERATED);
         itemModelGenerator.register(ModItems.HEX_FOCUS, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.RABBAGE, Models.HANDHELD);
     }
 }

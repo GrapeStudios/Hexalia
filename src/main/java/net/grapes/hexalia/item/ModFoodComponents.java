@@ -21,4 +21,7 @@ public class ModFoodComponents {
             .statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 200), 1f).build();
     public static final FoodComponent SPICY_SANDWICH = new FoodComponent.Builder().hunger(6).saturationModifier(0.6f)
             .statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 900, 1), 1f).build();
+
+    public static final FoodComponent RABBAGE = new FoodComponent.Builder().hunger(4).saturationModifier(0.3f)
+            .build();
 }

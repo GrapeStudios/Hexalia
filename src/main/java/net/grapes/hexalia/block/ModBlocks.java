@@ -44,6 +44,8 @@ public class ModBlocks {
             new FeralSunfireTomato(FabricBlockSettings.copyOf(Blocks.CORNFLOWER).luminance(state -> 12).nonOpaque()));
     public static final Block CHILLBERRY_BUSH = registerBlockWithoutBlockItem("chillberry_bush",
             new ChillberryBushBlock(FabricBlockSettings.copyOf(Blocks.SWEET_BERRY_BUSH)));
+    public static final Block RABBAGE_CROP = registerBlockWithoutBlockItem("rabbage_crop",
+            new RabbageCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
 
 
     // Blocks related to ore and minerals

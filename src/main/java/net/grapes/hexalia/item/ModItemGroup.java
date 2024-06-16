@@ -63,6 +63,8 @@ public class ModItemGroup {
                         entries.add(ModBlocks.BREW_SHELF);
 
                         entries.add(ModItems.HEX_FOCUS);
+
+                        entries.add(ModItems.RABBAGE_SEEDS);
                     }).build());
     public static void registerItemGroups(){
     }
