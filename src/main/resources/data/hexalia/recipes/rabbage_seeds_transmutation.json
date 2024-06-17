@@ -5,13 +5,13 @@
   },
   "salt_items": [
     {
-      "item": "minecraft:iron_ingot"
+      "item": "hexalia:resin"
     },
     {
       "item": "hexalia:spirit_bloom_powder"
     },
     {
-      "item": "hexalia:dreamshroom_paste"
+      "item": "hexalia:mandrake"
     },
     {
       "item": "minecraft:beetroot"
