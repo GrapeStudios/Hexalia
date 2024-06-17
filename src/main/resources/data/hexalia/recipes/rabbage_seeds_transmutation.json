@@ -1,0 +1,24 @@
+{
+  "type": "hexalia:transmutation",
+  "input": {
+    "item": "minecraft:wheat_seeds"
+  },
+  "salt_items": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "hexalia:spirit_bloom_powder"
+    },
+    {
+      "item": "hexalia:dreamshroom_paste"
+    },
+    {
+      "item": "minecraft:beetroot"
+    }
+  ],
+  "output": {
+    "item": "hexalia:rabbage_seeds",
+    "count": 1
+  }
+}
