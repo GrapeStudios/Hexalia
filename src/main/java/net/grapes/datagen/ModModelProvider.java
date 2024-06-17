@@ -59,5 +59,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ANCIENT_SEED, Models.GENERATED);
         itemModelGenerator.register(ModItems.HEX_FOCUS, Models.HANDHELD);
         itemModelGenerator.register(ModItems.RABBAGE, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.BREW_OF_SIPHONING, Models.HANDHELD);
     }
 }
