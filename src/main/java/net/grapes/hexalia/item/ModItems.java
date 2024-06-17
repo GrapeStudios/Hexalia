@@ -4,10 +4,7 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.item.custom.*;
-import net.grapes.hexalia.item.custom.brews.HomesteadBrewItem;
-import net.grapes.hexalia.item.custom.brews.SlimeyStepBrewItem;
-import net.grapes.hexalia.item.custom.brews.VigorBrewItem;
-import net.grapes.hexalia.item.custom.brews.WardingBrewItem;
+import net.grapes.hexalia.item.custom.brews.*;
 import net.grapes.hexalia.util.ModToolMaterials;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
@@ -67,6 +64,8 @@ public class ModItems {
             new SlimeyStepBrewItem(new FabricItemSettings().recipeRemainder(ModItems.RUSTIC_BOTTLE).maxCount(16)));
     public static final Item BREW_OF_HOMESTEAD = registerItem("brew_of_homestead",
             new HomesteadBrewItem(new FabricItemSettings().recipeRemainder(ModItems.RUSTIC_BOTTLE).maxCount(16)));
+    public static final Item BREW_OF_SIPHONING = registerItem("brew_of_siphoning",
+            new SiphoningBrewItem(new FabricItemSettings().recipeRemainder(ModItems.RUSTIC_BOTTLE).maxCount(16)));
 
     // Tools & Others
     public static final Item MORTAR_AND_PESTLE = registerItem("mortar_and_pestle",

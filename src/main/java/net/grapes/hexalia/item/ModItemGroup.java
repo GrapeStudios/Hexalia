@@ -55,6 +55,7 @@ public class ModItemGroup {
                         entries.add(ModItems.BREW_OF_VIGOR);
                         entries.add(ModItems.BREW_OF_SLIMEY_STEP);
                         entries.add(ModItems.BREW_OF_HOMESTEAD);
+                        entries.add(ModItems.BREW_OF_SIPHONING);
 
                         entries.add(ModItems.ANCIENT_SEED);
                         entries.add(ModItems.KELPWEAVE_BLADE);
@@ -65,6 +66,7 @@ public class ModItemGroup {
                         entries.add(ModItems.HEX_FOCUS);
 
                         entries.add(ModItems.RABBAGE_SEEDS);
+                        entries.add(ModItems.RABBAGE);
                     }).build());
     public static void registerItemGroups(){
     }
