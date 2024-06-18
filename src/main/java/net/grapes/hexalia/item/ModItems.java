@@ -81,6 +81,13 @@ public class ModItems {
     public static final Item HEX_FOCUS = registerItem("hex_focus",
             new Item(new FabricItemSettings()));
 
+    // Decorations
+    public static final Item PARCHMENT = registerItem("parchment",
+            new BlockItem(ModBlocks.PARCHMENT, new FabricItemSettings()));
+    public static final Item DREAMCATCHER = registerItem("dreamcatcher",
+            new BlockItem(ModBlocks.DREAMCATCHER, new FabricItemSettings()));
+
+
     // Weapons & Armor
     public static final Item KELPWEAVE_BLADE = registerItem("kelpweave_blade",
             new KelpweaveBladeItem(ModToolMaterials.ANCIENT_SEED, 3, -2f, new FabricItemSettings()));

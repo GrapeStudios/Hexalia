@@ -34,6 +34,8 @@ public class ModModelProvider extends FabricModelProvider {
                 BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerCrop(ModBlocks.RABBAGE_CROP,
                 RabbageCropBlock.AGE, 0, 1, 2, 3);
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.HENSBANE, ModBlocks.POTTED_HENSBANE,
+                BlockStateModelGenerator.TintType.NOT_TINTED);
     }
 
     @Override
@@ -59,6 +61,8 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.ANCIENT_SEED, Models.GENERATED);
         itemModelGenerator.register(ModItems.HEX_FOCUS, Models.HANDHELD);
         itemModelGenerator.register(ModItems.RABBAGE, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.BREW_OF_SIPHONING, Models.HANDHELD);
+        itemModelGenerator.register(ModItems.BREW_OF_SIPHONING, Models.GENERATED);
+        itemModelGenerator.register(ModItems.PARCHMENT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.DREAMCATCHER, Models.GENERATED);
     }
 }

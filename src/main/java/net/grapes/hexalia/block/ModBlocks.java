@@ -47,6 +47,11 @@ public class ModBlocks {
     public static final Block RABBAGE_CROP = registerBlockWithoutBlockItem("rabbage_crop",
             new RabbageCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
 
+    public static final Block HENSBANE = registerBlock("hensbane",
+            new FlowerBlock(StatusEffects.LEVITATION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
+    public static final Block POTTED_HENSBANE = registerBlockWithoutBlockItem("potted_hensbane",
+            new FlowerPotBlock(HENSBANE, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
+
 
     // Blocks related to ore and minerals
     public static final Block SALT_ORE = registerBlock("salt_ore",
@@ -69,6 +74,14 @@ public class ModBlocks {
             new RitualTableBlock(FabricBlockSettings.copyOf(Blocks.STONE).nonOpaque()));
     public static final Block BREW_SHELF = registerBlock("brew_shelf",
             new BrewShelfBlock(FabricBlockSettings.copyOf(Blocks.CHISELED_BOOKSHELF).nonOpaque()));
+
+
+    // Decorative Blocks
+    public static final Block PARCHMENT = registerBlockWithoutBlockItem("parchment",
+            new ParchmentBlock(FabricBlockSettings.copyOf(Blocks.GLOW_LICHEN).nonOpaque()));
+    public static final Block DREAMCATCHER = registerBlockWithoutBlockItem("dreamcatcher",
+            new DreamcatcherBlock(FabricBlockSettings.copyOf(Blocks.GLOW_LICHEN).nonOpaque()));
+
 
     // Registries
     public static void registerBlockProperties() {

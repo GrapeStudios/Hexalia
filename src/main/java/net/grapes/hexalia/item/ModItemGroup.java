@@ -67,6 +67,12 @@ public class ModItemGroup {
 
                         entries.add(ModItems.RABBAGE_SEEDS);
                         entries.add(ModItems.RABBAGE);
+
+                        entries.add(ModItems.PARCHMENT);
+                        entries.add(ModItems.DREAMCATCHER);
+
+                        entries.add(ModBlocks.HENSBANE);
+
                     }).build());
     public static void registerItemGroups(){
     }

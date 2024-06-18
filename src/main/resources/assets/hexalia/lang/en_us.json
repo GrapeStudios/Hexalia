@@ -63,6 +63,14 @@
 
   "block.hexalia.brew_shelf": "Brew Shelf",
 
+  "block.hexalia.parchment": "Parchment",
+  "item.hexalia.parchment": "Parchment",
+
+  "block.hexalia.dreamcatcher": "Dreamcatcher",
+  "item.hexalia.dreamcatcher": "Dreamcatcher",
+
+  "block.hexalia.hensbane": "Hensbane",
+
   "sounds.hexalia.mandrake_scream": "Mandrake Screams",
   "sounds.hexalia.ritual_completed": "Ritual Completed",
 
