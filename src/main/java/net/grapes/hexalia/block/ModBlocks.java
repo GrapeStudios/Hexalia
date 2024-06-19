@@ -90,6 +90,10 @@ public class ModBlocks {
         instance.add(ModBlocks.DREAMSHROOM, 100, 60);
         instance.add(ModBlocks.CHILLBERRY_BUSH, 100, 60);
         instance.add(ModBlocks.FERAL_MANDRAKE, 100, 60);
+        instance.add(ModBlocks.HENSBANE, 100, 60);
+        instance.add(ModBlocks.PARCHMENT, 100, 60);
+        instance.add(ModBlocks.DREAMCATCHER, 100, 60);
+        instance.add(ModBlocks.SALT, 100, 60);
     }
 
     // Methods
