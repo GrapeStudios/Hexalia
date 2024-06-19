@@ -73,10 +73,10 @@ public class ModBlocks {
 
     // Decorative Blocks
     public static final Block PARCHMENT = registerBlockWithoutBlockItem("parchment",
-            new ParchmentBlock(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN).solid().instrument(Instrument.BASS)
+            new ParchmentBlock(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN).instrument(Instrument.BASS)
                     .noCollision().strength(1.0f)));
     public static final Block DREAMCATCHER = registerBlockWithoutBlockItem("dreamcatcher",
-            new DreamcatcherBlock(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN).solid().instrument(Instrument.BASS)
+            new DreamcatcherBlock(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN).instrument(Instrument.BASS)
                     .noCollision().strength(1.0f)));
 
     // Registries
