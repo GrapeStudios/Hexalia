@@ -17,7 +17,7 @@ import net.minecraft.util.Identifier;
 
 public class ModBlocks {
 
-    // Blocks related to herbology
+    // Natural Blocks
     public static final Block SPIRIT_BLOOM = registerBlock("spirit_bloom",
             new FlowerBlock(StatusEffects.LEVITATION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
     public static final Block POTTED_SPIRIT_BLOOM = registerBlockWithoutBlockItem("potted_spirit_bloom",
@@ -28,12 +28,10 @@ public class ModBlocks {
             new FlowerPotBlock(DREAMSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM).luminance(4)));
     public static final Block SIREN_KELP = registerBlockWithoutBlockItem("siren_kelp",
             new SirenKelpBlock(FabricBlockSettings.copyOf(Blocks.SEAGRASS)));
-
     public static final Block INFUSED_DIRT = registerBlock("infused_dirt",
             new InfusedDirt(FabricBlockSettings.copyOf(Blocks.DIRT).sounds(BlockSoundGroup.MUD)));
     public static final Block INFUSED_FARMLAND = registerBlock("infused_farmland",
             new InfusedFarmland(FabricBlockSettings.copyOf(Blocks.FARMLAND).sounds(BlockSoundGroup.MUD)));
-
     public static final Block MANDRAKE_CROP = registerBlockWithoutBlockItem("mandrake_crop",
             new MandrakeCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
     public static final Block FERAL_MANDRAKE = registerBlock("feral_mandrake",
@@ -46,14 +44,12 @@ public class ModBlocks {
             new ChillberryBushBlock(FabricBlockSettings.copyOf(Blocks.SWEET_BERRY_BUSH)));
     public static final Block RABBAGE_CROP = registerBlockWithoutBlockItem("rabbage_crop",
             new RabbageCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
-
     public static final Block HENSBANE = registerBlock("hensbane",
-            new FlowerBlock(StatusEffects.LEVITATION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
+            new FlowerBlock(StatusEffects.POISON, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
     public static final Block POTTED_HENSBANE = registerBlockWithoutBlockItem("potted_hensbane",
             new FlowerPotBlock(HENSBANE, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
 
-
-    // Blocks related to ore and minerals
+    // Mineral-Related Blocks
     public static final Block SALT_ORE = registerBlock("salt_ore",
             new Block(FabricBlockSettings.copyOf(Blocks.COAL_ORE)));
     public static final Block SALT_BLOCK = registerBlock("salt_block",
@@ -75,7 +71,6 @@ public class ModBlocks {
     public static final Block BREW_SHELF = registerBlock("brew_shelf",
             new BrewShelfBlock(FabricBlockSettings.copyOf(Blocks.CHISELED_BOOKSHELF).nonOpaque()));
 
-
     // Decorative Blocks
     public static final Block PARCHMENT = registerBlockWithoutBlockItem("parchment",
             new ParchmentBlock(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN).solid().instrument(Instrument.BASS)
@@ -83,7 +78,6 @@ public class ModBlocks {
     public static final Block DREAMCATCHER = registerBlockWithoutBlockItem("dreamcatcher",
             new DreamcatcherBlock(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN).solid().instrument(Instrument.BASS)
                     .noCollision().strength(1.0f)));
-
 
     // Registries
     public static void registerBlockProperties() {
