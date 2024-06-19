@@ -27,7 +27,10 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
 
         addDrop(ModBlocks.RITUAL_TABLE, drops(ModItems.RITUAL_TABLE));
         addDrop(ModBlocks.SALT);
-        
+
+        addDrop(ModBlocks.DREAMCATCHER);
+        addDrop(ModBlocks.PARCHMENT);
+
         addDrop(ModBlocks.BREW_SHELF);
 
         addDrop(ModBlocks.FERAL_SUNFIRE_TOMATO);
