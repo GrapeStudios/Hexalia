@@ -4,7 +4,6 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.block.custom.MandrakeCropBlock;
-import net.grapes.hexalia.block.custom.RabbageCropBlock;
 import net.grapes.hexalia.block.custom.SunfireTomatoCropBlock;
 import net.grapes.hexalia.item.ModItems;
 import net.minecraft.data.client.BlockStateModelGenerator;
