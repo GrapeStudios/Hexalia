@@ -78,6 +78,9 @@ public class ModBlocks {
     public static final Block DREAMCATCHER = registerBlockWithoutBlockItem("dreamcatcher",
             new DreamcatcherBlock(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN).instrument(Instrument.BASS)
                     .noCollision().strength(1.0f)));
+    public static final Block CANDLE_SKULL = registerBlock("candle_skull",
+            new Block(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN).instrument(Instrument.BASS)
+                    .noCollision().strength(1.0f)));
 
     // Registries
     public static void registerBlockProperties() {

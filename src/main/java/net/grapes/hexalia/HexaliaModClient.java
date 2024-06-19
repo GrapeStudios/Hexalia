@@ -36,7 +36,8 @@ public class HexaliaModClient implements ClientModInitializer {
                 ModBlocks.PARCHMENT,
                 ModBlocks.DREAMCATCHER,
                 ModBlocks.POTTED_HENSBANE,
-                ModBlocks.HENSBANE);
+                ModBlocks.HENSBANE,
+                ModBlocks.CANDLE_SKULL);
 
         BlockEntityRendererFactories.register(ModBlockEntities.RITUAL_TABLE_BE, RitualTableBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.SALT_BE, SaltBlockEntityRenderer::new);

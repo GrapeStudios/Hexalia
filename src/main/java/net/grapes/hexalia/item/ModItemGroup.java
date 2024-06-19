@@ -72,6 +72,8 @@ public class ModItemGroup {
                         entries.add(ModItems.PARCHMENT);
                         entries.add(ModItems.DREAMCATCHER);
 
+                        entries.add(ModBlocks.CANDLE_SKULL);
+
 
 
                     }).build());
