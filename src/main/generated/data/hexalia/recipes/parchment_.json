@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "hexalia:spirit_bloom"
+    },
+    "P": {
+      "item": "minecraft:paper"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " S ",
+    " P ",
+    " A "
+  ],
+  "result": {
+    "item": "hexalia:parchment"
+  },
+  "show_notification": true
+}

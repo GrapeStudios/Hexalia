@@ -1,4 +1,4 @@
-// 1.20.1	2024-06-19T19:24:28.4577269	Hexalia/Model Definitions
+// 1.20.1	2024-06-19T19:28:50.3861691	Hexalia/Model Definitions
 b7287e64568f938d64453d7f916a278a05adad98 assets\hexalia\blockstates\spirit_bloom.json
 965a29ca92bd90f62cb9f58a362560ad366374b2 assets\hexalia\models\block\feral_sunfire_tomato.json
 490b7aeb083255e67456ac137625bb88e5d9374e assets\hexalia\models\block\salt_ore.json
@@ -18,8 +18,8 @@ b83b6da3d1874a1fc01e1ab237d78b97bb9332a4 assets\hexalia\models\block\hensbane.js
 71f146c3cd8f89ff28b07811c12186ab801fb851 assets\hexalia\models\item\mandrake_stew.json
 cc2751c1635c6a0924662efc740065e000fe6400 assets\hexalia\blockstates\sunfire_tomato_crop.json
 e09fce7524d1a0586c10228035dbdc0e66496db1 assets\hexalia\models\item\salt.json
-46e4c652a7668fe069a74827c7f94dfba4cdbbcc assets\hexalia\models\item\brew_of_siphoning.json
 de057857ab724f3bce80348fd0c44f32822c1890 assets\hexalia\models\block\sunfire_tomato_crop_stage2.json
+46e4c652a7668fe069a74827c7f94dfba4cdbbcc assets\hexalia\models\item\brew_of_siphoning.json
 3ad946a12b7b00da286db346f54508c700df29a9 assets\hexalia\models\item\spirit_bloom_powder.json
 38df471576d5a991d96e6176949bdaa48230253a assets\hexalia\models\item\hensbane.json
 61528b15831a64cf27a55765a5308f8e38c462cd assets\hexalia\blockstates\dreamshroom.json

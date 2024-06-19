@@ -46,6 +46,16 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.DREAMCATCHER) + "_"));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.PARCHMENT)
+                .pattern(" S ")
+                .pattern(" P ")
+                .pattern(" A ")
+                .input('S', Items.STICK)
+                .input('P', Items.PAPER)
+                .input('A', ModBlocks.SPIRIT_BLOOM)
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.PARCHMENT) + "_"));
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.SALT_LAMP)
                 .pattern(" A ")
                 .pattern(" P ")
