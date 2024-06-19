@@ -18,6 +18,7 @@ public class ModItemGroup {
                         entries.add(ModBlocks.SPIRIT_BLOOM);
                         entries.add(ModBlocks.DREAMSHROOM);
                         entries.add(ModItems.SIREN_KELP);
+                        entries.add(ModBlocks.HENSBANE);
 
                         entries.add(ModBlocks.INFUSED_DIRT);
                         entries.add(ModBlocks.INFUSED_FARMLAND);
@@ -32,6 +33,9 @@ public class ModItemGroup {
                         entries.add(ModItems.SUNFIRE_TOMATO_SEEDS);
                         entries.add(ModItems.SUNFIRE_TOMATO);
                         entries.add(ModItems.SPICY_SANDWICH);
+
+                        entries.add(ModItems.RABBAGE_SEEDS);
+                        entries.add(ModItems.RABBAGE);
 
                         entries.add(ModBlocks.SALT_ORE);
                         entries.add(ModBlocks.SALT_BLOCK);
@@ -50,6 +54,7 @@ public class ModItemGroup {
                         entries.add(ModBlocks.RUSTIC_OVEN);
                         entries.add(ModItems.SMALL_CAULDRON);
 
+                        entries.add(ModBlocks.BREW_SHELF);
                         entries.add(ModItems.RUSTIC_BOTTLE);
                         entries.add(ModItems.BREW_OF_WARDING);
                         entries.add(ModItems.BREW_OF_VIGOR);
@@ -61,17 +66,13 @@ public class ModItemGroup {
                         entries.add(ModItems.KELPWEAVE_BLADE);
 
                         entries.add(ModItems.RITUAL_TABLE);
-                        entries.add(ModBlocks.BREW_SHELF);
 
                         entries.add(ModItems.HEX_FOCUS);
-
-                        entries.add(ModItems.RABBAGE_SEEDS);
-                        entries.add(ModItems.RABBAGE);
 
                         entries.add(ModItems.PARCHMENT);
                         entries.add(ModItems.DREAMCATCHER);
 
-                        entries.add(ModBlocks.HENSBANE);
+
 
                     }).build());
     public static void registerItemGroups(){

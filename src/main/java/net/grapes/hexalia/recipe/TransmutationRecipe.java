@@ -99,11 +99,7 @@ public class TransmutationRecipe implements Recipe<RitualTableBlockEntity> {
             for (JsonElement element : saltItemsJson) {
                 ItemStack saltItem = new ItemStack(JsonHelper.getItem(element.getAsJsonObject(), "item"));
                 saltItems.add(saltItem);
-                // Add debug print statements to verify correct parsing
-                System.out.println("Parsed salt item: " + saltItem.getItem().getName().getString());
             }
-            System.out.println("Parsed input item: " + input.getItem().getName().getString());
-            System.out.println("Parsed output item: " + output.getItem().getName().getString());
             return new TransmutationRecipe(id, input, output, saltItems);
         }
 
