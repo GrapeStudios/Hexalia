@@ -21,6 +21,7 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> SIREN_KELP_PLACED_KEY = registerKey("siren_kelp_placed");
     public static final RegistryKey<PlacedFeature> FERAL_SUNFIRE_TOMATO_PLACED_KEY = registerKey("feral_sunfire_tomato_placed");
     public static final RegistryKey<PlacedFeature> FERAL_MANDRAKE_KEY = registerKey("feral_mandrake_placed");
+    public static final RegistryKey<PlacedFeature> HENSBANE_KEY = registerKey("hensbane_placed");
 
     public static void bootstrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -45,6 +46,9 @@ public class ModPlacedFeatures {
                 CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP, BiomePlacementModifier.of());
 
         register(context, FERAL_MANDRAKE_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.FERAL_MANDRAKE_KEY),
+                RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
+
+        register(context, HENSBANE_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.HENSBANE_KEY),
                 RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
     }
 

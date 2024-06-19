@@ -1,6 +1,6 @@
-// 1.20.1	2024-06-19T19:28:50.3980705	Hexalia/Tags for minecraft:block
+// 1.20.1	2024-06-19T19:36:54.0903569	Hexalia/Tags for minecraft:block
 2d10bd6e6f21fe816170859887e603f741ebd1a7 data\minecraft\tags\blocks\needs_iron_tool.json
 d6c622e2df5987ddc6ef63095a27651f01638f6e data\minecraft\tags\blocks\mineable\pickaxe.json
-ac3833431329c5258019cf302ca005068dda33a7 data\minecraft\tags\blocks\needs_stone_tool.json
 35d650e4ac91a41050a9412d0ef246825464a1f6 data\minecraft\tags\blocks\mineable\axe.json
+ac3833431329c5258019cf302ca005068dda33a7 data\minecraft\tags\blocks\needs_stone_tool.json
 b6d1687957b6f83416a76a1059b0ad7df83b0dae data\hexalia\tags\blocks\heating_block.json
