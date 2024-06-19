@@ -57,7 +57,6 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.PARCHMENT) + "_"));
 
 
-
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.SALT_LAMP)
                 .pattern(" A ")
                 .pattern(" P ")
@@ -203,6 +202,12 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input(Items.LEATHER)
                 .input(ModTags.Items.CRUSHED_PLANTS)
                 .criterion(hasItem(ModItems.SALT), conditionsFromItem(ModItems.SALT))
+                .offerTo(exporter);
+
+        // Shapeless for Decoration
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.YELLOW_DYE)
+                .input(ModBlocks.HENSBANE)
+                .criterion(hasItem(ModBlocks.HENSBANE), conditionsFromItem(ModBlocks.HENSBANE))
                 .offerTo(exporter);
     }
 }
