@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "hexalia:block/parchment",
-		"particle": "hexalia:block/parchment"
+		"particle": "minecraft:item/stick"
 	},
 	"elements": [
 		{
