@@ -83,6 +83,7 @@ public class ModBlocks {
     public static void registerBlockProperties() {
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.SPIRIT_BLOOM, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.DREAMSHROOM, 0.5F);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.HENSBANE, 0.5F);
 
         FlammableBlockRegistry instance = FlammableBlockRegistry.getDefaultInstance();
         instance.add(ModBlocks.SPIRIT_BLOOM, 100, 60);
