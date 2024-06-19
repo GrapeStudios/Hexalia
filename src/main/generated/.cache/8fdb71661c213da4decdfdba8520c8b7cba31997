@@ -1,4 +1,4 @@
-// 1.20.1	2024-06-19T09:05:58.0308199	Hexalia/Recipes
+// 1.20.1	2024-06-19T11:22:04.1840139	Hexalia/Recipes
 82b40fd0f7dd4de905f094da178650fbe4ad3cbc data\hexalia\advancements\recipes\misc\dreamshroom_paste.json
 6db50d7da63650bc8bbf31eade7984d8db1616e8 data\hexalia\advancements\recipes\misc\stone_dagger_.json
 80ec38b79e4d5690ac82999cbeb7a45470be3934 data\hexalia\recipes\stone_dagger_.json
@@ -27,8 +27,8 @@ e275d3f7d8a2b6a74544bf8dbbb612df1c572d28 data\hexalia\recipes\rustic_oven_.json
 7b11a7b38e33dcca4596c2d9f421dbebadeb8720 data\hexalia\recipes\small_cauldron_.json
 cfcfc96c292ce67ccf39474714bd5b8bae240dbe data\hexalia\advancements\recipes\misc\small_cauldron_.json
 2988db002d0f47febe3deffb2c86b0b5ee3eb337 data\hexalia\recipes\dreamshroom_paste.json
-041aadce781eb69facea26949c7e169e8ecf191c data\hexalia\advancements\recipes\misc\ritual_table_.json
 a201da235821e7b866bbfbd0be5bbc52e8f7741b data\hexalia\recipes\brew_shelf_.json
+041aadce781eb69facea26949c7e169e8ecf191c data\hexalia\advancements\recipes\misc\ritual_table_.json
 951190da8c4b0f8e90b389a6990043d8eb51df0b data\hexalia\advancements\recipes\misc\salt_lamp_.json
 29686a92dadc9011034bc993676c738a897ca639 data\hexalia\advancements\recipes\misc\rustic_oven_.json
 6bc8f75578181cad82fbf03eddc0dc53aefe0e6c data\hexalia\recipes\leather_.json
