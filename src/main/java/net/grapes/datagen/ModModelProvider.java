@@ -32,8 +32,6 @@ public class ModModelProvider extends FabricModelProvider {
                 BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerTintableCross(ModBlocks.FERAL_MANDRAKE,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
-        blockStateModelGenerator.registerCrop(ModBlocks.RABBAGE_CROP,
-                RabbageCropBlock.AGE, 0, 1, 2, 3);
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.HENSBANE, ModBlocks.POTTED_HENSBANE,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
     }

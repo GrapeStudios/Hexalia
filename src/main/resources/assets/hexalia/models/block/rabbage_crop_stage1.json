@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "hexalia:block/rabbage_crop_stage1"
+  }
+}
