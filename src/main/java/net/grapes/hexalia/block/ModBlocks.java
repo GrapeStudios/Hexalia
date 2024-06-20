@@ -80,7 +80,7 @@ public class ModBlocks {
                     .noCollision().strength(1.0f)));
     public static final Block CANDLE_SKULL = registerBlockWithoutBlockItem("candle_skull",
             new CandleSkullBlock(FabricBlockSettings.create().mapColor(MapColor.WHITE_GRAY)
-                    .instrument(Instrument.GUITAR).strength(1.0f)));
+                    .instrument(Instrument.GUITAR).strength(1.0f).luminance(state -> state.get(CandleSkullBlock.LIT) ? 8 : 0)));
 
     // Registries
     public static void registerBlockProperties() {
