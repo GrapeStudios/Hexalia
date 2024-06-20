@@ -1,6 +1,5 @@
 package net.grapes.hexalia.item;
 
-import dev.architectury.platform.Mod;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
