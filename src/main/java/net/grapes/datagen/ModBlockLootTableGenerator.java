@@ -6,6 +6,7 @@ import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.block.custom.MandrakeCropBlock;
 import net.grapes.hexalia.block.custom.SunfireTomatoCropBlock;
 import net.grapes.hexalia.item.ModItems;
+import net.minecraft.block.Blocks;
 import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
 import net.minecraft.predicate.StatePredicate;
 
@@ -29,6 +30,8 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.SALT);
 
         addDrop(ModBlocks.SALT_LAMP);
+
+        addDrop(ModBlocks.CANDLE_SKULL);
 
         addDrop(ModBlocks.DREAMCATCHER);
         addDrop(ModBlocks.PARCHMENT);

@@ -129,8 +129,16 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.RUSTIC_BOTTLE), conditionsFromItem(ModItems.RUSTIC_BOTTLE))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.BREW_SHELF) + "_"));
 
-        // Recipes for vanilla items or blocks.
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CANDLE_SKULL)
+                .pattern(" S ")
+                .pattern(" T ")
+                .pattern("   ")
+                .input('S', Items.CANDLE)
+                .input('T', Items.SKELETON_SKULL)
+                .criterion(hasItem(Items.SKELETON_SKULL), conditionsFromItem(Items.SKELETON_SKULL))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.CANDLE_SKULL) + "_"));
 
+        // Recipes for vanilla items or blocks.
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.LEATHER)
                 .pattern(" S ")
                 .pattern("STS")
@@ -203,8 +211,6 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input(ModTags.Items.CRUSHED_PLANTS)
                 .criterion(hasItem(ModItems.SALT), conditionsFromItem(ModItems.SALT))
                 .offerTo(exporter);
-
-        // Shapeless for Decoration
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.YELLOW_DYE)
                 .input(ModBlocks.HENSBANE)
                 .criterion(hasItem(ModBlocks.HENSBANE), conditionsFromItem(ModBlocks.HENSBANE))

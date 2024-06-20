@@ -1,5 +1,6 @@
 package net.grapes.hexalia.item;
 
+import dev.architectury.platform.Mod;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
@@ -86,6 +87,8 @@ public class ModItems {
             new BlockItem(ModBlocks.PARCHMENT, new FabricItemSettings()));
     public static final Item DREAMCATCHER = registerItem("dreamcatcher",
             new BlockItem(ModBlocks.DREAMCATCHER, new FabricItemSettings()));
+    public static final Item CANDLE_SKULL = registerItem("candle_skull",
+            new BlockItem(ModBlocks.CANDLE_SKULL, new FabricItemSettings()));
 
 
     // Weapons & Armor

@@ -71,11 +71,7 @@ public class ModItemGroup {
 
                         entries.add(ModItems.PARCHMENT);
                         entries.add(ModItems.DREAMCATCHER);
-
-                        entries.add(ModBlocks.CANDLE_SKULL);
-
-
-
+                        entries.add(ModItems.CANDLE_SKULL);
                     }).build());
     public static void registerItemGroups(){
     }
