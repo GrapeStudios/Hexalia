@@ -34,12 +34,12 @@ public class CandleSkullBlock extends Block {
 
     public static final VoxelShape SHAPE = VoxelShapes.union(
             VoxelShapes.cuboid(0.25, 0, 0.25, 0.75, 0.5, 0.75),
-            VoxelShapes.cuboid(0.4375, 0.453125, 0.4375, 0.5625, 0.890625, 0.5625)
+            VoxelShapes.cuboid(0.4375, 0.453125, 0.4375, 0.5625, 0.640625, 0.5625)
     );
     public static final BooleanProperty LIT = AbstractCandleBlock.LIT;
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
-    private static final Iterable<Vec3d> PARTICLE_OFFSETS = ImmutableList.of(new Vec3d(0.5, 1.0, 0.5));
+    private static final Iterable<Vec3d> PARTICLE_OFFSETS = ImmutableList.of(new Vec3d(0.5, 0.75, 0.5));
 
     public CandleSkullBlock(Settings settings) {
         super(settings);
