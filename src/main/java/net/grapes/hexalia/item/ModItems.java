@@ -80,6 +80,8 @@ public class ModItems {
             new BlockItem(ModBlocks.RITUAL_TABLE, new FabricItemSettings()));
     public static final Item HEX_FOCUS = registerItem("hex_focus",
             new Item(new FabricItemSettings()));
+    public static final Item WISDOM_GEM = registerItem("wisdom_gem",
+            new WisdomGem(new FabricItemSettings().maxCount(1)));
 
     // Decorations
     public static final Item PARCHMENT = registerItem("parchment",

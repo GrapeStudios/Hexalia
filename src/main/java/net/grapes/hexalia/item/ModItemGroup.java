@@ -72,6 +72,9 @@ public class ModItemGroup {
                         entries.add(ModItems.PARCHMENT);
                         entries.add(ModItems.DREAMCATCHER);
                         entries.add(ModItems.CANDLE_SKULL);
+
+                        entries.add(ModItems.WISDOM_GEM);
+
                     }).build());
     public static void registerItemGroups(){
     }
