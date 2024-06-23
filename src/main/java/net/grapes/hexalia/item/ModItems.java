@@ -6,10 +6,12 @@ import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.item.custom.*;
 import net.grapes.hexalia.item.custom.brews.*;
 import net.grapes.hexalia.util.ModToolMaterials;
+import net.grapes.hexalia.util.ModUtils;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 
 public class ModItems {
 
@@ -37,7 +39,7 @@ public class ModItems {
     public static final Item RESIN = registerItem("resin",
             new Item(new FabricItemSettings()));
     public static final Item ANCIENT_SEED = registerItem("ancient_seed",
-            new Item(new FabricItemSettings()));
+            new Item(new FabricItemSettings().rarity(Rarity.RARE)));
     public static final Item RABBAGE_SEEDS = registerItem("rabbage_seeds",
             new AliasedBlockItem(ModBlocks.RABBAGE_CROP, new FabricItemSettings()));
     public static final Item RABBAGE = registerItem("rabbage",
@@ -91,10 +93,19 @@ public class ModItems {
     public static final Item CANDLE_SKULL = registerItem("candle_skull",
             new BlockItem(ModBlocks.CANDLE_SKULL, new FabricItemSettings()));
 
-
     // Weapons & Armor
     public static final Item KELPWEAVE_BLADE = registerItem("kelpweave_blade",
             new KelpweaveBladeItem(ModToolMaterials.ANCIENT_SEED, 3, -2f, new FabricItemSettings()));
+
+    // Addon/Compat Items
+
+    public static Item WITCH_SALAD;
+    static {
+        if (ModUtils.isModLoaded("farmersdelight")) {
+            WITCH_SALAD = registerItem("witch_salad",
+                    new Item(new FabricItemSettings().food(ModFoodComponents.WITCH_SALAD)));
+        }
+    }
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(HexaliaMod.MOD_ID, name), item);
