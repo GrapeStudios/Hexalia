@@ -61,7 +61,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .pattern(" P ")
                 .pattern(" S ")
                 .input('A', Items.GLOWSTONE_DUST)
-                .input('P', ModBlocks.SALT_BLOCK)
+                .input('P', ModTags.Items.SALT_BLOCKS)
                 .input('S', Items.COPPER_INGOT)
                 .criterion(hasItem(Items.GLOWSTONE_DUST), conditionsFromItem(Items.GLOWSTONE_DUST))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.SALT_LAMP) + "_"));
@@ -152,7 +152,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .pattern(" S ")
                 .pattern("STS")
                 .pattern(" S ")
-                .input('S', ModItems.SALT)
+                .input('S', ModTags.Items.SALT_DUSTS)
                 .input('T', Items.ROTTEN_FLESH)
                 .criterion(hasItem(ModItems.SALT), conditionsFromItem(ModItems.SALT))
                 .offerTo(exporter, new Identifier(getRecipeName(Items.LEATHER) + "_"));
@@ -215,7 +215,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.SUNFIRE_TOMATO), conditionsFromItem(ModItems.SUNFIRE_TOMATO))
                 .offerTo(exporter);
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.PURIFYING_SALTS, 1)
-                .input(ModItems.SALT)
+                .input(ModTags.Items.SALT_DUSTS)
                 .input(Items.LEATHER)
                 .input(ModTags.Items.CRUSHED_PLANTS)
                 .criterion(hasItem(ModItems.SALT), conditionsFromItem(ModItems.SALT))
