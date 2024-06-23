@@ -1,4 +1,4 @@
-// 1.20.1	2024-06-19T22:22:27.6302808	Hexalia/Model Definitions
+// 1.20.1	2024-06-23T11:19:47.0290922	Hexalia/Model Definitions
 7f08f13d7427f7379f7f67a2df1da92a31aea2d0 assets\hexalia\models\item\salt_block.json
 44b770c6b2620f3ebaadb8ceb43b46185336916e assets\hexalia\models\block\sunfire_tomato_crop_stage3.json
 61528b15831a64cf27a55765a5308f8e38c462cd assets\hexalia\blockstates\dreamshroom.json
@@ -6,8 +6,8 @@ b83b6da3d1874a1fc01e1ab237d78b97bb9332a4 assets\hexalia\models\block\hensbane.js
 de057857ab724f3bce80348fd0c44f32822c1890 assets\hexalia\models\block\sunfire_tomato_crop_stage2.json
 8961eccf812c2ee13ab76cadff9d63a350171803 assets\hexalia\models\block\dreamshroom.json
 490b7aeb083255e67456ac137625bb88e5d9374e assets\hexalia\models\block\salt_ore.json
-3b221041e13e0fad85eb5fad104ca0b9fc190f8a assets\hexalia\models\item\sunfire_tomato.json
 9dafdb3fd87336955ab251b2d4a313c2b0fda78c assets\hexalia\models\item\mandrake.json
+3b221041e13e0fad85eb5fad104ca0b9fc190f8a assets\hexalia\models\item\sunfire_tomato.json
 7397384fe6d03cae97e29b2090133a1fe5cec963 assets\hexalia\models\item\chillberry_pie.json
 8f7408c4cdcaad7fb771019846bec8440fd7cbb7 assets\hexalia\models\item\rabbage.json
 393d26eda14490491076ff7229e470a190e4e2d9 assets\hexalia\models\block\salt_block.json
@@ -42,8 +42,8 @@ e09fce7524d1a0586c10228035dbdc0e66496db1 assets\hexalia\models\item\salt.json
 d54ba53b7355bcdd462705ca1073aac7283ef186 assets\hexalia\models\item\mortar_and_pestle.json
 54e83e912bdc0e14bea2889a3416478650466c7f assets\hexalia\models\item\dreamshroom.json
 13200812bf863e425ab43634a66ee3dee2d976c5 assets\hexalia\models\item\rustic_bottle.json
-a484152f8fc0a721825201309157877ba5e9a617 assets\hexalia\models\block\spirit_bloom.json
 9e1fbd68ae12edd653d168f48f601ef5aa3b33f3 assets\hexalia\models\item\brew_of_vigor.json
+a484152f8fc0a721825201309157877ba5e9a617 assets\hexalia\models\block\spirit_bloom.json
 e16e8abfd6862d56ab92c7314c634b6913087a95 assets\hexalia\blockstates\salt_ore.json
 ac11e075287e36946ccf0812737ce88818d93c5c assets\hexalia\blockstates\feral_sunfire_tomato.json
 713ebb2ca3649670f26ef447aece6b4825dd5295 assets\hexalia\models\item\stone_dagger.json
