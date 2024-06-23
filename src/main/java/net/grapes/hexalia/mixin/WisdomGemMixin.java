@@ -36,7 +36,7 @@ public class WisdomGemMixin {
     }
 
     private int getExperiencePoints() {
-        return 10;
+        return 40;
     }
 
     private void spawnExperienceOrbs(int experience, PlayerEntity player) {

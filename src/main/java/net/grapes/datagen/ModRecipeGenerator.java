@@ -137,6 +137,16 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(Items.SKELETON_SKULL), conditionsFromItem(Items.SKELETON_SKULL))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.CANDLE_SKULL) + "_"));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WISDOM_GEM)
+                .pattern("PSP")
+                .pattern("STS")
+                .pattern("PSP")
+                .input('S', ModItems.SPIRIT_BLOOM_POWDER)
+                .input('T', Items.EXPERIENCE_BOTTLE)
+                .input('P', Items.AMETHYST_SHARD)
+                .criterion(hasItem(Items.EXPERIENCE_BOTTLE), conditionsFromItem(Items.EXPERIENCE_BOTTLE))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.WISDOM_GEM) + "_"));
+
         // Recipes for vanilla items or blocks.
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.LEATHER)
                 .pattern(" S ")

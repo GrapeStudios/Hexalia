@@ -1,4 +1,4 @@
-// 1.20.1	2024-06-23T03:06:31.5272146	Hexalia/Recipes
+// 1.20.1	2024-06-23T17:09:24.7624632	Hexalia/Recipes
 c9682df7e95bac6f6861f600c1a31b685f11bef1 data\hexalia\advancements\recipes\misc\yellow_dye.json
 53326a019a070dde3721e6abf7902966558c21e8 data\hexalia\advancements\recipes\misc\hex_focus_.json
 cc8ef06e671131cb20f8c3909951f322a7fa13d2 data\hexalia\advancements\recipes\misc\leather_.json
@@ -30,12 +30,14 @@ bd4195f10612f2004f1e1f11050d5683970724d6 data\hexalia\advancements\recipes\misc\
 ba61b5eccb741b38660e531cbcf2ff1b22922d5c data\hexalia\recipes\chillberry_pie.json
 b9cd32e5d91d3c11290b56d09c31b4b4a71058e3 data\hexalia\recipes\salt.json
 e1d872e5341b8304b6682f0396e98685e2509836 data\hexalia\advancements\recipes\misc\purifying_salts.json
+fdc6804406527567bc44c1436f433b925f6ddfde data\hexalia\advancements\recipes\misc\wisdom_gem_.json
 3e64e8ec8dce362140d548819110ccaf4c7d5894 data\hexalia\recipes\salt_block.json
 31ee8755e235a6d4b7e8e3d99ff410f683dbf527 data\hexalia\recipes\mortar_and_pestle.json
 fe22ad9b1f30712bc8340ca16597aa39aff28cab data\hexalia\recipes\dreamcatcher_.json
 b7d5cd8d7cd70f7bf74d7db031c26d815fef3e89 data\hexalia\recipes\sunfire_tomato_seeds.json
 43babe8da8fc45563b2ff7e9809f238fd108395a data\hexalia\advancements\recipes\food\mandrake_stew.json
 2988db002d0f47febe3deffb2c86b0b5ee3eb337 data\hexalia\recipes\dreamshroom_paste.json
+daee1e5f7fa36d50e6aece701966dffa6e24295a data\hexalia\recipes\wisdom_gem_.json
 f3ab8c2757c5b055ed0656f83cbe705b5ce1637d data\hexalia\advancements\recipes\misc\siren_kelp_paste.json
 af4c9b63d6afccd39cf9d6d895808237e2fb71b1 data\hexalia\advancements\recipes\misc\parchment_.json
 ae2e141c27245c4b7f89bf48662e756135ba60de data\hexalia\advancements\recipes\misc\salt.json

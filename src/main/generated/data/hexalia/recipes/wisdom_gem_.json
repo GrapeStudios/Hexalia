@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "S": {
+      "item": "hexalia:spirit_bloom_powder"
+    },
+    "T": {
+      "item": "minecraft:experience_bottle"
+    }
+  },
+  "pattern": [
+    "PSP",
+    "STS",
+    "PSP"
+  ],
+  "result": {
+    "item": "hexalia:wisdom_gem"
+  },
+  "show_notification": true
+}
