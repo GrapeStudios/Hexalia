@@ -14,6 +14,16 @@ public class ModTags {
         public static final TagKey<Item> CRUSHED_PLANTS = createItemTag("crushed_plants");
         public static final TagKey<Item> BREWS = createItemTag("brews");
 
+        public static final TagKey<Item> SALT_DUSTS = createCommonItemTag("salt_dusts");
+        public static final TagKey<Item> BERRIES = createCommonItemTag("berries");
+        public static final TagKey<Item> SEEDS = createCommonItemTag("seeds");
+        public static final TagKey<Item> MUSHROOMS = createCommonItemTag("mushrooms");
+
+        public static final TagKey<Item> ORES = createCommonItemTag("ores");
+        public static final TagKey<Item> SALT_ORES = createCommonItemTag("salt_ores");
+        public static final TagKey<Item> SALT_BLOCKS = createCommonItemTag("salt_blocks");
+
+
         private static TagKey<Item> createItemTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(HexaliaMod.MOD_ID, name));
         }
@@ -24,7 +34,11 @@ public class ModTags {
     }
     public static class Blocks {
 
-        public static final TagKey<Block> HEATING_BLOCK = createBlockTag("heating_block");
+        public static final TagKey<Block> HEAT_SOURCES = createBlockTag("heat_sources");
+
+        public static final TagKey<Block> ORES = createCommonBlockTag("ores");
+        public static final TagKey<Block> SALT_ORES = createCommonBlockTag("salt_ores");
+        public static final TagKey<Block> SALT_BLOCKS = createCommonBlockTag("salt_blocks");
 
         private static TagKey<Block> createBlockTag(String name) {
             return TagKey.of(RegistryKeys.BLOCK, new Identifier(HexaliaMod.MOD_ID, name));

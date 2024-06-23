@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -18,6 +19,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
+        // Tags
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.SALT_ORE)
                 .add(ModBlocks.SALT_BLOCK)
@@ -38,8 +40,25 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(ModBlocks.BREW_SHELF);
 
-        getOrCreateTagBuilder(ModTags.Blocks.HEATING_BLOCK)
+        getOrCreateTagBuilder(BlockTags.FLOWERS)
+                .add(ModBlocks.SPIRIT_BLOOM, ModBlocks.HENSBANE);
+
+        getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS)
+                .add(ModBlocks.SPIRIT_BLOOM, ModBlocks.HENSBANE);
+
+        // Custom Tags
+        getOrCreateTagBuilder(ModTags.Blocks.HEAT_SOURCES)
                 .add(Blocks.MAGMA_BLOCK, Blocks.LAVA,
                         Blocks.CAMPFIRE, Blocks.FIRE, ModBlocks.RUSTIC_OVEN);
+
+        // Common Tags
+        getOrCreateTagBuilder(ModTags.Blocks.ORES)
+                .add(ModBlocks.SALT_ORE);
+
+        getOrCreateTagBuilder(ModTags.Blocks.SALT_ORES)
+                .add(ModBlocks.SALT_ORE);
+
+        getOrCreateTagBuilder(ModTags.Blocks.SALT_BLOCKS)
+                .add(ModBlocks.SALT_BLOCK);
     }
 }
