@@ -19,29 +19,30 @@ public class ModItemGroup {
                         entries.add(ModBlocks.DREAMSHROOM);
                         entries.add(ModItems.SIREN_KELP);
                         entries.add(ModBlocks.HENSBANE);
+                        entries.add(ModItems.MANDRAKE_SEEDS);
+                        entries.add(ModItems.SUNFIRE_TOMATO_SEEDS);
+                        // entries.add(ModItems.RABBAGE_SEEDS);
+
+                        entries.add(ModItems.MANDRAKE);
+                        entries.add(ModItems.SUNFIRE_TOMATO);
+                        entries.add(ModItems.CHILLBERRIES);
+                        // entries.add(ModItems.RABBAGE);
+                        entries.add(ModItems.MANDRAKE_STEW);
+                        entries.add(ModItems.SPICY_SANDWICH);
+                        entries.add(ModItems.CHILLBERRY_PIE);
 
                         entries.add(ModBlocks.INFUSED_DIRT);
                         entries.add(ModBlocks.INFUSED_FARMLAND);
 
-                        entries.add(ModItems.CHILLBERRIES);
-                        entries.add(ModItems.CHILLBERRY_PIE);
+                        entries.add(ModItems.PARCHMENT);
+                        entries.add(ModItems.DREAMCATCHER);
+                        entries.add(ModItems.CANDLE_SKULL);
 
-                        entries.add(ModItems.MANDRAKE_SEEDS);
-                        entries.add(ModItems.MANDRAKE);
-                        entries.add(ModItems.MANDRAKE_STEW);
-
-                        entries.add(ModItems.SUNFIRE_TOMATO_SEEDS);
-                        entries.add(ModItems.SUNFIRE_TOMATO);
-                        entries.add(ModItems.SPICY_SANDWICH);
-
-                        entries.add(ModItems.RABBAGE_SEEDS);
-                        entries.add(ModItems.RABBAGE);
-
+                        entries.add(ModItems.SALT);
+                        entries.add(ModItems.PURIFYING_SALTS);
                         entries.add(ModBlocks.SALT_ORE);
                         entries.add(ModBlocks.SALT_BLOCK);
-                        entries.add(ModItems.SALT);
                         entries.add(ModItems.SALT_LAMP);
-                        entries.add(ModItems.PURIFYING_SALTS);
 
                         entries.add(ModItems.MORTAR_AND_PESTLE);
                         entries.add(ModItems.SIREN_KELP_PASTE);
@@ -62,19 +63,11 @@ public class ModItemGroup {
                         entries.add(ModItems.BREW_OF_HOMESTEAD);
                         entries.add(ModItems.BREW_OF_SIPHONING);
 
+                        entries.add(ModItems.HEX_FOCUS);
                         entries.add(ModItems.ANCIENT_SEED);
                         entries.add(ModItems.KELPWEAVE_BLADE);
-
                         entries.add(ModItems.RITUAL_TABLE);
-
-                        entries.add(ModItems.HEX_FOCUS);
-
-                        entries.add(ModItems.PARCHMENT);
-                        entries.add(ModItems.DREAMCATCHER);
-                        entries.add(ModItems.CANDLE_SKULL);
-
                         entries.add(ModItems.WISDOM_GEM);
-
                     }).build());
     public static void registerItemGroups(){
     }
