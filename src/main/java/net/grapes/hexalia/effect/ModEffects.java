@@ -25,8 +25,8 @@ public class ModEffects {
             new StuffedEffect(StatusEffectCategory.BENEFICIAL, 0xDCD789));
 
     public static final StatusEffect SIPHONING = registerStatusEffect("siphoning",
-            new SiphoningEffect(StatusEffectCategory.BENEFICIAL, 0xEAEAEA, 0.0)
-                    .addAttributeModifier(EntityAttributes.GENERIC_ATTACK_SPEED, "f47ac10b-58cc-4372-a567-0e02b2c3d479", 3.0,
+            new SiphoningEffect(StatusEffectCategory.BENEFICIAL, 0xEAEAEA, 3.0)
+                    .addAttributeModifier(EntityAttributes.GENERIC_ATTACK_SPEED, "f47ac10b-58cc-4372-a567-0e02b2c3d479", 0.4,
                             EntityAttributeModifier.Operation.ADDITION));
 
     public static final StatusEffect WARDING = registerStatusEffect("warding",
