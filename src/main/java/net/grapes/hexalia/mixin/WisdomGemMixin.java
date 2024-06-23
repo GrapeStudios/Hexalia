@@ -6,6 +6,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Hand;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -19,10 +20,16 @@ public class WisdomGemMixin {
         if (source.getAttacker() instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) source.getAttacker();
             ItemStack offHandStack = player.getOffHandStack();
+
             if (offHandStack.getItem() == ModItems.WISDOM_GEM) {
+                System.out.println("Wisdom Gem detected in offhand");
+
                 int experience = getExperiencePoints();
+                System.out.println("Experience obtained: " + experience);
+
                 if (experience > 0) {
                     spawnExperienceOrbs(experience, player);
+                    reduceDurability(offHandStack, player);
                 }
             }
         }
@@ -38,6 +45,16 @@ public class WisdomGemMixin {
             int xpValue = ExperienceOrbEntity.roundToOrbSize(remainingExperience);
             remainingExperience -= xpValue;
             player.getWorld().spawnEntity(new ExperienceOrbEntity(player.getWorld(), player.getX(), player.getY(), player.getZ(), xpValue));
+        }
+    }
+
+    private void reduceDurability(ItemStack stack, PlayerEntity player) {
+        if (!player.isCreative() && stack.isDamageable()) {
+            System.out.println("Reducing durability by: 1");
+            stack.damage(1, player, (p) -> p.sendToolBreakStatus(Hand.OFF_HAND));
+            if (stack.isEmpty()) {
+                player.setStackInHand(Hand.OFF_HAND, ItemStack.EMPTY);
+            }
         }
     }
 }
