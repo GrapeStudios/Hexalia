@@ -34,7 +34,7 @@ public class ModTags {
     }
     public static class Blocks {
 
-        public static final TagKey<Block> HEAT_SOURCES = createBlockTag("heat_sources");
+        public static final TagKey<Block> HEATING_BLOCKS = createBlockTag("heating_block");
 
         public static final TagKey<Block> ORES = createCommonBlockTag("ores");
         public static final TagKey<Block> SALT_ORES = createCommonBlockTag("salt_ores");
