@@ -17,8 +17,7 @@ public class WisdomGemMixin {
 
     @Inject(method = "onDeath", at = @At("HEAD"))
     public void onEntityKilled(DamageSource source, CallbackInfo ci) {
-        if (source.getAttacker() instanceof PlayerEntity) {
-            PlayerEntity player = (PlayerEntity) source.getAttacker();
+        if (source.getAttacker() instanceof PlayerEntity player) {
             ItemStack offHandStack = player.getOffHandStack();
 
             if (offHandStack.getItem() == ModItems.WISDOM_GEM) {
