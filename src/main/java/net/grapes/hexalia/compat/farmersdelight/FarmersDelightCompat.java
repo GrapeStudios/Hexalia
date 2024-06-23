@@ -15,9 +15,7 @@ public class FarmersDelightCompat {
         if (FabricLoader.getInstance().isModLoaded("farmersdelight")) {
             RegistryKey<ItemGroup> farmersDelightGroupKey = RegistryKey.of(RegistryKeys.ITEM_GROUP, new Identifier("farmersdelight", "farmersdelight"));
 
-            ItemGroupEvents.modifyEntriesEvent(farmersDelightGroupKey).register(content -> {
-                content.add(new ItemStack(ModItems.WITCH_SALAD));
-            });
+            ItemGroupEvents.modifyEntriesEvent(farmersDelightGroupKey).register(content -> content.add(new ItemStack(ModItems.WITCH_SALAD)));
         }
     }
 }
