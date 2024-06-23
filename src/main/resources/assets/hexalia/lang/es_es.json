@@ -21,6 +21,8 @@
   "item.hexalia.spicy_sandwich": "Sándwich Picante",
   "item.hexalia.mortar_and_pestle": "Mortero y Mano de Mortero",
   "item.hexalia.ancient_seed": "Semilla Ancestral",
+  "item.hexalia.rabbage_seeds": "Semillas de Lechurabia",
+  "item.hexalia.rabbage": "Lechurabia",
 
   "block.hexalia.infused_dirt": "Tierra Infusa",
   "block.hexalia.infused_farmland": "Terreno de Cultivo Infuso",
@@ -42,12 +44,14 @@
   "effect.hexalia.stuffed": "Empachado",
   "effect.hexalia.slimey_step": "Paso Baboso",
   "effect.hexalia.warding": "Protección",
+  "effect.hexalia.siphoning": "Succión",
 
   "item.hexalia.rustic_bottle": "Botella Rústica",
   "item.hexalia.brew_of_vigor": "Brebaje de Vigor",
   "item.hexalia.brew_of_slimey_step": "Brebaje de Paso Baboso",
   "item.hexalia.brew_of_warding": "Brebaje de Protección",
   "item.hexalia.brew_of_homestead": "Brebaje de Morada",
+  "item.hexalia.brew_of_siphoning": "Brebaje de Succión",
 
   "block.hexalia.small_cauldron": "Caldero Pequeño",
   "item.hexalia.small_cauldron": "Caldero Pequeño",
@@ -58,6 +62,18 @@
   "item.hexalia.hex_focus": "Foco de Hechizos",
 
   "block.hexalia.brew_shelf": "Estantería de Brebajes",
+
+  "block.hexalia.parchment": "Pergamino",
+  "item.hexalia.parchment": "Pergamino",
+
+  "block.hexalia.dreamcatcher": "Atrapasueños",
+  "item.hexalia.dreamcatcher": "Atrapasueños",
+
+  "block.hexalia.hensbane": "Hensbane",
+
+  "block.hexalia.candle_skull": "Calavera de Vela",
+
+  "item.hexalia.wisdom_gem": "Gema de Sabiduría",
 
   "sounds.hexalia.mandrake_scream": "Gritos de Mandrágora",
   "sounds.hexalia.ritual_completed": "Ritual Completado",
@@ -71,6 +87,15 @@
 
   "hexalia.container.brew_shelf": "Estantería de Brebajes",
 
+  "item.hexalia.witch_salad": "Ensalada de Bruja",
+
+  "effect.hexalia.stuffed.description": "Impide que la saturación disminuya, pero el usuario aún puede consumir alimentos para restaurar la salud",
+  "effect.hexalia.stunned.description": "Las entidades afectadas no pueden moverse mientras este efecto esté activo",
+  "effect.hexalia.warding.description": "Aumenta la resistencia de la armadura del usuario y refleja el 20% del daño a los atacantes",
+  "effect.hexalia.vigor.description": "Aumenta la fuerza del usuario y le permite restaurar el 25% del daño infligido al objetivo",
+  "effect.hexalia.slimey_step.description": "Permite al usuario escalar paredes verticalmente e inmunidad al daño por caída. El usuario rebota al presionar la tecla de agacharse",
+  "effect.hexalia.siphoning.description": "Aumenta la velocidad de minería y el usuario atrae objetos del suelo a una distancia de 5 bloques",
+
   "advancements.hexalia.root.title": "Bienvenido a Hexalia",
   "advancements.hexalia.root.description": "Gracias por descargar nuestro mod",
   "advancements.hexalia.small_cauldron.title": "Pequeño pero Poderoso",
@@ -79,7 +104,7 @@
   "advancements.hexalia.mortar_and_pestle.description": "Crea una herramienta para triturar plantas",
   "advancements.hexalia.slimey_brew.title": "¡Baboso, baboso!",
   "advancements.hexalia.slimey_brew.description": "Prepara una poción para rebotar como un slime",
-  "advancements.hexalia.salt_item.title": "Un Pizca de Sal",
+  "advancements.hexalia.salt_item.title": "Una Pizca de Sal",
   "advancements.hexalia.salt_item.description": "Obtén Sal de bloques de Menal de Sal",
   "advancements.hexalia.purifying_salts.title": "Intolerante a la Lactosa",
   "advancements.hexalia.purifying_salts.description": "Crea un objeto para quitar todos los efectos",
@@ -87,6 +112,6 @@
   "advancements.hexalia.stone_dagger.description": "Crea un objeto para recolectar resina de Robles Oscuros",
   "advancements.hexalia.ritual_table.title": "Hora de Brujas",
   "advancements.hexalia.ritual_table.description": "Obtén la Mesa de Pedestal, usada para realizar rituales",
-  "advancements.hexalia.hex_focus.title": "Pequeña Bruja, Pequeños Pasos.",
+  "advancements.hexalia.hex_focus.title": "Pequeña Bruja, Pequeños Pasos",
   "advancements.hexalia.hex_focus.description": "Obtén un Foco Hexagonal, una herramienta útil."
 }
