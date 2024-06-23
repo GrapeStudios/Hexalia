@@ -4,11 +4,9 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.util.ModTags;
-import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -47,7 +45,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SPIRIT_BLOOM, ModBlocks.HENSBANE);
 
         // Custom Tags
-        getOrCreateTagBuilder(ModTags.Blocks.HEAT_SOURCES)
+        getOrCreateTagBuilder(ModTags.Blocks.HEATING_BLOCKS)
                 .add(Blocks.MAGMA_BLOCK, Blocks.LAVA,
                         Blocks.CAMPFIRE, Blocks.FIRE, ModBlocks.RUSTIC_OVEN);
 
