@@ -87,6 +87,15 @@
 
   "hexalia.container.brew_shelf": "Brew Shelf",
 
+  "item.hexalia.witch_salad": "Witch Salad",
+
+  "effect.hexalia.stuffed.description": "Prevents saturation from lowering but the user can still consume food to restore health",
+  "effect.hexalia.stunned.description": "Affected entities are unable to move while this effect is active",
+  "effect.hexalia.warding.description": "Increases the armor toughness of the user and reflects 20% of damage back to attackers",
+  "effect.hexalia.vigor.description": "Increases the strength of the user and gives the user the ability to restore 25% of the damage dealt to the target",
+  "effect.hexalia.slimey_step.description": "Allows the user to vertically climb up walls and immunity to fall damage. The user bounces when the sneak key is pressed",
+  "effect.hexalia.siphoning.description": "Increases mining speed and the user attracts items in the ground from a 5 block distance",
+
   "advancements.hexalia.root.title": "Welcome to Hexalia",
   "advancements.hexalia.root.description": "Thank you for downloading our mod",
   "advancements.hexalia.small_cauldron.title": "Small and Mighty",

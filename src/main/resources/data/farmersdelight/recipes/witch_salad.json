@@ -1,0 +1,32 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:salad_ingredients"
+    },
+    {
+      "item": "hexalia:sunfire_tomato"
+    },
+    {
+      "item": "hexalia:chillberries"
+    },
+    {
+      "item": "hexalia:mandrake"
+    },
+    {
+      "item": "minecraft:bowl"
+    }
+  ],
+  "result": {
+    "item": "hexalia:witch_salad"
+  },
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "farmersdelight"
+      ]
+    }
+  ]
+}
