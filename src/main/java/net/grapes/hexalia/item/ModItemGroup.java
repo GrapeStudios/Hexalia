@@ -18,7 +18,7 @@ public class ModItemGroup {
                         entries.add(ModBlocks.SPIRIT_BLOOM);
                         entries.add(ModBlocks.DREAMSHROOM);
                         entries.add(ModItems.SIREN_KELP);
-                        entries.add(ModBlocks.HENSBANE);
+                        entries.add(ModBlocks.HENBANE);
                         entries.add(ModItems.MANDRAKE_SEEDS);
                         entries.add(ModItems.SUNFIRE_TOMATO_SEEDS);
                         // entries.add(ModItems.RABBAGE_SEEDS);

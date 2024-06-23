@@ -44,10 +44,10 @@ public class ModBlocks {
             new ChillberryBushBlock(FabricBlockSettings.copyOf(Blocks.SWEET_BERRY_BUSH)));
     public static final Block RABBAGE_CROP = registerBlockWithoutBlockItem("rabbage_crop",
             new RabbageCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
-    public static final Block HENSBANE = registerBlock("hensbane",
+    public static final Block HENBANE = registerBlock("henbane",
             new FlowerBlock(StatusEffects.POISON, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
-    public static final Block POTTED_HENSBANE = registerBlockWithoutBlockItem("potted_hensbane",
-            new FlowerPotBlock(HENSBANE, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
+    public static final Block POTTED_HENBANE = registerBlockWithoutBlockItem("potted_henbane",
+            new FlowerPotBlock(HENBANE, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
 
     // Mineral-Related Blocks
     public static final Block SALT_ORE = registerBlock("salt_ore",
@@ -86,14 +86,14 @@ public class ModBlocks {
     public static void registerBlockProperties() {
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.SPIRIT_BLOOM, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.DREAMSHROOM, 0.5F);
-        CompostingChanceRegistry.INSTANCE.add(ModBlocks.HENSBANE, 0.5F);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.HENBANE, 0.5F);
 
         FlammableBlockRegistry instance = FlammableBlockRegistry.getDefaultInstance();
         instance.add(ModBlocks.SPIRIT_BLOOM, 100, 60);
         instance.add(ModBlocks.DREAMSHROOM, 100, 60);
         instance.add(ModBlocks.CHILLBERRY_BUSH, 100, 60);
         instance.add(ModBlocks.FERAL_MANDRAKE, 100, 60);
-        instance.add(ModBlocks.HENSBANE, 100, 60);
+        instance.add(ModBlocks.HENBANE, 100, 60);
         instance.add(ModBlocks.PARCHMENT, 100, 60);
         instance.add(ModBlocks.DREAMCATCHER, 100, 60);
         instance.add(ModBlocks.SALT, 100, 60);

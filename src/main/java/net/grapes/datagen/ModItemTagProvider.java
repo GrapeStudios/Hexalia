@@ -23,14 +23,14 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         getOrCreateTagBuilder(ItemTags.FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM.asItem())
-                .add(ModBlocks.HENSBANE.asItem());
+                .add(ModBlocks.HENBANE.asItem());
 
         getOrCreateTagBuilder(ItemTags.SMALL_FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM.asItem())
-                .add(ModBlocks.HENSBANE.asItem());
+                .add(ModBlocks.HENBANE.asItem());
 
         // Custom Tags
-        getOrCreateTagBuilder(ModTags.Items.COOKED_MEAT)
+        getOrCreateTagBuilder(ModTags.Items.COOKED_MEATS)
                 .add(Items.COOKED_BEEF, Items.COOKED_CHICKEN,
                         Items.COOKED_MUTTON, Items.COOKED_PORKCHOP,
                         Items.COOKED_RABBIT, Items.COOKED_COD,

@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "hexalia:salt"
+      "tag": "c:salt_dusts"
     },
     {
       "item": "minecraft:leather"

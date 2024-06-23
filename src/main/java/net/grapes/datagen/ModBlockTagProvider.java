@@ -39,10 +39,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.BREW_SHELF);
 
         getOrCreateTagBuilder(BlockTags.FLOWERS)
-                .add(ModBlocks.SPIRIT_BLOOM, ModBlocks.HENSBANE);
+                .add(ModBlocks.SPIRIT_BLOOM, ModBlocks.HENBANE);
 
         getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS)
-                .add(ModBlocks.SPIRIT_BLOOM, ModBlocks.HENSBANE);
+                .add(ModBlocks.SPIRIT_BLOOM, ModBlocks.HENBANE);
 
         // Custom Tags
         getOrCreateTagBuilder(ModTags.Blocks.HEATING_BLOCKS)

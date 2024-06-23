@@ -27,6 +27,6 @@ public class ModVegetationGeneration {
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.FERAL_MANDRAKE_KEY);
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.PLAINS),
-                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.HENSBANE_KEY);
+                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.HENBANE_KEY);
     }
 }

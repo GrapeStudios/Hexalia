@@ -1,11 +1,12 @@
-// 1.20.1	2024-06-23T11:19:47.027099	Hexalia/Block Loot Tables
+// 1.20.1	2024-06-23T12:54:23.7848546	Hexalia/Block Loot Tables
 aeb959301b32ba153b4b2dc89a617ff2f27e81ce data\hexalia\loot_tables\blocks\salt.json
 15660c257e6376f65bfabedc4b5c00da0f43203b data\hexalia\loot_tables\blocks\spirit_bloom.json
 0a81cc3c2b6ef5a0665335b100843904f4bfac41 data\hexalia\loot_tables\blocks\salt_lamp.json
-2a15bbda53b0d4bc9c0774c372cd6848fc7fdd9d data\hexalia\loot_tables\blocks\hensbane.json
+1b1f9ba6351abaed3eb68d06a71bc2c4d18fe485 data\hexalia\loot_tables\blocks\henbane.json
 ba6dc1e4a93e77aa8899ebf36440c303881e2f10 data\hexalia\loot_tables\blocks\salt_ore.json
 14c0eded467dfaf19297cefc3500aa295721913c data\hexalia\loot_tables\blocks\parchment.json
 7ea3df153854739c57db4885c03301f650fe5ff1 data\hexalia\loot_tables\blocks\mandrake_crop.json
+4a1b37dfe8d762df2d082fcdc47490c5751e579b data\hexalia\loot_tables\blocks\potted_henbane.json
 1f3e2096cab6ac439e43b9dc9ded114a365fbb29 data\hexalia\loot_tables\blocks\feral_mandrake.json
 1159edd6319b54b2aec08c4e76a168bcd67951d1 data\hexalia\loot_tables\blocks\brew_shelf.json
 e1811df28b896b96eeeb48fed28afe16e4fc8591 data\hexalia\loot_tables\blocks\candle_skull.json
@@ -18,6 +19,5 @@ ae24eb4d93b06cacaf71623f037959bc4f7b7403 data\hexalia\loot_tables\blocks\feral_s
 9fbc2281609cc21230466daa15bf19f66a047f7f data\hexalia\loot_tables\blocks\ritual_table.json
 a21c2791cf5dd5e32875d6121cb632a87a07f8fc data\hexalia\loot_tables\blocks\dreamshroom.json
 988619c1f471e75f527bbfce03c3be06873efcfc data\hexalia\loot_tables\blocks\siren_kelp.json
-9af8c1abcbe3a527c4235e07309a7dcbd9dbaade data\hexalia\loot_tables\blocks\potted_hensbane.json
 a8298f815c3d89857892720b2735ba023d581704 data\hexalia\loot_tables\blocks\potted_spirit_bloom.json
 ef5f147c28b7606984cdab0b3001265c2bf0cd18 data\hexalia\loot_tables\blocks\infused_farmland.json

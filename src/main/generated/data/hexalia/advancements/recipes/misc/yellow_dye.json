@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_hensbane": {
+    "has_henbane": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:hensbane"
+              "hexalia:henbane"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_hensbane",
+      "has_henbane",
       "has_the_recipe"
     ]
   ],

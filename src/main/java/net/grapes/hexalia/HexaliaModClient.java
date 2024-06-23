@@ -1,6 +1,5 @@
 package net.grapes.hexalia;
 
-import dev.architectury.platform.Mod;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
@@ -36,8 +35,8 @@ public class HexaliaModClient implements ClientModInitializer {
                 ModBlocks.RABBAGE_CROP,
                 ModBlocks.PARCHMENT,
                 ModBlocks.DREAMCATCHER,
-                ModBlocks.POTTED_HENSBANE,
-                ModBlocks.HENSBANE,
+                ModBlocks.POTTED_HENBANE,
+                ModBlocks.HENBANE,
                 ModBlocks.CANDLE_SKULL,
                 ModBlocks.SALT_LAMP);
 

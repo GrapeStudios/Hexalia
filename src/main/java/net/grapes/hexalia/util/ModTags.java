@@ -9,8 +9,6 @@ import net.minecraft.util.Identifier;
 
 public class ModTags {
     public static class Items {
-
-        public static final TagKey<Item> COOKED_MEAT = createItemTag("cooked_meat");
         public static final TagKey<Item> CRUSHED_PLANTS = createItemTag("crushed_plants");
         public static final TagKey<Item> BREWS = createItemTag("brews");
 
@@ -22,6 +20,7 @@ public class ModTags {
         public static final TagKey<Item> ORES = createCommonItemTag("ores");
         public static final TagKey<Item> SALT_ORES = createCommonItemTag("salt_ores");
         public static final TagKey<Item> SALT_BLOCKS = createCommonItemTag("salt_blocks");
+        public static final TagKey<Item> COOKED_MEATS = createCommonItemTag("cooked_meats");
 
 
         private static TagKey<Item> createItemTag(String name) {

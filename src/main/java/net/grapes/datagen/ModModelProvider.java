@@ -23,15 +23,11 @@ public class ModModelProvider extends FabricModelProvider {
                 BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.DREAMSHROOM, ModBlocks.POTTED_DREAMSHROOM,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
-        blockStateModelGenerator.registerCrop(ModBlocks.MANDRAKE_CROP,
-                MandrakeCropBlock.AGE, 0, 1, 2, 3);
-        blockStateModelGenerator.registerCrop(ModBlocks.SUNFIRE_TOMATO_CROP,
-                SunfireTomatoCropBlock.AGE, 0, 1, 2, 3);
         blockStateModelGenerator.registerTintableCross(ModBlocks.FERAL_SUNFIRE_TOMATO,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerTintableCross(ModBlocks.FERAL_MANDRAKE,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
-        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.HENSBANE, ModBlocks.POTTED_HENSBANE,
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.HENBANE, ModBlocks.POTTED_HENBANE,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
     }
 

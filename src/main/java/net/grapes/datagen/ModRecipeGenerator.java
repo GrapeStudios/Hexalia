@@ -211,7 +211,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.SPICY_SANDWICH, 1)
                 .input(Items.BREAD)
                 .input(ModItems.SUNFIRE_TOMATO)
-                .input(ModTags.Items.COOKED_MEAT)
+                .input(ModTags.Items.COOKED_MEATS)
                 .criterion(hasItem(ModItems.SUNFIRE_TOMATO), conditionsFromItem(ModItems.SUNFIRE_TOMATO))
                 .offerTo(exporter);
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.PURIFYING_SALTS, 1)
@@ -221,8 +221,8 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.SALT), conditionsFromItem(ModItems.SALT))
                 .offerTo(exporter);
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.YELLOW_DYE)
-                .input(ModBlocks.HENSBANE)
-                .criterion(hasItem(ModBlocks.HENSBANE), conditionsFromItem(ModBlocks.HENSBANE))
+                .input(ModBlocks.HENBANE)
+                .criterion(hasItem(ModBlocks.HENBANE), conditionsFromItem(ModBlocks.HENBANE))
                 .offerTo(exporter);
     }
 }

@@ -6,7 +6,7 @@
       "item": "minecraft:glowstone_dust"
     },
     "P": {
-      "item": "hexalia:salt_block"
+      "tag": "c:salt_blocks"
     },
     "S": {
       "item": "minecraft:copper_ingot"

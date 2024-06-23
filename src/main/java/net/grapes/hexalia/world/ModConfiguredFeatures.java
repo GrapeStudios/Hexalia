@@ -24,7 +24,7 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> SIREN_KELP_KEY = registerKey("siren_kelp");
     public static final RegistryKey<ConfiguredFeature<?, ?>> FERAL_SUNFIRE_TOMATO_KEY = registerKey("feral_sunfire_tomato");
     public static final RegistryKey<ConfiguredFeature<?, ?>> FERAL_MANDRAKE_KEY = registerKey("feral_mandrake");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> HENSBANE_KEY = registerKey("hensbane");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> HENBANE = registerKey("henbane");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplaceables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
@@ -58,9 +58,9 @@ public class ModConfiguredFeatures {
                 PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
                         new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.FERAL_MANDRAKE)))));
 
-        register(context, HENSBANE_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
+        register(context, HENBANE, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
                 PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.HENSBANE)))));
+                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.HENBANE)))));
     }
 
     public static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name) {

@@ -1,4 +1,4 @@
-// 1.20.1	2024-06-23T11:19:47.0310857	Hexalia/Tags for minecraft:item
+// 1.20.1	2024-06-23T12:54:23.7898385	Hexalia/Tags for minecraft:item
 8bc276f3b1d4bd808a0c19af8f23234a2ede0405 data\c\tags\items\ores.json
 e22a2880ae95177b34a2832bbd394233809e3fc7 data\minecraft\tags\items\fox_food.json
 7426c70e9a7459782afc5dc25348366757ea0425 data\c\tags\items\salt_blocks.json
@@ -7,8 +7,8 @@ e22a2880ae95177b34a2832bbd394233809e3fc7 data\c\tags\items\berries.json
 8bc276f3b1d4bd808a0c19af8f23234a2ede0405 data\c\tags\items\salt_ores.json
 bf62813bedd0ad69cf5040c3b734d9feedbe772f data\c\tags\items\seeds.json
 b96151fcc0be5afcfcdb96872cdcc0aad32b6586 data\hexalia\tags\items\crushed_plants.json
-bbadf500cdc09af33fa73617acbfb98c018929f5 data\hexalia\tags\items\cooked_meat.json
+bbadf500cdc09af33fa73617acbfb98c018929f5 data\c\tags\items\cooked_meats.json
 f36b61d12aa3d7253f3ce7350a7eb2d6d937639d data\c\tags\items\salt_dusts.json
-51101ad291be559a9b0747d320b0780da2b05305 data\minecraft\tags\items\small_flowers.json
+adc64d90ab00acc40f529a58afb00e26ebd82501 data\minecraft\tags\items\small_flowers.json
 a6448cc95f88dcfc1808dfe2addb19c45da75e99 data\hexalia\tags\items\brews.json
-51101ad291be559a9b0747d320b0780da2b05305 data\minecraft\tags\items\flowers.json
+adc64d90ab00acc40f529a58afb00e26ebd82501 data\minecraft\tags\items\flowers.json
