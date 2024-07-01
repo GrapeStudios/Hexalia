@@ -7,7 +7,8 @@
 		"accesors.ExhaustionAccesorMixin",
 		"InfusedPlantingMixin",
 		"LivingEntityMixin",
-		"WisdomGemMixin"
+		"WisdomGemMixin",
+		"InfusedSugarCaneMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
