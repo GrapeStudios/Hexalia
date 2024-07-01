@@ -163,7 +163,7 @@ public class SmallCauldronBlockEntity extends BlockEntity implements ExtendedScr
         for (int i = 0; i < this.size(); i++) {
             inventory.setStack(i, this.getStack(i));
         }
-        return this.getWorld().getRecipeManager().getFirstMatch(SmallCauldronRecipe.Type.INSTANCE, inventory, this.getWorld());
+        return Objects.requireNonNull(this.getWorld()).getRecipeManager().getFirstMatch(SmallCauldronRecipe.Type.INSTANCE, inventory, this.getWorld());
     }
 
     private boolean hasRequiredIngredients(SmallCauldronRecipe recipe) {

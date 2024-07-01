@@ -33,10 +33,6 @@ public class SmallCauldronRecipe implements Recipe<SimpleInventory> {
         }
 
         boolean[] slotsMatched = new boolean[inventory.size()];
-        for (int i = 0; i < slotsMatched.length; i++) {
-            slotsMatched[i] = false;
-        }
-
         for (Ingredient ingredient : recipeItems) {
             boolean foundIngredient = false;
             for (int i = 0; i < inventory.size(); i++) {
@@ -126,9 +122,7 @@ public class SmallCauldronRecipe implements Recipe<SimpleInventory> {
         public SmallCauldronRecipe read(Identifier id, PacketByteBuf buf) {
             DefaultedList<Ingredient> inputs = DefaultedList.ofSize(buf.readInt(), Ingredient.EMPTY);
 
-            for (int i = 0; i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.fromPacket(buf));
-            }
+            inputs.replaceAll(ignored -> Ingredient.fromPacket(buf));
 
             ItemStack output = buf.readItemStack();
             Ingredient bottleSlot = Ingredient.fromPacket(buf);
