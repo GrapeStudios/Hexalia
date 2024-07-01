@@ -3,33 +3,27 @@
 
 ## About
 
-Hexalia is a magical mod that focuses on plant-based magic and a very rustic on magical applications. This mod aims to add witchery, rituals, brewing a new type of potions and so much more.
+Hexalia is a magical mod focusing on plant-based magic and rustic applications. It adds witchery, rituals, brewing new potions, and more.
 
 ## Features
 
 These are the features added in the current version of the mod
 
-- **Magical plants** and crops found in some of the biomes.
-
-- New **edible items** made out of these new crops and plants, which grants status effects.
-
-- **Mortar & Pestle** used to crush plants and make brews.
-
-- A new ore, **Salt**, used to make Purifying Salts, Salt Lamp, or used in rituals.
-
-- **Small Cauldron**, a new block to make brews with new potions effects using Rustic Bottles.
-
-- 4 consumable potions known as **Brews** with different effects, from bouncing like a slime to teleporting back to your spawn point.
-
-- **Ritual Table** with a complete ritual system that allows you to transmute certain items.
-
-- With a focus on plant-based magical combat, equip yourself with a **Kelpweave Blade**, or a **Mandrake** to stun your enemies.
+- **Magical Plants and Crops**: Found in various biomes.
+- **New Edibles**: Made from new crops and plants, granting status effects.
+- **Mortar & Pestle**: Crush plants and make brews.
+- **New Ore** (Salt): Used for Purifying Salts, Salt Lamps, and rituals.
+- **Small Cauldron**: Make brews with new potion effects using Rustic Bottles.
+- **Consumable Potions** (Brews): Five types, offering effects like bouncing and teleporting.
+- **Ritual Table**: Transmute items through rituals.
+- **Plant-Based Combat**: Use the Kelpweave Blade or Mandrake to stun enemies.
+- **Magical Items**: Use magical items, such as the Wisdom Gem, to gain more experience.
+- Compat with **Farmer's Delight** and **REI**
 
 Make sure to check out our [Wiki](https://github.com/GrapeStudios/Hexalia/wiki) to know more about the features.
 
-
 ## Additional Information
 
-This mod is still a work in progress, more features will be added eventually. As another note, this mod is being developed as we learn how to code, model and make textures, be sure join us throughout our progress.
+Hexalia is a work in progress. More features will be added over time. Follow our development journey on Discord and GitHub.
 
 [Discord](https://discord.gg/fcbH6BqW3X) | [GitHub](https://github.com/GrapeStudios/Hexalia)
