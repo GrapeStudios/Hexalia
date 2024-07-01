@@ -5,8 +5,6 @@
     "minecraft:lava",
     "minecraft:campfire",
     "minecraft:fire",
-    "hexalia:rustic_oven",
-    "farmersdelight:stove",
-    "#farmersdelight:tray_heat_sources"
+    "hexalia:rustic_oven"
   ]
 }
