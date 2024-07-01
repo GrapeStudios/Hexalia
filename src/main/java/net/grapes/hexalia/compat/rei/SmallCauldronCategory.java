@@ -51,18 +51,21 @@ public class SmallCauldronCategory implements DisplayCategory<BasicDisplay> {
 
         List<EntryIngredient> ingredientEntries = display.getInputEntries();
         if (ingredientEntries != null) {
-            for (int i = 0; i < ingredientEntries.size(); i++) {
+            // Skip the last entry which is the bottle slot
+            for (int i = 0; i < ingredientEntries.size() - 1; i++) {
                 Point slotLoc = new Point(startPoint.x + 1 + i % 3 * 18, startPoint.y + 11 + (i / 3) * 18);
                 widgets.add(Widgets.createSlot(slotLoc).entries(ingredientEntries.get(i)).markInput().disableBackground());
             }
         }
 
+        SmallCauldronDisplay cauldronDisplay = (SmallCauldronDisplay) display;
+        Point bottleSlotLoc = new Point(startPoint.x + 19, startPoint.y + 32);
+        widgets.add(Widgets.createSlot(bottleSlotLoc).entries(cauldronDisplay.getBottleSlot()).markInput().disableBackground());
+
         widgets.add(Widgets.createSlot(new Point(startPoint.x + 95, startPoint.y + 12))
                 .entries(display.getOutputEntries().get(0)).markOutput().disableBackground());
         widgets.add(Widgets.createTooltip(new Rectangle(startPoint.x + 95, startPoint.y + 40, 17, 15),
                 Text.translatable("tooltip.hexalia.needs_heat")));
-        widgets.add(Widgets.createTooltip(new Rectangle(startPoint.x + 17, startPoint.y + 32, 17, 15),
-                Text.translatable("tooltip.hexalia.needs_rustic_bottle")));
         return widgets;
     }
 

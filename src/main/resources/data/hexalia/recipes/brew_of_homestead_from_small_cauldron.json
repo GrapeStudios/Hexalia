@@ -11,6 +11,9 @@
       "item": "minecraft:ender_pearl"
     }
   ],
+  "bottle_slot": {
+    "item": "hexalia:rustic_bottle"
+  },
   "output": {
     "item": "hexalia:brew_of_homestead"
   }

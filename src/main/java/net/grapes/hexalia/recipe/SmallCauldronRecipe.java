@@ -17,11 +17,13 @@ public class SmallCauldronRecipe implements Recipe<SimpleInventory> {
     private final Identifier id;
     private final ItemStack output;
     private final DefaultedList<Ingredient> recipeItems;
+    private final Ingredient bottleSlot;
 
-    public SmallCauldronRecipe (Identifier id, ItemStack output, DefaultedList<Ingredient> recipeItems) {
+    public SmallCauldronRecipe (Identifier id, ItemStack output, DefaultedList<Ingredient> recipeItems, Ingredient bottleSlot) {
         this.id = id;
         this.output = output;
         this.recipeItems = recipeItems;
+        this.bottleSlot = bottleSlot;
     }
 
     @Override
@@ -41,10 +43,9 @@ public class SmallCauldronRecipe implements Recipe<SimpleInventory> {
                 if (slotsMatched[i]) {
                     continue;
                 }
-
                 if (ingredient.test(inventory.getStack(i))) {
-                    foundIngredient = true;
                     slotsMatched[i] = true;
+                    foundIngredient = true;
                     break;
                 }
             }
@@ -52,27 +53,37 @@ public class SmallCauldronRecipe implements Recipe<SimpleInventory> {
                 return false;
             }
         }
-        return true;
+
+        return bottleSlot.test(inventory.getStack(inventory.size() - 1));
     }
 
     @Override
-    public ItemStack craft(SimpleInventory inventory, DynamicRegistryManager registryManager) {
+    public ItemStack craft(SimpleInventory inventory, DynamicRegistryManager manager) {
         return output.copy();
     }
 
     @Override
     public boolean fits(int width, int height) {
-        return width * height >= recipeItems.size();
+        return true;
     }
 
     @Override
-    public ItemStack getOutput(DynamicRegistryManager registryManager) {
-        return output;
+    public ItemStack getOutput(DynamicRegistryManager manager) {
+        return output.copy();
+    }
+
+    @Override
+    public DefaultedList<Ingredient> getIngredients() {
+        return recipeItems;
+    }
+
+    public Ingredient getBottleSlot() {
+        return bottleSlot;
     }
 
     @Override
     public Identifier getId() {
-        return this.id;
+        return id;
     }
 
     @Override
@@ -85,16 +96,11 @@ public class SmallCauldronRecipe implements Recipe<SimpleInventory> {
         return Type.INSTANCE;
     }
 
-    @Override
-    public DefaultedList<Ingredient> getIngredients() {
-        return this.recipeItems;
-    }
-
-     public static class Type implements RecipeType<SmallCauldronRecipe> {
-        private Type() {}
+    public static class Type implements RecipeType<SmallCauldronRecipe> {
+        private Type() { }
         public static final Type INSTANCE = new Type();
         public static final String ID = "small_cauldron";
-     }
+    }
 
     public static class Serializer implements RecipeSerializer<SmallCauldronRecipe> {
         public static final Serializer INSTANCE = new Serializer();
@@ -105,13 +111,15 @@ public class SmallCauldronRecipe implements Recipe<SimpleInventory> {
             ItemStack output = ShapedRecipe.outputFromJson(JsonHelper.getObject(json, "output"));
 
             JsonArray ingredients = JsonHelper.getArray(json, "ingredients");
-            DefaultedList<Ingredient> inputs = DefaultedList.ofSize(3, Ingredient.EMPTY);
+            DefaultedList<Ingredient> inputs = DefaultedList.ofSize(ingredients.size(), Ingredient.EMPTY);
 
             for (int i = 0; i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
+                inputs.set(i, Ingredient.fromJson(ingredients.get(i).getAsJsonObject()));
             }
 
-            return new SmallCauldronRecipe(id, output, inputs);
+            Ingredient bottleSlot = Ingredient.fromJson(JsonHelper.getObject(json, "bottle_slot"));
+
+            return new SmallCauldronRecipe(id, output, inputs, bottleSlot);
         }
 
         @Override
@@ -123,7 +131,8 @@ public class SmallCauldronRecipe implements Recipe<SimpleInventory> {
             }
 
             ItemStack output = buf.readItemStack();
-            return new SmallCauldronRecipe(id, output, inputs);
+            Ingredient bottleSlot = Ingredient.fromPacket(buf);
+            return new SmallCauldronRecipe(id, output, inputs, bottleSlot);
         }
 
         @Override
@@ -133,7 +142,7 @@ public class SmallCauldronRecipe implements Recipe<SimpleInventory> {
                 ing.write(buf);
             }
             buf.writeItemStack(recipe.getOutput(null));
+            recipe.getBottleSlot().write(buf);
         }
     }
-
 }

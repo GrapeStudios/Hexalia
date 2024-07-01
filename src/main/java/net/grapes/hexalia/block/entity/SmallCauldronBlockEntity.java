@@ -14,6 +14,7 @@ import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.PacketByteBuf;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.screen.PropertyDelegate;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
@@ -103,7 +104,7 @@ public class SmallCauldronBlockEntity extends BlockEntity implements ExtendedScr
     }
 
     public void brewingTick(World world, BlockPos pos, BlockState state) {
-        if (isHeated() && canInsertOutputSlot() && hasRecipe() && hasRusticBottle()) {
+        if (isHeated() && canInsertOutputSlot() && hasRecipe()) {
             increaseCraftingProgress();
             markDirty(world, pos, state);
             if (hasCraftingFinished()) {
@@ -142,9 +143,12 @@ public class SmallCauldronBlockEntity extends BlockEntity implements ExtendedScr
     private boolean hasRecipe() {
         return getCurrentRecipe().map(recipe -> {
             ItemStack output = recipe.getOutput(null);
-            return canInsertAmountIntoOutputSlot(output.getCount()) && canInsertItemIntoOutputSlot(output);
+            return canInsertAmountIntoOutputSlot(output.getCount())
+                    && canInsertItemIntoOutputSlot(output)
+                    && hasRequiredIngredients(recipe);
         }).orElse(false);
     }
+
 
     private boolean canInsertItemIntoOutputSlot(ItemStack output) {
         return this.getStack(OUTPUT_SLOT).isEmpty() || this.getStack(OUTPUT_SLOT).getItem() == output.getItem();
@@ -162,8 +166,25 @@ public class SmallCauldronBlockEntity extends BlockEntity implements ExtendedScr
         return this.getWorld().getRecipeManager().getFirstMatch(SmallCauldronRecipe.Type.INSTANCE, inventory, this.getWorld());
     }
 
-    private boolean hasRusticBottle() {
-        return this.getStack(BOTTLE_SLOT).getItem() == ModItems.RUSTIC_BOTTLE;
+    private boolean hasRequiredIngredients(SmallCauldronRecipe recipe) {
+        boolean hasRusticBottle = recipe.getBottleSlot().test(this.getStack(BOTTLE_SLOT));
+        if (!hasRusticBottle) {
+            return false;
+        }
+
+        for (Ingredient ingredient : recipe.getIngredients()) {
+            boolean foundIngredient = false;
+            for (int i = INPUT_SLOT_1; i <= INPUT_SLOT_3; i++) {
+                if (ingredient.test(this.getStack(i))) {
+                    foundIngredient = true;
+                    break;
+                }
+            }
+            if (!foundIngredient) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public boolean isHeated() {
