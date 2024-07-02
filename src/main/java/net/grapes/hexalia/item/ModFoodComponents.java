@@ -11,7 +11,7 @@ public class ModFoodComponents {
 
     public static final FoodComponent CHILLBERRIES = new FoodComponent.Builder().hunger(2).saturationModifier(0.3f)
             .statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 200), 1f).build();
-    public static final FoodComponent CHILLBERRY_PIE = new FoodComponent.Builder().hunger(4).saturationModifier(0.8f)
+    public static final FoodComponent CHILLBERRY_PIE = new FoodComponent.Builder().hunger(6).saturationModifier(0.8f)
             .statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 900, 1), 1f).build();
 
     public static final FoodComponent MANDRAKE_STEW = new FoodComponent.Builder().hunger(6).saturationModifier(0.7f)
