@@ -21,8 +21,7 @@ public class ModLootTableModifiers {
                         .rolls(ConstantLootNumberProvider.create(2))
                         .conditionally(RandomChanceLootCondition.builder(0.50f))
                         .with(ItemEntry.builder(ModItems.ANCIENT_SEED))
-                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)).build());
-
+                        .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
                 table.pool(poolBuilder);
             }
         });
