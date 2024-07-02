@@ -1,0 +1,17 @@
+{
+  "category": "hexalia:tools",
+  "name": "Hex Focus",
+  "icon": "hexalia:hex_focus",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:hex_focus",
+      "text": "This wand can be used to activate $(l:hexalia:rituals/ritual_table)Rituals$() and trigger interactions with certain blocks."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:hex_focus_"
+    }
+  ]
+}

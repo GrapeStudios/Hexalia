@@ -224,5 +224,10 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input(ModBlocks.HENBANE)
                 .criterion(hasItem(ModBlocks.HENBANE), conditionsFromItem(ModBlocks.HENBANE))
                 .offerTo(exporter);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.HEXBOOK, 1)
+                .input(Items.BOOK)
+                .input(ModTags.Items.CRUSHED_PLANTS)
+                .criterion(hasItem(Items.BOOK), conditionsFromItem(Items.BOOK))
+                .offerTo(exporter);
     }
 }

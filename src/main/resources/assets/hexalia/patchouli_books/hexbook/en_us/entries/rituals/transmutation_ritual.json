@@ -1,0 +1,16 @@
+{
+  "category": "hexalia:rituals",
+  "name": "Transmutation Ritual",
+  "icon": "hexalia:ancient_seed",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "A $(#674ea7)Transmutation$() ritual can be performed with a Ritual Table to transmute one item into another, fusing other items with the catalyst.$(br2)For more information on how to set up, and activate a ritual please read  $(l:hexalia:rituals/ritual_table)Ritual Table$()."
+    },
+    {
+      "type": "hexalia:transmutation",
+      "recipe": "hexalia:kelpweave_blade_transmutation"
+    }
+  ]
+}

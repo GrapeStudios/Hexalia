@@ -1,0 +1,27 @@
+{
+  "category": "hexalia:resources",
+  "name": "Sunfire Tomato",
+  "icon": "hexalia:sunfire_tomato",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:sunfire_tomato,hexalia:sunfire_tomato_seeds",
+      "text": "Eating a Sunfire Tomato gives $(#bcbcbc)Speed I$() for 10 seconds."
+    },
+    {
+      "type": "patchouli:image",
+      "title": "Feral Sunfire Tomato",
+      "images": [
+        "hexalia:textures/gui/patchouli/feral_sunfire_tomato.png"
+      ],
+      "border": true,
+      "text": "This feral crop can be found in the Savanna biome."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:spicy_sandwich",
+      "text": "This food item grants the $(#bcbcbc)Speed II$() effect for 45 seconds."
+    }
+  ]
+}

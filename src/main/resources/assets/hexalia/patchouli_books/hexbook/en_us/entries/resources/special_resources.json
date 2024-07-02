@@ -1,0 +1,13 @@
+{
+  "category": "hexalia:resources",
+  "name": "Special Resources",
+  "icon": "hexalia:ancient_seed",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:ancient_seed",
+      "text": "This seed can be found in Jungle Temples and can be $(l:hexalia:rituals/transmutation_ritual)transmuted$() into a Kelpweave Sword."
+    }
+  ]
+}

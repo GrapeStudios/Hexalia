@@ -30,6 +30,11 @@ repositories {
 	}
 
 	maven { url "https://maven.shedaniel.me" }
+
+	maven {
+		name "patchouli"
+		url "https://maven.blamejared.com"
+	}
 }
 
 fabricApi {
@@ -46,6 +51,8 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 	modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-fabric:12.0.684"
 	modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:12.0.684"
+
+	modImplementation "vazkii.patchouli:Patchouli:${patchouli_version}"
 
 	// modCompileOnly "vectorwing:FarmersDelight:${fdrf_version}"
 	// modRuntimeOnly "vectorwing:FarmersDelight:${fdrf_version}"

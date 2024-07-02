@@ -1,0 +1,23 @@
+{
+  "category": "hexalia:resources",
+  "name": "Magical Resources",
+  "icon": "hexalia:siren_kelp",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:spirit_bloom",
+      "text": "Spirit Blooms are blue flowers found in the Mangrove Swamp or Swamp Biome."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:dreamshroom",
+      "text": "Dreamshrooms are found in the Old Growth Pine Taiga or Mushroom Fields biome."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:siren_kelp",
+      "text": "Siren Kelp are found in the bottom of Ocean or Deep Ocean biomes."
+    }
+  ]
+}

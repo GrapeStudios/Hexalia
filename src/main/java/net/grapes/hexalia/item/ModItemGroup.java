@@ -68,6 +68,8 @@ public class ModItemGroup {
                         entries.add(ModItems.KELPWEAVE_BLADE);
                         entries.add(ModItems.RITUAL_TABLE);
                         entries.add(ModItems.WISDOM_GEM);
+
+                        entries.add(ModItems.HEXBOOK);
                     }).build());
     public static void registerItemGroups(){
     }

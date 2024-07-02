@@ -98,7 +98,8 @@ public class ModItems {
             new KelpweaveBladeItem(ModToolMaterials.ANCIENT_SEED, 3, -2f, new FabricItemSettings()));
 
     // Addon/Compat Items
-
+    public static final Item HEXBOOK = registerItem("hexbook",
+            new HexbookItem(new FabricItemSettings().maxCount(1)));
     public static Item WITCH_SALAD;
     static {
         if (ModUtils.isModLoaded("farmersdelight")) {

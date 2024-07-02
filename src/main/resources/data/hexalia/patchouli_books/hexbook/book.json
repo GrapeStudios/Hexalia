@@ -1,0 +1,12 @@
+{
+  "name": "item.hexalia.hexbook",
+  "landing_text": "item.hexalia.hexbook.landing_text",
+  "version": 1,
+  "creative_tab": "hexalia:hexalia",
+  "use_resource_pack": true,
+  "dont_generate_book": true,
+  "custom_book_item": "hexalia:hexbook",
+  "show_progress": false,
+  "link_hover_color": "a64d79",
+  "link_color": "674ea7"
+}

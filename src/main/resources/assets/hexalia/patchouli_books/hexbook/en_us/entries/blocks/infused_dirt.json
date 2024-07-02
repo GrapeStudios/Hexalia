@@ -1,0 +1,18 @@
+{
+  "category": "hexalia:blocks",
+  "name": "Infused Dirt",
+  "icon": "hexalia:infused_dirt",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:infused_dirt,hexalia:infused_farmland",
+      "text": "Combining Siren Kelp with Dirt can can create a type of farmland that does not need water.$(br2)Right-clicking the Dirt block with a Hoe turns it into Farmland, and right-clicking it with a Shovel turns it back into Dirt."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:infused_dirt_",
+      "text": "Stepping on top of the Infused Farmland does not destroy crops nor turns it back to Infused Dirt.$(br2)You can plant Sugar Canes without needing water source nearby."
+    }
+  ]
+}

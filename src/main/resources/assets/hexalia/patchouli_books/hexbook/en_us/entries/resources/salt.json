@@ -1,0 +1,36 @@
+{
+  "category": "hexalia:resources",
+  "name": "Salt",
+  "icon": "hexalia:salt",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:salt",
+      "text": "Salt can be found in ore veins and can be used for many things, such as $(l:hexalia:tools/purifying_salts)Purifying Salts$().$(br2)You can place it on the ground by right-clicking, this is used for rituals."
+    },
+    {
+      "type": "patchouli:image",
+      "title": "Salt Ore",
+      "images": [
+        "hexalia:textures/gui/patchouli/salt_ore.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:leather_",
+      "text": "You can combine Salt with Rotten Flesh to obtain Leather."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:salt_block",
+      "text": "Salt can be combined in a crafting grid in order to obtain a Salt Block allowing you to store this resource more efficiently."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:salt_lamp_",
+      "text": "A lamp can be crafted with Copper Ingot and Glowstone to illuminate dark areas."
+    }
+  ]
+}

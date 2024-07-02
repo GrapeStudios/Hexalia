@@ -1,0 +1,13 @@
+{
+  "category": "hexalia:resources",
+  "name": "Decorative Plants",
+  "icon": "hexalia:henbane",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:henbane",
+      "text": "These are yellowish flowers that can be found in the Plains biome."
+    }
+  ]
+}

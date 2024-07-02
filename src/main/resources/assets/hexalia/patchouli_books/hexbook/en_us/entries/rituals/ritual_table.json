@@ -1,0 +1,34 @@
+{
+  "category": "hexalia:rituals",
+  "name": "Ritual Table",
+  "icon": "hexalia:ritual_table",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:ritual_table_",
+      "text": "Rituals are performed using a ritual table to hold the transmutable item."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:salt",
+      "title": "Salt",
+      "text": "Salt has to be placed on the ground on each side of the Ritual Table with a 1-block distance.$(br2)The recipe items have to be placed on top of the salt block with a right-click."
+    },
+    {
+      "type": "patchouli:image",
+      "title": "Ritual Table",
+      "images": [
+        "hexalia:textures/gui/patchouli/ritual_table.png"
+      ],
+      "border": true,
+      "text": "The item in the middle must be placed on the Ritual Table, and the others on the Salt Block."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:hex_focus",
+      "title": "Ritual Activation",
+      "text": "Once all the items are placed on its necessary blocks, right-clicking the Ritual Table with a $(#b4a7d6)Hex Focus$() starts the ritual process."
+    }
+  ]
+}

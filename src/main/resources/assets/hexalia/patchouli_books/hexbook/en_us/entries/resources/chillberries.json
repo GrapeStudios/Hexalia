@@ -1,0 +1,27 @@
+{
+  "category": "hexalia:resources",
+  "name": "Chillberries",
+  "icon": "hexalia:chillberries",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:chillberries",
+      "text": "Eating a Chillberry gives $(#FF9900)Fire Resistance I$() for 10 seconds."
+    },
+    {
+      "type": "patchouli:image",
+      "title": "Chillberry Bush",
+      "images": [
+        "hexalia:textures/gui/patchouli/chillberry_bush.png"
+      ],
+      "border": true,
+      "text": "These bushes can be found in the Taiga or Snowy Taiga biome."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:chillberry_pie",
+      "text": "This food item grants the $(#FF9900)Fire Resistance II$() effect for 45 seconds."
+    }
+  ]
+}

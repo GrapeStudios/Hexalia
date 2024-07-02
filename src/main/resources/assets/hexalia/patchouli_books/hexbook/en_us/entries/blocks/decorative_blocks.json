@@ -1,0 +1,25 @@
+{
+  "category": "hexalia:blocks",
+  "name": "Decorative Blocks",
+  "icon": "hexalia:candle_skull",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:candle_skull,hexalia:parchment,hexalia:dreamcatcher",
+      "text": "Certain decorative blocks can be crafted in order to decorate your living space and build your own witch hut."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:candle_skull_"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:parchment_"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:dreamcatcher_"
+    }
+  ]
+}

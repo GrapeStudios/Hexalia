@@ -1,0 +1,38 @@
+{
+  "category": "hexalia:brewing",
+  "name": "Brews",
+  "icon": "hexalia:rustic_bottle",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:rustic_bottle_",
+      "text": "All brewing recipes require a Rustic Bottle in the Rustic Bottle slot to begin the crafting process."
+    },
+    {
+      "type": "hexalia:small_cauldron",
+      "recipe": "hexalia:brew_of_vigor_from_small_cauldron",
+      "text": "Grants the $(#cc0000)Vigor$() effect, increasing strength and healing a portion of the damage dealt."
+    },
+    {
+      "type": "hexalia:small_cauldron",
+      "recipe": "hexalia:brew_of_warding_from_small_cauldron",
+      "text": "Grants the $(#38761d)Warding$() effect, increasing armor toughness and reflecting a portion of the received damage back to the attacker."
+    },
+    {
+      "type": "hexalia:small_cauldron",
+      "recipe": "hexalia:brew_of_slimey_step_from_small_cauldron",
+      "text": "Grants the $(#6aa84f)Slimey Step$() effect, allowing you to vertically climb walls and negating fall damage. If you press the $(#6aa84f)sneak$() key, you will bounce upwards."
+    },
+    {
+      "type": "hexalia:small_cauldron",
+      "recipe": "hexalia:brew_of_homestead_from_small_cauldron",
+      "text": "After consuming this brew, you will be teleported back to your assigned spawn point."
+    },
+    {
+      "type": "hexalia:small_cauldron",
+      "recipe": "hexalia:brew_of_siphoning_from_small_cauldron",
+      "text": "Grants the $(#9fc5e8)Siphoning$() effect, increasing your mining speed and attracting items from a further distance."
+    }
+  ]
+}

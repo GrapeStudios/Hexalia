@@ -1,0 +1,27 @@
+{
+  "category": "hexalia:resources",
+  "name": "Mandrake",
+  "icon": "hexalia:mandrake",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:mandrake,hexalia:mandrake_seeds",
+      "text": "This crop can be useful in combat, if you hold the RMB for a few seconds, the Mandrake will scream in a radius of 5 blocks which applies the $(#f1c232)Stunned$() effect to nearby entities."
+    },
+    {
+      "type": "patchouli:image",
+      "title": "Feral Mandrake",
+      "images": [
+        "hexalia:textures/gui/patchouli/feral_mandrake.png"
+      ],
+      "border": true,
+      "text": "This feral crop can be found in the Forest and Birch Forest biome."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:mandrake_stew",
+      "text": "This food item grants the $(#f1c232)Stuffed$() effect for 45 seconds, this prevents saturation from lowering."
+    }
+  ]
+}
