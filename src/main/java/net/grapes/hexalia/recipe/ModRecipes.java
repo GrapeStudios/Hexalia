@@ -1,7 +1,6 @@
 package net.grapes.hexalia.recipe;
 
 import net.grapes.hexalia.HexaliaMod;
-import net.minecraft.recipe.RecipeType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
