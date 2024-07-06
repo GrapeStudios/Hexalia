@@ -34,13 +34,5 @@
       "player_joined"
     ]
   ],
-  "sends_telemetry_event": true,
-  "rewards": {
-    "items": [
-      {
-        "item": "hexalia:hexbook",
-        "count": 1
-      }
-    ]
-  }
+  "sends_telemetry_event": true
 }
