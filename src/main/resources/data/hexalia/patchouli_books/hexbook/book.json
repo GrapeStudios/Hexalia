@@ -1,6 +1,7 @@
 {
   "name": "item.hexalia.hexbook",
   "landing_text": "item.hexalia.hexbook.landing_text",
+  "filler_texture": "hexalia:textures/gui/patchouli/filler.png",
   "version": 1,
   "creative_tab": "hexalia:hexalia",
   "use_resource_pack": true,
