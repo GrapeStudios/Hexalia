@@ -3,6 +3,9 @@
   "values": [
     "hexalia:salt_ore",
     "hexalia:salt_block",
-    "hexalia:salt_lamp"
+    "hexalia:salt_lamp",
+    "hexalia:small_cauldron",
+    "hexalia:rustic_oven",
+    "hexalia:ritual_table"
   ]
 }

@@ -23,14 +23,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SALT_BLOCK)
                 .add(ModBlocks.SALT_LAMP)
                 .add(ModBlocks.RUSTIC_OVEN)
+                .add(ModBlocks.SMALL_CAULDRON)
                 .add(ModBlocks.RITUAL_TABLE);
 
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
                 .add(ModBlocks.SALT_ORE)
                 .add(ModBlocks.SALT_BLOCK)
-                .add(ModBlocks.SALT_LAMP);
-
-        getOrCreateTagBuilder(BlockTags.NEEDS_IRON_TOOL)
+                .add(ModBlocks.SALT_LAMP)
                 .add(ModBlocks.SMALL_CAULDRON)
                 .add(ModBlocks.RUSTIC_OVEN)
                 .add(ModBlocks.RITUAL_TABLE);
