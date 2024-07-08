@@ -21,12 +21,12 @@ public class ModItemGroup {
                         entries.add(ModBlocks.HENBANE);
                         entries.add(ModItems.MANDRAKE_SEEDS);
                         entries.add(ModItems.SUNFIRE_TOMATO_SEEDS);
-                        // entries.add(ModItems.RABBAGE_SEEDS);
+                        entries.add(ModItems.RABBAGE_SEEDS);
 
                         entries.add(ModItems.MANDRAKE);
                         entries.add(ModItems.SUNFIRE_TOMATO);
                         entries.add(ModItems.CHILLBERRIES);
-                        // entries.add(ModItems.RABBAGE);
+                        entries.add(ModItems.RABBAGE);
                         entries.add(ModItems.MANDRAKE_STEW);
                         entries.add(ModItems.SPICY_SANDWICH);
                         entries.add(ModItems.CHILLBERRY_PIE);
