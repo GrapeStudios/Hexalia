@@ -8,6 +8,11 @@
       "type": "patchouli:spotlight",
       "item": "hexalia:ancient_seed",
       "text": "This seed can be found in Jungle Temples and can be $(l:hexalia:rituals/transmutation_ritual)transmuted$() into a Kelpweave Sword."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:rabbage,hexalia:rabbage_seeds",
+      "text": "This is also known as the Cabbage that bites, its seeds can be obtained in a $(l:hexalia:rituals/transmutation_ritual)Transmutation Ritual$(), this item can be thrown to an entity to damage them and make them bleed."
     }
   ]
 }
