@@ -43,7 +43,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ModTags.Items.BREWS)
                 .add(ModItems.BREW_OF_HOMESTEAD, ModItems.BREW_OF_VIGOR,
                         ModItems.BREW_OF_SLIMEY_STEP, ModItems.BREW_OF_WARDING,
-                        ModItems.RUSTIC_BOTTLE);
+                        ModItems.BREW_OF_SIPHONING, ModItems.RUSTIC_BOTTLE);
 
         // Common Tags
         getOrCreateTagBuilder(ModTags.Items.SALT_DUSTS)
