@@ -1,6 +1,8 @@
 package net.grapes.hexalia.block.custom;
 
 import net.grapes.hexalia.block.entity.BrewShelfBlockEntity;
+import net.grapes.hexalia.item.ModItems;
+import net.grapes.hexalia.sound.ModSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -11,11 +13,16 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.BlockStateParticleEffect;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.IntProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
@@ -24,20 +31,16 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.BlockMirror;
-import net.minecraft.util.BlockRotation;
-import net.minecraft.util.Hand;
-
 
 public class BrewShelfBlock extends BlockWithEntity {
 
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty OPEN = Properties.OPEN;
+    public static final IntProperty FRONT_VARIANT = IntProperty.of("front_variant", 0, 2);
 
     public BrewShelfBlock(Settings settings) {
         super(settings);
-        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(OPEN, false));
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(OPEN, false).with(FRONT_VARIANT, 0));
     }
 
     @Nullable
@@ -46,10 +49,9 @@ public class BrewShelfBlock extends BlockWithEntity {
         return getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite());
     }
 
-
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        builder.add(FACING, OPEN);
+        builder.add(FACING, OPEN, FRONT_VARIANT);
     }
 
     @Override
@@ -65,7 +67,6 @@ public class BrewShelfBlock extends BlockWithEntity {
                 ItemScatterer.spawn(world, pos, (Inventory) blockEntity);
                 world.updateComparators(pos, this);
             }
-
             super.onStateReplaced(state, world, pos, newState, moved);
         }
     }
@@ -78,16 +79,33 @@ public class BrewShelfBlock extends BlockWithEntity {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (!world.isClient() && world.getBlockEntity(pos) instanceof BrewShelfBlockEntity brewShelfBlockEntity) {
-            player.openHandledScreen(brewShelfBlockEntity);
+        if (!world.isClient()) {
+            if (player.getStackInHand(hand).getItem() == ModItems.HEX_FOCUS) {
+                int currentVariant = state.get(FRONT_VARIANT);
+                int nextVariant = (currentVariant + 1) % 3;
+                world.setBlockState(pos, state.with(FRONT_VARIANT, nextVariant));
+
+                // Spawn particles with block texture
+                if (world instanceof ServerWorld) {
+                    BlockStateParticleEffect particleEffect = new BlockStateParticleEffect(ParticleTypes.BLOCK, state);
+                    ((ServerWorld) world).spawnParticles(particleEffect, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, 10, 0.5, 0.5, 0.5, 0.0);
+                }
+
+                // Play sound
+                world.playSound(null, pos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0f, 1.0f);
+
+                return ActionResult.SUCCESS;
+            } else if (world.getBlockEntity(pos) instanceof BrewShelfBlockEntity brewShelfBlockEntity) {
+                player.openHandledScreen(brewShelfBlockEntity);
+            }
         }
         return ActionResult.SUCCESS;
     }
 
-
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
-        if (itemStack.hasCustomName()) {BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (itemStack.hasCustomName()) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
             if (blockEntity instanceof BrewShelfBlockEntity) {
                 ((BrewShelfBlockEntity) blockEntity).setCustomName(itemStack.getName());
             }
@@ -121,6 +139,3 @@ public class BrewShelfBlock extends BlockWithEntity {
         return state.rotate(mirror.getRotation(state.get(FACING)));
     }
 }
-
-
-

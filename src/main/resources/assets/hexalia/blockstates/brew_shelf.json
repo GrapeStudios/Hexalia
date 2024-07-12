@@ -1,19 +1,19 @@
 {
   "variants": {
-    "facing=east": {
-      "model": "hexalia:block/brew_shelf",
-      "y": 90
-    },
-    "facing=north": {
-      "model": "hexalia:block/brew_shelf"
-    },
-    "facing=south": {
-      "model": "hexalia:block/brew_shelf",
-      "y": 180
-    },
-    "facing=west": {
-      "model": "hexalia:block/brew_shelf",
-      "y": 270
-    }
+    "facing=north,front_variant=0": { "model": "hexalia:block/brew_shelf_variant1" },
+    "facing=north,front_variant=1": { "model": "hexalia:block/brew_shelf_variant2" },
+    "facing=north,front_variant=2": { "model": "hexalia:block/brew_shelf_variant3" },
+
+    "facing=south,front_variant=0": { "model": "hexalia:block/brew_shelf_variant1", "y": 180 },
+    "facing=south,front_variant=1": { "model": "hexalia:block/brew_shelf_variant2", "y": 180 },
+    "facing=south,front_variant=2": { "model": "hexalia:block/brew_shelf_variant3", "y": 180 },
+
+    "facing=west,front_variant=0": { "model": "hexalia:block/brew_shelf_variant1", "y": 270 },
+    "facing=west,front_variant=1": { "model": "hexalia:block/brew_shelf_variant2", "y": 270 },
+    "facing=west,front_variant=2": { "model": "hexalia:block/brew_shelf_variant3", "y": 270 },
+
+    "facing=east,front_variant=0": { "model": "hexalia:block/brew_shelf_variant1", "y": 90 },
+    "facing=east,front_variant=1": { "model": "hexalia:block/brew_shelf_variant2", "y": 90 },
+    "facing=east,front_variant=2": { "model": "hexalia:block/brew_shelf_variant3", "y": 90 }
   }
 }
