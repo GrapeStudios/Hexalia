@@ -105,5 +105,14 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         true, true, false))
                 .criterion("has_hex_focus", InventoryChangedCriterion.Conditions.items(ModItems.HEX_FOCUS))
                 .parent(ritualTable).build(consumer, HexaliaMod.MOD_ID + "hex_focus");
+
+        Advancement rabbage = Advancement.Builder.create()
+                .display(new AdvancementDisplay(new ItemStack(ModItems.RABBAGE),
+                        Text.translatable("advancements.hexalia.rabbage.title"),
+                        Text.translatable("advancements.hexalia.rabbage.description"),
+                        new Identifier(HexaliaMod.MOD_ID, "textures/block/salt_block.png"), AdvancementFrame.TASK,
+                        true, true, false))
+                .criterion("has_rabbage", InventoryChangedCriterion.Conditions.items(ModItems.RABBAGE))
+                .parent(ritualTable).build(consumer, HexaliaMod.MOD_ID + "rabbage");
     }
 }

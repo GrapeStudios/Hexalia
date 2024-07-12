@@ -60,7 +60,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .pattern(" A ")
                 .pattern(" P ")
                 .pattern(" S ")
-                .input('A', Items.GLOWSTONE_DUST)
+                .input('A', Items.TORCH)
                 .input('P', ModTags.Items.SALT_BLOCKS)
                 .input('S', Items.COPPER_INGOT)
                 .criterion(hasItem(Items.GLOWSTONE_DUST), conditionsFromItem(Items.GLOWSTONE_DUST))
