@@ -1,4 +1,4 @@
-// 1.20.1	2024-07-12T08:37:52.5860673	Hexalia/Model Definitions
+// 1.20.1	2024-07-12T11:09:45.4755805	Hexalia/Model Definitions
 7f08f13d7427f7379f7f67a2df1da92a31aea2d0 assets\hexalia\models\item\salt_block.json
 61528b15831a64cf27a55765a5308f8e38c462cd assets\hexalia\blockstates\dreamshroom.json
 8961eccf812c2ee13ab76cadff9d63a350171803 assets\hexalia\models\block\dreamshroom.json
@@ -23,8 +23,8 @@ e6e53e545da0d69ea318149ce507b40b98fca097 assets\hexalia\models\item\henbane.json
 033ff7d3d5ef638143a0eb99ae938b456d2bbbe1 assets\hexalia\models\block\henbane.json
 4b2bb1f837547e276ac67e56f13cbbe7342e75f4 assets\hexalia\models\block\potted_henbane.json
 e8dd17bff61e072333d14727741f5db6c523a2f9 assets\hexalia\models\item\resin.json
-962023670799b93fa2ba78448ce6465701d5a680 assets\hexalia\models\item\spirit_bloom.json
 868aea410d5d3b8da81e3d5b497ebb8739b03d21 assets\hexalia\models\item\dreamshroom_paste.json
+962023670799b93fa2ba78448ce6465701d5a680 assets\hexalia\models\item\spirit_bloom.json
 48a652a55a0a5c84c67c1dbe2e106d94377a6a15 assets\hexalia\models\item\brew_of_warding.json
 20feb6b02bae11b434ba251aafe3d84174ac18ab assets\hexalia\models\item\purifying_salts.json
 71f146c3cd8f89ff28b07811c12186ab801fb851 assets\hexalia\models\item\mandrake_stew.json
