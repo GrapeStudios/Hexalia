@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "A": {
-      "item": "minecraft:glowstone_dust"
+      "item": "minecraft:torch"
     },
     "P": {
       "tag": "c:salt_blocks"
