@@ -1,24 +1,24 @@
 {
   "type": "hexalia:transmutation",
   "input": {
-    "item": "hexalia:ancient_seed"
+    "item": "minecraft:wheat_seeds"
   },
   "salt_items": [
     {
       "item": "hexalia:resin"
     },
     {
-      "item": "hexalia:siren_kelp"
+      "item": "hexalia:spirit_bloom_powder"
     },
     {
       "item": "minecraft:wooden_sword"
     },
     {
-      "item": "minecraft:string"
+      "item": "minecraft:snowball"
     }
   ],
   "output": {
-    "item": "hexalia:kelpweave_blade",
+    "item": "hexalia:rabbage_seeds",
     "count": 1
   }
 }

@@ -11,6 +11,10 @@
     {
       "type": "hexalia:transmutation",
       "recipe": "hexalia:kelpweave_blade_transmutation"
+    },
+    {
+      "type": "hexalia:transmutation",
+      "recipe": "hexalia:rabbage_seeds_transmutation"
     }
   ]
 }
