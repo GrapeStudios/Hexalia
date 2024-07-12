@@ -43,7 +43,7 @@ public class ModItems {
     public static final Item RABBAGE_SEEDS = registerItem("rabbage_seeds",
             new AliasedBlockItem(ModBlocks.RABBAGE_CROP, new FabricItemSettings()));
     public static final Item RABBAGE = registerItem("rabbage",
-            new Item(new FabricItemSettings().food(ModFoodComponents.RABBAGE)));
+            new RabbageItem(new FabricItemSettings()));
 
     // Refined Resources
     public static final Item SIREN_KELP_PASTE = registerItem("siren_kelp_paste",
