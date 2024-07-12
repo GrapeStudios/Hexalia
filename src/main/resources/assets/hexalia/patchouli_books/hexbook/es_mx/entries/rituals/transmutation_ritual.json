@@ -1,0 +1,20 @@
+{
+  "category": "hexalia:rituals",
+  "name": "Ritual de Transmutación",
+  "icon": "hexalia:ancient_seed",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "Un ritual de $(#674ea7)transmutación$() se puede realizar con una Mesa de Rituales para transmutar un objeto en otro, fusionando otros elementos con el catalizador.$(br2)Para obtener más información sobre cómo configurar y activar un ritual, consulta la $(l:hexalia:rituals/ritual_table)Mesa de Rituales$()."
+    },
+    {
+      "type": "hexalia:transmutation",
+      "recipe": "hexalia:kelpweave_blade_transmutation"
+    },
+    {
+      "type": "hexalia:transmutation",
+      "recipe": "hexalia:rabbage_seeds_transmutation"
+    }
+  ]
+}

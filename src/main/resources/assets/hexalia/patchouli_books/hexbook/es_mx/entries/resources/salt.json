@@ -1,0 +1,36 @@
+{
+  "category": "hexalia:resources",
+  "name": "Sal",
+  "icon": "hexalia:salt",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:salt",
+      "text": "La Sal se puede encontrar en vetas de mineral y se puede utilizar para muchas cosas, como $(l:hexalia:tools/purifying_salts)Sales Purificadoras$().$(br2)Puedes colocarla en el suelo haciendo clic derecho, esto se usa para rituales."
+    },
+    {
+      "type": "patchouli:image",
+      "title": "Mineral de Sal",
+      "images": [
+        "hexalia:textures/gui/patchouli/salt_ore.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:leather_",
+      "text": "Puedes combinar Sal con Carne Podrida para obtener Cuero."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:salt_block",
+      "text": "La Sal se puede combinar en una mesa de trabajo para obtener un Bloque de Sal, lo que te permite almacenar este recurso de manera más eficiente."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:salt_lamp_",
+      "text": "Se puede elaborar una lámpara con Lingote de Cobre y Antorcha para iluminar áreas oscuras."
+    }
+  ]
+}

@@ -30,7 +30,7 @@
     {
       "type": "patchouli:crafting",
       "recipe": "hexalia:salt_lamp_",
-      "text": "A lamp can be crafted with Copper Ingot and Glowstone to illuminate dark areas."
+      "text": "A lamp can be crafted with Copper Ingot and Torch to illuminate dark areas."
     }
   ]
 }

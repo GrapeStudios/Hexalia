@@ -1,0 +1,18 @@
+{
+  "category": "hexalia:blocks",
+  "name": "Tierra Infundida",
+  "icon": "hexalia:infused_dirt",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:infused_dirt,hexalia:infused_farmland",
+      "text": "Combinando Siren Kelp con Tierra se puede crear un tipo de tierra de cultivo que no necesita agua.$(br2)Haciéndole clic derecho con una Azada lo convierte en Tierra de Cultivo, y haciéndolo con una Pala lo convierte de nuevo en Tierra."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:infused_dirt_",
+      "text": "Al pisar encima de la Tierra de Cultivo Infundida no se destruyen los cultivos ni se convierte de nuevo en Tierra Infundida.$(br2)Puedes plantar Cañas de Azúcar sin necesidad de tener una fuente de agua cercana."
+    }
+  ]
+}

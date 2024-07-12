@@ -1,0 +1,13 @@
+{
+  "category": "hexalia:resources",
+  "name": "Plantas Decorativas",
+  "icon": "hexalia:henbane",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:henbane",
+      "text": "Estas son flores amarillentas que se pueden encontrar en el bioma de las Planicies."
+    }
+  ]
+}

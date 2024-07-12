@@ -1,0 +1,23 @@
+{
+  "category": "hexalia:resources",
+  "name": "Recursos Mágicos",
+  "icon": "hexalia:siren_kelp",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:spirit_bloom",
+      "text": "Las Flores Espíritu son flores azules que se encuentran en el Pantano de Manglares o en el Bioma de Pantano."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:dreamshroom",
+      "text": "Las Setas de Ensueño se encuentran en el Taiga de Pino Antiguo o en el Bioma de Campos de Setas."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:siren_kelp",
+      "text": "Las Algas de Sirena se encuentra en el fondo de los biomas Océano o Océano Profundo."
+    }
+  ]
+}

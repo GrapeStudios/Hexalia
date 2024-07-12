@@ -1,0 +1,13 @@
+{
+  "category": "hexalia:resources",
+  "name": "Recursos Especiales",
+  "icon": "hexalia:ancient_seed",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:ancient_seed",
+      "text": "Esta semilla se puede encontrar en Templos de la Jungla y se puede $(l:hexalia:rituals/transmutation_ritual)transmutar$() en una Espada de Alga Tejida."
+    }
+  ]
+}

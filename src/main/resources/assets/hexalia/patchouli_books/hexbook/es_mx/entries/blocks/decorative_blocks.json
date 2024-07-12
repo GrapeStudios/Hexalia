@@ -1,0 +1,25 @@
+{
+  "category": "hexalia:blocks",
+  "name": "Bloques Decorativos",
+  "icon": "hexalia:candle_skull",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:candle_skull,hexalia:parchment,hexalia:dreamcatcher",
+      "text": "Se pueden elaborar ciertos bloques decorativos para decorar tu espacio habitable y construir tu propia choza de bruja."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:candle_skull_"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:parchment_"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:dreamcatcher_"
+    }
+  ]
+}
