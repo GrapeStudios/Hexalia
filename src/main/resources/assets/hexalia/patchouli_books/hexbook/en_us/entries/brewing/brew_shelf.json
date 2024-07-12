@@ -7,7 +7,7 @@
     {
       "type": "patchouli:crafting",
       "recipe": "hexalia:brew_shelf_",
-      "text": "This block allows you to safely store $(l:hexalia:brewing/brews)Brews$() in its slots, but it only accepts brews for storage. If you right click the block with a $(l:hexalia:tools/hex_focus)Hex Focus() the block will change its appearance."
+      "text": "This block allows you to safely store $(l:hexalia:brewing/brews)Brews$() in its slots, but it only accepts brews for storage. If you right click the block with a $(l:hexalia:tools/hex_focus)Hex Focus$() the block will change its appearance."
     }
   ]
 }
