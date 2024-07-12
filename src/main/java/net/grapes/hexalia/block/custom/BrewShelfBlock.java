@@ -2,7 +2,6 @@ package net.grapes.hexalia.block.custom;
 
 import net.grapes.hexalia.block.entity.BrewShelfBlockEntity;
 import net.grapes.hexalia.item.ModItems;
-import net.grapes.hexalia.sound.ModSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;

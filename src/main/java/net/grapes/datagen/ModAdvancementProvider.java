@@ -1,10 +1,8 @@
 package net.grapes.datagen;
 
-import com.mojang.authlib.minecraft.client.MinecraftClient;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricAdvancementProvider;
 import net.grapes.hexalia.HexaliaMod;
-import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.item.ModItems;
 import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementDisplay;
