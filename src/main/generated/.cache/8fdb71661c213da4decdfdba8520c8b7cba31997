@@ -1,4 +1,4 @@
-// 1.20.1	2024-07-06T07:49:09.1737512	Hexalia/Recipes
+// 1.20.1	2024-07-11T13:42:52.831077	Hexalia/Recipes
 82b40fd0f7dd4de905f094da178650fbe4ad3cbc data\hexalia\advancements\recipes\misc\dreamshroom_paste.json
 2884548e412c49c07d23e96bbfb125d7942d389f data\hexalia\recipes\yellow_dye.json
 80ec38b79e4d5690ac82999cbeb7a45470be3934 data\hexalia\recipes\stone_dagger_.json
@@ -9,8 +9,8 @@ bbd643b3c0b6b660bea2212060e4bd73b79d13ca data\hexalia\advancements\recipes\misc\
 7cec72c7b5054d48d7a94f8d8a2ff27dda7ef20b data\hexalia\advancements\recipes\misc\salt_block.json
 53326a019a070dde3721e6abf7902966558c21e8 data\hexalia\advancements\recipes\misc\hex_focus_.json
 b47e92fbdbab9199fe6aa69604fba631ba1314da data\hexalia\advancements\recipes\misc\sunfire_tomato_seeds.json
-569438b0864741b7c7ede583b8036a8b6c70fdcf data\hexalia\advancements\recipes\misc\spirit_bloom_powder.json
 09230c4ac8c984c104055442aeb9fd4962ce8024 data\hexalia\recipes\mandrake_stew.json
+569438b0864741b7c7ede583b8036a8b6c70fdcf data\hexalia\advancements\recipes\misc\spirit_bloom_powder.json
 43babe8da8fc45563b2ff7e9809f238fd108395a data\hexalia\advancements\recipes\food\mandrake_stew.json
 eda94f3897a39897ac3869e44d9fda3199c64ce9 data\hexalia\recipes\ritual_table_.json
 cc8ef06e671131cb20f8c3909951f322a7fa13d2 data\hexalia\advancements\recipes\misc\leather_.json

@@ -6,7 +6,8 @@ import net.minecraft.entity.effect.StatusEffectCategory;
 
 public class BleedingEffect extends StatusEffect {
 
-    private static final float BASE_DAMAGE = 1.0f;
+    private static final float BASE_DAMAGE = 0.5f;
+
     protected BleedingEffect(StatusEffectCategory category, int color) {
         super(category, color);
     }
@@ -14,8 +15,8 @@ public class BleedingEffect extends StatusEffect {
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         if (!entity.getEntityWorld().isClient && entity.getHealth() > 0f) {
-            float damage = BASE_DAMAGE + amplifier * 0.5f;
-            entity.damage(entity.getDamageSources().magic(), damage);
+            float damage = BASE_DAMAGE + amplifier * 0.2f;
+            entity.damage(entity.getDamageSources().generic(), damage);
         }
     }
 

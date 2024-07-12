@@ -45,6 +45,7 @@
   "effect.hexalia.slimey_step": "Slimey Step",
   "effect.hexalia.warding": "Warding",
   "effect.hexalia.siphoning": "Siphoning",
+  "effect.hexalia.bleeding": "Bleeding",
 
   "item.hexalia.rustic_bottle": "Rustic Bottle",
   "item.hexalia.brew_of_vigor": "Brew Of Vigor",
@@ -94,6 +95,7 @@
   "effect.hexalia.vigor.description": "Increases the strength of the user and gives the user the ability to restore 25% of the damage dealt to the target",
   "effect.hexalia.slimey_step.description": "Allows the user to vertically climb up walls and immunity to fall damage. The user bounces when the sneak key is pressed",
   "effect.hexalia.siphoning.description": "Increases mining speed and the user attracts items in the ground from a 5 block distance",
+  "effect.hexalia.bleeding.description": "Deals damage each tick similar to the Poison effect.",
 
   "advancements.hexalia.root.title": "Welcome to Hexalia",
   "advancements.hexalia.root.description": "Thank you for downloading our mod",
