@@ -1,0 +1,39 @@
+{
+  "parent": "minecraft:hexaliaritual_table",
+  "criteria": {
+    "has_rabbage": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexalia:rabbage"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "hexalia:textures/block/salt_block.png",
+    "description": {
+      "translate": "advancements.hexalia.rabbage.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "hexalia:rabbage"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.hexalia.rabbage.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_rabbage"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
