@@ -9,7 +9,7 @@
   "item.hexalia.siren_kelp": "Siren Kelp",
   "item.hexalia.siren_kelp_paste": "Siren Kelp Paste",
   "block.hexalia.chillberry_bush": "Chillberries",
-  "item.hexalia.chillberry": "Chillberry",
+  "item.hexalia.chillberries": "Chillberries",
   "item.hexalia.chillberry_pie": "Chillberry Pie",
   "item.hexalia.mandrake": "Mandrake",
   "item.hexalia.mandrake_seeds": "Mandrake Seeds",
@@ -115,6 +115,8 @@
   "advancements.hexalia.ritual_table.description": "Obtain the Pedestal Table, used to perform rituals",
   "advancements.hexalia.hex_focus.title": "Little Witch, Little Steps",
   "advancements.hexalia.hex_focus.description": "Obtain a Hex Focus, a handy tool.",
+  "advancements.hexalia.rabbage.title": "Is This Cabbage Biting?",
+  "advancements.hexalia.rabbage.description": "Obtain a Rabbage, the cabbage that bites your enemies.",
 
   "item.hexalia.hexbook": "Hexbook",
   "item.hexalia.hexbook.landing_text": "A well-detailed book is your trusted tool in matters of witchcraft"
