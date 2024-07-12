@@ -4,6 +4,9 @@ import net.grapes.hexalia.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropBlock;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.ItemStack;
@@ -16,6 +19,8 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.world.Difficulty;
 import net.minecraft.world.World;
 import net.minecraft.world.event.GameEvent;
 
@@ -36,6 +41,21 @@ public class RabbageCropBlock extends CropBlock {
     protected IntProperty getAgeProperty() {
         return AGE;
     }
+
+    @Override
+    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
+        if (!(entity instanceof LivingEntity) || entity.getType() == EntityType.BEE) {
+            return;
+        }
+        if (!world.isClient && state.get(AGE) == MAX_AGE) {
+            double d = Math.abs(entity.getX() - entity.lastRenderX);
+            double e = Math.abs(entity.getZ() - entity.lastRenderZ);
+            if (d >= 0.003f || e >= 0.003f) {
+                entity.damage(world.getDamageSources().generic(), 0.5f);
+            }
+        }
+    }
+
 
     @Override
     public int getMaxAge() {
