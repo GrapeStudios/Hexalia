@@ -34,6 +34,9 @@ public class ModEffects {
                     .addAttributeModifier(EntityAttributes.GENERIC_ARMOR, "5F2E9B81-3C47-4A90-BE2F-8D55E7A1F0D2", 0.0,
                             EntityAttributeModifier.Operation.ADDITION));
 
+    public static final StatusEffect BLEEDING = registerStatusEffect("bleeding",
+            new BleedingEffect(StatusEffectCategory.HARMFUL, 0x8B0000));
+
     private static StatusEffect registerStatusEffect(String name, StatusEffect statusEffect) {
         return Registry.register(Registries.STATUS_EFFECT, new Identifier(HexaliaMod.MOD_ID, name), statusEffect);
     }

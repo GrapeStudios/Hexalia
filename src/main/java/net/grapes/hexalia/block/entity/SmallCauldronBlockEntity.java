@@ -38,7 +38,7 @@ public class SmallCauldronBlockEntity extends BlockEntity implements ExtendedScr
     public static final int BOTTLE_SLOT = 7;
 
     private int progress = 0;
-    private int maxProgress = 72;
+    private int maxProgress = 175;
 
     protected final PropertyDelegate propertyDelegate = new PropertyDelegate() {
         @Override
