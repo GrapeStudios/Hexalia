@@ -3,6 +3,7 @@ package net.grapes.hexalia.item.custom.brews;
 import net.grapes.hexalia.effect.ModEffects;
 import net.grapes.hexalia.item.ModItems;
 import net.minecraft.advancement.criterion.Criteria;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
@@ -12,10 +13,15 @@ import net.minecraft.item.ItemUsage;
 import net.minecraft.item.Items;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.stat.Stats;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class VigorBrewItem extends Item {
     public VigorBrewItem(Settings settings) {
@@ -43,6 +49,11 @@ public class VigorBrewItem extends Item {
             }
         }
         return stack;
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        tooltip.add(Text.translatable("tooltip.hexalia.vigor_brew").formatted(Formatting.BLUE));
     }
 
     @Override

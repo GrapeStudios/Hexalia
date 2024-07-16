@@ -83,6 +83,12 @@
   "tooltip.hexalia.mandrake": "Mantén §e[RMB]§r para hacerla gritar",
   "tooltip.hexalia.purifying_salts": "Mantén §e[RMB]§r para eliminar efectos",
 
+  "tooltip.hexalia.homestead_brew": "Teletransporta a tu punto de aparición",
+  "tooltip.hexalia.siphoning_brew": "Sifón (2:00)",
+  "tooltip.hexalia.slimey_step_brew": "Paso Baboso (2:00)",
+  "tooltip.hexalia.vigor_brew": "Vigor (2:00)",
+  "tooltip.hexalia.warding_brew": "Protección (2:00)",
+
   "tooltip.hexalia.needs_heat": "Requiere un bloque calentador debajo",
 
   "hexalia.container.brew_shelf": "Estantería de Brebajes",

@@ -83,6 +83,12 @@
   "tooltip.hexalia.mandrake": "Hold §e[RMB]§r to make it scream",
   "tooltip.hexalia.purifying_salts": "Hold §e[RMB]§r to remove effects",
 
+  "tooltip.hexalia.homestead_brew": "Teleports you to your spawn",
+  "tooltip.hexalia.siphoning_brew": "Siphoning (2:00)",
+  "tooltip.hexalia.slimey_step_brew": "Slimey Step (2:00)",
+  "tooltip.hexalia.vigor_brew": "Vigor (2:00)",
+  "tooltip.hexalia.warding_brew": "Warding (2:00)",
+
   "tooltip.hexalia.needs_heat": "Requires a heating block below",
 
   "hexalia.container.brew_shelf": "Brew Shelf",

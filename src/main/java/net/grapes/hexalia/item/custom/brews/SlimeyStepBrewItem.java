@@ -3,6 +3,7 @@ package net.grapes.hexalia.item.custom.brews;
 import net.grapes.hexalia.effect.ModEffects;
 import net.grapes.hexalia.item.ModItems;
 import net.minecraft.advancement.criterion.Criteria;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
@@ -12,10 +13,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsage;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.stat.Stats;
+import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class SlimeyStepBrewItem extends Item {
     public SlimeyStepBrewItem(Settings settings) {
@@ -44,6 +50,12 @@ public class SlimeyStepBrewItem extends Item {
         }
         return stack;
     }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        tooltip.add(Text.translatable("tooltip.hexalia.slimey_step_brew").formatted(Formatting.BLUE));
+    }
+
     @Override
     public int getMaxUseTime(ItemStack stack) {
         return 32;
