@@ -19,7 +19,7 @@ public class ModBlocks {
 
     // Natural Blocks
     public static final Block SPIRIT_BLOOM = registerBlock("spirit_bloom",
-            new FlowerBlock(StatusEffects.LEVITATION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
+            new InfusableFlowerBlock(StatusEffects.LEVITATION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
     public static final Block POTTED_SPIRIT_BLOOM = registerBlockWithoutBlockItem("potted_spirit_bloom",
             new FlowerPotBlock(SPIRIT_BLOOM, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
     public static final Block DREAMSHROOM = registerBlock("dreamshroom",

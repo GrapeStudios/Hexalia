@@ -3,8 +3,8 @@ package net.grapes.hexalia.block.custom;
 import net.grapes.hexalia.block.ModBlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.Fertilizable;
-import net.minecraft.block.SeagrassBlock;
+import net.minecraft.block.FlowerBlock;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -19,33 +19,29 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 
-public class SirenKelpBlock extends SeagrassBlock implements Fertilizable {
+public class InfusableFlowerBlock extends FlowerBlock {
 
-    public SirenKelpBlock(Settings settings) {
-        super(settings);
+    public InfusableFlowerBlock(StatusEffect suspiciousStewEffect, int effectDuration, Settings settings) {
+        super(suspiciousStewEffect, effectDuration, settings);
+    }
+    @Override
+    protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
+        return floor.isSideSolidFullSquare(world, pos, Direction.UP) || floor.isOf(ModBlocks.INFUSED_DIRT) && !floor.isOf(Blocks.MAGMA_BLOCK);
     }
 
-    @Override
-    public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
-        return true;
-    }
-
-    @Override
     public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
         return true;
     }
 
-    @Override
+    public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
+        return true;
+    }
+
     public void grow(ServerWorld world, Random random, BlockPos pos, BlockState state) {
         BlockState belowState = world.getBlockState(pos.down());
         if (belowState.isOf(ModBlocks.INFUSED_DIRT)) {
             dropStack(world, pos, new ItemStack(this));
         }
-    }
-
-    @Override
-    protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return floor.isSideSolidFullSquare(world, pos, Direction.UP) || floor.isOf(ModBlocks.INFUSED_DIRT);
     }
 
     @Override

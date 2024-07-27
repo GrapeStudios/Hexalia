@@ -1,11 +1,21 @@
 package net.grapes.hexalia.block.custom;
 
+import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.particle.ModParticles;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.MushroomPlantBlock;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
 
@@ -30,6 +40,11 @@ public class DreamshroomBlock extends MushroomPlantBlock {
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         createSporeParticles(world, pos, random, PARTICLE_FREQUENCY);
+    }
+
+    @Override
+    protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
+        return floor.isSideSolidFullSquare(world, pos, Direction.UP) || floor.isOf(ModBlocks.INFUSED_DIRT) && !floor.isOf(Blocks.MAGMA_BLOCK);
     }
 
     @Override
