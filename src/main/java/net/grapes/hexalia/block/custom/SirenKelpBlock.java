@@ -8,6 +8,7 @@ import net.minecraft.block.SeagrassBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -45,22 +46,26 @@ public class SirenKelpBlock extends SeagrassBlock implements Fertilizable {
 
     @Override
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return floor.isSideSolidFullSquare(world, pos, Direction.UP) || floor.isOf(ModBlocks.INFUSED_DIRT);
+        return (floor.isSideSolidFullSquare(world, pos, Direction.UP) || floor.isOf(ModBlocks.INFUSED_DIRT)) && !floor.isOf(Blocks.MAGMA_BLOCK);
     }
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        BlockState belowState = world.getBlockState(pos.down());
+        if (!belowState.isOf(ModBlocks.INFUSED_DIRT)) {
+            return ActionResult.PASS;
+        }
+
         ItemStack itemStack = player.getStackInHand(hand);
         if (itemStack.isOf(Items.BONE_MEAL)) {
-            if (!world.isClient) {
-                if (this.isFertilizable(world, pos, state, world.isClient) && this.canGrow(world, world.random, pos, state)) {
-                    this.grow((ServerWorld) world, world.random, pos, state);
+            if (!world.isClient && this.isFertilizable(world, pos, state, false) && this.canGrow(world, world.random, pos, state)) {
+                this.grow((ServerWorld) world, world.random, pos, state);
+                if (!player.isCreative()) {
                     itemStack.decrement(1);
-                    return ActionResult.SUCCESS;
                 }
-            } else {
-                return ActionResult.CONSUME;
+                return ActionResult.SUCCESS;
             }
+            return ActionResult.PASS;
         }
         return ActionResult.PASS;
     }

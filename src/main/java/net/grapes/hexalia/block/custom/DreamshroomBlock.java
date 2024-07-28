@@ -17,6 +17,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
 
 public class DreamshroomBlock extends MushroomPlantBlock {
@@ -44,12 +45,12 @@ public class DreamshroomBlock extends MushroomPlantBlock {
 
     @Override
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return floor.isSideSolidFullSquare(world, pos, Direction.UP) || floor.isOf(ModBlocks.INFUSED_DIRT) && !floor.isOf(Blocks.MAGMA_BLOCK);
+        return (floor.isSideSolidFullSquare(world, pos, Direction.UP) || floor.isOf(ModBlocks.INFUSED_DIRT)) && !floor.isOf(Blocks.MAGMA_BLOCK);
     }
 
     @Override
     public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
-        return false;
+        return true;
     }
 
     public static void createSporeParticles(World world, BlockPos pos, Random random, int particleFrequency) {
@@ -66,5 +67,29 @@ public class DreamshroomBlock extends MushroomPlantBlock {
                 world.addParticle(ModParticles.SPORE_PARTICLE, x, y, z, motionX, PARTICLE_FALL_SPEED, motionZ);
             }
         }
+    }
+
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        BlockState belowState = world.getBlockState(pos.down());
+        if (!belowState.isOf(ModBlocks.INFUSED_DIRT)) {
+            return ActionResult.PASS;
+        }
+
+        ItemStack itemStack = player.getStackInHand(hand);
+        if (itemStack.isOf(Items.BONE_MEAL)) {
+            if (!world.isClient) {
+                if (this.canGrow(world, world.random, pos, state)) {
+                    dropStack(world, pos, new ItemStack(this));
+                    if (!player.isCreative()) {
+                        itemStack.decrement(1);
+                    }
+                    return ActionResult.SUCCESS;
+                }
+            } else {
+                return ActionResult.PASS;
+            }
+        }
+        return ActionResult.PASS;
     }
 }
