@@ -17,7 +17,6 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldView;
 import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
 
 public class DreamshroomBlock extends MushroomPlantBlock {
