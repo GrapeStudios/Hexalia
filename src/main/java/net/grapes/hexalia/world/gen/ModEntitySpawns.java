@@ -1,6 +1,5 @@
 package net.grapes.hexalia.world.gen;
 
-import net.fabricmc.fabric.api.biome.v1.BiomeModification;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
 import net.grapes.hexalia.entity.ModEntities;
