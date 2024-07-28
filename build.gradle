@@ -12,6 +12,15 @@ base {
 
 repositories {
 	maven {
+		name = 'GeckoLib'
+		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+		content {
+			includeGroupByRegex("software\\.bernie.*")
+			includeGroup("com.eliotlash.mclib")
+		}
+	}
+
+	maven {
 		name = "Greenhouse Maven"
 		url = 'https://maven.greenhouseteam.dev/releases/'
 	}
@@ -22,6 +31,7 @@ repositories {
 			includeGroup "com.jamieswhiteshirt"
 		}
 	}
+
 	maven {
 		url "https://jitpack.io/"
 		content {
@@ -53,6 +63,9 @@ dependencies {
 	modRuntimeOnly "me.shedaniel:RoughlyEnoughItems-fabric:12.0.684"
 
 	modImplementation "vazkii.patchouli:Patchouli:${patchouli_version}"
+
+	modImplementation("software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}")
+	implementation("com.eliotlash.mclib:mclib:20")
 
 	// modCompileOnly "vectorwing:FarmersDelight:${fdrf_version}"
 	// modRuntimeOnly "vectorwing:FarmersDelight:${fdrf_version}"
