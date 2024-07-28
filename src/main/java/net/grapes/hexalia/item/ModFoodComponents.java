@@ -22,9 +22,6 @@ public class ModFoodComponents {
     public static final FoodComponent SPICY_SANDWICH = new FoodComponent.Builder().hunger(6).saturationModifier(0.6f)
             .statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 900, 1), 1f).build();
 
-    public static final FoodComponent RABBAGE = new FoodComponent.Builder().hunger(1).saturationModifier(0.3f)
-            .build();
-
     public static final FoodComponent WITCH_SALAD = new FoodComponent.Builder().hunger(6).saturationModifier(0.6f)
             .statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 600), 1f)
             .statusEffect(new StatusEffectInstance(StatusEffects.SPEED, 600), 1f)
