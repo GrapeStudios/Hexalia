@@ -3,6 +3,7 @@ package net.grapes.hexalia.item;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.entity.ModEntities;
 import net.grapes.hexalia.item.custom.*;
 import net.grapes.hexalia.item.custom.brews.*;
 import net.grapes.hexalia.util.ModToolMaterials;
@@ -18,28 +19,26 @@ public class ModItems {
     // Resources
     public static final Item SALT = registerItem("salt",
             new BlockItem(ModBlocks.SALT, new FabricItemSettings()));
+    public static final Item RESIN = registerItem("resin",
+            new Item(new FabricItemSettings()));
+    public static final Item ANCIENT_SEED = registerItem("ancient_seed",
+            new Item(new FabricItemSettings().rarity(Rarity.RARE)));
+    public static final Item SILK_FIBER = registerItem("silk_fiber",
+            new Item(new FabricItemSettings()));
+
+    // Crops, Plants & Seeds
     public static final Item SIREN_KELP = registerItem("siren_kelp",
             new BlockItem(ModBlocks.SIREN_KELP, new FabricItemSettings().food(ModFoodComponents.SIREN_KELP)));
     public static final Item MANDRAKE = registerItem("mandrake",
             new MandrakeItem(new FabricItemSettings()));
     public static final Item MANDRAKE_SEEDS = registerItem("mandrake_seeds",
             new AliasedBlockItem(ModBlocks.MANDRAKE_CROP, new FabricItemSettings()));
-    public static final Item MANDRAKE_STEW = registerItem("mandrake_stew",
-            new StewItem(new FabricItemSettings().food(ModFoodComponents.MANDRAKE_STEW).maxCount(1)));
     public static final Item CHILLBERRIES = registerItem("chillberries",
             new BlockItem(ModBlocks.CHILLBERRY_BUSH, new FabricItemSettings().food(ModFoodComponents.CHILLBERRIES)));
-    public static final Item CHILLBERRY_PIE = registerItem("chillberry_pie",
-            new Item(new FabricItemSettings().food(ModFoodComponents.CHILLBERRY_PIE)));
     public static final Item SUNFIRE_TOMATO = registerItem("sunfire_tomato",
             new Item(new FabricItemSettings().food(ModFoodComponents.SUNFIRE_TOMATO)));
     public static final Item SUNFIRE_TOMATO_SEEDS = registerItem("sunfire_tomato_seeds",
             new AliasedBlockItem(ModBlocks.SUNFIRE_TOMATO_CROP, new FabricItemSettings()));
-    public static final Item SPICY_SANDWICH = registerItem("spicy_sandwich",
-            new Item(new FabricItemSettings().food(ModFoodComponents.SPICY_SANDWICH)));
-    public static final Item RESIN = registerItem("resin",
-            new Item(new FabricItemSettings()));
-    public static final Item ANCIENT_SEED = registerItem("ancient_seed",
-            new Item(new FabricItemSettings().rarity(Rarity.RARE)));
     public static final Item RABBAGE_SEEDS = registerItem("rabbage_seeds",
             new AliasedBlockItem(ModBlocks.RABBAGE_CROP, new FabricItemSettings()));
     public static final Item RABBAGE = registerItem("rabbage",
@@ -54,6 +53,12 @@ public class ModItems {
             new Item(new FabricItemSettings()));
     public static final Item PURIFYING_SALTS = registerItem("purifying_salts",
             new PurifyingSaltsItem(new FabricItemSettings().maxCount(16)));
+    public static final Item SPICY_SANDWICH = registerItem("spicy_sandwich",
+            new Item(new FabricItemSettings().food(ModFoodComponents.SPICY_SANDWICH)));
+    public static final Item CHILLBERRY_PIE = registerItem("chillberry_pie",
+            new Item(new FabricItemSettings().food(ModFoodComponents.CHILLBERRY_PIE)));
+    public static final Item MANDRAKE_STEW = registerItem("mandrake_stew",
+            new StewItem(new FabricItemSettings().food(ModFoodComponents.MANDRAKE_STEW).maxCount(1)));
 
     // Brews
     public static final Item RUSTIC_BOTTLE = registerItem("rustic_bottle",
@@ -85,7 +90,11 @@ public class ModItems {
     public static final Item WISDOM_GEM = registerItem("wisdom_gem",
             new Item(new FabricItemSettings().maxCount(1).maxDamage(60)));
 
-    // Decorations
+    // Spawn Eggs
+    public static final Item SILK_MOTH_SPAWN_EGG = registerItem("silk_moth_spawn_egg",
+            new SpawnEggItem(ModEntities.SILK_MOTH, 0xAE8f7A, 0x846552, new FabricItemSettings()));
+
+    // Decorative BlockItems
     public static final Item PARCHMENT = registerItem("parchment",
             new BlockItem(ModBlocks.PARCHMENT, new FabricItemSettings()));
     public static final Item DREAMCATCHER = registerItem("dreamcatcher",

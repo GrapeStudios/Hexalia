@@ -69,7 +69,10 @@ public class ModItemGroup {
                         entries.add(ModItems.RITUAL_TABLE);
                         entries.add(ModItems.WISDOM_GEM);
 
+                        entries.add(ModItems.SILK_FIBER);
+
                         entries.add(ModItems.HEXBOOK);
+                        entries.add(ModItems.SILK_MOTH_SPAWN_EGG);
                     }).build());
     public static void registerItemGroups(){
     }

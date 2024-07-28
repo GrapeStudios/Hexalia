@@ -9,6 +9,7 @@ import net.grapes.hexalia.block.entity.ModBlockEntities;
 import net.grapes.hexalia.block.entity.renderer.RitualTableBlockEntityRenderer;
 import net.grapes.hexalia.block.entity.renderer.SaltBlockEntityRenderer;
 import net.grapes.hexalia.entity.ModEntities;
+import net.grapes.hexalia.entity.client.SilkMothRenderer;
 import net.grapes.hexalia.networking.ModMessages;
 import net.grapes.hexalia.particle.ModParticles;
 import net.grapes.hexalia.particle.custom.InfusedBubbleParticle;
@@ -51,5 +52,6 @@ public class HexaliaModClient implements ClientModInitializer {
         HandledScreens.register(ModScreenHandler.SMALL_CAULDRON_SCREEN_HANDLER, SmallCauldronScreen::new);
         ModMessages.registerS2CPackets();
         EntityRendererRegistry.register(ModEntities.THROWN_RABBAGE_ENTITY, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.SILK_MOTH, SilkMothRenderer::new);
     }
 }

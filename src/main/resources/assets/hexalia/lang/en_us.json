@@ -39,6 +39,10 @@
   "item.hexalia.resin": "Resin",
   "item.hexalia.kelpweave_blade": "Kelpweave Blade",
 
+  "entity.hexalia.silk_moth": "Silk Moth",
+  "item.hexalia.silk_moth_spawn_egg": "Silk Moth Spawn Egg",
+  "item.hexalia.silk_fiber": "Silk Fiber",
+
   "effect.hexalia.vigor": "Vigor",
   "effect.hexalia.stunned": "Stunned",
   "effect.hexalia.stuffed": "Stuffed",
@@ -76,7 +80,7 @@
 
   "item.hexalia.wisdom_gem": "Wisdom Gem",
 
-  "sounds.hexalia.mandrake_scream": "Mandrake Screams",
+  "sounds.hexalia.mandrake_scream": "Screaming Mandrake",
   "sounds.hexalia.ritual_completed": "Ritual Completed",
 
   "tooltip.hexalia.hold_shift": "Hold §e[SHIFT]§r for more info",
