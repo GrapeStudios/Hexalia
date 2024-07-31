@@ -8,6 +8,7 @@ import net.grapes.hexalia.item.custom.*;
 import net.grapes.hexalia.item.custom.brews.*;
 import net.grapes.hexalia.util.ModToolMaterials;
 import net.grapes.hexalia.util.ModUtils;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -25,6 +26,8 @@ public class ModItems {
             new Item(new FabricItemSettings().rarity(Rarity.RARE)));
     public static final Item SILK_FIBER = registerItem("silk_fiber",
             new Item(new FabricItemSettings()));
+    public static final Item SILKWORM = registerItem("silkworm",
+            new BlockItem(Blocks.GLOW_LICHEN, new FabricItemSettings()));
 
     // Crops, Plants & Seeds
     public static final Item SIREN_KELP = registerItem("siren_kelp",
