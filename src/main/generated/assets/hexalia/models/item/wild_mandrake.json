@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "hexalia:block/feral_sunfire_tomato"
+    "layer0": "hexalia:block/wild_mandrake"
   }
 }

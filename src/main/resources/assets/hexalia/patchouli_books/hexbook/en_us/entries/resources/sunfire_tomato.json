@@ -11,12 +11,12 @@
     },
     {
       "type": "patchouli:image",
-      "title": "Feral Sunfire Tomato",
+      "title": "Wild Sunfire Tomato",
       "images": [
-        "hexalia:textures/gui/patchouli/feral_sunfire_tomato.png"
+        "hexalia:textures/gui/patchouli/wild_sunfire_tomato.png"
       ],
       "border": true,
-      "text": "This feral crop can be found in the Savanna biome."
+      "text": "This wild crop can be found in the Savanna biome."
     },
     {
       "type": "patchouli:crafting",

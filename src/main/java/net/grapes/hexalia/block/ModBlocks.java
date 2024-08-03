@@ -34,12 +34,12 @@ public class ModBlocks {
             new InfusedFarmland(FabricBlockSettings.copyOf(Blocks.FARMLAND).sounds(BlockSoundGroup.MUD)));
     public static final Block MANDRAKE_CROP = registerBlockWithoutBlockItem("mandrake_crop",
             new MandrakeCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
-    public static final Block FERAL_MANDRAKE = registerBlock("feral_mandrake",
+    public static final Block WILD_MANDRAKE = registerBlock("wild_mandrake",
             new FlowerBlock(StatusEffects.LEVITATION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
     public static final Block SUNFIRE_TOMATO_CROP = registerBlockWithoutBlockItem("sunfire_tomato_crop",
             new SunfireTomatoCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
-    public static final Block FERAL_SUNFIRE_TOMATO = registerBlock("feral_sunfire_tomato",
-            new FeralSunfireTomato(FabricBlockSettings.copyOf(Blocks.CORNFLOWER).luminance(state -> 12).nonOpaque()));
+    public static final Block WILD_SUNFIRE_TOMATO = registerBlock("wild_sunfire_tomato",
+            new WildSunfireTomatoBlock(FabricBlockSettings.copyOf(Blocks.CORNFLOWER).luminance(state -> 12).nonOpaque()));
     public static final Block CHILLBERRY_BUSH = registerBlockWithoutBlockItem("chillberry_bush",
             new ChillberryBushBlock(FabricBlockSettings.copyOf(Blocks.SWEET_BERRY_BUSH)));
     public static final Block RABBAGE_CROP = registerBlockWithoutBlockItem("rabbage_crop",
@@ -92,7 +92,7 @@ public class ModBlocks {
         instance.add(ModBlocks.SPIRIT_BLOOM, 100, 60);
         instance.add(ModBlocks.DREAMSHROOM, 100, 60);
         instance.add(ModBlocks.CHILLBERRY_BUSH, 100, 60);
-        instance.add(ModBlocks.FERAL_MANDRAKE, 100, 60);
+        instance.add(ModBlocks.WILD_MANDRAKE, 100, 60);
         instance.add(ModBlocks.HENBANE, 100, 60);
         instance.add(ModBlocks.PARCHMENT, 100, 60);
         instance.add(ModBlocks.DREAMCATCHER, 100, 60);

@@ -3,8 +3,6 @@ package net.grapes.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.grapes.hexalia.block.ModBlocks;
-import net.grapes.hexalia.block.custom.MandrakeCropBlock;
-import net.grapes.hexalia.block.custom.SunfireTomatoCropBlock;
 import net.grapes.hexalia.item.ModItems;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
@@ -23,9 +21,9 @@ public class ModModelProvider extends FabricModelProvider {
                 BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.DREAMSHROOM, ModBlocks.POTTED_DREAMSHROOM,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
-        blockStateModelGenerator.registerTintableCross(ModBlocks.FERAL_SUNFIRE_TOMATO,
+        blockStateModelGenerator.registerTintableCross(ModBlocks.WILD_SUNFIRE_TOMATO,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
-        blockStateModelGenerator.registerTintableCross(ModBlocks.FERAL_MANDRAKE,
+        blockStateModelGenerator.registerTintableCross(ModBlocks.WILD_MANDRAKE,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.HENBANE, ModBlocks.POTTED_HENBANE,
                 BlockStateModelGenerator.TintType.NOT_TINTED);

@@ -19,8 +19,8 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> CHILLBERRY_PLACED_KEY = registerKey("chillberry_placed");
     public static final RegistryKey<PlacedFeature> DREAMSHROOM_PLACED_KEY = registerKey("dreamshroom_placed");
     public static final RegistryKey<PlacedFeature> SIREN_KELP_PLACED_KEY = registerKey("siren_kelp_placed");
-    public static final RegistryKey<PlacedFeature> FERAL_SUNFIRE_TOMATO_PLACED_KEY = registerKey("feral_sunfire_tomato_placed");
-    public static final RegistryKey<PlacedFeature> FERAL_MANDRAKE_KEY = registerKey("feral_mandrake_placed");
+    public static final RegistryKey<PlacedFeature> wild_SUNFIRE_TOMATO_PLACED_KEY = registerKey("wild_sunfire_tomato_placed");
+    public static final RegistryKey<PlacedFeature> wild_MANDRAKE_KEY = registerKey("wild_mandrake_placed");
     public static final RegistryKey<PlacedFeature> HENBANE_KEY = registerKey("henbane_placed");
 
     public static void bootstrap(Registerable<PlacedFeature> context) {
@@ -39,13 +39,13 @@ public class ModPlacedFeatures {
         register(context, DREAMSHROOM_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.DREAMSHROOM_KEY),
                 RarityFilterPlacementModifier.of(25), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
 
-        register(context, FERAL_SUNFIRE_TOMATO_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.FERAL_SUNFIRE_TOMATO_KEY),
+        register(context, wild_SUNFIRE_TOMATO_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.wild_SUNFIRE_TOMATO_KEY),
                 RarityFilterPlacementModifier.of(10), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
 
         register(context, SIREN_KELP_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SIREN_KELP_KEY),
                 CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP, BiomePlacementModifier.of());
 
-        register(context, FERAL_MANDRAKE_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.FERAL_MANDRAKE_KEY),
+        register(context, wild_MANDRAKE_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.wild_MANDRAKE_KEY),
                 RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
 
         register(context, HENBANE_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.HENBANE),

@@ -8,7 +8,7 @@
           "to_place": {
             "type": "minecraft:simple_state_provider",
             "state": {
-              "Name": "hexalia:feral_mandrake"
+              "Name": "hexalia:wild_mandrake"
             }
           }
         }

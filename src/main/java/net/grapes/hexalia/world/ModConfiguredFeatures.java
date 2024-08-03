@@ -22,8 +22,8 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> CHILLBERRY_KEY = registerKey("chillberry");
     public static final RegistryKey<ConfiguredFeature<?, ?>> DREAMSHROOM_KEY = registerKey("dreamshroom");
     public static final RegistryKey<ConfiguredFeature<?, ?>> SIREN_KELP_KEY = registerKey("siren_kelp");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> FERAL_SUNFIRE_TOMATO_KEY = registerKey("feral_sunfire_tomato");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> FERAL_MANDRAKE_KEY = registerKey("feral_mandrake");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> wild_SUNFIRE_TOMATO_KEY = registerKey("wild_sunfire_tomato");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> wild_MANDRAKE_KEY = registerKey("wild_mandrake");
     public static final RegistryKey<ConfiguredFeature<?, ?>> HENBANE = registerKey("henbane");
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
@@ -46,17 +46,17 @@ public class ModConfiguredFeatures {
                 PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
                         new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.DREAMSHROOM)))));
 
-        register(context, FERAL_SUNFIRE_TOMATO_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
+        register(context, wild_SUNFIRE_TOMATO_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
                 PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.FERAL_SUNFIRE_TOMATO)))));
+                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.WILD_SUNFIRE_TOMATO)))));
 
         register(context, SIREN_KELP_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(12,
                 PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
                         new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.SIREN_KELP)))));
 
-        register(context, FERAL_MANDRAKE_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
+        register(context, wild_MANDRAKE_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
                 PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.FERAL_MANDRAKE)))));
+                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.WILD_MANDRAKE)))));
 
         register(context, HENBANE, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
                 PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,

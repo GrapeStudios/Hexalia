@@ -11,12 +11,12 @@
     },
     {
       "type": "patchouli:image",
-      "title": "Feral Mandrake",
+      "title": "Wild Mandrake",
       "images": [
-        "hexalia:textures/gui/patchouli/feral_mandrake.png"
+        "hexalia:textures/gui/patchouli/wild_mandrake.png"
       ],
       "border": true,
-      "text": "This feral crop can be found in the Forest and Birch Forest biome."
+      "text": "This wild crop can be found in the Forest and Birch Forest biome."
     },
     {
       "type": "patchouli:crafting",

@@ -17,9 +17,9 @@ import net.minecraft.world.World;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class FeralSunfireTomato extends PlantBlock {
+public class WildSunfireTomatoBlock extends PlantBlock {
     protected static final VoxelShape SHAPE = Block.createCuboidShape(5.0, 0.0, 5.0, 11.0, 10.0, 11.0);
-    public FeralSunfireTomato(Settings settings) {
+    public WildSunfireTomatoBlock(Settings settings) {
         super(settings);
     }
 

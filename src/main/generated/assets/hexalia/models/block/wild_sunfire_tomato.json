@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cross",
   "textures": {
-    "cross": "hexalia:block/feral_sunfire_tomato"
+    "cross": "hexalia:block/wild_sunfire_tomato"
   }
 }

@@ -13,7 +13,7 @@
       "type": "patchouli:image",
       "title": "Mandrágora Salvaje",
       "images": [
-        "hexalia:textures/gui/patchouli/feral_mandrake.png"
+        "hexalia:textures/gui/patchouli/wild_mandrake.png"
       ],
       "border": true,
       "text": "Este cultivo salvaje se puede encontrar en el bioma Bosque y Bosque de Abedules."

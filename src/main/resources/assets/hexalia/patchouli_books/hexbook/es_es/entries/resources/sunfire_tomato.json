@@ -13,7 +13,7 @@
       "type": "patchouli:image",
       "title": "Tomate Solífugo Salvaje",
       "images": [
-        "hexalia:textures/gui/patchouli/feral_sunfire_tomato.png"
+        "hexalia:textures/gui/patchouli/wild_sunfire_tomato.png"
       ],
       "border": true,
       "text": "Este cultivo salvaje se puede encontrar en el bioma Sabana."

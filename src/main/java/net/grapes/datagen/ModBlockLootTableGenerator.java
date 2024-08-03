@@ -35,11 +35,11 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.SMALL_CAULDRON);
         addDrop(ModBlocks.HENBANE);
         addPottedPlantDrops(ModBlocks.POTTED_HENBANE);
-        addDrop(ModBlocks.FERAL_SUNFIRE_TOMATO);
+        addDrop(ModBlocks.WILD_SUNFIRE_TOMATO);
 
-        this.addDrop(ModBlocks.FERAL_SUNFIRE_TOMATO, ModItems.SUNFIRE_TOMATO_SEEDS);
-        addDrop(ModBlocks.FERAL_MANDRAKE);
-        this.addDrop(ModBlocks.FERAL_MANDRAKE, ModItems.MANDRAKE_SEEDS);
+        this.addDrop(ModBlocks.WILD_SUNFIRE_TOMATO, ModItems.SUNFIRE_TOMATO_SEEDS);
+        addDrop(ModBlocks.WILD_MANDRAKE);
+        this.addDrop(ModBlocks.WILD_MANDRAKE, ModItems.MANDRAKE_SEEDS);
         addDrop(ModBlocks.SALT_BLOCK);
         addDrop(ModBlocks.SALT_ORE, oreDrops(ModBlocks.SALT_ORE, ModItems.SALT));
         BlockStatePropertyLootCondition.Builder builder2 = BlockStatePropertyLootCondition.builder(ModBlocks.MANDRAKE_CROP)
