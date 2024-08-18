@@ -59,7 +59,6 @@ public class DreamshroomBlock extends MushroomPlantBlock {
         double centerX = pos.getX() + 0.5;
         double centerZ = pos.getZ() + 0.5;
 
-        // Generate particles falling from the top of the block
         for (double y = pos.getY() + PARTICLE_START_Y_OFFSET; y > pos.getY(); y -= 0.1) {
             if (random.nextInt(particleFrequency) == 0) {
                 double x = centerX + random.nextDouble() * 2 * MAX_HORIZONTAL_OFFSET - MAX_HORIZONTAL_OFFSET;
@@ -93,7 +92,7 @@ public class DreamshroomBlock extends MushroomPlantBlock {
             } else {
                 world.playSound(player, pos, SoundEvents.ITEM_BONE_MEAL_USE, SoundCategory.BLOCKS, 1.0F, 1.0F);
                 world.addParticle(ParticleTypes.HAPPY_VILLAGER, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, 0.0, 0.0, 0.0);
-                return ActionResult.CONSUME;
+                return ActionResult.SUCCESS;
             }
         }
         return ActionResult.PASS;
