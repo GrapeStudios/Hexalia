@@ -27,7 +27,7 @@ public class ModItems {
     public static final Item SILK_FIBER = registerItem("silk_fiber",
             new Item(new FabricItemSettings()));
     public static final Item SILKWORM = registerItem("silkworm",
-            new BlockItem(Blocks.GLOW_LICHEN, new FabricItemSettings()));
+            new Item(new FabricItemSettings()));
 
     // Crops, Plants & Seeds
     public static final Item SIREN_KELP = registerItem("siren_kelp",
