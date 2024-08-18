@@ -229,5 +229,10 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input(ModTags.Items.CRUSHED_PLANTS)
                 .criterion(hasItem(Items.BOOK), conditionsFromItem(Items.BOOK))
                 .offerTo(exporter);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SILK_FIBER, 1)
+                .input(ItemTags.LEAVES)
+                .input(ModItems.SILKWORM)
+                .criterion(hasItem(ModItems.SILK_FIBER), conditionsFromItem(ModItems.SILK_FIBER))
+                .offerTo(exporter);
     }
 }

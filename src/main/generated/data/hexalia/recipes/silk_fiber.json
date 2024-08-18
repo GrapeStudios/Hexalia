@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "minecraft:leaves"
+    },
+    {
+      "item": "hexalia:silkworm"
+    }
+  ],
+  "result": {
+    "item": "hexalia:silk_fiber"
+  }
+}
