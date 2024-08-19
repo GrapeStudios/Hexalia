@@ -15,9 +15,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 
-public class InfusedDirt extends Block {
+public class InfusedDirtBlock extends Block {
 
-    public InfusedDirt(Settings settings) {
+    public InfusedDirtBlock(Settings settings) {
         super(settings);
     }
 

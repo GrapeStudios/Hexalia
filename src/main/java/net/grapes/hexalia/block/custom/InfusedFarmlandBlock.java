@@ -21,12 +21,12 @@ import net.minecraft.world.*;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class InfusedFarmland extends Block {
+public class InfusedFarmlandBlock extends Block {
     private static final VoxelShape SHAPE = Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 15.0, 16.0);
     private static final double PARTICLE_OFFSET = 0.5;
     private static final int PARTICLE_COUNT = 8;
 
-    public InfusedFarmland(Settings settings) {
+    public InfusedFarmlandBlock(Settings settings) {
         super(settings);
     }
 
