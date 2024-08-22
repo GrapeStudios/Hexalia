@@ -48,6 +48,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.MAGMA_BLOCK, Blocks.LAVA,
                         Blocks.CAMPFIRE, Blocks.FIRE, ModBlocks.RUSTIC_OVEN);
 
+        getOrCreateTagBuilder(ModTags.Blocks.ATTRACTS_MOTH)
+                .add(Blocks.LANTERN, Blocks.SEA_LANTERN,
+                        Blocks.SOUL_LANTERN, ModBlocks.SALT_LAMP);
+
         // Common Tags
         getOrCreateTagBuilder(ModTags.Blocks.ORES)
                 .add(ModBlocks.SALT_ORE);
