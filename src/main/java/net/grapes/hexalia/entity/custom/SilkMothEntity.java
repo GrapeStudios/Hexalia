@@ -1,6 +1,8 @@
 package net.grapes.hexalia.entity.custom;
 
 import net.grapes.hexalia.entity.ModEntities;
+import net.grapes.hexalia.entity.ai.AttractedToLightGoal;
+import net.grapes.hexalia.entity.ai.AvoidSunlightGoal;
 import net.grapes.hexalia.entity.ai.FlyRandomlyGoal;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
@@ -49,10 +51,11 @@ public class SilkMothEntity extends AnimalEntity implements GeoEntity {
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(1, new FlyRandomlyGoal(this));
-        this.goalSelector.add(2, new LookAroundGoal(this));
-        this.goalSelector.add(3, new WanderAroundFarGoal(this, 0.75f, 1));
-        this.goalSelector.add(4, new AvoidSunlightGoal(this));
+        this.goalSelector.add(1, new AttractedToLightGoal(this, 1.0));
+        this.goalSelector.add(2, new AvoidSunlightGoal(this));
+        this.goalSelector.add(3, new FlyRandomlyGoal(this));
+        this.goalSelector.add(3, new LookAroundGoal(this));
+        this.goalSelector.add(4, new WanderAroundFarGoal(this, 0.75f, 1));
     }
 
     @Nullable
