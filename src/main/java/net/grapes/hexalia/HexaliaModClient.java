@@ -42,7 +42,8 @@ public class HexaliaModClient implements ClientModInitializer {
                 ModBlocks.POTTED_HENBANE,
                 ModBlocks.HENBANE,
                 ModBlocks.CANDLE_SKULL,
-                ModBlocks.SALT_LAMP);
+                ModBlocks.SALT_LAMP,
+                ModBlocks.SILKWORM_COCOON);
 
         BlockEntityRendererFactories.register(ModBlockEntities.RITUAL_TABLE_BE, RitualTableBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.SALT_BE, SaltBlockEntityRenderer::new);

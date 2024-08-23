@@ -1,8 +1,9 @@
-// 1.20.1	2024-08-21T21:40:28.987819	Hexalia/Block Loot Tables
+// 1.20.1	2024-08-22T22:11:46.169878	Hexalia/Block Loot Tables
 e4e4f7bc56a75ad3d1e5449ba51aae99e15062cb data\hexalia\loot_tables\blocks\small_cauldron.json
 aeb959301b32ba153b4b2dc89a617ff2f27e81ce data\hexalia\loot_tables\blocks\salt.json
 0a81cc3c2b6ef5a0665335b100843904f4bfac41 data\hexalia\loot_tables\blocks\salt_lamp.json
 15660c257e6376f65bfabedc4b5c00da0f43203b data\hexalia\loot_tables\blocks\spirit_bloom.json
+0f72d99f32ef54c7adadafd447d9ec060584bf86 data\hexalia\loot_tables\blocks\silkworm_cocoon.json
 9b04d479139f535600fc3e3e9e3301015f630b96 data\hexalia\loot_tables\blocks\rabbage_crop.json
 14c0eded467dfaf19297cefc3500aa295721913c data\hexalia\loot_tables\blocks\parchment.json
 4a1b37dfe8d762df2d082fcdc47490c5751e579b data\hexalia\loot_tables\blocks\potted_henbane.json

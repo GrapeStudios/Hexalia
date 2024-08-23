@@ -51,6 +51,6 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         BlockStatePropertyLootCondition.Builder builder4 = BlockStatePropertyLootCondition.builder(ModBlocks.RABBAGE_CROP)
                 .properties(StatePredicate.Builder.create().exactMatch(RabbageCropBlock.AGE, 3));
         this.addDrop(ModBlocks.RABBAGE_CROP, this.cropDrops(ModBlocks.RABBAGE_CROP, ModItems.RABBAGE, ModItems.RABBAGE_SEEDS, builder4));
-
+        this.addDrop(ModBlocks.SILKWORM_COCOON, ModItems.SILKWORM);
     }
 }

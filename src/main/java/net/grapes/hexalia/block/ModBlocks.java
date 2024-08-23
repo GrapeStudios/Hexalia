@@ -48,6 +48,9 @@ public class ModBlocks {
             new FlowerBlock(StatusEffects.POISON, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
     public static final Block POTTED_HENBANE = registerBlockWithoutBlockItem("potted_henbane",
             new FlowerPotBlock(HENBANE, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
+    public static final Block SILKWORM_COCOON = registerBlock("silkworm_cocoon",
+            new SilkwormCocoonBlock(FabricBlockSettings.create().mapColor(MapColor.WHITE_GRAY).instrument(Instrument.BANJO)
+                    .strength(0.5f).noCollision()));
 
     // Mineral-Related Blocks
     public static final Block SALT_ORE = registerBlock("salt_ore",
@@ -97,6 +100,7 @@ public class ModBlocks {
         instance.add(ModBlocks.PARCHMENT, 100, 60);
         instance.add(ModBlocks.DREAMCATCHER, 100, 60);
         instance.add(ModBlocks.SALT, 100, 60);
+        instance.add(ModBlocks.SILKWORM_COCOON, 100, 60);
     }
 
     // Methods
