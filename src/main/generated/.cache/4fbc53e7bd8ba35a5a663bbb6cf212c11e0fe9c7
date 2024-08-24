@@ -1,4 +1,4 @@
-// 1.20.1	2024-08-22T22:11:46.1810107	Hexalia/Model Definitions
+// 1.20.1	2024-08-24T11:55:27.1789686	Hexalia/Model Definitions
 4b2bb1f837547e276ac67e56f13cbbe7342e75f4 assets\hexalia\models\block\potted_henbane.json
 e8dd17bff61e072333d14727741f5db6c523a2f9 assets\hexalia\models\item\resin.json
 962023670799b93fa2ba78448ce6465701d5a680 assets\hexalia\models\item\spirit_bloom.json
@@ -34,13 +34,13 @@ e8d85f5e60be5f3597586011084e1af232434997 assets\hexalia\models\item\siren_kelp_p
 5fed240a4d75b2a2118e36ce3d1160611a311ad0 assets\hexalia\blockstates\potted_dreamshroom.json
 6129add936e8ef8cb65f5196d1f9c9d9b784d8cd assets\hexalia\models\block\wild_sunfire_tomato.json
 2a2ee35859b9bc502f72f4e8d447f50166c42c41 assets\hexalia\blockstates\wild_mandrake.json
-e254f8b78f7088bbf7372dbc8ce943c615ee37d3 assets\hexalia\blockstates\wild_sunfire_tomato.json
 b7287e64568f938d64453d7f916a278a05adad98 assets\hexalia\blockstates\spirit_bloom.json
+e254f8b78f7088bbf7372dbc8ce943c615ee37d3 assets\hexalia\blockstates\wild_sunfire_tomato.json
 a11e2612c2e7ebc30473748c33c158b8190edd58 assets\hexalia\models\block\potted_dreamshroom.json
 3ad946a12b7b00da286db346f54508c700df29a9 assets\hexalia\models\item\spirit_bloom_powder.json
 d5e01551c2808f9f1a88831b2387db48ea665d56 assets\hexalia\blockstates\salt_block.json
-e95a13b2856bc8663796a74400055435b7b2a936 assets\hexalia\models\item\brew_of_homestead.json
 821a2ac4b14a011097350a83d29566e06bc8ebb1 assets\hexalia\models\item\spicy_sandwich.json
+e95a13b2856bc8663796a74400055435b7b2a936 assets\hexalia\models\item\brew_of_homestead.json
 08e5d892de26f4f8139a8a25627316beb0da5ade assets\hexalia\models\block\wild_mandrake.json
 3024433acc85ea513a3d42627c443d56de5449a9 assets\hexalia\blockstates\henbane.json
 0aac1f814d2362c877d37bba756e607ddc50b2a2 assets\hexalia\models\item\dreamcatcher.json
