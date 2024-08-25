@@ -8,9 +8,7 @@ import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementDisplay;
 import net.minecraft.advancement.AdvancementFrame;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
-import net.minecraft.advancement.criterion.TickCriterion;
 import net.minecraft.item.ItemStack;
-import net.minecraft.predicate.entity.LocationPredicate;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
