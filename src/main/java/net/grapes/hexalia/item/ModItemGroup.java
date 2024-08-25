@@ -15,7 +15,6 @@ public class ModItemGroup {
             new Identifier(HexaliaMod.MOD_ID, "hexalia"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.hexalia"))
                     .icon(() -> new ItemStack(ModItems.SMALL_CAULDRON)).entries((displayContext, entries) -> {
-                        entries.add(ModBlocks.SILKWORM_COCOON);
                         entries.add(ModBlocks.SPIRIT_BLOOM);
                         entries.add(ModBlocks.DREAMSHROOM);
                         entries.add(ModItems.SIREN_KELP);
