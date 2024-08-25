@@ -66,7 +66,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(Items.GLOWSTONE_DUST), conditionsFromItem(Items.GLOWSTONE_DUST))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.SALT_LAMP) + "_"));
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.RUSTIC_BOTTLE)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.RUSTIC_BOTTLE, 3)
                 .pattern("S S")
                 .pattern(" P ")
                 .input('S', Items.CLAY_BALL)
@@ -74,7 +74,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(Items.CLAY_BALL), conditionsFromItem(Items.CLAY_BALL))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.RUSTIC_BOTTLE) + "_"));
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.INFUSED_DIRT)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.INFUSED_DIRT, 2)
                 .pattern("SP")
                 .pattern("PS")
                 .input('S', Blocks.DIRT)
@@ -91,7 +91,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.STONE_DAGGER) + "_"));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.RUSTIC_OVEN)
-                .pattern("STS")
+                .pattern("TTT")
                 .pattern("SPS")
                 .pattern("SSS")
                 .input('P', ItemTags.COALS)
@@ -148,7 +148,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.WISDOM_GEM) + "_"));
 
         // Recipes for vanilla items or blocks.
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.LEATHER)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.LEATHER, 2)
                 .pattern(" S ")
                 .pattern("STS")
                 .pattern(" S ")
@@ -156,6 +156,15 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input('T', Items.ROTTEN_FLESH)
                 .criterion(hasItem(ModItems.SALT), conditionsFromItem(ModItems.SALT))
                 .offerTo(exporter, new Identifier(getRecipeName(Items.LEATHER) + "_"));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Blocks.COBWEB)
+                .pattern(" S ")
+                .pattern("STS")
+                .pattern(" S ")
+                .input('S', Items.STRING)
+                .input('T', ModItems.SILK_FIBER)
+                .criterion(hasItem(ModItems.SALT), conditionsFromItem(ModItems.SALT))
+                .offerTo(exporter, new Identifier(getRecipeName(Blocks.COBWEB) + "_"));
 
         // Reversible Compacting Recipes for Blocks
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.SALT,
@@ -190,6 +199,11 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.DREAMSHROOM_PASTE, 1)
                 .input(ModItems.MORTAR_AND_PESTLE)
                 .input(ModBlocks.DREAMSHROOM)
+                .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
+                .offerTo(exporter);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.STRING, 2)
+                .input(ModItems.MORTAR_AND_PESTLE)
+                .input(ModItems.SILK_FIBER)
                 .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
                 .offerTo(exporter);
 
@@ -229,7 +243,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input(ModTags.Items.CRUSHED_PLANTS)
                 .criterion(hasItem(Items.BOOK), conditionsFromItem(Items.BOOK))
                 .offerTo(exporter);
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SILK_FIBER, 1)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SILK_FIBER, 2)
                 .input(ItemTags.LEAVES)
                 .input(ModItems.SILKWORM)
                 .criterion(hasItem(ModItems.SILK_FIBER), conditionsFromItem(ModItems.SILK_FIBER))

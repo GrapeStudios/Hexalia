@@ -3,14 +3,14 @@
   "category": "misc",
   "ingredients": [
     {
-      "tag": "minecraft:leaves"
+      "item": "hexalia:mortar_and_pestle"
     },
     {
-      "item": "hexalia:silkworm"
+      "item": "hexalia:silk_fiber"
     }
   ],
   "result": {
     "count": 2,
-    "item": "hexalia:silk_fiber"
+    "item": "minecraft:string"
   }
 }

@@ -2,20 +2,20 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "P": {
-      "item": "minecraft:glass"
-    },
     "S": {
-      "item": "minecraft:clay_ball"
+      "item": "minecraft:string"
+    },
+    "T": {
+      "item": "hexalia:silk_fiber"
     }
   },
   "pattern": [
-    "S S",
-    " P "
+    " S ",
+    "STS",
+    " S "
   ],
   "result": {
-    "count": 3,
-    "item": "hexalia:rustic_bottle"
+    "item": "minecraft:cobweb"
   },
   "show_notification": true
 }
