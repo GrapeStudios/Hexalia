@@ -11,9 +11,6 @@ import java.util.EnumSet;
 public class AvoidSunlightGoal extends Goal {
     private final MobEntity entity;
     private final World world;
-    private double targetX;
-    private double targetY;
-    private double targetZ;
 
     public AvoidSunlightGoal(MobEntity entity) {
         this.entity = entity;
@@ -30,9 +27,9 @@ public class AvoidSunlightGoal extends Goal {
     public void start() {
         BlockPos targetPos = this.getShadePosition();
         if (targetPos != null) {
-            this.targetX = targetPos.getX();
-            this.targetY = targetPos.getY();
-            this.targetZ = targetPos.getZ();
+            double targetX = targetPos.getX();
+            double targetY = targetPos.getY();
+            double targetZ = targetPos.getZ();
             this.entity.getNavigation().startMovingTo(targetX, targetY, targetZ, 1.0);
         }
     }
