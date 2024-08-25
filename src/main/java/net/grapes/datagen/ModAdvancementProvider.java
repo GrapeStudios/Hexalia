@@ -24,12 +24,12 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
     @Override
     public void generateAdvancement(Consumer<Advancement> consumer) {
         Advancement rootAdvancement = Advancement.Builder.create()
-                .display(new AdvancementDisplay(new ItemStack(ModItems.MANDRAKE),
+                .display(new AdvancementDisplay(new ItemStack(ModItems.HEXBOOK),
                         Text.translatable("advancements.hexalia.root.title"),
                         Text.translatable("advancements.hexalia.root.description"),
                         new Identifier(HexaliaMod.MOD_ID, "textures/block/salt_block.png"), AdvancementFrame.TASK,
                         true, true, false))
-                .criterion("player_joined", TickCriterion.Conditions.createLocation(LocationPredicate.ANY))
+                .criterion("has_hexbook", InventoryChangedCriterion.Conditions.items(ModItems.HEXBOOK))
                 .build(consumer, HexaliaMod.MOD_ID + ":root");
 
         Advancement smallCauldron = Advancement.Builder.create()

@@ -1,16 +1,16 @@
 {
   "criteria": {
-    "player_joined": {
+    "has_hexbook": {
       "conditions": {
-        "player": [
+        "items": [
           {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {}
+            "items": [
+              "hexalia:hexbook"
+            ]
           }
         ]
       },
-      "trigger": "minecraft:location"
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "display": {
@@ -22,7 +22,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "hexalia:mandrake"
+      "item": "hexalia:hexbook"
     },
     "show_toast": true,
     "title": {
@@ -31,7 +31,7 @@
   },
   "requirements": [
     [
-      "player_joined"
+      "has_hexbook"
     ]
   ],
   "sends_telemetry_event": true
