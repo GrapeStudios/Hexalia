@@ -26,7 +26,7 @@ public class SilkwormCocoonBlock extends Block {
 
     public static final DirectionProperty FACING = DirectionProperty.of("facing", Direction.Type.HORIZONTAL);
     public static final IntProperty HATCH = IntProperty.of("hatch", 0, 2);
-    private static final int HATCH_DELAY_TICKS = 20;
+    private static final int HATCH_DELAY_TICKS = 60;
 
     private static final VoxelShape NORTH_SHAPE = VoxelShapes.cuboid(0.3125, 0.3125, 0.6875, 0.6875, 0.75, 1);
     private static final VoxelShape SOUTH_SHAPE = VoxelShapes.cuboid(0.3125, 0.3125, 0, 0.6875, 0.75, 0.3125);

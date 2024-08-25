@@ -12,7 +12,7 @@ import net.minecraft.world.biome.BiomeKeys;
 public class ModEntitySpawns {
     public static void addSpawns() {
         BiomeModifications.addSpawn(BiomeSelectors.includeByKey(BiomeKeys.DARK_FOREST),
-                SpawnGroup.CREATURE, ModEntities.SILK_MOTH, 10, 1, 1);
+                SpawnGroup.CREATURE, ModEntities.SILK_MOTH, 20, 1, 1);
 
         SpawnRestriction.register(ModEntities.SILK_MOTH, SpawnRestriction.Location.ON_GROUND,
                 Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, AnimalEntity::isValidNaturalSpawn);

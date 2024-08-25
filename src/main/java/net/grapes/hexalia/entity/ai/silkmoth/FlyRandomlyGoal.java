@@ -1,4 +1,4 @@
-package net.grapes.hexalia.entity.ai;
+package net.grapes.hexalia.entity.ai.silkmoth;
 
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.mob.MobEntity;

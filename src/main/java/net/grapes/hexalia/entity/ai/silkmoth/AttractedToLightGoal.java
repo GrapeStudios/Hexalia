@@ -1,4 +1,4 @@
-package net.grapes.hexalia.entity.ai;
+package net.grapes.hexalia.entity.ai.silkmoth;
 
 import net.grapes.hexalia.util.ModTags;
 import net.minecraft.block.Block;
@@ -34,7 +34,16 @@ public class AttractedToLightGoal extends Goal {
 
     @Override
     public boolean shouldContinue() {
+        // Stay put if the moth is near the light source and is on the ground
+        if (this.entity.isOnGround() && this.isNearLightSource()) {
+            this.entity.getNavigation().stop();
+            return true;
+        }
         return this.targetPos != null && !this.entity.getNavigation().isIdle();
+    }
+
+    private boolean isNearLightSource() {
+        return this.targetPos != null && this.entity.getBlockPos().isWithinDistance(this.targetPos, 1.5);
     }
 
     @Override

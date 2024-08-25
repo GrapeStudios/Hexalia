@@ -1,9 +1,11 @@
 package net.grapes.hexalia.entity.custom;
 
 import net.grapes.hexalia.entity.ModEntities;
-import net.grapes.hexalia.entity.ai.AttractedToLightGoal;
-import net.grapes.hexalia.entity.ai.AvoidSunlightGoal;
-import net.grapes.hexalia.entity.ai.FlyRandomlyGoal;
+import net.grapes.hexalia.entity.ai.silkmoth.AttractedToLightGoal;
+import net.grapes.hexalia.entity.ai.silkmoth.AvoidSunlightGoal;
+import net.grapes.hexalia.entity.ai.silkmoth.FlyRandomlyGoal;
+import net.grapes.hexalia.entity.ai.PlaceCocoonGoal;
+import net.grapes.hexalia.entity.ai.MothMateGoal;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
@@ -18,6 +20,8 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
+import net.minecraft.item.ItemStack;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -45,8 +49,8 @@ public class SilkMothEntity extends AnimalEntity implements GeoEntity {
     public static DefaultAttributeContainer.Builder setAttributes() {
         return AnimalEntity.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 2.0D)
-                .add(EntityAttributes.GENERIC_FLYING_SPEED, 0.2f)
-                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.2f);
+                .add(EntityAttributes.GENERIC_FLYING_SPEED, 0.3f)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3f);
     }
 
     @Override
@@ -54,8 +58,8 @@ public class SilkMothEntity extends AnimalEntity implements GeoEntity {
         this.goalSelector.add(1, new AttractedToLightGoal(this, 1.0));
         this.goalSelector.add(2, new AvoidSunlightGoal(this));
         this.goalSelector.add(3, new FlyRandomlyGoal(this));
-        this.goalSelector.add(3, new LookAroundGoal(this));
-        this.goalSelector.add(4, new WanderAroundFarGoal(this, 0.75f, 1));
+        this.goalSelector.add(4, new LookAroundGoal(this));
+        this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.75f, 1));
     }
 
     @Nullable
@@ -106,11 +110,22 @@ public class SilkMothEntity extends AnimalEntity implements GeoEntity {
     }
 
     private PlayState predicate(AnimationState<SilkMothEntity> silkMothAnimationState) {
-        if (silkMothAnimationState.isMoving()) {
+        if ((!this.isOnGround() || silkMothAnimationState.isMoving()) &&
+                !(this.getNavigation().isIdle() && (this.isAttractedToLight() || this.isAvoidingSunlight()))) {
+            silkMothAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.silkmoth.flying", Animation.LoopType.LOOP));
+        } else if (this.getNavigation().isIdle() && (this.isAttractedToLight() || this.isAvoidingSunlight())) {
             silkMothAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.silkmoth.idle", Animation.LoopType.LOOP));
         }
-        silkMothAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.silkmoth.idle", Animation.LoopType.LOOP));
+
         return PlayState.CONTINUE;
+    }
+
+    private boolean isAttractedToLight() {
+        return this.goalSelector.getRunningGoals().anyMatch(goal -> goal.getGoal() instanceof AttractedToLightGoal);
+    }
+
+    private boolean isAvoidingSunlight() {
+        return this.goalSelector.getRunningGoals().anyMatch(goal -> goal.getGoal() instanceof AvoidSunlightGoal);
     }
 
     @Override
@@ -118,5 +133,3 @@ public class SilkMothEntity extends AnimalEntity implements GeoEntity {
         return cache;
     }
 }
-
-

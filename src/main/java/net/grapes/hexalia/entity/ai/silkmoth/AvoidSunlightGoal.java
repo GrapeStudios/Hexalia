@@ -1,4 +1,4 @@
-package net.grapes.hexalia.entity.ai;
+package net.grapes.hexalia.entity.ai.silkmoth;
 
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.mob.MobEntity;
@@ -39,7 +39,17 @@ public class AvoidSunlightGoal extends Goal {
 
     @Override
     public boolean shouldContinue() {
+        // Stay put if the moth is in a shaded area
+        if (this.entity.isOnGround() && this.isInShade()) {
+            this.entity.getNavigation().stop();
+            return true;
+        }
         return !this.entity.getNavigation().isIdle();
+    }
+
+    private boolean isInShade() {
+        BlockPos blockPos = this.entity.getBlockPos();
+        return !this.world.isSkyVisible(blockPos) && this.world.getBlockState(blockPos.down()).isOpaque();
     }
 
     @Override
