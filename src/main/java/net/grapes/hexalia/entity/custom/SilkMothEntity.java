@@ -51,7 +51,7 @@ public class SilkMothEntity extends AnimalEntity implements GeoEntity {
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(1, new AttractedToLightGoal(this, 1.0));
+        this.goalSelector.add(1, new AttractedToLightGoal(this, 1.5d));
         this.goalSelector.add(2, new AvoidSunlightGoal(this));
         this.goalSelector.add(3, new FlyRandomlyGoal(this));
         this.goalSelector.add(4, new LookAroundGoal(this));
