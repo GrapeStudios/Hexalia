@@ -43,6 +43,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM, ModBlocks.HENBANE);
 
+        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
+                .add(ModBlocks.COTTONWOOD_LOG, ModBlocks.COTTONWOOD_WOOD,
+                        ModBlocks.STRIPPED_COTTONWOOD_LOG, ModBlocks.STRIPPED_COTTONWOOD_WOOD);
+
         // Custom Tags
         getOrCreateTagBuilder(ModTags.Blocks.HEATING_BLOCKS)
                 .add(Blocks.MAGMA_BLOCK, Blocks.LAVA,

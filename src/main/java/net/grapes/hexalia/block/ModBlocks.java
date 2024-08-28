@@ -4,10 +4,12 @@ import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.custom.*;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
+import net.minecraft.block.sapling.OakSaplingGenerator;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.registry.Registries;
@@ -67,12 +69,42 @@ public class ModBlocks {
     public static final Block SMALL_CAULDRON = registerBlockWithoutBlockItem("small_cauldron",
             new SmallCauldronBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
     public static final Block RUSTIC_OVEN = registerBlock("rustic_oven",
-            new RusticOven(FabricBlockSettings.create().mapColor(MapColor.ORANGE).instrument(Instrument.BASEDRUM)
+            new RusticOvenBlock(FabricBlockSettings.create().mapColor(MapColor.ORANGE).instrument(Instrument.BASEDRUM)
                     .strength(4f).requiresTool().luminance(state -> 12)));
     public static final Block RITUAL_TABLE = registerBlockWithoutBlockItem("ritual_table",
             new RitualTableBlock(FabricBlockSettings.copyOf(Blocks.STONE).nonOpaque()));
     public static final Block BREW_SHELF = registerBlock("brew_shelf",
             new BrewShelfBlock(FabricBlockSettings.copyOf(Blocks.CHISELED_BOOKSHELF).nonOpaque()));
+
+    // Cottonwood Wooden Set
+    public static final Block COTTONWOOD_LOG = registerBlock("cottonwood_log",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
+    public static final Block COTTONWOOD_WOOD = registerBlock("cottonwood_wood",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
+    public static final Block STRIPPED_COTTONWOOD_LOG = registerBlock("stripped_cottonwood_log",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
+    public static final Block STRIPPED_COTTONWOOD_WOOD = registerBlock("stripped_cottonwood_wood",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
+    public static final Block COTTONWOOD_PLANKS = registerBlock("cottonwood_planks",
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).strength(4f).requiresTool()));
+    public static final Block COTTONWOOD_SAPLING = registerBlock("cottonwood_sapling",
+            new SaplingBlock(new OakSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+    public static final Block COTTONWOOD_STAIRS = registerBlock("cottonwood_stairs",
+            new StairsBlock(ModBlocks.COTTONWOOD_PLANKS.getDefaultState(),
+                    FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
+    public static final Block COTTONWOOD_SLAB = registerBlock("cottonwood_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
+    public static final Block COTTONWOOD_BUTTON = registerBlock("cottonwood_button",
+            new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS), BlockSetType.OAK, 10, true));
+    public static final Block COTTONWOOD_PRESSURE_PLATE = registerBlock("cottonwood_pressure_plate",
+            new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,
+                    FabricBlockSettings.copyOf(Blocks.OAK_PLANKS), BlockSetType.OAK));
+    public static final Block COTTONWOOD_FENCE = registerBlock("cottonwood_fence",
+            new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
+    public static final Block COTTONWOOD_FENCE_GATE = registerBlock("cottonwood_fence_gate",
+            new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS), WoodType.OAK));
+    public static final Block COTTONWOOD_TRAPDOOR = registerBlock("cottonwood_trapdoor",
+            new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque(), BlockSetType.OAK));
 
     // Decorative Blocks
     public static final Block PARCHMENT = registerBlockWithoutBlockItem("parchment",
@@ -91,16 +123,22 @@ public class ModBlocks {
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.DREAMSHROOM, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.HENBANE, 0.5F);
 
+        StrippableBlockRegistry.register(ModBlocks.COTTONWOOD_LOG, ModBlocks.STRIPPED_COTTONWOOD_LOG);
+        StrippableBlockRegistry.register(ModBlocks.COTTONWOOD_WOOD, ModBlocks.STRIPPED_COTTONWOOD_WOOD);
+
         FlammableBlockRegistry instance = FlammableBlockRegistry.getDefaultInstance();
-        instance.add(ModBlocks.SPIRIT_BLOOM, 100, 60);
-        instance.add(ModBlocks.DREAMSHROOM, 100, 60);
-        instance.add(ModBlocks.CHILLBERRY_BUSH, 100, 60);
-        instance.add(ModBlocks.WILD_MANDRAKE, 100, 60);
-        instance.add(ModBlocks.HENBANE, 100, 60);
-        instance.add(ModBlocks.PARCHMENT, 100, 60);
-        instance.add(ModBlocks.DREAMCATCHER, 100, 60);
-        instance.add(ModBlocks.SALT, 100, 60);
-        instance.add(ModBlocks.SILKWORM_COCOON, 100, 60);
+        instance.add(ModBlocks.SPIRIT_BLOOM, 60, 100);
+        instance.add(ModBlocks.CHILLBERRY_BUSH, 60, 100);
+        instance.add(ModBlocks.WILD_MANDRAKE, 60, 100);
+        instance.add(ModBlocks.HENBANE, 60, 100);
+        instance.add(ModBlocks.PARCHMENT, 5, 20);
+        instance.add(ModBlocks.DREAMCATCHER, 5, 20);
+        instance.add(ModBlocks.SILKWORM_COCOON, 6, 100);
+        instance.add(ModBlocks.COTTONWOOD_LOG, 5, 20);
+        instance.add(ModBlocks.COTTONWOOD_WOOD, 5, 20);
+        instance.add(ModBlocks.STRIPPED_COTTONWOOD_LOG, 5, 20);
+        instance.add(ModBlocks.STRIPPED_COTTONWOOD_WOOD, 5, 20);
+        instance.add(ModBlocks.COTTONWOOD_PLANKS, 5, 20);
     }
 
     // Methods

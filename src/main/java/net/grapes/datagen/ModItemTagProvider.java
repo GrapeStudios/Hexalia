@@ -29,6 +29,13 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModBlocks.SPIRIT_BLOOM.asItem())
                 .add(ModBlocks.HENBANE.asItem());
 
+        getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN)
+                .add(ModBlocks.COTTONWOOD_LOG.asItem(), ModBlocks.COTTONWOOD_WOOD.asItem(),
+                        ModBlocks.STRIPPED_COTTONWOOD_LOG.asItem(), ModBlocks.STRIPPED_COTTONWOOD_WOOD.asItem());
+
+        getOrCreateTagBuilder(ItemTags.PLANKS)
+                .add(ModBlocks.COTTONWOOD_PLANKS.asItem());
+
         // Custom Tags
         getOrCreateTagBuilder(ModTags.Items.COOKED_MEATS)
                 .add(Items.COOKED_BEEF, Items.COOKED_CHICKEN,
