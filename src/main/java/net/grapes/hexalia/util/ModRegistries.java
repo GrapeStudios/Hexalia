@@ -11,6 +11,7 @@ public class ModRegistries {
         registerModCompostable();
         registerAttributes();
     }
+
     private static void registerModCompostable() {
         ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(ModItems.SIREN_KELP, 0.6f);
         ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(ModItems.MANDRAKE, 0.6f);
