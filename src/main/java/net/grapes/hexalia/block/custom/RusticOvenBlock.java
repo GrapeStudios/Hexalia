@@ -19,12 +19,12 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class RusticOven extends Block {
+public class RusticOvenBlock extends Block {
 
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty LIT = Properties.LIT;
 
-    public RusticOven(Settings settings) {
+    public RusticOvenBlock(Settings settings) {
         super(settings);
     }
 
@@ -44,12 +44,12 @@ public class RusticOven extends Block {
 
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
             double d = (double)pos.getX() + 0.5;
-            double e = (double)pos.getY();
+            double e = pos.getY();
             double f = (double)pos.getZ() + 0.5;
             if (random.nextDouble() < 0.1) {
                 world.playSound(d, e, f, SoundEvents.BLOCK_FURNACE_FIRE_CRACKLE, SoundCategory.BLOCKS, 1.0F, 1.0F, false);
 
-            Direction direction = (Direction)state.get(FACING);
+            Direction direction = state.get(FACING);
             Direction.Axis axis = direction.getAxis();
             double g = 0.52;
             double h = random.nextDouble() * 0.6 - 0.3;
