@@ -44,8 +44,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SPIRIT_BLOOM, ModBlocks.HENBANE);
 
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
-                .add(ModBlocks.COTTONWOOD_LOG, ModBlocks.COTTONWOOD_WOOD,
-                        ModBlocks.STRIPPED_COTTONWOOD_LOG, ModBlocks.STRIPPED_COTTONWOOD_WOOD);
+                .addTag(ModTags.Blocks.COTTONWOOD_LOGS);
 
         // Custom Tags
         getOrCreateTagBuilder(ModTags.Blocks.HEATING_BLOCKS)
@@ -55,6 +54,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(ModTags.Blocks.ATTRACTS_MOTH)
                 .add(Blocks.LANTERN, Blocks.SEA_LANTERN,
                         Blocks.SOUL_LANTERN, ModBlocks.SALT_LAMP);
+
+        getOrCreateTagBuilder(ModTags.Blocks.COTTONWOOD_LOGS)
+                .add(ModBlocks.COTTONWOOD_LOG, ModBlocks.STRIPPED_COTTONWOOD_LOG,
+                        ModBlocks.COTTONWOOD_WOOD, ModBlocks.STRIPPED_COTTONWOOD_WOOD);
 
         // Common Tags
         getOrCreateTagBuilder(ModTags.Blocks.ORES)
