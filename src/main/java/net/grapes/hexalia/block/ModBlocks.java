@@ -105,6 +105,8 @@ public class ModBlocks {
             new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS), WoodType.OAK));
     public static final Block COTTONWOOD_TRAPDOOR = registerBlock("cottonwood_trapdoor",
             new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque(), BlockSetType.OAK));
+    public static final Block COTTONWOOD_DOOR = registerBlock("cottonwood_door",
+            new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque(), BlockSetType.OAK));
 
     // Decorative Blocks
     public static final Block PARCHMENT = registerBlockWithoutBlockItem("parchment",
