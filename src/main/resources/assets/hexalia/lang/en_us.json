@@ -114,6 +114,7 @@
   "block.hexalia.cottonwood_fence": "Cottonwood Fence",
   "block.hexalia.cottonwood_fence_gate": "Cottonwood Fence Gate",
   "block.hexalia.cottonwood_trapdoor": "Cottonwood Trapdoor",
+  "block.hexalia.cottonwood_door": "Cottonwood Door",
 
   "effect.hexalia.stuffed.description": "Prevents saturation from lowering but the user can still consume food to restore health",
   "effect.hexalia.stunned.description": "Affected entities are unable to move while this effect is active",
