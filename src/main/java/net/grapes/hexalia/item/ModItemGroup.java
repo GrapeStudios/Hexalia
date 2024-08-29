@@ -76,6 +76,7 @@ public class ModItemGroup {
                         entries.add(ModBlocks.COTTONWOOD_FENCE);
                         entries.add(ModBlocks.COTTONWOOD_FENCE_GATE);
                         entries.add(ModBlocks.COTTONWOOD_TRAPDOOR);
+                        entries.add(ModBlocks.COTTONWOOD_DOOR);
                     }).build());
     public static void registerItemGroups(){
     }

@@ -74,5 +74,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         getOrCreateTagBuilder(ModTags.Items.ORES)
                 .add(ModBlocks.SALT_ORE.asItem());
+
+        getOrCreateTagBuilder(ModTags.Items.COTTONWOOD_LOGS)
+                .add(ModBlocks.COTTONWOOD_LOG.asItem(), ModBlocks.STRIPPED_COTTONWOOD_LOG.asItem(),
+                        ModBlocks.COTTONWOOD_WOOD.asItem(), ModBlocks.STRIPPED_COTTONWOOD_WOOD.asItem());
     }
 }

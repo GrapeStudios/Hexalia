@@ -5,13 +5,16 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.util.ModTags;
+import net.minecraft.advancement.criterion.InventoryChangedCriterion;
 import net.minecraft.block.Blocks;
 import net.minecraft.data.server.recipe.RecipeJsonProvider;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.Items;
+import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 
 import java.util.function.Consumer;
@@ -54,7 +57,6 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input('A', ModBlocks.SPIRIT_BLOOM)
                 .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.PARCHMENT) + "_"));
-
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.SALT_LAMP)
                 .pattern(" A ")
@@ -248,5 +250,30 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input(ModItems.SILKWORM)
                 .criterion(hasItem(ModItems.SILK_FIBER), conditionsFromItem(ModItems.SILK_FIBER))
                 .offerTo(exporter);
+
+        // Recipes for Wooden Blocks
+        createTrapdoorRecipe(ModBlocks.COTTONWOOD_TRAPDOOR, Ingredient.ofItems(ModBlocks.COTTONWOOD_PLANKS))
+                .criterion("has_planks", InventoryChangedCriterion.Conditions.items(ModBlocks.COTTONWOOD_PLANKS))
+                .offerTo(exporter);
+        createDoorRecipe(ModBlocks.COTTONWOOD_DOOR, Ingredient.ofItems(ModBlocks.COTTONWOOD_PLANKS))
+                .criterion("has_planks", InventoryChangedCriterion.Conditions.items(ModBlocks.COTTONWOOD_PLANKS))
+                .offerTo(exporter);
+        createPressurePlateRecipe(RecipeCategory.REDSTONE, ModBlocks.COTTONWOOD_PRESSURE_PLATE, Ingredient.ofItems(ModBlocks.COTTONWOOD_PLANKS))
+                .criterion("has_planks", InventoryChangedCriterion.Conditions.items(ModBlocks.COTTONWOOD_PLANKS))
+                .offerTo(exporter);
+        createStairsRecipe(ModBlocks.COTTONWOOD_STAIRS, Ingredient.ofItems(ModBlocks.COTTONWOOD_PLANKS))
+                .criterion("has_planks", InventoryChangedCriterion.Conditions.items(ModBlocks.COTTONWOOD_PLANKS))
+                .offerTo(exporter);
+        createSlabRecipe(RecipeCategory.DECORATIONS, ModBlocks.COTTONWOOD_SLAB, Ingredient.ofItems(ModBlocks.COTTONWOOD_PLANKS))
+                .criterion("has_planks", InventoryChangedCriterion.Conditions.items(ModBlocks.COTTONWOOD_PLANKS))
+                .offerTo(exporter);
+        createFenceRecipe(ModBlocks.COTTONWOOD_FENCE, Ingredient.ofItems(ModBlocks.COTTONWOOD_PLANKS))
+                .criterion("has_planks", InventoryChangedCriterion.Conditions.items(ModBlocks.COTTONWOOD_PLANKS))
+                .offerTo(exporter);
+        createFenceGateRecipe(ModBlocks.COTTONWOOD_FENCE_GATE, Ingredient.ofItems(ModBlocks.COTTONWOOD_PLANKS))
+                .criterion("has_planks", InventoryChangedCriterion.Conditions.items(ModBlocks.COTTONWOOD_PLANKS))
+                .offerTo(exporter);
+        offerPlanksRecipe(exporter, ModBlocks.COTTONWOOD_PLANKS, ModTags.Items.COTTONWOOD_LOGS, 4);
+        offerSingleOutputShapelessRecipe(exporter, ModBlocks.COTTONWOOD_BUTTON, ModBlocks.COTTONWOOD_PLANKS, "wooden_button");
     }
 }

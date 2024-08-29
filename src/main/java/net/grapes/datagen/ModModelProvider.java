@@ -27,6 +27,7 @@ public class ModModelProvider extends FabricModelProvider {
                 BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.HENBANE, ModBlocks.POTTED_HENBANE,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
+
         blockStateModelGenerator.registerLog(ModBlocks.COTTONWOOD_LOG).log(ModBlocks.COTTONWOOD_LOG).wood(ModBlocks.COTTONWOOD_WOOD);
         blockStateModelGenerator.registerLog(ModBlocks.STRIPPED_COTTONWOOD_LOG).log(ModBlocks.STRIPPED_COTTONWOOD_LOG).wood(ModBlocks.STRIPPED_COTTONWOOD_WOOD);
         blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.COTTONWOOD_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
@@ -40,6 +41,7 @@ public class ModModelProvider extends FabricModelProvider {
         cottonWoodTexturePool.fenceGate(ModBlocks.COTTONWOOD_FENCE_GATE);
 
         blockStateModelGenerator.registerTrapdoor(ModBlocks.COTTONWOOD_TRAPDOOR);
+        blockStateModelGenerator.registerDoor(ModBlocks.COTTONWOOD_DOOR);
     }
 
     @Override
