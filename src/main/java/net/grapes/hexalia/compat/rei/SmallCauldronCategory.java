@@ -32,7 +32,7 @@ public class SmallCauldronCategory implements DisplayCategory<BasicDisplay> {
 
     @Override
     public Text getTitle() {
-        return Text.literal("Small Cauldron");
+        return Text.translatable("block.hexalia.small_cauldron");
     }
 
     @Override
