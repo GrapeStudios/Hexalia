@@ -68,15 +68,17 @@ public class ModItemGroup {
                         entries.add(ModBlocks.STRIPPED_COTTONWOOD_LOG);
                         entries.add(ModBlocks.STRIPPED_COTTONWOOD_WOOD);
                         entries.add(ModBlocks.COTTONWOOD_PLANKS);
-                        entries.add(ModBlocks.COTTONWOOD_SAPLING);
                         entries.add(ModBlocks.COTTONWOOD_STAIRS);
-                        entries.add(ModBlocks.COTTONWOOD_BUTTON);
-                        entries.add(ModBlocks.COTTONWOOD_PRESSURE_PLATE);
                         entries.add(ModBlocks.COTTONWOOD_SLAB);
                         entries.add(ModBlocks.COTTONWOOD_FENCE);
                         entries.add(ModBlocks.COTTONWOOD_FENCE_GATE);
-                        entries.add(ModBlocks.COTTONWOOD_TRAPDOOR);
                         entries.add(ModBlocks.COTTONWOOD_DOOR);
+                        entries.add(ModBlocks.COTTONWOOD_TRAPDOOR);
+                        entries.add(ModBlocks.COTTONWOOD_PRESSURE_PLATE);
+                        entries.add(ModBlocks.COTTONWOOD_BUTTON);
+                        entries.add(ModItems.COTTONWOOD_BOAT);
+                        entries.add(ModItems.COTTONWOOD_CHEST_BOAT);
+                        entries.add(ModBlocks.COTTONWOOD_SAPLING);
                     }).build());
     public static void registerItemGroups(){
     }

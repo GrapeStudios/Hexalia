@@ -1,5 +1,6 @@
 package net.grapes.hexalia;
 
+import com.terraformersmc.terraform.boat.api.client.TerraformBoatClientHelper;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
@@ -8,6 +9,7 @@ import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.block.entity.ModBlockEntities;
 import net.grapes.hexalia.block.entity.renderer.RitualTableBlockEntityRenderer;
 import net.grapes.hexalia.block.entity.renderer.SaltBlockEntityRenderer;
+import net.grapes.hexalia.entity.ModBoats;
 import net.grapes.hexalia.entity.ModEntities;
 import net.grapes.hexalia.entity.client.SilkMothRenderer;
 import net.grapes.hexalia.networking.ModMessages;
@@ -57,5 +59,7 @@ public class HexaliaModClient implements ClientModInitializer {
         ModMessages.registerS2CPackets();
         EntityRendererRegistry.register(ModEntities.THROWN_RABBAGE_ENTITY, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.SILK_MOTH, SilkMothRenderer::new);
+
+        TerraformBoatClientHelper.registerModelLayers(ModBoats.COTTONWOOD_BOAT_ID, false);
     }
 }

@@ -1,14 +1,15 @@
 package net.grapes.hexalia.item;
 
+import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.entity.ModBoats;
 import net.grapes.hexalia.entity.ModEntities;
 import net.grapes.hexalia.item.custom.*;
 import net.grapes.hexalia.item.custom.brews.*;
 import net.grapes.hexalia.util.ModToolMaterials;
 import net.grapes.hexalia.util.ModUtils;
-import net.minecraft.block.Blocks;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -108,6 +109,12 @@ public class ModItems {
     // Weapons & Armor
     public static final Item KELPWEAVE_BLADE = registerItem("kelpweave_blade",
             new KelpweaveBladeItem(ModToolMaterials.ANCIENT_SEED, 3, -2f, new FabricItemSettings()));
+
+    // Other Items
+    public static final Item COTTONWOOD_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.COTTONWOOD_BOAT_ID,
+            ModBoats.COTTONWOOD_BOAT_KEY, false);
+    public static final Item COTTONWOOD_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.COTTONWOOD_CHEST_BOAT_ID,
+            ModBoats.COTTONWOOD_BOAT_KEY, true);
 
     // Addon/Compat Items
     public static final Item HEXBOOK = registerItem("hexbook",

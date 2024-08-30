@@ -274,5 +274,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .offerTo(exporter);
         offerPlanksRecipe(exporter, ModBlocks.COTTONWOOD_PLANKS, ModTags.Items.COTTONWOOD_LOGS, 4);
         offerSingleOutputShapelessRecipe(exporter, ModBlocks.COTTONWOOD_BUTTON, ModBlocks.COTTONWOOD_PLANKS, "wooden_button");
+        offerBoatRecipe(exporter, ModItems.COTTONWOOD_BOAT, ModBlocks.COTTONWOOD_PLANKS);
+        offerChestBoatRecipe(exporter, ModItems.COTTONWOOD_CHEST_BOAT, ModItems.COTTONWOOD_BOAT);
     }
 }

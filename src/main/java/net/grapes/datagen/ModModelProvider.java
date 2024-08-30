@@ -70,5 +70,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.BREW_OF_SIPHONING, Models.GENERATED);
         itemModelGenerator.register(ModItems.PARCHMENT, Models.GENERATED);
         itemModelGenerator.register(ModItems.DREAMCATCHER, Models.GENERATED);
+        itemModelGenerator.register(ModItems.COTTONWOOD_BOAT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.COTTONWOOD_CHEST_BOAT, Models.GENERATED);
     }
 }

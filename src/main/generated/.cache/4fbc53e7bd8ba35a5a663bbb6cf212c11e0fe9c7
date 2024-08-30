@@ -1,4 +1,4 @@
-// 1.20.1	2024-08-29T08:24:34.6918429	Hexalia/Model Definitions
+// 1.20.1	2024-08-30T08:27:16.9223173	Hexalia/Model Definitions
 5740a6c4518619e188ff5a8237ed10b26357ffef assets\hexalia\models\block\cottonwood_stairs_outer.json
 4060618145c3aa49131314782ad3c03e2a275a7f assets\hexalia\models\item\cottonwood_fence.json
 14e301adb507fc9e4afacbe67da71bed0fdffa40 assets\hexalia\blockstates\cottonwood_fence_gate.json
@@ -9,6 +9,7 @@ b6750d84427cd28b061976e1485ded8004be696c assets\hexalia\models\block\cottonwood_
 8961eccf812c2ee13ab76cadff9d63a350171803 assets\hexalia\models\block\dreamshroom.json
 def68a232dd68bfe9cdeeecbd4a50f845b6a10b3 assets\hexalia\blockstates\cottonwood_button.json
 3b221041e13e0fad85eb5fad104ca0b9fc190f8a assets\hexalia\models\item\sunfire_tomato.json
+06956c31de51f8954bd9c2ed8edb563b9485c061 assets\hexalia\models\item\cottonwood_boat.json
 373b84a9493a9302b3ac06ff681f9f5b36700dcb assets\hexalia\models\block\stripped_cottonwood_wood.json
 7a15c2b847082b33e7cfb2abf83d7232148f1303 assets\hexalia\models\block\cottonwood_button.json
 4e4320f9569192e2ec4211dce4bcc0bdd9554256 assets\hexalia\models\block\cottonwood_pressure_plate_down.json
@@ -30,6 +31,7 @@ d58b191667869ee127680a1a0ec0770eb495fa20 assets\hexalia\models\block\cottonwood_
 868aea410d5d3b8da81e3d5b497ebb8739b03d21 assets\hexalia\models\item\dreamshroom_paste.json
 48a652a55a0a5c84c67c1dbe2e106d94377a6a15 assets\hexalia\models\item\brew_of_warding.json
 71f146c3cd8f89ff28b07811c12186ab801fb851 assets\hexalia\models\item\mandrake_stew.json
+1a72e908de1f440606f4860b5e1f8c233f671666 assets\hexalia\models\item\cottonwood_chest_boat.json
 5263f7158e61ed188642369838c12f07423685cf assets\hexalia\models\block\cottonwood_door_bottom_left_open.json
 6341a187dd7ba5697c03325f91d697eaf0a54f9a assets\hexalia\blockstates\cottonwood_sapling.json
 7382f37ad35c6b01fe26f8d89f30d550783e6936 assets\hexalia\models\block\cottonwood_trapdoor_top.json
@@ -83,11 +85,11 @@ fbd8a526a590d9a62ef2c7f152685f43e47e3aee assets\hexalia\blockstates\cottonwood_d
 08e5d892de26f4f8139a8a25627316beb0da5ade assets\hexalia\models\block\wild_mandrake.json
 ef9595fe6224db05bbd062b3f9714cb3721afbab assets\hexalia\models\block\cottonwood_wood.json
 e6e53e545da0d69ea318149ce507b40b98fca097 assets\hexalia\models\item\henbane.json
-2a10208ba8ffd4de1fbdca7192655c4e08e459c2 assets\hexalia\models\block\cottonwood_door_top_right_open.json
 7a6fc76876f085935b42624638c791434ff71630 assets\hexalia\models\item\hex_focus.json
+2a10208ba8ffd4de1fbdca7192655c4e08e459c2 assets\hexalia\models\block\cottonwood_door_top_right_open.json
 1b2188f8e98e03fa6ba52100f49614bfbd5a0dfb assets\hexalia\models\block\stripped_cottonwood_log.json
-033ff7d3d5ef638143a0eb99ae938b456d2bbbe1 assets\hexalia\models\block\henbane.json
 15249bcc7b4d170a3f881d5072d7c1103423d8ed assets\hexalia\models\item\ancient_seed.json
+033ff7d3d5ef638143a0eb99ae938b456d2bbbe1 assets\hexalia\models\block\henbane.json
 84cbf3d2e1621c3e05fbd8a9a3e6667ed960c482 assets\hexalia\models\item\cottonwood_wood.json
 e8dd17bff61e072333d14727741f5db6c523a2f9 assets\hexalia\models\item\resin.json
 fceabf3e8bcee2d4b38465a283a7cc9a4e82e15c assets\hexalia\models\block\cottonwood_slab_top.json
