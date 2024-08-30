@@ -110,11 +110,15 @@ public class ModItems {
     public static final Item KELPWEAVE_BLADE = registerItem("kelpweave_blade",
             new KelpweaveBladeItem(ModToolMaterials.ANCIENT_SEED, 3, -2f, new FabricItemSettings()));
 
-    // Other Items
+    // Wooden Set Items
     public static final Item COTTONWOOD_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.COTTONWOOD_BOAT_ID,
             ModBoats.COTTONWOOD_BOAT_KEY, false);
     public static final Item COTTONWOOD_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.COTTONWOOD_CHEST_BOAT_ID,
             ModBoats.COTTONWOOD_BOAT_KEY, true);
+    public static final Item COTTONWOOD_SIGN = registerItem("cottonwood_sign",
+            new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.COTTONWOOD_SIGN, ModBlocks.COTTONWOOD_WALL_SIGN));
+    public static final Item COTTONWOOD_HANGING_SIGN = registerItem("cottonwood_hanging_sign",
+            new HangingSignItem(ModBlocks.COTTONWOOD_HANGING_SIGN, ModBlocks.COTTONWOOD_HANGING_WALL_SIGN, new FabricItemSettings().maxCount(16)));
 
     // Addon/Compat Items
     public static final Item HEXBOOK = registerItem("hexbook",

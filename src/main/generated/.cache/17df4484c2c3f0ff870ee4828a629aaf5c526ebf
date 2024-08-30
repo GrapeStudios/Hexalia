@@ -1,4 +1,4 @@
-// 1.20.1	2024-08-30T08:27:16.9203231	Hexalia/Block Loot Tables
+// 1.20.1	2024-08-30T09:37:26.177596	Hexalia/Block Loot Tables
 e4e4f7bc56a75ad3d1e5449ba51aae99e15062cb data\hexalia\loot_tables\blocks\small_cauldron.json
 aeb959301b32ba153b4b2dc89a617ff2f27e81ce data\hexalia\loot_tables\blocks\salt.json
 0a81cc3c2b6ef5a0665335b100843904f4bfac41 data\hexalia\loot_tables\blocks\salt_lamp.json
@@ -16,8 +16,8 @@ ed498b6cee4ed24822457ecb581b6b5f1cf10c20 data\hexalia\loot_tables\blocks\rustic_
 a8298f815c3d89857892720b2735ba023d581704 data\hexalia\loot_tables\blocks\potted_spirit_bloom.json
 1b1f9ba6351abaed3eb68d06a71bc2c4d18fe485 data\hexalia\loot_tables\blocks\henbane.json
 ba6dc1e4a93e77aa8899ebf36440c303881e2f10 data\hexalia\loot_tables\blocks\salt_ore.json
-ae24eb4d93b06cacaf71623f037959bc4f7b7403 data\hexalia\loot_tables\blocks\wild_sunfire_tomato.json
 1159edd6319b54b2aec08c4e76a168bcd67951d1 data\hexalia\loot_tables\blocks\brew_shelf.json
+ae24eb4d93b06cacaf71623f037959bc4f7b7403 data\hexalia\loot_tables\blocks\wild_sunfire_tomato.json
 e1811df28b896b96eeeb48fed28afe16e4fc8591 data\hexalia\loot_tables\blocks\candle_skull.json
 c0d81f7043058e83baa82ed250375e7a293e54f0 data\hexalia\loot_tables\blocks\sunfire_tomato_crop.json
 aa30640e80742b07570648a2138e2585f56fa6a2 data\hexalia\loot_tables\blocks\dreamcatcher.json

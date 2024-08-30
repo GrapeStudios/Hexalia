@@ -7,6 +7,11 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.custom.*;
+import net.grapes.hexalia.block.custom.signs.ModHangingSignBlock;
+import net.grapes.hexalia.block.custom.signs.ModStandingSignBlock;
+import net.grapes.hexalia.block.custom.signs.ModWallHangingSignBlock;
+import net.grapes.hexalia.block.custom.signs.ModWallSignBlock;
+import net.grapes.hexalia.util.ModWoodTypes;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.block.sapling.OakSaplingGenerator;
@@ -107,6 +112,15 @@ public class ModBlocks {
             new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque(), BlockSetType.OAK));
     public static final Block COTTONWOOD_DOOR = registerBlock("cottonwood_door",
             new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque(), BlockSetType.OAK));
+
+    public static final Block COTTONWOOD_SIGN = registerBlockWithoutBlockItem("cottonwood_sign",
+            new ModStandingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_SIGN).nonOpaque(), ModWoodTypes.COTTONWOOD));
+    public static final Block COTTONWOOD_WALL_SIGN = registerBlockWithoutBlockItem("cottonwood_wall_sign",
+            new ModWallSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN), ModWoodTypes.COTTONWOOD));
+    public static final Block COTTONWOOD_HANGING_SIGN = registerBlockWithoutBlockItem("cottonwood_hanging_sign",
+            new ModHangingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_HANGING_SIGN), ModWoodTypes.COTTONWOOD));
+    public static final Block COTTONWOOD_HANGING_WALL_SIGN = registerBlockWithoutBlockItem("cottonwood_hanging_wall_sign",
+            new ModWallHangingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_WALL_HANGING_SIGN), ModWoodTypes.COTTONWOOD));
 
     // Decorative Blocks
     public static final Block PARCHMENT = registerBlockWithoutBlockItem("parchment",

@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.block.entity.ModBlockEntities;
+import net.grapes.hexalia.block.entity.ModSignBlockEntity;
 import net.grapes.hexalia.block.entity.renderer.RitualTableBlockEntityRenderer;
 import net.grapes.hexalia.block.entity.renderer.SaltBlockEntityRenderer;
 import net.grapes.hexalia.entity.ModBoats;
@@ -18,9 +19,13 @@ import net.grapes.hexalia.particle.custom.InfusedBubbleParticle;
 import net.grapes.hexalia.particle.custom.SporeParticle;
 import net.grapes.hexalia.screen.ModScreenHandler;
 import net.grapes.hexalia.screen.SmallCauldronScreen;
+import net.grapes.hexalia.util.ModWoodTypes;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
 import net.minecraft.client.render.RenderLayer;
+import net.minecraft.client.render.TexturedRenderLayers;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactories;
+import net.minecraft.client.render.block.entity.HangingSignBlockEntityRenderer;
+import net.minecraft.client.render.block.entity.SignBlockEntityRenderer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 
 public class HexaliaModClient implements ClientModInitializer {
@@ -60,6 +65,9 @@ public class HexaliaModClient implements ClientModInitializer {
         EntityRendererRegistry.register(ModEntities.THROWN_RABBAGE_ENTITY, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.SILK_MOTH, SilkMothRenderer::new);
 
+        TexturedRenderLayers.SIGN_TYPE_TEXTURES.put(ModWoodTypes.COTTONWOOD, TexturedRenderLayers.getSignTextureId(ModWoodTypes.COTTONWOOD));
         TerraformBoatClientHelper.registerModelLayers(ModBoats.COTTONWOOD_BOAT_ID, false);
+        BlockEntityRendererFactories.register(ModBlockEntities.MOD_SIGN_BLOCK_ENTITY, SignBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.MOD_HANGING_SIGN_BLOCK_ENTITY, HangingSignBlockEntityRenderer::new);
     }
 }

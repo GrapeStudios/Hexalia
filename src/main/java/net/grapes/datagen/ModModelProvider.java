@@ -7,6 +7,7 @@ import net.grapes.hexalia.item.ModItems;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
+import net.minecraft.data.family.BlockFamilies;
 
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
@@ -42,6 +43,8 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerTrapdoor(ModBlocks.COTTONWOOD_TRAPDOOR);
         blockStateModelGenerator.registerDoor(ModBlocks.COTTONWOOD_DOOR);
+        cottonWoodTexturePool.family(BlockFamilies.register(ModBlocks.COTTONWOOD_PLANKS).sign(ModBlocks.COTTONWOOD_SIGN, ModBlocks.COTTONWOOD_WALL_SIGN).build());
+        blockStateModelGenerator.registerHangingSign(ModBlocks.STRIPPED_COTTONWOOD_LOG, ModBlocks.COTTONWOOD_HANGING_SIGN, ModBlocks.COTTONWOOD_HANGING_WALL_SIGN);
     }
 
     @Override
