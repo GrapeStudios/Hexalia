@@ -31,7 +31,6 @@ public class ModModelProvider extends FabricModelProvider {
 
         blockStateModelGenerator.registerLog(ModBlocks.COTTONWOOD_LOG).log(ModBlocks.COTTONWOOD_LOG).wood(ModBlocks.COTTONWOOD_WOOD);
         blockStateModelGenerator.registerLog(ModBlocks.STRIPPED_COTTONWOOD_LOG).log(ModBlocks.STRIPPED_COTTONWOOD_LOG).wood(ModBlocks.STRIPPED_COTTONWOOD_WOOD);
-        blockStateModelGenerator.registerTintableCrossBlockState(ModBlocks.COTTONWOOD_SAPLING, BlockStateModelGenerator.TintType.NOT_TINTED);
 
         BlockStateModelGenerator.BlockTexturePool cottonWoodTexturePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.COTTONWOOD_PLANKS);
         cottonWoodTexturePool.stairs(ModBlocks.COTTONWOOD_STAIRS);

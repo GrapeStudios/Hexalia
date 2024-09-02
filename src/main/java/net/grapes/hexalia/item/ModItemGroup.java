@@ -82,7 +82,6 @@ public class ModItemGroup {
                         entries.add(ModItems.COTTONWOOD_CHEST_BOAT);
                         entries.add(ModItems.COTTONWOOD_SIGN);
                         entries.add(ModItems.COTTONWOOD_HANGING_SIGN);
-                        entries.add(ModBlocks.COTTONWOOD_CATKIN);
                     }).build());
     public static void registerItemGroups(){
     }
