@@ -15,9 +15,10 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
-import net.minecraft.world.gen.foliage.DarkOakFoliagePlacer;
+import net.minecraft.world.gen.foliage.*;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
 import net.minecraft.world.gen.trunk.DarkOakTrunkPlacer;
+import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
 
 import java.util.List;
 
@@ -31,7 +32,9 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> WILD_SUNFIRE_TOMATO_KEY = registerKey("wild_sunfire_tomato");
     public static final RegistryKey<ConfiguredFeature<?, ?>> WILD_MANDRAKE_KEY = registerKey("wild_mandrake");
     public static final RegistryKey<ConfiguredFeature<?, ?>> HENBANE = registerKey("henbane");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> COCOON_TREE_KEY = registerKey("cocoon_tree");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> DARK_OAK_COCOON_KEY = registerKey("dark_oak_cocoon_tree");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> COTTONWOOD_KEY = registerKey("cottonwood");
+
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
         RuleTest stoneReplaceables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
@@ -69,13 +72,21 @@ public class ModConfiguredFeatures {
                 PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
                         new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.HENBANE)))));
 
-        register(context, COCOON_TREE_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
+        register(context, DARK_OAK_COCOON_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
                 BlockStateProvider.of(Blocks.DARK_OAK_LOG),
                 new DarkOakTrunkPlacer(5, 2, 1),
                 BlockStateProvider.of(Blocks.DARK_OAK_LEAVES),
                 new DarkOakFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
                 new TwoLayersFeatureSize(1, 0, 1))
                 .decorators(List.of(new CocoonTreeDecorator()))
+                .build());
+
+        register(context, COTTONWOOD_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
+                BlockStateProvider.of(ModBlocks.COTTONWOOD_LOG),
+                new StraightTrunkPlacer(6, 2, 1),
+                BlockStateProvider.of(ModBlocks.COTTONWOOD_LEAVES),
+                new LargeOakFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(1), 3) {},
+                new TwoLayersFeatureSize(1, 0, 2))
                 .build());
     }
 

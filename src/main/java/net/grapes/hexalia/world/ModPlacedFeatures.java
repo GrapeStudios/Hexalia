@@ -1,6 +1,7 @@
 package net.grapes.hexalia.world;
 
 import net.grapes.hexalia.HexaliaMod;
+import net.grapes.hexalia.block.ModBlocks;
 import net.minecraft.registry.Registerable;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
@@ -22,7 +23,8 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> WILD_SUNFIRE_TOMATO_PLACED_KEY = registerKey("wild_sunfire_tomato_placed");
     public static final RegistryKey<PlacedFeature> WILD_MANDRAKE_PLACED_KEY = registerKey("wild_mandrake_placed");
     public static final RegistryKey<PlacedFeature> HENBANE_PLACED_KEY = registerKey("henbane_placed");
-    public static final RegistryKey<PlacedFeature> COCOON_TREE_PLACED_KEY = registerKey("cocoon_tree_placed");
+    public static final RegistryKey<PlacedFeature> DARK_OAK_COCOON_PLACED_KEY = registerKey("dark_oak_cocoon_placed");
+    public static final RegistryKey<PlacedFeature> COTTONWOOD_PLACED_KEY = registerKey("cottonwood_placed");
 
     public static void bootstrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -52,8 +54,12 @@ public class ModPlacedFeatures {
         register(context, HENBANE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.HENBANE),
                 RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
 
-        register(context, COCOON_TREE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.COCOON_TREE_KEY),
+        register(context, DARK_OAK_COCOON_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.DARK_OAK_COCOON_KEY),
                 RarityFilterPlacementModifier.of(20), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
+
+        register(context, COTTONWOOD_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.COTTONWOOD_KEY),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive
+                        (PlacedFeatures.createCountExtraModifier(1, 0.1f, 2), ModBlocks.COTTONWOOD_SAPLING));
     }
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {

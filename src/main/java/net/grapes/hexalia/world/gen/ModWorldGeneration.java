@@ -8,5 +8,6 @@ public class ModWorldGeneration {
         ModVegetationGeneration.generateVegetation();
         ModEntitySpawns.addSpawns();
         ModTreeDecorators.registerTreeDecorators();
+        ModTreeGeneration.generateTrees();
     }
 }

@@ -30,6 +30,6 @@ public class ModVegetationGeneration {
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.HENBANE_PLACED_KEY);
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.DARK_FOREST),
-                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.COCOON_TREE_PLACED_KEY);
+                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.DARK_OAK_COCOON_PLACED_KEY);
     }
 }

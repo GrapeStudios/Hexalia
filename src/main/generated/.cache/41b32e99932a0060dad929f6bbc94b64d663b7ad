@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-01T22:00:57.5644275	Hexalia/Tags for minecraft:item
+// 1.20.1	2024-09-02T03:18:48.7138699	Hexalia/Tags for minecraft:item
 86e4631aa91988a8aaf35bbda300e064f8b05617 data\hexalia\tags\items\cottonwood_logs.json
 5e7c77d0eb0fca20d4986c7e16aa8b647cb7bd1b data\minecraft\tags\items\logs_that_burn.json
 7426c70e9a7459782afc5dc25348366757ea0425 data\c\tags\items\salt_blocks.json
@@ -6,8 +6,8 @@
 3f2b20fe9bfd9bd8b760e1456c6d78fa6a3fbf97 data\minecraft\tags\items\wooden_buttons.json
 3f829a599ec6493d98339104d1b27c9aa4e81ec1 data\minecraft\tags\items\planks.json
 bbadf500cdc09af33fa73617acbfb98c018929f5 data\c\tags\items\cooked_meats.json
-68fca64b126eb9383ed93e8f9bd054c02ce43a30 data\minecraft\tags\items\wooden_pressure_plates.json
 4619773c1534078a07562617d1b83094f69aeee4 data\minecraft\tags\items\signs.json
+68fca64b126eb9383ed93e8f9bd054c02ce43a30 data\minecraft\tags\items\wooden_pressure_plates.json
 f36b61d12aa3d7253f3ce7350a7eb2d6d937639d data\c\tags\items\salt_dusts.json
 adc64d90ab00acc40f529a58afb00e26ebd82501 data\minecraft\tags\items\small_flowers.json
 d0cd86e67676abc2934f2be0431c7e38d1da923d data\minecraft\tags\items\wooden_slabs.json

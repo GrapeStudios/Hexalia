@@ -51,6 +51,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.COTTONWOOD_LEAVES);
         getOrCreateTagBuilder(BlockTags.PLANKS)
                 .add(ModBlocks.COTTONWOOD_PLANKS);
+        getOrCreateTagBuilder(ModTags.Blocks.COCOON_LOGS)
+                .add(ModBlocks.COTTONWOOD_LOG, Blocks.DARK_OAK_LOG);
 
         // Custom Tags
         getOrCreateTagBuilder(ModTags.Blocks.HEATING_BLOCKS)

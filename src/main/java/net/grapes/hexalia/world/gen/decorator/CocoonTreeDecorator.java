@@ -2,7 +2,7 @@ package net.grapes.hexalia.world.gen.decorator;
 
 import com.mojang.serialization.Codec;
 import net.grapes.hexalia.block.ModBlocks;
-import net.grapes.hexalia.block.custom.SilkwormCocoonBlock;
+import net.grapes.hexalia.block.custom.CocoonBlock;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -28,7 +28,7 @@ public class CocoonTreeDecorator extends TreeDecorator {
             Direction direction = directions[random.nextInt(directions.length)];
             BlockPos blockPos = pos.offset(direction);
             if (generator.isAir(blockPos)) {
-                generator.replace(blockPos, ModBlocks.SILKWORM_COCOON.getDefaultState().with(SilkwormCocoonBlock.FACING, direction));
+                generator.replace(blockPos, ModBlocks.SILKWORM_COCOON.getDefaultState().with(CocoonBlock.FACING, direction));
                 break;
             }
         }

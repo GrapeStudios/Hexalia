@@ -12,9 +12,9 @@ import net.grapes.hexalia.block.custom.signs.ModStandingSignBlock;
 import net.grapes.hexalia.block.custom.signs.ModWallHangingSignBlock;
 import net.grapes.hexalia.block.custom.signs.ModWallSignBlock;
 import net.grapes.hexalia.util.ModWoodTypes;
+import net.grapes.hexalia.world.tree.CottonwoodSaplingGenerator;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
-import net.minecraft.block.sapling.OakSaplingGenerator;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.BlockItem;
 import net.minecraft.registry.Registries;
@@ -56,7 +56,7 @@ public class ModBlocks {
     public static final Block POTTED_HENBANE = registerBlockWithoutBlockItem("potted_henbane",
             new FlowerPotBlock(HENBANE, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
     public static final Block SILKWORM_COCOON = registerBlock("silkworm_cocoon",
-            new SilkwormCocoonBlock(FabricBlockSettings.create().mapColor(MapColor.WHITE_GRAY).instrument(Instrument.BANJO)
+            new CocoonBlock(FabricBlockSettings.create().mapColor(MapColor.WHITE_GRAY).instrument(Instrument.BANJO)
                     .strength(0.5f).noCollision()));
 
     // Mineral-Related Blocks
@@ -95,7 +95,7 @@ public class ModBlocks {
     public static final Block COTTONWOOD_PLANKS = registerBlock("cottonwood_planks",
             new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).strength(4f).requiresTool()));
     public static final Block COTTONWOOD_SAPLING = registerBlock("cottonwood_sapling",
-            new SaplingBlock(new OakSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+            new SaplingBlock(new CottonwoodSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
     public static final Block COTTONWOOD_STAIRS = registerBlock("cottonwood_stairs",
             new StairsBlock(ModBlocks.COTTONWOOD_PLANKS.getDefaultState(),
                     FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
