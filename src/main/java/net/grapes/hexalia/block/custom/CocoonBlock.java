@@ -22,7 +22,7 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
 
-public class SilkwormCocoonBlock extends Block {
+public class CocoonBlock extends Block {
 
     public static final DirectionProperty FACING = DirectionProperty.of("facing", Direction.Type.HORIZONTAL);
     public static final IntProperty HATCH = IntProperty.of("hatch", 0, 2);
@@ -33,7 +33,7 @@ public class SilkwormCocoonBlock extends Block {
     private static final VoxelShape WEST_SHAPE = VoxelShapes.cuboid(0.6875, 0.3125, 0.3125, 1, 0.75, 0.6875);
     private static final VoxelShape EAST_SHAPE = VoxelShapes.cuboid(0, 0.3125, 0.3125, 0.3125, 0.75, 0.6875);
 
-    public SilkwormCocoonBlock(Settings settings) {
+    public CocoonBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH).with(HATCH, 0));
     }
@@ -129,7 +129,7 @@ public class SilkwormCocoonBlock extends Block {
         Direction facing = state.get(FACING);
         BlockPos oppositePos = pos.offset(facing.getOpposite());
         BlockState oppositeState = world.getBlockState(oppositePos);
-        return oppositeState.isOf(Blocks.DARK_OAK_LOG);
+        return oppositeState.isIn(ModTags.Blocks.COCOON_LOGS);
     }
 
     @Override
