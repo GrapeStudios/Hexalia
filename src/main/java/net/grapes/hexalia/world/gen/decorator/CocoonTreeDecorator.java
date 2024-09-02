@@ -27,7 +27,7 @@ public class CocoonTreeDecorator extends TreeDecorator {
             Direction[] directions = {Direction.WEST, Direction.EAST, Direction.NORTH, Direction.SOUTH};
             Direction direction = directions[random.nextInt(directions.length)];
             BlockPos blockPos = pos.offset(direction);
-            if (generator.isAir(blockPos)) {
+            if (generator.isAir(blockPos) && generator.isAir(blockPos.down())) {
                 generator.replace(blockPos, ModBlocks.SILKWORM_COCOON.getDefaultState().with(CocoonBlock.FACING, direction));
                 break;
             }
