@@ -7,6 +7,7 @@ import net.grapes.hexalia.util.ModTags;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -43,8 +44,29 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM, ModBlocks.HENBANE);
 
+        // Tags for Tree Related Blocks
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
                 .addTag(ModTags.Blocks.COTTONWOOD_LOGS);
+        getOrCreateTagBuilder(BlockTags.LEAVES)
+                .add(ModBlocks.COTTONWOOD_LEAVES);
+        getOrCreateTagBuilder(BlockTags.PLANKS)
+                .add(ModBlocks.COTTONWOOD_PLANKS);
+        getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS)
+                .add(ModBlocks.COTTONWOOD_STAIRS);
+        getOrCreateTagBuilder(BlockTags.WOODEN_SLABS)
+                .add(ModBlocks.COTTONWOOD_SLAB);
+        getOrCreateTagBuilder(BlockTags.WOODEN_DOORS)
+                .add(ModBlocks.COTTONWOOD_DOOR);
+        getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS)
+                .add(ModBlocks.COTTONWOOD_BUTTON);
+        getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES)
+                .add(ModBlocks.COTTONWOOD_PRESSURE_PLATE);
+        getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS)
+                .add(ModBlocks.COTTONWOOD_TRAPDOOR);
+        getOrCreateTagBuilder(BlockTags.FENCE_GATES)
+                .add(ModBlocks.COTTONWOOD_FENCE_GATE);
+        getOrCreateTagBuilder(BlockTags.SAPLINGS)
+                .add(ModBlocks.COTTONWOOD_SAPLING);
 
         // Custom Tags
         getOrCreateTagBuilder(ModTags.Blocks.HEATING_BLOCKS)
