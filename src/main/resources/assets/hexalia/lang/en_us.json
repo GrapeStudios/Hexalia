@@ -101,6 +101,7 @@
 
   "item.hexalia.witch_salad": "Witch Salad",
 
+  "block.hexalia.cottonwood_leaves": "Cottonwood Leaves",
   "block.hexalia.cottonwood_log": "Cottonwood Log",
   "block.hexalia.cottonwood_wood": "Cottonwood Wood",
   "block.hexalia.stripped_cottonwood_log": "Stripped Cottonwood Log",
@@ -117,8 +118,8 @@
   "block.hexalia.cottonwood_door": "Cottonwood Door",
   "item.hexalia.cottonwood_boat": "Cottonwood Boat",
   "item.hexalia.cottonwood_chest_boat": "Cottonwood Chest Boat",
-  "item.hexalia.cottonwood_sign": "Cottonwood Sign",
-  "item.hexalia.cottonwood_hanging_sign": "Cottonwood Hanging Sign",
+  "block.hexalia.cottonwood_sign": "Cottonwood Sign",
+  "block.hexalia.cottonwood_hanging_sign": "Cottonwood Hanging Sign",
 
   "effect.hexalia.stuffed.description": "Prevents saturation from lowering but the user can still consume food to restore health",
   "effect.hexalia.stunned.description": "Affected entities are unable to move while this effect is active",

@@ -63,6 +63,8 @@ public class ModItemGroup {
                         entries.add(ModItems.SILKWORM);
                         entries.add(ModItems.HEXBOOK);
                         entries.add(ModItems.SILK_MOTH_SPAWN_EGG);
+                        entries.add(ModBlocks.COTTONWOOD_SAPLING);
+                        entries.add(ModBlocks.COTTONWOOD_LEAVES);
                         entries.add(ModBlocks.COTTONWOOD_LOG);
                         entries.add(ModBlocks.COTTONWOOD_WOOD);
                         entries.add(ModBlocks.STRIPPED_COTTONWOOD_LOG);
@@ -78,7 +80,6 @@ public class ModItemGroup {
                         entries.add(ModBlocks.COTTONWOOD_BUTTON);
                         entries.add(ModItems.COTTONWOOD_BOAT);
                         entries.add(ModItems.COTTONWOOD_CHEST_BOAT);
-                        entries.add(ModBlocks.COTTONWOOD_SAPLING);
                         entries.add(ModItems.COTTONWOOD_SIGN);
                         entries.add(ModItems.COTTONWOOD_HANGING_SIGN);
                     }).build());

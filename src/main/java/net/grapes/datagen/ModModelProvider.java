@@ -40,7 +40,7 @@ public class ModModelProvider extends FabricModelProvider {
         cottonWoodTexturePool.pressurePlate(ModBlocks.COTTONWOOD_PRESSURE_PLATE);
         cottonWoodTexturePool.fence(ModBlocks.COTTONWOOD_FENCE);
         cottonWoodTexturePool.fenceGate(ModBlocks.COTTONWOOD_FENCE_GATE);
-
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.COTTONWOOD_LEAVES);
         blockStateModelGenerator.registerTrapdoor(ModBlocks.COTTONWOOD_TRAPDOOR);
         blockStateModelGenerator.registerDoor(ModBlocks.COTTONWOOD_DOOR);
         cottonWoodTexturePool.family(BlockFamilies.register(ModBlocks.COTTONWOOD_PLANKS).sign(ModBlocks.COTTONWOOD_SIGN, ModBlocks.COTTONWOOD_WALL_SIGN).build());

@@ -81,7 +81,9 @@ public class ModBlocks {
     public static final Block BREW_SHELF = registerBlock("brew_shelf",
             new BrewShelfBlock(FabricBlockSettings.copyOf(Blocks.CHISELED_BOOKSHELF).nonOpaque()));
 
-    // Cottonwood Wooden Set
+    // Tree-Related Blocks
+    public static final Block COTTONWOOD_LEAVES = registerBlock("cottonwood_leaves",
+            new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).strength(1f)));
     public static final Block COTTONWOOD_LOG = registerBlock("cottonwood_log",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(4f)));
     public static final Block COTTONWOOD_WOOD = registerBlock("cottonwood_wood",
@@ -112,7 +114,6 @@ public class ModBlocks {
             new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque(), BlockSetType.OAK));
     public static final Block COTTONWOOD_DOOR = registerBlock("cottonwood_door",
             new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).nonOpaque(), BlockSetType.OAK));
-
     public static final Block COTTONWOOD_SIGN = registerBlockWithoutBlockItem("cottonwood_sign",
             new ModStandingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_SIGN).nonOpaque(), ModWoodTypes.COTTONWOOD));
     public static final Block COTTONWOOD_WALL_SIGN = registerBlockWithoutBlockItem("cottonwood_wall_sign",
