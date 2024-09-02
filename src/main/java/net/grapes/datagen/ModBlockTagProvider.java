@@ -51,22 +51,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.COTTONWOOD_LEAVES);
         getOrCreateTagBuilder(BlockTags.PLANKS)
                 .add(ModBlocks.COTTONWOOD_PLANKS);
-        getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS)
-                .add(ModBlocks.COTTONWOOD_STAIRS);
-        getOrCreateTagBuilder(BlockTags.WOODEN_SLABS)
-                .add(ModBlocks.COTTONWOOD_SLAB);
-        getOrCreateTagBuilder(BlockTags.WOODEN_DOORS)
-                .add(ModBlocks.COTTONWOOD_DOOR);
-        getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS)
-                .add(ModBlocks.COTTONWOOD_BUTTON);
-        getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES)
-                .add(ModBlocks.COTTONWOOD_PRESSURE_PLATE);
-        getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS)
-                .add(ModBlocks.COTTONWOOD_TRAPDOOR);
-        getOrCreateTagBuilder(BlockTags.FENCE_GATES)
-                .add(ModBlocks.COTTONWOOD_FENCE_GATE);
-        getOrCreateTagBuilder(BlockTags.SAPLINGS)
-                .add(ModBlocks.COTTONWOOD_SAPLING);
 
         // Custom Tags
         getOrCreateTagBuilder(ModTags.Blocks.HEATING_BLOCKS)
