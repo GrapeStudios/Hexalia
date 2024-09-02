@@ -3,6 +3,7 @@ package net.grapes.hexalia.world;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.block.custom.ChillberryBushBlock;
+import net.grapes.hexalia.world.gen.decorator.CatkinTreeDecorator;
 import net.grapes.hexalia.world.gen.decorator.CocoonTreeDecorator;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
@@ -34,6 +35,7 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> HENBANE = registerKey("henbane");
     public static final RegistryKey<ConfiguredFeature<?, ?>> DARK_OAK_COCOON_KEY = registerKey("dark_oak_cocoon_tree");
     public static final RegistryKey<ConfiguredFeature<?, ?>> COTTONWOOD_KEY = registerKey("cottonwood");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> COTTONWOOD_COCOON_KEY = registerKey("cottonwood_cocoon");
 
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
@@ -87,6 +89,16 @@ public class ModConfiguredFeatures {
                 BlockStateProvider.of(ModBlocks.COTTONWOOD_LEAVES),
                 new LargeOakFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(1), 3) {},
                 new TwoLayersFeatureSize(1, 0, 2))
+                .decorators(List.of(new CatkinTreeDecorator()))
+                .build());
+
+        register(context, COTTONWOOD_COCOON_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
+                BlockStateProvider.of(ModBlocks.COTTONWOOD_LOG),
+                new StraightTrunkPlacer(6, 2, 1),
+                BlockStateProvider.of(ModBlocks.COTTONWOOD_LEAVES),
+                new LargeOakFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(1), 3) {},
+                new TwoLayersFeatureSize(1, 0, 2))
+                .decorators(List.of(new CatkinTreeDecorator(), new CocoonTreeDecorator()))
                 .build());
     }
 

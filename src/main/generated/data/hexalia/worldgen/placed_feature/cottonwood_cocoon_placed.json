@@ -1,5 +1,5 @@
 {
-  "feature": "hexalia:dark_oak_cocoon_tree",
+  "feature": "hexalia:cottonwood_cocoon",
   "placement": [
     {
       "type": "minecraft:count",
@@ -36,7 +36,7 @@
       "predicate": {
         "type": "minecraft:would_survive",
         "state": {
-          "Name": "minecraft:dark_oak_sapling",
+          "Name": "hexalia:cottonwood_sapling",
           "Properties": {
             "stage": "0"
           }

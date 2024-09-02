@@ -4,6 +4,9 @@
     "decorators": [
       {
         "type": "hexalia:catkin"
+      },
+      {
+        "type": "hexalia:cocoon_tree"
       }
     ],
     "dirt_provider": {

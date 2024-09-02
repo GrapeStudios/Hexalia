@@ -12,6 +12,11 @@ public class ModTreeDecorators {
                     new Identifier(HexaliaMod.MOD_ID, "cocoon_tree"),
                     new TreeDecoratorType<>(CocoonTreeDecorator.CODEC));
 
+    public static final TreeDecoratorType<CatkinTreeDecorator> CATKIN =
+            Registry.register(Registries.TREE_DECORATOR_TYPE,
+                    new Identifier(HexaliaMod.MOD_ID, "catkin"),
+                    new TreeDecoratorType<>(CatkinTreeDecorator.CODEC));
+
     public static void registerTreeDecorators() {
     }
 }

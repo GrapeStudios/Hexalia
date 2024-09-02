@@ -53,7 +53,8 @@ public class HexaliaModClient implements ClientModInitializer {
                 ModBlocks.SILKWORM_COCOON,
                 ModBlocks.COTTONWOOD_SAPLING,
                 ModBlocks.COTTONWOOD_TRAPDOOR,
-                ModBlocks.COTTONWOOD_DOOR);
+                ModBlocks.COTTONWOOD_DOOR,
+                ModBlocks.COTTONWOOD_CATKIN);
 
         BlockEntityRendererFactories.register(ModBlockEntities.RITUAL_TABLE_BE, RitualTableBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.SALT_BE, SaltBlockEntityRenderer::new);

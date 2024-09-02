@@ -6,18 +6,6 @@
     "hexalia:salt_lamp",
     "hexalia:small_cauldron",
     "hexalia:rustic_oven",
-    "hexalia:ritual_table",
-    "#hexalia:cottonwood_logs",
-    "hexalia:cottonwood_planks",
-    "hexalia:cottonwood_stairs",
-    "hexalia:cottonwood_slab",
-    "hexalia:cottonwood_fence_gate",
-    "hexalia:cottonwood_fence",
-    "hexalia:cottonwood_trapdoor",
-    "hexalia:cottonwood_door",
-    "hexalia:cottonwood_sign",
-    "hexalia:cottonwood_hanging_sign",
-    "hexalia:cottonwood_hanging_wall_sign",
-    "hexalia:cottonwood_wall_sign"
+    "hexalia:ritual_table"
   ]
 }

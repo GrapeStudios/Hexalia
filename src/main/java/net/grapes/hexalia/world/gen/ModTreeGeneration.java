@@ -8,7 +8,14 @@ import net.minecraft.world.gen.GenerationStep;
 
 public class ModTreeGeneration {
     public static void generateTrees() {
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.MANGROVE_SWAMP),
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.DARK_FOREST),
+                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.DARK_OAK_COCOON_PLACED_KEY);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.MANGROVE_SWAMP, BiomeKeys.SWAMP),
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.COTTONWOOD_PLACED_KEY);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.MANGROVE_SWAMP, BiomeKeys.SWAMP),
+                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.COTTONWOOD_COCOON_PLACED_KEY);
     }
 }
