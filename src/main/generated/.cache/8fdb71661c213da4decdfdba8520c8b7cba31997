@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-02T03:18:48.711877	Hexalia/Recipes
+// 1.20.1	2024-09-02T03:34:53.7905965	Hexalia/Recipes
 82b40fd0f7dd4de905f094da178650fbe4ad3cbc data\hexalia\advancements\recipes\misc\dreamshroom_paste.json
 2884548e412c49c07d23e96bbfb125d7942d389f data\hexalia\recipes\yellow_dye.json
 3da66bc3c027bde22458feef7621addc84de2be7 data\hexalia\advancements\recipes\building_blocks\cottonwood_planks.json
@@ -48,8 +48,8 @@ eb42ee82d61f1f774c29e9c36ac097bfcb02ea9e data\hexalia\advancements\recipes\misc\
 e7a0992ae0c5bca02446dcf0b47cb037f232fbe8 data\hexalia\advancements\recipes\misc\silk_fiber.json
 b7d5cd8d7cd70f7bf74d7db031c26d815fef3e89 data\hexalia\recipes\sunfire_tomato_seeds.json
 e1d872e5341b8304b6682f0396e98685e2509836 data\hexalia\advancements\recipes\misc\purifying_salts.json
-84341e1e456158ce4df4929620d47ba926fdb193 data\hexalia\recipes\cottonwood_door.json
 0ab14cc0d51859ef9cf72c3d273938f1e45e7b51 data\hexalia\recipes\cottonwood_pressure_plate.json
+84341e1e456158ce4df4929620d47ba926fdb193 data\hexalia\recipes\cottonwood_door.json
 4b179e4fe76d13b762af9eb5bc568101d07657a3 data\hexalia\advancements\recipes\redstone\cottonwood_fence_gate.json
 ba61b5eccb741b38660e531cbcf2ff1b22922d5c data\hexalia\recipes\chillberry_pie.json
 7f32a226508c3e1177f7412d22352a3456d309b5 data\hexalia\recipes\rustic_bottle_.json

@@ -52,5 +52,25 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
                 .properties(StatePredicate.Builder.create().exactMatch(RabbageCropBlock.AGE, 3));
         this.addDrop(ModBlocks.RABBAGE_CROP, this.cropDrops(ModBlocks.RABBAGE_CROP, ModItems.RABBAGE, ModItems.RABBAGE_SEEDS, builder4));
         this.addDrop(ModBlocks.SILKWORM_COCOON, ModItems.SILKWORM);
+
+        // Drops for Tree-Related Blocks
+        addDrop(ModBlocks.COTTONWOOD_LEAVES, leavesDrops(ModBlocks.COTTONWOOD_LEAVES, ModBlocks.COTTONWOOD_SAPLING, 0.5f));
+        addDrop(ModBlocks.COTTONWOOD_LOG);
+        addDrop(ModBlocks.COTTONWOOD_WOOD);
+        addDrop(ModBlocks.STRIPPED_COTTONWOOD_LOG);
+        addDrop(ModBlocks.STRIPPED_COTTONWOOD_WOOD);
+        addDrop(ModBlocks.COTTONWOOD_PLANKS);
+        addDrop(ModBlocks.COTTONWOOD_SAPLING);
+        addDrop(ModBlocks.COTTONWOOD_STAIRS);
+        addDrop(ModBlocks.COTTONWOOD_SLAB, slabDrops(ModBlocks.COTTONWOOD_SLAB));
+        addDrop(ModBlocks.COTTONWOOD_BUTTON);
+        addDrop(ModBlocks.COTTONWOOD_FENCE);
+        addDrop(ModBlocks.COTTONWOOD_FENCE_GATE);
+        addDrop(ModBlocks.COTTONWOOD_TRAPDOOR);
+        addDrop(ModBlocks.COTTONWOOD_DOOR, doorDrops(ModBlocks.COTTONWOOD_DOOR));
+        addDrop(ModBlocks.COTTONWOOD_SIGN);
+        addDrop(ModBlocks.COTTONWOOD_WALL_SIGN);
+        addDrop(ModBlocks.COTTONWOOD_HANGING_WALL_SIGN);
+        addDrop(ModBlocks.COTTONWOOD_HANGING_SIGN);
     }
 }

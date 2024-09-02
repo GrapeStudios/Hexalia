@@ -7,7 +7,6 @@ import net.grapes.hexalia.util.ModTags;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -34,6 +33,19 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SMALL_CAULDRON)
                 .add(ModBlocks.RUSTIC_OVEN)
                 .add(ModBlocks.RITUAL_TABLE);
+
+        /* .addTag(ModTags.Blocks.COTTONWOOD_LOGS)
+                .add(ModBlocks.COTTONWOOD_PLANKS)
+                .add(ModBlocks.COTTONWOOD_STAIRS)
+                .add(ModBlocks.COTTONWOOD_SLAB)
+                .add(ModBlocks.COTTONWOOD_FENCE_GATE)
+                .add(ModBlocks.COTTONWOOD_FENCE)
+                .add(ModBlocks.COTTONWOOD_TRAPDOOR)
+                .add(ModBlocks.COTTONWOOD_DOOR)
+                .add(ModBlocks.COTTONWOOD_SIGN)
+                .add(ModBlocks.COTTONWOOD_HANGING_SIGN)
+                .add(ModBlocks.COTTONWOOD_HANGING_WALL_SIGN)
+                .add(ModBlocks.COTTONWOOD_WALL_SIGN);*/
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(ModBlocks.BREW_SHELF);

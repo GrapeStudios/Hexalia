@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-02T03:18:48.7148675	Hexalia/Tags for minecraft:block
+// 1.20.1	2024-09-02T03:34:53.7925902	Hexalia/Tags for minecraft:block
 8bc276f3b1d4bd808a0c19af8f23234a2ede0405 data\c\tags\blocks\salt_ores.json
 852d4317f4e2c4084c0c6a51758b0d98a094eadc data\minecraft\tags\blocks\mineable\pickaxe.json
 5e7c77d0eb0fca20d4986c7e16aa8b647cb7bd1b data\minecraft\tags\blocks\logs_that_burn.json
@@ -12,5 +12,5 @@ e95dfb5d73efc3a694e76a244d26068b84f2951e data\hexalia\tags\blocks\cocoon_logs.js
 7426c70e9a7459782afc5dc25348366757ea0425 data\c\tags\blocks\salt_blocks.json
 c24cc02f466af771072758ac14e3533776d9676d data\minecraft\tags\blocks\planks.json
 8bc276f3b1d4bd808a0c19af8f23234a2ede0405 data\c\tags\blocks\ores.json
-69ab60afefbf6c171b64de7f24538d0db65a68fe data\minecraft\tags\blocks\needs_stone_tool.json
+d5b74b92b27cbf0c7ae442c27f7cbdcb824d9e46 data\minecraft\tags\blocks\needs_stone_tool.json
 b6d1687957b6f83416a76a1059b0ad7df83b0dae data\hexalia\tags\blocks\heating_block.json
