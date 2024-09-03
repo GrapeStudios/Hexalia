@@ -11,6 +11,7 @@ import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
 import net.minecraft.predicate.StatePredicate;
 
 public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
+
     public ModBlockLootTableGenerator(FabricDataOutput dataOutput) {
         super(dataOutput);
     }
@@ -54,7 +55,7 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         this.addDrop(ModBlocks.SILKWORM_COCOON, ModItems.SILKWORM);
 
         // Drops for Tree-Related Blocks
-        addDrop(ModBlocks.COTTONWOOD_LEAVES, leavesDrops(ModBlocks.COTTONWOOD_LEAVES, ModBlocks.COTTONWOOD_SAPLING, 0.5f));
+        addDrop(ModBlocks.COTTONWOOD_LEAVES, leavesDrops(ModBlocks.COTTONWOOD_LEAVES, ModBlocks.COTTONWOOD_SAPLING, SAPLING_DROP_CHANCE));
         addDrop(ModBlocks.COTTONWOOD_LOG);
         addDrop(ModBlocks.COTTONWOOD_WOOD);
         addDrop(ModBlocks.STRIPPED_COTTONWOOD_LOG);
@@ -62,6 +63,7 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.COTTONWOOD_PLANKS);
         addDrop(ModBlocks.COTTONWOOD_SAPLING);
         addDrop(ModBlocks.COTTONWOOD_STAIRS);
+        addDrop(ModBlocks.COTTONWOOD_PRESSURE_PLATE);
         addDrop(ModBlocks.COTTONWOOD_SLAB, slabDrops(ModBlocks.COTTONWOOD_SLAB));
         addDrop(ModBlocks.COTTONWOOD_BUTTON);
         addDrop(ModBlocks.COTTONWOOD_FENCE);

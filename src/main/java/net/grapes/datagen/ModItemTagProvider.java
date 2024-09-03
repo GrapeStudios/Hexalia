@@ -33,10 +33,13 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         // Tags for Tree Related Items
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN)
                 .addTag(ModTags.Items.COTTONWOOD_LOGS);
-        getOrCreateTagBuilder(ItemTags.PLANKS)
-                .add(ModBlocks.COTTONWOOD_PLANKS.asItem());
+        getOrCreateTagBuilder(ItemTags.SAPLINGS)
+                .add(ModBlocks.COTTONWOOD_SAPLING.asItem());
         getOrCreateTagBuilder(ItemTags.LEAVES)
                 .add(ModBlocks.COTTONWOOD_LEAVES.asItem());
+
+        getOrCreateTagBuilder(ItemTags.PLANKS)
+                .add(ModBlocks.COTTONWOOD_PLANKS.asItem());
         getOrCreateTagBuilder(ItemTags.PLANKS)
                 .add(ModBlocks.COTTONWOOD_PLANKS.asItem());
         getOrCreateTagBuilder(ItemTags.WOODEN_STAIRS)
@@ -57,16 +60,11 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.COTTONWOOD_BOAT);
         getOrCreateTagBuilder(ItemTags.CHEST_BOATS)
                 .add(ModItems.COTTONWOOD_CHEST_BOAT);
+
         getOrCreateTagBuilder(ItemTags.SIGNS)
                 .add(ModItems.COTTONWOOD_SIGN);
         getOrCreateTagBuilder(ItemTags.HANGING_SIGNS)
                 .add(ModItems.COTTONWOOD_HANGING_SIGN);
-        getOrCreateTagBuilder(ItemTags.SAPLINGS)
-                .add(ModBlocks.COTTONWOOD_SAPLING.asItem());
-
-        getOrCreateTagBuilder(ModTags.Items.COTTONWOOD_LOGS)
-                .add(ModBlocks.COTTONWOOD_LOG.asItem(), ModBlocks.STRIPPED_COTTONWOOD_LOG.asItem(),
-                        ModBlocks.COTTONWOOD_WOOD.asItem(), ModBlocks.STRIPPED_COTTONWOOD_WOOD.asItem());
 
         // Custom Tags
         getOrCreateTagBuilder(ModTags.Items.COOKED_MEATS)
@@ -83,6 +81,10 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.BREW_OF_HOMESTEAD, ModItems.BREW_OF_VIGOR,
                         ModItems.BREW_OF_SLIMEY_STEP, ModItems.BREW_OF_WARDING,
                         ModItems.BREW_OF_SIPHONING, ModItems.RUSTIC_BOTTLE);
+
+        getOrCreateTagBuilder(ModTags.Items.COTTONWOOD_LOGS)
+                .add(ModBlocks.COTTONWOOD_LOG.asItem(), ModBlocks.STRIPPED_COTTONWOOD_LOG.asItem(),
+                        ModBlocks.COTTONWOOD_WOOD.asItem(), ModBlocks.STRIPPED_COTTONWOOD_WOOD.asItem());
 
         // Common Tags
         getOrCreateTagBuilder(ModTags.Items.SALT_DUSTS)

@@ -1,16 +1,26 @@
-// 1.20.1	2024-09-02T13:19:27.9715569	Hexalia/Tags for minecraft:block
-8bc276f3b1d4bd808a0c19af8f23234a2ede0405 data\c\tags\blocks\salt_ores.json
+// 1.20.1	2024-09-02T23:35:47.5083612	Hexalia/Tags for minecraft:block
 852d4317f4e2c4084c0c6a51758b0d98a094eadc data\minecraft\tags\blocks\mineable\pickaxe.json
+3f2b20fe9bfd9bd8b760e1456c6d78fa6a3fbf97 data\minecraft\tags\blocks\wooden_buttons.json
+d71369cb48f857cf3c04bca1bc65629b4cb08606 data\minecraft\tags\blocks\all_hanging_signs.json
 5e7c77d0eb0fca20d4986c7e16aa8b647cb7bd1b data\minecraft\tags\blocks\logs_that_burn.json
 35d650e4ac91a41050a9412d0ef246825464a1f6 data\minecraft\tags\blocks\mineable\axe.json
-adc64d90ab00acc40f529a58afb00e26ebd82501 data\minecraft\tags\blocks\small_flowers.json
 adc64d90ab00acc40f529a58afb00e26ebd82501 data\minecraft\tags\blocks\flowers.json
-86e4631aa91988a8aaf35bbda300e064f8b05617 data\hexalia\tags\blocks\cottonwood_logs.json
 41c9efd4bb0d5ffe88565a1a0f79de74e152add3 data\hexalia\tags\blocks\attracts_moth.json
-e95dfb5d73efc3a694e76a244d26068b84f2951e data\hexalia\tags\blocks\cocoon_logs.json
 3c8b0c257f7322fb99b9af332b410d99eb2cc84e data\minecraft\tags\blocks\leaves.json
+263d0d0d5ad10feeb2e5ab702dba32acd30ee3b7 data\minecraft\tags\blocks\wooden_trapdoors.json
+217988087a7a8017eafa997c8e4b59d1b9aa0510 data\minecraft\tags\blocks\fence_gates.json
+d0cd86e67676abc2934f2be0431c7e38d1da923d data\minecraft\tags\blocks\wooden_slabs.json
+68fca64b126eb9383ed93e8f9bd054c02ce43a30 data\minecraft\tags\blocks\wooden_pressure_plates.json
+8853e626a842a3ba0cb06191727f8e482567eb5c data\minecraft\tags\blocks\wooden_fences.json
+8bc276f3b1d4bd808a0c19af8f23234a2ede0405 data\c\tags\blocks\salt_ores.json
+d60e16e46ad5b8766d23775875ac7d386b7657c0 data\minecraft\tags\blocks\wooden_doors.json
+adc64d90ab00acc40f529a58afb00e26ebd82501 data\minecraft\tags\blocks\small_flowers.json
+86e4631aa91988a8aaf35bbda300e064f8b05617 data\hexalia\tags\blocks\cottonwood_logs.json
+e95dfb5d73efc3a694e76a244d26068b84f2951e data\hexalia\tags\blocks\cocoon_logs.json
+751ba84c3b82dcebb53aa3bb46a11173d8d5d36f data\minecraft\tags\blocks\wooden_stairs.json
 7426c70e9a7459782afc5dc25348366757ea0425 data\c\tags\blocks\salt_blocks.json
 c24cc02f466af771072758ac14e3533776d9676d data\minecraft\tags\blocks\planks.json
 8bc276f3b1d4bd808a0c19af8f23234a2ede0405 data\c\tags\blocks\ores.json
 69ab60afefbf6c171b64de7f24538d0db65a68fe data\minecraft\tags\blocks\needs_stone_tool.json
+940f7086ce380579acbc0be6c7ec729a63554400 data\minecraft\tags\blocks\signs.json
 b6d1687957b6f83416a76a1059b0ad7df83b0dae data\hexalia\tags\blocks\heating_block.json
