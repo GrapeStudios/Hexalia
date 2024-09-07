@@ -1,3 +1,6 @@
+// 1.20.1	2024-08-28T20:08:41.9321133	Hexalia/Tags for minecraft:item
+33b474f66b0483d5f35a203dd508ed8820383440 data\minecraft\tags\items\trimmable_armor.json
+adc64d90ab00acc40f529a58afb00e26ebd82501 data\minecraft\tags\items\small_flowers.json
 // 1.20.1	2024-09-02T13:19:27.9715569	Hexalia/Tags for minecraft:item
 86e4631aa91988a8aaf35bbda300e064f8b05617 data\hexalia\tags\items\cottonwood_logs.json
 5e7c77d0eb0fca20d4986c7e16aa8b647cb7bd1b data\minecraft\tags\items\logs_that_burn.json
@@ -23,8 +26,17 @@ e22a2880ae95177b34a2832bbd394233809e3fc7 data\c\tags\items\berries.json
 bf62813bedd0ad69cf5040c3b734d9feedbe772f data\c\tags\items\seeds.json
 751ba84c3b82dcebb53aa3bb46a11173d8d5d36f data\minecraft\tags\items\wooden_stairs.json
 b96151fcc0be5afcfcdb96872cdcc0aad32b6586 data\hexalia\tags\items\crushed_plants.json
+adc64d90ab00acc40f529a58afb00e26ebd82501 data\minecraft\tags\items\flowers.json
+e22a2880ae95177b34a2832bbd394233809e3fc7 data\c\tags\items\berries.json
+f36b61d12aa3d7253f3ce7350a7eb2d6d937639d data\c\tags\items\salt_dusts.json
+8bc276f3b1d4bd808a0c19af8f23234a2ede0405 data\c\tags\items\ores.json
+162b6f30129b42613dc64178cc8152e5caca18c5 data\c\tags\items\mushrooms.json
+bbadf500cdc09af33fa73617acbfb98c018929f5 data\c\tags\items\cooked_meats.json
+8bc276f3b1d4bd808a0c19af8f23234a2ede0405 data\c\tags\items\salt_ores.json
+e22a2880ae95177b34a2832bbd394233809e3fc7 data\minecraft\tags\items\fox_food.json
 304bceda39abec15c800847c7c02a52b3d797bd9 data\minecraft\tags\items\hanging_signs.json
 263d0d0d5ad10feeb2e5ab702dba32acd30ee3b7 data\minecraft\tags\items\wooden_trapdoors.json
 217988087a7a8017eafa997c8e4b59d1b9aa0510 data\minecraft\tags\items\fence_gates.json
 91acc2f68665f67029904ecbf93666dd36ea0476 data\hexalia\tags\items\brews.json
+7426c70e9a7459782afc5dc25348366757ea0425 data\c\tags\items\salt_blocks.json
 d60e16e46ad5b8766d23775875ac7d386b7657c0 data\minecraft\tags\items\wooden_doors.json

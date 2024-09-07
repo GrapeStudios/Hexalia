@@ -8,6 +8,7 @@ import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
 import net.minecraft.data.family.BlockFamilies;
+import net.minecraft.item.ArmorItem;
 
 public class ModModelProvider extends FabricModelProvider {
     public ModModelProvider(FabricDataOutput output) {
@@ -73,6 +74,10 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.BREW_OF_SIPHONING, Models.GENERATED);
         itemModelGenerator.register(ModItems.PARCHMENT, Models.GENERATED);
         itemModelGenerator.register(ModItems.DREAMCATCHER, Models.GENERATED);
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.HAT_OF_THE_SWAMP));
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.CHEST_OF_THE_SWAMP));
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PANTS_OF_THE_SWAMP));
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.BOOTS_OF_THE_SWAMP));
         itemModelGenerator.register(ModItems.COTTONWOOD_BOAT, Models.GENERATED);
         itemModelGenerator.register(ModItems.COTTONWOOD_CHEST_BOAT, Models.GENERATED);
     }
