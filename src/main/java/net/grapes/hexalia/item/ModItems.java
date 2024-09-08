@@ -94,6 +94,18 @@ public class ModItems {
     public static final Item WISDOM_GEM = registerItem("wisdom_gem",
             new Item(new FabricItemSettings().maxCount(1).maxDamage(60)));
 
+    // Armors
+
+    public static final Item HAT_OF_THE_SWAMP = registerItem("hat_of_the_swamp",
+            new ArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.HELMET, new FabricItemSettings()));
+    public static final Item CHEST_OF_THE_SWAMP = registerItem("chest_of_the_swamp",
+            new ArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
+    public static final Item PANTS_OF_THE_SWAMP = registerItem("pants_of_the_swamp",
+            new ArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
+    public static final Item BOOTS_OF_THE_SWAMP = registerItem("boots_of_the_swamp",
+            new ArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.BOOTS, new FabricItemSettings()));
+
+
     // Spawn Eggs
     public static final Item SILK_MOTH_SPAWN_EGG = registerItem("silk_moth_spawn_egg",
             new SpawnEggItem(ModEntities.SILK_MOTH, 0xAE8f7A, 0x846552, new FabricItemSettings()));

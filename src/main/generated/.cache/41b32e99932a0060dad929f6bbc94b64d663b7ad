@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-02T23:35:47.5073644	Hexalia/Tags for minecraft:item
+// 1.20.1	2024-09-02T13:19:27.9715569	Hexalia/Tags for minecraft:item
 86e4631aa91988a8aaf35bbda300e064f8b05617 data\hexalia\tags\items\cottonwood_logs.json
 5e7c77d0eb0fca20d4986c7e16aa8b647cb7bd1b data\minecraft\tags\items\logs_that_burn.json
 7426c70e9a7459782afc5dc25348366757ea0425 data\c\tags\items\salt_blocks.json
@@ -17,8 +17,8 @@ ef29b3ffd52205f402036fb4b1dd7f1701ed41a5 data\minecraft\tags\items\boats.json
 8bc276f3b1d4bd808a0c19af8f23234a2ede0405 data\c\tags\items\ores.json
 e22a2880ae95177b34a2832bbd394233809e3fc7 data\minecraft\tags\items\fox_food.json
 162b6f30129b42613dc64178cc8152e5caca18c5 data\c\tags\items\mushrooms.json
-8bc276f3b1d4bd808a0c19af8f23234a2ede0405 data\c\tags\items\salt_ores.json
 e22a2880ae95177b34a2832bbd394233809e3fc7 data\c\tags\items\berries.json
+8bc276f3b1d4bd808a0c19af8f23234a2ede0405 data\c\tags\items\salt_ores.json
 0e3f632b02a11f2e5729be1bfbf560b5c879b655 data\minecraft\tags\items\saplings.json
 bf62813bedd0ad69cf5040c3b734d9feedbe772f data\c\tags\items\seeds.json
 751ba84c3b82dcebb53aa3bb46a11173d8d5d36f data\minecraft\tags\items\wooden_stairs.json
