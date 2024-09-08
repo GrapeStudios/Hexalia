@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "hexalia:cottonwood_slab"
+    "hexalia:cottonwood_slab",
+    "hexalia:willow_slab"
   ]
 }

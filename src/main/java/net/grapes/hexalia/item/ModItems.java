@@ -95,7 +95,6 @@ public class ModItems {
             new Item(new FabricItemSettings().maxCount(1).maxDamage(60)));
 
     // Armors
-
     public static final Item HAT_OF_THE_SWAMP = registerItem("hat_of_the_swamp",
             new ArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.HELMET, new FabricItemSettings()));
     public static final Item CHEST_OF_THE_SWAMP = registerItem("chest_of_the_swamp",
@@ -104,7 +103,6 @@ public class ModItems {
             new ArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
     public static final Item BOOTS_OF_THE_SWAMP = registerItem("boots_of_the_swamp",
             new ArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.BOOTS, new FabricItemSettings()));
-
 
     // Spawn Eggs
     public static final Item SILK_MOTH_SPAWN_EGG = registerItem("silk_moth_spawn_egg",
@@ -131,6 +129,15 @@ public class ModItems {
             new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.COTTONWOOD_SIGN, ModBlocks.COTTONWOOD_WALL_SIGN));
     public static final Item COTTONWOOD_HANGING_SIGN = registerItem("cottonwood_hanging_sign",
             new HangingSignItem(ModBlocks.COTTONWOOD_HANGING_SIGN, ModBlocks.COTTONWOOD_HANGING_WALL_SIGN, new FabricItemSettings().maxCount(16)));
+
+    public static final Item WILLOW_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.WILLOW_BOAT_ID,
+            ModBoats.WILLOW_BOAT_KEY, false);
+    public static final Item WILLOW_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.WILLOW_CHEST_BOAT_ID,
+            ModBoats.WILLOW_BOAT_KEY, true);
+    public static final Item WILLOW_SIGN = registerItem("willow_sign",
+            new SignItem(new FabricItemSettings().maxCount(16), ModBlocks.WILLOW_SIGN, ModBlocks.WILLOW_WALL_SIGN));
+    public static final Item WILLOW_HANGING_SIGN = registerItem("willow_hanging_sign",
+            new HangingSignItem(ModBlocks.WILLOW_HANGING_SIGN, ModBlocks.WILLOW_HANGING_WALL_SIGN, new FabricItemSettings().maxCount(16)));
 
     // Addon/Compat Items
     public static final Item HEXBOOK = registerItem("hexbook",

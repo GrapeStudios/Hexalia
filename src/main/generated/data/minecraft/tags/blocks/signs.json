@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "hexalia:cottonwood_sign",
-    "hexalia:cottonwood_wall_sign"
+    "hexalia:cottonwood_wall_sign",
+    "hexalia:cottonwood_sign",
+    "hexalia:willow_wall_sign"
   ]
 }

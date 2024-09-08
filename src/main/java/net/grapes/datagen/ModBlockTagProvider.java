@@ -7,7 +7,6 @@ import net.grapes.hexalia.util.ModTags;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.BlockTags;
-import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -46,33 +45,36 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         // Tags for Tree Related Blocks
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
-                .addTag(ModTags.Blocks.COTTONWOOD_LOGS);
+                .addTag(ModTags.Blocks.COTTONWOOD_LOGS)
+                .addTag(ModTags.Blocks.WILLOW_LOGS);
         getOrCreateTagBuilder(BlockTags.LEAVES)
-                .add(ModBlocks.COTTONWOOD_LEAVES);
+                .add(ModBlocks.COTTONWOOD_LEAVES, ModBlocks.WILLOW_LEAVES);
 
         getOrCreateTagBuilder(BlockTags.PLANKS)
-                .add(ModBlocks.COTTONWOOD_PLANKS);
+                .add(ModBlocks.COTTONWOOD_PLANKS, ModBlocks.WILLOW_PLANKS);
         getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS)
-                .add(ModBlocks.COTTONWOOD_STAIRS);
+                .add(ModBlocks.COTTONWOOD_STAIRS, ModBlocks.WILLOW_STAIRS);
         getOrCreateTagBuilder(BlockTags.WOODEN_SLABS)
-                .add(ModBlocks.COTTONWOOD_SLAB);
+                .add(ModBlocks.COTTONWOOD_SLAB, ModBlocks.WILLOW_SLAB);
         getOrCreateTagBuilder(BlockTags.WOODEN_DOORS)
-                .add(ModBlocks.COTTONWOOD_DOOR);
+                .add(ModBlocks.COTTONWOOD_DOOR, ModBlocks.WILLOW_DOOR);
         getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS)
-                .add(ModBlocks.COTTONWOOD_BUTTON);
+                .add(ModBlocks.COTTONWOOD_BUTTON, ModBlocks.WILLOW_BUTTON);
         getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES)
-                .add(ModBlocks.COTTONWOOD_PRESSURE_PLATE);
+                .add(ModBlocks.COTTONWOOD_PRESSURE_PLATE, ModBlocks.WILLOW_PRESSURE_PLATE);
         getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS)
-                .add(ModBlocks.COTTONWOOD_TRAPDOOR);
+                .add(ModBlocks.COTTONWOOD_TRAPDOOR, ModBlocks.WILLOW_TRAPDOOR);
         getOrCreateTagBuilder(BlockTags.FENCE_GATES)
-                .add(ModBlocks.COTTONWOOD_FENCE_GATE);
+                .add(ModBlocks.COTTONWOOD_FENCE_GATE, ModBlocks.WILLOW_FENCE_GATE);
         getOrCreateTagBuilder(BlockTags.WOODEN_FENCES)
-                .add(ModBlocks.COTTONWOOD_FENCE);
+                .add(ModBlocks.COTTONWOOD_FENCE, ModBlocks.WILLOW_FENCE);
 
         getOrCreateTagBuilder(BlockTags.SIGNS)
-                .add(ModBlocks.COTTONWOOD_SIGN, ModBlocks.COTTONWOOD_WALL_SIGN);
+                .add(ModBlocks.COTTONWOOD_SIGN, ModBlocks.COTTONWOOD_WALL_SIGN, ModBlocks.COTTONWOOD_SIGN,
+                        ModBlocks.WILLOW_WALL_SIGN);
         getOrCreateTagBuilder(BlockTags.ALL_HANGING_SIGNS)
-                .add(ModBlocks.COTTONWOOD_WALL_SIGN, ModBlocks.COTTONWOOD_HANGING_WALL_SIGN);
+                .add(ModBlocks.COTTONWOOD_WALL_SIGN, ModBlocks.COTTONWOOD_HANGING_WALL_SIGN,
+                        ModBlocks.WILLOW_WALL_SIGN, ModBlocks.WILLOW_HANGING_WALL_SIGN);
 
         // Custom Tags
         getOrCreateTagBuilder(ModTags.Blocks.HEATING_BLOCKS)
@@ -89,6 +91,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(ModTags.Blocks.COTTONWOOD_LOGS)
                 .add(ModBlocks.COTTONWOOD_LOG, ModBlocks.STRIPPED_COTTONWOOD_LOG,
                         ModBlocks.COTTONWOOD_WOOD, ModBlocks.STRIPPED_COTTONWOOD_WOOD);
+
+        getOrCreateTagBuilder(ModTags.Blocks.WILLOW_LOGS)
+                .add(ModBlocks.WILLOW_LOG, ModBlocks.STRIPPED_WILLOW_LOG,
+                        ModBlocks.WILLOW_WOOD, ModBlocks.STRIPPED_WILLOW_WOOD);
 
         // Common Tags
         getOrCreateTagBuilder(ModTags.Blocks.ORES)

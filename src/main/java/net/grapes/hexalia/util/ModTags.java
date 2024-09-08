@@ -12,6 +12,7 @@ public class ModTags {
         public static final TagKey<Item> CRUSHED_PLANTS = createItemTag("crushed_plants");
         public static final TagKey<Item> BREWS = createItemTag("brews");
         public static final TagKey<Item> COTTONWOOD_LOGS = createItemTag("cottonwood_logs");
+        public static final TagKey<Item> WILLOW_LOGS = createItemTag("cottonwood_logs");
 
         public static final TagKey<Item> SALT_DUSTS = createCommonItemTag("salt_dusts");
         public static final TagKey<Item> BERRIES = createCommonItemTag("berries");
@@ -38,6 +39,7 @@ public class ModTags {
         public static final TagKey<Block> HEATING_BLOCKS = createBlockTag("heating_block");
         public static final TagKey<Block> ATTRACTS_MOTH = createBlockTag("attracts_moth");
         public static final TagKey<Block> COTTONWOOD_LOGS = createBlockTag("cottonwood_logs");
+        public static final TagKey<Block> WILLOW_LOGS = createBlockTag("willow_logs");
         public static final TagKey<Block> COCOON_LOGS = createBlockTag("cocoon_logs");
 
         // Common Block Tags

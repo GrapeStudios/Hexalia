@@ -30,21 +30,37 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.HENBANE, ModBlocks.POTTED_HENBANE,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
 
+        // Generation for Tree-related blocks.
         blockStateModelGenerator.registerLog(ModBlocks.COTTONWOOD_LOG).log(ModBlocks.COTTONWOOD_LOG).wood(ModBlocks.COTTONWOOD_WOOD);
         blockStateModelGenerator.registerLog(ModBlocks.STRIPPED_COTTONWOOD_LOG).log(ModBlocks.STRIPPED_COTTONWOOD_LOG).wood(ModBlocks.STRIPPED_COTTONWOOD_WOOD);
-
-        BlockStateModelGenerator.BlockTexturePool cottonWoodTexturePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.COTTONWOOD_PLANKS);
-        cottonWoodTexturePool.stairs(ModBlocks.COTTONWOOD_STAIRS);
-        cottonWoodTexturePool.slab(ModBlocks.COTTONWOOD_SLAB);
-        cottonWoodTexturePool.button(ModBlocks.COTTONWOOD_BUTTON);
-        cottonWoodTexturePool.pressurePlate(ModBlocks.COTTONWOOD_PRESSURE_PLATE);
-        cottonWoodTexturePool.fence(ModBlocks.COTTONWOOD_FENCE);
-        cottonWoodTexturePool.fenceGate(ModBlocks.COTTONWOOD_FENCE_GATE);
+        BlockStateModelGenerator.BlockTexturePool cottonwoodTexturePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.COTTONWOOD_PLANKS);
+        cottonwoodTexturePool.stairs(ModBlocks.COTTONWOOD_STAIRS);
+        cottonwoodTexturePool.slab(ModBlocks.COTTONWOOD_SLAB);
+        cottonwoodTexturePool.button(ModBlocks.COTTONWOOD_BUTTON);
+        cottonwoodTexturePool.pressurePlate(ModBlocks.COTTONWOOD_PRESSURE_PLATE);
+        cottonwoodTexturePool.fence(ModBlocks.COTTONWOOD_FENCE);
+        cottonwoodTexturePool.fenceGate(ModBlocks.COTTONWOOD_FENCE_GATE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.COTTONWOOD_LEAVES);
         blockStateModelGenerator.registerTrapdoor(ModBlocks.COTTONWOOD_TRAPDOOR);
         blockStateModelGenerator.registerDoor(ModBlocks.COTTONWOOD_DOOR);
-        cottonWoodTexturePool.family(BlockFamilies.register(ModBlocks.COTTONWOOD_PLANKS).sign(ModBlocks.COTTONWOOD_SIGN, ModBlocks.COTTONWOOD_WALL_SIGN).build());
+        cottonwoodTexturePool.family(BlockFamilies.register(ModBlocks.COTTONWOOD_PLANKS).sign(ModBlocks.COTTONWOOD_SIGN, ModBlocks.COTTONWOOD_WALL_SIGN).build());
         blockStateModelGenerator.registerHangingSign(ModBlocks.STRIPPED_COTTONWOOD_LOG, ModBlocks.COTTONWOOD_HANGING_SIGN, ModBlocks.COTTONWOOD_HANGING_WALL_SIGN);
+
+        blockStateModelGenerator.registerLog(ModBlocks.WILLOW_LOG).log(ModBlocks.WILLOW_LOG).wood(ModBlocks.WILLOW_WOOD);
+        blockStateModelGenerator.registerLog(ModBlocks.STRIPPED_WILLOW_LOG).log(ModBlocks.STRIPPED_WILLOW_LOG).wood(ModBlocks.STRIPPED_WILLOW_WOOD);
+        BlockStateModelGenerator.BlockTexturePool willowTexturePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.WILLOW_PLANKS);
+        willowTexturePool.stairs(ModBlocks.WILLOW_STAIRS);
+        willowTexturePool.slab(ModBlocks.WILLOW_SLAB);
+        willowTexturePool.button(ModBlocks.WILLOW_BUTTON);
+        willowTexturePool.pressurePlate(ModBlocks.WILLOW_PRESSURE_PLATE);
+        willowTexturePool.fence(ModBlocks.WILLOW_FENCE);
+        willowTexturePool.fenceGate(ModBlocks.WILLOW_FENCE_GATE);
+        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.WILLOW_LEAVES);
+        blockStateModelGenerator.registerTrapdoor(ModBlocks.WILLOW_TRAPDOOR);
+        blockStateModelGenerator.registerDoor(ModBlocks.WILLOW_DOOR);
+        willowTexturePool.family(BlockFamilies.register(ModBlocks.WILLOW_PLANKS).sign(ModBlocks.WILLOW_SIGN, ModBlocks.WILLOW_WALL_SIGN).build());
+        blockStateModelGenerator.registerHangingSign(ModBlocks.STRIPPED_WILLOW_LOG, ModBlocks.WILLOW_HANGING_SIGN, ModBlocks.WILLOW_HANGING_WALL_SIGN);
+
     }
 
     @Override
@@ -79,5 +95,7 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.registerArmor(((ArmorItem) ModItems.BOOTS_OF_THE_SWAMP));
         itemModelGenerator.register(ModItems.COTTONWOOD_BOAT, Models.GENERATED);
         itemModelGenerator.register(ModItems.COTTONWOOD_CHEST_BOAT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.WILLOW_BOAT, Models.GENERATED);
+        itemModelGenerator.register(ModItems.WILLOW_CHEST_BOAT, Models.GENERATED);
     }
 }

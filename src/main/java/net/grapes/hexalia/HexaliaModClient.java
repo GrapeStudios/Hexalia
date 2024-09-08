@@ -52,22 +52,30 @@ public class HexaliaModClient implements ClientModInitializer {
                 ModBlocks.SALT_LAMP,
                 ModBlocks.SILKWORM_COCOON,
                 ModBlocks.COTTONWOOD_SAPLING,
+                ModBlocks.WILLOW_SAPLING,
                 ModBlocks.COTTONWOOD_TRAPDOOR,
                 ModBlocks.COTTONWOOD_DOOR,
-                ModBlocks.COTTONWOOD_CATKIN);
+                ModBlocks.COTTONWOOD_CATKIN,
+                ModBlocks.WILLOW_TRAPDOOR,
+                ModBlocks.WILLOW_DOOR);
 
         BlockEntityRendererFactories.register(ModBlockEntities.RITUAL_TABLE_BE, RitualTableBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.SALT_BE, SaltBlockEntityRenderer::new);
 
         ParticleFactoryRegistry.getInstance().register(ModParticles.SPORE_PARTICLE, SporeParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.INFUSED_BUBBLE_PARTICLE, InfusedBubbleParticle.Factory::new);
+
         HandledScreens.register(ModScreenHandler.SMALL_CAULDRON_SCREEN_HANDLER, SmallCauldronScreen::new);
         ModMessages.registerS2CPackets();
+
         EntityRendererRegistry.register(ModEntities.THROWN_RABBAGE_ENTITY, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.SILK_MOTH, SilkMothRenderer::new);
 
         TexturedRenderLayers.SIGN_TYPE_TEXTURES.put(ModWoodTypes.COTTONWOOD, TexturedRenderLayers.getSignTextureId(ModWoodTypes.COTTONWOOD));
         TerraformBoatClientHelper.registerModelLayers(ModBoats.COTTONWOOD_BOAT_ID, false);
+        TexturedRenderLayers.SIGN_TYPE_TEXTURES.put(ModWoodTypes.WILLOW, TexturedRenderLayers.getSignTextureId(ModWoodTypes.WILLOW));
+        TerraformBoatClientHelper.registerModelLayers(ModBoats.WILLOW_BOAT_ID, false);
+
         BlockEntityRendererFactories.register(ModBlockEntities.MOD_SIGN_BLOCK_ENTITY, SignBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.MOD_HANGING_SIGN_BLOCK_ENTITY, HangingSignBlockEntityRenderer::new);
     }

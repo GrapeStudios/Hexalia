@@ -1,6 +1,8 @@
 package net.grapes.hexalia;
 
+import net.fabricmc.api.EnvType;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.loader.api.FabricLoader;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.block.entity.ModBlockEntities;
 import net.grapes.hexalia.compat.farmersdelight.FarmersDelightCompat;
@@ -43,6 +45,5 @@ public class HexaliaMod implements ModInitializer {
 		ModEntities.registerModEntities();
 		ModBoats.registerBoats();
 		ModEventHandler.registerServerEvents();
-		ModEventHandler.registerClientEvents();
 	}
 }

@@ -7,7 +7,6 @@ import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.util.ModTags;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;
 
 import java.util.concurrent.CompletableFuture;
@@ -32,39 +31,52 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         // Tags for Tree Related Items
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN)
-                .addTag(ModTags.Items.COTTONWOOD_LOGS);
+                .addTag(ModTags.Items.COTTONWOOD_LOGS)
+                .addTag(ModTags.Items.WILLOW_LOGS);
         getOrCreateTagBuilder(ItemTags.SAPLINGS)
-                .add(ModBlocks.COTTONWOOD_SAPLING.asItem());
+                .add(ModBlocks.COTTONWOOD_SAPLING.asItem(), ModBlocks.WILLOW_SAPLING.asItem());
         getOrCreateTagBuilder(ItemTags.LEAVES)
-                .add(ModBlocks.COTTONWOOD_LEAVES.asItem());
+                .add(ModBlocks.COTTONWOOD_LEAVES.asItem(), ModBlocks.WILLOW_LEAVES.asItem());
 
         getOrCreateTagBuilder(ItemTags.PLANKS)
-                .add(ModBlocks.COTTONWOOD_PLANKS.asItem());
+                .add(ModBlocks.COTTONWOOD_PLANKS.asItem(), 
+                        ModBlocks.WILLOW_PLANKS.asItem());
         getOrCreateTagBuilder(ItemTags.PLANKS)
-                .add(ModBlocks.COTTONWOOD_PLANKS.asItem());
+                .add(ModBlocks.COTTONWOOD_PLANKS.asItem(),
+                        ModBlocks.WILLOW_PLANKS.asItem());
         getOrCreateTagBuilder(ItemTags.WOODEN_STAIRS)
-                .add(ModBlocks.COTTONWOOD_STAIRS.asItem());
+                .add(ModBlocks.COTTONWOOD_STAIRS.asItem(),
+                        ModBlocks.WILLOW_STAIRS.asItem());
         getOrCreateTagBuilder(ItemTags.WOODEN_SLABS)
-                .add(ModBlocks.COTTONWOOD_SLAB.asItem());
+                .add(ModBlocks.COTTONWOOD_SLAB.asItem(),
+                        ModBlocks.WILLOW_SLAB.asItem());
         getOrCreateTagBuilder(ItemTags.WOODEN_DOORS)
-                .add(ModBlocks.COTTONWOOD_DOOR.asItem());
+                .add(ModBlocks.COTTONWOOD_DOOR.asItem(),
+                        ModBlocks.WILLOW_DOOR.asItem());
         getOrCreateTagBuilder(ItemTags.WOODEN_BUTTONS)
-                .add(ModBlocks.COTTONWOOD_BUTTON.asItem());
+                .add(ModBlocks.COTTONWOOD_BUTTON.asItem(),
+                        ModBlocks.COTTONWOOD_BUTTON.asItem());
         getOrCreateTagBuilder(ItemTags.WOODEN_PRESSURE_PLATES)
-                .add(ModBlocks.COTTONWOOD_PRESSURE_PLATE.asItem());
+                .add(ModBlocks.COTTONWOOD_PRESSURE_PLATE.asItem(),
+                        ModBlocks.WILLOW_PRESSURE_PLATE.asItem());
         getOrCreateTagBuilder(ItemTags.WOODEN_TRAPDOORS)
-                .add(ModBlocks.COTTONWOOD_TRAPDOOR.asItem());
+                .add(ModBlocks.COTTONWOOD_TRAPDOOR.asItem(),
+                        ModBlocks.WILLOW_TRAPDOOR.asItem());
         getOrCreateTagBuilder(ItemTags.FENCE_GATES)
-                .add(ModBlocks.COTTONWOOD_FENCE_GATE.asItem());
+                .add(ModBlocks.COTTONWOOD_FENCE_GATE.asItem(),
+                        ModBlocks.WILLOW_FENCE_GATE.asItem());
+        getOrCreateTagBuilder(ItemTags.WOODEN_FENCES)
+                .add(ModBlocks.COTTONWOOD_FENCE.asItem(),
+                        ModBlocks.WILLOW_FENCE.asItem());
         getOrCreateTagBuilder(ItemTags.BOATS)
-                .add(ModItems.COTTONWOOD_BOAT);
+                .add(ModItems.COTTONWOOD_BOAT, ModItems.WILLOW_BOAT);
         getOrCreateTagBuilder(ItemTags.CHEST_BOATS)
-                .add(ModItems.COTTONWOOD_CHEST_BOAT);
+                .add(ModItems.COTTONWOOD_CHEST_BOAT, ModItems.WILLOW_CHEST_BOAT);
 
         getOrCreateTagBuilder(ItemTags.SIGNS)
-                .add(ModItems.COTTONWOOD_SIGN);
+                .add(ModItems.COTTONWOOD_SIGN, ModItems.WILLOW_SIGN);
         getOrCreateTagBuilder(ItemTags.HANGING_SIGNS)
-                .add(ModItems.COTTONWOOD_HANGING_SIGN);
+                .add(ModItems.COTTONWOOD_HANGING_SIGN, ModItems.WILLOW_HANGING_SIGN);
 
         // Custom Tags
         getOrCreateTagBuilder(ModTags.Items.COOKED_MEATS)
@@ -85,6 +97,9 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ModTags.Items.COTTONWOOD_LOGS)
                 .add(ModBlocks.COTTONWOOD_LOG.asItem(), ModBlocks.STRIPPED_COTTONWOOD_LOG.asItem(),
                         ModBlocks.COTTONWOOD_WOOD.asItem(), ModBlocks.STRIPPED_COTTONWOOD_WOOD.asItem());
+        getOrCreateTagBuilder(ModTags.Items.WILLOW_LOGS)
+                .add(ModBlocks.WILLOW_LOG.asItem(), ModBlocks.STRIPPED_WILLOW_LOG.asItem(),
+                        ModBlocks.WILLOW_WOOD.asItem(), ModBlocks.STRIPPED_WILLOW_WOOD.asItem());
 
         // Common Tags
         getOrCreateTagBuilder(ModTags.Items.SALT_DUSTS)
@@ -108,7 +123,6 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         getOrCreateTagBuilder(ModTags.Items.ORES)
                 .add(ModBlocks.SALT_ORE.asItem());
-
 
         // Armor Tags
         getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)

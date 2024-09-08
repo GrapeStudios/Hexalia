@@ -1,12 +1,11 @@
 package net.grapes.hexalia.events;
 
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.ArmorItem;
+import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraft.entity.EquipmentSlot;
 
@@ -16,14 +15,6 @@ public class ModEventHandler {
         ServerTickEvents.END_WORLD_TICK.register(world -> {
             for (PlayerEntity player : world.getPlayers()) {
                 applyArmorEffects(player);
-            }
-        });
-    }
-
-    public static void registerClientEvents() {
-        ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (client.player != null) {
-                applyArmorEffects(client.player);
             }
         });
     }

@@ -74,5 +74,25 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.COTTONWOOD_WALL_SIGN);
         addDrop(ModBlocks.COTTONWOOD_HANGING_WALL_SIGN);
         addDrop(ModBlocks.COTTONWOOD_HANGING_SIGN);
+
+        addDrop(ModBlocks.WILLOW_LEAVES, leavesDrops(ModBlocks.WILLOW_LEAVES, ModBlocks.WILLOW_SAPLING, SAPLING_DROP_CHANCE));
+        addDrop(ModBlocks.WILLOW_LOG);
+        addDrop(ModBlocks.WILLOW_WOOD);
+        addDrop(ModBlocks.STRIPPED_WILLOW_LOG);
+        addDrop(ModBlocks.STRIPPED_WILLOW_WOOD);
+        addDrop(ModBlocks.WILLOW_SAPLING);
+        addDrop(ModBlocks.WILLOW_PLANKS);
+        addDrop(ModBlocks.WILLOW_STAIRS);
+        addDrop(ModBlocks.WILLOW_PRESSURE_PLATE);
+        addDrop(ModBlocks.WILLOW_SLAB, slabDrops(ModBlocks.WILLOW_SLAB));
+        addDrop(ModBlocks.WILLOW_BUTTON);
+        addDrop(ModBlocks.WILLOW_FENCE);
+        addDrop(ModBlocks.WILLOW_FENCE_GATE);
+        addDrop(ModBlocks.WILLOW_TRAPDOOR);
+        addDrop(ModBlocks.WILLOW_DOOR, doorDrops(ModBlocks.WILLOW_DOOR));
+        addDrop(ModBlocks.WILLOW_SIGN);
+        addDrop(ModBlocks.WILLOW_WALL_SIGN);
+        addDrop(ModBlocks.WILLOW_HANGING_WALL_SIGN);
+        addDrop(ModBlocks.WILLOW_HANGING_SIGN);
     }
 }

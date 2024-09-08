@@ -81,50 +81,6 @@ public class ModBlocks {
     public static final Block BREW_SHELF = registerBlock("brew_shelf",
             new BrewShelfBlock(FabricBlockSettings.copyOf(Blocks.CHISELED_BOOKSHELF).nonOpaque()));
 
-    // Tree-Related Blocks
-    public static final Block COTTONWOOD_LEAVES = registerBlock("cottonwood_leaves",
-            new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).strength(1f)));
-    public static final Block COTTONWOOD_CATKIN = registerBlock("cottonwood_catkin",
-            new CatkinBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).strength(1f)));
-    public static final Block COTTONWOOD_LOG = registerBlock("cottonwood_log",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(1f)));
-    public static final Block COTTONWOOD_WOOD = registerBlock("cottonwood_wood",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(1f)));
-    public static final Block STRIPPED_COTTONWOOD_LOG = registerBlock("stripped_cottonwood_log",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(1f)));
-    public static final Block STRIPPED_COTTONWOOD_WOOD = registerBlock("stripped_cottonwood_wood",
-            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG).strength(1f)));
-    public static final Block COTTONWOOD_PLANKS = registerBlock("cottonwood_planks",
-            new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS).strength(1f)));
-    public static final Block COTTONWOOD_SAPLING = registerBlock("cottonwood_sapling",
-            new SaplingBlock(new CottonwoodSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
-    public static final Block COTTONWOOD_STAIRS = registerBlock("cottonwood_stairs",
-            new StairsBlock(ModBlocks.COTTONWOOD_PLANKS.getDefaultState(),
-                    FabricBlockSettings.copyOf(Blocks.OAK_STAIRS).strength(1f)));
-    public static final Block COTTONWOOD_SLAB = registerBlock("cottonwood_slab",
-            new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_SLAB).strength(1f)));
-    public static final Block COTTONWOOD_BUTTON = registerBlock("cottonwood_button",
-            new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_BUTTON).strength(1f), BlockSetType.OAK, 10, true));
-    public static final Block COTTONWOOD_PRESSURE_PLATE = registerBlock("cottonwood_pressure_plate",
-            new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,
-                    FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE).strength(1f), BlockSetType.OAK));
-    public static final Block COTTONWOOD_FENCE = registerBlock("cottonwood_fence",
-            new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE).strength(1f)));
-    public static final Block COTTONWOOD_FENCE_GATE = registerBlock("cottonwood_fence_gate",
-            new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE_GATE).strength(1f), WoodType.OAK));
-    public static final Block COTTONWOOD_TRAPDOOR = registerBlock("cottonwood_trapdoor",
-            new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR).strength(1f).nonOpaque(), BlockSetType.OAK));
-    public static final Block COTTONWOOD_DOOR = registerBlock("cottonwood_door",
-            new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR).strength(1f).nonOpaque(), BlockSetType.OAK));
-    public static final Block COTTONWOOD_SIGN = registerBlockWithoutBlockItem("cottonwood_sign",
-            new ModStandingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_SIGN).strength(1f).nonOpaque(), ModWoodTypes.COTTONWOOD));
-    public static final Block COTTONWOOD_WALL_SIGN = registerBlockWithoutBlockItem("cottonwood_wall_sign",
-            new ModWallSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN).strength(1f), ModWoodTypes.COTTONWOOD));
-    public static final Block COTTONWOOD_HANGING_SIGN = registerBlockWithoutBlockItem("cottonwood_hanging_sign",
-            new ModHangingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_HANGING_SIGN).strength(1f), ModWoodTypes.COTTONWOOD));
-    public static final Block COTTONWOOD_HANGING_WALL_SIGN = registerBlockWithoutBlockItem("cottonwood_hanging_wall_sign",
-            new ModWallHangingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_WALL_HANGING_SIGN).strength(1f), ModWoodTypes.COTTONWOOD));
-
     // Decorative Blocks
     public static final Block PARCHMENT = registerBlockWithoutBlockItem("parchment",
             new ParchmentBlock(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN).instrument(Instrument.BASS)
@@ -135,6 +91,93 @@ public class ModBlocks {
     public static final Block CANDLE_SKULL = registerBlockWithoutBlockItem("candle_skull",
             new CandleSkullBlock(FabricBlockSettings.create().mapColor(MapColor.WHITE_GRAY)
                     .instrument(Instrument.GUITAR).strength(1.0f).luminance(state -> state.get(CandleSkullBlock.LIT) ? 8 : 0)));
+
+    // Tree-Related Blocks
+    public static final Block COTTONWOOD_LEAVES = registerBlock("cottonwood_leaves",
+            new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).strength(0.2f)));
+    public static final Block COTTONWOOD_CATKIN = registerBlock("cottonwood_catkin",
+            new CatkinBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).strength(0.2f).notSolid()));
+    public static final Block COTTONWOOD_SAPLING = registerBlock("cottonwood_sapling",
+            new SaplingBlock(new CottonwoodSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+
+    public static final Block COTTONWOOD_LOG = registerBlock("cottonwood_log",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
+    public static final Block COTTONWOOD_WOOD = registerBlock("cottonwood_wood",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
+    public static final Block STRIPPED_COTTONWOOD_LOG = registerBlock("stripped_cottonwood_log",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
+    public static final Block STRIPPED_COTTONWOOD_WOOD = registerBlock("stripped_cottonwood_wood",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
+    public static final Block COTTONWOOD_PLANKS = registerBlock("cottonwood_planks",
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
+    public static final Block COTTONWOOD_STAIRS = registerBlock("cottonwood_stairs",
+            new StairsBlock(ModBlocks.COTTONWOOD_PLANKS.getDefaultState(),
+                    FabricBlockSettings.copyOf(Blocks.OAK_STAIRS)));
+    public static final Block COTTONWOOD_SLAB = registerBlock("cottonwood_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_SLAB)));
+    public static final Block COTTONWOOD_BUTTON = registerBlock("cottonwood_button",
+            new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_BUTTON), BlockSetType.OAK, 10, true));
+    public static final Block COTTONWOOD_PRESSURE_PLATE = registerBlock("cottonwood_pressure_plate",
+            new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,
+                    FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE), BlockSetType.OAK));
+    public static final Block COTTONWOOD_FENCE = registerBlock("cottonwood_fence",
+            new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE)));
+    public static final Block COTTONWOOD_FENCE_GATE = registerBlock("cottonwood_fence_gate",
+            new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE_GATE), WoodType.OAK));
+    public static final Block COTTONWOOD_TRAPDOOR = registerBlock("cottonwood_trapdoor",
+            new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR).nonOpaque(), BlockSetType.OAK));
+    public static final Block COTTONWOOD_DOOR = registerBlock("cottonwood_door",
+            new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR).nonOpaque(), BlockSetType.OAK));
+    public static final Block COTTONWOOD_SIGN = registerBlockWithoutBlockItem("cottonwood_sign",
+            new ModStandingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_SIGN).nonOpaque(), ModWoodTypes.COTTONWOOD));
+    public static final Block COTTONWOOD_WALL_SIGN = registerBlockWithoutBlockItem("cottonwood_wall_sign",
+            new ModWallSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN), ModWoodTypes.COTTONWOOD));
+    public static final Block COTTONWOOD_HANGING_SIGN = registerBlockWithoutBlockItem("cottonwood_hanging_sign",
+            new ModHangingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_HANGING_SIGN), ModWoodTypes.COTTONWOOD));
+    public static final Block COTTONWOOD_HANGING_WALL_SIGN = registerBlockWithoutBlockItem("cottonwood_hanging_wall_sign",
+            new ModWallHangingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_WALL_HANGING_SIGN), ModWoodTypes.COTTONWOOD));
+
+    public static final Block WILLOW_LEAVES = registerBlock("willow_leaves",
+            new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).strength(0.2f)));
+    public static final Block WILLOW_SAPLING = registerBlock("willow_sapling",
+            new SaplingBlock(null, FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+    public static final Block WILLOW_LOG = registerBlock("willow_log",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
+    public static final Block WILLOW_WOOD = registerBlock("willow_wood",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
+    public static final Block STRIPPED_WILLOW_LOG = registerBlock("stripped_willow_log",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
+    public static final Block STRIPPED_WILLOW_WOOD = registerBlock("stripped_willow_wood",
+            new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
+    public static final Block WILLOW_PLANKS = registerBlock("willow_planks",
+            new Block(FabricBlockSettings.copyOf(Blocks.OAK_PLANKS)));
+    public static final Block WILLOW_STAIRS = registerBlock("willow_stairs",
+            new StairsBlock(ModBlocks.WILLOW_PLANKS.getDefaultState(),
+                    FabricBlockSettings.copyOf(Blocks.OAK_STAIRS)));
+    public static final Block WILLOW_SLAB = registerBlock("willow_slab",
+            new SlabBlock(FabricBlockSettings.copyOf(Blocks.OAK_SLAB)));
+    public static final Block WILLOW_BUTTON = registerBlock("willow_button",
+            new ButtonBlock(FabricBlockSettings.copyOf(Blocks.OAK_BUTTON), BlockSetType.OAK, 10, true));
+    public static final Block WILLOW_PRESSURE_PLATE = registerBlock("willow_pressure_plate",
+            new PressurePlateBlock(PressurePlateBlock.ActivationRule.EVERYTHING,
+                    FabricBlockSettings.copyOf(Blocks.OAK_PRESSURE_PLATE), BlockSetType.OAK));
+    public static final Block WILLOW_FENCE = registerBlock("willow_fence",
+            new FenceBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE)));
+    public static final Block WILLOW_FENCE_GATE = registerBlock("willow_fence_gate",
+            new FenceGateBlock(FabricBlockSettings.copyOf(Blocks.OAK_FENCE_GATE), WoodType.OAK));
+    public static final Block WILLOW_TRAPDOOR = registerBlock("willow_trapdoor",
+            new TrapdoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_TRAPDOOR).nonOpaque(), BlockSetType.OAK));
+    public static final Block WILLOW_DOOR = registerBlock("willow_door",
+            new DoorBlock(FabricBlockSettings.copyOf(Blocks.OAK_DOOR).nonOpaque(), BlockSetType.OAK));
+    public static final Block WILLOW_SIGN = registerBlockWithoutBlockItem("willow_sign",
+            new ModStandingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_SIGN).nonOpaque(), ModWoodTypes.WILLOW));
+    public static final Block WILLOW_WALL_SIGN = registerBlockWithoutBlockItem("willow_wall_sign",
+            new ModWallSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_WALL_SIGN), ModWoodTypes.WILLOW));
+    public static final Block WILLOW_HANGING_SIGN = registerBlockWithoutBlockItem("willow_hanging_sign",
+            new ModHangingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_HANGING_SIGN), ModWoodTypes.WILLOW));
+    public static final Block WILLOW_HANGING_WALL_SIGN = registerBlockWithoutBlockItem("willow_hanging_wall_sign",
+            new ModWallHangingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_WALL_HANGING_SIGN), ModWoodTypes.WILLOW));
+
 
     // Registries
     public static void registerBlockProperties() {

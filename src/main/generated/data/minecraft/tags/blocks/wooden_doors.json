@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "hexalia:cottonwood_door"
+    "hexalia:cottonwood_door",
+    "hexalia:willow_door"
   ]
 }
