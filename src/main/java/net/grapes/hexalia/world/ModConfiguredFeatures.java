@@ -5,23 +5,33 @@ import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.block.custom.ChillberryBushBlock;
 import net.grapes.hexalia.world.gen.decorator.CatkinTreeDecorator;
 import net.grapes.hexalia.world.gen.decorator.CocoonTreeDecorator;
+import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
+import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.entry.RegistryEntryList;
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.structure.rule.RuleTest;
 import net.minecraft.structure.rule.TagMatchRuleTest;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
 import net.minecraft.world.gen.foliage.*;
+import net.minecraft.world.gen.root.AboveRootPlacement;
+import net.minecraft.world.gen.root.MangroveRootPlacement;
+import net.minecraft.world.gen.root.MangroveRootPlacer;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
+import net.minecraft.world.gen.treedecorator.LeavesVineTreeDecorator;
 import net.minecraft.world.gen.trunk.DarkOakTrunkPlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
+import net.minecraft.world.gen.trunk.UpwardsBranchingTrunkPlacer;
 
 import java.util.List;
+import java.util.Optional;
 
 public class ModConfiguredFeatures {
 
@@ -36,9 +46,11 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> DARK_OAK_COCOON_KEY = registerKey("dark_oak_cocoon_tree");
     public static final RegistryKey<ConfiguredFeature<?, ?>> COTTONWOOD_KEY = registerKey("cottonwood");
     public static final RegistryKey<ConfiguredFeature<?, ?>> COTTONWOOD_COCOON_KEY = registerKey("cottonwood_cocoon");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> WILLOW_KEY = registerKey("willow_key");
 
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
+        RegistryEntryLookup<Block> registryEntryLookup = context.getRegistryLookup(RegistryKeys.BLOCK);
         RuleTest stoneReplaceables = new TagMatchRuleTest(BlockTags.STONE_ORE_REPLACEABLES);
 
         List<OreFeatureConfig.Target> overworldSaltOres =
@@ -99,6 +111,19 @@ public class ModConfiguredFeatures {
                 new LargeOakFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(1), 3) {},
                 new TwoLayersFeatureSize(1, 0, 2))
                 .decorators(List.of(new CatkinTreeDecorator(), new CocoonTreeDecorator()))
+                .build());
+
+        register(context, WILLOW_KEY, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(ModBlocks.WILLOW_LOG),
+                new UpwardsBranchingTrunkPlacer(4, 1, 9, UniformIntProvider.create(1, 6),
+                        0.5f, UniformIntProvider.create(0, 1), registryEntryLookup.getOrThrow(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
+                BlockStateProvider.of(ModBlocks.WILLOW_LEAVES), new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(2),
+                70), Optional.of(new MangroveRootPlacer(UniformIntProvider.create(3, 7), BlockStateProvider.of(ModBlocks.WILLOW_WOOD),
+                Optional.of(new AboveRootPlacement(BlockStateProvider.of(Blocks.MOSS_CARPET), 0.5f)),
+                new MangroveRootPlacement(registryEntryLookup.getOrThrow(BlockTags.MANGROVE_ROOTS_CAN_GROW_THROUGH),
+                        RegistryEntryList.of(Block::getRegistryEntry, Blocks.MUD, ModBlocks.WILLOW_WOOD),
+                        BlockStateProvider.of(ModBlocks.WILLOW_WOOD), 8, 15, 0.2f))),
+                new TwoLayersFeatureSize(3, 0, 2))
+                .decorators(List.of(new LeavesVineTreeDecorator(0.125f)))
                 .build());
     }
 

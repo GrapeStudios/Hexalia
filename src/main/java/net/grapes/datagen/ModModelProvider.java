@@ -61,6 +61,11 @@ public class ModModelProvider extends FabricModelProvider {
         willowTexturePool.family(BlockFamilies.register(ModBlocks.WILLOW_PLANKS).sign(ModBlocks.WILLOW_SIGN, ModBlocks.WILLOW_WALL_SIGN).build());
         blockStateModelGenerator.registerHangingSign(ModBlocks.STRIPPED_WILLOW_LOG, ModBlocks.WILLOW_HANGING_SIGN, ModBlocks.WILLOW_HANGING_WALL_SIGN);
 
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.COTTONWOOD_SAPLING, ModBlocks.POTTED_COTTONWOOD_SAPLING,
+                BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.WILLOW_SAPLING, ModBlocks.POTTED_WILLOW_SAPLING,
+                BlockStateModelGenerator.TintType.NOT_TINTED);
+
     }
 
     @Override

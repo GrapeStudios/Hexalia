@@ -17,5 +17,8 @@ public class ModTreeGeneration {
 
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.MANGROVE_SWAMP, BiomeKeys.SWAMP),
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.COTTONWOOD_COCOON_PLACED_KEY);
+
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.MANGROVE_SWAMP, BiomeKeys.SWAMP),
+                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.WILLOW_PLACED_KEY);
     }
 }

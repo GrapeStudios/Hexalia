@@ -27,8 +27,10 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> DARK_OAK_COCOON_PLACED_KEY = registerKey("dark_oak_cocoon_placed");
     public static final RegistryKey<PlacedFeature> COTTONWOOD_PLACED_KEY = registerKey("cottonwood_placed");
     public static final RegistryKey<PlacedFeature> COTTONWOOD_COCOON_PLACED_KEY = registerKey("cottonwood_cocoon_placed");
+    public static final RegistryKey<PlacedFeature> WILLOW_PLACED_KEY = registerKey("willow_placed_key");
 
     public static void bootstrap(Registerable<PlacedFeature> context) {
+
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
 
         register(context, SALT_ORE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.SALT_ORE_KEY),
@@ -65,6 +67,10 @@ public class ModPlacedFeatures {
 
         register(context, COTTONWOOD_COCOON_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.COTTONWOOD_COCOON_KEY),
                 VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(1, 0.1f, 1), ModBlocks.COTTONWOOD_SAPLING));
+
+        register(context, WILLOW_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.WILLOW_KEY),
+                VegetationPlacedFeatures.treeModifiersWithWouldSurvive
+                        (PlacedFeatures.createCountExtraModifier(1, 0.1f, 2), ModBlocks.WILLOW_SAPLING));
     }
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {
