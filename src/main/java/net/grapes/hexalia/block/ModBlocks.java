@@ -13,6 +13,7 @@ import net.grapes.hexalia.block.custom.signs.ModWallHangingSignBlock;
 import net.grapes.hexalia.block.custom.signs.ModWallSignBlock;
 import net.grapes.hexalia.util.ModWoodTypes;
 import net.grapes.hexalia.world.tree.CottonwoodSaplingGenerator;
+import net.grapes.hexalia.world.tree.WillowSaplingGenerator;
 import net.minecraft.block.*;
 import net.minecraft.block.enums.Instrument;
 import net.minecraft.entity.effect.StatusEffects;
@@ -99,6 +100,8 @@ public class ModBlocks {
             new CatkinBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).strength(0.2f).notSolid()));
     public static final Block COTTONWOOD_SAPLING = registerBlock("cottonwood_sapling",
             new SaplingBlock(new CottonwoodSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+    public static final Block POTTED_COTTONWOOD_SAPLING = registerBlock("potted_cottonwood_sapling",
+            new FlowerPotBlock(COTTONWOOD_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)));
 
     public static final Block COTTONWOOD_LOG = registerBlock("cottonwood_log",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
@@ -140,7 +143,9 @@ public class ModBlocks {
     public static final Block WILLOW_LEAVES = registerBlock("willow_leaves",
             new LeavesBlock(FabricBlockSettings.copyOf(Blocks.OAK_LEAVES).strength(0.2f)));
     public static final Block WILLOW_SAPLING = registerBlock("willow_sapling",
-            new SaplingBlock(null, FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+            new SaplingBlock(new WillowSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
+    public static final Block POTTED_WILLOW_SAPLING = registerBlock("potted_willow_sapling",
+            new FlowerPotBlock(WILLOW_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)));
     public static final Block WILLOW_LOG = registerBlock("willow_log",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
     public static final Block WILLOW_WOOD = registerBlock("willow_wood",
