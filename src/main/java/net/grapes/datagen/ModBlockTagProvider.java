@@ -17,7 +17,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
-        // Tags
+        // Vanilla Tags
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.SALT_ORE)
                 .add(ModBlocks.SALT_BLOCK)
@@ -35,13 +35,23 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.RITUAL_TABLE);
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
-                .add(ModBlocks.BREW_SHELF);
+                .add(ModBlocks.BREW_SHELF)
+                .add(ModBlocks.LOTUS_FLOWER);
 
         getOrCreateTagBuilder(BlockTags.FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM, ModBlocks.HENBANE);
 
         getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM, ModBlocks.HENBANE);
+
+        getOrCreateTagBuilder(BlockTags.FROG_PREFER_JUMP_TO)
+                .add(ModBlocks.LOTUS_FLOWER);
+
+        getOrCreateTagBuilder(BlockTags.INSIDE_STEP_SOUND_BLOCKS)
+                .add(ModBlocks.LOTUS_FLOWER);
+
+        getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT)
+                .add(ModBlocks.LOTUS_FLOWER);
 
         // Tags for Tree Related Blocks
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)

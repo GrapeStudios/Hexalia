@@ -42,8 +42,7 @@ public class ModBlocks {
             new InfusedFarmlandBlock(FabricBlockSettings.copyOf(Blocks.FARMLAND).sounds(BlockSoundGroup.MUD)));
     public static final Block MANDRAKE_CROP = registerBlockWithoutBlockItem("mandrake_crop",
             new MandrakeCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
-    public static final Block WILD_MANDRAKE = registerBlock("wild_mandrake",
-            new FlowerBlock(StatusEffects.LEVITATION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
+    public static final Block WILD_MANDRAKE = registerBlock("wild_mandrake", new FlowerBlock(StatusEffects.LEVITATION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
     public static final Block SUNFIRE_TOMATO_CROP = registerBlockWithoutBlockItem("sunfire_tomato_crop",
             new SunfireTomatoCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
     public static final Block WILD_SUNFIRE_TOMATO = registerBlock("wild_sunfire_tomato",
@@ -59,6 +58,8 @@ public class ModBlocks {
     public static final Block SILKWORM_COCOON = registerBlock("silkworm_cocoon",
             new CocoonBlock(FabricBlockSettings.create().mapColor(MapColor.WHITE_GRAY).instrument(Instrument.BANJO)
                     .strength(0.5f).noCollision()));
+    public static final Block LOTUS_FLOWER = registerBlockWithoutBlockItem("lotus_flower",
+            new LotusFlowerBlock(FabricBlockSettings.copyOf(Blocks.LILY_PAD)));
 
     // Mineral-Related Blocks
     public static final Block SALT_ORE = registerBlock("salt_ore",
@@ -102,7 +103,6 @@ public class ModBlocks {
             new SaplingBlock(new CottonwoodSaplingGenerator(), FabricBlockSettings.copyOf(Blocks.OAK_SAPLING)));
     public static final Block POTTED_COTTONWOOD_SAPLING = registerBlock("potted_cottonwood_sapling",
             new FlowerPotBlock(COTTONWOOD_SAPLING, FabricBlockSettings.copyOf(Blocks.POTTED_OAK_SAPLING)));
-
     public static final Block COTTONWOOD_LOG = registerBlock("cottonwood_log",
             new PillarBlock(FabricBlockSettings.copyOf(Blocks.OAK_LOG)));
     public static final Block COTTONWOOD_WOOD = registerBlock("cottonwood_wood",
@@ -192,6 +192,8 @@ public class ModBlocks {
 
         StrippableBlockRegistry.register(ModBlocks.COTTONWOOD_LOG, ModBlocks.STRIPPED_COTTONWOOD_LOG);
         StrippableBlockRegistry.register(ModBlocks.COTTONWOOD_WOOD, ModBlocks.STRIPPED_COTTONWOOD_WOOD);
+        StrippableBlockRegistry.register(ModBlocks.WILLOW_LOG, ModBlocks.STRIPPED_WILLOW_LOG);
+        StrippableBlockRegistry.register(ModBlocks.WILLOW_WOOD, ModBlocks.STRIPPED_WILLOW_WOOD);
 
         FlammableBlockRegistry instance = FlammableBlockRegistry.getDefaultInstance();
         instance.add(ModBlocks.SPIRIT_BLOOM, 60, 100);
@@ -206,6 +208,11 @@ public class ModBlocks {
         instance.add(ModBlocks.STRIPPED_COTTONWOOD_LOG, 5, 20);
         instance.add(ModBlocks.STRIPPED_COTTONWOOD_WOOD, 5, 20);
         instance.add(ModBlocks.COTTONWOOD_PLANKS, 5, 20);
+        instance.add(ModBlocks.WILLOW_LOG, 5, 20);
+        instance.add(ModBlocks.WILLOW_WOOD, 5, 20);
+        instance.add(ModBlocks.STRIPPED_WILLOW_LOG, 5, 20);
+        instance.add(ModBlocks.STRIPPED_WILLOW_WOOD, 5, 20);
+        instance.add(ModBlocks.WILLOW_PLANKS, 5, 20);
     }
 
     // Methods

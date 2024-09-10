@@ -115,6 +115,8 @@ public class ModItemGroup {
                         entries.add(ModItems.WILLOW_CHEST_BOAT);
                         entries.add(ModItems.WILLOW_SIGN);
                         entries.add(ModItems.WILLOW_HANGING_SIGN);
+
+                        entries.add(ModItems.LOTUS_FLOWER);
                     }).build());
     public static void registerItemGroups(){
     }

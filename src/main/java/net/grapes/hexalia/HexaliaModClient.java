@@ -61,7 +61,7 @@ public class HexaliaModClient implements ClientModInitializer {
                 ModBlocks.POTTED_WILLOW_SAPLING, ModBlocks.COTTONWOOD_TRAPDOOR,
                 ModBlocks.COTTONWOOD_DOOR, ModBlocks.COTTONWOOD_CATKIN,
                 ModBlocks.WILLOW_TRAPDOOR, ModBlocks.WILLOW_DOOR,
-                ModBlocks.LILY_LOTUS
+                ModBlocks.LOTUS_FLOWER
         );
     }
 

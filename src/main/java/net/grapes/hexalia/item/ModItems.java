@@ -47,6 +47,8 @@ public class ModItems {
             new AliasedBlockItem(ModBlocks.RABBAGE_CROP, new FabricItemSettings()));
     public static final Item RABBAGE = registerItem("rabbage",
             new RabbageItem(new FabricItemSettings()));
+    public static final Item LOTUS_FLOWER = registerItem("lotus_flower",
+            new PlaceableOnWaterItem(ModBlocks.LOTUS_FLOWER, new FabricItemSettings()));
 
     // Refined Resources
     public static final Item SIREN_KELP_PASTE = registerItem("siren_kelp_paste",
