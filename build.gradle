@@ -20,6 +20,8 @@ repositories {
 		}
 	}
 
+	maven { url = "https://maven.minecraftforge.net"}
+
 	maven {
 		url 'https://repo.spongepowered.org/maven'
 	}
@@ -78,6 +80,8 @@ dependencies {
 
 	modImplementation("software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}")
 	implementation("com.eliotlash.mclib:mclib:20")
+
+	modImplementation "com.github.glitchfiend:TerraBlender-fabric:${terrablender_version}"
 
 	// modCompileOnly "vectorwing:FarmersDelight:${fdrf_version}"
 	// modRuntimeOnly "vectorwing:FarmersDelight:${fdrf_version}"

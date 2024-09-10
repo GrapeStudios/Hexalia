@@ -26,6 +26,9 @@
 		],
 		"rei_client": [
 			"net.grapes.hexalia.compat.rei.HexaliaREIClientPlugin"
+		],
+		"terrablender": [
+			"net.grapes.hexalia.world.biome.ModTerraBlenderAPI"
 		]
 	},
 	"mixins": [
