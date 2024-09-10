@@ -1,10 +1,13 @@
-// 1.20.1	2024-09-09T21:35:02.68529	Hexalia/Tags for minecraft:block
+// 1.20.1	2024-09-10T17:35:33.8290344	Hexalia/Tags for minecraft:block
+e35b2c76abe8463d8b210e281187b3bbacb4bf03 data\minecraft\tags\blocks\sword_efficient.json
+e35b2c76abe8463d8b210e281187b3bbacb4bf03 data\minecraft\tags\blocks\frog_prefer_jump_to.json
 852d4317f4e2c4084c0c6a51758b0d98a094eadc data\minecraft\tags\blocks\mineable\pickaxe.json
 d781655ad8af1168387bbf4846f625daf426a9a5 data\minecraft\tags\blocks\wooden_buttons.json
 1c8e74426b1c6490467563faee6020dea43f3db6 data\minecraft\tags\blocks\all_hanging_signs.json
 381c1cc45804b686540c206e37df4f648994a498 data\minecraft\tags\blocks\logs_that_burn.json
-35d650e4ac91a41050a9412d0ef246825464a1f6 data\minecraft\tags\blocks\mineable\axe.json
+795157fc75be0891d0d3915aaf33cee95dbfcc43 data\minecraft\tags\blocks\mineable\axe.json
 adc64d90ab00acc40f529a58afb00e26ebd82501 data\minecraft\tags\blocks\flowers.json
+e35b2c76abe8463d8b210e281187b3bbacb4bf03 data\minecraft\tags\blocks\inside_step_sound_blocks.json
 41c9efd4bb0d5ffe88565a1a0f79de74e152add3 data\hexalia\tags\blocks\attracts_moth.json
 03b64f96b8da9e0b0a6604e5a7f97b2a4112a5fe data\minecraft\tags\blocks\leaves.json
 f6939046b674fffdfa1000c3bfdded3984dc39e9 data\minecraft\tags\blocks\wooden_trapdoors.json
@@ -23,5 +26,5 @@ c80bfb86bcf352e7635cf88a8c3ef8eebabaf9fc data\minecraft\tags\blocks\wooden_stair
 9ecc382e1d8166e0b37abcecaf8b25a36f8a88d7 data\minecraft\tags\blocks\planks.json
 8bc276f3b1d4bd808a0c19af8f23234a2ede0405 data\c\tags\blocks\ores.json
 69ab60afefbf6c171b64de7f24538d0db65a68fe data\minecraft\tags\blocks\needs_stone_tool.json
-b6d1687957b6f83416a76a1059b0ad7df83b0dae data\hexalia\tags\blocks\heating_block.json
 0725a4a23c4871ee0e05aa434673d844b3d7a4f1 data\minecraft\tags\blocks\signs.json
+b6d1687957b6f83416a76a1059b0ad7df83b0dae data\hexalia\tags\blocks\heating_block.json

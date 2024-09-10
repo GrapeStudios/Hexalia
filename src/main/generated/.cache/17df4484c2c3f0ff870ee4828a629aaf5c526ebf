@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-09T21:35:02.6768216	Hexalia/Block Loot Tables
+// 1.20.1	2024-09-10T17:35:33.8219169	Hexalia/Block Loot Tables
 e4e4f7bc56a75ad3d1e5449ba51aae99e15062cb data\hexalia\loot_tables\blocks\small_cauldron.json
 aeb959301b32ba153b4b2dc89a617ff2f27e81ce data\hexalia\loot_tables\blocks\salt.json
 0a81cc3c2b6ef5a0665335b100843904f4bfac41 data\hexalia\loot_tables\blocks\salt_lamp.json
@@ -7,6 +7,7 @@ aeb959301b32ba153b4b2dc89a617ff2f27e81ce data\hexalia\loot_tables\blocks\salt.js
 483ab1da0e3db7cae7466ff8c438ed18ca9c953d data\minecraft\loot_tables\blocks\oak_sign.json
 4a1b37dfe8d762df2d082fcdc47490c5751e579b data\hexalia\loot_tables\blocks\potted_henbane.json
 2273d315ca9acdb5aab7de2a0a251658b360c919 data\hexalia\loot_tables\blocks\willow_door.json
+7bceaca61d0e098c9500f65d47f7b08afbef4948 data\hexalia\loot_tables\blocks\lotus_flower.json
 4c7859faca78d8516621ca823a2e83812cedf10e data\hexalia\loot_tables\blocks\potted_dreamshroom.json
 542c67f5846876b7cae9932870c96c9d854214ae data\hexalia\loot_tables\blocks\cottonwood_log.json
 13dc3d70a1526cc763144136d45e2e64a49125f5 data\hexalia\loot_tables\blocks\stripped_willow_log.json
@@ -32,6 +33,7 @@ ef5f147c28b7606984cdab0b3001265c2bf0cd18 data\hexalia\loot_tables\blocks\infused
 95b38dd9c28d503e8828f8c29ba9eb8b717421ee data\hexalia\loot_tables\blocks\cottonwood_fence_gate.json
 6f59a75dcd5c4e5293bd1ef697cc1633328f6201 data\hexalia\loot_tables\blocks\willow_wood.json
 d8fee13cc6c67afdf2563b10d9c961c1ad64c31f data\hexalia\loot_tables\blocks\stripped_cottonwood_log.json
+14a8e1bc9f175f8b10e56b9d2f6515c31fffc16e data\hexalia\loot_tables\blocks\potted_willow_sapling.json
 1bcdb99e7d9a0d9f8661882f0dc9f84024043b21 data\hexalia\loot_tables\blocks\willow_fence.json
 15660c257e6376f65bfabedc4b5c00da0f43203b data\hexalia\loot_tables\blocks\spirit_bloom.json
 ab65b97459126c817098d44413260f5310ed508a data\hexalia\loot_tables\blocks\stripped_willow_wood.json
@@ -47,6 +49,7 @@ c85ef0d2eb4b9fec4a3dee240614d0cee871e8d3 data\hexalia\loot_tables\blocks\salt_bl
 a8298f815c3d89857892720b2735ba023d581704 data\hexalia\loot_tables\blocks\potted_spirit_bloom.json
 19f267f63e39a188ec4c4dfe1f5206b7981d884d data\hexalia\loot_tables\blocks\willow_leaves.json
 1120fac6e95b41e5949d0b13ddc13a93abb269ef data\hexalia\loot_tables\blocks\cottonwood_planks.json
+191ecbbad8d8d6e1e59ec09c54500d72277665ee data\hexalia\loot_tables\blocks\potted_cottonwood_sapling.json
 8b8bf033c84da7f34d9d365a7f3bdd9bdef393b2 data\minecraft\loot_tables\blocks\oak_hanging_sign.json
 483ab1da0e3db7cae7466ff8c438ed18ca9c953d data\hexalia\loot_tables\blocks\willow_sign.json
 3a7ab8058d6c94d9cb21c2a0a5a754f07ea3e694 data\hexalia\loot_tables\blocks\cottonwood_fence.json

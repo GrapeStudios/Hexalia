@@ -1,6 +1,5 @@
-// 1.20.1	2024-09-09T21:35:02.6788157	Hexalia/World Gen
+// 1.20.1	2024-09-10T17:35:33.824034	Hexalia/World Gen
 ea3e92d553f6e68e4252c4294399f5bf7547765b data\hexalia\worldgen\configured_feature\cottonwood.json
-46d19ec92579185ab38eb60a6e6f1ed92b4df80d data\hexalia\worldgen\placed_feature\willow_placed_key.json
 c96f96696cdd50da4c8dee5f283a6578e1d5a8b8 data\hexalia\worldgen\placed_feature\wild_sunfire_tomato_placed.json
 a4939fd176b577c3f62781b86b11e7349a307556 data\hexalia\worldgen\placed_feature\chillberry_placed.json
 c1c3d6ad046efeff41166089a14d75d3c382098a data\hexalia\worldgen\configured_feature\dark_oak_cocoon_tree.json
@@ -9,8 +8,11 @@ c872e1032df9b846eadf4529747a5bcbf5192ae6 data\hexalia\worldgen\configured_featur
 c23e9e521c984a307dda5c5d8a9b215b79f9b3e3 data\hexalia\worldgen\configured_feature\cottonwood_cocoon.json
 d09a727b05c5d8ddc4160ef6dff7dc7ff75d581f data\hexalia\worldgen\placed_feature\salt_ore_placed.json
 3adbcc63b44efd61fab1f572493f56f7a65fc412 data\hexalia\worldgen\placed_feature\cottonwood_cocoon_placed.json
+da7809d1c380bdcaa384c335bc29e114ca6b69ee data\hexalia\worldgen\placed_feature\lotus_flower_placed.json
 b10cc0277d23ee7691e49292e0c090c621ab0b40 data\hexalia\worldgen\placed_feature\cottonwood_placed.json
+46d19ec92579185ab38eb60a6e6f1ed92b4df80d data\hexalia\worldgen\placed_feature\willow_placed.json
 9f38d78441b1e40c205e314e36e92484929ba221 data\hexalia\worldgen\placed_feature\spirit_bloom_placed.json
+09e4b40f0bdfd568a9b8043651a991a68c3995b1 data\hexalia\worldgen\configured_feature\lotus_flower_key.json
 e5976493f4e30288bfd2447f9c9568284f8fe0d2 data\hexalia\worldgen\configured_feature\salt_ore.json
 a02dd946a42f42069b1c95460f123c298dfa9d7d data\hexalia\worldgen\placed_feature\dark_oak_cocoon_placed.json
 e4818e60f9b971d9e4275e2f113bb0994d49f779 data\hexalia\worldgen\configured_feature\spirit_bloom.json
