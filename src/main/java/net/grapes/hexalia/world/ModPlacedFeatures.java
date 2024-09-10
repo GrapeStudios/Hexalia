@@ -63,14 +63,14 @@ public class ModPlacedFeatures {
 
         register(context, COTTONWOOD_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.COTTONWOOD_KEY),
                 VegetationPlacedFeatures.treeModifiersWithWouldSurvive
-                        (PlacedFeatures.createCountExtraModifier(1, 0.1f, 2), ModBlocks.COTTONWOOD_SAPLING));
+                        (PlacedFeatures.createCountExtraModifier(5, 0.1f, 1), ModBlocks.COTTONWOOD_SAPLING));
 
         register(context, COTTONWOOD_COCOON_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.COTTONWOOD_COCOON_KEY),
                 VegetationPlacedFeatures.treeModifiersWithWouldSurvive(PlacedFeatures.createCountExtraModifier(1, 0.1f, 1), ModBlocks.COTTONWOOD_SAPLING));
 
         register(context, WILLOW_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.WILLOW_KEY),
                 VegetationPlacedFeatures.treeModifiersWithWouldSurvive
-                        (PlacedFeatures.createCountExtraModifier(1, 0.1f, 2), ModBlocks.WILLOW_SAPLING));
+                        (PlacedFeatures.createCountExtraModifier(10, 0.1f, 1), ModBlocks.WILLOW_SAPLING));
     }
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {

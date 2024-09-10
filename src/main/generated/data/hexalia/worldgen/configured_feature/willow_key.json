@@ -35,7 +35,7 @@
     "ignore_vines": false,
     "minimum_size": {
       "type": "minecraft:two_layers_feature_size",
-      "limit": 3,
+      "limit": 2,
       "lower_size": 0,
       "upper_size": 2
     },
@@ -81,14 +81,14 @@
       "trunk_offset_y": {
         "type": "minecraft:uniform",
         "value": {
-          "max_inclusive": 7,
-          "min_inclusive": 3
+          "max_inclusive": 3,
+          "min_inclusive": 1
         }
       }
     },
     "trunk_placer": {
       "type": "minecraft:upwards_branching_trunk_placer",
-      "base_height": 4,
+      "base_height": 2,
       "can_grow_through": "#minecraft:mangrove_logs_can_grow_through",
       "extra_branch_length": {
         "type": "minecraft:uniform",
@@ -100,12 +100,12 @@
       "extra_branch_steps": {
         "type": "minecraft:uniform",
         "value": {
-          "max_inclusive": 6,
+          "max_inclusive": 4,
           "min_inclusive": 1
         }
       },
       "height_rand_a": 1,
-      "height_rand_b": 9,
+      "height_rand_b": 5,
       "place_branch_per_log_probability": 0.5
     },
     "trunk_provider": {

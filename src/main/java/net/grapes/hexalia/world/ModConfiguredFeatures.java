@@ -114,15 +114,15 @@ public class ModConfiguredFeatures {
                 .build());
 
         register(context, WILLOW_KEY, Feature.TREE, new TreeFeatureConfig.Builder(BlockStateProvider.of(ModBlocks.WILLOW_LOG),
-                new UpwardsBranchingTrunkPlacer(4, 1, 9, UniformIntProvider.create(1, 6),
+                new UpwardsBranchingTrunkPlacer(2, 1, 5, UniformIntProvider.create(1, 4),
                         0.5f, UniformIntProvider.create(0, 1), registryEntryLookup.getOrThrow(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
                 BlockStateProvider.of(ModBlocks.WILLOW_LEAVES), new RandomSpreadFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(0), ConstantIntProvider.create(2),
-                70), Optional.of(new MangroveRootPlacer(UniformIntProvider.create(3, 7), BlockStateProvider.of(ModBlocks.WILLOW_WOOD),
+                70), Optional.of(new MangroveRootPlacer(UniformIntProvider.create(1, 3), BlockStateProvider.of(ModBlocks.WILLOW_WOOD),
                 Optional.of(new AboveRootPlacement(BlockStateProvider.of(Blocks.MOSS_CARPET), 0.5f)),
                 new MangroveRootPlacement(registryEntryLookup.getOrThrow(BlockTags.MANGROVE_ROOTS_CAN_GROW_THROUGH),
                         RegistryEntryList.of(Block::getRegistryEntry, Blocks.MUD, ModBlocks.WILLOW_WOOD),
                         BlockStateProvider.of(ModBlocks.WILLOW_WOOD), 8, 15, 0.2f))),
-                new TwoLayersFeatureSize(3, 0, 2))
+                new TwoLayersFeatureSize(2, 0, 2))
                 .decorators(List.of(new LeavesVineTreeDecorator(0.125f)))
                 .build());
     }

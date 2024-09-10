@@ -7,6 +7,7 @@ import net.grapes.hexalia.item.ModItems;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
 import net.minecraft.data.client.Models;
+import net.minecraft.data.client.TexturedModel;
 import net.minecraft.data.family.BlockFamilies;
 import net.minecraft.item.ArmorItem;
 
@@ -40,7 +41,6 @@ public class ModModelProvider extends FabricModelProvider {
         cottonwoodTexturePool.pressurePlate(ModBlocks.COTTONWOOD_PRESSURE_PLATE);
         cottonwoodTexturePool.fence(ModBlocks.COTTONWOOD_FENCE);
         cottonwoodTexturePool.fenceGate(ModBlocks.COTTONWOOD_FENCE_GATE);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.COTTONWOOD_LEAVES);
         blockStateModelGenerator.registerTrapdoor(ModBlocks.COTTONWOOD_TRAPDOOR);
         blockStateModelGenerator.registerDoor(ModBlocks.COTTONWOOD_DOOR);
         cottonwoodTexturePool.family(BlockFamilies.register(ModBlocks.COTTONWOOD_PLANKS).sign(ModBlocks.COTTONWOOD_SIGN, ModBlocks.COTTONWOOD_WALL_SIGN).build());
@@ -55,7 +55,6 @@ public class ModModelProvider extends FabricModelProvider {
         willowTexturePool.pressurePlate(ModBlocks.WILLOW_PRESSURE_PLATE);
         willowTexturePool.fence(ModBlocks.WILLOW_FENCE);
         willowTexturePool.fenceGate(ModBlocks.WILLOW_FENCE_GATE);
-        blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.WILLOW_LEAVES);
         blockStateModelGenerator.registerTrapdoor(ModBlocks.WILLOW_TRAPDOOR);
         blockStateModelGenerator.registerDoor(ModBlocks.WILLOW_DOOR);
         willowTexturePool.family(BlockFamilies.register(ModBlocks.WILLOW_PLANKS).sign(ModBlocks.WILLOW_SIGN, ModBlocks.WILLOW_WALL_SIGN).build());
@@ -65,6 +64,9 @@ public class ModModelProvider extends FabricModelProvider {
                 BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.WILLOW_SAPLING, ModBlocks.POTTED_WILLOW_SAPLING,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
+
+        blockStateModelGenerator.registerSingleton(ModBlocks.COTTONWOOD_LEAVES, TexturedModel.LEAVES);
+        blockStateModelGenerator.registerSingleton(ModBlocks.WILLOW_LEAVES, TexturedModel.LEAVES);
 
     }
 
