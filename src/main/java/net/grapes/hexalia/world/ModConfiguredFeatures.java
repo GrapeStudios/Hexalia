@@ -48,6 +48,7 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> COTTONWOOD_COCOON_KEY = registerKey("cottonwood_cocoon");
     public static final RegistryKey<ConfiguredFeature<?, ?>> WILLOW_KEY = registerKey("willow_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> LOTUS_FLOWER_KEY = registerKey("lotus_flower_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> PALE_MUSHROOM_KEY = registerKey("pale_mushroom_key");
 
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
@@ -93,6 +94,10 @@ public class ModConfiguredFeatures {
         register(context, LOTUS_FLOWER_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(5,
                 PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
                         new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.LOTUS_FLOWER)))));
+
+        register(context, PALE_MUSHROOM_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(5,
+                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
+                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.PALE_MUSHROOM)))));
 
         // Trees
         register(context, DARK_OAK_COCOON_KEY, Feature.TREE, new TreeFeatureConfig.Builder(

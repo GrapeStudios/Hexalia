@@ -20,15 +20,19 @@ public class ModModelProvider extends FabricModelProvider {
     public void generateBlockStateModels(BlockStateModelGenerator blockStateModelGenerator) {
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SALT_ORE);
         blockStateModelGenerator.registerSimpleCubeAll(ModBlocks.SALT_BLOCK);
-        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.SPIRIT_BLOOM, ModBlocks.POTTED_SPIRIT_BLOOM,
-                BlockStateModelGenerator.TintType.NOT_TINTED);
-        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.DREAMSHROOM, ModBlocks.POTTED_DREAMSHROOM,
-                BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerTintableCross(ModBlocks.WILD_SUNFIRE_TOMATO,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerTintableCross(ModBlocks.WILD_MANDRAKE,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
+
+        // Potted Plants
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.SPIRIT_BLOOM, ModBlocks.POTTED_SPIRIT_BLOOM,
+                BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.DREAMSHROOM, ModBlocks.POTTED_DREAMSHROOM,
+                BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.HENBANE, ModBlocks.POTTED_HENBANE,
+                BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.PALE_MUSHROOM, ModBlocks.POTTED_PALE_MUSHROOM,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
 
         // Generation for Tree-related blocks.
@@ -45,7 +49,6 @@ public class ModModelProvider extends FabricModelProvider {
         blockStateModelGenerator.registerDoor(ModBlocks.COTTONWOOD_DOOR);
         cottonwoodTexturePool.family(BlockFamilies.register(ModBlocks.COTTONWOOD_PLANKS).sign(ModBlocks.COTTONWOOD_SIGN, ModBlocks.COTTONWOOD_WALL_SIGN).build());
         blockStateModelGenerator.registerHangingSign(ModBlocks.STRIPPED_COTTONWOOD_LOG, ModBlocks.COTTONWOOD_HANGING_SIGN, ModBlocks.COTTONWOOD_HANGING_WALL_SIGN);
-
         blockStateModelGenerator.registerLog(ModBlocks.WILLOW_LOG).log(ModBlocks.WILLOW_LOG).wood(ModBlocks.WILLOW_WOOD);
         blockStateModelGenerator.registerLog(ModBlocks.STRIPPED_WILLOW_LOG).log(ModBlocks.STRIPPED_WILLOW_LOG).wood(ModBlocks.STRIPPED_WILLOW_WOOD);
         BlockStateModelGenerator.BlockTexturePool willowTexturePool = blockStateModelGenerator.registerCubeAllModelTexturePool(ModBlocks.WILLOW_PLANKS);

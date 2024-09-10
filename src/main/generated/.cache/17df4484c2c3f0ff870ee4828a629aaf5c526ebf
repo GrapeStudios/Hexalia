@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-10T17:35:33.8219169	Hexalia/Block Loot Tables
+// 1.20.1	2024-09-10T18:42:40.7918322	Hexalia/Block Loot Tables
 e4e4f7bc56a75ad3d1e5449ba51aae99e15062cb data\hexalia\loot_tables\blocks\small_cauldron.json
 aeb959301b32ba153b4b2dc89a617ff2f27e81ce data\hexalia\loot_tables\blocks\salt.json
 0a81cc3c2b6ef5a0665335b100843904f4bfac41 data\hexalia\loot_tables\blocks\salt_lamp.json
@@ -40,6 +40,7 @@ ab65b97459126c817098d44413260f5310ed508a data\hexalia\loot_tables\blocks\strippe
 0f72d99f32ef54c7adadafd447d9ec060584bf86 data\hexalia\loot_tables\blocks\silkworm_cocoon.json
 9b04d479139f535600fc3e3e9e3301015f630b96 data\hexalia\loot_tables\blocks\rabbage_crop.json
 14c0eded467dfaf19297cefc3500aa295721913c data\hexalia\loot_tables\blocks\parchment.json
+5ae70081c194a702b213852567cb06c886c16117 data\hexalia\loot_tables\blocks\pale_mushroom.json
 7ea3df153854739c57db4885c03301f650fe5ff1 data\hexalia\loot_tables\blocks\mandrake_crop.json
 1f3e2096cab6ac439e43b9dc9ded114a365fbb29 data\hexalia\loot_tables\blocks\wild_mandrake.json
 08a7a306ed46dc0abf61e44147859dc2c3b72848 data\hexalia\loot_tables\blocks\cottonwood_slab.json
@@ -56,6 +57,7 @@ a8298f815c3d89857892720b2735ba023d581704 data\hexalia\loot_tables\blocks\potted_
 418ad0187eaf4c522490e453da952366575fd5a5 data\hexalia\loot_tables\blocks\cottonwood_stairs.json
 dccf921da3c1a8d1aaa4eb1474ac6fed20349afc data\hexalia\loot_tables\blocks\willow_button.json
 1b21987c9a216e217ac4b576dc79bd149e276832 data\hexalia\loot_tables\blocks\willow_trapdoor.json
+12d86362eee26b4abad8f16fedb14c942dfe4f13 data\hexalia\loot_tables\blocks\potted_pale_mushroom.json
 1159edd6319b54b2aec08c4e76a168bcd67951d1 data\hexalia\loot_tables\blocks\brew_shelf.json
 8b8bf033c84da7f34d9d365a7f3bdd9bdef393b2 data\hexalia\loot_tables\blocks\willow_hanging_sign.json
 e1811df28b896b96eeeb48fed28afe16e4fc8591 data\hexalia\loot_tables\blocks\candle_skull.json

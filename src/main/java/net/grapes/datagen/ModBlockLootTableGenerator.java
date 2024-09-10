@@ -28,6 +28,8 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.HENBANE);
         addPottedPlantDrops(ModBlocks.POTTED_HENBANE);
         addDrop(ModBlocks.LOTUS_FLOWER);
+        addDrop(ModBlocks.PALE_MUSHROOM);
+        addPottedPlantDrops(ModBlocks.POTTED_PALE_MUSHROOM);
 
         // Other Blocks
         addDrop(ModBlocks.INFUSED_DIRT);

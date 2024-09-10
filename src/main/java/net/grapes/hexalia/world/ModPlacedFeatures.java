@@ -29,6 +29,7 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> COTTONWOOD_COCOON_PLACED_KEY = registerKey("cottonwood_cocoon_placed");
     public static final RegistryKey<PlacedFeature> WILLOW_PLACED_KEY = registerKey("willow_placed");
     public static final RegistryKey<PlacedFeature> LOTUS_FLOWER_PLACED_KEY = registerKey("lotus_flower_placed");
+    public static final RegistryKey<PlacedFeature> PALE_MUSHROOM_PLACED_KEY = registerKey("pale_mushroom_placed");
 
     public static void bootstrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -63,6 +64,9 @@ public class ModPlacedFeatures {
 
         register(context, LOTUS_FLOWER_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.LOTUS_FLOWER_KEY),
                 CountPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
+
+        register(context, PALE_MUSHROOM_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.PALE_MUSHROOM_KEY),
+                CountPlacementModifier.of(1), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
 
         // Trees
         register(context, DARK_OAK_COCOON_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.DARK_OAK_COCOON_KEY),

@@ -29,6 +29,11 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModBlocks.SPIRIT_BLOOM.asItem())
                 .add(ModBlocks.HENBANE.asItem());
 
+        getOrCreateTagBuilder(ItemTags.VILLAGER_PLANTABLE_SEEDS)
+                .add(ModItems.RABBAGE_SEEDS)
+                .add(ModItems.SUNFIRE_TOMATO_SEEDS)
+                .add(ModItems.MANDRAKE_SEEDS);
+
         // Tags for Tree Related Items
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN)
                 .addTag(ModTags.Items.COTTONWOOD_LOGS)
@@ -106,7 +111,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.SALT);
 
         getOrCreateTagBuilder(ModTags.Items.MUSHROOMS)
-                .add(ModBlocks.DREAMSHROOM.asItem());
+                .add(ModBlocks.DREAMSHROOM.asItem())
+                .add(ModBlocks.PALE_MUSHROOM.asItem());
 
         getOrCreateTagBuilder(ModTags.Items.BERRIES)
                 .add(ModItems.CHILLBERRIES);

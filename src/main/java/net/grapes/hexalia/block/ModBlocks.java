@@ -22,6 +22,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
 
 public class ModBlocks {
 
@@ -51,15 +52,22 @@ public class ModBlocks {
             new ChillberryBushBlock(FabricBlockSettings.copyOf(Blocks.SWEET_BERRY_BUSH)));
     public static final Block RABBAGE_CROP = registerBlockWithoutBlockItem("rabbage_crop",
             new RabbageCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
+    public static final Block SILKWORM_COCOON = registerBlock("silkworm_cocoon",
+            new CocoonBlock(FabricBlockSettings.create().mapColor(MapColor.WHITE_GRAY).instrument(Instrument.BANJO)
+                    .strength(0.5f).noCollision()));
+
+    // Decorative Plants
     public static final Block HENBANE = registerBlock("henbane",
             new FlowerBlock(StatusEffects.POISON, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
     public static final Block POTTED_HENBANE = registerBlockWithoutBlockItem("potted_henbane",
             new FlowerPotBlock(HENBANE, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
-    public static final Block SILKWORM_COCOON = registerBlock("silkworm_cocoon",
-            new CocoonBlock(FabricBlockSettings.create().mapColor(MapColor.WHITE_GRAY).instrument(Instrument.BANJO)
-                    .strength(0.5f).noCollision()));
     public static final Block LOTUS_FLOWER = registerBlockWithoutBlockItem("lotus_flower",
-            new LotusFlowerBlock(FabricBlockSettings.copyOf(Blocks.LILY_PAD)));
+            new LotusFlowerBlock(FabricBlockSettings.copyOf(Blocks.LILY_PAD).luminance(8)));
+    public static final Block PALE_MUSHROOM = registerBlock("pale_mushroom",
+            new MushroomPlantBlock(FabricBlockSettings.copyOf(Blocks.BROWN_MUSHROOM).noCollision().nonOpaque().luminance(12),
+                    TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM));
+    public static final Block POTTED_PALE_MUSHROOM = registerBlockWithoutBlockItem("potted_pale_mushroom",
+            new FlowerPotBlock(PALE_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM).luminance(12)));
 
     // Mineral-Related Blocks
     public static final Block SALT_ORE = registerBlock("salt_ore",
@@ -182,7 +190,6 @@ public class ModBlocks {
             new ModHangingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_HANGING_SIGN), ModWoodTypes.WILLOW));
     public static final Block WILLOW_HANGING_WALL_SIGN = registerBlockWithoutBlockItem("willow_hanging_wall_sign",
             new ModWallHangingSignBlock(FabricBlockSettings.copyOf(Blocks.OAK_WALL_HANGING_SIGN), ModWoodTypes.WILLOW));
-
 
     // Registries
     public static void registerBlockProperties() {

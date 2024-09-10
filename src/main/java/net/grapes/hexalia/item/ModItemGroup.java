@@ -117,6 +117,7 @@ public class ModItemGroup {
                         entries.add(ModItems.WILLOW_HANGING_SIGN);
 
                         entries.add(ModItems.LOTUS_FLOWER);
+                        entries.add(ModBlocks.PALE_MUSHROOM);
                     }).build());
     public static void registerItemGroups(){
     }

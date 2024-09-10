@@ -22,10 +22,13 @@ public class ModVegetationGeneration {
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.SIREN_KELP_PLACED_KEY);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.FOREST, BiomeKeys.BIRCH_FOREST),
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.WILD_MANDRAKE_PLACED_KEY);
+
         // Decorative Plants
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.PLAINS),
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.HENBANE_PLACED_KEY);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.ENCHANTED_BAYOU),
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.LOTUS_FLOWER_PLACED_KEY);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.ENCHANTED_BAYOU),
+                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.PALE_MUSHROOM_PLACED_KEY);
     }
 }
