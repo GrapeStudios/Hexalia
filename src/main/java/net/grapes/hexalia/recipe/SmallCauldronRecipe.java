@@ -105,7 +105,6 @@ public class SmallCauldronRecipe implements Recipe<SimpleInventory> {
         @Override
         public SmallCauldronRecipe read(Identifier id, JsonObject json) {
             ItemStack output = ShapedRecipe.outputFromJson(JsonHelper.getObject(json, "output"));
-
             JsonArray ingredients = JsonHelper.getArray(json, "ingredients");
             DefaultedList<Ingredient> inputs = DefaultedList.ofSize(ingredients.size(), Ingredient.EMPTY);
 
