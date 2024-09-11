@@ -58,7 +58,7 @@ public class ModBlocks {
 
     // Decorative Plants
     public static final Block HENBANE = registerBlock("henbane",
-            new FlowerBlock(StatusEffects.POISON, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
+            new FlowerBlock(StatusEffects.ABSORPTION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
     public static final Block POTTED_HENBANE = registerBlockWithoutBlockItem("potted_henbane",
             new FlowerPotBlock(HENBANE, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
     public static final Block LOTUS_FLOWER = registerBlockWithoutBlockItem("lotus_flower",
@@ -68,6 +68,8 @@ public class ModBlocks {
                     TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM));
     public static final Block POTTED_PALE_MUSHROOM = registerBlockWithoutBlockItem("potted_pale_mushroom",
             new FlowerPotBlock(PALE_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM).luminance(12)));
+    public static final Block WITCHWEED = registerBlock("witchweed",
+            new WitchweedBlock(StatusEffects.POISON, 8, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
 
     // Mineral-Related Blocks
     public static final Block SALT_ORE = registerBlock("salt_ore",
@@ -196,6 +198,7 @@ public class ModBlocks {
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.SPIRIT_BLOOM, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.DREAMSHROOM, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.HENBANE, 0.5F);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.WITCHWEED, 0.5F);
 
         StrippableBlockRegistry.register(ModBlocks.COTTONWOOD_LOG, ModBlocks.STRIPPED_COTTONWOOD_LOG);
         StrippableBlockRegistry.register(ModBlocks.COTTONWOOD_WOOD, ModBlocks.STRIPPED_COTTONWOOD_WOOD);
@@ -220,6 +223,7 @@ public class ModBlocks {
         instance.add(ModBlocks.STRIPPED_WILLOW_LOG, 5, 20);
         instance.add(ModBlocks.STRIPPED_WILLOW_WOOD, 5, 20);
         instance.add(ModBlocks.WILLOW_PLANKS, 5, 20);
+        instance.add(ModBlocks.WITCHWEED, 60, 100);
     }
 
     // Methods

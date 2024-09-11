@@ -118,6 +118,7 @@ public class ModItemGroup {
 
                         entries.add(ModItems.LOTUS_FLOWER);
                         entries.add(ModBlocks.PALE_MUSHROOM);
+                        entries.add(ModBlocks.WITCHWEED);
                     }).build());
     public static void registerItemGroups(){
     }

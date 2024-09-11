@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-10T18:42:40.7999345	Hexalia/Recipes
+// 1.20.1	2024-09-10T22:49:01.3003288	Hexalia/Recipes
 3da66bc3c027bde22458feef7621addc84de2be7 data\hexalia\advancements\recipes\building_blocks\cottonwood_planks.json
 76cfa5211d9cb62149f3855d3b23b3389693be8e data\hexalia\advancements\recipes\misc\mortar_and_pestle.json
 7125ea6d2911721c08b13052e2da9e8aa7eaab2d data\hexalia\recipes\hex_focus_.json
@@ -47,9 +47,9 @@ bdddcdad4b80dacbf78d628a60188a802a570692 data\hexalia\recipes\infused_dirt_.json
 e7d0c6bae598f2d836f1c95c53c2a32888cbc45e data\hexalia\recipes\purifying_salts.json
 a81012f8f9163fbb85e72f278648ac718c59e3c1 data\hexalia\advancements\recipes\redstone\cottonwood_pressure_plate.json
 0f871c252130a830d0d1fad3acff7814ffa3eb92 data\hexalia\recipes\willow_boat.json
+f67c7cbbab3ab9b392b15c26592bdbab3e077a6b data\hexalia\recipes\willow_fence_gate.json
 cc8598fa0f5c28d43436aa912fc9d6a594d72b7b data\hexalia\advancements\recipes\redstone\willow_trapdoor.json
 b4ee3b6584db475b105602458b82b90f8d14774b data\hexalia\advancements\recipes\transportation\willow_chest_boat.json
-f67c7cbbab3ab9b392b15c26592bdbab3e077a6b data\hexalia\recipes\willow_fence_gate.json
 82b40fd0f7dd4de905f094da178650fbe4ad3cbc data\hexalia\advancements\recipes\misc\dreamshroom_paste.json
 2884548e412c49c07d23e96bbfb125d7942d389f data\hexalia\recipes\yellow_dye.json
 80ec38b79e4d5690ac82999cbeb7a45470be3934 data\hexalia\recipes\stone_dagger_.json

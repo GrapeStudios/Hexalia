@@ -4,7 +4,6 @@ import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.particle.ModParticles;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.MushroomPlantBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -20,11 +19,9 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
 
-public class DreamshroomBlock extends MushroomPlantBlock {
+public class DreamshroomBlock extends HMushroomBlock {
 
-    // Constants for particle
     private static final double MAX_HORIZONTAL_OFFSET = 0.1;
     private static final double PARTICLE_START_Y_OFFSET = 0.3;
     private static final double PARTICLE_FALL_SPEED = -0.02;
@@ -32,12 +29,7 @@ public class DreamshroomBlock extends MushroomPlantBlock {
     private static final int PARTICLE_FREQUENCY = 5;
 
     public DreamshroomBlock(Settings settings) {
-        super(settings, TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM);
-    }
-
-    @Override
-    public boolean trySpawningBigMushroom(ServerWorld world, BlockPos pos, BlockState state, Random random) {
-        return false;
+        super(settings);
     }
 
     @Override
@@ -48,11 +40,6 @@ public class DreamshroomBlock extends MushroomPlantBlock {
     @Override
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
         return (floor.isSideSolidFullSquare(world, pos, Direction.UP) || floor.isOf(ModBlocks.INFUSED_DIRT)) && !floor.isOf(Blocks.MAGMA_BLOCK);
-    }
-
-    @Override
-    public boolean canGrow(World world, Random random, BlockPos pos, BlockState state) {
-        return true;
     }
 
     public static void createSporeParticles(World world, BlockPos pos, Random random, int particleFrequency) {
@@ -80,7 +67,7 @@ public class DreamshroomBlock extends MushroomPlantBlock {
         ItemStack itemStack = player.getStackInHand(hand);
         if (itemStack.isOf(Items.BONE_MEAL)) {
             if (!world.isClient) {
-                if (this.canGrow(world, world.random, pos, state)) {
+                if (this.canGrow(world, pos)) {
                     dropStack(world, pos, new ItemStack(this));
                     if (!player.isCreative()) {
                         itemStack.decrement(1);
@@ -96,5 +83,10 @@ public class DreamshroomBlock extends MushroomPlantBlock {
             }
         }
         return ActionResult.PASS;
+    }
+
+    public boolean canGrow (World world, BlockPos pos) {
+        BlockState belowState = world.getBlockState(pos.down());
+        return belowState.isOf(ModBlocks.INFUSED_DIRT);
     }
 }

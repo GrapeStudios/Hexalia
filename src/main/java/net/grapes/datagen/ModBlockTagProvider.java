@@ -39,10 +39,12 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.LOTUS_FLOWER);
 
         getOrCreateTagBuilder(BlockTags.FLOWERS)
-                .add(ModBlocks.SPIRIT_BLOOM, ModBlocks.HENBANE);
+                .add(ModBlocks.SPIRIT_BLOOM, ModBlocks.HENBANE,
+                        ModBlocks.WITCHWEED);
 
         getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS)
-                .add(ModBlocks.SPIRIT_BLOOM, ModBlocks.HENBANE);
+                .add(ModBlocks.SPIRIT_BLOOM, ModBlocks.HENBANE,
+                        ModBlocks.WITCHWEED);
 
         getOrCreateTagBuilder(BlockTags.FROG_PREFER_JUMP_TO)
                 .add(ModBlocks.LOTUS_FLOWER);

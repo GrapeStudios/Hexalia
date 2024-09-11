@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-10T18:42:40.8029615	Hexalia/Tags for minecraft:item
+// 1.20.1	2024-09-10T22:49:01.3013282	Hexalia/Tags for minecraft:item
 69ac63a532a819b8160afd10eed189f66b08cff8 data\hexalia\tags\items\cottonwood_logs.json
 1ac464563ca6b9c42feff052038b24f4ede071de data\minecraft\tags\items\logs_that_burn.json
 7426c70e9a7459782afc5dc25348366757ea0425 data\c\tags\items\salt_blocks.json
@@ -9,16 +9,16 @@ bbadf500cdc09af33fa73617acbfb98c018929f5 data\c\tags\items\cooked_meats.json
 00809a0260e3939f0cb2a87697fec96edbebbcf6 data\minecraft\tags\items\wooden_pressure_plates.json
 ccb8164c57952d9d4129125d7ac34a66b4f37f30 data\minecraft\tags\items\signs.json
 f36b61d12aa3d7253f3ce7350a7eb2d6d937639d data\c\tags\items\salt_dusts.json
-adc64d90ab00acc40f529a58afb00e26ebd82501 data\minecraft\tags\items\small_flowers.json
+6ee86ef3d45689678792c66c6ee502a45c5a2118 data\minecraft\tags\items\small_flowers.json
 063f1baf5dd38238c0d0d0ae1bf651103e2a60bd data\minecraft\tags\items\wooden_slabs.json
 93541b0676cb34e3e5e4ef7cde9d78ca0c44a0d4 data\minecraft\tags\items\chest_boats.json
-adc64d90ab00acc40f529a58afb00e26ebd82501 data\minecraft\tags\items\flowers.json
+6ee86ef3d45689678792c66c6ee502a45c5a2118 data\minecraft\tags\items\flowers.json
 555159207ed645092a64cc665935022952ef06c0 data\minecraft\tags\items\boats.json
 8bc276f3b1d4bd808a0c19af8f23234a2ede0405 data\c\tags\items\ores.json
 e22a2880ae95177b34a2832bbd394233809e3fc7 data\minecraft\tags\items\fox_food.json
+8bc276f3b1d4bd808a0c19af8f23234a2ede0405 data\c\tags\items\salt_ores.json
 007434f8052fcba95c3917b071daca5ab2d3ef5c data\c\tags\items\mushrooms.json
 e22a2880ae95177b34a2832bbd394233809e3fc7 data\c\tags\items\berries.json
-8bc276f3b1d4bd808a0c19af8f23234a2ede0405 data\c\tags\items\salt_ores.json
 946b8f1be6b2dddec241ef7caec1aa871c276c02 data\minecraft\tags\items\saplings.json
 bf62813bedd0ad69cf5040c3b734d9feedbe772f data\c\tags\items\seeds.json
 26be41f0aa84f09687c8a024582776e43272dbf1 data\minecraft\tags\items\wooden_fences.json
@@ -26,8 +26,8 @@ c80bfb86bcf352e7635cf88a8c3ef8eebabaf9fc data\minecraft\tags\items\wooden_stairs
 b96151fcc0be5afcfcdb96872cdcc0aad32b6586 data\hexalia\tags\items\crushed_plants.json
 b59a4bf3efcfb0ce9931aae0678c8e696d3fc238 data\minecraft\tags\items\hanging_signs.json
 33b474f66b0483d5f35a203dd508ed8820383440 data\minecraft\tags\items\trimmable_armor.json
-f6939046b674fffdfa1000c3bfdded3984dc39e9 data\minecraft\tags\items\wooden_trapdoors.json
 7e8bc98a47542fcd5054ce82a798057287a1cbe6 data\minecraft\tags\items\villager_plantable_seeds.json
+f6939046b674fffdfa1000c3bfdded3984dc39e9 data\minecraft\tags\items\wooden_trapdoors.json
 66d0dba3d09be99babcaa8493494bbf84c2604cd data\minecraft\tags\items\fence_gates.json
 91acc2f68665f67029904ecbf93666dd36ea0476 data\hexalia\tags\items\brews.json
 149e5741fe5ee9b1c8b2a5f89742d307e569331a data\minecraft\tags\items\wooden_doors.json
