@@ -98,13 +98,13 @@ public class ModItems {
 
     // Armors
     public static final Item HAT_OF_THE_SWAMP = registerItem("hat_of_the_swamp",
-            new ArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.HELMET, new FabricItemSettings()));
+            new ModArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.HELMET, new FabricItemSettings()));
     public static final Item CHEST_OF_THE_SWAMP = registerItem("chest_of_the_swamp",
-            new ArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
+            new ModArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
     public static final Item PANTS_OF_THE_SWAMP = registerItem("pants_of_the_swamp",
-            new ArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
+            new ModArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
     public static final Item BOOTS_OF_THE_SWAMP = registerItem("boots_of_the_swamp",
-            new ArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.BOOTS, new FabricItemSettings()));
+            new ModArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.BOOTS, new FabricItemSettings()));
 
     // Spawn Eggs
     public static final Item SILK_MOTH_SPAWN_EGG = registerItem("silk_moth_spawn_egg",

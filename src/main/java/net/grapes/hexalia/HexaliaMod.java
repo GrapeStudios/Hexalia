@@ -7,7 +7,6 @@ import net.grapes.hexalia.compat.farmersdelight.FarmersDelightCompat;
 import net.grapes.hexalia.effect.ModEffects;
 import net.grapes.hexalia.entity.ModBoats;
 import net.grapes.hexalia.entity.ModEntities;
-import net.grapes.hexalia.events.ModEventHandler;
 import net.grapes.hexalia.item.ModItemGroup;
 import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.particle.ModParticles;
@@ -42,6 +41,5 @@ public class HexaliaMod implements ModInitializer {
 		FarmersDelightCompat.registerCompat();
 		ModEntities.registerModEntities();
 		ModBoats.registerBoats();
-		ModEventHandler.registerServerEvents();
 	}
 }
