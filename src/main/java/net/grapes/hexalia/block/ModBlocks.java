@@ -64,8 +64,7 @@ public class ModBlocks {
     public static final Block LOTUS_FLOWER = registerBlockWithoutBlockItem("lotus_flower",
             new LotusFlowerBlock(FabricBlockSettings.copyOf(Blocks.LILY_PAD).luminance(8)));
     public static final Block PALE_MUSHROOM = registerBlock("pale_mushroom",
-            new MushroomPlantBlock(FabricBlockSettings.copyOf(Blocks.BROWN_MUSHROOM).noCollision().nonOpaque().luminance(12),
-                    TreeConfiguredFeatures.HUGE_BROWN_MUSHROOM));
+            new HMushroomBlock(FabricBlockSettings.copyOf(Blocks.BROWN_MUSHROOM).noCollision().nonOpaque().luminance(12)));
     public static final Block POTTED_PALE_MUSHROOM = registerBlockWithoutBlockItem("potted_pale_mushroom",
             new FlowerPotBlock(PALE_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM).luminance(12)));
     public static final Block WITCHWEED = registerBlock("witchweed",
