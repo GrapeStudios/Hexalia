@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-11T20:31:51.5182209	Hexalia/Recipes
+// 1.20.1	2024-09-11T23:17:04.0563675	Hexalia/Recipes
 3da66bc3c027bde22458feef7621addc84de2be7 data\hexalia\advancements\recipes\building_blocks\cottonwood_planks.json
 76cfa5211d9cb62149f3855d3b23b3389693be8e data\hexalia\advancements\recipes\misc\mortar_and_pestle.json
 7125ea6d2911721c08b13052e2da9e8aa7eaab2d data\hexalia\recipes\hex_focus_.json
@@ -22,8 +22,8 @@ abe2f6a21d19ca69ac6673f5c7d17a1fefb9161b data\hexalia\advancements\recipes\trans
 b24f1803209d9eb5d6c96ce435d8b7246348e26f data\hexalia\recipes\cottonwood_fence.json
 df6f3e5b910cef10fd6e7a20aabbef2c8c9928c8 data\hexalia\advancements\recipes\misc\mandrake_seeds.json
 6a88cdf5f04cfc87e59ed4c1430ce45b0781dcf4 data\hexalia\recipes\cottonwood_slab.json
-43b6be9da4040ccc33daeb855d881d59018ab6ec data\hexalia\recipes\cobweb_.json
 eb42ee82d61f1f774c29e9c36ac097bfcb02ea9e data\hexalia\advancements\recipes\misc\cobweb_.json
+43b6be9da4040ccc33daeb855d881d59018ab6ec data\hexalia\recipes\cobweb_.json
 7f24f999123921bbaa770b1c6d3e66a85d908a33 data\hexalia\recipes\cottonwood_fence_gate.json
 b7d5cd8d7cd70f7bf74d7db031c26d815fef3e89 data\hexalia\recipes\sunfire_tomato_seeds.json
 e1d872e5341b8304b6682f0396e98685e2509836 data\hexalia\advancements\recipes\misc\purifying_salts.json
@@ -59,8 +59,8 @@ f3c7d68a87a4d54e3db9f5871b1b0c0e31e691f8 data\hexalia\advancements\recipes\decor
 ce60d92ba23f5ee603a2394c2aa9c8af3d4b073d data\hexalia\recipes\cottonwood_button_from_cottonwood_planks.json
 53326a019a070dde3721e6abf7902966558c21e8 data\hexalia\advancements\recipes\misc\hex_focus_.json
 b47e92fbdbab9199fe6aa69604fba631ba1314da data\hexalia\advancements\recipes\misc\sunfire_tomato_seeds.json
-569438b0864741b7c7ede583b8036a8b6c70fdcf data\hexalia\advancements\recipes\misc\spirit_bloom_powder.json
 09230c4ac8c984c104055442aeb9fd4962ce8024 data\hexalia\recipes\mandrake_stew.json
+569438b0864741b7c7ede583b8036a8b6c70fdcf data\hexalia\advancements\recipes\misc\spirit_bloom_powder.json
 77b65ffd07c17835d6dbe9a40ccd1927e4157463 data\hexalia\advancements\recipes\misc\string.json
 46a97a926f7c0b16324d03fb90d8b4c02db0a23b data\hexalia\recipes\cottonwood_trapdoor.json
 a201da235821e7b866bbfbd0be5bbc52e8f7741b data\hexalia\recipes\brew_shelf_.json

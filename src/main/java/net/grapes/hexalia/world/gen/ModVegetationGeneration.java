@@ -32,5 +32,7 @@ public class ModVegetationGeneration {
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.PALE_MUSHROOM_PLACED_KEY);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.ENCHANTED_BAYOU),
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.WITCHWEED_PLACED_KEY);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.ENCHANTED_BAYOU),
+                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.GHOST_FERN_PLACED_KEY);
     }
 }

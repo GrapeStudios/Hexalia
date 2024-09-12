@@ -20,11 +20,14 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 
-public class InfusableFlowerBlock extends FlowerBlock implements Fertilizable {
+public class HFlowerBlock extends FlowerBlock implements Fertilizable {
 
-    public InfusableFlowerBlock(StatusEffect suspiciousStewEffect, int effectDuration, Settings settings) {
+    public HFlowerBlock(StatusEffect suspiciousStewEffect, int effectDuration, Settings settings) {
         super(suspiciousStewEffect, effectDuration, settings);
     }
+
+    /* Hexalia's InfusableFlowerBlock can be used for flowers blocks that can be applied
+    with Bone Meal when planted in an Infused Dirt block to duplicate the flower.  */
 
     @Override
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {

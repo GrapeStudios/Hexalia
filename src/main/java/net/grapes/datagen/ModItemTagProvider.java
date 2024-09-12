@@ -24,12 +24,14 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ItemTags.FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM.asItem())
                 .add(ModBlocks.HENBANE.asItem())
-                .add(ModBlocks.WITCHWEED.asItem());
+                .add(ModBlocks.WITCHWEED.asItem())
+                .add(ModBlocks.GHOST_FERN.asItem());
 
         getOrCreateTagBuilder(ItemTags.SMALL_FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM.asItem())
                 .add(ModBlocks.HENBANE.asItem())
-                .add(ModBlocks.WITCHWEED.asItem());
+                .add(ModBlocks.WITCHWEED.asItem())
+                .add(ModBlocks.GHOST_FERN.asItem());
 
         getOrCreateTagBuilder(ItemTags.VILLAGER_PLANTABLE_SEEDS)
                 .add(ModItems.RABBAGE_SEEDS)

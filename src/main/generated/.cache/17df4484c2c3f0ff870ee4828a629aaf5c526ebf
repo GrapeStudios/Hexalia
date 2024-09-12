@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-11T20:31:51.5127922	Hexalia/Block Loot Tables
+// 1.20.1	2024-09-11T23:17:04.0523667	Hexalia/Block Loot Tables
 e4e4f7bc56a75ad3d1e5449ba51aae99e15062cb data\hexalia\loot_tables\blocks\small_cauldron.json
 aeb959301b32ba153b4b2dc89a617ff2f27e81ce data\hexalia\loot_tables\blocks\salt.json
 0a81cc3c2b6ef5a0665335b100843904f4bfac41 data\hexalia\loot_tables\blocks\salt_lamp.json
@@ -18,6 +18,7 @@ ed498b6cee4ed24822457ecb581b6b5f1cf10c20 data\hexalia\loot_tables\blocks\rustic_
 8c1785700c3f25498578ccb6d97d3c2413d8c0a3 data\hexalia\loot_tables\blocks\cottonwood_wood.json
 6cae986ae42471947719e198c77b04e775712c30 data\hexalia\loot_tables\blocks\cottonwood_button.json
 a9d3cf0a303443aa371cc2241686c95c45912605 data\hexalia\loot_tables\blocks\willow_stairs.json
+cf4ca757e27a948295b632e8772b55f13c7c023c data\hexalia\loot_tables\blocks\ghost_fern.json
 6d013ce70a019c18e389ff7348214f2f2b40fd52 data\hexalia\loot_tables\blocks\cottonwood_leaves.json
 1b1f9ba6351abaed3eb68d06a71bc2c4d18fe485 data\hexalia\loot_tables\blocks\henbane.json
 8176b91fe375c1e4fdcad69ff850188ee4468edb data\hexalia\loot_tables\blocks\cottonwood_hanging_sign.json

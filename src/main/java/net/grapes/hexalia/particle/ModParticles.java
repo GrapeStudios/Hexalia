@@ -9,6 +9,7 @@ import net.minecraft.util.Identifier;
 
 public class ModParticles {
     public static final DefaultParticleType SPORE_PARTICLE = registerParticle("spore_particle", FabricParticleTypes.simple());
+    public static final DefaultParticleType GHOST_PARTICLE = registerParticle("ghost_particle", FabricParticleTypes.simple());
     public static final DefaultParticleType MOTE_PARTICLE = registerParticle("mote_particle", FabricParticleTypes.simple());
 
     // TO-DO Darken particles

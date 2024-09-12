@@ -40,11 +40,11 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(BlockTags.FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM, ModBlocks.HENBANE,
-                        ModBlocks.WITCHWEED);
+                        ModBlocks.WITCHWEED, ModBlocks.GHOST_FERN);
 
         getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM, ModBlocks.HENBANE,
-                        ModBlocks.WITCHWEED);
+                        ModBlocks.WITCHWEED, ModBlocks.GHOST_FERN);
 
         getOrCreateTagBuilder(BlockTags.FROG_PREFER_JUMP_TO)
                 .add(ModBlocks.LOTUS_FLOWER);
