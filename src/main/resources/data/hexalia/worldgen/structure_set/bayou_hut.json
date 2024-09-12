@@ -1,0 +1,17 @@
+{
+  "structures": [
+    {
+      "structure": "hexalia:bayou_hut",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "salt": 453593019,
+
+    "spacing": 20,
+
+    "separation": 6,
+
+    "type": "minecraft:random_spread"
+  }
+}

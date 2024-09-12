@@ -1,0 +1,74 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "min": 1,
+        "max": 10
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 20,
+          "name": "minecraft:amethyst_shard"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 20,
+          "name": "hexalia:silk_fiber"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 20,
+          "name": "hexalia:rustic_bottle"
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "min": 0,
+        "max": 4
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 15,
+          "name": "hexalia:mandrake_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 15,
+          "name": "hexalia:sunfire_tomato_seeds"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 15,
+          "name": "hexalia:chillberries"
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "min": 0,
+        "max": 2
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "hexalia:wisdom_gem"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "hexalia:bogged_hat"
+        },
+        {
+          "type": "minecraft:item",
+          "weight": 5,
+          "name": "hexalia:bogged_boots"
+        }
+      ]
+    }
+  ]
+}
