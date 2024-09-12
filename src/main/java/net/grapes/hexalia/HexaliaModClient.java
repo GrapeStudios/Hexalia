@@ -62,7 +62,8 @@ public class HexaliaModClient implements ClientModInitializer {
                 ModBlocks.COTTONWOOD_DOOR, ModBlocks.COTTONWOOD_CATKIN,
                 ModBlocks.WILLOW_TRAPDOOR, ModBlocks.WILLOW_DOOR,
                 ModBlocks.LOTUS_FLOWER, ModBlocks.PALE_MUSHROOM,
-                ModBlocks.POTTED_PALE_MUSHROOM, ModBlocks.WITCHWEED
+                ModBlocks.POTTED_PALE_MUSHROOM, ModBlocks.WITCHWEED,
+                ModBlocks.GHOST_FERN
         );
     }
 

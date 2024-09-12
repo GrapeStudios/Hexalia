@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-10T22:49:01.3003288	Hexalia/Recipes
+// 1.20.1	2024-09-11T20:31:51.5182209	Hexalia/Recipes
 3da66bc3c027bde22458feef7621addc84de2be7 data\hexalia\advancements\recipes\building_blocks\cottonwood_planks.json
 76cfa5211d9cb62149f3855d3b23b3389693be8e data\hexalia\advancements\recipes\misc\mortar_and_pestle.json
 7125ea6d2911721c08b13052e2da9e8aa7eaab2d data\hexalia\recipes\hex_focus_.json
@@ -47,8 +47,8 @@ bdddcdad4b80dacbf78d628a60188a802a570692 data\hexalia\recipes\infused_dirt_.json
 e7d0c6bae598f2d836f1c95c53c2a32888cbc45e data\hexalia\recipes\purifying_salts.json
 a81012f8f9163fbb85e72f278648ac718c59e3c1 data\hexalia\advancements\recipes\redstone\cottonwood_pressure_plate.json
 0f871c252130a830d0d1fad3acff7814ffa3eb92 data\hexalia\recipes\willow_boat.json
-f67c7cbbab3ab9b392b15c26592bdbab3e077a6b data\hexalia\recipes\willow_fence_gate.json
 cc8598fa0f5c28d43436aa912fc9d6a594d72b7b data\hexalia\advancements\recipes\redstone\willow_trapdoor.json
+f67c7cbbab3ab9b392b15c26592bdbab3e077a6b data\hexalia\recipes\willow_fence_gate.json
 b4ee3b6584db475b105602458b82b90f8d14774b data\hexalia\advancements\recipes\transportation\willow_chest_boat.json
 82b40fd0f7dd4de905f094da178650fbe4ad3cbc data\hexalia\advancements\recipes\misc\dreamshroom_paste.json
 2884548e412c49c07d23e96bbfb125d7942d389f data\hexalia\recipes\yellow_dye.json
@@ -79,8 +79,8 @@ f07b3bf3dce0470472ccd544966a9c3c6dd9ecbb data\hexalia\advancements\recipes\decor
 de9ed6e434e4a317119b1608a3e9d04407745d51 data\hexalia\advancements\recipes\building_blocks\cottonwood_stairs.json
 6db50d7da63650bc8bbf31eade7984d8db1616e8 data\hexalia\advancements\recipes\misc\stone_dagger_.json
 e7a0992ae0c5bca02446dcf0b47cb037f232fbe8 data\hexalia\advancements\recipes\misc\silk_fiber.json
-84341e1e456158ce4df4929620d47ba926fdb193 data\hexalia\recipes\cottonwood_door.json
 0ab14cc0d51859ef9cf72c3d273938f1e45e7b51 data\hexalia\recipes\cottonwood_pressure_plate.json
+84341e1e456158ce4df4929620d47ba926fdb193 data\hexalia\recipes\cottonwood_door.json
 4b179e4fe76d13b762af9eb5bc568101d07657a3 data\hexalia\advancements\recipes\redstone\cottonwood_fence_gate.json
 88eefca425b453e98ab5c323dd6e4fbfbf06cdcd data\hexalia\advancements\recipes\redstone\willow_door.json
 ba61b5eccb741b38660e531cbcf2ff1b22922d5c data\hexalia\recipes\chillberry_pie.json

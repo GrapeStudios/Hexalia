@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "hexalia:item/bogged_hat",
+    "layer1": "minecraft:trims/items/helmet_trim_diamond"
+  }
+}

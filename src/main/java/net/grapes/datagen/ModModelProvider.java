@@ -99,10 +99,10 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.BREW_OF_SIPHONING, Models.GENERATED);
         itemModelGenerator.register(ModItems.PARCHMENT, Models.GENERATED);
         itemModelGenerator.register(ModItems.DREAMCATCHER, Models.GENERATED);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.HAT_OF_THE_SWAMP));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.CHEST_OF_THE_SWAMP));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.PANTS_OF_THE_SWAMP));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.BOOTS_OF_THE_SWAMP));
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.BOGGED_HAT));
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.BOGGED_ROBE));
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.BOGGED_PANTS));
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.BOGGED_BOOTS));
         itemModelGenerator.register(ModItems.COTTONWOOD_BOAT, Models.GENERATED);
         itemModelGenerator.register(ModItems.COTTONWOOD_CHEST_BOAT, Models.GENERATED);
         itemModelGenerator.register(ModItems.WILLOW_BOAT, Models.GENERATED);

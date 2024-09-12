@@ -29,6 +29,7 @@
   "item.hexalia.lotus_flower": "Lotus Flower",
   "block.hexalia.pale_mushroom": "Pale Mushroom",
   "block.hexalia.witchweed": "Witchweed",
+  "block.hexalia.ghost_fern": "Ghost Fern",
 
   "block.hexalia.infused_dirt": "Infused Dirt",
   "block.hexalia.infused_farmland": "Infused Farmland",
@@ -88,11 +89,10 @@
 
   "item.hexalia.wisdom_gem": "Wisdom Gem",
 
-  "item.hexalia.hat_of_the_swamp": "Hat Of The Swamp",
-  "item.hexalia.chest_of_the_swamp": "Chest Of The Swamp",
-  "item.hexalia.pants_of_the_swamp": "Pants Of The Swamp",
-  "item.hexalia.boots_of_the_swamp": "Boots Of The Swamp",
-
+  "item.hexalia.bogged_hat": "Bogged Hat",
+  "item.hexalia.bogged_robe": "Bogged Robe",
+  "item.hexalia.bogged_pants": "Bogged Pants",
+  "item.hexalia.bogged_boots": "Bogged Boots",
 
   "sounds.hexalia.mandrake_scream": "Screaming Mandrake",
   "sounds.hexalia.ritual_completed": "Ritual Completed",
@@ -106,6 +106,7 @@
   "tooltip.hexalia.slimey_step_brew": "Slimey Step (2:00)",
   "tooltip.hexalia.vigor_brew": "Vigor (2:00)",
   "tooltip.hexalia.warding_brew": "Warding (2:00)",
+  "tooltip.hexalia.bogged_armor": "Full set gives Water Breathing and Poison immunity",
 
   "tooltip.hexalia.needs_heat": "Requires a heating block below",
 

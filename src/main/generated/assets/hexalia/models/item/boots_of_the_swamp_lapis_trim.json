@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "hexalia:item/boots_of_the_swamp",
-    "layer1": "minecraft:trims/items/boots_trim_lapis"
-  }
-}

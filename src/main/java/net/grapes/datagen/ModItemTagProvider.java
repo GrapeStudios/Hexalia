@@ -134,6 +134,6 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         // Armor Tags
         getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
-                .add(ModItems.HAT_OF_THE_SWAMP, ModItems.CHEST_OF_THE_SWAMP, ModItems.PANTS_OF_THE_SWAMP, ModItems.BOOTS_OF_THE_SWAMP);
+                .add(ModItems.BOGGED_HAT, ModItems.BOGGED_ROBE, ModItems.BOGGED_PANTS, ModItems.BOGGED_BOOTS);
     }
 }

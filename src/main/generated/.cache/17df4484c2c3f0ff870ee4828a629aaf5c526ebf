@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-10T22:49:01.2953275	Hexalia/Block Loot Tables
+// 1.20.1	2024-09-11T20:31:51.5127922	Hexalia/Block Loot Tables
 e4e4f7bc56a75ad3d1e5449ba51aae99e15062cb data\hexalia\loot_tables\blocks\small_cauldron.json
 aeb959301b32ba153b4b2dc89a617ff2f27e81ce data\hexalia\loot_tables\blocks\salt.json
 0a81cc3c2b6ef5a0665335b100843904f4bfac41 data\hexalia\loot_tables\blocks\salt_lamp.json
@@ -7,8 +7,8 @@ aeb959301b32ba153b4b2dc89a617ff2f27e81ce data\hexalia\loot_tables\blocks\salt.js
 483ab1da0e3db7cae7466ff8c438ed18ca9c953d data\minecraft\loot_tables\blocks\oak_sign.json
 4a1b37dfe8d762df2d082fcdc47490c5751e579b data\hexalia\loot_tables\blocks\potted_henbane.json
 2273d315ca9acdb5aab7de2a0a251658b360c919 data\hexalia\loot_tables\blocks\willow_door.json
-4c7859faca78d8516621ca823a2e83812cedf10e data\hexalia\loot_tables\blocks\potted_dreamshroom.json
 7bceaca61d0e098c9500f65d47f7b08afbef4948 data\hexalia\loot_tables\blocks\lotus_flower.json
+4c7859faca78d8516621ca823a2e83812cedf10e data\hexalia\loot_tables\blocks\potted_dreamshroom.json
 542c67f5846876b7cae9932870c96c9d854214ae data\hexalia\loot_tables\blocks\cottonwood_log.json
 13dc3d70a1526cc763144136d45e2e64a49125f5 data\hexalia\loot_tables\blocks\stripped_willow_log.json
 ed498b6cee4ed24822457ecb581b6b5f1cf10c20 data\hexalia\loot_tables\blocks\rustic_oven.json
@@ -21,9 +21,9 @@ a9d3cf0a303443aa371cc2241686c95c45912605 data\hexalia\loot_tables\blocks\willow_
 6d013ce70a019c18e389ff7348214f2f2b40fd52 data\hexalia\loot_tables\blocks\cottonwood_leaves.json
 1b1f9ba6351abaed3eb68d06a71bc2c4d18fe485 data\hexalia\loot_tables\blocks\henbane.json
 8176b91fe375c1e4fdcad69ff850188ee4468edb data\hexalia\loot_tables\blocks\cottonwood_hanging_sign.json
-ba6dc1e4a93e77aa8899ebf36440c303881e2f10 data\hexalia\loot_tables\blocks\salt_ore.json
-7ff8479a5a3023d1768b4b13defc04a59a4c9be3 data\hexalia\loot_tables\blocks\willow_planks.json
 df016fb4daea9958b9a14e261572fab8e04a8f44 data\hexalia\loot_tables\blocks\willow_fence_gate.json
+7ff8479a5a3023d1768b4b13defc04a59a4c9be3 data\hexalia\loot_tables\blocks\willow_planks.json
+ba6dc1e4a93e77aa8899ebf36440c303881e2f10 data\hexalia\loot_tables\blocks\salt_ore.json
 ae24eb4d93b06cacaf71623f037959bc4f7b7403 data\hexalia\loot_tables\blocks\wild_sunfire_tomato.json
 92528eed1196f3a18ff03c61a6f9287b96447369 data\hexalia\loot_tables\blocks\cottonwood_door.json
 e6c26e5db451332147e7b9183fbf132a5e691643 data\hexalia\loot_tables\blocks\willow_pressure_plate.json

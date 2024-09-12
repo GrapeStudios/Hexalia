@@ -72,10 +72,10 @@ public class ModItemGroup {
                         entries.add(ModItems.SILK_FIBER);
                         entries.add(ModItems.SILKWORM);
 
-                        entries.add(ModItems.HAT_OF_THE_SWAMP);
-                        entries.add(ModItems.CHEST_OF_THE_SWAMP);
-                        entries.add(ModItems.PANTS_OF_THE_SWAMP);
-                        entries.add(ModItems.BOOTS_OF_THE_SWAMP);
+                        entries.add(ModItems.BOGGED_HAT);
+                        entries.add(ModItems.BOGGED_ROBE);
+                        entries.add(ModItems.BOGGED_PANTS);
+                        entries.add(ModItems.BOGGED_BOOTS);
 
                         entries.add(ModItems.HEXBOOK);
                         entries.add(ModItems.SILK_MOTH_SPAWN_EGG);
@@ -119,6 +119,7 @@ public class ModItemGroup {
                         entries.add(ModItems.LOTUS_FLOWER);
                         entries.add(ModBlocks.PALE_MUSHROOM);
                         entries.add(ModBlocks.WITCHWEED);
+                        entries.add(ModBlocks.GHOST_FERN);
                     }).build());
     public static void registerItemGroups(){
     }

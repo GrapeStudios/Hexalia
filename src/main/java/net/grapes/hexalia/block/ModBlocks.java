@@ -22,7 +22,6 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
-import net.minecraft.world.gen.feature.TreeConfiguredFeatures;
 
 public class ModBlocks {
 
@@ -43,7 +42,8 @@ public class ModBlocks {
             new InfusedFarmlandBlock(FabricBlockSettings.copyOf(Blocks.FARMLAND).sounds(BlockSoundGroup.MUD)));
     public static final Block MANDRAKE_CROP = registerBlockWithoutBlockItem("mandrake_crop",
             new MandrakeCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
-    public static final Block WILD_MANDRAKE = registerBlock("wild_mandrake", new FlowerBlock(StatusEffects.LEVITATION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
+    public static final Block WILD_MANDRAKE = registerBlock("wild_mandrake",
+            new FlowerBlock(StatusEffects.LEVITATION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
     public static final Block SUNFIRE_TOMATO_CROP = registerBlockWithoutBlockItem("sunfire_tomato_crop",
             new SunfireTomatoCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
     public static final Block WILD_SUNFIRE_TOMATO = registerBlock("wild_sunfire_tomato",
@@ -55,6 +55,8 @@ public class ModBlocks {
     public static final Block SILKWORM_COCOON = registerBlock("silkworm_cocoon",
             new CocoonBlock(FabricBlockSettings.create().mapColor(MapColor.WHITE_GRAY).instrument(Instrument.BANJO)
                     .strength(0.5f).noCollision()));
+    public static final Block GHOST_FERN = registerBlock("ghost_fern",
+            new GhostFernBlock(FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
 
     // Decorative Plants
     public static final Block HENBANE = registerBlock("henbane",
@@ -197,6 +199,7 @@ public class ModBlocks {
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.SPIRIT_BLOOM, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.DREAMSHROOM, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.HENBANE, 0.5F);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.PALE_MUSHROOM, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.WITCHWEED, 0.5F);
 
         StrippableBlockRegistry.register(ModBlocks.COTTONWOOD_LOG, ModBlocks.STRIPPED_COTTONWOOD_LOG);

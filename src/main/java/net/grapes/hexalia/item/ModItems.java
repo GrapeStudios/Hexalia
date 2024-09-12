@@ -97,14 +97,14 @@ public class ModItems {
             new Item(new FabricItemSettings().maxCount(1).maxDamage(60)));
 
     // Armors
-    public static final Item HAT_OF_THE_SWAMP = registerItem("hat_of_the_swamp",
-            new ModArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.HELMET, new FabricItemSettings()));
-    public static final Item CHEST_OF_THE_SWAMP = registerItem("chest_of_the_swamp",
-            new ModArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
-    public static final Item PANTS_OF_THE_SWAMP = registerItem("pants_of_the_swamp",
-            new ModArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
-    public static final Item BOOTS_OF_THE_SWAMP = registerItem("boots_of_the_swamp",
-            new ModArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.BOOTS, new FabricItemSettings()));
+    public static final Item BOGGED_HAT = registerItem("bogged_hat",
+            new BoggedArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.HELMET, new FabricItemSettings()));
+    public static final Item BOGGED_ROBE = registerItem("bogged_robe",
+            new BoggedArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
+    public static final Item BOGGED_PANTS = registerItem("bogged_pants",
+            new BoggedArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
+    public static final Item BOGGED_BOOTS = registerItem("bogged_boots",
+            new BoggedArmorItem(ModArmorMaterials.SWAMP, ArmorItem.Type.BOOTS, new FabricItemSettings()));
 
     // Spawn Eggs
     public static final Item SILK_MOTH_SPAWN_EGG = registerItem("silk_moth_spawn_egg",
