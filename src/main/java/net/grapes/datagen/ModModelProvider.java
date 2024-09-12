@@ -34,6 +34,8 @@ public class ModModelProvider extends FabricModelProvider {
                 BlockStateModelGenerator.TintType.NOT_TINTED);
         blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.PALE_MUSHROOM, ModBlocks.POTTED_PALE_MUSHROOM,
                 BlockStateModelGenerator.TintType.NOT_TINTED);
+        blockStateModelGenerator.registerFlowerPotPlant(ModBlocks.NIGHTSHADE_BUSH, ModBlocks.POTTED_NIGHTSHADE_BUSH,
+                BlockStateModelGenerator.TintType.NOT_TINTED);
 
         // Generation for Tree-related blocks.
         blockStateModelGenerator.registerLog(ModBlocks.COTTONWOOD_LOG).log(ModBlocks.COTTONWOOD_LOG).wood(ModBlocks.COTTONWOOD_WOOD);

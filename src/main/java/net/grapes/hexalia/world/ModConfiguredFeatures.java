@@ -52,6 +52,7 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> WITCHWEED_KEY = registerKey("witchweed_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> GHOST_FERN_KEY = registerKey("ghost_fern_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> HEXED_BULRUSH_KEY = registerKey("hexed_bulrush_key");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> NIGHTSHADE_BUSH_KEY = registerKey("nightshade_bush_key");
 
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
@@ -113,6 +114,10 @@ public class ModConfiguredFeatures {
         register(context, HEXED_BULRUSH_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(5,
                 PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
                         new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.HEXED_BULRUSH)))));
+
+        register(context, NIGHTSHADE_BUSH_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
+                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
+                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.NIGHTSHADE_BUSH)))));
 
         // Trees
         register(context, DARK_OAK_COCOON_KEY, Feature.TREE, new TreeFeatureConfig.Builder(

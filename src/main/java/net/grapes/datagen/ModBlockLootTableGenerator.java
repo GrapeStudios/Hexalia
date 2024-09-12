@@ -33,6 +33,8 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.WITCHWEED);
         addDrop(ModBlocks.GHOST_FERN);
         addDrop(ModBlocks.HEXED_BULRUSH);
+        addDrop(ModBlocks.NIGHTSHADE_BUSH);
+        addPottedPlantDrops(ModBlocks.POTTED_NIGHTSHADE_BUSH);
 
         // Other Blocks
         addDrop(ModBlocks.INFUSED_DIRT);

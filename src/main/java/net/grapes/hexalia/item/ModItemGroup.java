@@ -79,6 +79,14 @@ public class ModItemGroup {
 
                         entries.add(ModItems.HEXBOOK);
                         entries.add(ModItems.SILK_MOTH_SPAWN_EGG);
+
+                        entries.add(ModItems.LOTUS_FLOWER);
+                        entries.add(ModBlocks.PALE_MUSHROOM);
+                        entries.add(ModBlocks.WITCHWEED);
+                        entries.add(ModBlocks.GHOST_FERN);
+                        entries.add(ModBlocks.HEXED_BULRUSH);
+                        entries.add(ModBlocks.NIGHTSHADE_BUSH);
+
                         entries.add(ModBlocks.COTTONWOOD_SAPLING);
                         entries.add(ModBlocks.COTTONWOOD_LEAVES);
                         entries.add(ModBlocks.COTTONWOOD_LOG);
@@ -115,12 +123,6 @@ public class ModItemGroup {
                         entries.add(ModItems.WILLOW_CHEST_BOAT);
                         entries.add(ModItems.WILLOW_SIGN);
                         entries.add(ModItems.WILLOW_HANGING_SIGN);
-
-                        entries.add(ModItems.LOTUS_FLOWER);
-                        entries.add(ModBlocks.PALE_MUSHROOM);
-                        entries.add(ModBlocks.WITCHWEED);
-                        entries.add(ModBlocks.GHOST_FERN);
-                        entries.add(ModBlocks.HEXED_BULRUSH);
                     }).build());
     public static void registerItemGroups(){
     }

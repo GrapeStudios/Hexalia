@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-12T01:04:19.2520439	Hexalia/Recipes
+// 1.20.1	2024-09-12T09:25:11.4766677	Hexalia/Recipes
 3da66bc3c027bde22458feef7621addc84de2be7 data\hexalia\advancements\recipes\building_blocks\cottonwood_planks.json
 76cfa5211d9cb62149f3855d3b23b3389693be8e data\hexalia\advancements\recipes\misc\mortar_and_pestle.json
 7125ea6d2911721c08b13052e2da9e8aa7eaab2d data\hexalia\recipes\hex_focus_.json
@@ -22,8 +22,8 @@ abe2f6a21d19ca69ac6673f5c7d17a1fefb9161b data\hexalia\advancements\recipes\trans
 b24f1803209d9eb5d6c96ce435d8b7246348e26f data\hexalia\recipes\cottonwood_fence.json
 df6f3e5b910cef10fd6e7a20aabbef2c8c9928c8 data\hexalia\advancements\recipes\misc\mandrake_seeds.json
 6a88cdf5f04cfc87e59ed4c1430ce45b0781dcf4 data\hexalia\recipes\cottonwood_slab.json
-eb42ee82d61f1f774c29e9c36ac097bfcb02ea9e data\hexalia\advancements\recipes\misc\cobweb_.json
 43b6be9da4040ccc33daeb855d881d59018ab6ec data\hexalia\recipes\cobweb_.json
+eb42ee82d61f1f774c29e9c36ac097bfcb02ea9e data\hexalia\advancements\recipes\misc\cobweb_.json
 7f24f999123921bbaa770b1c6d3e66a85d908a33 data\hexalia\recipes\cottonwood_fence_gate.json
 b7d5cd8d7cd70f7bf74d7db031c26d815fef3e89 data\hexalia\recipes\sunfire_tomato_seeds.json
 e1d872e5341b8304b6682f0396e98685e2509836 data\hexalia\advancements\recipes\misc\purifying_salts.json
@@ -80,8 +80,8 @@ de9ed6e434e4a317119b1608a3e9d04407745d51 data\hexalia\advancements\recipes\build
 6db50d7da63650bc8bbf31eade7984d8db1616e8 data\hexalia\advancements\recipes\misc\stone_dagger_.json
 e7a0992ae0c5bca02446dcf0b47cb037f232fbe8 data\hexalia\advancements\recipes\misc\silk_fiber.json
 0ab14cc0d51859ef9cf72c3d273938f1e45e7b51 data\hexalia\recipes\cottonwood_pressure_plate.json
-84341e1e456158ce4df4929620d47ba926fdb193 data\hexalia\recipes\cottonwood_door.json
 4b179e4fe76d13b762af9eb5bc568101d07657a3 data\hexalia\advancements\recipes\redstone\cottonwood_fence_gate.json
+84341e1e456158ce4df4929620d47ba926fdb193 data\hexalia\recipes\cottonwood_door.json
 88eefca425b453e98ab5c323dd6e4fbfbf06cdcd data\hexalia\advancements\recipes\redstone\willow_door.json
 ba61b5eccb741b38660e531cbcf2ff1b22922d5c data\hexalia\recipes\chillberry_pie.json
 ab3afa2cb373201baca3711e6dbf2ed2747d46e1 data\hexalia\advancements\recipes\decorations\willow_fence.json

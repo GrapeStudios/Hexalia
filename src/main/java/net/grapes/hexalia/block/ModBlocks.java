@@ -50,7 +50,7 @@ public class ModBlocks {
 
     // Decorative Plants
     public static final Block HENBANE = registerBlock("henbane",
-            new FlowerBlock(StatusEffects.ABSORPTION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
+            new FlowerBlock(StatusEffects.ABSORPTION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM)));
     public static final Block POTTED_HENBANE = registerBlockWithoutBlockItem("potted_henbane",
             new FlowerPotBlock(HENBANE, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
     public static final Block LOTUS_FLOWER = registerBlockWithoutBlockItem("lotus_flower",
@@ -63,6 +63,10 @@ public class ModBlocks {
             new WitchweedBlock(StatusEffects.POISON, 8, FabricBlockSettings.copyOf(Blocks.ALLIUM).noCollision()));
     public static final Block HEXED_BULRUSH = registerBlock("hexed_bulrush",
             new HexedBulrushBlock(FabricBlockSettings.copyOf(Blocks.AZALEA).noCollision().luminance(6)));
+    public static final Block NIGHTSHADE_BUSH = registerBlock("nightshade_bush",
+            new FlowerBlock(StatusEffects.WITHER, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM)));
+    public static final Block POTTED_NIGHTSHADE_BUSH = registerBlockWithoutBlockItem("potted_nightshade_bush",
+            new FlowerPotBlock(NIGHTSHADE_BUSH, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
 
     // Crop & Wild Crop Blocks
     public static final Block MANDRAKE_CROP = registerBlockWithoutBlockItem("mandrake_crop",
@@ -209,6 +213,7 @@ public class ModBlocks {
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.WITCHWEED, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.GHOST_FERN, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.HEXED_BULRUSH, 0.5F);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.NIGHTSHADE_BUSH, 0.5F);
 
         StrippableBlockRegistry.register(ModBlocks.COTTONWOOD_LOG, ModBlocks.STRIPPED_COTTONWOOD_LOG);
         StrippableBlockRegistry.register(ModBlocks.COTTONWOOD_WOOD, ModBlocks.STRIPPED_COTTONWOOD_WOOD);
@@ -234,6 +239,7 @@ public class ModBlocks {
         instance.add(ModBlocks.STRIPPED_WILLOW_WOOD, 5, 20);
         instance.add(ModBlocks.WILLOW_PLANKS, 5, 20);
         instance.add(ModBlocks.WITCHWEED, 60, 100);
+        instance.add(ModBlocks.NIGHTSHADE_BUSH, 60, 100);
     }
 
     // Methods

@@ -34,6 +34,7 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> WITCHWEED_PLACED_KEY = registerKey("witchweed_placed");
     public static final RegistryKey<PlacedFeature> GHOST_FERN_PLACED_KEY = registerKey("ghost_fern_placed_key");
     public static final RegistryKey<PlacedFeature> HEXED_BULRUSH_PLACED_KEY = registerKey("hexed_bulrush_placed_key");
+    public static final RegistryKey<PlacedFeature> NIGHTSHADE_BUSH_PLACED_KEY = registerKey("nightshade_bush_placed_key");
 
     public static void bootstrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -76,10 +77,13 @@ public class ModPlacedFeatures {
                 CountPlacementModifier.of(1), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
 
         register(context, WITCHWEED_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.WITCHWEED_KEY),
-                CountPlacementModifier.of(3), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
+                RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
 
         register(context, HEXED_BULRUSH_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.HEXED_BULRUSH_KEY),
                 CountPlacementModifier.of(6), SquarePlacementModifier.of(), PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP, BiomePlacementModifier.of());
+
+        register(context, NIGHTSHADE_BUSH_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.NIGHTSHADE_BUSH_KEY),
+                RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
 
         // Trees
         register(context, DARK_OAK_COCOON_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.DARK_OAK_COCOON_KEY),

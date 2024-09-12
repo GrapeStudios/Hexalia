@@ -1,5 +1,5 @@
 {
-  "feature": "hexalia:witchweed_key",
+  "feature": "hexalia:nightshade_bush_key",
   "placement": [
     {
       "type": "minecraft:rarity_filter",
@@ -10,7 +10,7 @@
     },
     {
       "type": "minecraft:heightmap",
-      "heightmap": "WORLD_SURFACE_WG"
+      "heightmap": "MOTION_BLOCKING"
     },
     {
       "type": "minecraft:biome"
