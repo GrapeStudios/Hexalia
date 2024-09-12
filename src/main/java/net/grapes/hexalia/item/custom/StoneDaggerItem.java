@@ -1,6 +1,8 @@
 package net.grapes.hexalia.item.custom;
 
+import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.item.ModItems;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.PillarBlock;
@@ -25,10 +27,10 @@ public class StoneDaggerItem extends Item {
         PlayerEntity player = context.getPlayer();
         BlockPos pos = context.getBlockPos();
         BlockState state = world.getBlockState(pos);
-
-        if (state.getBlock() == Blocks.DARK_OAK_LOG) {
+        if (state.getBlock() == Blocks.DARK_OAK_LOG || state.getBlock() == ModBlocks.COTTONWOOD_LOG) {
             world.playSound(null, pos, SoundEvents.ITEM_AXE_STRIP, SoundCategory.BLOCKS, 1.0f, 1.0f);
-            world.setBlockState(pos, Blocks.STRIPPED_DARK_OAK_LOG.getDefaultState().with(PillarBlock.AXIS, state.get(PillarBlock.AXIS)));
+            Block strippedBlock = (state.getBlock() == Blocks.DARK_OAK_LOG) ? Blocks.STRIPPED_DARK_OAK_LOG : ModBlocks.STRIPPED_COTTONWOOD_LOG;
+            world.setBlockState(pos, strippedBlock.getDefaultState().with(PillarBlock.AXIS, state.get(PillarBlock.AXIS)));
             if (player != null) {
                 player.giveItemStack(new ItemStack(ModItems.RESIN));
                 ItemStack stack = context.getStack();
@@ -44,4 +46,5 @@ public class StoneDaggerItem extends Item {
 
         return super.useOnBlock(context);
     }
+
 }
