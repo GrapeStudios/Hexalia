@@ -61,6 +61,8 @@ public class ModBlocks {
             new FlowerPotBlock(PALE_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM).luminance(12)));
     public static final Block WITCHWEED = registerBlock("witchweed",
             new WitchweedBlock(StatusEffects.POISON, 8, FabricBlockSettings.copyOf(Blocks.ALLIUM).noCollision()));
+    public static final Block HEXED_BULRUSH = registerBlock("hexed_bulrush",
+            new HexedBulrushBlock(FabricBlockSettings.copyOf(Blocks.AZALEA).noCollision().luminance(6)));
 
     // Crop & Wild Crop Blocks
     public static final Block MANDRAKE_CROP = registerBlockWithoutBlockItem("mandrake_crop",
@@ -205,6 +207,8 @@ public class ModBlocks {
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.HENBANE, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.PALE_MUSHROOM, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.WITCHWEED, 0.5F);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.GHOST_FERN, 0.5F);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.HEXED_BULRUSH, 0.5F);
 
         StrippableBlockRegistry.register(ModBlocks.COTTONWOOD_LOG, ModBlocks.STRIPPED_COTTONWOOD_LOG);
         StrippableBlockRegistry.register(ModBlocks.COTTONWOOD_WOOD, ModBlocks.STRIPPED_COTTONWOOD_WOOD);

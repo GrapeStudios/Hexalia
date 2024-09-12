@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "half=lower": {
+      "model": "hexalia:block/hexed_bulrush_bottom"
+    },
+    "half=upper": {
+      "model": "hexalia:block/hexed_bulrush_top"
+    }
+  }
+}

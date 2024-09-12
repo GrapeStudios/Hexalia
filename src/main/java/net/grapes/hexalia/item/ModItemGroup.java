@@ -120,6 +120,7 @@ public class ModItemGroup {
                         entries.add(ModBlocks.PALE_MUSHROOM);
                         entries.add(ModBlocks.WITCHWEED);
                         entries.add(ModBlocks.GHOST_FERN);
+                        entries.add(ModBlocks.HEXED_BULRUSH);
                     }).build());
     public static void registerItemGroups(){
     }

@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-11T23:17:04.0523667	Hexalia/Block Loot Tables
+// 1.20.1	2024-09-12T01:04:19.2470432	Hexalia/Block Loot Tables
 e4e4f7bc56a75ad3d1e5449ba51aae99e15062cb data\hexalia\loot_tables\blocks\small_cauldron.json
 aeb959301b32ba153b4b2dc89a617ff2f27e81ce data\hexalia\loot_tables\blocks\salt.json
 0a81cc3c2b6ef5a0665335b100843904f4bfac41 data\hexalia\loot_tables\blocks\salt_lamp.json
@@ -47,6 +47,7 @@ ab65b97459126c817098d44413260f5310ed508a data\hexalia\loot_tables\blocks\strippe
 08a7a306ed46dc0abf61e44147859dc2c3b72848 data\hexalia\loot_tables\blocks\cottonwood_slab.json
 c20b03aa091961bf34b5d0125c729802e17dc45a data\hexalia\loot_tables\blocks\cottonwood_trapdoor.json
 c85ef0d2eb4b9fec4a3dee240614d0cee871e8d3 data\hexalia\loot_tables\blocks\salt_block.json
+070057764167d8c307e078eae5fcb5a947b81ee0 data\hexalia\loot_tables\blocks\hexed_bulrush.json
 9fbc2281609cc21230466daa15bf19f66a047f7f data\hexalia\loot_tables\blocks\ritual_table.json
 68a634b04388cf101379a0c9d38f4bef0cc5e01e data\hexalia\loot_tables\blocks\witchweed.json
 a8298f815c3d89857892720b2735ba023d581704 data\hexalia\loot_tables\blocks\potted_spirit_bloom.json

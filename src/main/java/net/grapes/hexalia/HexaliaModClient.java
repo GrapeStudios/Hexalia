@@ -1,6 +1,7 @@
 package net.grapes.hexalia;
 
 import com.terraformersmc.terraform.boat.api.client.TerraformBoatClientHelper;
+import dev.architectury.platform.Mod;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
@@ -64,7 +65,7 @@ public class HexaliaModClient implements ClientModInitializer {
                 ModBlocks.WILLOW_TRAPDOOR, ModBlocks.WILLOW_DOOR,
                 ModBlocks.LOTUS_FLOWER, ModBlocks.PALE_MUSHROOM,
                 ModBlocks.POTTED_PALE_MUSHROOM, ModBlocks.WITCHWEED,
-                ModBlocks.GHOST_FERN
+                ModBlocks.GHOST_FERN, ModBlocks.HEXED_BULRUSH
         );
     }
 
