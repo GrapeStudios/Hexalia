@@ -14,7 +14,7 @@ public class ModItemGroup {
     public static final ItemGroup HEXALIA = Registry.register(Registries.ITEM_GROUP,
             new Identifier(HexaliaMod.MOD_ID, "hexalia"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.hexalia"))
-                    .icon(() -> new ItemStack(ModItems.SMALL_CAULDRON)).entries((displayContext, entries) -> {
+                    .icon(() -> new ItemStack(ModItems.HEX_FOCUS)).entries((displayContext, entries) -> {
                         entries.add(ModBlocks.SPIRIT_BLOOM);
                         entries.add(ModBlocks.DREAMSHROOM);
                         entries.add(ModItems.SIREN_KELP);

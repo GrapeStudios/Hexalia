@@ -94,7 +94,7 @@ public class ModItems {
     public static final Item HEX_FOCUS = registerItem("hex_focus",
             new Item(new FabricItemSettings()));
     public static final Item WISDOM_GEM = registerItem("wisdom_gem",
-            new Item(new FabricItemSettings().maxCount(1).maxDamage(60)));
+            new Item(new FabricItemSettings().maxCount(1).maxDamage(60).rarity(Rarity.UNCOMMON)));
 
     // Armors
     public static final Item BOGGED_HAT = registerItem("bogged_hat",
@@ -120,7 +120,7 @@ public class ModItems {
 
     // Weapons & Armor
     public static final Item KELPWEAVE_BLADE = registerItem("kelpweave_blade",
-            new KelpweaveBladeItem(ModToolMaterials.ANCIENT_SEED, 3, -2f, new FabricItemSettings()));
+            new KelpweaveBladeItem(ModToolMaterials.ANCIENT_SEED, 3, -2f, new FabricItemSettings().rarity(Rarity.RARE)));
 
     // Wooden Set Items
     public static final Item COTTONWOOD_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.COTTONWOOD_BOAT_ID,
