@@ -1,5 +1,6 @@
 package net.grapes.hexalia.item.custom;
 
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.effect.StatusEffect;
@@ -15,10 +16,12 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.Objects;
 
 public class BoggedArmorItem extends ArmorItem {
 
-    private int effectRemovalTimer = 0;
+    private int waterBreathingTimer = 0;
+    private int poisonRemovalTimer = 0;
 
     public BoggedArmorItem(ArmorMaterial material, Type type, Settings settings) {
         super(material, type, settings);
@@ -28,29 +31,12 @@ public class BoggedArmorItem extends ArmorItem {
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         if (entity instanceof PlayerEntity player) {
             if (!world.isClient()) {
-                if (hasChestAndLeggingsOn(player)) {
-                    applyEffect(player, StatusEffects.WATER_BREATHING);
-                    removeEffect(player, StatusEffects.POISON);
-                    effectRemovalTimer = 0;
+                if (isWearingFullArmor(player)) {
+                    applyWaterBreathingEffect(player);
+                    removePoisonEffect(player);
+                    resetTimers();
                 } else {
-                    if (effectRemovalTimer < 500) {
-                        effectRemovalTimer++;
-                    } else {
-                        player.removeStatusEffect(StatusEffects.WATER_BREATHING);
-                    }
-                }
-
-                if (hasHelmetAndBootsOn(player)) {
-                    applyEffect(player, StatusEffects.NIGHT_VISION);
-                    applyEffect(player, StatusEffects.DOLPHINS_GRACE);
-                    effectRemovalTimer = 0;
-                } else {
-                    if (effectRemovalTimer < 500) {
-                        effectRemovalTimer++;
-                    } else {
-                        player.removeStatusEffect(StatusEffects.NIGHT_VISION);
-                        player.removeStatusEffect(StatusEffects.DOLPHINS_GRACE);
-                    }
+                    handleEffectRemoval(player);
                 }
             }
         }
@@ -58,37 +44,50 @@ public class BoggedArmorItem extends ArmorItem {
         super.inventoryTick(stack, world, entity, slot, selected);
     }
 
-    private boolean hasChestAndLeggingsOn(PlayerEntity player) {
-        ItemStack chestplate = player.getInventory().getArmorStack(2);
-        ItemStack leggings = player.getInventory().getArmorStack(1);
-
-        return !chestplate.isEmpty() && !leggings.isEmpty();
+    private boolean isWearingFullArmor(PlayerEntity player) {
+        for (int i = 0; i < 4; i++) {
+            if (player.getInventory().getArmorStack(i).isEmpty()) {
+                return false;
+            }
+        }
+        return true;
     }
 
-    private boolean hasHelmetAndBootsOn(PlayerEntity player) {
-        ItemStack helmet = player.getInventory().getArmorStack(3);
-        ItemStack boots = player.getInventory().getArmorStack(0);
-
-        return !helmet.isEmpty() && !boots.isEmpty();
-    }
-
-
-    private void applyEffect(PlayerEntity player, StatusEffect effectType) {
+    private void applyWaterBreathingEffect(PlayerEntity player) {
         int duration = 300;
-
-        if (!player.hasStatusEffect(effectType) || player.getStatusEffect(effectType).getDuration() <= 220) {
-            player.addStatusEffect(new StatusEffectInstance(effectType, duration, 0, false, false, true));
+        if (!player.hasStatusEffect(StatusEffects.WATER_BREATHING) ||
+                Objects.requireNonNull(player.getStatusEffect(StatusEffects.WATER_BREATHING)).getDuration() <= 220) {
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, duration, 0, false, false, true));
         }
     }
 
-    private void removeEffect(PlayerEntity player, StatusEffect effectType) {
-        if (player.hasStatusEffect(effectType)) {
-            player.removeStatusEffect(effectType);
+    private void removePoisonEffect(PlayerEntity player) {
+        if (player.hasStatusEffect(StatusEffects.POISON)) {
+            player.removeStatusEffect(StatusEffects.POISON);
+            player.heal(0.1f);
+        }
+    }
+
+    private void resetTimers() {
+        waterBreathingTimer = 0;
+        poisonRemovalTimer = 0;
+    }
+
+    private void handleEffectRemoval(PlayerEntity player) {
+        if (waterBreathingTimer < 500) {
+            waterBreathingTimer++;
+        } else {
+            player.removeStatusEffect(StatusEffects.WATER_BREATHING);
         }
     }
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(Text.translatable("tooltip.hexalia.bogged_armor").formatted(Formatting.BLUE));
+        if (Screen.hasShiftDown()) {
+            tooltip.add(Text.translatable("tooltip.hexalia.bogged_armor").formatted(Formatting.GREEN));
+            tooltip.add(Text.translatable("tooltip.hexalia.bogged_armor_2").formatted(Formatting.GRAY));
+        } else {
+            tooltip.add(Text.translatable("tooltip.hexalia.hold_shift").formatted(Formatting.GRAY));
+        }
     }
 }
