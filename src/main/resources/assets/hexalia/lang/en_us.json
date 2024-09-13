@@ -99,16 +99,19 @@
   "sounds.hexalia.mandrake_scream": "Screaming Mandrake",
   "sounds.hexalia.ritual_completed": "Ritual Completed",
 
-  "tooltip.hexalia.hold_shift": "Hold §e[SHIFT]§r for more info",
-  "tooltip.hexalia.mandrake": "Hold §e[RMB]§r to make it scream",
-  "tooltip.hexalia.purifying_salts": "Hold §e[RMB]§r to remove effects",
+  "tooltip.hexalia.hold_shift": "Hold SHIFT for more information",
+  "tooltip.hexalia.mandrake": "Hold right-click to stun in an area",
+  "tooltip.hexalia.purifying_salts": "Hold right-click to remove effects",
 
   "tooltip.hexalia.homestead_brew": "Teleports you to your spawn",
   "tooltip.hexalia.siphoning_brew": "Siphoning (2:00)",
   "tooltip.hexalia.slimey_step_brew": "Slimey Step (2:00)",
+  "tooltip.hexalia.slimey_step_brew_2": "Holding SHIFT makes you bounce like a Slime.",
   "tooltip.hexalia.vigor_brew": "Vigor (2:00)",
   "tooltip.hexalia.warding_brew": "Warding (2:00)",
-  "tooltip.hexalia.bogged_armor": "Full set gives Water Breathing and Poison immunity",
+
+  "tooltip.hexalia.bogged_armor": "Full Set Bonus:",
+  "tooltip.hexalia.bogged_armor_2": "Poison Immunity and Water Breathing",
 
   "tooltip.hexalia.needs_heat": "Requires a heating block below",
 
