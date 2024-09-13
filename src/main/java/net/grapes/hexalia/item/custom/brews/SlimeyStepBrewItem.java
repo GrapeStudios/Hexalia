@@ -54,6 +54,7 @@ public class SlimeyStepBrewItem extends Item {
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         tooltip.add(Text.translatable("tooltip.hexalia.slimey_step_brew").formatted(Formatting.BLUE));
+        tooltip.add(Text.translatable("tooltip.hexalia.slimey_step_brew_2").formatted(Formatting.GRAY));
     }
 
     @Override
