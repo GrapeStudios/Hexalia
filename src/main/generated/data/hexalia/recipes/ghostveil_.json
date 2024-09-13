@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "item": "hexalia:ghost_fern"
+    },
+    "T": {
+      "item": "hexalia:silk_fiber"
+    }
+  },
+  "pattern": [
+    "T T",
+    "STS",
+    "SSS"
+  ],
+  "result": {
+    "item": "hexalia:ghostveil"
+  },
+  "show_notification": true
+}

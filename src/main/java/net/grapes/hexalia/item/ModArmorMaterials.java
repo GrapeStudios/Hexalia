@@ -1,7 +1,9 @@
 package net.grapes.hexalia.item;
 
 import net.grapes.hexalia.HexaliaMod;
-import net.minecraft.item.*;
+import net.grapes.hexalia.block.ModBlocks;
+import net.minecraft.item.ArmorMaterial;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -13,19 +15,12 @@ import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
 
-    SWAMP("swamp", 25, Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
-        map.put(ArmorItem.Type.BOOTS, 2);
-        map.put(ArmorItem.Type.LEGGINGS, 5);
-        map.put(ArmorItem.Type.CHESTPLATE, 7);
-        map.put(ArmorItem.Type.HELMET, 2);
-    }), 18, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.0F, 0.0F, () -> Ingredient.ofItems(ModItems.SIREN_KELP));
+    BOGGED("bogged", 15, createProtectionMap(2, 5, 7, 2), 25,
+            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.0F, 0.0F, () -> Ingredient.ofItems(ModItems.SIREN_KELP)),
+    GHOST("ghost", 15, createProtectionMap(2, 5, 7, 2), 10,
+            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.0F, 0.0F, () -> Ingredient.ofItems(ModBlocks.GHOST_FERN.asItem()));
 
-    private static final EnumMap<ArmorItem.Type, Integer> BASE_DURABILITY = Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
-        map.put(ArmorItem.Type.BOOTS, 13);
-        map.put(ArmorItem.Type.LEGGINGS, 15);
-        map.put(ArmorItem.Type.CHESTPLATE, 16);
-        map.put(ArmorItem.Type.HELMET, 11);
-    });
+    private static final EnumMap<ArmorItem.Type, Integer> BASE_DURABILITY = createDurabilityMap();
 
     private final String name;
     private final int durabilityMultiplier;
@@ -47,6 +42,24 @@ public enum ModArmorMaterials implements ArmorMaterial {
         this.toughness = toughness;
         this.knockbackResistance = knockbackResistance;
         this.repairIngredientSupplier = new Lazy<>(repairIngredientSupplier);
+    }
+
+    private static EnumMap<ArmorItem.Type, Integer> createDurabilityMap() {
+        return Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+            map.put(ArmorItem.Type.BOOTS, 13);
+            map.put(ArmorItem.Type.LEGGINGS, 15);
+            map.put(ArmorItem.Type.CHESTPLATE, 16);
+            map.put(ArmorItem.Type.HELMET, 11);
+        });
+    }
+
+    private static EnumMap<ArmorItem.Type, Integer> createProtectionMap(int boots, int leggings, int chestplate, int helmet) {
+        return Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
+            map.put(ArmorItem.Type.BOOTS, boots);
+            map.put(ArmorItem.Type.LEGGINGS, leggings);
+            map.put(ArmorItem.Type.CHESTPLATE, chestplate);
+            map.put(ArmorItem.Type.HELMET, helmet);
+        });
     }
 
     @Override

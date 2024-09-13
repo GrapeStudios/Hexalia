@@ -96,6 +96,8 @@
   "item.hexalia.bogged_pants": "Bogged Pants",
   "item.hexalia.bogged_boots": "Bogged Boots",
 
+  "item.hexalia.ghostveil": "Ghostveil",
+
   "sounds.hexalia.mandrake_scream": "Screaming Mandrake",
   "sounds.hexalia.ritual_completed": "Ritual Completed",
 
@@ -112,6 +114,8 @@
 
   "tooltip.hexalia.bogged_armor": "Full Set Bonus:",
   "tooltip.hexalia.bogged_armor_2": "Poison Immunity and Water Breathing",
+
+  "tooltip.hexalia.ghostveil": "Turns wearer §eInvisible§r",
 
   "tooltip.hexalia.needs_heat": "Requires a heating block below",
 

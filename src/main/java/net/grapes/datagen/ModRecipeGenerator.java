@@ -171,6 +171,16 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.SALT,
                 RecipeCategory.MISC, ModBlocks.SALT_BLOCK);
 
+        // Armor Recipes
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.GHOSTVEIL)
+                .pattern("T T")
+                .pattern("STS")
+                .pattern("SSS")
+                .input('T', ModItems.SILK_FIBER)
+                .input('S', ModBlocks.GHOST_FERN)
+                .criterion(hasItem(ModBlocks.GHOST_FERN), conditionsFromItem(ModBlocks.GHOST_FERN))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.GHOSTVEIL) + "_"));
+
         // Shapeless Recipe for Seeds
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MANDRAKE_SEEDS)
                 .input(ModItems.MANDRAKE)
