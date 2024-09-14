@@ -11,28 +11,28 @@ public class ModMaterialRules {
     private static final MaterialRules.MaterialRule DIRT = makeStateRule(Blocks.DIRT);
     private static final MaterialRules.MaterialRule GRASS_BLOCK = makeStateRule(Blocks.GRASS_BLOCK);
     private static final MaterialRules.MaterialRule MUD = makeStateRule(Blocks.MUD);
-    private static final MaterialRules.MaterialRule MOSS_BLOCK = makeStateRule(Blocks.MOSS_BLOCK);
 
     public static MaterialRules.MaterialRule makeRules() {
         MaterialRules.MaterialCondition isAtOrAboveWaterLevel = MaterialRules.water(-1, 0);
-        MaterialRules.MaterialRule grassWithMudAndMossPatches = getMaterialRule(isAtOrAboveWaterLevel);
+        MaterialRules.MaterialRule grassWithMudPatches = getMaterialRule(isAtOrAboveWaterLevel);
+
+        MaterialRules.MaterialRule grassSurface = MaterialRules.sequence(MaterialRules.condition(isAtOrAboveWaterLevel, GRASS_BLOCK), DIRT);
 
         return MaterialRules.sequence(
-                MaterialRules.condition(MaterialRules.biome(ModBiomes.ENCHANTED_BAYOU), grassWithMudAndMossPatches),
-                MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, grassWithMudAndMossPatches)
-        );
+                MaterialRules.sequence(MaterialRules.condition(MaterialRules.biome(ModBiomes.ENCHANTED_BAYOU),
+                                MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, grassWithMudPatches)),
+
+                // Default to a grass and dirt surface
+                MaterialRules.condition(MaterialRules.STONE_DEPTH_FLOOR, grassSurface)
+        ));
     }
 
     private static MaterialRules.@NotNull MaterialRule getMaterialRule(MaterialRules.MaterialCondition isAtOrAboveWaterLevel) {
         MaterialRules.MaterialCondition randomMudPatches = MaterialRules.noiseThreshold(NoiseParametersKeys.PATCH, -0.1, 0.1);
-        MaterialRules.MaterialCondition randomMossPatches = MaterialRules.noiseThreshold(NoiseParametersKeys.PATCH, -0.1, 0.1);
 
         return MaterialRules.sequence(
                 MaterialRules.condition(randomMudPatches, MUD),
-                MaterialRules.condition(randomMossPatches, MOSS_BLOCK),
-                MaterialRules.condition(isAtOrAboveWaterLevel, GRASS_BLOCK),
-                DIRT
-        );
+                MaterialRules.condition(isAtOrAboveWaterLevel, GRASS_BLOCK), DIRT);
     }
 
     private static MaterialRules.MaterialRule makeStateRule(Block block) {
