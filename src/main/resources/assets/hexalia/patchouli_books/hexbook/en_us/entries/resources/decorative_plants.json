@@ -8,6 +8,31 @@
       "type": "patchouli:spotlight",
       "item": "hexalia:henbane",
       "text": "These are yellowish flowers that can be found in the Plains biome."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:pale_mushroom",
+      "text": "These are tiny shiny Mushrooms that glows in the night and can be found in the Enchanted Bayou biome."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:witchweed",
+      "text": "These are pinkish flowers that can poison you and can be found in the Enchanted Bayou biome."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:hexed_bulrush",
+      "text": "These are flowers that can be found in the water in the Enchanted Bayou biome."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:nightshade_bush",
+      "text": "These are flowers that can be found in the water in the Enchanted Bayou biome."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:lotus_flower",
+      "text": "These are flowers that can be found on the water in the Enchanted Bayou biome."
     }
   ]
 }

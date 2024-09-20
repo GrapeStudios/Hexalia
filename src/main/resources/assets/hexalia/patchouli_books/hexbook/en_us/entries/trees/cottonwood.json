@@ -1,0 +1,13 @@
+{
+  "category": "hexalia:trees",
+  "name": "Cottonwood",
+  "icon": "hexalia:cottonwood_log",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:cottonwood_sapling",
+      "text": "This Tree you can find them in the $(l:hexalia:biomes/enchanted_bayou)Enchanted Bayou$()."
+    }
+  ]
+}

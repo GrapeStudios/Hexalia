@@ -13,6 +13,11 @@
       "type": "patchouli:crafting",
       "recipe": "hexalia:infused_dirt_",
       "text": "Stepping on top of the Infused Farmland does not destroy crops nor turns it back to Infused Dirt.$(br2)You can plant Sugar Canes without needing water source nearby."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:infused_dirt",
+      "text": "Planting a Magical Plant on Infused Dirt can renovable them."
     }
   ]
 }
