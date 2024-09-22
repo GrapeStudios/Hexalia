@@ -18,6 +18,11 @@
       "type": "patchouli:spotlight",
       "item": "hexalia:siren_kelp",
       "text": "Siren Kelp are found in the bottom of Ocean or Deep Ocean biomes."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:ghost_fern",
+      "text": "Ghost Fern can be found in the Enchanted Bayou biome."
     }
   ]
 }

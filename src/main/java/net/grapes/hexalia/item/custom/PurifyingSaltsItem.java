@@ -1,7 +1,6 @@
 package net.grapes.hexalia.item.custom;
 
 import net.minecraft.advancement.criterion.Criteria;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;

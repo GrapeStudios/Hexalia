@@ -21,7 +21,7 @@
     {
       "type": "patchouli:crafting",
       "recipe": "hexalia:mandrake_stew",
-      "text": "This food item grants the $(#f1c232)Overfed$() effect for 45 seconds, this prevents saturation from lowering."
+      "text": "This food item grants the $(#f1c232)Stuffed$() effect for 45 seconds, this prevents saturation from lowering."
     }
   ]
 }

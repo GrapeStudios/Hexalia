@@ -1,9 +1,7 @@
 package net.grapes.hexalia.item.custom;
 
-import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.effect.ModEffects;
 import net.grapes.hexalia.sound.ModSounds;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
