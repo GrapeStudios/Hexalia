@@ -7,7 +7,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "hexalia:sunfire_tomato,hexalia:sunfire_tomato_seeds",
-      "text": "Eating a Sunfire Tomato gives $(#bcbcbc)Speed I$() for 10 seconds."
+      "text": "Eating a Sunfire Tomato gives $(#bcbcbc)Speed I$() for 5 seconds."
     },
     {
       "type": "patchouli:image",

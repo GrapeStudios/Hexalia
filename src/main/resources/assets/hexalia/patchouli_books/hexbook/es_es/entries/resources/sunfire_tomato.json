@@ -7,7 +7,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "hexalia:sunfire_tomato,hexalia:sunfire_tomato_seeds",
-      "text": "Comer un Tomate Solífugo otorga $(#bcbcbc)Velocidad I$() durante 10 segundos."
+      "text": "Comer un Tomate Solífugo otorga $(#bcbcbc)Velocidad I$() durante 5 segundos."
     },
     {
       "type": "patchouli:image",

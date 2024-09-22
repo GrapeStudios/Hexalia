@@ -7,7 +7,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "hexalia:ancient_seed",
-      "text": "Esta semilla se puede encontrar en Templos de la Jungla y se puede $(l:hexalia:rituals/transmutation_ritual)transmutar$() en una Espada de Alga Tejida."
+      "text": "Esta semilla se puede encontrar en Templos de la Jungla y se puede $(l:hexalia:rituals/transmutation_ritual)transmutar$() en una Espada de Alga Tejida.$(br2)Los Sniffers tienen un chance de desenterrar esta semilla."
     }
   ]
 }

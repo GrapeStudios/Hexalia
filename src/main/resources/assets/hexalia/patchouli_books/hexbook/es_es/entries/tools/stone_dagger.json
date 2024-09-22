@@ -7,7 +7,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "hexalia:stone_dagger,hexalia:resin",
-      "text": "Este objeto se puede usar para obtener $(#ce7e00)Resina$() de troncos de Roble Oscuro.$(br2)Haciendo clic derecho en un tronco con la daga lo despoja y te da una Resina."
+      "text": "Este objeto se puede usar para obtener $(#ce7e00)Resina$() de troncos de Roble Oscuro o Álamos.$(br2)Haciendo clic derecho en un tronco con la daga lo despoja y te da una Resina."
     },
     {
       "type": "patchouli:crafting",

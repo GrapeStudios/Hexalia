@@ -1,0 +1,17 @@
+{
+  "category": "hexalia:equipment",
+  "name": "Velo Fantasmal",
+  "icon": "hexalia:ghostveil",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:ghostveil",
+      "text": "Cuando se lleva puesto esta pieza de armadura, puedes $(#6aa84f)agacharte$() para ocultarte de los mobs siempre que no los ataques.$(br2)Ocultarse reduce la durabilidad de este objeto."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:ghostveil_"
+    }
+  ]
+}

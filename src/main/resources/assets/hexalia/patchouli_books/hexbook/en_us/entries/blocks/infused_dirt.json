@@ -17,7 +17,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "hexalia:infused_dirt",
-      "text": "Planting a Magical Plant on Infused Dirt can renovable them."
+      "text": "You can plant $(l:hexalia:resources/magical_resources)Magical Plants$() on the Infused Dirt, and then apply Bonemeal to duplicate these plants."
     }
   ]
 }

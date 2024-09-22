@@ -1,0 +1,18 @@
+{
+  "category": "hexalia:resources",
+  "name": "Trees",
+  "icon": "hexalia:willow_sapling",
+  "sortnum": 7,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:willow_log",
+      "text": "Este árbol tiene un conjunto de bloques de madera con textura de oliva y se puede encontrar en el $(l:hexalia:biomes/enchanted_bayou)Pantano Encantado$()."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:cottonwood_log",
+      "text": "Este árbol tiene un conjunto de bloques de madera de color marrón suave y se puede encontrar en el  $(l:hexalia:biomes/enchanted_bayou)Pantano Encantado$().$(br2)Se puede obtener Resina de sus troncos usando una $(l:hexalia:tools/stone_dagger)Daga de Piedra$()"
+    }
+  ]
+}

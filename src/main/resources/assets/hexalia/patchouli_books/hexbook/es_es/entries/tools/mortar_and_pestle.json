@@ -24,6 +24,10 @@
     {
       "type": "patchouli:crafting",
       "recipe": "hexalia:dreamshroom_paste"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:string"
     }
   ]
 }

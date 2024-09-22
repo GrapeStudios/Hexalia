@@ -1,0 +1,32 @@
+{
+  "category": "hexalia:resources",
+  "name": "Silk Fiber",
+  "icon": "hexalia:silk_fiber",
+  "sortnum": 8,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:silkworm",
+      "text": "Silkworms can be obtained upon breaking a Cocoon block, which can be found in the Dark Forest biome and $(l:hexalia:biomes/enchanted_bayou)Enchanted Bayou$()."
+    },
+    {
+      "type": "patchouli:image",
+      "title": "Wild Sunfire Tomato",
+      "images": [
+        "hexalia:textures/gui/patchouli/silkworm_cocoon.png"
+      ],
+      "border": true,
+      "text": "These cocoons can spawn in the on the side of Dark Oak and Cottonwood trees logs."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:silk_fiber",
+      "text": "The Silk Fiber itself can be obtained from combining leaves with a Silkworm, or with a small chance to drop from Silk Moths."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:cobweb_",
+      "text": "You can also combine strings with a Silk Fiber in order to craft a Cobweb block."
+    }
+  ]
+}

@@ -7,7 +7,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "hexalia:stone_dagger,hexalia:resin",
-      "text": "This item can be used to obtain $(#ce7e00)Resin$() from Dark Oak logs.$(br2)Right-clicking a log with the dagger strips it and gives you a Resin."
+      "text": "This item can be used to obtain $(#ce7e00)Resin$() from Dark Oak logs or Cottonwood logs.$(br2)Right-clicking a log with the dagger strips it and gives you a Resin."
     },
     {
       "type": "patchouli:crafting",

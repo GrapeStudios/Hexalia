@@ -7,7 +7,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "hexalia:chillberries",
-      "text": "Comer una Baya Gélida otorga $(#FF9900)Resistencia al Fuego I$() durante 10 segundos."
+      "text": "Comer una Baya Gélida otorga $(#FF9900)Resistencia al Fuego I$() durante 5 segundos."
     },
     {
       "type": "patchouli:image",

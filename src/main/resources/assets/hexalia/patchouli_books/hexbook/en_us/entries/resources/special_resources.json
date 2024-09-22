@@ -7,7 +7,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "hexalia:ancient_seed",
-      "text": "This seed can be found in Jungle Temples and can be $(l:hexalia:rituals/transmutation_ritual)transmuted$() into a Kelpweave Sword."
+      "text": "This seed can be found in Jungle Temples and can be $(l:hexalia:rituals/transmutation_ritual)transmuted$() into a Kelpweave Blade.$(br2)Sniffers have a chance to dig up Ancient Seeds."
     }
   ]
 }

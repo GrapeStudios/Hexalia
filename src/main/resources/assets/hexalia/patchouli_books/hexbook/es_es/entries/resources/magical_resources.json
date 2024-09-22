@@ -18,6 +18,11 @@
       "type": "patchouli:spotlight",
       "item": "hexalia:siren_kelp",
       "text": "Las Algas de Sirena se encuentra en el fondo de los biomas Océano o Océano Profundo."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:ghost_fern",
+      "text": "El Helecho Fantasmal se puede encontrar en el $(l:hexalia:biomes/enchanted_bayou)Pantano Encantado$()."
     }
   ]
 }

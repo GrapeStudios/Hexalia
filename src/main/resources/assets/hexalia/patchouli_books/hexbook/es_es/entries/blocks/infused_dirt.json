@@ -13,6 +13,11 @@
       "type": "patchouli:crafting",
       "recipe": "hexalia:infused_dirt_",
       "text": "Al pisar encima de la Tierra de Cultivo Infundida no se destruyen los cultivos ni se convierte de nuevo en Tierra Infundida.$(br2)Puedes plantar Cañas de Azúcar sin necesidad de tener una fuente de agua cercana."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:infused_dirt",
+      "text": "Puedes plantar $(l:hexalia:resources/magical_resources)Plantas Mágicas$() en la Tierra Infundida y luego aplicar Polvo de Hueso para duplicar estas plantas."
     }
   ]
 }

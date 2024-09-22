@@ -7,7 +7,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "hexalia:chillberries",
-      "text": "Eating a Chillberry gives $(#FF9900)Fire Resistance I$() for 10 seconds."
+      "text": "Eating a Chillberry gives $(#FF9900)Fire Resistance I$() for 5 seconds."
     },
     {
       "type": "patchouli:image",

@@ -1,0 +1,32 @@
+{
+  "category": "hexalia:resources",
+  "name": "Silk Fiber",
+  "icon": "hexalia:silk_fiber",
+  "sortnum": 8,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:silkworm",
+      "text": "Los Gusanos de Seda se pueden obtener al romper un bloque de Capullo, que se encuentra en el bioma del Bosque Oscuro y en el $(l:hexalia/enchanted_bayou)Pantano Encantado()."
+    },
+    {
+      "type": "patchouli:image",
+      "title": "Wild Sunfire Tomato",
+      "images": [
+        "hexalia:textures/gui/patchouli/silkworm_cocoon.png"
+      ],
+      "border": true,
+      "text": "Estos capullos pueden aparecer en los costados de los troncos de árboles de Roble Oscuro y Álamo."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:silk_fiber",
+      "text": "La fibra de seda se puede obtener al combinar hojas con un gusano de seda, o con una pequeña probabilidad de que caiga de las Polillas de Seda."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:cobweb_",
+      "text": "También puedes combinar hilos con Fibra de Seda para crear un bloque de Telaraña."
+    }
+  ]
+}
