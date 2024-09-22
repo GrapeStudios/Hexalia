@@ -37,16 +37,16 @@
   "item.hexalia.resin": "Żywica",
   "item.hexalia.kelpweave_blade": "Ostrze z Tkaniny Kelp",
 
-  "effect.hexalia.vigor": "Wigor",
+  "effect.hexalia.bloodlust": "Wigor",
   "effect.hexalia.stunned": "Oszołomiony",
-  "effect.hexalia.stuffed": "Napełniony",
-  "effect.hexalia.slimey_step": "Śliski Krok",
-  "effect.hexalia.warding": "Osłona",
+  "effect.hexalia.overfed": "Napełniony",
+  "effect.hexalia.slimewalker": "Śliski Krok",
+  "effect.hexalia.spikeskin": "Osłona",
 
   "item.hexalia.rustic_bottle": "Rustykalna Butelka",
-  "item.hexalia.brew_of_vigor": "Napój Wigoru",
-  "item.hexalia.brew_of_slimey_step": "Napój Śliskiego Kroku",
-  "item.hexalia.brew_of_warding": "Napój Osłony",
+  "item.hexalia.brew_of_bloodlust": "Napój Wigoru",
+  "item.hexalia.brew_of_slimewalker": "Napój Śliskiego Kroku",
+  "item.hexalia.brew_of_spikeskin": "Napój Osłony",
   "item.hexalia.brew_of_homestead": "Napój Gospodarstwa",
 
   "block.hexalia.small_cauldron": "Mały Kocioł",

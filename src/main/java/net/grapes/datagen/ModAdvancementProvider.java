@@ -58,12 +58,12 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                 .parent(rootAdvancement).build(consumer, HexaliaMod.MOD_ID + "stone_dagger");
 
         Advancement slimeyBrew = Advancement.Builder.create()
-                .display(new AdvancementDisplay(new ItemStack(ModItems.BREW_OF_SLIMEY_STEP),
+                .display(new AdvancementDisplay(new ItemStack(ModItems.BREW_OF_SLIMEWALKER),
                         Text.translatable("advancements.hexalia.slimey_brew.title"),
                         Text.translatable("advancements.hexalia.slimey_brew.description"),
                         new Identifier(HexaliaMod.MOD_ID, "textures/block/salt_block.png"), AdvancementFrame.GOAL,
                         true, true, false))
-                .criterion("has_slimey_step_brew", InventoryChangedCriterion.Conditions.items(ModItems.BREW_OF_SLIMEY_STEP))
+                .criterion("has_slimewalker_brew", InventoryChangedCriterion.Conditions.items(ModItems.BREW_OF_SLIMEWALKER))
                 .parent(smallCauldron).build(consumer, HexaliaMod.MOD_ID + "slimey_brew");
 
         Advancement saltItem = Advancement.Builder.create()

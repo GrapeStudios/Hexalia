@@ -56,17 +56,17 @@
         {
           "type": "minecraft:item",
           "weight": 5,
-          "name": "hexalia:wisdom_gem"
+          "name": "hexalia:ghost_fern_powder"
         },
         {
           "type": "minecraft:item",
           "weight": 5,
-          "name": "hexalia:bogged_hat"
+          "name": "hexalia:siren_kelp_paste"
         },
         {
           "type": "minecraft:item",
           "weight": 5,
-          "name": "hexalia:bogged_boots"
+          "name": "hexalia:spirit_bloom_powder"
         }
       ]
     }

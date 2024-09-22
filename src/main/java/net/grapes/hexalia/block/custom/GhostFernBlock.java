@@ -2,6 +2,7 @@ package net.grapes.hexalia.block.custom;
 
 import net.grapes.hexalia.particle.ModParticles;
 import net.minecraft.block.*;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
@@ -9,13 +10,13 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class GhostFernBlock extends PlantBlock {
+public class GhostFernBlock extends HPlantBlock {
     protected static final VoxelShape SHAPE = VoxelShapes.union(
             VoxelShapes.cuboid(0.125, 0, 0.0625, 0.9375, 0.4375, 0.9375)
     );
 
-    public GhostFernBlock(Settings settings) {
-        super(settings);
+    public GhostFernBlock(StatusEffect suspiciousStewEffect, int effectDuration, Settings settings) {
+        super(suspiciousStewEffect, effectDuration, settings);
     }
 
     @Override

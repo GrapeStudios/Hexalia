@@ -77,34 +77,35 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+        // Refined Resources
         itemModelGenerator.register(ModItems.SPIRIT_BLOOM_POWDER, Models.GENERATED);
         itemModelGenerator.register(ModItems.DREAMSHROOM_PASTE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.SIREN_KELP_PASTE, Models.GENERATED);
+        itemModelGenerator.register(ModItems.GHOST_FERN_POWDER, Models.GENERATED);
+
         itemModelGenerator.register(ModItems.SALT, Models.GENERATED);
         itemModelGenerator.register(ModItems.PURIFYING_SALTS, Models.GENERATED);
         itemModelGenerator.register(ModItems.MORTAR_AND_PESTLE, Models.GENERATED);
-        itemModelGenerator.register(ModItems.SIREN_KELP_PASTE, Models.GENERATED);
         itemModelGenerator.register(ModItems.MANDRAKE, Models.GENERATED);
         itemModelGenerator.register(ModItems.MANDRAKE_STEW, Models.GENERATED);
         itemModelGenerator.register(ModItems.CHILLBERRY_PIE, Models.GENERATED);
         itemModelGenerator.register(ModItems.SUNFIRE_TOMATO, Models.GENERATED);
         itemModelGenerator.register(ModItems.SPICY_SANDWICH, Models.GENERATED);
         itemModelGenerator.register(ModItems.RUSTIC_BOTTLE, Models.GENERATED);
-        itemModelGenerator.register(ModItems.BREW_OF_SLIMEY_STEP, Models.GENERATED);
-        itemModelGenerator.register(ModItems.BREW_OF_WARDING, Models.GENERATED);
-        itemModelGenerator.register(ModItems.BREW_OF_VIGOR, Models.GENERATED);
+        itemModelGenerator.register(ModItems.BREW_OF_SLIMEWALKER, Models.GENERATED);
+        itemModelGenerator.register(ModItems.BREW_OF_SPIKESKIN, Models.GENERATED);
+        itemModelGenerator.register(ModItems.BREW_OF_BLOODLUST, Models.GENERATED);
         itemModelGenerator.register(ModItems.BREW_OF_HOMESTEAD, Models.GENERATED);
         itemModelGenerator.register(ModItems.STONE_DAGGER, Models.GENERATED);
         itemModelGenerator.register(ModItems.RESIN, Models.GENERATED);
         itemModelGenerator.register(ModItems.ANCIENT_SEED, Models.GENERATED);
         itemModelGenerator.register(ModItems.HEX_FOCUS, Models.HANDHELD);
         itemModelGenerator.register(ModItems.RABBAGE, Models.HANDHELD);
-        itemModelGenerator.register(ModItems.BREW_OF_SIPHONING, Models.GENERATED);
-        itemModelGenerator.register(ModItems.PARCHMENT, Models.GENERATED);
-        itemModelGenerator.register(ModItems.DREAMCATCHER, Models.GENERATED);
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.BOGGED_HAT));
+        itemModelGenerator.register(ModItems.BREW_OF_SIPHON, Models.GENERATED);
+        /*itemModelGenerator.registerArmor(((ArmorItem) ModItems.BOGGED_HAT));
         itemModelGenerator.registerArmor(((ArmorItem) ModItems.BOGGED_ROBE));
         itemModelGenerator.registerArmor(((ArmorItem) ModItems.BOGGED_PANTS));
-        itemModelGenerator.registerArmor(((ArmorItem) ModItems.BOGGED_BOOTS));
+        itemModelGenerator.registerArmor(((ArmorItem) ModItems.BOGGED_BOOTS));*/
         itemModelGenerator.register(ModItems.COTTONWOOD_BOAT, Models.GENERATED);
         itemModelGenerator.register(ModItems.COTTONWOOD_CHEST_BOAT, Models.GENERATED);
         itemModelGenerator.register(ModItems.WILLOW_BOAT, Models.GENERATED);

@@ -1,0 +1,20 @@
+{
+  "type": "hexalia:small_cauldron",
+  "ingredients": [
+    {
+      "item": "minecraft:slime_ball"
+    },
+    {
+      "item": "hexalia:dreamshroom_paste"
+    },
+    {
+      "item": "hexalia:siren_kelp_paste"
+    }
+  ],
+  "bottle_slot": {
+    "item": "hexalia:rustic_bottle"
+  },
+  "output": {
+    "item": "hexalia:brew_of_slimewalker"
+  }
+}

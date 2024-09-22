@@ -57,6 +57,8 @@ public class ModItems {
             new Item(new FabricItemSettings()));
     public static final Item DREAMSHROOM_PASTE = registerItem("dreamshroom_paste",
             new Item(new FabricItemSettings()));
+    public static final Item GHOST_FERN_POWDER = registerItem("ghost_fern_powder",
+            new Item(new FabricItemSettings()));
     public static final Item PURIFYING_SALTS = registerItem("purifying_salts",
             new PurifyingSaltsItem(new FabricItemSettings().maxCount(16)));
     public static final Item SPICY_SANDWICH = registerItem("spicy_sandwich",
@@ -69,16 +71,16 @@ public class ModItems {
     // Brews
     public static final Item RUSTIC_BOTTLE = registerItem("rustic_bottle",
             new Item(new FabricItemSettings()));
-    public static final Item BREW_OF_WARDING = registerItem("brew_of_warding",
-            new WardingBrewItem(new FabricItemSettings().recipeRemainder(ModItems.RUSTIC_BOTTLE).maxCount(16)));
-    public static final Item BREW_OF_VIGOR = registerItem("brew_of_vigor",
-            new VigorBrewItem(new FabricItemSettings().recipeRemainder(ModItems.RUSTIC_BOTTLE).maxCount(16)));
-    public static final Item BREW_OF_SLIMEY_STEP = registerItem("brew_of_slimey_step",
-            new SlimeyStepBrewItem(new FabricItemSettings().recipeRemainder(ModItems.RUSTIC_BOTTLE).maxCount(16)));
+    public static final Item BREW_OF_SPIKESKIN = registerItem("brew_of_spikeskin",
+            new SpikeskinBrewItem(new FabricItemSettings().recipeRemainder(ModItems.RUSTIC_BOTTLE).maxCount(16)));
+    public static final Item BREW_OF_BLOODLUST = registerItem("brew_of_bloodlust",
+            new BloodlustBrewItem(new FabricItemSettings().recipeRemainder(ModItems.RUSTIC_BOTTLE).maxCount(16)));
+    public static final Item BREW_OF_SLIMEWALKER = registerItem("brew_of_slimewalker",
+            new SlimewalkerBrewItem(new FabricItemSettings().recipeRemainder(ModItems.RUSTIC_BOTTLE).maxCount(16)));
     public static final Item BREW_OF_HOMESTEAD = registerItem("brew_of_homestead",
             new HomesteadBrewItem(new FabricItemSettings().recipeRemainder(ModItems.RUSTIC_BOTTLE).maxCount(16)));
-    public static final Item BREW_OF_SIPHONING = registerItem("brew_of_siphoning",
-            new SiphoningBrewItem(new FabricItemSettings().recipeRemainder(ModItems.RUSTIC_BOTTLE).maxCount(16)));
+    public static final Item BREW_OF_SIPHON = registerItem("brew_of_siphon",
+            new SiphonBrewItem(new FabricItemSettings().recipeRemainder(ModItems.RUSTIC_BOTTLE).maxCount(16)));
 
     // Tools & Others
     public static final Item MORTAR_AND_PESTLE = registerItem("mortar_and_pestle",
@@ -97,6 +99,7 @@ public class ModItems {
             new Item(new FabricItemSettings().maxCount(1).maxDamage(60).rarity(Rarity.UNCOMMON)));
 
     // Armors
+    /* Work In Progress
     public static final Item BOGGED_HAT = registerItem("bogged_hat",
             new BoggedArmorItem(ModArmorMaterials.BOGGED, ArmorItem.Type.HELMET, new FabricItemSettings()));
     public static final Item BOGGED_ROBE = registerItem("bogged_robe",
@@ -104,21 +107,13 @@ public class ModItems {
     public static final Item BOGGED_PANTS = registerItem("bogged_pants",
             new BoggedArmorItem(ModArmorMaterials.BOGGED, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
     public static final Item BOGGED_BOOTS = registerItem("bogged_boots",
-            new BoggedArmorItem(ModArmorMaterials.BOGGED, ArmorItem.Type.BOOTS, new FabricItemSettings()));
+            new BoggedArmorItem(ModArmorMaterials.BOGGED, ArmorItem.Type.BOOTS, new FabricItemSettings())); */
     public static final Item GHOSTVEIL = registerItem("ghostveil",
             new GhostVeilItem(ModArmorMaterials.GHOST, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
 
     // Spawn Eggs
     public static final Item SILK_MOTH_SPAWN_EGG = registerItem("silk_moth_spawn_egg",
             new SpawnEggItem(ModEntities.SILK_MOTH, 0xAE8f7A, 0x846552, new FabricItemSettings()));
-
-    // Decorative BlockItems
-    public static final Item PARCHMENT = registerItem("parchment",
-            new BlockItem(ModBlocks.PARCHMENT, new FabricItemSettings()));
-    public static final Item DREAMCATCHER = registerItem("dreamcatcher",
-            new BlockItem(ModBlocks.DREAMCATCHER, new FabricItemSettings()));
-    public static final Item CANDLE_SKULL = registerItem("candle_skull",
-            new BlockItem(ModBlocks.CANDLE_SKULL, new FabricItemSettings()));
 
     // Weapons & Armor
     public static final Item KELPWEAVE_BLADE = registerItem("kelpweave_blade",

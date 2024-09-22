@@ -1,5 +1,6 @@
 package net.grapes.hexalia.item.custom;
 
+import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.effect.ModEffects;
 import net.grapes.hexalia.sound.ModSounds;
 import net.minecraft.client.gui.screen.Screen;
@@ -63,10 +64,6 @@ public class MandrakeItem extends Item {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        if (Screen.hasShiftDown()) {
-            tooltip.add(Text.translatable("tooltip.hexalia.mandrake").formatted(Formatting.DARK_GREEN));
-        } else {
-            tooltip.add(Text.translatable("tooltip.hexalia.hold_shift").formatted(Formatting.GRAY));
-        }
+            tooltip.add(Text.translatable("tooltip.hexalia.mandrake").formatted(Formatting.GRAY));
     }
 }

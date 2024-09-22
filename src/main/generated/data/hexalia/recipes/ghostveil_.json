@@ -2,16 +2,19 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
+    "P": {
+      "item": "hexalia:silk_fiber"
+    },
     "S": {
       "item": "hexalia:ghost_fern"
     },
     "T": {
-      "item": "hexalia:silk_fiber"
+      "item": "minecraft:leather"
     }
   },
   "pattern": [
     "T T",
-    "STS",
+    "PTP",
     "SSS"
   ],
   "result": {

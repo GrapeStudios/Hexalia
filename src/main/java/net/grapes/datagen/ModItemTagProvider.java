@@ -40,6 +40,57 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.SUNFIRE_TOMATO_SEEDS)
                 .add(ModItems.MANDRAKE_SEEDS);
 
+        // Custom Tags
+        getOrCreateTagBuilder(ModTags.Items.COOKED_MEATS)
+                .add(Items.COOKED_BEEF, Items.COOKED_CHICKEN,
+                        Items.COOKED_MUTTON, Items.COOKED_PORKCHOP,
+                        Items.COOKED_RABBIT, Items.COOKED_COD,
+                        Items.COOKED_SALMON);
+
+        getOrCreateTagBuilder(ModTags.Items.CRUSHED_PLANTS)
+                .add(ModItems.DREAMSHROOM_PASTE, ModItems.SIREN_KELP_PASTE,
+                        ModItems.SPIRIT_BLOOM_POWDER, ModItems.GHOST_FERN_POWDER);
+
+        getOrCreateTagBuilder(ModTags.Items.BREWS)
+                .add(ModItems.BREW_OF_HOMESTEAD, ModItems.BREW_OF_BLOODLUST,
+                        ModItems.BREW_OF_SLIMEWALKER, ModItems.BREW_OF_SPIKESKIN,
+                        ModItems.BREW_OF_SIPHON, ModItems.RUSTIC_BOTTLE);
+
+        getOrCreateTagBuilder(ModTags.Items.COTTONWOOD_LOGS)
+                .add(ModBlocks.COTTONWOOD_LOG.asItem(), ModBlocks.STRIPPED_COTTONWOOD_LOG.asItem(),
+                        ModBlocks.COTTONWOOD_WOOD.asItem(), ModBlocks.STRIPPED_COTTONWOOD_WOOD.asItem());
+        getOrCreateTagBuilder(ModTags.Items.WILLOW_LOGS)
+                .add(ModBlocks.WILLOW_LOG.asItem(), ModBlocks.STRIPPED_WILLOW_LOG.asItem(),
+                        ModBlocks.WILLOW_WOOD.asItem(), ModBlocks.STRIPPED_WILLOW_WOOD.asItem());
+
+        // Common Tags
+        getOrCreateTagBuilder(ModTags.Items.SALT_DUSTS)
+                .add(ModItems.SALT);
+
+        getOrCreateTagBuilder(ModTags.Items.MUSHROOMS)
+                .add(ModBlocks.DREAMSHROOM.asItem())
+                .add(ModBlocks.PALE_MUSHROOM.asItem());
+
+        getOrCreateTagBuilder(ModTags.Items.BERRIES)
+                .add(ModItems.CHILLBERRIES);
+
+        getOrCreateTagBuilder(ModTags.Items.SEEDS)
+                .add(ModItems.MANDRAKE_SEEDS, ModItems.SUNFIRE_TOMATO_SEEDS,
+                        ModItems.RABBAGE_SEEDS);
+
+        getOrCreateTagBuilder(ModTags.Items.SALT_ORES)
+                .add(ModBlocks.SALT_ORE.asItem());
+
+        getOrCreateTagBuilder(ModTags.Items.SALT_BLOCKS)
+                .add(ModBlocks.SALT_BLOCK.asItem());
+
+        getOrCreateTagBuilder(ModTags.Items.ORES)
+                .add(ModBlocks.SALT_ORE.asItem());
+
+        // Armor Tags
+        /* getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
+                .add(ModItems.BOGGED_HAT, ModItems.BOGGED_ROBE, ModItems.BOGGED_PANTS, ModItems.BOGGED_BOOTS);*/
+
         // Tags for Tree Related Items
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN)
                 .addTag(ModTags.Items.COTTONWOOD_LOGS)
@@ -50,7 +101,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModBlocks.COTTONWOOD_LEAVES.asItem(), ModBlocks.WILLOW_LEAVES.asItem());
 
         getOrCreateTagBuilder(ItemTags.PLANKS)
-                .add(ModBlocks.COTTONWOOD_PLANKS.asItem(), 
+                .add(ModBlocks.COTTONWOOD_PLANKS.asItem(),
                         ModBlocks.WILLOW_PLANKS.asItem());
         getOrCreateTagBuilder(ItemTags.PLANKS)
                 .add(ModBlocks.COTTONWOOD_PLANKS.asItem(),
@@ -88,56 +139,5 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.COTTONWOOD_SIGN, ModItems.WILLOW_SIGN);
         getOrCreateTagBuilder(ItemTags.HANGING_SIGNS)
                 .add(ModItems.COTTONWOOD_HANGING_SIGN, ModItems.WILLOW_HANGING_SIGN);
-
-        // Custom Tags
-        getOrCreateTagBuilder(ModTags.Items.COOKED_MEATS)
-                .add(Items.COOKED_BEEF, Items.COOKED_CHICKEN,
-                        Items.COOKED_MUTTON, Items.COOKED_PORKCHOP,
-                        Items.COOKED_RABBIT, Items.COOKED_COD,
-                        Items.COOKED_SALMON);
-
-        getOrCreateTagBuilder(ModTags.Items.CRUSHED_PLANTS)
-                .add(ModItems.DREAMSHROOM_PASTE, ModItems.SIREN_KELP_PASTE,
-                        ModItems.SPIRIT_BLOOM_POWDER);
-
-        getOrCreateTagBuilder(ModTags.Items.BREWS)
-                .add(ModItems.BREW_OF_HOMESTEAD, ModItems.BREW_OF_VIGOR,
-                        ModItems.BREW_OF_SLIMEY_STEP, ModItems.BREW_OF_WARDING,
-                        ModItems.BREW_OF_SIPHONING, ModItems.RUSTIC_BOTTLE);
-
-        getOrCreateTagBuilder(ModTags.Items.COTTONWOOD_LOGS)
-                .add(ModBlocks.COTTONWOOD_LOG.asItem(), ModBlocks.STRIPPED_COTTONWOOD_LOG.asItem(),
-                        ModBlocks.COTTONWOOD_WOOD.asItem(), ModBlocks.STRIPPED_COTTONWOOD_WOOD.asItem());
-        getOrCreateTagBuilder(ModTags.Items.WILLOW_LOGS)
-                .add(ModBlocks.WILLOW_LOG.asItem(), ModBlocks.STRIPPED_WILLOW_LOG.asItem(),
-                        ModBlocks.WILLOW_WOOD.asItem(), ModBlocks.STRIPPED_WILLOW_WOOD.asItem());
-
-        // Common Tags
-        getOrCreateTagBuilder(ModTags.Items.SALT_DUSTS)
-                .add(ModItems.SALT);
-
-        getOrCreateTagBuilder(ModTags.Items.MUSHROOMS)
-                .add(ModBlocks.DREAMSHROOM.asItem())
-                .add(ModBlocks.PALE_MUSHROOM.asItem());
-
-        getOrCreateTagBuilder(ModTags.Items.BERRIES)
-                .add(ModItems.CHILLBERRIES);
-
-        getOrCreateTagBuilder(ModTags.Items.SEEDS)
-                .add(ModItems.MANDRAKE_SEEDS, ModItems.SUNFIRE_TOMATO_SEEDS,
-                        ModItems.RABBAGE_SEEDS);
-
-        getOrCreateTagBuilder(ModTags.Items.SALT_ORES)
-                .add(ModBlocks.SALT_ORE.asItem());
-
-        getOrCreateTagBuilder(ModTags.Items.SALT_BLOCKS)
-                .add(ModBlocks.SALT_BLOCK.asItem());
-
-        getOrCreateTagBuilder(ModTags.Items.ORES)
-                .add(ModBlocks.SALT_ORE.asItem());
-
-        // Armor Tags
-        getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
-                .add(ModItems.BOGGED_HAT, ModItems.BOGGED_ROBE, ModItems.BOGGED_PANTS, ModItems.BOGGED_BOOTS);
     }
 }

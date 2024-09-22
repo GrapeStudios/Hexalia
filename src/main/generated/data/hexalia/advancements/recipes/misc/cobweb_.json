@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_salt": {
+    "has_silk_fiber": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:salt"
+              "hexalia:silk_fiber"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_salt",
+      "has_silk_fiber",
       "has_the_recipe"
     ]
   ],

@@ -37,16 +37,16 @@
   "item.hexalia.resin": "Смола",
   "item.hexalia.kelpweave_blade": "Клинок из Водоросли",
 
-  "effect.hexalia.vigor": "Энергия",
+  "effect.hexalia.bloodlust": "Энергия",
   "effect.hexalia.stunned": "Оглушён",
-  "effect.hexalia.stuffed": "Сыт",
-  "effect.hexalia.slimey_step": "Скользкий Шаг",
-  "effect.hexalia.warding": "Охрана",
+  "effect.hexalia.overfed": "Сыт",
+  "effect.hexalia.slimewalker": "Скользкий Шаг",
+  "effect.hexalia.spikeskin": "Охрана",
 
   "item.hexalia.rustic_bottle": "Старинная Бутылка",
-  "item.hexalia.brew_of_vigor": "Напиток Энергии",
-  "item.hexalia.brew_of_slimey_step": "Напиток Скользкого Шага",
-  "item.hexalia.brew_of_warding": "Напиток Охраны",
+  "item.hexalia.brew_of_bloodlust": "Напиток Энергии",
+  "item.hexalia.brew_of_slimewalker": "Напиток Скользкого Шага",
+  "item.hexalia.brew_of_spikeskin": "Напиток Охраны",
   "item.hexalia.brew_of_homestead": "Напиток Домашнего Хозяйства",
 
   "block.hexalia.small_cauldron": "Малый Котёл",

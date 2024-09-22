@@ -36,7 +36,7 @@ public class ModBlocks {
 
     // Functional Plants
     public static final Block SPIRIT_BLOOM = registerBlock("spirit_bloom",
-            new HFlowerBlock(StatusEffects.LEVITATION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
+            new HPlantBlock(StatusEffects.LEVITATION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
     public static final Block POTTED_SPIRIT_BLOOM = registerBlockWithoutBlockItem("potted_spirit_bloom",
             new FlowerPotBlock(SPIRIT_BLOOM, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
     public static final Block DREAMSHROOM = registerBlock("dreamshroom",
@@ -46,7 +46,7 @@ public class ModBlocks {
     public static final Block SIREN_KELP = registerBlockWithoutBlockItem("siren_kelp",
             new SirenKelpBlock(FabricBlockSettings.copyOf(Blocks.SEAGRASS)));
     public static final Block GHOST_FERN = registerBlock("ghost_fern",
-            new GhostFernBlock(FabricBlockSettings.copyOf(Blocks.AZALEA).noCollision()));
+            new GhostFernBlock(StatusEffects.INVISIBILITY, 4, FabricBlockSettings.copyOf(Blocks.AZALEA).noCollision()));
 
     // Decorative Plants
     public static final Block HENBANE = registerBlock("henbane",
@@ -105,13 +105,13 @@ public class ModBlocks {
             new BrewShelfBlock(FabricBlockSettings.copyOf(Blocks.CHISELED_BOOKSHELF).nonOpaque()));
 
     // Decorative Blocks
-    public static final Block PARCHMENT = registerBlockWithoutBlockItem("parchment",
+    public static final Block PARCHMENT = registerBlock("parchment",
             new ParchmentBlock(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN).instrument(Instrument.BASS)
                     .noCollision().strength(1.0f)));
-    public static final Block DREAMCATCHER = registerBlockWithoutBlockItem("dreamcatcher",
+    public static final Block DREAMCATCHER = registerBlock("dreamcatcher",
             new DreamcatcherBlock(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN).instrument(Instrument.BASS)
                     .noCollision().strength(1.0f)));
-    public static final Block CANDLE_SKULL = registerBlockWithoutBlockItem("candle_skull",
+    public static final Block CANDLE_SKULL = registerBlock("candle_skull",
             new CandleSkullBlock(FabricBlockSettings.create().mapColor(MapColor.WHITE_GRAY)
                     .instrument(Instrument.GUITAR).strength(1.0f).luminance(state -> state.get(CandleSkullBlock.LIT) ? 8 : 0)));
 

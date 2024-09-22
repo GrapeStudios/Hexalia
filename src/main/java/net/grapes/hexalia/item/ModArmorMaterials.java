@@ -15,10 +15,10 @@ import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
 
-    BOGGED("bogged", 15, createProtectionMap(2, 5, 7, 2), 25,
-            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.0F, 0.0F, () -> Ingredient.ofItems(ModItems.SIREN_KELP)),
-    GHOST("ghost", 15, createProtectionMap(2, 5, 7, 2), 10,
-            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 1.0F, 0.0F, () -> Ingredient.ofItems(ModBlocks.GHOST_FERN.asItem()));
+    BOGGED("bogged", 15, createProtectionMap(2, 4, 5, 2), 20,
+            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.ofItems(ModItems.SILK_FIBER)),
+    GHOST("ghost", 15, createProtectionMap(1, 1, 3, 1), 10,
+            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.ofItems(ModBlocks.GHOST_FERN.asItem()));
 
     private static final EnumMap<ArmorItem.Type, Integer> BASE_DURABILITY = createDurabilityMap();
 

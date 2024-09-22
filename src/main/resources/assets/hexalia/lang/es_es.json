@@ -39,20 +39,20 @@
   "item.hexalia.resin": "Resina",
   "item.hexalia.kelpweave_blade": "Espada de Alga Tejida",
 
-  "effect.hexalia.vigor": "Vigor",
+  "effect.hexalia.bloodlust": "Bloodlust",
   "effect.hexalia.stunned": "Aturdido",
-  "effect.hexalia.stuffed": "Saciado",
-  "effect.hexalia.slimey_step": "Paso Baboso",
-  "effect.hexalia.warding": "Protección",
-  "effect.hexalia.siphoning": "Sifón",
+  "effect.hexalia.overfed": "Saciado",
+  "effect.hexalia.slimewalker": "Paso Baboso",
+  "effect.hexalia.spikeskin": "Protección",
+  "effect.hexalia.siphon": "Sifón",
   "effect.hexalia.bleeding": "Sangrado",
 
   "item.hexalia.rustic_bottle": "Botella Rústica",
-  "item.hexalia.brew_of_vigor": "Brebaje de Vigor",
-  "item.hexalia.brew_of_slimey_step": "Brebaje de Paso Baboso",
-  "item.hexalia.brew_of_warding": "Brebaje de Protección",
+  "item.hexalia.brew_of_bloodlust": "Brebaje de Bloodlust",
+  "item.hexalia.brew_of_slimewalker": "Brebaje de Paso Baboso",
+  "item.hexalia.brew_of_spikeskin": "Brebaje de Protección",
   "item.hexalia.brew_of_homestead": "Brebaje de Hogar",
-  "item.hexalia.brew_of_siphoning": "Brebaje de Sifón",
+  "item.hexalia.brew_of_siphon": "Brebaje de Sifón",
 
   "block.hexalia.small_cauldron": "Caldero Pequeño",
   "item.hexalia.small_cauldron": "Caldero Pequeño",
@@ -84,10 +84,10 @@
   "tooltip.hexalia.purifying_salts": "Mantén §e[RMB]§r para eliminar efectos",
 
   "tooltip.hexalia.homestead_brew": "Teletransporta a tu punto de aparición",
-  "tooltip.hexalia.siphoning_brew": "Sifón (2:00)",
-  "tooltip.hexalia.slimey_step_brew": "Paso Baboso (2:00)",
-  "tooltip.hexalia.vigor_brew": "Vigor (2:00)",
-  "tooltip.hexalia.warding_brew": "Protección (2:00)",
+  "tooltip.hexalia.siphon_brew": "Sifón (2:00)",
+  "tooltip.hexalia.slimewalker_brew": "Paso Baboso (2:00)",
+  "tooltip.hexalia.bloodlust_brew": "Bloodlust (2:00)",
+  "tooltip.hexalia.spikeskin_brew": "Protección (2:00)",
 
   "tooltip.hexalia.needs_heat": "Requiere un bloque calentador debajo",
 
@@ -95,12 +95,12 @@
 
   "item.hexalia.witch_salad": "Ensalada de Bruja",
 
-  "effect.hexalia.stuffed.description": "Evita que la saturación baje pero el usuario aún puede consumir alimentos para restaurar la salud",
+  "effect.hexalia.overfed.description": "Evita que la saturación baje pero el usuario aún puede consumir alimentos para restaurar la salud",
   "effect.hexalia.stunned.description": "Las entidades afectadas no pueden moverse mientras este efecto está activo",
-  "effect.hexalia.warding.description": "Aumenta la dureza de la armadura del usuario y refleja el 20% del daño a los atacantes",
-  "effect.hexalia.vigor.description": "Aumenta la fuerza del usuario y le da la capacidad de restaurar el 25% del daño infligido al objetivo",
-  "effect.hexalia.slimey_step.description": "Permite al usuario escalar verticalmente por paredes y le otorga inmunidad al daño por caída. El usuario rebota cuando se presiona la tecla de agacharse",
-  "effect.hexalia.siphoning.description": "Aumenta la velocidad de minería y el usuario atrae objetos del suelo en un radio de 5 bloques",
+  "effect.hexalia.spikeskin.description": "Aumenta la dureza de la armadura del usuario y refleja el 20% del daño a los atacantes",
+  "effect.hexalia.bloodlust.description": "Aumenta la fuerza del usuario y le da la capacidad de restaurar el 25% del daño infligido al objetivo",
+  "effect.hexalia.slimewalker.description": "Permite al usuario escalar verticalmente por paredes y le otorga inmunidad al daño por caída. El usuario rebota cuando se presiona la tecla de agacharse",
+  "effect.hexalia.siphon.description": "Aumenta la velocidad de minería y el usuario atrae objetos del suelo en un radio de 5 bloques",
   "effect.hexalia.bleeding.description": "Causa daño cada tic similar al efecto de Veneno.",
 
   "advancements.hexalia.root.title": "Bienvenido a Hexalia",

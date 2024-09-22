@@ -3,10 +3,12 @@ package net.grapes.datagen;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.block.custom.HexedBulrushBlock;
 import net.grapes.hexalia.block.custom.MandrakeCropBlock;
 import net.grapes.hexalia.block.custom.RabbageCropBlock;
 import net.grapes.hexalia.block.custom.SunfireTomatoCropBlock;
 import net.grapes.hexalia.item.ModItems;
+import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
 import net.minecraft.predicate.StatePredicate;
 
@@ -32,7 +34,6 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addPottedPlantDrops(ModBlocks.POTTED_PALE_MUSHROOM);
         addDrop(ModBlocks.WITCHWEED);
         addDrop(ModBlocks.GHOST_FERN);
-        addDrop(ModBlocks.HEXED_BULRUSH);
         addDrop(ModBlocks.NIGHTSHADE_BUSH);
         addPottedPlantDrops(ModBlocks.POTTED_NIGHTSHADE_BUSH);
 

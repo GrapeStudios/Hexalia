@@ -2,10 +2,10 @@
   "replace": false,
   "values": [
     "hexalia:brew_of_homestead",
-    "hexalia:brew_of_vigor",
-    "hexalia:brew_of_slimey_step",
-    "hexalia:brew_of_warding",
-    "hexalia:brew_of_siphoning",
+    "hexalia:brew_of_bloodlust",
+    "hexalia:brew_of_slimewalker",
+    "hexalia:brew_of_spikeskin",
+    "hexalia:brew_of_siphon",
     "hexalia:rustic_bottle"
   ]
 }

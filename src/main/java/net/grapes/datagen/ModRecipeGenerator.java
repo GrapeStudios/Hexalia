@@ -45,7 +45,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input('S', Items.STICK)
                 .input('A', Items.FEATHER)
                 .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
-                .offerTo(exporter, new Identifier(getRecipeName(ModItems.DREAMCATCHER) + "_"));
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.DREAMCATCHER) + "_"));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.PARCHMENT)
                 .pattern(" S ")
@@ -55,7 +55,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input('P', Items.PAPER)
                 .input('A', ModBlocks.SPIRIT_BLOOM)
                 .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
-                .offerTo(exporter, new Identifier(getRecipeName(ModItems.PARCHMENT) + "_"));
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.PARCHMENT) + "_"));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.SALT_LAMP)
                 .pattern(" A ")
@@ -129,24 +129,14 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.RUSTIC_BOTTLE), conditionsFromItem(ModItems.RUSTIC_BOTTLE))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.BREW_SHELF) + "_"));
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CANDLE_SKULL)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.CANDLE_SKULL)
                 .pattern(" S ")
                 .pattern(" T ")
                 .pattern("   ")
                 .input('S', Items.CANDLE)
                 .input('T', Items.SKELETON_SKULL)
                 .criterion(hasItem(Items.SKELETON_SKULL), conditionsFromItem(Items.SKELETON_SKULL))
-                .offerTo(exporter, new Identifier(getRecipeName(ModItems.CANDLE_SKULL) + "_"));
-
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.WISDOM_GEM)
-                .pattern("PSP")
-                .pattern("STS")
-                .pattern("PSP")
-                .input('S', ModItems.SPIRIT_BLOOM_POWDER)
-                .input('T', Items.EXPERIENCE_BOTTLE)
-                .input('P', Items.AMETHYST_SHARD)
-                .criterion(hasItem(Items.EXPERIENCE_BOTTLE), conditionsFromItem(Items.EXPERIENCE_BOTTLE))
-                .offerTo(exporter, new Identifier(getRecipeName(ModItems.WISDOM_GEM) + "_"));
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.CANDLE_SKULL) + "_"));
 
         // Recipes for vanilla items or blocks.
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.LEATHER, 2)
@@ -164,7 +154,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .pattern(" S ")
                 .input('S', Items.STRING)
                 .input('T', ModItems.SILK_FIBER)
-                .criterion(hasItem(ModItems.SALT), conditionsFromItem(ModItems.SALT))
+                .criterion(hasItem(ModItems.SILK_FIBER), conditionsFromItem(ModItems.SILK_FIBER))
                 .offerTo(exporter, new Identifier(getRecipeName(Blocks.COBWEB) + "_"));
 
         // Reversible Compacting Recipes for Blocks
@@ -174,9 +164,10 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
         // Armor Recipes
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.GHOSTVEIL)
                 .pattern("T T")
-                .pattern("STS")
+                .pattern("PTP")
                 .pattern("SSS")
-                .input('T', ModItems.SILK_FIBER)
+                .input('T', Items.LEATHER)
+                .input('P', ModItems.SILK_FIBER)
                 .input('S', ModBlocks.GHOST_FERN)
                 .criterion(hasItem(ModBlocks.GHOST_FERN), conditionsFromItem(ModBlocks.GHOST_FERN))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.GHOSTVEIL) + "_"));
@@ -210,6 +201,11 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.DREAMSHROOM_PASTE, 1)
                 .input(ModItems.MORTAR_AND_PESTLE)
                 .input(ModBlocks.DREAMSHROOM)
+                .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
+                .offerTo(exporter);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.GHOST_FERN_POWDER, 1)
+                .input(ModItems.MORTAR_AND_PESTLE)
+                .input(ModBlocks.GHOST_FERN)
                 .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
                 .offerTo(exporter);
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.STRING, 2)
@@ -248,6 +244,10 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.YELLOW_DYE)
                 .input(ModBlocks.HENBANE)
                 .criterion(hasItem(ModBlocks.HENBANE), conditionsFromItem(ModBlocks.HENBANE))
+                .offerTo(exporter);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.PURPLE_DYE)
+                .input(ModBlocks.NIGHTSHADE_BUSH)
+                .criterion(hasItem(ModBlocks.NIGHTSHADE_BUSH), conditionsFromItem(ModBlocks.NIGHTSHADE_BUSH))
                 .offerTo(exporter);
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.HEXBOOK, 1)
                 .input(Items.BOOK)

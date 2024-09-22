@@ -61,11 +61,7 @@ public class PurifyingSaltsItem extends Item {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        if (Screen.hasShiftDown()) {
-            tooltip.add(Text.translatable("tooltip.hexalia.purifying_salts").formatted(Formatting.DARK_GREEN));
-        } else {
-            tooltip.add(Text.translatable("tooltip.hexalia.hold_shift"));
-        }
+            tooltip.add(Text.translatable("tooltip.hexalia.purifying_salts").formatted(Formatting.GRAY));
     }
 
     @Override

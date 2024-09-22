@@ -1,12 +1,12 @@
 {
   "parent": "hexalia:small_cauldron",
   "criteria": {
-    "has_slimey_step_brew": {
+    "has_slimewalker_brew": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:brew_of_slimey_step"
+              "hexalia:brew_of_slimewalker"
             ]
           }
         ]
@@ -23,7 +23,7 @@
     "frame": "goal",
     "hidden": false,
     "icon": {
-      "item": "hexalia:brew_of_slimey_step"
+      "item": "hexalia:brew_of_slimewalker"
     },
     "show_toast": true,
     "title": {
@@ -32,7 +32,7 @@
   },
   "requirements": [
     [
-      "has_slimey_step_brew"
+      "has_slimewalker_brew"
     ]
   ],
   "sends_telemetry_event": true

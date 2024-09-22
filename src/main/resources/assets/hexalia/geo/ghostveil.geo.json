@@ -20,7 +20,7 @@
 					"parent": "bipedBody",
 					"pivot": [0, 23.8, 0],
 					"cubes": [
-						{"origin": [-4, 13.9, -3], "size": [8, 9, 6], "inflate": 0.3, "uv": [0, 19]}
+						{"origin": [-4, 13.9, -2.1], "size": [8, 10, 4.1], "inflate": 0.3, "uv": [0, 16]}
 					]
 				},
 				{
@@ -32,8 +32,8 @@
 					"parent": "bipedRightArm",
 					"pivot": [-4, 22, 0],
 					"cubes": [
-						{"origin": [-8.6, 19, -3], "size": [4, 5, 6], "inflate": 0.3, "uv": [30, 19], "mirror": true},
-						{"origin": [-8.40948, 15.38658, -2.5], "size": [3, 8, 5], "inflate": 0.3, "uv": [28, 31], "mirror": true}
+						{"origin": [-7.81, 19, -2.5], "size": [4.2, 5, 5], "inflate": 0.3, "uv": [0, 30]},
+						{"origin": [-7.8, 15.38658, -2.4], "size": [3.4, 8, 4.5], "inflate": 0.3, "uv": [0, 40]}
 					]
 				},
 				{
@@ -45,8 +45,8 @@
 					"parent": "bipedLeftArm",
 					"pivot": [4, 22, 0],
 					"cubes": [
-						{"origin": [4.6, 19, -3], "size": [4, 5, 6], "inflate": 0.3, "uv": [30, 19]},
-						{"origin": [5.40948, 15.38658, -2.5], "size": [3, 8, 5], "inflate": 0.3, "uv": [28, 31]}
+						{"origin": [3.61, 19, -2.5], "size": [4.2, 5, 5], "inflate": 0.3, "uv": [18, 32]},
+						{"origin": [4.40948, 15.38658, -2.4], "size": [3.3, 8, 4.5], "inflate": 0.3, "uv": [36, 28]}
 					]
 				}
 			]

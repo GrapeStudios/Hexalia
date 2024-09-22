@@ -35,7 +35,7 @@ public class GhostVeilItem extends ArmorItem implements GeoItem {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(Text.translatable("tooltip.hexalia.hold_shift").formatted(Formatting.GRAY));
+        tooltip.add(Text.translatable("tooltip.hexalia.ghostveil").formatted(Formatting.GRAY));
     }
 
     @Override

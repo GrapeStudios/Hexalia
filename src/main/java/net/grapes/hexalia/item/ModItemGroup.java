@@ -34,9 +34,9 @@ public class ModItemGroup {
                         entries.add(ModBlocks.INFUSED_DIRT);
                         entries.add(ModBlocks.INFUSED_FARMLAND);
 
-                        entries.add(ModItems.PARCHMENT);
-                        entries.add(ModItems.DREAMCATCHER);
-                        entries.add(ModItems.CANDLE_SKULL);
+                        entries.add(ModBlocks.PARCHMENT);
+                        entries.add(ModBlocks.DREAMCATCHER);
+                        entries.add(ModBlocks.CANDLE_SKULL);
 
                         entries.add(ModItems.SALT);
                         entries.add(ModItems.PURIFYING_SALTS);
@@ -48,6 +48,7 @@ public class ModItemGroup {
                         entries.add(ModItems.SIREN_KELP_PASTE);
                         entries.add(ModItems.SPIRIT_BLOOM_POWDER);
                         entries.add(ModItems.DREAMSHROOM_PASTE);
+                        entries.add(ModItems.GHOST_FERN_POWDER);
 
                         entries.add(ModItems.STONE_DAGGER);
                         entries.add(ModItems.RESIN);
@@ -57,11 +58,11 @@ public class ModItemGroup {
 
                         entries.add(ModBlocks.BREW_SHELF);
                         entries.add(ModItems.RUSTIC_BOTTLE);
-                        entries.add(ModItems.BREW_OF_WARDING);
-                        entries.add(ModItems.BREW_OF_VIGOR);
-                        entries.add(ModItems.BREW_OF_SLIMEY_STEP);
+                        entries.add(ModItems.BREW_OF_SPIKESKIN);
+                        entries.add(ModItems.BREW_OF_BLOODLUST);
+                        entries.add(ModItems.BREW_OF_SLIMEWALKER);
                         entries.add(ModItems.BREW_OF_HOMESTEAD);
-                        entries.add(ModItems.BREW_OF_SIPHONING);
+                        entries.add(ModItems.BREW_OF_SIPHON);
 
                         entries.add(ModItems.HEX_FOCUS);
                         entries.add(ModItems.ANCIENT_SEED);
@@ -72,14 +73,14 @@ public class ModItemGroup {
                         entries.add(ModItems.SILK_FIBER);
                         entries.add(ModItems.SILKWORM);
 
+                        /* Work In Progress -
                         entries.add(ModItems.BOGGED_HAT);
                         entries.add(ModItems.BOGGED_ROBE);
                         entries.add(ModItems.BOGGED_PANTS);
-                        entries.add(ModItems.BOGGED_BOOTS);
+                        entries.add(ModItems.BOGGED_BOOTS);*/
                         entries.add(ModItems.GHOSTVEIL);
 
                         entries.add(ModItems.HEXBOOK);
-                        entries.add(ModItems.SILK_MOTH_SPAWN_EGG);
 
                         entries.add(ModItems.LOTUS_FLOWER);
                         entries.add(ModBlocks.PALE_MUSHROOM);
@@ -124,6 +125,9 @@ public class ModItemGroup {
                         entries.add(ModItems.WILLOW_CHEST_BOAT);
                         entries.add(ModItems.WILLOW_SIGN);
                         entries.add(ModItems.WILLOW_HANGING_SIGN);
+
+                        entries.add(ModItems.SILK_MOTH_SPAWN_EGG);
+
                     }).build());
     public static void registerItemGroups(){
     }
