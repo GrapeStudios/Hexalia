@@ -6,6 +6,7 @@ import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
@@ -81,10 +82,17 @@ public class GhostVeilItem extends ArmorItem implements GeoItem {
     public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         if (entity instanceof PlayerEntity player) {
             if (!world.isClient && player.isSneaking() && player.getEquippedStack(EquipmentSlot.CHEST).equals(stack)) {
-                player.setInvulnerable(true);
-            } else {
-                player.setInvulnerable(false);
+                List<LivingEntity> nearbyEntities = world.getEntitiesByClass(LivingEntity.class, player.getBoundingBox().expand(10), mob -> mob instanceof HostileEntity);
 
+                for (LivingEntity mob : nearbyEntities) {
+                    if (mob instanceof HostileEntity hostileMob) {
+                        hostileMob.setTarget(null);
+                    }
+                }
+
+                if (stack.isDamageable() && world.getTime() % 20 == 0) {
+                    stack.damage(1, player, (p) -> p.sendEquipmentBreakStatus(EquipmentSlot.CHEST));
+                }
             }
         }
     }

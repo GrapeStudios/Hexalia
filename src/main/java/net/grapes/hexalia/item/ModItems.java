@@ -45,8 +45,6 @@ public class ModItems {
             new AliasedBlockItem(ModBlocks.SUNFIRE_TOMATO_CROP, new FabricItemSettings()));
     public static final Item RABBAGE_SEEDS = registerItem("rabbage_seeds",
             new AliasedBlockItem(ModBlocks.RABBAGE_CROP, new FabricItemSettings()));
-    public static final Item RABBAGE = registerItem("rabbage",
-            new RabbageItem(new FabricItemSettings()));
     public static final Item LOTUS_FLOWER = registerItem("lotus_flower",
             new PlaceableOnWaterItem(ModBlocks.LOTUS_FLOWER, new FabricItemSettings()));
 
@@ -118,6 +116,8 @@ public class ModItems {
     // Weapons & Armor
     public static final Item KELPWEAVE_BLADE = registerItem("kelpweave_blade",
             new KelpweaveBladeItem(ModToolMaterials.ANCIENT_SEED, 3, -2f, new FabricItemSettings().rarity(Rarity.RARE)));
+    public static final Item RABBAGE = registerItem("rabbage",
+            new RabbageItem(new FabricItemSettings().maxCount(16)));
 
     // Wooden Set Items
     public static final Item COTTONWOOD_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.COTTONWOOD_BOAT_ID,

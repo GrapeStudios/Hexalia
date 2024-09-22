@@ -74,6 +74,10 @@
   "item.hexalia.hexbook": "Hexbook",
   "item.hexalia.witch_salad": "Witch Salad",
 
+  "biome.hexalia.enchanted_bayou": "Enchanted Bayou",
+
+  "entity.hexalia.silk_moth": "Silk Moth",
+
   "hexalia.container.brew_shelf": "Brew Shelf",
 
   "item.hexalia.hexbook.landing_text": "A well-detailed book is your trusted tool in matters of witchcraft",
@@ -87,7 +91,7 @@
   "tooltip.hexalia.hold_shift": "Hold SHIFT for more information",
   "tooltip.hexalia.bogged_armor": "Full Set Bonus:",
   "tooltip.hexalia.bogged_armor_2": "Poison Immunity and Water Breathing",
-  "tooltip.hexalia.ghostveil": "Turns wearer §eInvisible§r",
+  "tooltip.hexalia.ghostveil": "Shrouds the wearer to avoid mob detection",
   "tooltip.hexalia.mandrake": "Stuns in an area on usage",
   "tooltip.hexalia.purifying_salts": "Removes status effects",
   "tooltip.hexalia.rabbage": "Can be thrown to cause bleeding",

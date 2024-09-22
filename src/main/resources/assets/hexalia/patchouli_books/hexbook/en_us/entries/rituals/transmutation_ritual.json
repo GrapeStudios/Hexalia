@@ -15,6 +15,10 @@
     {
       "type": "hexalia:transmutation",
       "recipe": "hexalia:rabbage_seeds_transmutation"
+    },
+    {
+      "type": "hexalia:transmutation",
+      "recipe": "hexalia:wisdom_gem_transmutation"
     }
   ]
 }

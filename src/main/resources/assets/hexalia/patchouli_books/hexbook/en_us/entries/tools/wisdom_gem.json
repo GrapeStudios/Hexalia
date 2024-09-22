@@ -10,8 +10,9 @@
       "text": "When held in your off-hand, this item increases the experience you gain at the cost of its durability."
     },
     {
-      "type": "patchouli:crafting",
-      "recipe": "hexalia:wisdom_gem_"
+      "type": "patchouli:spotlight",
+      "item": "hexalia:ritual_table",
+      "text": "This item can only be obtained through a $(l:hexalia:rituals/transmutation_ritual)Transmutation Ritual$() using a Diamond as a catalyst."
     }
   ]
 }
