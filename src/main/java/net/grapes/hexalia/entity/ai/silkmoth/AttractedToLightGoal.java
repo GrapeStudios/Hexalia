@@ -55,11 +55,11 @@ public class AttractedToLightGoal extends Goal {
         World world = this.entity.getWorld();
         BlockPos entityPos = this.entity.getBlockPos();
         BlockPos.Mutable mutablePos = new BlockPos.Mutable();
-
+        int entityX = entityPos.getX(),entityY = entityPos.getY(),entityZ = entityPos.getZ();
         for (int x = -10; x <= 10; x++) {
             for (int y = -5; y <= 5; y++) {
                 for (int z = -10; z <= 10; z++) {
-                    mutablePos.set(entityPos.getX() + x, entityPos.getY() + y, entityPos.getZ() + z);
+                    mutablePos.set(entityX + x, entityY + y, entityZ + z);
                     Block block = world.getBlockState(mutablePos).getBlock();
                     if (block.getDefaultState().isIn(ModTags.Blocks.ATTRACTS_MOTH)) {
                         this.targetPos = mutablePos.toImmutable();

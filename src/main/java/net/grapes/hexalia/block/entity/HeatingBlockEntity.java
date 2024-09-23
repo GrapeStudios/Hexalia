@@ -13,12 +13,8 @@ public interface HeatingBlockEntity {
 
     default boolean isHeated (World world, BlockPos pos) {
         BlockState stateBelow = world.getBlockState(pos.down());
-            if (stateBelow.isIn(ModTags.Blocks.HEATING_BLOCKS)) {
-            if (stateBelow.contains(Properties.LIT)) {
-                return stateBelow.get(Properties.LIT);
-            }
-            return true;
-        }
-        return false;
+        if (!stateBelow.isIn(ModTags.Blocks.HEATING_BLOCKS)) return false;
+        if (stateBelow.contains(Properties.LIT)) return stateBelow.get(Properties.LIT);
+        return true;
     }
 }
