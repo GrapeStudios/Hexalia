@@ -1,0 +1,60 @@
+{
+  "processor": "net.grapes.hexalia.compat.patchouli.TransmutationProcessor",
+  "components": [
+    {
+      "type": "patchouli:image",
+      "image": "hexalia:textures/gui/patchouli/transmutation.png",
+      "x": 20,
+      "y": 16,
+      "u": 0,
+      "v": 0,
+      "texture_width": 256,
+      "texture_height": 256,
+      "width": 80,
+      "height": 120,
+      "scale": 1
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#input",
+      "x": 50,
+      "y": 79
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#salt_items0",
+      "x": 50,
+      "y": 54
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#salt_items1",
+      "x": 74,
+      "y": 79
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#salt_items2",
+      "x": 50,
+      "y": 103
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#salt_items3",
+      "x": 25,
+      "y": 79
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#output",
+      "x": 50,
+      "y": 20
+    },
+    {
+      "type": "patchouli:header",
+      "text": "#header",
+      "x": -1,
+      "y": 0
+    }
+  ]
+}

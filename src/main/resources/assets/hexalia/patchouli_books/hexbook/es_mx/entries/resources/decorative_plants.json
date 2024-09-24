@@ -1,0 +1,38 @@
+{
+  "category": "hexalia:resources",
+  "name": "Plantas Decorativas",
+  "icon": "hexalia:henbane",
+  "sortnum": 6,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:henbane",
+      "text": "Estas son flores amarillentas que se pueden encontrar en el bioma de las Planicies. Estas se pueden convertir en Tinte Amarillo."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:pale_mushroom",
+      "text": "Estos son hongos brillantes que iluminan por la noche y se pueden plantar en macetas como fuente de luz."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:witchweed",
+      "text": "Estos son arbustos de flores rosadas que aplican $(#596e4f)Veneno$() si pisas sobre ellos."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:hexed_bulrush",
+      "text": "Estas plantas acuáticas solo se pueden encontrar en aguas poco profundas."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:nightshade_bush",
+      "text": "Estas plantas acuáticas solo se pueden encontrar en aguas poco profundas."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:lotus_flower",
+      "text": "Estas son flores que crecen en los nenúfares en el bioma del Pantano Encantado."
+    }
+  ]
+}

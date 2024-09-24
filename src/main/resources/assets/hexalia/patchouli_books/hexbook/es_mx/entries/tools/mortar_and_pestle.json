@@ -1,0 +1,33 @@
+{
+  "category": "hexalia:tools",
+  "name": "Mortero y Pilón",
+  "icon": "hexalia:mortar_and_pestle",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:mortar_and_pestle",
+      "text": "Este objeto se puede usar para moler recursos mágicos naturales en recursos refinados.$(br2)Este ítem no se consume al usarlo, pero solo puede usarse 64 veces."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:mortar_and_pestle"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:spirit_bloom_powder"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:siren_kelp_paste"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:dreamshroom_paste"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:string"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "category": "hexalia:biomes",
+  "name": "Pantano Encantado",
+  "icon": "hexalia:lotus_flower",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:lotus_flower,hexalia:hexed_bulrush,hexalia:pale_mushroom,hexalia:nightshade_bush,hexalia:witchweed",
+      "text": "En este bioma pantanoso podrás encontrar todas las $(l:hexalia:resources/magical_resources)Plantas Mágicas$() así como otras plantas.$(br2)Los Álamos y los Sauces también aparecen de forma natural en este bioma, junto con las Polillas de Seda."
+    },
+    {
+      "type": "patchouli:image",
+      "title": "Pantano Encantado",
+      "images": [
+        "hexalia:textures/gui/patchouli/enchanted_bayou.png"
+      ],
+      "border": true
+    }
+  ]
+}

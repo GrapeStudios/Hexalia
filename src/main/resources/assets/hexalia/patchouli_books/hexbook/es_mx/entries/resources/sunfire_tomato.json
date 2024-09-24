@@ -1,0 +1,27 @@
+{
+  "category": "hexalia:resources",
+  "name": "Tomate Solífugo",
+  "icon": "hexalia:sunfire_tomato",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:sunfire_tomato,hexalia:sunfire_tomato_seeds",
+      "text": "Comer un Tomate Solífugo otorga $(#bcbcbc)Velocidad I$() durante 5 segundos."
+    },
+    {
+      "type": "patchouli:image",
+      "title": "Tomate Solífugo Salvaje",
+      "images": [
+        "hexalia:textures/gui/patchouli/wild_sunfire_tomato.png"
+      ],
+      "border": true,
+      "text": "Este cultivo salvaje se puede encontrar en el bioma Sabana."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:spicy_sandwich",
+      "text": "Este alimento otorga el efecto $(#bcbcbc)Velocidad II$() durante 45 segundos."
+    }
+  ]
+}

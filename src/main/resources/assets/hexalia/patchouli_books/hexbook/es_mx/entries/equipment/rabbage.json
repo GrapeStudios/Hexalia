@@ -1,0 +1,18 @@
+{
+  "category": "hexalia:equipment",
+  "name": "Lechurrabia",
+  "icon": "hexalia:rabbage",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:rabbage",
+      "text": "Este objeto lanzable daña a entidades y aplica el efecto $(#990000)Sangrado$() en el objetivo. Este nuevo efecto causa daño continuo durante la duración del efecto, similar al veneno."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:rabbage_seeds",
+      "text": "Este objeto solo se puede obtener a través de un $(l:hexalia:rituals/transmutation_ritual)Ritual de Transmutación$() utilizando Semillas de Trigo como catalizador."
+    }
+  ]
+}
