@@ -1,0 +1,27 @@
+{
+  "category": "hexalia:resources",
+  "name": "Солнцепламенный томат",
+  "icon": "hexalia:sunfire_tomato",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:sunfire_tomato,hexalia:sunfire_tomato_seeds",
+      "text": "Съев солнцепламенный томат вы получитите эффект $(#bcbcbc)Скорости I$() на 5 секунд."
+    },
+    {
+      "type": "patchouli:image",
+      "title": "Дикий солнцепламенный томат",
+      "images": [
+        "hexalia:textures/gui/patchouli/wild_sunfire_tomato.png"
+      ],
+      "border": true,
+      "text": "Это дикое растение можно найти в биоме Саванны."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:spicy_sandwich",
+      "text": "Съев такой вы получите $(#bcbcbc)Скорость II$() на 45 секунд."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "category": "hexalia:resources",
+  "name": "Ледоягоды",
+  "icon": "hexalia:chillberries",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:chillberries",
+      "text": "Съев ледоягоду вы получите эффект $(#FF9900)Огнестойкости I$() на 5 секунд."
+    },
+    {
+      "type": "patchouli:image",
+      "title": "Куст ледоягод",
+      "images": [
+        "hexalia:textures/gui/patchouli/chillberry_bush.png"
+      ],
+      "border": true,
+      "text": "Эти кусты можно обнаружить в биоме обычной или Снежной тайги."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:chillberry_pie",
+      "text": "Съев такой вы получите $(#FF9900)Огнестойкость II$() на 45 секунд."
+    }
+  ]
+}

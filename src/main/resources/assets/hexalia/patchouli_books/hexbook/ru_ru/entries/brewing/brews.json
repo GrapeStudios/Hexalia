@@ -1,0 +1,38 @@
+{
+  "category": "hexalia:brewing",
+  "name": "Варева",
+  "icon": "hexalia:rustic_bottle",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:rustic_bottle_",
+      "text": "Каждый рецепт варева требует хотя бы 1 пустой фиал в слоте котелка."
+    },
+    {
+      "type": "hexalia:small_cauldron",
+      "recipe": "hexalia:brew_of_bloodlust_from_small_cauldron",
+      "text": "Даёт эффект $(#cc0000)Жажды крови$(), что повышает вашу силу и исцеляет вас за счёт наносимого урона."
+    },
+    {
+      "type": "hexalia:small_cauldron",
+      "recipe": "hexalia:brew_of_spikeskin_from_small_cauldron",
+      "text": "Даёт эффект $(#38761d)Шипов$(), увеличивающий твёрдость вашей брони и отражающий часть получаемого вами урона атакующему."
+    },
+    {
+      "type": "hexalia:small_cauldron",
+      "recipe": "hexalia:brew_of_slimewalker_from_small_cauldron",
+      "text": "Даёт эффект $(#6aa84f)Попрыгуна$(), что позволяет вам взбираться по стенам и даёт иммунитет к урону от падения. Когда вы $(#6aa84f)крадётесь$(), то начинаете высоко прыгать."
+    },
+    {
+      "type": "hexalia:small_cauldron",
+      "recipe": "hexalia:brew_of_homestead_from_small_cauldron",
+      "text": "После того, как вы выпьете это варево, вас телепортирует к вашей точке возрождения."
+    },
+    {
+      "type": "hexalia:small_cauldron",
+      "recipe": "hexalia:brew_of_siphon_from_small_cauldron",
+      "text": "Даёт эффект $(#9fc5e8)Шахтёра$(), что увеличивает скорость добычи блоков и даёт эффект предметного магнита."
+    }
+  ]
+}

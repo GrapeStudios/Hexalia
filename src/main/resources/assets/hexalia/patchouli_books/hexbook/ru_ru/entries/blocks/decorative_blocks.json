@@ -1,0 +1,25 @@
+{
+  "category": "hexalia:blocks",
+  "name": "Декоративные блоки",
+  "icon": "hexalia:candle_skull",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:candle_skull,hexalia:parchment,hexalia:dreamcatcher",
+      "text": "Некоторыми декоративными блоками можно улучшить интерьер вашей ведьминской мастерской."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:candle_skull_"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:parchment_"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:dreamcatcher_"
+    }
+  ]
+}

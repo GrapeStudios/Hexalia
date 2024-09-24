@@ -1,0 +1,18 @@
+{
+  "category": "hexalia:tools",
+  "name": "Камень мудрости",
+  "icon": "hexalia:wisdom_gem",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:wisdom_gem",
+      "text": "Пока этот камень находится в неактивной руке, вы получаете больше опыта ценой его прочности."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:ritual_table",
+      "text": "Камень можно получить при помощи $(l:hexalia:rituals/transmutation_ritual)Ритуала трансмутации$(), используя алмаз в качестве катализатора."
+    }
+  ]
+}

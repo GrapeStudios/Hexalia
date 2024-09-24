@@ -1,0 +1,36 @@
+{
+  "category": "hexalia:resources",
+  "name": "Соль",
+  "icon": "hexalia:salt",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:salt",
+      "text": "Соль можно найти в виде рудной жилы. Имеет множество применений, например, в создании $(l:hexalia:tools/purifying_salts)Очищающих солей$().$(br2)Можно поставить на землю при помощи ПКМ, используется в ритуалах."
+    },
+    {
+      "type": "patchouli:image",
+      "title": "Каменная соль",
+      "images": [
+        "hexalia:textures/gui/patchouli/salt_ore.png"
+      ],
+      "border": true
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:leather_",
+      "text": "Соль можно объединить с гнилой плотью, чтобы получить кожу."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:salt_block",
+      "text": "Соль также можно объединить на верстаке в блок соли для более компактного хранения."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:salt_lamp_",
+      "text": "Используется в создании лампы с добавлением медного слитка и факела."
+    }
+  ]
+}

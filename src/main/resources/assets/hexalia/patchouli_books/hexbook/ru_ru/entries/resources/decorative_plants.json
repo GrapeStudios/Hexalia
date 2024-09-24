@@ -1,0 +1,38 @@
+{
+  "category": "hexalia:resources",
+  "name": "Декоративные растения",
+  "icon": "hexalia:henbane",
+  "sortnum": 6,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:henbane",
+      "text": "Эти желтоватые цветы можно найти биоме Полей. Можно переработать в жёлтый краситель."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:pale_mushroom",
+      "text": "Эти сверкающие грибы, что мерцают в темноте, также могут быть посажены в горшок как источник света."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:witchweed",
+      "text": "Розоватые кусты цветов, крайне ядовиты. Накладывают $(#596e4f)Отравление$(), если вы на них наступите."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:hexed_bulrush",
+      "text": "Морская трава, которую можно найти в мелководье."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:nightshade_bush",
+      "text": "Эти цветочные кусты можно переработать в фиолетовый краситель."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:lotus_flower",
+      "text": "Такие цветки растут на кувшинках в биоме Зачарованного байу."
+    }
+  ]
+}

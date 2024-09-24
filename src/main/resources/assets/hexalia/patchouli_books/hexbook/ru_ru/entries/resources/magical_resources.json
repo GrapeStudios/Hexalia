@@ -1,0 +1,28 @@
+{
+  "category": "hexalia:resources",
+  "name": "Волшебные материалы",
+  "icon": "hexalia:siren_kelp",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:spirit_bloom",
+      "text": "Синие лепестки цветка духа можно найти в биомах Мангрового и обычного болот."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:dreamshroom",
+      "text": "Гриб сновидений часто встречается в Подзолистой тайге и Грибном биоме."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:siren_kelp",
+      "text": "Хвост русалки можно найти на дне биомов обычного и Глубокого океанов."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:ghost_fern",
+      "text": "Призрачный папоротник водится в $(l:hexalia:biomes/enchanted_bayou)Зачарованном байу$()."
+    }
+  ]
+}

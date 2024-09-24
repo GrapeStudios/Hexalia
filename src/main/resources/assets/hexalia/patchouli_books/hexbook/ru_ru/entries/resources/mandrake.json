@@ -1,0 +1,27 @@
+{
+  "category": "hexalia:resources",
+  "name": "Мандрагора",
+  "icon": "hexalia:mandrake",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:mandrake,hexalia:mandrake_seeds",
+      "text": "Данное растение лучше всего раскрывает себя в бою.После того, как вы зажмёте ПКМ на пару секунд с ней в руке, Мандрагора громко завопит в радиусе 5 блоков, накладывая на услышавших крик существ $(#f1c232)Оглушение$()."
+    },
+    {
+      "type": "patchouli:image",
+      "title": "Дикая мандрагора",
+      "images": [
+        "hexalia:textures/gui/patchouli/wild_mandrake.png"
+      ],
+      "border": true,
+      "text": "Это дикое растение можно найти в обычном и Берёзовом лесу."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:mandrake_stew",
+      "text": "Съев такой вы получите $(#f1c232)Сытость$() на 45 секунд. Она предотвращает падение насыщения."
+    }
+  ]
+}

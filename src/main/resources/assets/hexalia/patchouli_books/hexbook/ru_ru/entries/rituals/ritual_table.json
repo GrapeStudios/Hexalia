@@ -1,0 +1,34 @@
+{
+  "category": "hexalia:rituals",
+  "name": "Ритуальный стол",
+  "icon": "hexalia:ritual_table",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:ritual_table_",
+      "text": "Ритуалы проводятся на ритуальном столе, на который ставится предмет-катализатор."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:salt",
+      "title": "Соль",
+      "text": "Соль можно поставить вокруг ритуального стола во все стороны в 1-блочном радиусе.$(br2)Реактивы ритуала устанавливаются в кучки соли при помощи ПКМ."
+    },
+    {
+      "type": "patchouli:image",
+      "title": "Ритуальный стол",
+      "images": [
+        "hexalia:textures/gui/patchouli/ritual_table.png"
+      ],
+      "border": true,
+      "text": "Предмет в центре - на ритуальный стол, остальные реактивы - на блоки соли."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:hex_focus",
+      "title": "Активация ритуала",
+      "text": "Когда все предметы и блоки стоят на своих местах, нажмите ПКМ по ритуальному столу $(#b4a7d6)гексенфокусом$(), после чего начнётся ритуал."
+    }
+  ]
+}

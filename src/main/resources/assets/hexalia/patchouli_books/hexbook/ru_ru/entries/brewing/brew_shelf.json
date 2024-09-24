@@ -1,0 +1,13 @@
+{
+  "category": "hexalia:brewing",
+  "name": "Полка для варев",
+  "icon": "hexalia:brew_shelf",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:brew_shelf_",
+      "text": "В этом блоке вы можете безопасно хранить свои $(l:hexalia:brewing/brews)варева$(), но ничего более. Нажав ПКМ по блоку $(l:hexalia:tools/hex_focus)гексенфокусом$() вы измените его облик."
+    }
+  ]
+}

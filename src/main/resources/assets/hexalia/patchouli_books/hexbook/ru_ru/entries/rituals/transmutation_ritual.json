@@ -1,0 +1,24 @@
+{
+  "category": "hexalia:rituals",
+  "name": "Ритуал трансмутации",
+  "icon": "hexalia:ancient_seed",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:text",
+      "text": "$(#674ea7)Ритуал трансмутации$() проводится на ритуальном столе с целью превращения чего-то одного в другое, объеденяя реактивы с катализатором.$(br2)Для большей информации по проведению и активации ритуала смотрите вкладку $(l:hexalia:rituals/ritual_table)Ритуальный стол$()."
+    },
+    {
+      "type": "hexalia:transmutation",
+      "recipe": "hexalia:kelpweave_blade_transmutation"
+    },
+    {
+      "type": "hexalia:transmutation",
+      "recipe": "hexalia:rabbage_seeds_transmutation"
+    },
+    {
+      "type": "hexalia:transmutation",
+      "recipe": "hexalia:wisdom_gem_transmutation"
+    }
+  ]
+}

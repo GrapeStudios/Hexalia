@@ -1,0 +1,17 @@
+{
+  "category": "hexalia:tools",
+  "name": "Каменный кинжал",
+  "icon": "hexalia:stone_dagger",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:stone_dagger,hexalia:resin",
+      "text": "Используется для получения $(#ce7e00)смолы$() с бревна тёмного дуба или тополя.$(br2)Нажав ПКМ по блоку бревна клинок обтёсывает бревно и извлекает смолу."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:stone_dagger_"
+    }
+  ]
+}

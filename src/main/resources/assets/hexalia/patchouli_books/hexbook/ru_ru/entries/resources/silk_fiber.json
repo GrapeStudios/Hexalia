@@ -1,0 +1,32 @@
+{
+  "category": "hexalia:resources",
+  "name": "Шёлковое волокно",
+  "icon": "hexalia:silk_fiber",
+  "sortnum": 8,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:silkworm",
+      "text": "Шелкопрядов можно получить сломав соответствующий кокон, который можно найти в Лесу тёмного дуба и $(l:hexalia:biomes/enchanted_bayou)Зачарованном байу$()."
+    },
+    {
+      "type": "patchouli:image",
+      "title": "Кокон шелкопряда",
+      "images": [
+        "hexalia:textures/gui/patchouli/silkworm_cocoon.png"
+      ],
+      "border": true,
+      "text": "Коконы можно найти на брёвнах тёмного дуба и тополя."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:silk_fiber",
+      "text": "Шёлковое волокно получается путём объединения листьев и шелкопряда. С маленьким шансом выпадает с тутового шелкопряда."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:cobweb_",
+      "text": "Шёлковое волокно также используется в крафте паутины с использованием нитей."
+    }
+  ]
+}

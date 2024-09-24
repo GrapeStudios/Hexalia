@@ -1,0 +1,17 @@
+{
+  "category": "hexalia:blocks",
+  "name": "Сланцевая печь",
+  "icon": "hexalia:rustic_oven",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:rustic_oven",
+      "text": "Данный блок испольузется в разогреве малого котелка. Смотрите не наступите на него."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:rustic_oven_"
+    }
+  ]
+}

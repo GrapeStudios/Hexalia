@@ -1,0 +1,23 @@
+{
+  "category": "hexalia:blocks",
+  "name": "Волшебная почва",
+  "icon": "hexalia:infused_dirt",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:infused_dirt,hexalia:infused_farmland",
+      "text": "Объединив хвост русалки и землю вы получите новый тип почвы, не нуждающейся в воде.$(br2)Нажав мотыгой по блоку, вы создадите блок пашни. Использовав лопату вы вернёте блок к состоянию земли."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:infused_dirt_",
+      "text": "Посаженные на волшебную почву растения нельзя затоптать.$(br2)На неё также можно посадить сахарный тростник, не полагаясь на источник воды."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:infused_dirt",
+      "text": "На волшебную почву можно посадить $(l:hexalia:resources/magical_resources)волшебные растения$() и удвоить их при помощи костной муки."
+    }
+  ]
+}

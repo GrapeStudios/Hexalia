@@ -1,0 +1,13 @@
+{
+  "category": "hexalia:resources",
+  "name": "Особые материалы",
+  "icon": "hexalia:ancient_seed",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:ancient_seed",
+      "text": "Такое семечко можно найти в храме в джунглях. $(l:hexalia:rituals/transmutation_ritual)Трансмутируется$() в Лезвие ламинарии.$(br2)Древние семечки также могут вынюхать из земли нюхачи."
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "category": "hexalia:resources",
+  "name": "Деревья",
+  "icon": "hexalia:willow_sapling",
+  "sortnum": 7,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:willow_log",
+      "text": "Данная древесина обладает оливковым цветом. Можно найти в $(l:hexalia:biomes/enchanted_bayou)Зачарованном байу$()."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:cottonwood_log",
+      "text": "Данная древесина обладает бледно-коричневым цветом. Можно найти в $(l:hexalia:biomes/enchanted_bayou)Зачарованном байу$().$(br2)При помощи $(l:hexalia:tools/stone_dagger)каменного кинжала$() с тополя можно получить смолу."
+    }
+  ]
+}

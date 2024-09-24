@@ -1,0 +1,18 @@
+{
+  "category": "hexalia:equipment",
+  "name": "Редук",
+  "icon": "hexalia:rabbage",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:rabbage",
+      "text": "Данный предмет можно метнуть, чтобы нанести урон определённой сущности и вызвать у неё $(#990000)Кровотечение$(). Кровотечение наносит урон в течение времени, подобно отравлению."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:rabbage_seeds",
+      "text": "Редук можно получить в $(l:hexalia:rituals/transmutation_ritual)ритуале трансмутации$(), используя семена пшеницы в качестве катализатора."
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "category": "hexalia:tools",
+  "name": "Очищающие соли",
+  "icon": "hexalia:purifying_salts",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:purifying_salts",
+      "text": "Соли могут быть использованы для $(#bcbcbc)снятия всех эффектов$() с игрока, подобно молоку."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:purifying_salts"
+    }
+  ]
+}

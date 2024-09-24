@@ -1,0 +1,21 @@
+{
+  "category": "hexalia:biomes",
+  "name": "Зачарованный байу",
+  "icon": "hexalia:lotus_flower",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:lotus_flower,hexalia:hexed_bulrush,hexalia:pale_mushroom,hexalia:nightshade_bush,hexalia:witchweed",
+      "text": "В этой болотистой местности вами могут быть найдены разные $(l:hexalia:resources/magical_resources)волшебные$() и прочие растения.$(br2)Наряду с тополем и ивой в этом биоме также можно найти тутовых шелкопрядов."
+    },
+    {
+      "type": "patchouli:image",
+      "title": "Зачарованный байу",
+      "images": [
+        "hexalia:textures/gui/patchouli/enchanted_bayou.png"
+      ],
+      "border": true
+    }
+  ]
+}

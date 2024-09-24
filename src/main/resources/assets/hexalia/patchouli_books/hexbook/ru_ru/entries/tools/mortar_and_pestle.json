@@ -1,0 +1,33 @@
+{
+  "category": "hexalia:tools",
+  "name": "Ступка и пестик",
+  "icon": "hexalia:mortar_and_pestle",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:mortar_and_pestle",
+      "text": "Данный инструмент используется для дробления волшебных материалов в экстракты.$(br2)Он не тратится после крафта, но имеет прочность в 64 единицы."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:mortar_and_pestle"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:spirit_bloom_powder"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:siren_kelp_paste"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:dreamshroom_paste"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:string"
+    }
+  ]
+}

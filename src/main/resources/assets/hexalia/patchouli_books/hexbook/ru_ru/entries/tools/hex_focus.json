@@ -1,0 +1,17 @@
+{
+  "category": "hexalia:tools",
+  "name": "Гексенфокус",
+  "icon": "hexalia:hex_focus",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:hex_focus",
+      "text": "Данный жезл используется в $(l:hexalia:rituals/ritual_table)Ритуалах$() а также при взаимодействии с некоторыми блоками, такими как $(l:hexalia:brewing/brew_shelf)Полка для варев$()."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:hex_focus_"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "category": "hexalia:equipment",
+  "name": "Призрачная накидка",
+  "icon": "hexalia:ghostveil",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:ghostveil",
+      "text": "Когда вы носите эту накидку в слоте брони, $(#6aa84f)крадитесь$(), чтобы мобы вас игнорировали. По крайней мере, до тех пор, пока вы их не ударите.$(br2)Сокрытие постепенно тратит прочность накидки."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:ghostveil_"
+    }
+  ]
+}
