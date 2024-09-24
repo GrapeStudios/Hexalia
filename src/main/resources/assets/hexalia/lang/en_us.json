@@ -29,6 +29,18 @@
   "block.hexalia.parchment": "Parchment",
   "block.hexalia.dreamcatcher": "Dreamcatcher",
 
+  "block.hexalia.mandrake_crop": "Mandrake",
+  "block.hexalia.sunfire_tomato_crop": "Sunfire Tomato",
+  "block.hexalia.rabbage_crop": "Rabbage",
+
+  "block.hexalia.potted_spirit_bloom": "Potted Spirit Bloom",
+  "block.hexalia.potted_dreamshroom": "Potted Dreamshroom",
+  "block.hexalia.potted_nightshade_bush": "Potted Nightshade Bush",
+  "block.hexalia.potted_henbane": "Potted Henbane",
+  "block.hexalia.potted_pale_mushroom": "Potted Pale Mushroom",
+  "block.hexalia.potted_willow_sapling": "Potted Willow Sapling",
+  "block.hexalia.potted_cottonwood_sapling": "Potted Cottonwood Sapling",
+
   "item.hexalia.mortar_and_pestle": "Mortar and Pestle",
   "item.hexalia.spirit_bloom_powder": "Spirit Bloom Powder",
   "item.hexalia.dreamshroom_paste": "Dreamshroom Paste",
