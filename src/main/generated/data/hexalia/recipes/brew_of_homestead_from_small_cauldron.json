@@ -1,19 +1,19 @@
 {
   "type": "hexalia:small_cauldron",
+  "bottle_slot": {
+    "item": "hexalia:rustic_bottle"
+  },
   "ingredients": [
     {
-      "item": "hexalia:spirit_bloom_powder"
+      "item": "hexalia:resin"
     },
     {
-      "item": "hexalia:resin"
+      "item": "hexalia:spirit_bloom_powder"
     },
     {
       "item": "minecraft:ender_pearl"
     }
   ],
-  "bottle_slot": {
-    "item": "hexalia:rustic_bottle"
-  },
   "output": {
     "item": "hexalia:brew_of_homestead"
   }

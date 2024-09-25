@@ -28,7 +28,7 @@ public class HMushroomBlock extends PlantBlock {
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
         BlockPos blockPos = pos.down();
         BlockState blockState = world.getBlockState(blockPos);
-        return blockState.isIn(BlockTags.MUSHROOM_GROW_BLOCK) || (world.getBaseLightLevel(pos, 0) < 13 && this.canPlantOnTop(blockState, world, blockPos))
+        return blockState.isIn(BlockTags.MUSHROOM_GROW_BLOCK) || (world.getBaseLightLevel(pos, 0) < 13 && this.canPlantOnTop(blockState, world, blockPos));
     }
 
     @Override

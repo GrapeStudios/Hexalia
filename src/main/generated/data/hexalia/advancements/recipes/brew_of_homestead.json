@@ -1,0 +1,37 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_rustic_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexalia:rustic_bottle"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "hexalia:brew_of_homestead"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_rustic_bottle"
+    ],
+    [
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "hexalia:brew_of_homestead"
+    ]
+  },
+  "sends_telemetry_event": true
+}

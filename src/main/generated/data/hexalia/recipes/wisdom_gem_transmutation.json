@@ -3,6 +3,9 @@
   "input": {
     "item": "minecraft:diamond"
   },
+  "output": {
+    "item": "hexalia:wisdom_gem"
+  },
   "salt_items": [
     {
       "item": "hexalia:ghost_fern_powder"
@@ -16,9 +19,5 @@
     {
       "item": "minecraft:experience_bottle"
     }
-  ],
-  "output": {
-    "item": "hexalia:wisdom_gem",
-    "count": 1
-  }
+  ]
 }

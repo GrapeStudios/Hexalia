@@ -3,6 +3,9 @@
   "input": {
     "item": "minecraft:wheat_seeds"
   },
+  "output": {
+    "item": "hexalia:rabbage_seeds"
+  },
   "salt_items": [
     {
       "item": "hexalia:resin"
@@ -11,14 +14,10 @@
       "item": "hexalia:spirit_bloom"
     },
     {
-      "item": "minecraft:wooden_sword"
+      "item": "minecraft:snowball"
     },
     {
-      "item": "minecraft:snowball"
+      "item": "minecraft:wooden_sword"
     }
-  ],
-  "output": {
-    "item": "hexalia:rabbage_seeds",
-    "count": 1
-  }
+  ]
 }

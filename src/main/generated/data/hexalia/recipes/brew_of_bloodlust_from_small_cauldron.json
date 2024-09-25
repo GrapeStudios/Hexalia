@@ -1,19 +1,19 @@
 {
   "type": "hexalia:small_cauldron",
+  "bottle_slot": {
+    "item": "hexalia:rustic_bottle"
+  },
   "ingredients": [
     {
       "item": "minecraft:redstone"
     },
     {
-      "item": "hexalia:spirit_bloom_powder"
+      "item": "hexalia:siren_kelp_paste"
     },
     {
-      "item": "hexalia:siren_kelp_paste"
+      "item": "hexalia:dreamshroom_paste"
     }
   ],
-  "bottle_slot": {
-    "item": "hexalia:rustic_bottle"
-  },
   "output": {
     "item": "hexalia:brew_of_bloodlust"
   }

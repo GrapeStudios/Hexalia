@@ -2,8 +2,11 @@ package net.grapes.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.grapes.datagen.custom.SmallCauldronRecipeBuilder;
+import net.grapes.datagen.custom.TransmutationRecipeBuilder;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.item.ModItems;
+import net.grapes.hexalia.recipe.SmallCauldronRecipe;
 import net.grapes.hexalia.util.ModTags;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
 import net.minecraft.block.Blocks;
@@ -16,6 +19,7 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 
@@ -212,6 +216,48 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input(ModItems.MORTAR_AND_PESTLE)
                 .input(ModItems.SILK_FIBER)
                 .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
+                .offerTo(exporter);
+
+        // Recipes for Small Cauldron Brews
+        new SmallCauldronRecipeBuilder(List.of(Blocks.CACTUS, ModItems.SPIRIT_BLOOM_POWDER, ModItems.DREAMSHROOM_PASTE),
+                ModItems.RUSTIC_BOTTLE, ModItems.BREW_OF_SPIKESKIN)
+                .criterion(hasItem(ModItems.RUSTIC_BOTTLE), conditionsFromItem(ModItems.RUSTIC_BOTTLE))
+                .offerTo(exporter);
+        new SmallCauldronRecipeBuilder(List.of(Items.SLIME_BALL, ModItems.DREAMSHROOM_PASTE, ModItems.SIREN_KELP_PASTE),
+                ModItems.RUSTIC_BOTTLE, ModItems.BREW_OF_SLIMEWALKER)
+                .criterion(hasItem(ModItems.RUSTIC_BOTTLE), conditionsFromItem(ModItems.RUSTIC_BOTTLE))
+                .offerTo(exporter);
+        new SmallCauldronRecipeBuilder(List.of(Items.SUGAR, Items.RAW_IRON, ModItems.GHOST_FERN_POWDER),
+                ModItems.RUSTIC_BOTTLE, ModItems.BREW_OF_SIPHON)
+                .criterion(hasItem(ModItems.RUSTIC_BOTTLE), conditionsFromItem(ModItems.RUSTIC_BOTTLE))
+                .offerTo(exporter);
+        new SmallCauldronRecipeBuilder(List.of(ModItems.RESIN, ModItems.SPIRIT_BLOOM_POWDER, Items.ENDER_PEARL),
+                ModItems.RUSTIC_BOTTLE, ModItems.BREW_OF_HOMESTEAD)
+                .criterion(hasItem(ModItems.RUSTIC_BOTTLE), conditionsFromItem(ModItems.RUSTIC_BOTTLE))
+                .offerTo(exporter);
+        new SmallCauldronRecipeBuilder(List.of(Items.REDSTONE, ModItems.SIREN_KELP_PASTE, ModItems.DREAMSHROOM_PASTE),
+                ModItems.RUSTIC_BOTTLE, ModItems.BREW_OF_BLOODLUST)
+                .criterion(hasItem(ModItems.RUSTIC_BOTTLE), conditionsFromItem(ModItems.RUSTIC_BOTTLE))
+                .offerTo(exporter);
+
+        // Recipes for Transmutation Items
+        new TransmutationRecipeBuilder(List.of(ModItems.RESIN, ModItems.SIREN_KELP,
+                Items.WOODEN_SWORD, Items.STRING),
+                ModItems.ANCIENT_SEED,
+                ModItems.KELPWEAVE_BLADE)
+                .criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
+                .offerTo(exporter);
+        new TransmutationRecipeBuilder(List.of(ModItems.RESIN, ModBlocks.SPIRIT_BLOOM,
+                Items.SNOWBALL, Items.WOODEN_SWORD),
+                Items.WHEAT_SEEDS,
+                ModItems.RABBAGE_SEEDS)
+                .criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
+                .offerTo(exporter);
+        new TransmutationRecipeBuilder(List.of(ModItems.GHOST_FERN_POWDER, ModItems.SPIRIT_BLOOM_POWDER,
+                Items.STRING, Items.EXPERIENCE_BOTTLE),
+                Items.DIAMOND,
+                ModItems.WISDOM_GEM)
+                .criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
                 .offerTo(exporter);
 
         // Shapeless Recipe for Items & Blocks
