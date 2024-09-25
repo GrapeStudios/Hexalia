@@ -6,7 +6,6 @@ import net.grapes.datagen.custom.SmallCauldronRecipeBuilder;
 import net.grapes.datagen.custom.TransmutationRecipeBuilder;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.item.ModItems;
-import net.grapes.hexalia.recipe.SmallCauldronRecipe;
 import net.grapes.hexalia.util.ModTags;
 import net.minecraft.advancement.criterion.InventoryChangedCriterion;
 import net.minecraft.block.Blocks;
