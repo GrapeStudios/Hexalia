@@ -96,6 +96,10 @@ public class ModItems {
     public static final Item WISDOM_GEM = registerItem("wisdom_gem",
             new Item(new FabricItemSettings().maxCount(1).maxDamage(60).rarity(Rarity.UNCOMMON)));
 
+    // Entity
+    public static final Item MOTH_IN_BOTTLE = registerItem("moth_in_bottle",
+            new MothInBottleItem(new FabricItemSettings().maxCount(1)));
+
     // Armors
     /* Work In Progress
     public static final Item BOGGED_HAT = registerItem("bogged_hat",
