@@ -4,6 +4,7 @@ import net.grapes.hexalia.entity.ModEntities;
 import net.grapes.hexalia.entity.ai.silkmoth.AttractedToLightGoal;
 import net.grapes.hexalia.entity.ai.silkmoth.AvoidSunlightGoal;
 import net.grapes.hexalia.entity.ai.silkmoth.FlyRandomlyGoal;
+import net.grapes.hexalia.item.ModItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityDimensions;
@@ -18,7 +19,13 @@ import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -128,4 +135,36 @@ public class SilkMothEntity extends AnimalEntity implements GeoEntity {
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
     }
+
+    @Override
+    public ActionResult interactMob(PlayerEntity player, Hand hand) {
+        ItemStack itemInHand = player.getStackInHand(hand);
+
+        // Verificar si el jugador tiene una botella rústica en la mano
+        if (itemInHand.isOf(ModItems.RUSTIC_BOTTLE)) {
+            // Atrapar la polilla
+            if (!this.getWorld().isClient) {
+                this.remove(RemovalReason.KILLED);
+
+                // Añadir una botella con la polilla dentro al inventario del jugador
+                ItemStack mothBottle = new ItemStack(ModItems.MOTH_IN_BOTTLE);
+                if (!player.getInventory().insertStack(mothBottle)) {
+                    this.dropStack(mothBottle); // Dejar caer el item si el inventario está lleno
+                }
+
+                // Reproduce un sonido (opcional)
+                this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.PLAYERS, 1.0F, 1.0F);
+
+                // Consumir la botella rústica vacía
+                if (!player.isCreative()) {
+                    itemInHand.decrement(1);
+                }
+
+                return ActionResult.SUCCESS;
+            }
+        }
+
+        return super.interactMob(player, hand);
+    }
 }
+

@@ -8,9 +8,12 @@ import net.minecraft.block.PlantBlock;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -20,6 +23,7 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockView;
@@ -45,6 +49,27 @@ public class ChillberryBushBlock extends PlantBlock implements Fertilizable {
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
         if (entity instanceof LivingEntity && entity.getType() != EntityType.FOX && entity.getType() != EntityType.BEE) {
             entity.slowMovement(state, new Vec3d(0.8f, 0.75, 0.8f));
+            entity.setInPowderSnow(true);
+
+            if (entity instanceof PlayerEntity player) {
+                if (!player.hasStatusEffect(StatusEffects.SLOWNESS)) {
+                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 200, 1));
+                }
+
+                if (player.isOnFire()) {
+                    player.extinguish();
+                }
+            }
+
+            if (world.isClient) {
+                Random random = world.getRandom();
+                if (random.nextBoolean()) {
+                    world.addParticle(ParticleTypes.SNOWFLAKE, entity.getX(), (double) (pos.getY() + 1), entity.getZ(),
+                            (double) (MathHelper.nextBetween(random, -1.0F, 1.0F) * 0.083333336F),
+                            0.05,
+                            (double) (MathHelper.nextBetween(random, -1.0F, 1.0F) * 0.083333336F));
+                }
+            }
         }
     }
 
