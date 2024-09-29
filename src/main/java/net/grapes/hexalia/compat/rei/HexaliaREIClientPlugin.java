@@ -9,6 +9,7 @@ import me.shedaniel.rei.api.client.registry.screen.ScreenRegistry;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.recipe.SmallCauldronRecipe;
+import net.grapes.hexalia.recipe.TransmutationRecipe;
 import net.grapes.hexalia.screen.SmallCauldronScreen;
 
 public class HexaliaREIClientPlugin implements REIClientPlugin {
@@ -16,14 +17,20 @@ public class HexaliaREIClientPlugin implements REIClientPlugin {
     @Override
     public void registerCategories(CategoryRegistry registry) {
         registry.add(new SmallCauldronCategory());
+        registry.add(new RitualTableCategory());
+
         registry.addWorkstations(SmallCauldronCategory.SMALL_CAULDRON,
                 EntryStacks.of(ModItems.SMALL_CAULDRON));
+        registry.addWorkstations(RitualTableCategory.RITUAL_TABLE,
+                EntryStacks.of(ModItems.RITUAL_TABLE));
     }
 
     @Override
     public void registerDisplays(DisplayRegistry registry) {
         registry.registerRecipeFiller(SmallCauldronRecipe.class, SmallCauldronRecipe.Type.INSTANCE,
                 SmallCauldronDisplay::new);
+        registry.registerRecipeFiller(TransmutationRecipe.class, TransmutationRecipe.Type.INSTANCE,
+                RitualTableDisplay::new);
     }
 
     @Override

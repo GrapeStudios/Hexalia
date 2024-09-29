@@ -83,16 +83,17 @@
   "item.hexalia.ghostveil": "Ghostveil",
   "item.hexalia.hexbook": "Hexbook",
   "item.hexalia.witch_salad": "Witch Salad",
+  "item.hexalia.bottled_moth": "Bottled Silk Moth",
 
   "biome.hexalia.enchanted_bayou": "Enchanted Bayou",
 
   "entity.hexalia.silk_moth": "Silk Moth",
-  "item.hexalia.moth_in_bottle": "Silk Moth in Bottle",
 
   "hexalia.container.brew_shelf": "Brew Shelf",
 
   "item.hexalia.hexbook.landing_text": "A well-detailed book is your trusted tool in matters of witchcraft",
-  "tooltip.hexalia.needs_heat": "Requires a heating block below",
+  "tooltip.hexalia.small_cauldron_gui": "Requires heat",
+  "tooltip.hexalia.ritual_table_gui": "Needs a Hex Focus",
   "tooltip.hexalia.homestead_brew": "Teleports to your spawn",
   "tooltip.hexalia.siphon_brew": "Siphon (2:00)",
   "tooltip.hexalia.slimewalker_brew": "Slimewalker (2:00)",

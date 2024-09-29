@@ -47,27 +47,18 @@ public class ChillberryBushBlock extends PlantBlock implements Fertilizable {
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (entity instanceof LivingEntity && entity.getType() != EntityType.FOX && entity.getType() != EntityType.BEE) {
+        if (entity instanceof LivingEntity && entity.getType() != EntityType.FOX && entity.getType()
+                != EntityType.BEE && state.get(AGE) >= 2) {
             entity.slowMovement(state, new Vec3d(0.8f, 0.75, 0.8f));
             entity.setInPowderSnow(true);
-
-            if (entity instanceof PlayerEntity player) {
-                if (!player.hasStatusEffect(StatusEffects.SLOWNESS)) {
-                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 200, 1));
-                }
-
-                if (player.isOnFire()) {
-                    player.extinguish();
-                }
-            }
 
             if (world.isClient) {
                 Random random = world.getRandom();
                 if (random.nextBoolean()) {
-                    world.addParticle(ParticleTypes.SNOWFLAKE, entity.getX(), (double) (pos.getY() + 1), entity.getZ(),
-                            (double) (MathHelper.nextBetween(random, -1.0F, 1.0F) * 0.083333336F),
+                    world.addParticle(ParticleTypes.SNOWFLAKE, entity.getX(), pos.getY() + 1, entity.getZ(),
+                            MathHelper.nextBetween(random, -1.0F, 1.0F) * 0.083333336F,
                             0.05,
-                            (double) (MathHelper.nextBetween(random, -1.0F, 1.0F) * 0.083333336F));
+                            MathHelper.nextBetween(random, -1.0F, 1.0F) * 0.083333336F);
                 }
             }
         }

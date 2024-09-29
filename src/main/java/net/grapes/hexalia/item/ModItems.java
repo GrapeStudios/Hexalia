@@ -97,8 +97,8 @@ public class ModItems {
             new Item(new FabricItemSettings().maxCount(1).maxDamage(60).rarity(Rarity.UNCOMMON)));
 
     // Entity
-    public static final Item MOTH_IN_BOTTLE = registerItem("moth_in_bottle",
-            new MothInBottleItem(new FabricItemSettings().maxCount(1)));
+    public static final Item BOTTLED_MOTH = registerItem("bottled_moth",
+            new BottledMothItem(new FabricItemSettings().maxCount(1)));
 
     // Armors
     /* Work In Progress

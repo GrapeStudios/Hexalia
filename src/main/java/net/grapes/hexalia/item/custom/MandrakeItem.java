@@ -52,7 +52,7 @@ public class MandrakeItem extends Item {
                 }
             }
             world.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.MANDRAKE_SCREAM,
-                    SoundCategory.PLAYERS, 0.5f, 1.0f);
+                    SoundCategory.PLAYERS, 1.0f, 1.0f);
             if (!player.isCreative()) {
                 stack.decrement(1);
             }

@@ -65,7 +65,7 @@ public class SmallCauldronCategory implements DisplayCategory<BasicDisplay> {
         widgets.add(Widgets.createSlot(new Point(startPoint.x + 95, startPoint.y + 12))
                 .entries(display.getOutputEntries().get(0)).markOutput().disableBackground());
         widgets.add(Widgets.createTooltip(new Rectangle(startPoint.x + 95, startPoint.y + 40, 17, 15),
-                Text.translatable("tooltip.hexalia.needs_heat")));
+                Text.translatable("tooltip.hexalia.small_cauldron_gui")));
         return widgets;
     }
 

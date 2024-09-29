@@ -2,6 +2,7 @@ package net.grapes.hexalia.block.custom;
 
 import net.grapes.hexalia.effect.ModEffects;
 import net.grapes.hexalia.item.ModItems;
+import net.grapes.hexalia.sound.ModSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropBlock;
@@ -9,6 +10,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.math.BlockPos;
@@ -48,9 +50,10 @@ public class MandrakeCropBlock extends CropBlock {
     public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         super.onBreak(world, pos, state, player);
         if (!world.isClient() && state.get(AGE) == MAX_AGE) {
-            // Verificar si el jugador no tiene un casco de cuero equipado
             if (!(player.getEquippedStack(EquipmentSlot.HEAD).isOf(Items.LEATHER_HELMET))) {
-                player.addStatusEffect(new StatusEffectInstance(ModEffects.STUNNED, 200, 0));
+                player.addStatusEffect(new StatusEffectInstance(ModEffects.STUNNED, 60, 0));
+                world.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.MANDRAKE_SCREAM,
+                        SoundCategory.PLAYERS, 1.0f, 1.0f);
             }
         }
     }

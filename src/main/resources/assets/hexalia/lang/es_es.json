@@ -91,7 +91,7 @@
   "hexalia.container.brew_shelf": "Estantería de Brebajes",
 
   "item.hexalia.hexbook.landing_text": "Un libro detallado es tu herramienta de confianza en asuntos de brujería",
-  "tooltip.hexalia.needs_heat": "Requiere un bloque calentador debajo",
+  "tooltip.hexalia.small_cauldron_gui": "Requiere un bloque calentador debajo",
   "tooltip.hexalia.homestead_brew": "Teletransporta a tu punto de aparición",
   "tooltip.hexalia.siphon_brew": "Sifón (2:00)",
   "tooltip.hexalia.slimewalker_brew": "Paso Baboso (2:00)",

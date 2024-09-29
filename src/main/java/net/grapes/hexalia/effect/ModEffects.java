@@ -22,7 +22,8 @@ public class ModEffects {
             new StunnedEffect(StatusEffectCategory.HARMFUL, 0xFFFFDD));
 
     public static final StatusEffect OVERFED = registerStatusEffect("overfed",
-            new OverfedEffect(StatusEffectCategory.BENEFICIAL, 0xDCD789));
+            new OverfedEffect(StatusEffectCategory.BENEFICIAL, 0xDCD789).addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED,
+                    "BF8B6E3F-3328-4C0A-AA66-3BA6BB6DBEF6", -0.1f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
 
     public static final StatusEffect SIPHON = registerStatusEffect("siphon",
             new SiphonEffect(StatusEffectCategory.BENEFICIAL, 0xEAEAEA, 3.0)

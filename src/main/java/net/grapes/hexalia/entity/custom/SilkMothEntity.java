@@ -139,31 +139,18 @@ public class SilkMothEntity extends AnimalEntity implements GeoEntity {
     @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack itemInHand = player.getStackInHand(hand);
-
-        // Verificar si el jugador tiene una botella rústica en la mano
         if (itemInHand.isOf(ModItems.RUSTIC_BOTTLE)) {
-            // Atrapar la polilla
             if (!this.getWorld().isClient) {
                 this.remove(RemovalReason.KILLED);
-
-                // Añadir una botella con la polilla dentro al inventario del jugador
-                ItemStack mothBottle = new ItemStack(ModItems.MOTH_IN_BOTTLE);
+                ItemStack mothBottle = new ItemStack(ModItems.BOTTLED_MOTH);
                 if (!player.getInventory().insertStack(mothBottle)) {
-                    this.dropStack(mothBottle); // Dejar caer el item si el inventario está lleno
+                    this.dropStack(mothBottle);
                 }
-
-                // Reproduce un sonido (opcional)
-                this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.PLAYERS, 1.0F, 1.0F);
-
-                // Consumir la botella rústica vacía
-                if (!player.isCreative()) {
-                    itemInHand.decrement(1);
-                }
-
+                this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.PLAYERS, 1.0F, 1.0F);
+                itemInHand.decrement(1);
                 return ActionResult.SUCCESS;
             }
         }
-
         return super.interactMob(player, hand);
     }
 }

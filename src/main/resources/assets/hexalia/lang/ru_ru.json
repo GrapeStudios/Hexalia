@@ -94,7 +94,7 @@
   "hexalia.container.brew_shelf": "Полка для варев",
 
   "item.hexalia.hexbook.landing_text": "Умело расписанный фолиант - ваш верный спутник в мире ведьмовства",
-  "tooltip.hexalia.needs_heat": "Требуется источник тепла снизу",
+  "tooltip.hexalia.small_cauldron_gui": "Требуется источник тепла снизу",
   "tooltip.hexalia.homestead_brew": "Возращает вас к точке спавна",
   "tooltip.hexalia.siphon_brew": "Шахтёр (2:00)",
   "tooltip.hexalia.slimewalker_brew": "Попрыгун (2:00)",
