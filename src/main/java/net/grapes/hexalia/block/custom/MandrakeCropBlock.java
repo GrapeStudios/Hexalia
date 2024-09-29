@@ -16,7 +16,6 @@ import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 
 public class MandrakeCropBlock extends CropBlock {
     public static final int MAX_AGE = 3;

@@ -25,11 +25,7 @@ public class RitualTableDisplay extends BasicDisplay {
         if (recipe == null) return Collections.emptyList();
 
         List<EntryIngredient> list = new ArrayList<>();
-
-        // Add the main input item
         list.add(EntryIngredient.of(EntryStacks.of(recipe.getInput())));
-
-        // Add the salt items
         for (ItemStack saltItem : recipe.getSaltItems()) {
             list.add(EntryIngredient.of(EntryStacks.of(saltItem)));
         }
