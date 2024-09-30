@@ -21,6 +21,7 @@ import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -141,8 +142,13 @@ public class SilkMothEntity extends AnimalEntity implements GeoEntity {
         ItemStack itemInHand = player.getStackInHand(hand);
         if (itemInHand.isOf(ModItems.RUSTIC_BOTTLE)) {
             if (!this.getWorld().isClient) {
-                this.remove(RemovalReason.KILLED);
+                NbtCompound nbt = new NbtCompound();
+                this.writeNbt(nbt);
+
                 ItemStack mothBottle = new ItemStack(ModItems.BOTTLED_MOTH);
+                mothBottle.setNbt(nbt);
+
+                this.remove(RemovalReason.DISCARDED);
                 if (!player.getInventory().insertStack(mothBottle)) {
                     this.dropStack(mothBottle);
                 }

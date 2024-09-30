@@ -7,6 +7,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
@@ -31,6 +32,11 @@ public class BottledMothItem extends Item {
         if (!world.isClient && player != null) {
             BlockPos spawnPos = blockPos.offset(direction);
             SilkMothEntity silkMothEntity = new SilkMothEntity(ModEntities.SILK_MOTH, world);
+
+            NbtCompound nbt = itemStack.getNbt();
+            if (nbt != null) {
+                silkMothEntity.readNbt(nbt);
+            }
 
             silkMothEntity.refreshPositionAndAngles(spawnPos.getX() + 0.5, spawnPos.getY(), spawnPos.getZ() + 0.5, 0, 0);
             world.spawnEntity(silkMothEntity);
