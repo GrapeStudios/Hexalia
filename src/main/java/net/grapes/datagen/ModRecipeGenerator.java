@@ -175,6 +175,12 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModBlocks.GHOST_FERN), conditionsFromItem(ModBlocks.GHOST_FERN))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.GHOSTVEIL) + "_"));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.EARPLUGS)
+                .pattern("T T")
+                .input('T', Items.LEATHER)
+                .criterion(hasItem(Items.LEATHER), conditionsFromItem(Items.LEATHER))
+                .offerTo(exporter);
+
         // Shapeless Recipe for Seeds
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MANDRAKE_SEEDS)
                 .input(ModItems.MANDRAKE)

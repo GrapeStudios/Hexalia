@@ -1,4 +1,4 @@
-// 1.20.1	2024-09-30T23:22:21.7385483	Hexalia/Tags for minecraft:block
+// 1.20.1	2024-10-01T12:32:30.4734412	Hexalia/Tags for minecraft:block
 e35b2c76abe8463d8b210e281187b3bbacb4bf03 data\minecraft\tags\blocks\sword_efficient.json
 e35b2c76abe8463d8b210e281187b3bbacb4bf03 data\minecraft\tags\blocks\frog_prefer_jump_to.json
 852d4317f4e2c4084c0c6a51758b0d98a094eadc data\minecraft\tags\blocks\mineable\pickaxe.json
@@ -26,5 +26,5 @@ c80bfb86bcf352e7635cf88a8c3ef8eebabaf9fc data\minecraft\tags\blocks\wooden_stair
 9ecc382e1d8166e0b37abcecaf8b25a36f8a88d7 data\minecraft\tags\blocks\planks.json
 8bc276f3b1d4bd808a0c19af8f23234a2ede0405 data\c\tags\blocks\ores.json
 69ab60afefbf6c171b64de7f24538d0db65a68fe data\minecraft\tags\blocks\needs_stone_tool.json
-b6d1687957b6f83416a76a1059b0ad7df83b0dae data\hexalia\tags\blocks\heating_block.json
 0725a4a23c4871ee0e05aa434673d844b3d7a4f1 data\minecraft\tags\blocks\signs.json
+b6d1687957b6f83416a76a1059b0ad7df83b0dae data\hexalia\tags\blocks\heating_block.json

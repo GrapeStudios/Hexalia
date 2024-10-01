@@ -7,7 +7,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "hexalia:mandrake,hexalia:mandrake_seeds",
-      "text": "Este cultivo puede ser útil en combate; si mantienes pulsado el botón derecho del ratón durante unos segundos, la Mandrágora gritará en un radio de 5 bloques, lo que aplica el efecto $(#f1c232)Aturdido$() a las entidades cercanas."
+      "text": "Este cultivo puede ser útil en combate; si mantienes pulsado el botón derecho del ratón durante unos segundos, la Mandrágora gritará en un radio de 5 bloques, lo que aplica el efecto $(#f1c232)Aturdido$() a las entidades cercanas si no están protegidas."
     },
     {
       "type": "patchouli:image",
@@ -21,7 +21,7 @@
     {
       "type": "patchouli:crafting",
       "recipe": "hexalia:mandrake_stew",
-      "text": "Este alimento otorga el efecto $(#f1c232)Saciado$() durante 45 segundos, lo que evita que la saturación disminuya."
+      "text": "Este alimento otorga el efecto $(#f1c232)Saciado$() durante 45 segundos, lo que evita que la saturación disminuya pero reduce la velocidad en un 10%."
     }
   ]
 }

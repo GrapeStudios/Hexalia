@@ -38,5 +38,7 @@ public class ModVegetationGeneration {
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.HEXED_BULRUSH_PLACED_KEY);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.ENCHANTED_BAYOU),
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.NIGHTSHADE_BUSH_PLACED_KEY);
+        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.ENCHANTED_BAYOU),
+                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.DUCKWEED_PLACED_KEY);
     }
 }

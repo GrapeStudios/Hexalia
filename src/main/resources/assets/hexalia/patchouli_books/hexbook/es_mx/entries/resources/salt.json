@@ -7,25 +7,30 @@
     {
       "type": "patchouli:spotlight",
       "item": "hexalia:salt",
-      "text": "La Sal se puede encontrar en vetas de mineral y se puede utilizar para muchas cosas, como $(l:hexalia:tools/purifying_salts)Sales Purificadoras$().$(br2)Puedes colocarla en el suelo haciendo clic derecho, esto se usa para rituales."
+      "text": "La sal se puede encontrar en el Oasis de Sal, ubicado en el desierto, y se puede utilizar para muchas cosas, como $(l:hexalia:tools/purifying_salts)Sales Purificadoras$().$(br2)Puedes colocarla en el suelo haciendo clic derecho, esto se usa para rituales."
     },
     {
       "type": "patchouli:image",
-      "title": "Mineral de Sal",
+      "title": "Oasis de Sal",
       "images": [
-        "hexalia:textures/gui/patchouli/salt_ore.png"
+        "hexalia:textures/gui/patchouli/salt_oasis.png"
       ],
       "border": true
     },
     {
       "type": "patchouli:crafting",
       "recipe": "hexalia:leather_",
-      "text": "Puedes combinar Sal con Carne Podrida para obtener piezas de Cuero."
+      "text": "Puedes combinar Sal con Carne Podrida para obtener Cuero."
     },
     {
       "type": "patchouli:crafting",
       "recipe": "hexalia:salt_block",
-      "text": "La Sal se puede combinar en una mesa de trabajo para obtener un Bloque de Sal, lo que te permite almacenar este recurso de manera más eficiente."
+      "text": "La sal se puede extraer de los Bloques de Sal para obtener Sal; un pico con Fortuna te permite minarla de manera más eficiente."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:saltsprout_",
+      "text": "El Brote de Sal es una nueva planta que se puede plantar en $(l:hexalia:blocks/infused_dirt)Tierra Infundida() y se puede triturar para obtener Sal."
     },
     {
       "type": "patchouli:crafting",

@@ -19,6 +19,11 @@
       "text": "These cocoons can spawn in the on the side of Dark Oak and Cottonwood trees logs."
     },
     {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:bottled_moth",
+      "text": "Silk Moths can be bottled in a Rustic Bottle if you right-click the entity with the item, this allows you to move Silk Moths around."
+    },
+    {
       "type": "patchouli:crafting",
       "recipe": "hexalia:silk_fiber",
       "text": "The Silk Fiber itself can be obtained from combining leaves with a Silkworm, or with a small chance to drop from Silk Moths."

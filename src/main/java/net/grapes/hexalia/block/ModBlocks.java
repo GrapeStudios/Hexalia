@@ -54,7 +54,7 @@ public class ModBlocks {
     public static final Block POTTED_HENBANE = registerBlockWithoutBlockItem("potted_henbane",
             new FlowerPotBlock(HENBANE, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
     public static final Block LOTUS_FLOWER = registerBlockWithoutBlockItem("lotus_flower",
-            new LotusFlowerBlock(FabricBlockSettings.copyOf(Blocks.LILY_PAD).luminance(8)));
+            new WaterPlantBlock(FabricBlockSettings.copyOf(Blocks.LILY_PAD).luminance(8)));
     public static final Block PALE_MUSHROOM = registerBlock("pale_mushroom",
             new HMushroomBlock(FabricBlockSettings.copyOf(Blocks.BROWN_MUSHROOM).noCollision().nonOpaque().luminance(12)));
     public static final Block POTTED_PALE_MUSHROOM = registerBlockWithoutBlockItem("potted_pale_mushroom",
@@ -67,6 +67,8 @@ public class ModBlocks {
             new FlowerBlock(StatusEffects.WITHER, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM)));
     public static final Block POTTED_NIGHTSHADE_BUSH = registerBlockWithoutBlockItem("potted_nightshade_bush",
             new FlowerPotBlock(NIGHTSHADE_BUSH, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
+    public static final Block DUCKWEED = registerBlockWithoutBlockItem("duckweed",
+            new WaterPlantBlock(FabricBlockSettings.copyOf(Blocks.LILY_PAD)));
 
     // Crop & Wild Crop Blocks
     public static final Block MANDRAKE_CROP = registerBlockWithoutBlockItem("mandrake_crop",
@@ -113,7 +115,7 @@ public class ModBlocks {
     public static final Block DREAMCATCHER = registerBlock("dreamcatcher",
             new DreamcatcherBlock(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN).instrument(Instrument.BASS)
                     .noCollision().strength(1.0f)));
-    public static final Block CANDLE_SKULL = registerBlock("candle_skull",
+    public static final Block CANDLE_SKULL = registerBlockWithoutBlockItem("candle_skull",
             new CandleSkullBlock(FabricBlockSettings.create().mapColor(MapColor.WHITE_GRAY)
                     .instrument(Instrument.GUITAR).strength(1.0f).luminance(state -> state.get(CandleSkullBlock.LIT) ? 8 : 0)));
 

@@ -1,0 +1,17 @@
+{
+  "category": "hexalia:equipment",
+  "name": "Orejeras",
+  "icon": "hexalia:earplugs",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:earplugs",
+      "text": "Cuando está equipado, este nuevo tipo de casco te otorga inmunidad al efecto de $(#f1c232)Aturdido$() causado por los $(l:hexalia:resources/mandrake)Mandrágoras$() cuando gritan.$(br2)Esto también es útil al cosechar el cultivo de la Mandrágora.."
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:earplugs"
+    }
+  ]
+}

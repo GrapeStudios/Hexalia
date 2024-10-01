@@ -19,6 +19,11 @@
       "text": "Estos capullos pueden aparecer en los costados de los troncos de árboles de Roble Oscuro y Álamo."
     },
     {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:bottled_moth",
+      "text": "Las Polillas de Seda se pueden embotellar en una Botella Rústica si haces clic derecho en la entidad con el objeto, lo que te permite mover las Polillas de Seda."
+    },
+    {
       "type": "patchouli:crafting",
       "recipe": "hexalia:silk_fiber",
       "text": "La fibra de seda se puede obtener al combinar hojas con un gusano de seda, o con una pequeña probabilidad de que caiga de las Polillas de Seda."

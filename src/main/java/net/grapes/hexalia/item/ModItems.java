@@ -49,6 +49,8 @@ public class ModItems {
             new PlaceableOnWaterItem(ModBlocks.LOTUS_FLOWER, new FabricItemSettings()));
     public static final Item SALTSPROUT = registerItem("saltsprout",
             new BlockItem(ModBlocks.SALTSPROUT, new FabricItemSettings().food(ModFoodComponents.SALTSPROUT)));
+    public static final Item DUCKWEED = registerItem("duckweed",
+            new PlaceableOnWaterItem(ModBlocks.DUCKWEED, new FabricItemSettings()));
 
     // Refined Resources
     public static final Item SIREN_KELP_PASTE = registerItem("siren_kelp_paste",
@@ -93,6 +95,8 @@ public class ModItems {
             new StoneDaggerItem(new FabricItemSettings().maxDamage(16)));
     public static final Item RITUAL_TABLE = registerItem("ritual_table",
             new BlockItem(ModBlocks.RITUAL_TABLE, new FabricItemSettings()));
+    public static final Item CANDLE_SKULL = registerItem("candle_skull",
+            new BlockItem(ModBlocks.CANDLE_SKULL, new FabricItemSettings().rarity(Rarity.UNCOMMON)));
     public static final Item HEX_FOCUS = registerItem("hex_focus",
             new Item(new FabricItemSettings()));
     public static final Item WISDOM_GEM = registerItem("wisdom_gem",

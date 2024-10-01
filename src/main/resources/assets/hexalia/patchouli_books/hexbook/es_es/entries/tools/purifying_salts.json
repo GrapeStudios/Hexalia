@@ -7,7 +7,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "hexalia:purifying_salts",
-      "text": "Este objeto se puede usar para $(#bcbcbc)eliminar todos los efectos de estado$() del jugador, similar a consumir Leche."
+      "text": "Este objeto se puede usar para $(#bcbcbc)eliminar todos los efectos negativos de estado$() del jugador, similar a consumir Leche."
     },
     {
       "type": "patchouli:crafting",

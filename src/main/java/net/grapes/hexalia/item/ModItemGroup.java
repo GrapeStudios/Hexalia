@@ -66,7 +66,7 @@ public class ModItemGroup {
                         // Salt
                         entries.add(ModItems.SALT);
                         entries.add(ModItems.PURIFYING_SALTS);
-                        entries.add(ModBlocks.SALT_ORE);
+                        // entries.add(ModBlocks.SALT_ORE);
                         entries.add(ModBlocks.SALT_BLOCK);
 
                         // Brews
@@ -84,11 +84,12 @@ public class ModItemGroup {
                         entries.add(ModBlocks.WITCHWEED);
                         entries.add(ModBlocks.HEXED_BULRUSH);
                         entries.add(ModBlocks.NIGHTSHADE_BUSH);
+                        entries.add(ModItems.DUCKWEED);
 
                         // Decorative Blocks
                         entries.add(ModBlocks.PARCHMENT);
                         entries.add(ModBlocks.DREAMCATCHER);
-                        entries.add(ModBlocks.CANDLE_SKULL);
+                        entries.add(ModItems.CANDLE_SKULL);
                         entries.add(ModItems.SALT_LAMP);
 
                         // Rare Items

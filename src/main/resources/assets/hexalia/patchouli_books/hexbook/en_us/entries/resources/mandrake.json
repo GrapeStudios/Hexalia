@@ -7,7 +7,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "hexalia:mandrake,hexalia:mandrake_seeds",
-      "text": "This crop can be useful in combat, if you hold the RMB for a few seconds, the Mandrake will scream in a radius of 5 blocks which applies the $(#f1c232)Stunned$() effect to nearby entities."
+      "text": "This crop can be useful in combat, if you hold the RMB for a few seconds, the Mandrake will scream in a radius of 5 blocks which applies the $(#f1c232)Stunned$() effect to nearby entities.$(br2)Harvesting this crop can stun you for a few seconds if you are not protected."
     },
     {
       "type": "patchouli:image",
@@ -21,7 +21,7 @@
     {
       "type": "patchouli:crafting",
       "recipe": "hexalia:mandrake_stew",
-      "text": "This food item grants the $(#f1c232)Overfed$() effect for 45 seconds, this prevents saturation from lowering."
+      "text": "This food item grants the $(#f1c232)Overfed$() effect for 45 seconds, this prevents saturation from lowering but it reduces your speed by 10%."
     }
   ]
 }

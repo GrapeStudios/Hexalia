@@ -7,10 +7,10 @@ import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
 import org.jetbrains.annotations.Nullable;
 
-public class LotusFlowerBlock extends LilyPadBlock {
+public class WaterPlantBlock extends LilyPadBlock {
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
 
-    public LotusFlowerBlock(Settings settings) {
+    public WaterPlantBlock(Settings settings) {
         super(settings);
     }
 

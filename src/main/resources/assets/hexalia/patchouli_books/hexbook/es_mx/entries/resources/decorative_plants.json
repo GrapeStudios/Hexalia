@@ -33,6 +33,11 @@
       "type": "patchouli:spotlight",
       "item": "hexalia:lotus_flower",
       "text": "Estas son flores que crecen en los nenúfares en el bioma del Pantano Encantado."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:duckweed",
+      "text": "Esta es una planta acuática que crece en el bioma del Pantano Encantado."
     }
   ]
 }

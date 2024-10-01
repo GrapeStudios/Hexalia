@@ -32,7 +32,12 @@
     {
       "type": "patchouli:spotlight",
       "item": "hexalia:lotus_flower",
-      "text": "These are flowers grows in Lily Pads in the Enchanted Bayou biome."
+      "text": "These flowers grows in Lily Pads in the Enchanted Bayou biome."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:duckweed",
+      "text": "This is a water plant that can be found in the Enchanted Bayou biome."
     }
   ]
 }
