@@ -142,7 +142,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.CANDLE_SKULL) + "_"));
 
         // Recipes for vanilla items or blocks.
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.LEATHER, 2)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.LEATHER, 1)
                 .pattern(" S ")
                 .pattern("STS")
                 .pattern(" S ")
@@ -216,6 +216,11 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input(ModItems.SILK_FIBER)
                 .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
                 .offerTo(exporter);
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SALT, 1)
+                .input(ModItems.MORTAR_AND_PESTLE)
+                .input(ModItems.SALTSPROUT)
+                .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.SALTSPROUT) + "_"));
 
         // Recipes for Small Cauldron Brews
         new SmallCauldronRecipeBuilder(List.of(Blocks.CACTUS, ModItems.SPIRIT_BLOOM_POWDER, ModItems.DREAMSHROOM_PASTE),

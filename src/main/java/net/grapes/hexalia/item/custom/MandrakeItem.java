@@ -1,9 +1,11 @@
 package net.grapes.hexalia.item.custom;
 
 import net.grapes.hexalia.effect.ModEffects;
+import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.sound.ModSounds;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
@@ -47,7 +49,8 @@ public class MandrakeItem extends Item {
         if (!world.isClient && user instanceof PlayerEntity player) {
             List<Entity> entities = world.getOtherEntities(player, player.getBoundingBox().expand(5.0));
             for (Entity entity : entities) {
-                if (entity instanceof LivingEntity livingEntity) {
+                if (entity instanceof LivingEntity livingEntity &&
+                        !(player.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.EARPLUGS))) {
                     livingEntity.addStatusEffect(new StatusEffectInstance(ModEffects.STUNNED, 60, 0));
                 }
             }

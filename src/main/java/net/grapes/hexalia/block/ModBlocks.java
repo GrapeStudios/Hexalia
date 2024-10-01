@@ -81,12 +81,14 @@ public class ModBlocks {
             new ChillberryBushBlock(FabricBlockSettings.copyOf(Blocks.SWEET_BERRY_BUSH)));
     public static final Block RABBAGE_CROP = registerBlockWithoutBlockItem("rabbage_crop",
             new RabbageCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
+    public static final Block SALTSPROUT = registerBlockWithoutBlockItem("saltsprout",
+            new SaltSproutBlock(FabricBlockSettings.copyOf(Blocks.SWEET_BERRY_BUSH)));
 
     // Mineral-Related Blocks
     public static final Block SALT_ORE = registerBlock("salt_ore",
             new Block(FabricBlockSettings.copyOf(Blocks.COAL_ORE)));
     public static final Block SALT_BLOCK = registerBlock("salt_block",
-            new Block(FabricBlockSettings.copyOf(Blocks.COAL_BLOCK)));
+            new Block(FabricBlockSettings.copyOf(Blocks.STONE)));
     public static final Block SALT_LAMP = registerBlockWithoutBlockItem("salt_lamp",
             new SaltLampBlock(FabricBlockSettings.create().mapColor(MapColor.WHITE).instrument(Instrument.BANJO)
                     .strength(4f).requiresTool().luminance(state -> 12)));

@@ -66,7 +66,8 @@ public class HexaliaModClient implements ClientModInitializer {
                 ModBlocks.LOTUS_FLOWER, ModBlocks.PALE_MUSHROOM,
                 ModBlocks.POTTED_PALE_MUSHROOM, ModBlocks.WITCHWEED,
                 ModBlocks.GHOST_FERN, ModBlocks.HEXED_BULRUSH,
-                ModBlocks.NIGHTSHADE_BUSH, ModBlocks.POTTED_NIGHTSHADE_BUSH
+                ModBlocks.NIGHTSHADE_BUSH, ModBlocks.POTTED_NIGHTSHADE_BUSH,
+                ModBlocks.SALTSPROUT
         );
     }
 

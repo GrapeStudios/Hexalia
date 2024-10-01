@@ -49,7 +49,7 @@ public class MandrakeCropBlock extends CropBlock {
     public void onBreak(World world, BlockPos pos, BlockState state, PlayerEntity player) {
         super.onBreak(world, pos, state, player);
         if (!world.isClient() && state.get(AGE) == MAX_AGE) {
-            if (!(player.getEquippedStack(EquipmentSlot.HEAD).isOf(Items.LEATHER_HELMET))) {
+            if (!(player.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.EARPLUGS))) {
                 player.addStatusEffect(new StatusEffectInstance(ModEffects.STUNNED, 60, 0));
                 world.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.MANDRAKE_SCREAM,
                         SoundCategory.PLAYERS, 1.0f, 1.0f);

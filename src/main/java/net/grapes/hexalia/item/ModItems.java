@@ -47,6 +47,8 @@ public class ModItems {
             new AliasedBlockItem(ModBlocks.RABBAGE_CROP, new FabricItemSettings()));
     public static final Item LOTUS_FLOWER = registerItem("lotus_flower",
             new PlaceableOnWaterItem(ModBlocks.LOTUS_FLOWER, new FabricItemSettings()));
+    public static final Item SALTSPROUT = registerItem("saltsprout",
+            new BlockItem(ModBlocks.SALTSPROUT, new FabricItemSettings().food(ModFoodComponents.SALTSPROUT)));
 
     // Refined Resources
     public static final Item SIREN_KELP_PASTE = registerItem("siren_kelp_paste",
@@ -110,8 +112,6 @@ public class ModItems {
             new BoggedArmorItem(ModArmorMaterials.BOGGED, ArmorItem.Type.LEGGINGS, new FabricItemSettings()));
     public static final Item BOGGED_BOOTS = registerItem("bogged_boots",
             new BoggedArmorItem(ModArmorMaterials.BOGGED, ArmorItem.Type.BOOTS, new FabricItemSettings())); */
-    public static final Item GHOSTVEIL = registerItem("ghostveil",
-            new GhostVeilItem(ModArmorMaterials.GHOST, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
 
     // Spawn Eggs
     public static final Item SILK_MOTH_SPAWN_EGG = registerItem("silk_moth_spawn_egg",
@@ -122,6 +122,10 @@ public class ModItems {
             new KelpweaveBladeItem(ModToolMaterials.ANCIENT_SEED, 3, -2f, new FabricItemSettings().rarity(Rarity.RARE)));
     public static final Item RABBAGE = registerItem("rabbage",
             new RabbageItem(new FabricItemSettings().maxCount(16)));
+    public static final Item GHOSTVEIL = registerItem("ghostveil",
+            new GhostVeilItem(ModArmorMaterials.GHOST, ArmorItem.Type.CHESTPLATE, new FabricItemSettings()));
+    public static final Item EARPLUGS = registerItem("earplugs",
+            new ArmorItem(ModArmorMaterials.EARPLUGS, ArmorItem.Type.HELMET, new FabricItemSettings()));
 
     // Wooden Set Items
     public static final Item COTTONWOOD_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.COTTONWOOD_BOAT_ID,

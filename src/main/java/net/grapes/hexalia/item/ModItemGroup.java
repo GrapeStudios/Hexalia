@@ -42,6 +42,7 @@ public class ModItemGroup {
                         entries.add(ModItems.SUNFIRE_TOMATO);
                         entries.add(ModItems.CHILLBERRIES);
                         entries.add(ModItems.RABBAGE);
+                        entries.add(ModItems.SALTSPROUT);
 
                         // Food
                         entries.add(ModItems.MANDRAKE_STEW);
@@ -102,6 +103,7 @@ public class ModItemGroup {
                         entries.add(ModItems.BOGGED_PANTS);
                         entries.add(ModItems.BOGGED_BOOTS);*/
                         entries.add(ModItems.GHOSTVEIL);
+                        entries.add(ModItems.EARPLUGS);
 
                         // Wood-related Items
                         entries.add(ModBlocks.COTTONWOOD_SAPLING);
