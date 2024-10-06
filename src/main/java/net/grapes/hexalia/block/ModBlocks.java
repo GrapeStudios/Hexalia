@@ -68,7 +68,7 @@ public class ModBlocks {
     public static final Block POTTED_NIGHTSHADE_BUSH = registerBlockWithoutBlockItem("potted_nightshade_bush",
             new FlowerPotBlock(NIGHTSHADE_BUSH, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
     public static final Block DUCKWEED = registerBlockWithoutBlockItem("duckweed",
-            new WaterPlantBlock(FabricBlockSettings.copyOf(Blocks.LILY_PAD)));
+            new WaterPlantBlock(FabricBlockSettings.copyOf(Blocks.LILY_PAD).noCollision()));
 
     // Crop & Wild Crop Blocks
     public static final Block MANDRAKE_CROP = registerBlockWithoutBlockItem("mandrake_crop",
