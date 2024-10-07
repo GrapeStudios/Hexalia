@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "hexalia:block/chillberry_bush_stage1"
+  }
+}

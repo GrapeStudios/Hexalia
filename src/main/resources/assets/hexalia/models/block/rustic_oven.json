@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "side": "hexalia:block/rustic_oven_side",
+    "front": "hexalia:block/rustic_oven_front",
+    "bottom": "hexalia:block/rustic_oven_bottom",
+    "top": "hexalia:block/rustic_oven_top"
+  }
+}

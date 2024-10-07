@@ -1,0 +1,24 @@
+{
+  "parent": "block/orientable",
+  "textures": {
+    "top": "hexalia:block/brew_shelf_top",
+    "side": "hexalia:block/brew_shelf_side",
+    "front": "hexalia:block/brew_shelf_front_1",
+    "particle": "#top"
+  },
+  "elements": [
+    {
+      "name": "brew_shelf_body",
+      "from": [0, 0, 0],
+      "to": [16, 16, 16],
+      "faces": {
+        "north": {"uv": [0, 0, 16, 16], "texture": "#front"},
+        "east": {"uv": [0, 0, 16, 16], "texture": "#side"},
+        "south": {"uv": [0, 0, 16, 16], "texture": "#side"},
+        "west": {"uv": [0, 0, 16, 16], "texture": "#side"},
+        "up": {"uv": [0, 0, 16, 16], "texture": "#top"},
+        "down": {"uv": [0, 0, 16, 16], "texture": "#top"}
+      }
+    }
+  ]
+}

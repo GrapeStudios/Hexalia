@@ -1,0 +1,73 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "hexalia:block/witchweed",
+		"particle": "hexalia:block/witchweed"
+	},
+	"elements": [
+		{
+			"name": "sidebush",
+			"from": [0, 0, 3.9],
+			"to": [16, 9, 3.9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 3.9]},
+			"faces": {
+				"north": {"uv": [0, 7, 16, 16], "texture": "#0"},
+				"east": {"uv": [0, 0, 0, 9], "texture": "#0"},
+				"south": {"uv": [0, 7, 16, 16], "texture": "#0"},
+				"west": {"uv": [0, 0, 0, 9], "texture": "#0"},
+				"up": {"uv": [0, 0, 16, 0], "texture": "#0"},
+				"down": {"uv": [0, 0, 16, 0], "texture": "#0"}
+			}
+		},
+		{
+			"name": "sidebush",
+			"from": [0, 0, 11.9],
+			"to": [16, 9, 11.9],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 11.9]},
+			"faces": {
+				"north": {"uv": [0, 7, 16, 16], "texture": "#0"},
+				"east": {"uv": [0, 0, 0, 9], "texture": "#0"},
+				"south": {"uv": [0, 7, 16, 16], "texture": "#0"},
+				"west": {"uv": [0, 7, 0, 16], "texture": "#0"},
+				"up": {"uv": [0, 0, 16, 0], "texture": "#0"},
+				"down": {"uv": [0, 0, 16, 0], "texture": "#0"}
+			}
+		},
+		{
+			"name": "sidebush",
+			"from": [4, 0, 0],
+			"to": [4, 9, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [4, 0, 0]},
+			"faces": {
+				"north": {"uv": [0, 0, 0, 9], "texture": "#0"},
+				"east": {"uv": [0, 7, 16, 16], "texture": "#0"},
+				"south": {"uv": [0, 7, 0, 16], "texture": "#0"},
+				"west": {"uv": [0, 7, 16, 16], "texture": "#0"},
+				"up": {"uv": [0, 0, 0, 16], "texture": "#0"},
+				"down": {"uv": [0, 0, 0, 16], "texture": "#0"}
+			}
+		},
+		{
+			"name": "sidebush",
+			"from": [12, 0, 0],
+			"to": [12, 9, 16],
+			"rotation": {"angle": 0, "axis": "y", "origin": [12, 0, 0]},
+			"faces": {
+				"north": {"uv": [0, 0, 0, 9], "texture": "#0"},
+				"east": {"uv": [0, 7, 16, 16], "texture": "#0"},
+				"south": {"uv": [0, 7, 0, 16], "texture": "#0"},
+				"west": {"uv": [0, 7, 16, 16], "texture": "#0"},
+				"up": {"uv": [0, 0, 0, 16], "texture": "#0"},
+				"down": {"uv": [0, 0, 0, 16], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "witchweed",
+			"origin": [8, 8, 8],
+			"color": 0,
+			"children": [0, 1, 2, 3]
+		}
+	]
+}
