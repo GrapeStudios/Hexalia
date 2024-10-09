@@ -4,6 +4,7 @@ plugins {
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+    id 'org.spongepowered.mixin' version '0.7.+'
 }
 
 version = mod_version
@@ -60,13 +61,17 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-
+    maven {
+        url "https://repo.spongepowered.org/repository/maven-public/"
+    }
 }
 
 dependencies {
 
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
 
+    // Mixin API
+    annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
 
@@ -83,6 +88,11 @@ tasks.named('processResources', ProcessResources).configure {
     filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
         expand replaceProperties + [project: project]
     }
+}
+
+mixin {
+    add sourceSets.main, 'mixins.hexalia.refmap.json'
+    config 'mixins.hexalia.json'
 }
 
 tasks.named('jar', Jar).configure {

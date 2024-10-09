@@ -1,0 +1,16 @@
+{
+	"required": true,
+	"package": "net.grapes.hexalia.mixin",
+	"compatibilityLevel": "JAVA_17",
+	"minVersion": "0.8",
+	"refmap": "mixins.hexalia.refmap.json",
+	"mixins": [
+		"InfusedPlantingMixin",
+		"LivingEntityMixin",
+		"ExperienceMixin",
+		"SugarCanePlanting"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}
