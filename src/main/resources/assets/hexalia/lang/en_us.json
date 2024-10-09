@@ -112,8 +112,8 @@
   "tooltip.hexalia.purifying_salts": "Removes negative status effects",
   "tooltip.hexalia.rabbage": "Can be thrown to cause bleeding",
 
-  "sounds.hexalia.mandrake_scream": "Mandrake Scream",
-  "sounds.hexalia.ritual_completed": "Ritual Completed",
+  "sounds.hexalia.mandrake_scream": "A Mandrake screams",
+  "sounds.hexalia.ritual_completed": "A Ritual has been completed",
 
   "effect.hexalia.bloodlust": "Bloodlust",
   "effect.hexalia.bloodlust.description": "Increases strength, and restores 25% of the damage dealt to your foes",
