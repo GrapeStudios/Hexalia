@@ -1,6 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
+	"render_type": "cutout",
 	"textures": {
 		"0": "hexalia:block/sunfire_tomato_crop_stage1",
 		"particle": "hexalia:block/wild_sunfire_tomato"

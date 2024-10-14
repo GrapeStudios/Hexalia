@@ -96,6 +96,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.ANCIENT_SEED.get());
                         output.accept(ModItems.KELPWEAVE_BLADE.get());
                         output.accept(ModItems.WISDOM_GEM.get());
+
+                        // Armor Items
+                        output.accept(ModItems.EARPLUGS.get());
+
                     }).build());
 
     public static void register(IEventBus eventBus) {

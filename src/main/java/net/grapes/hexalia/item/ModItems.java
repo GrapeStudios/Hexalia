@@ -2,15 +2,10 @@ package net.grapes.hexalia.item;
 
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
-import net.grapes.hexalia.item.custom.KelpweaveBlade;
-import net.grapes.hexalia.item.custom.MandrakeItem;
-import net.grapes.hexalia.item.custom.PurifyingSaltsItem;
-import net.grapes.hexalia.item.custom.StoneDaggerItem;
+import net.grapes.hexalia.item.custom.*;
+import net.grapes.hexalia.item.custom.brews.*;
 import net.grapes.hexalia.util.ModToolTiers;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.PlaceOnWaterBlockItem;
-import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -77,19 +72,19 @@ public class ModItems {
     public static final RegistryObject<Item> RUSTIC_BOTTLE = ITEMS.register("rustic_bottle",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BREW_OF_SPIKESKIN = ITEMS.register("brew_of_spikeskin",
-            () -> new Item(new Item.Properties()));
+            () -> new SpikeskinBrewItem(new Item.Properties().stacksTo(16)));
     public static final RegistryObject<Item> BREW_OF_BLOODLUST = ITEMS.register("brew_of_bloodlust",
-            () -> new Item(new Item.Properties()));
+            () -> new BoodlustBrewItem(new Item.Properties().stacksTo(16)));
     public static final RegistryObject<Item> BREW_OF_SLIMEWALKER = ITEMS.register("brew_of_slimewalker",
-            () -> new Item(new Item.Properties()));
+            () -> new SlimewalkerBrewItem(new Item.Properties().stacksTo(16)));
     public static final RegistryObject<Item> BREW_OF_HOMESTEAD = ITEMS.register("brew_of_homestead",
-            () -> new Item(new Item.Properties()));
+            () -> new HomesteadBrewItem(new Item.Properties().stacksTo(16)));
     public static final RegistryObject<Item> BREW_OF_SIPHON = ITEMS.register("brew_of_siphon",
-            () -> new Item(new Item.Properties()));
+            () -> new SiphonBrewItem(new Item.Properties().stacksTo(16)));
 
     // Tools & Others
     public static final RegistryObject<Item> MORTAR_AND_PESTLE = ITEMS.register("mortar_and_pestle",
-            () -> new Item(new Item.Properties()));
+            () -> new MortarAndPestleItem(new Item.Properties()));
     public static final RegistryObject<Item> SMALL_CAULDRON = ITEMS.register("small_cauldron",
             () -> new BlockItem(ModBlocks.SMALL_CAULDRON.get(), new Item.Properties()));
     public static final RegistryObject<Item> SALT_LAMP = ITEMS.register("salt_lamp",
@@ -103,7 +98,7 @@ public class ModItems {
     public static final RegistryObject<Item> HEX_FOCUS = ITEMS.register("hex_focus",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WISDOM_GEM = ITEMS.register("wisdom_gem",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().durability(60).rarity(Rarity.UNCOMMON)));
 
     // Entity
     public static final RegistryObject<Item> BOTTLED_MOTH = ITEMS.register("bottled_moth",
@@ -118,7 +113,7 @@ public class ModItems {
     public static final RegistryObject<Item> GHOSTVEIL = ITEMS.register("ghostveil",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> EARPLUGS = ITEMS.register("earplugs",
-            () -> new Item(new Item.Properties()));
+            () -> new ArmorItem(ModArmorMaterials.EARPLUGS, ArmorItem.Type.HELMET, new Item.Properties()));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

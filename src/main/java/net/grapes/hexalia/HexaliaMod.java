@@ -2,9 +2,15 @@ package net.grapes.hexalia;
 
 import com.mojang.logging.LogUtils;
 import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.effect.ModMobEffects;
 import net.grapes.hexalia.item.ModCreativeModeTabs;
 import net.grapes.hexalia.item.ModItems;
+import net.grapes.hexalia.sound.ModSounds;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.RenderTypeGroup;
+import net.minecraftforge.client.RenderTypeHelper;
+import net.minecraftforge.client.model.renderable.ITextureRenderTypeLookup;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -31,6 +37,8 @@ public class HexaliaMod
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
+        ModMobEffects.register(modEventBus);
+        ModSounds.register(modEventBus);
 
     }
 
@@ -52,6 +60,7 @@ public class HexaliaMod
     {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+
 
         }
     }
