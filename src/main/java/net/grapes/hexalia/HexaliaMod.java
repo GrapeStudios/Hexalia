@@ -5,6 +5,7 @@ import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.effect.ModMobEffects;
 import net.grapes.hexalia.item.ModCreativeModeTabs;
 import net.grapes.hexalia.item.ModItems;
+import net.grapes.hexalia.particle.ModParticles;
 import net.grapes.hexalia.sound.ModSounds;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
@@ -39,6 +40,7 @@ public class HexaliaMod
         ModCreativeModeTabs.register(modEventBus);
         ModMobEffects.register(modEventBus);
         ModSounds.register(modEventBus);
+        ModParticles.register(modEventBus);
 
     }
 
