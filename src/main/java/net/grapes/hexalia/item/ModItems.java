@@ -29,24 +29,23 @@ public class ModItems {
 
     // Crops, Plants & Seeds
     public static final RegistryObject<Item> SIREN_KELP = ITEMS.register("siren_kelp",
-            () -> new BlockItem(ModBlocks.SIREN_KELP.get(), new Item.Properties()
-                    .food(ModFoodProperties.SIREN_KELP)));
+            () -> new BlockItem(ModBlocks.SIREN_KELP.get(), new Item.Properties().food(ModFoodProperties.SIREN_KELP)));
     public static final RegistryObject<Item> MANDRAKE = ITEMS.register("mandrake",
             () -> new MandrakeItem(new Item.Properties()));
     public static final RegistryObject<Item> MANDRAKE_SEEDS = ITEMS.register("mandrake_seeds",
-            () -> new Item(new Item.Properties()));
+            () -> new ItemNameBlockItem(ModBlocks.MANDRAKE_CROP.get(), new Item.Properties()));
     public static final RegistryObject<Item> CHILLBERRIES = ITEMS.register("chillberries",
-            () -> new Item(new Item.Properties().food(ModFoodProperties.CHILLBERRIES)));
+            () -> new BlockItem(ModBlocks.CHILLBERRY_BUSH.get(), new Item.Properties().food(ModFoodProperties.CHILLBERRIES)));
     public static final RegistryObject<Item> SUNFIRE_TOMATO = ITEMS.register("sunfire_tomato",
             () -> new Item(new Item.Properties().food(ModFoodProperties.SUNFIRE_TOMATO)));
     public static final RegistryObject<Item> SUNFIRE_TOMATO_SEEDS = ITEMS.register("sunfire_tomato_seeds",
-            () -> new Item(new Item.Properties()));
+            () -> new ItemNameBlockItem(ModBlocks.SUNFIRE_TOMATO_CROP.get(), new Item.Properties()));
     public static final RegistryObject<Item> RABBAGE_SEEDS = ITEMS.register("rabbage_seeds",
-            () -> new Item(new Item.Properties()));
+            () -> new ItemNameBlockItem(ModBlocks.RABBAGE_CROP.get(), new Item.Properties()));
     public static final RegistryObject<Item> LOTUS_FLOWER = ITEMS.register("lotus_flower",
             () -> new PlaceOnWaterBlockItem(ModBlocks.LOTUS_FLOWER.get(), new Item.Properties()));
     public static final RegistryObject<Item> SALTSPROUT = ITEMS.register("saltsprout",
-            () -> new Item(new Item.Properties().food(ModFoodProperties.SALTSPROUT)));
+            () -> new BlockItem(ModBlocks.SALTSPROUT.get(), new Item.Properties().food(ModFoodProperties.SALTSPROUT)));
     public static final RegistryObject<Item> DUCKWEED = ITEMS.register("duckweed",
             () -> new PlaceOnWaterBlockItem(ModBlocks.DUCKWEED.get(), new Item.Properties()));
 
@@ -94,7 +93,7 @@ public class ModItems {
     public static final RegistryObject<Item> RITUAL_TABLE = ITEMS.register("ritual_table",
             () -> new BlockItem(ModBlocks.RITUAL_TABLE.get(),new Item.Properties()));
     public static final RegistryObject<Item> CANDLE_SKULL = ITEMS.register("candle_skull",
-            () -> new BlockItem(ModBlocks.CANDLE_SKULL.get(), new Item.Properties()));
+            () -> new BlockItem(ModBlocks.CANDLE_SKULL.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> HEX_FOCUS = ITEMS.register("hex_focus",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WISDOM_GEM = ITEMS.register("wisdom_gem",
