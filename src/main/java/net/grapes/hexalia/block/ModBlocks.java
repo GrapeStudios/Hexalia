@@ -53,7 +53,7 @@ public class ModBlocks {
 
     // Decorative Plants
     public static final RegistryObject<Block> HENBANE = registerBlock("henbane",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.ALLIUM)));
+            () -> new FlowerBlock(() -> MobEffects.ABSORPTION, 6, BlockBehaviour.Properties.copy(Blocks.ALLIUM)));
     public static final RegistryObject<Block> POTTED_HENBANE = BLOCKS.register("potted_henbane",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM)));
     public static final RegistryObject<Block> LOTUS_FLOWER = BLOCKS.register("lotus_flower",
@@ -99,26 +99,26 @@ public class ModBlocks {
                     .instrument(NoteBlockInstrument.BANJO).strength(4f).requiresCorrectToolForDrops()
                     .lightLevel(state -> 12)));
     public static final RegistryObject<Block> SALT = BLOCKS.register("salt",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
+            () -> new SaltBlock(BlockBehaviour.Properties.copy(Blocks.TRIPWIRE)));
 
     // Functional Blocks
     public static final RegistryObject<Block> SMALL_CAULDRON = BLOCKS.register("small_cauldron",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
+            () -> new SmallCauldronBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
     public static final RegistryObject<Block> RUSTIC_OVEN = registerBlock("rustic_oven",
             () -> new RusticOvenBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK)
                     .instrument(NoteBlockInstrument.BANJO).strength(4f).requiresCorrectToolForDrops()
                     .lightLevel(state -> 12)));
     public static final RegistryObject<Block> RITUAL_TABLE = BLOCKS.register("ritual_table",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
+            () -> new RitualTableBlock(BlockBehaviour.Properties.copy(Blocks.STONE).noOcclusion()));
     public static final RegistryObject<Block> BREW_SHELF = registerBlock("brew_shelf",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
+            () -> new BrewShelfBlock(BlockBehaviour.Properties.copy(Blocks.CHISELED_BOOKSHELF).noOcclusion()));
 
     // Decorative Blocks
     public static final RegistryObject<Block> PARCHMENT = registerBlock("parchment",
-            () -> new WallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD)
+            () -> new HWallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD)
                     .instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0f)));
     public static final RegistryObject<Block> DREAMCATCHER = registerBlock("dreamcatcher",
-            () -> new WallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD)
+            () -> new HWallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD)
                     .instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0f)));
     public static final RegistryObject<Block> CANDLE_SKULL = BLOCKS.register("candle_skull",
             () -> new CandleSkullBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE)

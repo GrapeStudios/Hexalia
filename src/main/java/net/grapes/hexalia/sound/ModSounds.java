@@ -13,7 +13,7 @@ public class ModSounds {
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, HexaliaMod.MOD_ID);
 
     public static final RegistryObject<SoundEvent> MANDRAKE_SCREAM = registerSoundEvent("mandrake_scream");
-    public static final RegistryObject<SoundEvent> COMPLETED_RITUAL = registerSoundEvent("completed_ritual");
+    public static final RegistryObject<SoundEvent> RITUAL_SUCCESS = registerSoundEvent("ritual_success");
 
     private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
         ResourceLocation id = new ResourceLocation(HexaliaMod.MOD_ID, name);

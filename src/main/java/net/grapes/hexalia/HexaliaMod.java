@@ -2,11 +2,16 @@ package net.grapes.hexalia;
 
 import com.mojang.logging.LogUtils;
 import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.block.entity.ModBlockEntities;
 import net.grapes.hexalia.effect.ModMobEffects;
 import net.grapes.hexalia.item.ModCreativeModeTabs;
 import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.particle.ModParticles;
+import net.grapes.hexalia.recipe.ModRecipes;
+import net.grapes.hexalia.screen.ModMenuTypes;
+import net.grapes.hexalia.screen.SmallCauldronScreen;
 import net.grapes.hexalia.sound.ModSounds;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -37,7 +42,9 @@ public class HexaliaMod
         ModMobEffects.register(modEventBus);
         ModSounds.register(modEventBus);
         ModParticles.register(modEventBus);
-
+        ModBlockEntities.register(modEventBus);
+        ModMenuTypes.register(modEventBus);
+        ModRecipes.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -58,7 +65,7 @@ public class HexaliaMod
     {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-
+            MenuScreens.register(ModMenuTypes.SMALL_CAULDRON_MENU.get(), SmallCauldronScreen::new);
 
         }
     }

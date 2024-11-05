@@ -6,10 +6,10 @@
     ]
   },
 
-  "completed_ritual": {
-    "subtitle": "sounds.hexalia.completed_ritual",
+  "ritual_success": {
+    "subtitle": "sounds.hexalia.ritual_success",
     "sounds": [
-      "hexalia:completed_ritual"
+      "hexalia:ritual_success"
     ]
   }
 }

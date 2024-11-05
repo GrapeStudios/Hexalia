@@ -1,0 +1,23 @@
+{
+  "type": "hexalia:transmutation",
+  "input": {
+    "item": "minecraft:wheat_seeds"
+  },
+  "output": {
+    "item": "hexalia:rabbage_seeds"
+  },
+  "salt_items": [
+    {
+      "item": "hexalia:resin"
+    },
+    {
+      "item": "hexalia:spirit_bloom"
+    },
+    {
+      "item": "minecraft:snowball"
+    },
+    {
+      "item": "minecraft:wooden_sword"
+    }
+  ]
+}

@@ -44,12 +44,12 @@ public class SaltLampBlock extends LanternBlock {
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        FluidState fluidstate = pContext.getLevel().getFluidState(pContext.getClickedPos());
+        FluidState fluidState = pContext.getLevel().getFluidState(pContext.getClickedPos());
         for(Direction direction : pContext.getNearestLookingDirections()) {
             if (direction.getAxis() == Direction.Axis.Y) {
                 BlockState blockstate = this.defaultBlockState().setValue(HANGING, direction == Direction.UP);
                 if (blockstate.canSurvive(pContext.getLevel(), pContext.getClickedPos())) {
-                    return blockstate.setValue(WATERLOGGED, fluidstate.getType() == Fluids.WATER);
+                    return blockstate.setValue(WATERLOGGED, fluidState.getType() == Fluids.WATER);
                 }
             }
         }
