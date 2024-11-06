@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "minecraft:leather"
+    },
+    "P": {
+      "item": "hexalia:silk_fiber"
+    },
+    "S": {
+      "item": "hexalia:ghost_fern"
+    }
+  },
+  "pattern": [
+    "A A",
+    "PAP",
+    "SSS"
+  ],
+  "result": {
+    "item": "hexalia:ghostveil"
+  },
+  "show_notification": true
+}

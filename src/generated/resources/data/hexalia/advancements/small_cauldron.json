@@ -1,0 +1,39 @@
+{
+  "parent": "hexalia:root",
+  "criteria": {
+    "has_small_cauldron": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexalia:small_cauldron"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "hexalia:textures/block/salt_block.png",
+    "description": {
+      "translate": "advancements.hexalia.small_cauldron.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "hexalia:small_cauldron"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.hexalia.small_cauldron.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_small_cauldron"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

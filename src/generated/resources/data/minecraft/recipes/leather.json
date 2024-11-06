@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "minecraft:rotten_flesh"
+    },
+    "S": {
+      "tag": "forge:salt_dusts"
+    }
+  },
+  "pattern": [
+    " S ",
+    "SPS",
+    " S "
+  ],
+  "result": {
+    "item": "minecraft:leather"
+  },
+  "show_notification": true
+}

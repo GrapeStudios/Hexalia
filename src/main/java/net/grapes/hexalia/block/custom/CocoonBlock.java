@@ -1,8 +1,8 @@
 package net.grapes.hexalia.block.custom;
 
+import net.grapes.hexalia.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
@@ -83,7 +83,7 @@ public class CocoonBlock extends Block {
         Direction facing = pState.getValue(FACING);
         BlockPos oppositePos = pPos.relative(facing.getOpposite());
         BlockState oppositeState = pLevel.getBlockState(oppositePos);
-        return oppositeState.is(BlockTags.LOGS_THAT_BURN);
+        return oppositeState.is(ModTags.Blocks.COCOON_LOGS);
     }
 
     @Override

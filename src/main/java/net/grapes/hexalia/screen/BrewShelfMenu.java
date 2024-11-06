@@ -1,5 +1,6 @@
 package net.grapes.hexalia.screen;
 
+import net.grapes.hexalia.util.ModTags;
 import net.minecraft.core.NonNullList;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -70,7 +71,7 @@ public class BrewShelfMenu extends AbstractContainerMenu {
 
         @Override
         public boolean mayPlace(ItemStack stack) {
-            return stack.is(Tags.Items.DYES);
+            return stack.is(ModTags.Items.BREWS);
         }
     }
 }

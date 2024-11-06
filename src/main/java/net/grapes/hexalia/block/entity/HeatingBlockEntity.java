@@ -1,6 +1,6 @@
 package net.grapes.hexalia.block.entity;
 
-import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -13,7 +13,7 @@ public interface HeatingBlockEntity {
 
     default boolean isHeated (Level plevel, BlockPos pPos) {
         BlockState stateBelow = plevel.getBlockState(pPos.below());
-        if (!stateBelow.is(ModBlocks.RUSTIC_OVEN.get())) return false;
+        if (!stateBelow.is(ModTags.Blocks.HEATING_BLOCKS)) return false;
         if (stateBelow.hasProperty(BlockStateProperties.LIT)) return stateBelow.getValue(BlockStateProperties.LIT);
         return true;
     }

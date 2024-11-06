@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "minecraft:moss_carpet"
+    },
+    "S": {
+      "item": "minecraft:cobbled_deepslate"
+    }
+  },
+  "pattern": [
+    "SPS",
+    " S ",
+    "SSS"
+  ],
+  "result": {
+    "item": "hexalia:ritual_table"
+  },
+  "show_notification": true
+}
