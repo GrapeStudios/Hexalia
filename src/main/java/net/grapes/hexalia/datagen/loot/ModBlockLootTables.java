@@ -36,25 +36,25 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         // Plants & Flowers
         this.dropSelf(ModBlocks.SPIRIT_BLOOM.get());
         this.add(ModBlocks.POTTED_SPIRIT_BLOOM.get(),
-                createPotFlowerItemTable(ModBlocks.POTTED_SPIRIT_BLOOM.get()));
+                createPotFlowerItemTable(ModBlocks.SPIRIT_BLOOM.get()));
         this.dropSelf(ModBlocks.DREAMSHROOM.get());
         this.add(ModBlocks.POTTED_DREAMSHROOM.get(),
-                createPotFlowerItemTable(ModBlocks.POTTED_DREAMSHROOM.get()));
+                createPotFlowerItemTable(ModBlocks.DREAMSHROOM.get()));
         this.add(ModBlocks.SIREN_KELP.get(),
                 this.createSingleItemTable(ModItems.SIREN_KELP.get()));
         this.dropSelf(ModBlocks.HENBANE.get());
         this.add(ModBlocks.POTTED_HENBANE.get(),
-                createPotFlowerItemTable(ModBlocks.POTTED_HENBANE.get()));
+                createPotFlowerItemTable(ModBlocks.HENBANE.get()));
         this.dropSelf(ModBlocks.LOTUS_FLOWER.get());
         this.dropSelf(ModBlocks.PALE_MUSHROOM.get());
         this.add(ModBlocks.POTTED_PALE_MUSHROOM.get(),
-                createPotFlowerItemTable(ModBlocks.POTTED_PALE_MUSHROOM.get()));
+                createPotFlowerItemTable(ModBlocks.PALE_MUSHROOM.get()));
         this.dropSelf(ModBlocks.WITCHWEED.get());
         this.dropSelf(ModBlocks.GHOST_FERN.get());
         this.dropSelf(ModBlocks.NIGHTSHADE_BUSH.get());
         this.dropSelf(ModBlocks.DUCKWEED.get());
         this.add(ModBlocks.POTTED_NIGHTSHADE_BUSH.get(),
-                createPotFlowerItemTable(ModBlocks.POTTED_NIGHTSHADE_BUSH.get()));
+                createPotFlowerItemTable(ModBlocks.NIGHTSHADE_BUSH.get()));
         this.add(ModBlocks.HEXED_BULRUSH.get(),
                 createTallPlantBlock(ModBlocks.HEXED_BULRUSH.get()));
         this.add(ModBlocks.COTTONWOOD_CATKIN.get(),
@@ -76,8 +76,11 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.SMALL_CAULDRON.get());
         this.add(ModBlocks.SALT_ORE.get(), block ->
                 createOreDrop(ModBlocks.SALT_ORE.get(), ModItems.SALT.get()));
+
+        // Change amount
         this.add(ModBlocks.SALT_BLOCK.get(), block ->
                 createOreDrop(ModBlocks.SALT_ORE.get(), ModItems.SALT.get()));
+
         this.add(ModBlocks.SILKWORM_COCOON.get(),
                 this.createSingleItemTable(ModItems.SILKWORM.get()));
 
@@ -103,6 +106,50 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(ModBlocks.SALTSPROUT.get(), this.createSimpleCropBlock(ModBlocks.SALTSPROUT.get(),
                 ModItems.SALTSPROUT.get(), lootItemCondition$builder4));
         this.add(ModBlocks.CHILLBERRY_BUSH.get(), createHarvestablePlantBlock(ModBlocks.CHILLBERRY_BUSH.get(), ModItems.CHILLBERRIES.get()));
+
+        // Drops for Wood-related Blocks
+        this.add(ModBlocks.COTTONWOOD_LEAVES.get(), createLeavesDrops(ModBlocks.COTTONWOOD_LEAVES.get(), ModBlocks.COTTONWOOD_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        this.dropSelf(ModBlocks.COTTONWOOD_LOG.get());
+        this.dropSelf(ModBlocks.COTTONWOOD_WOOD.get());
+        this.dropSelf(ModBlocks.STRIPPED_COTTONWOOD_LOG.get());
+        this.dropSelf(ModBlocks.STRIPPED_COTTONWOOD_WOOD.get());
+        this.dropSelf(ModBlocks.COTTONWOOD_PLANKS.get());
+        this.dropSelf(ModBlocks.COTTONWOOD_SAPLING.get());
+        this.add(ModBlocks.POTTED_COTTONWOOD_SAPLING.get(), createPotFlowerItemTable(ModBlocks.COTTONWOOD_SAPLING.get()));
+        this.dropSelf(ModBlocks.COTTONWOOD_STAIRS.get());
+        this.dropSelf(ModBlocks.COTTONWOOD_PRESSURE_PLATE.get());
+        this.add(ModBlocks.COTTONWOOD_SLAB.get(), createSlabItemTable(ModBlocks.COTTONWOOD_SLAB.get()));
+        this.dropSelf(ModBlocks.COTTONWOOD_BUTTON.get());
+        this.dropSelf(ModBlocks.COTTONWOOD_FENCE.get());
+        this.dropSelf(ModBlocks.COTTONWOOD_FENCE_GATE.get());
+        this.dropSelf(ModBlocks.COTTONWOOD_TRAPDOOR.get());
+        this.add(ModBlocks.COTTONWOOD_DOOR.get(), createDoorTable(ModBlocks.COTTONWOOD_DOOR.get()));
+        this.add(ModBlocks.COTTONWOOD_SIGN.get(), createSingleItemTable(ModBlocks.COTTONWOOD_SIGN.get()));
+        this.add(ModBlocks.COTTONWOOD_WALL_SIGN.get(), createSingleItemTable(ModBlocks.COTTONWOOD_SIGN.get()));
+        this.add(ModBlocks.COTTONWOOD_HANGING_SIGN.get(), createSingleItemTable(ModBlocks.COTTONWOOD_HANGING_SIGN.get()));
+        this.add(ModBlocks.COTTONWOOD_HANGING_WALL_SIGN.get(), createSingleItemTable(ModBlocks.COTTONWOOD_HANGING_SIGN.get()));
+
+        this.add(ModBlocks.WILLOW_LEAVES.get(), createLeavesDrops(ModBlocks.WILLOW_LEAVES.get(), ModBlocks.WILLOW_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        this.dropSelf(ModBlocks.WILLOW_LOG.get());
+        this.dropSelf(ModBlocks.WILLOW_WOOD.get());
+        this.dropSelf(ModBlocks.STRIPPED_WILLOW_LOG.get());
+        this.dropSelf(ModBlocks.STRIPPED_WILLOW_WOOD.get());
+        this.dropSelf(ModBlocks.WILLOW_PLANKS.get());
+        this.dropSelf(ModBlocks.WILLOW_SAPLING.get());
+        this.add(ModBlocks.POTTED_WILLOW_SAPLING.get(), createPotFlowerItemTable(ModBlocks.WILLOW_SAPLING.get()));
+        this.dropSelf(ModBlocks.WILLOW_STAIRS.get());
+        this.dropSelf(ModBlocks.WILLOW_PRESSURE_PLATE.get());
+        this.add(ModBlocks.WILLOW_SLAB.get(), createSlabItemTable(ModBlocks.WILLOW_SLAB.get()));
+        this.dropSelf(ModBlocks.WILLOW_BUTTON.get());
+        this.dropSelf(ModBlocks.WILLOW_FENCE.get());
+        this.dropSelf(ModBlocks.WILLOW_FENCE_GATE.get());
+        this.dropSelf(ModBlocks.WILLOW_TRAPDOOR.get());
+        this.add(ModBlocks.WILLOW_DOOR.get(), createDoorTable(ModBlocks.WILLOW_DOOR.get()));
+        this.add(ModBlocks.WILLOW_SIGN.get(), createSingleItemTable(ModBlocks.WILLOW_SIGN.get()));
+        this.add(ModBlocks.WILLOW_WALL_SIGN.get(), createSingleItemTable(ModBlocks.WILLOW_SIGN.get()));
+        this.add(ModBlocks.WILLOW_HANGING_SIGN.get(), createSingleItemTable(ModBlocks.WILLOW_HANGING_SIGN.get()));
+        this.add(ModBlocks.WILLOW_HANGING_WALL_SIGN.get(), createSingleItemTable(ModBlocks.WILLOW_HANGING_SIGN.get()));
+
     }
 
     protected LootTable.Builder createSimpleCropBlock(Block pCropBlock, Item pGrownCropItem, LootItemCondition.Builder pDropGrownCropCondition) {

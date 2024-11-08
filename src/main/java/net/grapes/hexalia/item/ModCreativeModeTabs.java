@@ -100,6 +100,43 @@ public class ModCreativeModeTabs {
                         // Armor Items
                         output.accept(ModItems.EARPLUGS.get());
 
+                        // Wood Related Items
+                        output.accept(ModBlocks.COTTONWOOD_SAPLING.get());
+                        output.accept(ModBlocks.COTTONWOOD_LEAVES.get());
+                        output.accept(ModBlocks.COTTONWOOD_LOG.get());
+                        output.accept(ModBlocks.COTTONWOOD_WOOD.get());
+                        output.accept(ModBlocks.STRIPPED_COTTONWOOD_LOG.get());
+                        output.accept(ModBlocks.STRIPPED_COTTONWOOD_WOOD.get());
+                        output.accept(ModBlocks.COTTONWOOD_PLANKS.get());
+                        output.accept(ModBlocks.COTTONWOOD_STAIRS.get());
+                        output.accept(ModBlocks.COTTONWOOD_SLAB.get());
+                        output.accept(ModBlocks.COTTONWOOD_FENCE.get());
+                        output.accept(ModBlocks.COTTONWOOD_FENCE_GATE.get());
+                        output.accept(ModBlocks.COTTONWOOD_DOOR.get());
+                        output.accept(ModBlocks.COTTONWOOD_TRAPDOOR.get());
+                        output.accept(ModBlocks.COTTONWOOD_PRESSURE_PLATE.get());
+                        output.accept(ModBlocks.COTTONWOOD_BUTTON.get());
+                        output.accept(ModItems.COTTONWOOD_SIGN.get());
+                        output.accept(ModItems.COTTONWOOD_HANGING_SIGN.get());
+                        
+                        output.accept(ModBlocks.WILLOW_SAPLING.get());
+                        output.accept(ModBlocks.WILLOW_LEAVES.get());
+                        output.accept(ModBlocks.WILLOW_LOG.get());
+                        output.accept(ModBlocks.WILLOW_WOOD.get());
+                        output.accept(ModBlocks.STRIPPED_WILLOW_LOG.get());
+                        output.accept(ModBlocks.STRIPPED_WILLOW_WOOD.get());
+                        output.accept(ModBlocks.WILLOW_PLANKS.get());
+                        output.accept(ModBlocks.WILLOW_STAIRS.get());
+                        output.accept(ModBlocks.WILLOW_SLAB.get());
+                        output.accept(ModBlocks.WILLOW_FENCE.get());
+                        output.accept(ModBlocks.WILLOW_FENCE_GATE.get());
+                        output.accept(ModBlocks.WILLOW_DOOR.get());
+                        output.accept(ModBlocks.WILLOW_TRAPDOOR.get());
+                        output.accept(ModBlocks.WILLOW_PRESSURE_PLATE.get());
+                        output.accept(ModBlocks.WILLOW_BUTTON.get());
+                        output.accept(ModItems.WILLOW_SIGN.get());
+                        output.accept(ModItems.WILLOW_HANGING_SIGN.get());
+
                     }).build());
 
     public static void register(IEventBus eventBus) {

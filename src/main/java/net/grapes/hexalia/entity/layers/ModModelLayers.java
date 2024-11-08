@@ -1,0 +1,18 @@
+package net.grapes.hexalia.entity.layers;
+
+import net.grapes.hexalia.HexaliaMod;
+import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.resources.ResourceLocation;
+
+public class ModModelLayers {
+    public static final ModelLayerLocation COTTONWOOD_BOAT_LAYER = new ModelLayerLocation(
+            new ResourceLocation(HexaliaMod.MOD_ID, "boat/cottonwood"), "main");
+    public static final ModelLayerLocation COTTONWOOD_CHEST_BOAT_LAYER = new ModelLayerLocation(
+            new ResourceLocation(HexaliaMod.MOD_ID, "chest_boat/cottonwood"), "main");
+
+    public static final ModelLayerLocation WILLOW_BOAT_LAYER = new ModelLayerLocation(
+            new ResourceLocation(HexaliaMod.MOD_ID, "boat/willow"), "main");
+    public static final ModelLayerLocation WILLOW_CHEST_BOAT_LAYER = new ModelLayerLocation(
+            new ResourceLocation(HexaliaMod.MOD_ID, "chest_boat/willow"), "main");
+
+}

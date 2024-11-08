@@ -2,6 +2,7 @@ package net.grapes.hexalia.item;
 
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.entity.custom.ModBoatEntity;
 import net.grapes.hexalia.item.custom.*;
 import net.grapes.hexalia.item.custom.brews.*;
 import net.grapes.hexalia.util.ModToolTiers;
@@ -113,6 +114,31 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> EARPLUGS = ITEMS.register("earplugs",
             () -> new ArmorItem(ModArmorMaterials.EARPLUGS, ArmorItem.Type.HELMET, new Item.Properties()));
+
+    // Wood-related Items
+    public static final RegistryObject<Item> COTTONWOOD_SIGN = ITEMS.register("cottonwood_sign",
+            () -> new SignItem(new Item.Properties().stacksTo(16), ModBlocks.COTTONWOOD_SIGN.get(),
+                    ModBlocks.COTTONWOOD_WALL_SIGN.get()));
+    public static final RegistryObject<Item> COTTONWOOD_HANGING_SIGN = ITEMS.register("cottonwood_hanging_sign",
+            () -> new HangingSignItem(ModBlocks.COTTONWOOD_HANGING_SIGN.get(),
+                    ModBlocks.COTTONWOOD_HANGING_WALL_SIGN.get(), new Item.Properties().stacksTo(16)));
+
+    public static final RegistryObject<Item> COTTONWOOD_BOAT = ITEMS.register("cottonwood_boat",
+            () -> new ModBoatItem(false, ModBoatEntity.Type.COTTONWOOD, new Item.Properties()));
+    public static final RegistryObject<Item> COTTONWOOD_CHEST_BOAT = ITEMS.register("cottonwood_chest_boat",
+            () -> new ModBoatItem(true, ModBoatEntity.Type.COTTONWOOD, new Item.Properties()));
+    
+    public static final RegistryObject<Item> WILLOW_SIGN = ITEMS.register("willow_sign",
+            () -> new SignItem(new Item.Properties().stacksTo(16), ModBlocks.WILLOW_SIGN.get(),
+                    ModBlocks.WILLOW_WALL_SIGN.get()));
+    public static final RegistryObject<Item> WILLOW_HANGING_SIGN = ITEMS.register("willow_hanging_sign",
+            () -> new HangingSignItem(ModBlocks.WILLOW_HANGING_SIGN.get(),
+                    ModBlocks.WILLOW_HANGING_WALL_SIGN.get(), new Item.Properties().stacksTo(16)));
+
+    public static final RegistryObject<Item> WILLOW_BOAT = ITEMS.register("willow_boat",
+            () -> new ModBoatItem(false, ModBoatEntity.Type.WILLOW, new Item.Properties()));
+    public static final RegistryObject<Item> WILLOW_CHEST_BOAT = ITEMS.register("willow_chest_boat",
+            () -> new ModBoatItem(true, ModBoatEntity.Type.WILLOW, new Item.Properties()));
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

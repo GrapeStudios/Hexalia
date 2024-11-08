@@ -79,6 +79,59 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
         this.tag(ModTags.Items.SALT_BLOCKS)
                 .add(ModBlocks.SALT_BLOCK.get().asItem());
+
+        // Wood-related Tags
+        this.tag(ItemTags.LOGS_THAT_BURN)
+                .addTag(ModTags.Items.COTTONWOOD_LOGS)
+                .addTag(ModTags.Items.WILLOW_LOGS);
+        this.tag(ItemTags.SAPLINGS)
+                .add(ModBlocks.COTTONWOOD_SAPLING.get().asItem(), ModBlocks.WILLOW_SAPLING.get().asItem());
+        this.tag(ItemTags.LEAVES)
+                .add(ModBlocks.COTTONWOOD_LEAVES.get().asItem(), ModBlocks.WILLOW_LEAVES.get().asItem());
+
+        this.tag(ItemTags.PLANKS)
+                .add(ModBlocks.COTTONWOOD_PLANKS.get().asItem(),
+                        ModBlocks.WILLOW_PLANKS.get().asItem());
+        this.tag(ItemTags.PLANKS)
+                .add(ModBlocks.COTTONWOOD_PLANKS.get().asItem(),
+                        ModBlocks.WILLOW_PLANKS.get().asItem());
+        this.tag(ItemTags.WOODEN_STAIRS)
+                .add(ModBlocks.COTTONWOOD_STAIRS.get().asItem(),
+                        ModBlocks.WILLOW_STAIRS.get().asItem());
+        this.tag(ItemTags.WOODEN_SLABS)
+                .add(ModBlocks.COTTONWOOD_SLAB.get().asItem(),
+                        ModBlocks.WILLOW_SLAB.get().asItem());
+        this.tag(ItemTags.WOODEN_DOORS)
+                .add(ModBlocks.COTTONWOOD_DOOR.get().asItem(),
+                        ModBlocks.WILLOW_DOOR.get().asItem());
+        this.tag(ItemTags.WOODEN_BUTTONS)
+                .add(ModBlocks.COTTONWOOD_BUTTON.get().asItem(),
+                        ModBlocks.COTTONWOOD_BUTTON.get().asItem());
+        this.tag(ItemTags.WOODEN_PRESSURE_PLATES)
+                .add(ModBlocks.COTTONWOOD_PRESSURE_PLATE.get().asItem(),
+                        ModBlocks.WILLOW_PRESSURE_PLATE.get().asItem());
+        this.tag(ItemTags.WOODEN_TRAPDOORS)
+                .add(ModBlocks.COTTONWOOD_TRAPDOOR.get().asItem(),
+                        ModBlocks.WILLOW_TRAPDOOR.get().asItem());
+        this.tag(ItemTags.FENCE_GATES)
+                .add(ModBlocks.COTTONWOOD_FENCE_GATE.get().asItem(),
+                        ModBlocks.WILLOW_FENCE_GATE.get().asItem());
+        this.tag(ItemTags.WOODEN_FENCES)
+                .add(ModBlocks.COTTONWOOD_FENCE.get().asItem(),
+                        ModBlocks.WILLOW_FENCE.get().asItem());
+
+        this.tag(ModTags.Items.COTTONWOOD_LOGS)
+                .add(ModBlocks.COTTONWOOD_LOG.get().asItem(), ModBlocks.STRIPPED_COTTONWOOD_LOG.get().asItem(),
+                        ModBlocks.COTTONWOOD_WOOD.get().asItem(), ModBlocks.STRIPPED_COTTONWOOD_WOOD.get().asItem());
+
+        this.tag(ModTags.Items.WILLOW_LOGS)
+                .add(ModBlocks.WILLOW_LOG.get().asItem(), ModBlocks.STRIPPED_WILLOW_LOG.get().asItem(),
+                        ModBlocks.WILLOW_WOOD.get().asItem(), ModBlocks.STRIPPED_WILLOW_WOOD.get().asItem());
+
+        this.tag(ItemTags.SIGNS)
+                .add(ModItems.COTTONWOOD_SIGN.get(), ModItems.WILLOW_SIGN.get());
+        this.tag(ItemTags.HANGING_SIGNS)
+                .add(ModItems.COTTONWOOD_HANGING_SIGN.get(), ModItems.WILLOW_HANGING_SIGN.get());
     }
 
     @Override

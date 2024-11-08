@@ -26,6 +26,10 @@ public class ModTags {
         public static final TagKey<Item> SALT_BLOCKS = forgeTag("salt_blocks");
         public static final TagKey<Item> COOKED_MEATS = forgeTag("cooked_meats");
 
+        // Wood-related Tags
+        public static final TagKey<Item> COTTONWOOD_LOGS = tag("cottonwood_logs");
+        public static final TagKey<Item> WILLOW_LOGS = tag("willow_logs");
+
         private static TagKey<Item> tag(String name){
             return ItemTags.create(new ResourceLocation(HexaliaMod.MOD_ID, name));
         }
@@ -45,6 +49,10 @@ public class ModTags {
         public static final TagKey<Block> ORES = forgeTag("ores");
         public static final TagKey<Block> SALT_ORES = forgeTag("salt_ores");
         public static final TagKey<Block> SALT_BLOCKS = forgeTag("salt_blocks");
+
+        // Wood-related Tags
+        public static final TagKey<Block> COTTONWOOD_LOGS = tag("cottonwood_logs");
+        public static final TagKey<Block> WILLOW_LOGS = tag("willow_logs");
 
         private static TagKey<Block> tag(String name){
             return BlockTags.create(new ResourceLocation(HexaliaMod.MOD_ID, name));

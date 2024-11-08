@@ -1,0 +1,21 @@
+package net.grapes.hexalia.worldgen.gen.decorator;
+
+import net.grapes.hexalia.HexaliaMod;
+import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
+
+public class ModTreeDecorators {
+
+    public static final DeferredRegister<TreeDecoratorType<?>> TREE_DECORATORS =
+            DeferredRegister.create(ForgeRegistries.TREE_DECORATOR_TYPES, HexaliaMod.MOD_ID);
+
+    public static final RegistryObject<TreeDecoratorType<CatkinTreeDecorator>> CATKIN =
+            TREE_DECORATORS.register("catkin", () -> new TreeDecoratorType<>(CatkinTreeDecorator.CODEC));
+
+    public static void register (IEventBus eventBus) {
+        TREE_DECORATORS.register(eventBus);
+    }
+}
