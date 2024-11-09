@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "mccourse:salt_block"
+        "recipe": "hexalia:salt_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "mccourse:salt_block"
+      "hexalia:salt_block"
     ]
   },
   "sends_telemetry_event": false

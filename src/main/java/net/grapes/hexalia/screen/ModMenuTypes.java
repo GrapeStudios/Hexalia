@@ -1,7 +1,6 @@
 package net.grapes.hexalia.screen;
 
 import net.grapes.hexalia.HexaliaMod;
-import net.grapes.hexalia.block.entity.SmallCauldronBlockEntity;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.MenuType;
 import net.minecraftforge.common.extensions.IForgeMenuType;

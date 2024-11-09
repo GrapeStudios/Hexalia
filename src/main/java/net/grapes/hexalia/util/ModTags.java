@@ -1,16 +1,17 @@
 package net.grapes.hexalia.util;
 
 import net.grapes.hexalia.HexaliaMod;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 
 public class ModTags {
     public static class Items {
-
         // Custom Item Tags
         public static final TagKey<Item> CRUSHED_PLANTS = tag("crushed_plants");
         public static final TagKey<Item> BREWS = tag("brews");
@@ -38,8 +39,14 @@ public class ModTags {
         }
     }
 
-    public static class Blocks {
+    public static class Biomes {
+        public static final TagKey<Biome> HAS_MANDRAKES = TagKey.create(Registries.BIOME,
+                (new ResourceLocation(HexaliaMod.MOD_ID, "has_mandrakes")));
+        public static final TagKey<Biome> HAS_DREAMSHROOMS = TagKey.create(Registries.BIOME,
+                (new ResourceLocation(HexaliaMod.MOD_ID, "has_dreamshrooms")));
+    }
 
+    public static class Blocks {
         // Custom Block Tags
         public static final TagKey<Block> HEATING_BLOCKS = tag("heating_blocks");
         public static final TagKey<Block> ATTRACTS_MOTH = tag("attracts_moth");

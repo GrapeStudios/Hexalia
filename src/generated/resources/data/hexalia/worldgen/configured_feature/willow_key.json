@@ -72,9 +72,9 @@
       "root_provider": {
         "type": "minecraft:simple_state_provider",
         "state": {
-          "Name": "minecraft:mangrove_roots",
+          "Name": "hexalia:willow_wood",
           "Properties": {
-            "waterlogged": "false"
+            "axis": "y"
           }
         }
       },

@@ -1,16 +1,22 @@
 package net.grapes.hexalia.block.custom;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.IceBlock;
 import net.minecraft.world.level.block.WaterlilyBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 import org.jetbrains.annotations.Nullable;
 
 public class WaterPlantBlock extends WaterlilyBlock {
-
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
     public WaterPlantBlock(Properties pProperties) {
@@ -20,7 +26,24 @@ public class WaterPlantBlock extends WaterlilyBlock {
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
+        // Only allow placement if the block below is water
+        if (!canSurvive(defaultBlockState(), pContext.getLevel(), pContext.getClickedPos())) {
+            return null;
+        }
         return this.defaultBlockState().setValue(FACING, pContext.getHorizontalDirection().getOpposite());
+    }
+
+    @Override
+    protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
+        FluidState fluidstate = pLevel.getFluidState(pPos);
+        FluidState fluidstate1 = pLevel.getFluidState(pPos.above());
+        return (fluidstate.getType() == Fluids.WATER || pState.getBlock() instanceof IceBlock) && fluidstate1.getType() == Fluids.EMPTY;
+    }
+
+    @Override
+    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+        BlockPos blockpos = pPos.below();
+        return this.mayPlaceOn(pLevel.getBlockState(blockpos), pLevel, blockpos);
     }
 
     @Override

@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
   "biomes": "#forge:is_swamp",
-  "features": "hexalia:cottonwood_placed",
+  "features": "hexalia:spirit_bloom_placed",
   "step": "vegetal_decoration"
 }

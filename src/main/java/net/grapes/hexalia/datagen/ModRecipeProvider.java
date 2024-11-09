@@ -182,7 +182,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         // Reversible Compacting Recipes for Blocks
         nineBlockStorageRecipes(pWriter, RecipeCategory.BUILDING_BLOCKS, ModItems.SALT.get(),
                 RecipeCategory.BUILDING_BLOCKS, ModBlocks.SALT_BLOCK.get(),
-                "hexalia:salt", "salt","mccourse:salt_block", "salt");
+                "hexalia:salt", "salt","hexalia:salt_block", "salt");
 
         // Armor Recipes
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.GHOSTVEIL.get())

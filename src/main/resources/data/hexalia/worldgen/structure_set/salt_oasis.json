@@ -1,0 +1,15 @@
+{
+  "structures": [
+    {
+      "structure": "hexalia:salt_oasis",
+      "weight": 2
+    }
+  ],
+  "placement": {
+    "salt": 453593018,
+    "spacing": 20,
+    "separation": 15,
+    "type": "minecraft:random_spread",
+    "spread_type": "minecraft:linear"
+  }
+}
