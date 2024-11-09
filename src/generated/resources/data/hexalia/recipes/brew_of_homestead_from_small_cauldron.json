@@ -5,13 +5,13 @@
   },
   "ingredients": [
     {
+      "item": "minecraft:ender_pearl"
+    },
+    {
       "item": "hexalia:resin"
     },
     {
       "item": "hexalia:spirit_bloom_powder"
-    },
-    {
-      "item": "minecraft:ender_pearl"
     }
   ],
   "output": {

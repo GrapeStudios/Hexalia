@@ -2,6 +2,8 @@ package net.grapes.hexalia.datagen;
 
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.datagen.custom.SmallCauldronRecipeBuilder;
+import net.grapes.hexalia.datagen.custom.TransmutationRecipeBuilder;
 import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.util.ModTags;
 import net.minecraft.advancements.critereon.ItemPredicate;
@@ -14,6 +16,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
@@ -315,6 +318,42 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_mortar_and_pestle",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.MORTAR_AND_PESTLE.get()).build()))
                 .save(pWriter, new ResourceLocation(getSimpleRecipeName(ModItems.SALT.get()) + "_"));
+
+        // Recipes for Small Cauldron Brews
+        new SmallCauldronRecipeBuilder(List.of(Blocks.CACTUS, ModItems.SPIRIT_BLOOM_POWDER.get(), ModItems.DREAMSHROOM_PASTE.get()),
+                ModItems.RUSTIC_BOTTLE.get(), ModItems.BREW_OF_SPIKESKIN.get())
+                .unlockedBy("has_rustic_bottle", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.RUSTIC_BOTTLE.get()).build()))
+                .save(pWriter);
+        new SmallCauldronRecipeBuilder(List.of(Items.SLIME_BALL, ModItems.DREAMSHROOM_PASTE.get(), ModItems.SIREN_KELP_PASTE.get()),
+                ModItems.RUSTIC_BOTTLE.get(), ModItems.BREW_OF_SLIMEWALKER.get())
+                .unlockedBy("has_rustic_bottle", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.RUSTIC_BOTTLE.get()).build()))
+                .save(pWriter);
+        new SmallCauldronRecipeBuilder(List.of(Items.SUGAR, Items.RAW_IRON, ModItems.GHOST_FERN_POWDER.get()),
+                ModItems.RUSTIC_BOTTLE.get(), ModItems.BREW_OF_SIPHON.get())
+                .unlockedBy("has_rustic_bottle", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.RUSTIC_BOTTLE.get()).build()))
+                .save(pWriter);
+        new SmallCauldronRecipeBuilder(List.of(Items.ENDER_PEARL, ModItems.RESIN.get(), ModItems.SPIRIT_BLOOM_POWDER.get()),
+                ModItems.RUSTIC_BOTTLE.get(), ModItems.BREW_OF_HOMESTEAD.get())
+                .unlockedBy("has_rustic_bottle", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.RUSTIC_BOTTLE.get()).build()))
+                .save(pWriter);
+        new SmallCauldronRecipeBuilder(List.of(Items.REDSTONE, ModItems.SIREN_KELP_PASTE.get(), ModItems.DREAMSHROOM_PASTE.get()),
+                ModItems.RUSTIC_BOTTLE.get(), ModItems.BREW_OF_BLOODLUST.get())
+                .unlockedBy("has_rustic_bottle", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.RUSTIC_BOTTLE.get()).build()))
+                .save(pWriter);
+
+        // Recipes for Transmutation Items
+        new TransmutationRecipeBuilder(List.of(ModItems.RESIN.get(), ModItems.SIREN_KELP.get(), Items.WOODEN_SWORD, Items.STRING),
+                ModItems.ANCIENT_SEED.get(), ModItems.KELPWEAVE_BLADE.get())
+                .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEXBOOK.get()).build()))
+                .save(pWriter);
+        new TransmutationRecipeBuilder(List.of(ModItems.RESIN.get(), ModBlocks.SPIRIT_BLOOM.get(), Items.WOODEN_SWORD, Items.SNOWBALL),
+                Items.WHEAT_SEEDS, ModItems.RABBAGE_SEEDS.get())
+                .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEXBOOK.get()).build()))
+                .save(pWriter);
+        new TransmutationRecipeBuilder(List.of(ModItems.GHOST_FERN_POWDER.get(), ModItems.SPIRIT_BLOOM_POWDER.get(), Items.STRING, Items.EXPERIENCE_BOTTLE),
+                Items.DIAMOND, ModItems.WISDOM_GEM.get())
+                .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEXBOOK.get()).build()))
+                .save(pWriter);
 
         // Recipes for Wood-related Blocks
         planksFromLog(pWriter, ModBlocks.COTTONWOOD_PLANKS.get(), ModTags.Items.COTTONWOOD_LOGS, 4);
