@@ -1,11 +1,11 @@
 {
   "criteria": {
-    "has_hex_focus": {
+    "has_hexbook": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:hex_focus"
+              "hexalia:hexbook"
             ]
           }
         ]
@@ -22,7 +22,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "hexalia:hex_focus"
+      "item": "hexalia:hexbook"
     },
     "show_toast": true,
     "title": {
@@ -31,7 +31,7 @@
   },
   "requirements": [
     [
-      "has_hex_focus"
+      "has_hexbook"
     ]
   ],
   "sends_telemetry_event": true

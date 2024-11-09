@@ -20,12 +20,12 @@ public class ModAdvancementsProvider implements ForgeAdvancementProvider.Advance
     public void generate(HolderLookup.Provider registries, Consumer<Advancement> saver, ExistingFileHelper existingFileHelper) {
 
         Advancement rootAdvancement = Advancement.Builder.advancement()
-                .display(new DisplayInfo(new ItemStack(ModItems.HEX_FOCUS.get()),
+                .display(new DisplayInfo(new ItemStack(ModItems.HEXBOOK.get()),
                         Component.translatable("advancements.hexalia.root.title"),
                         Component.translatable("advancements.hexalia.root.description"),
                         new ResourceLocation(HexaliaMod.MOD_ID, "textures/block/salt_block.png"), FrameType.TASK,
                         true, true, false))
-                .addCriterion("has_hex_focus", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.HEX_FOCUS.get()))
+                .addCriterion("has_hexbook", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.HEXBOOK.get()))
                 .save(saver, new ResourceLocation(HexaliaMod.MOD_ID, "root"), existingFileHelper);
 
         Advancement smallCauldron = Advancement.Builder.advancement()
