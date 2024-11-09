@@ -1,0 +1,18 @@
+{
+  "category": "hexalia:resources",
+  "name": "Trees",
+  "icon": "hexalia:willow_sapling",
+  "sortnum": 7,
+  "pages": [
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:willow_log",
+      "text": "This tree has an olive-textured wood block set and can be found in the $(l:hexalia:biomes/enchanted_bayou)Enchanted Bayou$()."
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:cottonwood_log",
+      "text": "This tree has an soft brown wood block set and can be found in the $(l:hexalia:biomes/enchanted_bayou)Enchanted Bayou$().$(br2)Resin can be obtained from its logs by using a $(l:hexalia:tools/stone_dagger)Stone Dagger$()"
+    }
+  ]
+}

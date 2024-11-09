@@ -69,6 +69,11 @@ public class SmallCauldronRecipe implements Recipe<SimpleContainer> {
         return output.copy();
     }
 
+    @Override
+    public NonNullList<Ingredient> getIngredients() {
+        return recipeItems;
+    }
+
     public Ingredient getBottleSlot() {
         return bottleSlot;
     }

@@ -140,6 +140,10 @@ public class ModItems {
     public static final RegistryObject<Item> WILLOW_CHEST_BOAT = ITEMS.register("willow_chest_boat",
             () -> new ModBoatItem(true, ModBoatEntity.Type.WILLOW, new Item.Properties()));
 
+    // Addon/Compat Items
+    public static final RegistryObject<Item> HEXBOOK = ITEMS.register("hexbook",
+            () -> new HexbookItem(new Item.Properties().stacksTo(1)));
+
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }

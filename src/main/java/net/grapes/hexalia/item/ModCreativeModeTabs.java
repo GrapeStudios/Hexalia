@@ -141,6 +141,8 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.WILLOW_BOAT.get());
                         output.accept(ModItems.WILLOW_CHEST_BOAT.get());
 
+                        output.accept(ModItems.HEXBOOK.get());
+
                     }).build());
 
     public static void register(IEventBus eventBus) {

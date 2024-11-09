@@ -67,6 +67,10 @@ public class TransmutationRecipe implements Recipe<RitualTableBlockEntity> {
         return saltItems;
     }
 
+    public ItemStack getInput() {
+        return input;
+    }
+
     @Override
     public RecipeType<?> getType() {
         return Type.INSTANCE;

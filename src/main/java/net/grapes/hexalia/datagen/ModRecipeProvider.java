@@ -1,5 +1,6 @@
 package net.grapes.hexalia.datagen;
 
+import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.util.ModTags;
@@ -256,6 +257,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(ItemTags.LEAVES)
                 .unlockedBy("has_silkworm",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SILKWORM.get()).build()))
+                .save(pWriter);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.HEXBOOK.get(), 1)
+                .requires(ModTags.Items.CRUSHED_PLANTS)
+                .requires(Items.BOOK)
+                .unlockedBy("has_book",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(Items.BOOK).build()))
                 .save(pWriter);
 
         // Shapeless Recipes for Mortar & Pestle and Refined Resources
