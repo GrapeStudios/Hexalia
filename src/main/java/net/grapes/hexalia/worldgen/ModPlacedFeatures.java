@@ -38,7 +38,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> NIGHTSHADE_BUSH_PLACED_KEY = registerKey("nightshade_bush_placed_key");
     public static final ResourceKey<PlacedFeature> DUCKWEED_PLACED_KEY = registerKey("duckweed_placed_key");
 
-    public static final void bootstrap(BootstapContext<PlacedFeature> context) {
+    public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
         // Functional Plants

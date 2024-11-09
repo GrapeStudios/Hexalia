@@ -3,7 +3,6 @@ package net.grapes.hexalia.block.custom;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
@@ -26,18 +25,10 @@ public class WaterPlantBlock extends WaterlilyBlock {
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        // Only allow placement if the block below is water
         if (!canSurvive(defaultBlockState(), pContext.getLevel(), pContext.getClickedPos())) {
             return null;
         }
         return this.defaultBlockState().setValue(FACING, pContext.getHorizontalDirection().getOpposite());
-    }
-
-    @Override
-    protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        FluidState fluidstate = pLevel.getFluidState(pPos);
-        FluidState fluidstate1 = pLevel.getFluidState(pPos.above());
-        return (fluidstate.getType() == Fluids.WATER || pState.getBlock() instanceof IceBlock) && fluidstate1.getType() == Fluids.EMPTY;
     }
 
     @Override
