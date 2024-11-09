@@ -3,7 +3,6 @@ package net.grapes.hexalia.datagen.custom;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import net.grapes.hexalia.HexaliaMod;
-import net.grapes.hexalia.recipe.SmallCauldronRecipe;
 import net.grapes.hexalia.recipe.TransmutationRecipe;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;

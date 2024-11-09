@@ -1,6 +1,5 @@
 package net.grapes.hexalia.datagen;
 
-import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.datagen.custom.SmallCauldronRecipeBuilder;
 import net.grapes.hexalia.datagen.custom.TransmutationRecipeBuilder;
