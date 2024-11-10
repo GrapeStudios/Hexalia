@@ -117,7 +117,7 @@ public class ModItems {
     public static final RegistryObject<Item> RABBAGE = ITEMS.register("rabbage",
             () -> new RabbageEntity(new Item.Properties()));
     public static final RegistryObject<Item> GHOSTVEIL = ITEMS.register("ghostveil",
-            () -> new Item(new Item.Properties()));
+            () -> new GhostVeilItem(ModArmorMaterials.GHOST, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
     public static final RegistryObject<Item> EARPLUGS = ITEMS.register("earplugs",
             () -> new ArmorItem(ModArmorMaterials.EARPLUGS, ArmorItem.Type.HELMET, new Item.Properties()));
 
