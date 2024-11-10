@@ -6,6 +6,8 @@
     "minecraft:soul_campfire",
     "minecraft:fire",
     "minecraft:soul_fire",
-    "hexalia:rustic_oven"
+    "hexalia:rustic_oven",
+    "farmersdelight:stove",
+    "#farmersdelight:tray_heat_sources"
   ]
 }

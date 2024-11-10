@@ -8,6 +8,7 @@ import net.grapes.hexalia.item.custom.brews.*;
 import net.grapes.hexalia.util.ModToolTiers;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -143,6 +144,14 @@ public class ModItems {
     // Addon/Compat Items
     public static final RegistryObject<Item> HEXBOOK = ITEMS.register("hexbook",
             () -> new HexbookItem(new Item.Properties().stacksTo(1)));
+
+    public static RegistryObject<Item> WITCH_SALAD;
+    static {
+        if (ModList.get().isLoaded("farmersdelight")) {
+            WITCH_SALAD = ITEMS.register("witch_salad",
+                    () -> new Item(new Item.Properties().food(ModFoodProperties.WITCH_SALAD)));
+        }
+    }
 
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);

@@ -23,7 +23,6 @@ import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -31,6 +30,7 @@ import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -85,7 +85,11 @@ public class HexaliaMod
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
+        if(event.getTab() == ModCreativeModeTabs.HEXALIA_TAB.get()) {
+            if (ModList.get().isLoaded("farmersdelight")) {
+                event.accept(ModItems.WITCH_SALAD);
+            }
+        }
     }
 
     @SubscribeEvent
