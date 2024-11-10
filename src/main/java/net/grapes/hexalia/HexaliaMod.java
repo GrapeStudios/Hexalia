@@ -6,6 +6,7 @@ import net.grapes.hexalia.block.entity.ModBlockEntities;
 import net.grapes.hexalia.effect.ModMobEffects;
 import net.grapes.hexalia.entity.ModEntities;
 import net.grapes.hexalia.entity.client.ModBoatRenderer;
+import net.grapes.hexalia.entity.client.SilkMothRenderer;
 import net.grapes.hexalia.item.ModCreativeModeTabs;
 import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.particle.ModParticles;
@@ -36,6 +37,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+import software.bernie.geckolib.GeckoLib;
 import terrablender.api.SurfaceRuleManager;
 
 @Mod(HexaliaMod.MOD_ID)
@@ -62,7 +64,9 @@ public class HexaliaMod
         ModRecipes.register(modEventBus);
         ModTreeDecorators.register(modEventBus);
         ModEntities.register(modEventBus);
+
         ModTerraBlenderAPI.registerRegions();
+        GeckoLib.initialize();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -107,6 +111,8 @@ public class HexaliaMod
             EntityRenderers.register(ModEntities.MOD_BOAT.get(), pContext -> new ModBoatRenderer(pContext, false));
             EntityRenderers.register(ModEntities.MOD_CHEST_BOAT.get(), pContext -> new ModBoatRenderer(pContext, true));
             EntityRenderers.register(ModEntities.THROWN_RABBAGE_ENTITY.get(), ThrownItemRenderer::new);
+
+            EntityRenderers.register(ModEntities.SILK_MOTH_ENTITY.get(), SilkMothRenderer::new);
 
         }
     }

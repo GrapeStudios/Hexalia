@@ -2,11 +2,13 @@ package net.grapes.hexalia.item;
 
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.entity.ModEntities;
 import net.grapes.hexalia.entity.custom.ModBoatEntity;
 import net.grapes.hexalia.item.custom.*;
 import net.grapes.hexalia.item.custom.brews.*;
 import net.grapes.hexalia.util.ModToolTiers;
 import net.minecraft.world.item.*;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.registries.DeferredRegister;
@@ -103,7 +105,10 @@ public class ModItems {
 
     // Entity
     public static final RegistryObject<Item> BOTTLED_MOTH = ITEMS.register("bottled_moth",
-            () -> new Item(new Item.Properties()));
+            () -> new BottledMothItem(new Item.Properties()));
+    public static final RegistryObject<Item> SILK_MOTH_SPAWN_EGG = ITEMS.register("silk_moth_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.SILK_MOTH_ENTITY,
+                    0xAE8f7A, 0x846552, new Item.Properties()));
 
     // Weapons & Armor
     public static final RegistryObject<Item> KELPWEAVE_BLADE = ITEMS.register("kelpweave_blade",

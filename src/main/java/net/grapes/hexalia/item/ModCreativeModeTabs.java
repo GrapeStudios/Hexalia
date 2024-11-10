@@ -142,6 +142,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.WILLOW_CHEST_BOAT.get());
 
                         output.accept(ModItems.HEXBOOK.get());
+                        output.accept(ModItems.SILK_MOTH_SPAWN_EGG.get());
 
                     }).build());
 

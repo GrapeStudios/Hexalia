@@ -3,7 +3,9 @@ package net.grapes.hexalia.entity;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.entity.custom.ModBoatEntity;
 import net.grapes.hexalia.entity.custom.ModChestBoatEntity;
+import net.grapes.hexalia.entity.custom.SilkMothEntity;
 import net.grapes.hexalia.entity.custom.ThrownRabbageEntity;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -27,6 +29,10 @@ public class ModEntities {
                     .sized(0.5f, 0.5f).clientTrackingRange(4).updateInterval(20)
                     .setCustomClientFactory((spawnEntity, level) -> new ThrownRabbageEntity(level))
                     .build("thrown_rabbage_entity"));
+
+    public static final RegistryObject<EntityType<SilkMothEntity>> SILK_MOTH_ENTITY  =
+            ENTITY_TYPES.register("silk_moth_entity", () -> EntityType.Builder.of(SilkMothEntity::new, MobCategory.CREATURE)
+                    .sized(0.6f, 0.06f).build(new ResourceLocation(HexaliaMod.MOD_ID, "silk_moth").toString()));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
