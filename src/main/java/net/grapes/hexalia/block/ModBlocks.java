@@ -86,7 +86,7 @@ public class ModBlocks {
     public static final Block RABBAGE_CROP = registerBlockWithoutBlockItem("rabbage_crop",
             new RabbageCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
     public static final Block SALTSPROUT = registerBlockWithoutBlockItem("saltsprout",
-            new SaltsproutBlock(FabricBlockSettings.copyOf(Blocks.SWEET_BERRY_BUSH)));
+            new SaltSproutBlock(FabricBlockSettings.copyOf(Blocks.SWEET_BERRY_BUSH)));
 
     // Mineral-Related Blocks
     public static final Block SALT_ORE = registerBlock("salt_ore",
