@@ -15,7 +15,7 @@ import net.minecraft.world.WorldAccess;
 import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
-public class ParchmentBlock extends Block {
+public class HWallBlock extends Block {
     public static final DirectionProperty FACING = DirectionProperty.of("facing", Direction.Type.HORIZONTAL);
 
     private static final VoxelShape NORTH_SHAPE = VoxelShapes.cuboid(0.125, 0.0625, 0.9375, 0.875, 0.875, 1);
@@ -23,7 +23,7 @@ public class ParchmentBlock extends Block {
     private static final VoxelShape WEST_SHAPE = VoxelShapes.cuboid(0.9375, 0.0625, 0.125, 1, 0.875, 0.875);
     private static final VoxelShape EAST_SHAPE = VoxelShapes.cuboid(0, 0.0625, 0.125, 0.0625, 0.875, 0.875);
 
-    public ParchmentBlock(Settings settings) {
+    public HWallBlock(Settings settings) {
         super(settings);
         this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
     }

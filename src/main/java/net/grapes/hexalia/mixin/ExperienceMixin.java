@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(LivingEntity.class)
-public class WisdomGemMixin {
+public class ExperienceMixin {
 
     @Inject(method = "onDeath", at = @At("HEAD"))
     public void onEntityKilled(DamageSource source, CallbackInfo ci) {

@@ -82,7 +82,6 @@ public class ModModelProvider extends FabricModelProvider {
         itemModelGenerator.register(ModItems.DREAMSHROOM_PASTE, Models.GENERATED);
         itemModelGenerator.register(ModItems.SIREN_KELP_PASTE, Models.GENERATED);
         itemModelGenerator.register(ModItems.GHOST_FERN_POWDER, Models.GENERATED);
-
         itemModelGenerator.register(ModItems.SALT, Models.GENERATED);
         itemModelGenerator.register(ModItems.PURIFYING_SALTS, Models.GENERATED);
         itemModelGenerator.register(ModItems.MORTAR_AND_PESTLE, Models.GENERATED);

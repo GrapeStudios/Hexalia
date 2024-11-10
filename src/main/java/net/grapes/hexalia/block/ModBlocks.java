@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.custom.*;
+import net.grapes.hexalia.block.custom.HWallBlock;
 import net.grapes.hexalia.block.custom.signs.ModHangingSignBlock;
 import net.grapes.hexalia.block.custom.signs.ModStandingSignBlock;
 import net.grapes.hexalia.block.custom.signs.ModWallHangingSignBlock;
@@ -36,35 +37,36 @@ public class ModBlocks {
 
     // Functional Plants
     public static final Block SPIRIT_BLOOM = registerBlock("spirit_bloom",
-            new HPlantBlock(StatusEffects.LEVITATION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
+            new HPlantBlock(StatusEffects.LEVITATION, 6, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
     public static final Block POTTED_SPIRIT_BLOOM = registerBlockWithoutBlockItem("potted_spirit_bloom",
             new FlowerPotBlock(SPIRIT_BLOOM, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
     public static final Block DREAMSHROOM = registerBlock("dreamshroom",
-            new DreamshroomBlock(FabricBlockSettings.copyOf(Blocks.BROWN_MUSHROOM).luminance(4).nonOpaque().noCollision()));
+            new DreamshroomBlock(FabricBlockSettings.copyOf(Blocks.BROWN_MUSHROOM).luminance(state -> 4)
+                    .nonOpaque().noCollision()));
     public static final Block POTTED_DREAMSHROOM = registerBlockWithoutBlockItem("potted_dreamshroom",
-            new FlowerPotBlock(DREAMSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM).luminance(4)));
+            new FlowerPotBlock(DREAMSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM).luminance(state -> 4)));
     public static final Block SIREN_KELP = registerBlockWithoutBlockItem("siren_kelp",
             new SirenKelpBlock(FabricBlockSettings.copyOf(Blocks.SEAGRASS)));
     public static final Block GHOST_FERN = registerBlock("ghost_fern",
-            new GhostFernBlock(StatusEffects.INVISIBILITY, 4, FabricBlockSettings.copyOf(Blocks.AZALEA).noCollision()));
+            new GhostFernBlock(StatusEffects.INVISIBILITY, 6, FabricBlockSettings.copyOf(Blocks.AZALEA).noCollision()));
 
     // Decorative Plants
     public static final Block HENBANE = registerBlock("henbane",
-            new FlowerBlock(StatusEffects.ABSORPTION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM)));
+            new FlowerBlock(StatusEffects.ABSORPTION, 6, FabricBlockSettings.copyOf(Blocks.ALLIUM)));
     public static final Block POTTED_HENBANE = registerBlockWithoutBlockItem("potted_henbane",
             new FlowerPotBlock(HENBANE, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
     public static final Block LOTUS_FLOWER = registerBlockWithoutBlockItem("lotus_flower",
-            new WaterPlantBlock(FabricBlockSettings.copyOf(Blocks.LILY_PAD).luminance(8)));
+            new WaterPlantBlock(FabricBlockSettings.copyOf(Blocks.LILY_PAD).luminance(state -> 6)));
     public static final Block PALE_MUSHROOM = registerBlock("pale_mushroom",
-            new HMushroomBlock(FabricBlockSettings.copyOf(Blocks.BROWN_MUSHROOM).noCollision().nonOpaque().luminance(12)));
+            new HMushroomBlock(FabricBlockSettings.copyOf(Blocks.BROWN_MUSHROOM).noCollision().nonOpaque().luminance(state -> 4)));
     public static final Block POTTED_PALE_MUSHROOM = registerBlockWithoutBlockItem("potted_pale_mushroom",
-            new FlowerPotBlock(PALE_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM).luminance(12)));
+            new FlowerPotBlock(PALE_MUSHROOM, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM).luminance(state -> 4)));
     public static final Block WITCHWEED = registerBlock("witchweed",
-            new WitchweedBlock(StatusEffects.POISON, 8, FabricBlockSettings.copyOf(Blocks.ALLIUM).noCollision()));
+            new WitchweedBlock(StatusEffects.POISON, 6, FabricBlockSettings.copyOf(Blocks.ALLIUM).noCollision()));
     public static final Block HEXED_BULRUSH = registerBlock("hexed_bulrush",
-            new HexedBulrushBlock(FabricBlockSettings.copyOf(Blocks.AZALEA).noCollision().luminance(6)));
+            new HexedBulrushBlock(FabricBlockSettings.copyOf(Blocks.AZALEA).noCollision().luminance(state -> 4)));
     public static final Block NIGHTSHADE_BUSH = registerBlock("nightshade_bush",
-            new FlowerBlock(StatusEffects.WITHER, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM)));
+            new FlowerBlock(StatusEffects.WITHER, 6, FabricBlockSettings.copyOf(Blocks.ALLIUM)));
     public static final Block POTTED_NIGHTSHADE_BUSH = registerBlockWithoutBlockItem("potted_nightshade_bush",
             new FlowerPotBlock(NIGHTSHADE_BUSH, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
     public static final Block DUCKWEED = registerBlockWithoutBlockItem("duckweed",
@@ -74,17 +76,17 @@ public class ModBlocks {
     public static final Block MANDRAKE_CROP = registerBlockWithoutBlockItem("mandrake_crop",
             new MandrakeCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
     public static final Block WILD_MANDRAKE = registerBlock("wild_mandrake",
-            new FlowerBlock(StatusEffects.LEVITATION, 4, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
+            new FlowerBlock(StatusEffects.LEVITATION, 6, FabricBlockSettings.copyOf(Blocks.ALLIUM).nonOpaque().noCollision()));
     public static final Block SUNFIRE_TOMATO_CROP = registerBlockWithoutBlockItem("sunfire_tomato_crop",
             new SunfireTomatoCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
     public static final Block WILD_SUNFIRE_TOMATO = registerBlock("wild_sunfire_tomato",
-            new WildSunfireTomatoBlock(FabricBlockSettings.copyOf(Blocks.CORNFLOWER).luminance(state -> 12).nonOpaque()));
+            new WildSunfireTomatoBlock(FabricBlockSettings.copyOf(Blocks.CORNFLOWER).luminance(state -> 4).nonOpaque()));
     public static final Block CHILLBERRY_BUSH = registerBlockWithoutBlockItem("chillberry_bush",
             new ChillberryBushBlock(FabricBlockSettings.copyOf(Blocks.SWEET_BERRY_BUSH)));
     public static final Block RABBAGE_CROP = registerBlockWithoutBlockItem("rabbage_crop",
             new RabbageCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
     public static final Block SALTSPROUT = registerBlockWithoutBlockItem("saltsprout",
-            new SaltSproutBlock(FabricBlockSettings.copyOf(Blocks.SWEET_BERRY_BUSH)));
+            new SaltsproutBlock(FabricBlockSettings.copyOf(Blocks.SWEET_BERRY_BUSH)));
 
     // Mineral-Related Blocks
     public static final Block SALT_ORE = registerBlock("salt_ore",
@@ -110,14 +112,14 @@ public class ModBlocks {
 
     // Decorative Blocks
     public static final Block PARCHMENT = registerBlock("parchment",
-            new ParchmentBlock(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN).instrument(Instrument.BASS)
+            new HWallBlock(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN).instrument(Instrument.BASS)
                     .noCollision().strength(1.0f)));
     public static final Block DREAMCATCHER = registerBlock("dreamcatcher",
-            new DreamcatcherBlock(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN).instrument(Instrument.BASS)
+            new HWallBlock(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN).instrument(Instrument.BASS)
                     .noCollision().strength(1.0f)));
     public static final Block CANDLE_SKULL = registerBlockWithoutBlockItem("candle_skull",
             new CandleSkullBlock(FabricBlockSettings.create().mapColor(MapColor.WHITE_GRAY)
-                    .instrument(Instrument.GUITAR).strength(1.0f).luminance(state -> state.get(CandleSkullBlock.LIT) ? 8 : 0)));
+                    .instrument(Instrument.GUITAR).strength(1.0f).luminance(state -> state.get(CandleSkullBlock.LIT) ? 12 : 0)));
 
     // Tree-Related Blocks
     public static final Block COTTONWOOD_LEAVES = registerBlock("cottonwood_leaves",

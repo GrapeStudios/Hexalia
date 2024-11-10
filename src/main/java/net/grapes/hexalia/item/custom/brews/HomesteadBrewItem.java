@@ -2,7 +2,6 @@ package net.grapes.hexalia.item.custom.brews;
 
 import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.util.TeleportUtil;
-import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;

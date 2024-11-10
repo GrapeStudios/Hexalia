@@ -36,11 +36,11 @@ public class RabbageCropBlock extends CropBlock {
         if (!(entity instanceof LivingEntity) || entity.getType() == EntityType.BEE) {
             return;
         }
-        if (!world.isClient && state.get(AGE) == MAX_AGE) {
+        if (!world.isClient && state.get(AGE) == 2) {
             double d = Math.abs(entity.getX() - entity.lastRenderX);
             double e = Math.abs(entity.getZ() - entity.lastRenderZ);
             if (d >= 0.003f || e >= 0.003f) {
-                entity.damage(world.getDamageSources().generic(), 0.5f);
+                entity.damage(world.getDamageSources().cactus(), 0.5f);
             }
         }
     }

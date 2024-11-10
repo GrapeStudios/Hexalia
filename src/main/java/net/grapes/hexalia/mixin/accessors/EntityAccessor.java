@@ -1,4 +1,4 @@
-package net.grapes.hexalia.mixin.accesors;
+package net.grapes.hexalia.mixin.accessors;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.world.World;

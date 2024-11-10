@@ -49,8 +49,8 @@ public class SunfireTomatoCropBlock extends CropBlock {
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        int i = state.get(AGE);
-        if (i != 3) {
+        int age = state.get(AGE);
+        if (age != 3) {
             return super.onUse(state, world, pos, player, hand, hit);
         }
         if (player.getStackInHand(hand).isOf(Items.BONE_MEAL)) {

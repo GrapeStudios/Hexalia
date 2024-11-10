@@ -12,7 +12,6 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
-import net.minecraft.world.WorldAccess;
 import org.jetbrains.annotations.Nullable;
 
 public class SaltLampBlock extends LanternBlock {
@@ -50,24 +49,5 @@ public class SaltLampBlock extends LanternBlock {
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
         builder.add(HANGING, WATERLOGGED);
-    }
-
-    @Override
-    public BlockState getStateForNeighborUpdate(BlockState state, Direction direction, BlockState neighborState, WorldAccess world, BlockPos pos, BlockPos neighborPos) {
-        if (state.get(WATERLOGGED)) {
-            world.scheduleFluidTick(pos, Fluids.WATER, Fluids.WATER.getTickRate(world));
-        }
-        if (LanternBlock.attachedDirection(state).getOpposite() == direction && !state.canPlaceAt(world, pos)) {
-            return Blocks.AIR.getDefaultState();
-        }
-        return super.getStateForNeighborUpdate(state, direction, neighborState, world, pos, neighborPos);
-    }
-
-    @Override
-    public FluidState getFluidState(BlockState state) {
-        if (state.get(WATERLOGGED)) {
-            return Fluids.WATER.getStill(false);
-        }
-        return super.getFluidState(state);
     }
 }

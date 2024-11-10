@@ -85,7 +85,6 @@ public class CandleSkullBlock extends Block {
 
     @Override
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        super.appendProperties(builder);
         builder.add(FACING, WATERLOGGED, LIT);
     }
 
@@ -108,7 +107,7 @@ public class CandleSkullBlock extends Block {
         } else if (itemStack.isEmpty()) {
             if (state.get(LIT)) {
                 world.setBlockState(pos, state.with(LIT, false), 3);
-                world.playSound(null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1.0F, world.random.nextFloat() * 0.4F + 0.8F);
+                world.playSound(null, pos, SoundEvents.BLOCK_CANDLE_EXTINGUISH, SoundCategory.BLOCKS, 1.0F, world.random.nextFloat() * 0.4F + 0.8F);
                 return ActionResult.success(world.isClient);
             }
         }

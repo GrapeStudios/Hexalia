@@ -1,4 +1,4 @@
-package net.grapes.hexalia.mixin.accesors;
+package net.grapes.hexalia.mixin.accessors;
 
 public interface ExperienceOrbEntityAccess {
     int getExperiencePoints();

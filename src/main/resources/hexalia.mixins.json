@@ -4,11 +4,11 @@
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
 		"ExampleMixin",
-		"accesors.ExhaustionAccesorMixin",
+		"accessors.ExhaustionAccessorMixin",
 		"InfusedPlantingMixin",
 		"LivingEntityMixin",
-		"WisdomGemMixin",
-		"InfusedSugarCaneMixin"
+		"ExperienceMixin",
+		"SugarCanePlantingMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

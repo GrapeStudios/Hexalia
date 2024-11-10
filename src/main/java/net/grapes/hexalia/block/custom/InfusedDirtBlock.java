@@ -29,7 +29,7 @@ public class InfusedDirtBlock extends Block {
             world.playSound(player, pos, SoundEvents.ITEM_HOE_TILL, SoundCategory.BLOCKS, 1.f, 1.f);
             if (!world.isClient()) {
                 world.setBlockState(pos, ModBlocks.INFUSED_FARMLAND.getDefaultState());
-                itemStack.damage(1, player, playerEntity -> playerEntity.sendToolBreakStatus(hand));
+                itemStack.damage(1, player, p -> p.sendToolBreakStatus(hand));
             }
             return ActionResult.SUCCESS;
         }
