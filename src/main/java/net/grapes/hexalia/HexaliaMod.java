@@ -13,6 +13,7 @@ import net.grapes.hexalia.recipe.ModRecipes;
 import net.grapes.hexalia.screen.ModMenuTypes;
 import net.grapes.hexalia.screen.SmallCauldronScreen;
 import net.grapes.hexalia.sound.ModSounds;
+import net.grapes.hexalia.util.ModRegistries;
 import net.grapes.hexalia.util.ModWoodTypes;
 import net.grapes.hexalia.worldgen.biome.ModTerraBlenderAPI;
 import net.grapes.hexalia.worldgen.biome.surface.ModSurfaceRules;
@@ -22,6 +23,7 @@ import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FireBlock;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -65,6 +67,8 @@ public class HexaliaMod
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
+            ModRegistries.registerCompostable();
+
             Sheets.addWoodType(ModWoodTypes.COTTONWOOD);
             Sheets.addWoodType(ModWoodTypes.WILLOW);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.SPIRIT_BLOOM.getId(), ModBlocks.POTTED_SPIRIT_BLOOM);

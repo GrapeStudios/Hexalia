@@ -32,6 +32,13 @@ public class WaterPlantBlock extends WaterlilyBlock {
     }
 
     @Override
+    protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
+        FluidState fluidstate = pLevel.getFluidState(pPos);
+        FluidState fluidstate1 = pLevel.getFluidState(pPos.above());
+        return (fluidstate.getType() == Fluids.WATER || pState.getBlock() instanceof IceBlock) && fluidstate1.getType() == Fluids.EMPTY;
+    }
+
+    @Override
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
         BlockPos blockpos = pPos.below();
         return this.mayPlaceOn(pLevel.getBlockState(blockpos), pLevel, blockpos);
