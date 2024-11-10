@@ -43,11 +43,11 @@ public class ModPlacedFeatures {
 
         // Functional Plants
         register(context, SPIRIT_BLOOM_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.SPIRIT_BLOOM_KEY),
-                List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,
+                List.of(CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,
                         BiomeFilter.biome()));
 
         register(context, DREAMSHROOM_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.DREAMSHROOM_KEY),
-                List.of(RarityFilter.onAverageOnceEvery(25), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                List.of(CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                         BiomeFilter.biome()));
 
         register(context, SIREN_KELP_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.SIREN_KELP_KEY),
@@ -55,7 +55,7 @@ public class ModPlacedFeatures {
                         BiomeFilter.biome()));
 
         register(context, CHILLBERRY_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.CHILLBERRY_KEY),
-                List.of(RarityFilter.onAverageOnceEvery(32), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,
+                List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,
                         BiomeFilter.biome()));
 
         register(context, WILD_SUNFIRE_TOMATO_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.WILD_SUNFIRE_TOMATO_KEY),
@@ -84,7 +84,7 @@ public class ModPlacedFeatures {
                         BiomeFilter.biome()));
 
         register(context, WITCHWEED_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.WITCHWEED_KEY),
-                List.of(RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                List.of(RarityFilter.onAverageOnceEvery(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                         BiomeFilter.biome()));
 
         register(context, HEXED_BULRUSH_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.HEXED_BULRUSH_KEY),
