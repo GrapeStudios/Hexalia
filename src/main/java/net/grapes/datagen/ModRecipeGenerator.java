@@ -342,7 +342,16 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
         offerSingleOutputShapelessRecipe(exporter, ModBlocks.COTTONWOOD_BUTTON, ModBlocks.COTTONWOOD_PLANKS, "wooden_button");
         offerBoatRecipe(exporter, ModItems.COTTONWOOD_BOAT, ModBlocks.COTTONWOOD_PLANKS);
         offerChestBoatRecipe(exporter, ModItems.COTTONWOOD_CHEST_BOAT, ModItems.COTTONWOOD_BOAT);
-        
+
+        createSignRecipe(ModItems.COTTONWOOD_SIGN, Ingredient.ofItems(ModBlocks.COTTONWOOD_PLANKS))
+                .criterion("has_planks", InventoryChangedCriterion.Conditions.items(ModBlocks.COTTONWOOD_PLANKS))
+                .offerTo(exporter);
+        createSignRecipe(ModItems.WILLOW_SIGN, Ingredient.ofItems(ModBlocks.WILLOW_PLANKS))
+                .criterion("has_planks", InventoryChangedCriterion.Conditions.items(ModBlocks.WILLOW_PLANKS))
+                .offerTo(exporter);
+        offerHangingSignRecipe(exporter, ModItems.COTTONWOOD_HANGING_SIGN, ModBlocks.STRIPPED_COTTONWOOD_LOG);
+        offerHangingSignRecipe(exporter, ModItems.WILLOW_HANGING_SIGN, ModBlocks.STRIPPED_WILLOW_LOG);
+
         createTrapdoorRecipe(ModBlocks.WILLOW_TRAPDOOR, Ingredient.ofItems(ModBlocks.WILLOW_PLANKS))
                 .criterion("has_planks", InventoryChangedCriterion.Conditions.items(ModBlocks.WILLOW_PLANKS))
                 .offerTo(exporter);
