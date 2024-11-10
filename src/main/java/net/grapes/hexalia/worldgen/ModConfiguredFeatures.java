@@ -68,19 +68,19 @@ public class ModConfiguredFeatures {
 
         // Functional Plants
         register(context, SPIRIT_BLOOM_KEY, Feature.FLOWER,
-                new RandomPatchConfiguration(3, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                new RandomPatchConfiguration(2, 3, 1, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.SPIRIT_BLOOM.get())))));
 
         register(context, DREAMSHROOM_KEY, Feature.RANDOM_PATCH,
-                new RandomPatchConfiguration(10, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                new RandomPatchConfiguration(2, 3, 1, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.DREAMSHROOM.get())))));
 
         register(context, SIREN_KELP_KEY, Feature.RANDOM_PATCH,
-                new RandomPatchConfiguration(12, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                new RandomPatchConfiguration(5, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.SIREN_KELP.get())))));
 
         register(context, CHILLBERRY_KEY, Feature.RANDOM_PATCH,
-                new RandomPatchConfiguration(10, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                new RandomPatchConfiguration(15, 8, 4, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.CHILLBERRY_BUSH.get().defaultBlockState()
                                 .setValue(SweetBerryBushBlock.AGE, 3))))));
 
@@ -106,11 +106,11 @@ public class ModConfiguredFeatures {
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.LOTUS_FLOWER.get())))));
 
         register(context, PALE_MUSHROOM_KEY, Feature.RANDOM_PATCH,
-                new RandomPatchConfiguration(5, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                new RandomPatchConfiguration(2, 2, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.PALE_MUSHROOM.get())))));
 
         register(context, WITCHWEED_KEY, Feature.FLOWER,
-                new RandomPatchConfiguration(5, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                new RandomPatchConfiguration(20, 10, 5, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.WITCHWEED.get())))));
 
         register(context, HEXED_BULRUSH_KEY, Feature.RANDOM_PATCH,

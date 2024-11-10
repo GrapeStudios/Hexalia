@@ -1,6 +1,7 @@
 package net.grapes.hexalia.block.custom;
 
 import net.grapes.hexalia.block.ModBlocks;
+import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -37,20 +38,16 @@ public class HMushroomBlock extends BushBlock {
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
         BlockPos blockpos = pPos.below();
         BlockState blockstate = pLevel.getBlockState(blockpos);
-
-        boolean validBlock = blockstate.is(BlockTags.MUSHROOM_GROW_BLOCK) ||
-                blockstate.is(ModBlocks.INFUSED_DIRT.get());
-
-        int lightLevel = pLevel.getRawBrightness(pPos, 0);
-        boolean isDarkEnough = lightLevel < 13;
-
-        return validBlock && isDarkEnough;
+        if (blockstate.is(BlockTags.MUSHROOM_GROW_BLOCK)) {
+            return true;
+        } else {
+            return pLevel.getRawBrightness(pPos, 0) < 13 && blockstate.canSustainPlant(pLevel, blockpos, Direction.UP, this);
+        }
     }
 
     @Override
-    protected boolean mayPlaceOn(BlockState floor, BlockGetter world, BlockPos pos) {
-        return floor.is(BlockTags.MUSHROOM_GROW_BLOCK) ||
-                floor.is(ModBlocks.INFUSED_DIRT.get());
+    protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
+        return pState.isSolidRender(pLevel, pPos);
     }
 
     @Override
