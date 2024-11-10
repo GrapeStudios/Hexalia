@@ -170,7 +170,7 @@ public class RitualTableBlock extends BlockWithEntity implements BlockEntityProv
     }
 
     private void playRitualCompletedSound(World world, BlockPos pos) {
-        world.playSound(null, pos, ModSounds.COMPLETED_RITUAL, SoundCategory.BLOCKS, 1.5f, 1f);
+        world.playSound(null, pos, ModSounds.RITUAL_SUCCESS, SoundCategory.BLOCKS, 1.5f, 1f);
     }
 
     private boolean performTransmutation(RitualTableBlockEntity ritualTable, World world, BlockPos pos) {

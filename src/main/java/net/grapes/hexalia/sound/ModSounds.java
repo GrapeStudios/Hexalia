@@ -9,7 +9,7 @@ import net.minecraft.util.Identifier;
 public class ModSounds {
 
     public static final SoundEvent MANDRAKE_SCREAM = registerSoundEvent("mandrake_scream");
-    public static final SoundEvent COMPLETED_RITUAL = registerSoundEvent("completed_ritual");
+    public static final SoundEvent RITUAL_SUCCESS = registerSoundEvent("ritual_success");
 
     private static SoundEvent registerSoundEvent(String name) {
         Identifier identifier = new Identifier(HexaliaMod.MOD_ID, name);
