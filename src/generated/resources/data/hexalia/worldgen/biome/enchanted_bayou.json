@@ -114,6 +114,12 @@
         "maxCount": 5,
         "minCount": 2,
         "weight": 10
+      },
+      {
+        "type": "hexalia:silk_moth_entity",
+        "maxCount": 2,
+        "minCount": 1,
+        "weight": 10
       }
     ],
     "misc": [],

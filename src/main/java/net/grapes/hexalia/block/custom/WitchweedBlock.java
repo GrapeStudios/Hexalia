@@ -1,5 +1,6 @@
 package net.grapes.hexalia.block.custom;
 
+import net.grapes.hexalia.entity.custom.SilkMothEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -42,7 +43,8 @@ public class WitchweedBlock extends FlowerBlock {
     public void entityInside(BlockState pState, Level pLevel, BlockPos pPos, Entity pEntity) {
         if (!pLevel.isClientSide && pLevel.getDifficulty() != net.minecraft.world.Difficulty.PEACEFUL) {
             if (pEntity instanceof LivingEntity livingEntity) {
-                if (!livingEntity.isSteppingCarefully() && !(livingEntity instanceof Frog)) {
+                if (!livingEntity.isSteppingCarefully() && !(livingEntity instanceof Frog)
+                        && !(livingEntity instanceof SilkMothEntity)) {
                     if (livingEntity instanceof Player player && player.isCreative()) {
                         return;
                     }

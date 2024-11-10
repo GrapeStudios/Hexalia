@@ -1,10 +1,15 @@
 package net.grapes.hexalia.block.custom;
 
+import net.grapes.hexalia.entity.ModEntities;
+import net.grapes.hexalia.entity.custom.SilkMothEntity;
 import net.grapes.hexalia.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
@@ -15,6 +20,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -36,6 +42,53 @@ public class CocoonBlock extends Block {
     public CocoonBlock(Properties pProperties) {
         super(pProperties);
         this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(HATCH, 0));
+    }
+
+    @Override
+    public void onPlace(BlockState state, Level world, BlockPos pos, BlockState oldState, boolean notify) {
+        if (!world.isClientSide) {
+            world.scheduleTick(pos, this, HATCH_DELAY_TICKS);
+        }
+    }
+
+    @Override
+    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
+        if (isAttractingBlockNearby(pLevel, pPos)) {
+            int hatchStage = pState.getValue(HATCH);
+            if (hatchStage < 2) {
+                pLevel.setBlockAndUpdate(pPos, pState.setValue(HATCH, hatchStage + 1));
+                pLevel.scheduleTick(pPos, this, HATCH_DELAY_TICKS);
+            } else {
+                hatchSilkMoth(pLevel, pPos);
+            }
+        } else {
+            pLevel.scheduleTick(pPos, this, HATCH_DELAY_TICKS);
+        }
+    }
+
+    private boolean isAttractingBlockNearby(ServerLevel world, BlockPos pos) {
+        BlockPos.MutableBlockPos searchPos = new BlockPos.MutableBlockPos();
+        for (int dx = -5; dx <= 5; dx++) {
+            for (int dy = -5; dy <= 5; dy++) {
+                for (int dz = -5; dz <= 5; dz++) {
+                    searchPos.setWithOffset(pos, dx, dy, dz);
+                    if (world.getBlockState(searchPos).is(ModTags.Blocks.ATTRACTS_MOTH)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    private void hatchSilkMoth(Level world, BlockPos pos) {
+        world.removeBlock(pos, false);
+        SilkMothEntity silkMoth = ModEntities.SILK_MOTH_ENTITY.get().create(world);
+        if (silkMoth != null) {
+            silkMoth.moveTo(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 0.0F, 0.0F);
+            world.addFreshEntity(silkMoth);
+        }
+        world.gameEvent(null, GameEvent.BLOCK_DESTROY, pos);
     }
 
     @Override

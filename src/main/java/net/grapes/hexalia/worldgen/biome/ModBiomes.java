@@ -1,6 +1,7 @@
 package net.grapes.hexalia.worldgen.biome;
 
 import net.grapes.hexalia.HexaliaMod;
+import net.grapes.hexalia.entity.ModEntities;
 import net.grapes.hexalia.particle.ModParticles;
 import net.grapes.hexalia.worldgen.ModPlacedFeatures;
 import net.minecraft.core.registries.Registries;
@@ -30,6 +31,7 @@ public class ModBiomes {
         spawnBuilder.addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.TROPICAL_FISH, 25, 8, 8));
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.FROG, 10, 2, 5));
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 100, 4, 4));
+        spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(ModEntities.SILK_MOTH_ENTITY.get(), 10, 1, 2));
         BiomeGenerationSettings.Builder biomeBuilder =
                 new BiomeGenerationSettings.Builder(context.lookup(Registries.PLACED_FEATURE),
                         context.lookup(Registries.CONFIGURED_CARVER));
