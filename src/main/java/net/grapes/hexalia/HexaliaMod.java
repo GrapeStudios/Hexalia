@@ -46,9 +46,8 @@ public class HexaliaMod
     public static final String MOD_ID = "hexalia";
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public HexaliaMod(FMLJavaModLoadingContext context) {
-
-        IEventBus modEventBus = context.getModEventBus();
+    public HexaliaMod() {
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);

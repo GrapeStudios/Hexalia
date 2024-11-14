@@ -4,7 +4,7 @@ plugins {
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
-    id 'org.spongepowered.mixin' version '0.7.+' apply true
+    id 'org.spongepowered.mixin' version '0.7-SNAPSHOT' apply true
 }
 
 version = mod_version
@@ -84,7 +84,7 @@ repositories {
 
 dependencies {
 
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+    minecraft "net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}"
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 
@@ -112,7 +112,7 @@ tasks.named('processResources', ProcessResources).configure {
             mod_authors: mod_authors, mod_description: mod_description,
             terrablender_version_range: terrablender_version_range,
             patchouli_version_range: patchouli_version_range,
-            geckolib_version_range: geckolib_version_range
+            geckolib_version_range: geckolib_version_range,
     ]
     inputs.properties replaceProperties
 
@@ -123,24 +123,25 @@ tasks.named('processResources', ProcessResources).configure {
 
 mixin {
     add sourceSets.main, 'mixins.hexalia.refmap.json'
-    config 'mixins.hexalia.json'
 }
 
-tasks.named('jar', Jar).configure {
+jar {
     manifest {
         attributes([
-                'Specification-Title'     : mod_id,
-                'Specification-Vendor'    : mod_authors,
-                'Specification-Version'   : '1', // We are version 1 of ourselves
-                'Implementation-Title'    : project.name,
-                'Implementation-Version'  : project.jar.archiveVersion,
-                'Implementation-Vendor'   : mod_authors,
-                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+                "Specification-Title"     : mod_id,
+                "Specification-Vendor"    : mod_authors,
+                "Specification-Version"   : "1", // We are version 1 of ourselves
+                "Implementation-Title"    : project.name,
+                "Implementation-Version"  : project.jar.archiveVersion,
+                "Implementation-Vendor"   : mod_authors,
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "TweakClass": "org.spongepowered.asm.launch.MixinTweaker",
+                "TweakOrder": 0,
+                "MixinConfigs" : "mixins.hexalia.json"
         ])
     }
-
-    finalizedBy 'reobfJar'
 }
+jar.finalizedBy('reobfJar')
 
 publishing {
     publications {
