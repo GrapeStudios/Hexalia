@@ -4,13 +4,19 @@ import net.grapes.hexalia.entity.ModEntities;
 import net.grapes.hexalia.entity.custom.SilkMothEntity;
 import net.grapes.hexalia.util.ModTags;
 import net.minecraft.block.*;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.IntProperty;
+import net.minecraft.util.ActionResult;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
@@ -39,43 +45,24 @@ public class CocoonBlock extends Block {
     }
 
     @Override
-    public void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {
-        if (!world.isClient) {
-            world.scheduleBlockTick(pos, this, HATCH_DELAY_TICKS);
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (world.isClient) {
+            return ActionResult.SUCCESS;
         }
+
+        ItemStack itemStack = player.getStackInHand(hand);
+        if (itemStack.getItem() instanceof BlockItem blockItem) {
+            Block block = blockItem.getBlock();
+            if (block.getDefaultState().getLuminance() > 8) {
+                world.scheduleBlockTick(pos, this, 200);
+                return ActionResult.SUCCESS;
+            }
+        }
+        return ActionResult.PASS;
     }
 
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (isAttractingBlockNearby(world, pos)) {
-            int hatchStage = state.get(HATCH);
-            if (hatchStage < 2) {
-                world.setBlockState(pos, state.with(HATCH, hatchStage + 1), 2);
-                world.scheduleBlockTick(pos, this, HATCH_DELAY_TICKS);
-            } else {
-                hatchSilkMoth(world, pos);
-            }
-        } else {
-            world.scheduleBlockTick(pos, this, HATCH_DELAY_TICKS);
-        }
-    }
-
-    private boolean isAttractingBlockNearby(ServerWorld world, BlockPos pos) {
-        BlockPos.Mutable searchPos = new BlockPos.Mutable();
-        for (int dx = -5; dx <= 5; dx++) {
-            for (int dy = -5; dy <= 5; dy++) {
-                for (int dz = -5; dz <= 5; dz++) {
-                    searchPos.set(pos, dx, dy, dz);
-                    if (world.getBlockState(searchPos).isIn(ModTags.Blocks.ATTRACTS_MOTH)) {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
-    private void hatchSilkMoth(World world, BlockPos pos) {
         world.removeBlock(pos, false);
         SilkMothEntity silkMoth = ModEntities.SILK_MOTH.create(world);
         if (silkMoth != null) {
@@ -84,6 +71,8 @@ public class CocoonBlock extends Block {
         }
         world.emitGameEvent(null, GameEvent.BLOCK_DESTROY, pos);
     }
+
+
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
