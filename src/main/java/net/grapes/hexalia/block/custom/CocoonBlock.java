@@ -2,6 +2,7 @@ package net.grapes.hexalia.block.custom;
 
 import net.grapes.hexalia.entity.ModEntities;
 import net.grapes.hexalia.entity.custom.SilkMothEntity;
+import net.grapes.hexalia.entity.variant.SilkMothVariant;
 import net.grapes.hexalia.util.ModTags;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
@@ -62,12 +63,24 @@ public class CocoonBlock extends Block {
 
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        // Remueve el bloque del cocoon
         world.removeBlock(pos, false);
+
+        // Crear la entidad SilkMoth
         SilkMothEntity silkMoth = ModEntities.SILK_MOTH.create(world);
         if (silkMoth != null) {
+            // Establecer la posición de la SilkMoth
             silkMoth.refreshPositionAndAngles(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 0.0F, 0.0F);
+
+            // Asignar una variante aleatoria a la SilkMoth
+            SilkMothVariant variant = SilkMothVariant.byId(random.nextInt(SilkMothVariant.values().length));
+            silkMoth.setVariant(variant);
+
+            // Generar la entidad en el mundo
             world.spawnEntity(silkMoth);
         }
+
+        // Emitir evento de destrucción de bloque
         world.emitGameEvent(null, GameEvent.BLOCK_DESTROY, pos);
     }
 

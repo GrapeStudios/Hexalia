@@ -2,6 +2,7 @@ package net.grapes.hexalia.entity.client;
 
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.entity.custom.SilkMothEntity;
+import net.grapes.hexalia.entity.variant.SilkMothVariant;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
@@ -12,7 +13,16 @@ public class SilkMothRenderer extends GeoEntityRenderer<SilkMothEntity> {
     }
 
     @Override
-    public Identifier getTextureLocation(SilkMothEntity animatable) {
-        return new Identifier(HexaliaMod.MOD_ID, "textures/entity/silk_moth.png");
+    public Identifier getTextureLocation(SilkMothEntity entity) {
+        // Obtener la variante de la polilla
+        SilkMothVariant variant = entity.getVariant();
+
+        // Asignar la textura según la variante
+        return switch (variant) {
+            case BLUE -> new Identifier(HexaliaMod.MOD_ID, "textures/entity/silk_moth_blue.png");
+            case BLACK -> new Identifier(HexaliaMod.MOD_ID, "textures/entity/silk_moth_black.png");
+            case PINK -> new Identifier(HexaliaMod.MOD_ID, "textures/entity/silk_moth_pink.png");
+            default -> new Identifier(HexaliaMod.MOD_ID, "textures/entity/silk_moth_default.png");
+        };
     }
 }
