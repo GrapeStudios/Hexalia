@@ -157,13 +157,12 @@ public class SilkMothEntity extends AnimalEntity implements GeoEntity {
                 ItemStack mothBottle = new ItemStack(ModItems.BOTTLED_MOTH);
                 mothBottle.setNbt(nbt);
 
-                // Configura el CustomModelData basado en la variante del Silk Moth
                 SilkMothVariant variant = this.getVariant();
                 int customModelData = switch (variant) {
                     case BLUE -> 1;
                     case PINK -> 2;
                     case BLACK -> 3;
-                    default -> 0; // NORMAL
+                    default -> 0; // DEFAULT
                 };
                 mothBottle.getOrCreateNbt().putInt("CustomModelData", customModelData);
 
@@ -207,7 +206,6 @@ public class SilkMothEntity extends AnimalEntity implements GeoEntity {
     @Override
     public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason,
                                  @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
-        // Asignar variante aleatoria para SilkMoth
         SilkMothVariant silkVariant = Util.getRandom(SilkMothVariant.values(), this.random);
         setSilkMothVariant(silkVariant);
         return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);

@@ -34,25 +34,17 @@ public class BottledMothItem extends Item {
             BlockPos spawnPos = blockPos.offset(direction);
             SilkMothEntity silkMothEntity = new SilkMothEntity(ModEntities.SILK_MOTH, world);
 
-            // Leer los datos NBT del ItemStack
             NbtCompound nbt = itemStack.getNbt();
             if (nbt != null) {
-                // Recuperar la variante del Silk Moth del NBT
                 SilkMothVariant variant = SilkMothVariant.byId(nbt.getInt("SilkMothVariant"));
-                silkMothEntity.setVariant(variant); // Establecer la variante en la entidad Silk Moth
-
-                // (Opcional) Establecer cualquier otro dato relevante desde el NBT
+                silkMothEntity.setVariant(variant);
                 silkMothEntity.readNbt(nbt);
             }
 
-            // Configurar la posición de la entidad Silk Moth
             silkMothEntity.refreshPositionAndAngles(spawnPos.getX() + 0.5, spawnPos.getY(), spawnPos.getZ() + 0.5, 0, 0);
-            world.spawnEntity(silkMothEntity); // Generar la entidad en el mundo
-
-            // Reproducir un sonido de efecto
+            world.spawnEntity(silkMothEntity);
             world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.PLAYERS, 1.0F, 1.0F);
 
-            // Eliminar la botella con la polilla y agregar una botella vacía
             itemStack.decrement(1);
             player.getInventory().insertStack(new ItemStack(ModItems.RUSTIC_BOTTLE));
 

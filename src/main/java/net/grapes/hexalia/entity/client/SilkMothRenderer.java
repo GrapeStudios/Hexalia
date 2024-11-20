@@ -14,10 +14,8 @@ public class SilkMothRenderer extends GeoEntityRenderer<SilkMothEntity> {
 
     @Override
     public Identifier getTextureLocation(SilkMothEntity entity) {
-        // Obtener la variante de la polilla
         SilkMothVariant variant = entity.getVariant();
 
-        // Asignar la textura según la variante
         return switch (variant) {
             case BLUE -> new Identifier(HexaliaMod.MOD_ID, "textures/entity/silk_moth_blue.png");
             case BLACK -> new Identifier(HexaliaMod.MOD_ID, "textures/entity/silk_moth_black.png");
