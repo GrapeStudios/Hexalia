@@ -2,8 +2,6 @@ package net.grapes.hexalia.entity.custom;
 
 import net.grapes.hexalia.entity.ModEntities;
 import net.grapes.hexalia.entity.ai.silkmoth.AttractedToLightGoal;
-import net.grapes.hexalia.entity.ai.silkmoth.AvoidSunlightGoal;
-import net.grapes.hexalia.entity.ai.silkmoth.FlyRandomlyGoal;
 import net.grapes.hexalia.entity.variant.SilkMothVariant;
 import net.grapes.hexalia.item.ModItems;
 import net.minecraft.block.BlockState;
@@ -50,7 +48,6 @@ public class SilkMothEntity extends AnimalEntity implements GeoEntity {
     public SilkMothEntity(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
         this.moveControl = new FlightMoveControl(this, 20, true);
-        this.experiencePoints = 1;
         this.setPathfindingPenalty(PathNodeType.DANGER_FIRE, -1.0F);
         this.setPathfindingPenalty(PathNodeType.WATER, -1.0F);
         this.setPathfindingPenalty(PathNodeType.WATER_BORDER, 16.0F);
@@ -67,10 +64,10 @@ public class SilkMothEntity extends AnimalEntity implements GeoEntity {
 
     @Override
     protected void initGoals() {
-        this.goalSelector.add(1, new AttractedToLightGoal(this, 1.5d));
-        this.goalSelector.add(2, new AvoidSunlightGoal(this));
-        this.goalSelector.add(3, new FlyRandomlyGoal(this));
-        this.goalSelector.add(4, new LookAroundGoal(this));
+        this.goalSelector.add(1, new AvoidSunlightGoal(this));
+        this.goalSelector.add(2, new EscapeSunlightGoal(this, 1.0));
+        this.goalSelector.add(2, new AttractedToLightGoal(this, 1.5d));
+        this.goalSelector.add(4, new SwimGoal(this));
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.75f, 1));
     }
 
@@ -123,22 +120,12 @@ public class SilkMothEntity extends AnimalEntity implements GeoEntity {
     }
 
     private PlayState predicate(AnimationState<SilkMothEntity> silkMothAnimationState) {
-        if ((!this.isOnGround() || silkMothAnimationState.isMoving()) &&
-                !(this.getNavigation().isIdle() && (this.isAttractedToLight() || this.isAvoidingSunlight()))) {
+        if ((!this.isOnGround())) {
             silkMothAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.silkmoth.flying", Animation.LoopType.LOOP));
-        } else if (this.getNavigation().isIdle() && (this.isAttractedToLight() || this.isAvoidingSunlight())) {
-            silkMothAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.silkmoth.idle", Animation.LoopType.LOOP));
+            return PlayState.CONTINUE;
         }
-
+            silkMothAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.silkmoth.idle", Animation.LoopType.LOOP));
         return PlayState.CONTINUE;
-    }
-
-    private boolean isAttractedToLight() {
-        return this.goalSelector.getRunningGoals().anyMatch(goal -> goal.getGoal() instanceof AttractedToLightGoal);
-    }
-
-    private boolean isAvoidingSunlight() {
-        return this.goalSelector.getRunningGoals().anyMatch(goal -> goal.getGoal() instanceof AvoidSunlightGoal);
     }
 
     @Override
