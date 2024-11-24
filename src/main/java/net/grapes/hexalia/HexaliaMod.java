@@ -64,7 +64,6 @@ public class HexaliaMod
         ModTreeDecorators.register(modEventBus);
         ModEntities.register(modEventBus);
 
-        ModTerraBlenderAPI.registerRegions();
         GeckoLib.initialize();
     }
 
@@ -83,8 +82,9 @@ public class HexaliaMod
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.WILLOW_SAPLING.getId(), ModBlocks.POTTED_WILLOW_SAPLING);
 
             SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ModSurfaceRules.makeRules());
-        });
 
+            ModTerraBlenderAPI.registerRegions();
+        });
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {

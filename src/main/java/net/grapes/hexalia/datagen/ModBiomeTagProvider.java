@@ -2,10 +2,12 @@ package net.grapes.hexalia.datagen;
 
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.util.ModTags;
+import net.grapes.hexalia.worldgen.biome.ModBiomes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;
 import net.minecraft.world.level.biome.Biomes;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
@@ -24,6 +26,9 @@ public class ModBiomeTagProvider extends BiomeTagsProvider {
                 .add(Biomes.BIRCH_FOREST);
         this.tag(ModTags.Biomes.HAS_DREAMSHROOMS)
                 .add(Biomes.OLD_GROWTH_PINE_TAIGA)
+                .addOptional(ModBiomes.ENCHANTED_BAYOU.location())
                 .add(Biomes.MUSHROOM_FIELDS);
+        this.tag(Tags.Biomes.IS_SWAMP)
+                .addOptional(ModBiomes.ENCHANTED_BAYOU.location());
     }
 }

@@ -130,6 +130,8 @@
   "effect.hexalia.bleeding": "Bleeding",
   "effect.hexalia.bleeding.description": "Deals damage each tick similar to the Poison effect.",
 
+  "entity.hexalia.silk_moth_entity": "Silk Moth",
+
   "advancements.hexalia.root.title": "Hex-citing Beginnings",
   "advancements.hexalia.root.description": "Step into the enchanting world of Hexalia!",
   "advancements.hexalia.small_cauldron.title": "Big Magic, Small Package",

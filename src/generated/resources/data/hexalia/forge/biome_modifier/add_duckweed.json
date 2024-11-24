@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "hexalia:enchanted_bayou",
+  "features": "hexalia:duckweed_placed_key",
+  "step": "vegetal_decoration"
+}

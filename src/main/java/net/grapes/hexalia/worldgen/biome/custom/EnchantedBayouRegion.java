@@ -13,15 +13,16 @@ import terrablender.api.RegionType;
 
 import java.util.function.Consumer;
 
-public class ModOverworldRegion extends Region {
-    public ModOverworldRegion(ResourceLocation name, int weight) {
+public class EnchantedBayouRegion extends Region {
+
+    public EnchantedBayouRegion(ResourceLocation name, int weight) {
         super(name, RegionType.OVERWORLD, weight);
     }
 
     @Override
     public void addBiomes(Registry<Biome> registry, Consumer<Pair<Climate.ParameterPoint, ResourceKey<Biome>>> mapper) {
-        this.addModifiedVanillaOverworldBiomes(mapper, modifiedVanillaOverworldBuilder -> {
-            modifiedVanillaOverworldBuilder.replaceBiome(Biomes.MANGROVE_SWAMP, ModBiomes.ENCHANTED_BAYOU);
-        });
+        this.addModifiedVanillaOverworldBiomes(mapper, (builder -> {
+            builder.replaceBiome(Biomes.SWAMP, ModBiomes.ENCHANTED_BAYOU);
+        }));
     }
 }

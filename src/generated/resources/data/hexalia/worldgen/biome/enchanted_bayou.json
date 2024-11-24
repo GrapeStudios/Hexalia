@@ -57,8 +57,7 @@
       "minecraft:ore_diorite_lower",
       "minecraft:ore_andesite_upper",
       "minecraft:ore_andesite_lower",
-      "minecraft:ore_tuff",
-      "minecraft:disk_clay"
+      "minecraft:ore_tuff"
     ],
     [],
     [
@@ -67,30 +66,13 @@
     ],
     [
       "minecraft:glow_lichen",
-      "minecraft:patch_grass_badlands",
       "minecraft:trees_swamp",
       "minecraft:flower_swamp",
       "minecraft:patch_grass_normal",
       "minecraft:patch_dead_bush",
       "minecraft:patch_waterlily",
       "minecraft:brown_mushroom_swamp",
-      "minecraft:red_mushroom_swamp",
-      "minecraft:patch_sugar_cane_swamp",
-      "minecraft:patch_pumpkin",
-      "minecraft:seagrass_swamp",
-      "hexalia:spirit_bloom_placed",
-      "hexalia:siren_kelp_placed",
-      "hexalia:dreamshroom_placed",
-      "hexalia:willow_placed",
-      "hexalia:cottonwood_placed",
-      "hexalia:cottonwood_cocoon_placed",
-      "hexalia:lotus_flower_placed",
-      "hexalia:pale_mushroom_placed",
-      "hexalia:witchweed_placed",
-      "hexalia:ghost_fern_placed_key",
-      "hexalia:hexed_bulrush_placed_key",
-      "hexalia:nightshade_bush_placed_key",
-      "hexalia:duckweed_placed_key"
+      "minecraft:red_mushroom_swamp"
     ],
     [
       "minecraft:freeze_top_layer"
