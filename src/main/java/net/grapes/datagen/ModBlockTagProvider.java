@@ -97,7 +97,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(ModTags.Blocks.ATTRACTS_MOTH)
                 .add(Blocks.LANTERN, Blocks.SEA_LANTERN,
-                        Blocks.SOUL_LANTERN, ModBlocks.SALT_LAMP);
+                        Blocks.SOUL_LANTERN, ModBlocks.SALT_LAMP, Blocks.END_ROD);
 
         getOrCreateTagBuilder(ModTags.Blocks.COCOON_LOGS)
                 .add(ModBlocks.COTTONWOOD_LOG, Blocks.DARK_OAK_LOG);

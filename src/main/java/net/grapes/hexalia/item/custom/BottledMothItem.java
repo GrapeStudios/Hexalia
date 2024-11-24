@@ -2,6 +2,7 @@ package net.grapes.hexalia.item.custom;
 
 import net.grapes.hexalia.entity.ModEntities;
 import net.grapes.hexalia.entity.custom.SilkMothEntity;
+import net.grapes.hexalia.entity.variant.SilkMothVariant;
 import net.grapes.hexalia.item.ModItems;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -35,6 +36,8 @@ public class BottledMothItem extends Item {
 
             NbtCompound nbt = itemStack.getNbt();
             if (nbt != null) {
+                SilkMothVariant variant = SilkMothVariant.byId(nbt.getInt("SilkMothVariant"));
+                silkMothEntity.setVariant(variant);
                 silkMothEntity.readNbt(nbt);
             }
 

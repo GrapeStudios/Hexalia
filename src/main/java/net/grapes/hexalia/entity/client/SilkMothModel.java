@@ -13,7 +13,7 @@ public class SilkMothModel extends GeoModel<SilkMothEntity> {
 
     @Override
     public Identifier getTextureResource(SilkMothEntity animatable) {
-        return new Identifier(HexaliaMod.MOD_ID, "textures/entity/silk_moth.png");
+        return new Identifier(HexaliaMod.MOD_ID, "textures/entity/silk_moth_default.png");
     }
 
     @Override

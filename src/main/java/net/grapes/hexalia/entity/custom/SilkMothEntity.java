@@ -4,12 +4,10 @@ import net.grapes.hexalia.entity.ModEntities;
 import net.grapes.hexalia.entity.ai.silkmoth.AttractedToLightGoal;
 import net.grapes.hexalia.entity.ai.silkmoth.AvoidSunlightGoal;
 import net.grapes.hexalia.entity.ai.silkmoth.FlyRandomlyGoal;
+import net.grapes.hexalia.entity.variant.SilkMothVariant;
 import net.grapes.hexalia.item.ModItems;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityDimensions;
-import net.minecraft.entity.EntityPose;
-import net.minecraft.entity.EntityType;
+import net.minecraft.entity.*;
 import net.minecraft.entity.ai.control.FlightMoveControl;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.BirdNavigation;
@@ -17,6 +15,9 @@ import net.minecraft.entity.ai.pathing.EntityNavigation;
 import net.minecraft.entity.ai.pathing.PathNodeType;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -27,17 +28,24 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.LocalDifficulty;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.*;
+import software.bernie.geckolib.core.animation.AnimationState;
 import software.bernie.geckolib.core.object.PlayState;
 
 public class SilkMothEntity extends AnimalEntity implements GeoEntity {
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
+
+    private static final TrackedData<Integer> VARIANT =
+            DataTracker.registerData(SilkMothEntity.class, TrackedDataHandlerRegistry.INTEGER);
 
     public SilkMothEntity(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
@@ -65,6 +73,7 @@ public class SilkMothEntity extends AnimalEntity implements GeoEntity {
         this.goalSelector.add(4, new LookAroundGoal(this));
         this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.75f, 1));
     }
+
 
     @Nullable
     @Override
@@ -148,6 +157,15 @@ public class SilkMothEntity extends AnimalEntity implements GeoEntity {
                 ItemStack mothBottle = new ItemStack(ModItems.BOTTLED_MOTH);
                 mothBottle.setNbt(nbt);
 
+                SilkMothVariant variant = this.getVariant();
+                int customModelData = switch (variant) {
+                    case BLUE -> 1;
+                    case PINK -> 2;
+                    case BLACK -> 3;
+                    default -> 0; // DEFAULT
+                };
+                mothBottle.getOrCreateNbt().putInt("CustomModelData", customModelData);
+
                 this.remove(RemovalReason.DISCARDED);
                 if (!player.getInventory().insertStack(mothBottle)) {
                     this.dropStack(mothBottle);
@@ -158,6 +176,54 @@ public class SilkMothEntity extends AnimalEntity implements GeoEntity {
             }
         }
         return super.interactMob(player, hand);
+    }
+
+
+    @Override
+    protected void initDataTracker() {
+        super.initDataTracker();
+        this.dataTracker.startTracking(VARIANT, 0);
+    }
+
+    /* VARIANTS */
+
+    public void setVariant(SilkMothVariant variant) {
+        this.dataTracker.set(VARIANT, variant.getId());
+    }
+
+    public SilkMothVariant getVariant() {
+        return SilkMothVariant.byId(this.getTypeVariant() & 255);
+    }
+
+    private int getTypeVariant() {
+        return this.dataTracker.get(VARIANT);
+    }
+
+    public void setSilkMothVariant(SilkMothVariant variant) {
+        this.dataTracker.set(VARIANT, variant.getId() & 255);
+    }
+
+    @Override
+    public EntityData initialize(ServerWorldAccess world, LocalDifficulty difficulty, SpawnReason spawnReason,
+                                 @Nullable EntityData entityData, @Nullable NbtCompound entityNbt) {
+        SilkMothVariant silkVariant = Util.getRandom(SilkMothVariant.values(), this.random);
+        setSilkMothVariant(silkVariant);
+        return super.initialize(world, difficulty, spawnReason, entityData, entityNbt);
+    }
+
+    @Override
+    public NbtCompound writeNbt(NbtCompound nbt) {
+        super.writeNbt(nbt);
+        nbt.putInt("SilkMothVariant", this.getVariant().getId());
+        return nbt;
+    }
+
+    @Override
+    public void readNbt(NbtCompound nbt) {
+        super.readNbt(nbt);
+        if (nbt.contains("SilkMothVariant")) {
+            this.setVariant(SilkMothVariant.byId(nbt.getInt("SilkMothVariant")));
+        }
     }
 }
 
