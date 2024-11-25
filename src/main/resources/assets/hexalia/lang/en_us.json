@@ -111,6 +111,7 @@
   "tooltip.hexalia.mandrake": "Stuns in an area on usage",
   "tooltip.hexalia.purifying_salts": "Removes negative status effects",
   "tooltip.hexalia.rabbage": "Can be thrown to cause bleeding",
+  "tooltip.hexalia.bottled_moth": "Contains: %s",
 
   "sounds.hexalia.mandrake_scream": "A Mandrake screams",
   "sounds.hexalia.ritual_completed": "A Ritual has been completed",

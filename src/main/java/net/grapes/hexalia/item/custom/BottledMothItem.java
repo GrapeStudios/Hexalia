@@ -2,20 +2,31 @@ package net.grapes.hexalia.item.custom;
 
 import net.grapes.hexalia.entity.ModEntities;
 import net.grapes.hexalia.entity.custom.SilkMothEntity;
+import net.grapes.hexalia.entity.variant.SilkMothVariant;
 import net.grapes.hexalia.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class BottledMothItem extends Item {
+
+    public static final String MOTH_NAME = "MothName";
+
     public BottledMothItem(Properties pProperties) {
         super(pProperties);
     }
@@ -34,6 +45,8 @@ public class BottledMothItem extends Item {
 
             CompoundTag nbt = itemStack.getTag();
             if (nbt != null) {
+                SilkMothVariant variant = SilkMothVariant.byId(nbt.getInt("SilkMothVariant"));
+                silkMothEntity.setVariant(variant);
                 silkMothEntity.load(nbt);
             }
 
@@ -49,4 +62,19 @@ public class BottledMothItem extends Item {
         return InteractionResult.PASS;
     }
 
+    @Override
+    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
+        super.appendHoverText(pStack, pLevel, pTooltipComponents, pIsAdvanced);
+        if (pStack.hasTag() && pStack.getTag() != null) {
+            CompoundTag pTag = pStack.getTag();
+
+            if (pTag.contains(MOTH_NAME)) {
+                String mothName = pTag.getString(MOTH_NAME);
+
+                MutableComponent nameTooltip = Component.translatable("tooltip.hexalia.bottled_moth", mothName)
+                        .withStyle(Style.EMPTY.withItalic(true).withColor(0x55FF55));
+                pTooltipComponents.add(nameTooltip);
+            }
+        }
+    }
 }

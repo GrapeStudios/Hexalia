@@ -1,18 +1,32 @@
 package net.grapes.hexalia.entity.client;
 
+import com.google.common.collect.Maps;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.entity.custom.SilkMothEntity;
+import net.grapes.hexalia.entity.variant.SilkMothVariant;
+import net.minecraft.Util;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
+import java.util.Map;
+
 public class SilkMothRenderer extends GeoEntityRenderer<SilkMothEntity> {
+
+    private static final Map<SilkMothVariant, ResourceLocation> LOCATION_BY_VARIANT =
+            Util.make(Maps.newEnumMap(SilkMothVariant.class), map -> {
+                map.put(SilkMothVariant.DEFAULT, new ResourceLocation(HexaliaMod.MOD_ID, "textures/entity/silk_moth_default.png"));
+                map.put(SilkMothVariant.BLUE, new ResourceLocation(HexaliaMod.MOD_ID, "textures/entity/silk_moth_blue.png"));
+                map.put(SilkMothVariant.PINK, new ResourceLocation(HexaliaMod.MOD_ID, "textures/entity/silk_moth_pink.png"));
+                map.put(SilkMothVariant.BLACK, new ResourceLocation(HexaliaMod.MOD_ID, "textures/entity/silk_moth_black.png"));
+            });
+
     public SilkMothRenderer(EntityRendererProvider.Context renderManager) {
         super(renderManager, new SilkMothModel());
     }
 
     @Override
-    public ResourceLocation getTextureLocation(SilkMothEntity animatable) {
-        return new ResourceLocation(HexaliaMod.MOD_ID, "textures/entity/silk_moth.png");
+    public ResourceLocation getTextureLocation(SilkMothEntity pEntity) {
+        return LOCATION_BY_VARIANT.get(pEntity.getVariant());
     }
 }
