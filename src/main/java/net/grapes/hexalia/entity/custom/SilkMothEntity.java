@@ -4,6 +4,7 @@ import net.grapes.hexalia.entity.ModEntities;
 import net.grapes.hexalia.entity.ai.silkmoth.AttractedToLightGoal;
 import net.grapes.hexalia.entity.variant.SilkMothVariant;
 import net.grapes.hexalia.item.ModItems;
+import net.grapes.hexalia.item.custom.BottledMothItem;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.control.FlightMoveControl;
@@ -136,32 +137,38 @@ public class SilkMothEntity extends AnimalEntity implements GeoEntity {
     @Override
     public ActionResult interactMob(PlayerEntity player, Hand hand) {
         ItemStack itemInHand = player.getStackInHand(hand);
+
         if (itemInHand.isOf(ModItems.RUSTIC_BOTTLE)) {
-            if (!this.getWorld().isClient) {
-                NbtCompound nbt = new NbtCompound();
-                this.writeNbt(nbt);
-
+            if (!this.getWorld().isClient()) {
                 ItemStack mothBottle = new ItemStack(ModItems.BOTTLED_MOTH);
-                mothBottle.setNbt(nbt);
 
+                NbtCompound entityTag = new NbtCompound();
+                if (this.hasCustomName()) {
+                    entityTag.putString(BottledMothItem.MOTH_NAME, this.getCustomName().getString());
+                }
                 SilkMothVariant variant = this.getVariant();
                 int customModelData = switch (variant) {
                     case BLUE -> 1;
                     case PINK -> 2;
                     case BLACK -> 3;
-                    default -> 0; // DEFAULT
+                    default -> 0;
                 };
-                mothBottle.getOrCreateNbt().putInt("CustomModelData", customModelData);
+                entityTag.putInt("CustomModelData", customModelData);
+                mothBottle.setNbt(entityTag);
+                this.discard();
 
-                this.remove(RemovalReason.DISCARDED);
                 if (!player.getInventory().insertStack(mothBottle)) {
                     this.dropStack(mothBottle);
                 }
-                this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(), SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.PLAYERS, 1.0F, 1.0F);
+
+                this.getWorld().playSound(null, this.getX(), this.getY(), this.getZ(),
+                        SoundEvents.ENTITY_ITEM_FRAME_REMOVE_ITEM, SoundCategory.PLAYERS, 1.0F, 1.0F);
                 itemInHand.decrement(1);
+
                 return ActionResult.SUCCESS;
             }
         }
+
         return super.interactMob(player, hand);
     }
 
