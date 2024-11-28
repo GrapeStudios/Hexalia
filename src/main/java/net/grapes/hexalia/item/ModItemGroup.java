@@ -148,7 +148,6 @@ public class ModItemGroup {
 
                         // Spawn Eggs
                         entries.add(ModItems.SILK_MOTH_SPAWN_EGG);
-
                     }).build());
     public static void registerItemGroups(){
     }

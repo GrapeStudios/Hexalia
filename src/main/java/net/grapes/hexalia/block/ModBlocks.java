@@ -104,7 +104,7 @@ public class ModBlocks {
             new SmallCauldronBlock(FabricBlockSettings.copyOf(Blocks.IRON_BLOCK).nonOpaque()));
     public static final Block RUSTIC_OVEN = registerBlock("rustic_oven",
             new RusticOvenBlock(FabricBlockSettings.create().mapColor(MapColor.ORANGE).instrument(Instrument.BASEDRUM)
-                    .strength(4f).requiresTool().luminance(state -> 12)));
+                    .strength(4f).requiresTool().luminance(state -> 12).nonOpaque()));
     public static final Block RITUAL_TABLE = registerBlockWithoutBlockItem("ritual_table",
             new RitualTableBlock(FabricBlockSettings.copyOf(Blocks.STONE).nonOpaque()));
     public static final Block BREW_SHELF = registerBlock("brew_shelf",
