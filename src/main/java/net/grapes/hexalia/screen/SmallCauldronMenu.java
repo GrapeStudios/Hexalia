@@ -9,6 +9,8 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
 
@@ -51,10 +53,6 @@ public class SmallCauldronMenu extends AbstractContainerMenu {
 
     public boolean isCrafting() {
         return data.get(0) > 0;
-    }
-
-    public boolean isHeated() {
-        return blockEntity.isHeated();
     }
 
     public int getScaledProgress() {
@@ -122,5 +120,10 @@ public class SmallCauldronMenu extends AbstractContainerMenu {
         for (int i = 0; i < 9; ++i) {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 142));
         }
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    public boolean isHeated() {
+        return blockEntity.isHeated();
     }
 }

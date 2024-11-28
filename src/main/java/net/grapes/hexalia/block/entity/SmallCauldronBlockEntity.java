@@ -140,7 +140,7 @@ public class SmallCauldronBlockEntity extends BlockEntity implements MenuProvide
     }
 
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
-        if (isOutputSlotEmptyOrReceivable() && hasRecipe() && isHeated()){
+        if (isOutputSlotEmptyOrReceivable() && hasRecipe() && isHeated()) {
             increaseCraftingProcess();
             setChanged(pLevel, pPos, pState);
             if (hasProgressFinished()) {
