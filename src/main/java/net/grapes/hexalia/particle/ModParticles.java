@@ -21,6 +21,8 @@ public class ModParticles {
             PARTICLE_TYPES.register("mote_particle", () -> new SimpleParticleType(true));
     public static final RegistryObject<SimpleParticleType> INFUSED_BUBBLE_PARTICLE =
             PARTICLE_TYPES.register("infused_bubble_particle", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> LEAVES_PARTICLE =
+            PARTICLE_TYPES.register("leaves_particle", () -> new SimpleParticleType(true));
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

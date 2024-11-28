@@ -3,6 +3,7 @@ package net.grapes.hexalia.block.custom;
 import net.grapes.hexalia.block.entity.RitualTableBlockEntity;
 import net.grapes.hexalia.block.entity.SaltBlockEntity;
 import net.grapes.hexalia.item.ModItems;
+import net.grapes.hexalia.particle.ModParticles;
 import net.grapes.hexalia.recipe.TransmutationRecipe;
 import net.grapes.hexalia.sound.ModSounds;
 import net.minecraft.core.BlockPos;
@@ -111,6 +112,7 @@ public class RitualTableBlock extends BaseEntityBlock {
         if (heldItem.getItem().equals(ModItems.HEX_FOCUS.get())) {
             if (performTransmutation(ritualTableBlockEntity, pLevel, pPos)) {
                 spawnParticleEffect(pLevel, pPos, ParticleTypes.ENCHANT);
+                spawnParticleEffect(pLevel, pPos, ModParticles.LEAVES_PARTICLE.get());
                 playRitualSound(pLevel, ritualTableBlockEntity.getBlockPos());
                 return InteractionResult.sidedSuccess(pLevel.isClientSide);
             } else {

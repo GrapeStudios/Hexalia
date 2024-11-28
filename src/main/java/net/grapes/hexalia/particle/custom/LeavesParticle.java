@@ -7,16 +7,15 @@ import net.minecraft.client.particle.SimpleAnimatedParticle;
 import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.core.particles.SimpleParticleType;
 
-public class InfusedBubbleParticle extends SimpleAnimatedParticle {
+public class LeavesParticle extends SimpleAnimatedParticle {
 
-    protected InfusedBubbleParticle(ClientLevel level, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteSet spriteSet) {
+    protected LeavesParticle(ClientLevel level, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteSet spriteSet) {
         super(level, x, y, z, spriteSet, 0.01F);
-
         this.xd = velocityX;
         this.yd = velocityY;
         this.zd = velocityZ;
-        this.quadSize *= 0.5f + this.random.nextInt(1);
-        this.lifetime = 10 + this.random.nextInt(12);
+        this.quadSize *= 0.6f + this.random.nextInt(1);
+        this.lifetime = 40 + this.random.nextInt(12);
         this.setColor(15916745);
         this.setSpriteFromAge(spriteSet);
     }
@@ -36,7 +35,7 @@ public class InfusedBubbleParticle extends SimpleAnimatedParticle {
 
         @Override
         public Particle createParticle(SimpleParticleType type, ClientLevel level, double x, double y, double z, double velocityX, double velocityY, double velocityZ) {
-            return new InfusedBubbleParticle(level, x, y, z, velocityX, velocityY, velocityZ, this.spriteSet);
+            return new LeavesParticle(level, x, y, z, velocityX, velocityY, velocityZ, this.spriteSet);
         }
     }
 }
