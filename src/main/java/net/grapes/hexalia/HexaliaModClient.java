@@ -15,10 +15,7 @@ import net.grapes.hexalia.entity.ModEntities;
 import net.grapes.hexalia.entity.client.SilkMothRenderer;
 import net.grapes.hexalia.networking.ModMessages;
 import net.grapes.hexalia.particle.ModParticles;
-import net.grapes.hexalia.particle.custom.GhostParticle;
-import net.grapes.hexalia.particle.custom.InfusedBubbleParticle;
-import net.grapes.hexalia.particle.custom.MoteParticle;
-import net.grapes.hexalia.particle.custom.SporeParticle;
+import net.grapes.hexalia.particle.custom.*;
 import net.grapes.hexalia.screen.ModScreenHandler;
 import net.grapes.hexalia.screen.SmallCauldronScreen;
 import net.grapes.hexalia.util.ModWoodTypes;
@@ -82,6 +79,7 @@ public class HexaliaModClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(ModParticles.INFUSED_BUBBLE_PARTICLE, InfusedBubbleParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.MOTE_PARTICLE, MoteParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.GHOST_PARTICLE, GhostParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticles.LEAVES_PARTICLE, LeavesParticle.Factory::new);
     }
 
     private void registerScreens() {
