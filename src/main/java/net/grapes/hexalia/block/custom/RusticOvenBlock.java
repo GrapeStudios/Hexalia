@@ -11,10 +11,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
@@ -38,6 +35,11 @@ public class RusticOvenBlock extends Block {
     }
 
     @Override
+    public RenderShape getRenderShape(BlockState pState) {
+        return RenderShape.MODEL;
+    }
+
+    @Override
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
         double d = (double) pPos.getX() + 0.5;
         double e = pPos.getY();
@@ -52,7 +54,7 @@ public class RusticOvenBlock extends Block {
         double g = 0.52;
         double h = pRandom.nextDouble() * 0.6 - 0.3;
         double i = axis == Direction.Axis.X ? (double) direction.getStepX() * 0.52 : h;
-        double j = pRandom.nextDouble() * 6.0 / 16.0;
+        double j = pRandom.nextDouble() * 10.0 / 16.0;
         double k = axis == Direction.Axis.Z ? (double) direction.getStepZ() * 0.52 : h;
 
         pLevel.addParticle(ParticleTypes.SMOKE, d + i, e + j, f + k, 0.0, 0.0, 0.0);
