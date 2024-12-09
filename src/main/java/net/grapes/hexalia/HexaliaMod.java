@@ -71,8 +71,7 @@ public class HexaliaMod
         event.enqueueWork(() -> {
             ModRegistries.registerCompostable();
 
-            Sheets.addWoodType(ModWoodTypes.COTTONWOOD);
-            Sheets.addWoodType(ModWoodTypes.WILLOW);
+
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.SPIRIT_BLOOM.getId(), ModBlocks.POTTED_SPIRIT_BLOOM);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.DREAMSHROOM.getId(), ModBlocks.POTTED_DREAMSHROOM);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.HENBANE.getId(), ModBlocks.POTTED_HENBANE);
@@ -113,6 +112,8 @@ public class HexaliaMod
 
             EntityRenderers.register(ModEntities.SILK_MOTH_ENTITY.get(), SilkMothRenderer::new);
 
+            Sheets.addWoodType(ModWoodTypes.COTTONWOOD);
+            Sheets.addWoodType(ModWoodTypes.WILLOW);
         }
     }
 }
