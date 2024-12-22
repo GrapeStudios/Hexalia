@@ -89,22 +89,15 @@ public class BrewShelfBlock extends BaseEntityBlock {
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (!pLevel.isClientSide()) {
-            // Check if the player is holding the HEX_FOCUS item
             if (pPlayer.getItemInHand(pHand).getItem() == ModItems.HEX_FOCUS.get()) {
-                // Cycle the FRONT_VARIANT property
                 int currentVariant = pState.getValue(FRONT_VARIANT);
                 int nextVariant = (currentVariant + 1) % 3;
                 pLevel.setBlock(pPos, pState.setValue(FRONT_VARIANT, nextVariant), 3);
 
-                // Trigger a level event for visual feedback
-                pLevel.levelEvent(2001, pPos, Block.getId(pState)); // Custom breaking particles
-
-                // Play a sound to indicate the state change
+                pLevel.levelEvent(2001, pPos, Block.getId(pState));
                 pLevel.playSound(null, pPos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0f, 1.0f);
-
                 return InteractionResult.SUCCESS;
             } else if (pLevel.getBlockEntity(pPos) instanceof BrewShelfBlockEntity brewShelfBlockEntity) {
-                // Open the block's screen for interaction
                 NetworkHooks.openScreen((ServerPlayer) pPlayer, brewShelfBlockEntity, pPos);
             }
         }
