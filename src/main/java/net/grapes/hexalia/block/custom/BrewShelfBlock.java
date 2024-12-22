@@ -87,20 +87,25 @@ public class BrewShelfBlock extends BaseEntityBlock {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (!world.isClientSide()) {
-            if (player.getItemInHand(hand).getItem() == ModItems.HEX_FOCUS.get()) {
-                int currentVariant = state.getValue(FRONT_VARIANT);
+    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+        if (!pLevel.isClientSide()) {
+            // Check if the player is holding the HEX_FOCUS item
+            if (pPlayer.getItemInHand(pHand).getItem() == ModItems.HEX_FOCUS.get()) {
+                // Cycle the FRONT_VARIANT property
+                int currentVariant = pState.getValue(FRONT_VARIANT);
                 int nextVariant = (currentVariant + 1) % 3;
-                world.setBlock(pos, state.setValue(FRONT_VARIANT, nextVariant), 3);
-                if (world instanceof ServerLevel serverWorld) {
-                    BlockParticleOption particleEffect = new BlockParticleOption(ParticleTypes.BLOCK, state);
-                    serverWorld.sendParticles(particleEffect, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5, 10, 0.5, 0.5, 0.5, 0.0);
-                }
-                world.playSound(null, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0f, 1.0f);
+                pLevel.setBlock(pPos, pState.setValue(FRONT_VARIANT, nextVariant), 3);
+
+                // Trigger a level event for visual feedback
+                pLevel.levelEvent(2001, pPos, Block.getId(pState)); // Custom breaking particles
+
+                // Play a sound to indicate the state change
+                pLevel.playSound(null, pPos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0f, 1.0f);
+
                 return InteractionResult.SUCCESS;
-            } else if (world.getBlockEntity(pos) instanceof BrewShelfBlockEntity brewShelfBlockEntity) {
-                NetworkHooks.openScreen((ServerPlayer) player, brewShelfBlockEntity, pos);
+            } else if (pLevel.getBlockEntity(pPos) instanceof BrewShelfBlockEntity brewShelfBlockEntity) {
+                // Open the block's screen for interaction
+                NetworkHooks.openScreen((ServerPlayer) pPlayer, brewShelfBlockEntity, pPos);
             }
         }
         return InteractionResult.SUCCESS;
