@@ -95,7 +95,7 @@ public class BrewShelfBlock extends BaseEntityBlock {
                 pLevel.setBlock(pPos, pState.setValue(FRONT_VARIANT, nextVariant), 3);
 
                 pLevel.levelEvent(2001, pPos, Block.getId(pState));
-                pLevel.playSound(null, pPos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0f, 1.0f);
+                pLevel.playSound(null, pPos, SoundEvents.AMETHYST_BLOCK_HIT, SoundSource.BLOCKS, 1.0f, 1.0f);
                 return InteractionResult.SUCCESS;
             } else if (pLevel.getBlockEntity(pPos) instanceof BrewShelfBlockEntity brewShelfBlockEntity) {
                 NetworkHooks.openScreen((ServerPlayer) pPlayer, brewShelfBlockEntity, pPos);
