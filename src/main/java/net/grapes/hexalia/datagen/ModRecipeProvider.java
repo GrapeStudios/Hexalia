@@ -108,17 +108,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         inventoryTrigger(ItemPredicate.Builder.item().of(Blocks.COBBLED_DEEPSLATE).build()))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.RITUAL_TABLE.get())
-                .pattern("SPS")
-                .pattern(" S ")
-                .pattern("SSS")
-                .define('P', Items.MOSS_CARPET)
-                .define('S', Items.COBBLED_DEEPSLATE)
-                .unlockedBy("has_cobbled_deepslate",
-                        inventoryTrigger(ItemPredicate.Builder.item().of(Blocks.COBBLED_DEEPSLATE).build()))
-                .save(pWriter);
-
-
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.HEX_FOCUS.get())
                 .pattern("  S")
                 .pattern(" P ")

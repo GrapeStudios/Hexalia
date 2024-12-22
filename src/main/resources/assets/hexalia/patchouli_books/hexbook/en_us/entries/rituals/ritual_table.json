@@ -5,9 +5,10 @@
   "sortnum": 0,
   "pages": [
     {
-      "type": "patchouli:crafting",
-      "recipe": "hexalia:ritual_table",
-      "text": "Rituals are performed using a ritual table to hold the transmutable item."
+      "type": "patchouli:spotlight",
+      "item": "hexalia:ritual_table",
+      "title": "Ritual Table",
+      "text": "A Ritual Table can be created by right-clicking Deepslate or Cobbled Deepslate with a $(#b4a7d6)Hex Focus$()."
     },
     {
       "type": "patchouli:spotlight",

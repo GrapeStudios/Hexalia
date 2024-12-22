@@ -99,7 +99,7 @@ public class ModItems {
     public static final RegistryObject<Item> CANDLE_SKULL = ITEMS.register("candle_skull",
             () -> new BlockItem(ModBlocks.CANDLE_SKULL.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> HEX_FOCUS = ITEMS.register("hex_focus",
-            () -> new Item(new Item.Properties()));
+            () -> new HexFocusItem(new Item.Properties()));
     public static final RegistryObject<Item> WISDOM_GEM = ITEMS.register("wisdom_gem",
             () -> new Item(new Item.Properties().durability(60).rarity(Rarity.UNCOMMON)));
 
