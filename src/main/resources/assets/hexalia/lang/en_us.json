@@ -40,6 +40,7 @@
   "block.hexalia.potted_pale_mushroom": "Potted Pale Mushroom",
   "block.hexalia.potted_willow_sapling": "Potted Willow Sapling",
   "block.hexalia.potted_cottonwood_sapling": "Potted Cottonwood Sapling",
+  "block.hexalia.morphora": "Morphora",
 
   "item.hexalia.mortar_and_pestle": "Mortar and Pestle",
   "item.hexalia.spirit_bloom_powder": "Spirit Bloom Powder",
@@ -113,8 +114,9 @@
   "tooltip.hexalia.rabbage": "Can be thrown to cause bleeding",
   "tooltip.hexalia.bottled_moth": "Contains: %s",
 
-  "sounds.hexalia.mandrake_scream": "A Mandrake screams",
-  "sounds.hexalia.ritual_completed": "A Ritual has been completed",
+  "sounds.hexalia.mandrake_scream": "Mandrake screamed",
+  "sounds.hexalia.ritual_success": "Ritual completed",
+  "sounds.hexalia.conversion": "Block converted",
 
   "effect.hexalia.bloodlust": "Bloodlust",
   "effect.hexalia.bloodlust.description": "Increases strength, and restores 25% of the damage dealt to your foes",

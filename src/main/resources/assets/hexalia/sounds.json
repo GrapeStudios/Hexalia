@@ -11,5 +11,12 @@
     "sounds": [
       "hexalia:ritual_success"
     ]
+  },
+
+  "conversion": {
+    "subtitle": "sounds.hexalia.conversion",
+    "sounds": [
+      "hexalia:conversion"
+    ]
   }
 }

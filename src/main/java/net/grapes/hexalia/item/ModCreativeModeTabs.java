@@ -29,6 +29,9 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SIREN_KELP_PASTE.get());
                         output.accept(ModItems.GHOST_FERN_POWDER.get());
 
+                        // Functional Plants
+                        output.accept(ModBlocks.MORPHORA.get());
+
                         // Other Resources
                         output.accept(ModItems.RESIN.get());
                         output.accept(ModItems.SILK_FIBER.get());

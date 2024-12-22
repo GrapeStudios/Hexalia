@@ -1,0 +1,23 @@
+{
+  "type": "hexalia:transmutation",
+  "input": {
+    "item": "minecraft:poppy"
+  },
+  "output": {
+    "item": "hexalia:morphora"
+  },
+  "salt_items": [
+    {
+      "item": "hexalia:ghost_fern_powder"
+    },
+    {
+      "item": "hexalia:dreamshroom_paste"
+    },
+    {
+      "item": "minecraft:bone_meal"
+    },
+    {
+      "item": "minecraft:blaze_powder"
+    }
+  ]
+}

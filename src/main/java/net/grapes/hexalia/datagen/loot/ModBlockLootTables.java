@@ -59,6 +59,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 createTallPlantBlock(ModBlocks.HEXED_BULRUSH.get()));
         this.add(ModBlocks.COTTONWOOD_CATKIN.get(),
                 this.createSingleItemTable(Items.STRING));
+        this.dropSelf(ModBlocks.MORPHORA.get());
 
         // General Blocks
         this.dropSelf(ModBlocks.INFUSED_DIRT.get());

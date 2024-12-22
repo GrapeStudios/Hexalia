@@ -342,6 +342,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 Items.DIAMOND, ModItems.WISDOM_GEM.get())
                 .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEXBOOK.get()).build()))
                 .save(pWriter);
+        new TransmutationRecipeBuilder(List.of(ModItems.GHOST_FERN_POWDER.get(), ModItems.DREAMSHROOM_PASTE.get(), Items.BONE_MEAL, Items.BLAZE_POWDER),
+                Blocks.POPPY, ModBlocks.MORPHORA.get())
+                .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEXBOOK.get()).build()))
+                .save(pWriter);
 
         // Recipes for Wood-related Blocks
         planksFromLog(pWriter, ModBlocks.COTTONWOOD_PLANKS.get(), ModTags.Items.COTTONWOOD_LOGS, 4);
