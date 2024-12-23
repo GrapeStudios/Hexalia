@@ -1,5 +1,6 @@
 {
 	"credit": "Made with Blockbench",
+	"render_type": "cutout",
 	"texture_size": [32, 32],
 	"textures": {
 		"2": "hexalia:block/silkworm_cocoon",
