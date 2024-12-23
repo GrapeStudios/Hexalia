@@ -127,7 +127,7 @@ public class ModBlocks {
             () -> new HWallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD)
                     .instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0f)));
     public static final RegistryObject<Block> DREAMCATCHER = registerBlock("dreamcatcher",
-            () -> new HWallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD)
+            () -> new DreamcatcherBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD)
                     .instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0f)));
     public static final RegistryObject<Block> CANDLE_SKULL = BLOCKS.register("candle_skull",
             () -> new CandleSkullBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE)
