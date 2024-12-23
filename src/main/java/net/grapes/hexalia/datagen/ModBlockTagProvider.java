@@ -120,7 +120,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         this.tag(ModTags.Blocks.WILLOW_LOGS)
                 .add(ModBlocks.WILLOW_LOG.get(), ModBlocks.STRIPPED_WILLOW_LOG.get(),
-                        ModBlocks.WILLOW_WOOD.get(), ModBlocks.STRIPPED_WILLOW_WOOD.get());
+                        ModBlocks.WILLOW_WOOD.get(), ModBlocks.STRIPPED_WILLOW_WOOD.get(),
+                        ModBlocks.WILLOW_MOSSY_WOOD.get());
 
     }
 }

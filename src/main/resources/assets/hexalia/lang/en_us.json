@@ -87,7 +87,6 @@
   "item.hexalia.witch_salad": "Witch Salad",
   "item.hexalia.bottled_moth": "Bottled Silk Moth",
 
-
   "biome.hexalia.enchanted_bayou": "Enchanted Bayou",
 
   "entity.hexalia.silk_moth": "Silk Moth",
@@ -178,6 +177,7 @@
   "block.hexalia.willow_sapling": "Willow Sapling",
   "block.hexalia.willow_log": "Willow Log",
   "block.hexalia.willow_wood": "Willow Wood",
+  "block.hexalia.willow_mossy_wood": "Willow Mossy Wood",
   "block.hexalia.stripped_willow_log": "Stripped Willow Log",
   "block.hexalia.stripped_willow_wood": "Stripped Willow Wood",
   "block.hexalia.willow_planks": "Willow Planks",

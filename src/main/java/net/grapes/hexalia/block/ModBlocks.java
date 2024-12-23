@@ -195,6 +195,8 @@ public class ModBlocks {
             () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_LOG)));
     public static final RegistryObject<Block> WILLOW_WOOD = registerBlock("willow_wood",
             () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
+    public static final RegistryObject<Block> WILLOW_MOSSY_WOOD = registerBlock("willow_mossy_wood",
+            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WOOD)));
     public static final RegistryObject<Block> STRIPPED_WILLOW_WOOD = registerBlock("stripped_willow_wood",
             () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.copy(Blocks.STRIPPED_OAK_WOOD)));
     public static final RegistryObject<Block> WILLOW_PLANKS = registerBlock("willow_planks",

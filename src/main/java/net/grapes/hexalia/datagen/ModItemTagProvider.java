@@ -126,7 +126,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
         this.tag(ModTags.Items.WILLOW_LOGS)
                 .add(ModBlocks.WILLOW_LOG.get().asItem(), ModBlocks.STRIPPED_WILLOW_LOG.get().asItem(),
-                        ModBlocks.WILLOW_WOOD.get().asItem(), ModBlocks.STRIPPED_WILLOW_WOOD.get().asItem());
+                        ModBlocks.WILLOW_WOOD.get().asItem(), ModBlocks.STRIPPED_WILLOW_WOOD.get().asItem(),
+                        ModBlocks.WILLOW_MOSSY_WOOD.get().asItem());
 
         this.tag(ItemTags.SIGNS)
                 .add(ModItems.COTTONWOOD_SIGN.get(), ModItems.WILLOW_SIGN.get());

@@ -159,12 +159,12 @@ public class ModConfiguredFeatures {
                         UniformInt.of(0, 1), holdergetter.getOrThrow(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
                 BlockStateProvider.simple(ModBlocks.COTTONWOOD_LEAVES.get()),
                 new RandomSpreadFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), ConstantInt.of(2), 70),
-                Optional.of(new MangroveRootPlacer(UniformInt.of(1, 3),
-                        BlockStateProvider.simple(ModBlocks.WILLOW_WOOD.get()),
+                Optional.of(new MangroveRootPlacer(UniformInt.of(1, 1),
+                        BlockStateProvider.simple(ModBlocks.WILLOW_MOSSY_WOOD.get()),
                         Optional.of(new AboveRootPlacement(BlockStateProvider.simple(Blocks.MOSS_CARPET), 0.5F)),
                         new MangroveRootPlacement(holdergetter.getOrThrow(BlockTags.MANGROVE_ROOTS_CAN_GROW_THROUGH),
                                 HolderSet.direct(Block::builtInRegistryHolder, Blocks.MUD, Blocks.MUDDY_MANGROVE_ROOTS),
-                                BlockStateProvider.simple(Blocks.MUDDY_MANGROVE_ROOTS), 8, 15, 0.2F))),
+                                BlockStateProvider.simple(Blocks.MUDDY_MANGROVE_ROOTS), 4, 8, 0.1F))),
                 new TwoLayersFeatureSize(2, 0, 2))
                 .decorators(List.of(new LeaveVineDecorator(0.125f)))
                 .build());
