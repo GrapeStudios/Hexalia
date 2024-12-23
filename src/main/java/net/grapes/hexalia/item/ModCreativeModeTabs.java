@@ -103,6 +103,7 @@ public class ModCreativeModeTabs {
                         // Armor Items
                         output.accept(ModItems.EARPLUGS.get());
                         output.accept(ModItems.GHOSTVEIL.get());
+                        output.accept(ModItems.BOGGED_BOOTS.get());
 
                         // Wood Related Items
                         output.accept(ModBlocks.COTTONWOOD_SAPLING.get());

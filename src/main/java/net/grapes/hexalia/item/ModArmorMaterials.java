@@ -9,6 +9,7 @@ import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ArmorMaterials;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.Tags;
 
@@ -29,7 +30,16 @@ public enum ModArmorMaterials implements ArmorMaterial {
         enumMap.put(ArmorItem.Type.LEGGINGS, 1);
         enumMap.put(ArmorItem.Type.CHESTPLATE, 3);
         enumMap.put(ArmorItem.Type.HELMET, 1);
-    }), 5, SoundEvents.ARMOR_EQUIP_LEATHER, 0, 0, () -> Ingredient.of(ModBlocks.GHOST_FERN.get().asItem()));
+    }), 5, SoundEvents.ARMOR_EQUIP_LEATHER, 0, 0, () -> Ingredient.of(ModBlocks.GHOST_FERN.get().asItem())),
+
+    BOGGED("bogged", 15, Util.make(new EnumMap<>(ArmorItem.Type.class), (enumMap) -> {
+        enumMap.put(ArmorItem.Type.BOOTS, 2);
+        enumMap.put(ArmorItem.Type.LEGGINGS, 1);
+        enumMap.put(ArmorItem.Type.CHESTPLATE, 3);
+        enumMap.put(ArmorItem.Type.HELMET, 1);
+    }), 5, SoundEvents.ARMOR_EQUIP_LEATHER, 0, 0, () -> Ingredient.of(Items.DRIED_KELP)
+
+    );
 
     public static final StringRepresentable.EnumCodec<ArmorMaterials> CODEC = StringRepresentable.fromEnum(ArmorMaterials::values);
     private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266653_) -> {

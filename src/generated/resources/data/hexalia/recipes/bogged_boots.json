@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "minecraft:dried_kelp"
+    },
+    "P": {
+      "item": "hexalia:witchweed"
+    },
+    "S": {
+      "item": "hexalia:silk_fiber"
+    }
+  },
+  "pattern": [
+    "PSP",
+    "A A"
+  ],
+  "result": {
+    "item": "hexalia:bogged_boots"
+  },
+  "show_notification": true
+}

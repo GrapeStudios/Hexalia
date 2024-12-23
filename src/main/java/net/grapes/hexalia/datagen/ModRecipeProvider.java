@@ -195,6 +195,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         inventoryTrigger(ItemPredicate.Builder.item().of(Items.LEATHER).build()))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.BOGGED_BOOTS.get())
+                .pattern("PSP")
+                .pattern("A A")
+                .define('S', ModItems.SILK_FIBER.get())
+                .define('P', ModBlocks.WITCHWEED.get())
+                .define('A', Items.DRIED_KELP)
+                .unlockedBy("has_ghost_fern",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(ModBlocks.WITCHWEED.get()).build()))
+                .save(pWriter);
+
         // Shapeless Recipes for Seeds
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MANDRAKE_SEEDS.get())
                 .requires(ModItems.MANDRAKE.get())
