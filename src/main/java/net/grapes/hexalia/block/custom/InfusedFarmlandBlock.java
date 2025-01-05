@@ -43,7 +43,6 @@ public class InfusedFarmlandBlock extends Block {
         return SHAPE;
     }
 
-
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         ItemStack itemStack = pPlayer.getItemInHand(pHand);
