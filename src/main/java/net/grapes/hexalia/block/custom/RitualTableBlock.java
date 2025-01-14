@@ -111,12 +111,12 @@ public class RitualTableBlock extends BaseEntityBlock {
 
         if (heldItem.getItem().equals(ModItems.HEX_FOCUS.get())) {
             if (performTransmutation(ritualTableBlockEntity, pLevel, pPos)) {
-                spawnParticleEffect(pLevel, pPos, ParticleTypes.ENCHANT);
-                spawnParticleEffect(pLevel, pPos, ModParticles.LEAVES_PARTICLE.get());
+                spawnParticleEffect(pLevel, pPos, ParticleTypes.ENCHANT, 15, 20);
+                spawnParticleEffect(pLevel, pPos, ModParticles.LEAVES_PARTICLE.get(), 15, 20);
                 playRitualSound(pLevel, ritualTableBlockEntity.getBlockPos());
                 return InteractionResult.sidedSuccess(pLevel.isClientSide);
             } else {
-                spawnParticleEffect(pLevel, pPos, ParticleTypes.SMOKE);
+                spawnParticleEffect(pLevel, pPos, ParticleTypes.SMOKE, 15, 20);
                 return InteractionResult.sidedSuccess(pLevel.isClientSide);
             }
         } else {
@@ -193,12 +193,10 @@ public class RitualTableBlock extends BaseEntityBlock {
     }
 
     private boolean processSaltBlocks(Level pLevel, BlockPos tablePos, TransmutationRecipe pRecipe, boolean consume) {
-        Direction[] directions = {Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST};
-
         NonNullList<ItemStack> requiredSaltItems = NonNullList.create();
         requiredSaltItems.addAll(pRecipe.getSaltItems());
 
-        for (Direction direction : directions) {
+        for (Direction direction : Direction.Plane.HORIZONTAL) {
             BlockPos saltPos = tablePos.relative(direction, 2);
             BlockEntity saltEntity = pLevel.getBlockEntity(saltPos);
 
@@ -221,8 +219,9 @@ public class RitualTableBlock extends BaseEntityBlock {
         return requiredSaltItems.isEmpty();
     }
 
-    private void spawnParticleEffect(Level pLevel, BlockPos pPos, SimpleParticleType particleType) {
-        int particleCount = ThreadLocalRandom.current().nextInt(20, 30);
+
+    private void spawnParticleEffect(Level pLevel, BlockPos pPos, SimpleParticleType particleType, int minParticles, int maxParticles) {
+        int particleCount = ThreadLocalRandom.current().nextInt(minParticles, maxParticles);
         for (int i = 0; i < particleCount; i++) {
             double offsetX = ThreadLocalRandom.current().nextDouble(-0.5, 0.5);
             double offsetY = ThreadLocalRandom.current().nextDouble(0, 0.5);
