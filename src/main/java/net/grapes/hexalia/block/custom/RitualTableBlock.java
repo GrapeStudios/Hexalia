@@ -180,8 +180,9 @@ public class RitualTableBlock extends BaseEntityBlock {
         }
 
         TransmutationRecipe recipe = recipeOptional.get();
-        if (checkSaltBlocks(world, pos, recipe)) {
-            consumeSaltBlocks(world, pos, recipe);
+        boolean hasRequiredSalt = processSaltBlocks(world, pos, recipe, false);
+        if (hasRequiredSalt) {
+            processSaltBlocks(world, pos, recipe, true);
             ritualTable.removeItem(0, 1);
             ritualTable.setItem(0, recipe.getResultItem(world.registryAccess()).copy());
             ritualTable.setChanged();
@@ -191,30 +192,7 @@ public class RitualTableBlock extends BaseEntityBlock {
         return false;
     }
 
-    private boolean checkSaltBlocks(Level pLevel, BlockPos tablePos, TransmutationRecipe pRecipe) {
-        Direction[] directions = {Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST};
-
-        NonNullList<ItemStack> requiredSaltItems = NonNullList.create();
-        requiredSaltItems.addAll(pRecipe.getSaltItems());
-
-        for (Direction direction : directions) {
-            BlockPos saltPos = tablePos.relative(direction, 2);
-            BlockEntity saltEntity = pLevel.getBlockEntity(saltPos);
-
-            if (saltEntity instanceof SaltBlockEntity saltBlock) {
-                Iterator<ItemStack> iterator = requiredSaltItems.iterator();
-                while (iterator.hasNext()) {
-                    if (ItemStack.isSameItemSameTags(saltBlock.getItem(0), iterator.next())) {
-                        iterator.remove();
-                        break;
-                    }
-                }
-            }
-        }
-        return requiredSaltItems.isEmpty();
-    }
-
-    private void consumeSaltBlocks(Level pLevel, BlockPos tablePos, TransmutationRecipe pRecipe) {
+    private boolean processSaltBlocks(Level pLevel, BlockPos tablePos, TransmutationRecipe pRecipe, boolean consume) {
         Direction[] directions = {Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST};
 
         NonNullList<ItemStack> requiredSaltItems = NonNullList.create();
@@ -230,18 +208,21 @@ public class RitualTableBlock extends BaseEntityBlock {
                     ItemStack item = iterator.next();
                     if (ItemStack.isSameItemSameTags(saltBlock.getItem(0), item)) {
                         iterator.remove();
-                        saltBlock.removeStack();
-                        saltBlock.setChanged();
-                        pLevel.sendBlockUpdated(saltPos, pLevel.getBlockState(saltPos), pLevel.getBlockState(saltPos), Block.UPDATE_ALL);
+                        if (consume) {
+                            saltBlock.removeStack();
+                            saltBlock.setChanged();
+                            pLevel.sendBlockUpdated(saltPos, pLevel.getBlockState(saltPos), pLevel.getBlockState(saltPos), Block.UPDATE_ALL);
+                        }
                         break;
                     }
                 }
             }
         }
+        return requiredSaltItems.isEmpty();
     }
 
     private void spawnParticleEffect(Level pLevel, BlockPos pPos, SimpleParticleType particleType) {
-        int particleCount = ThreadLocalRandom.current().nextInt(20, 30); // Randomized particle count for visual variety
+        int particleCount = ThreadLocalRandom.current().nextInt(20, 30);
         for (int i = 0; i < particleCount; i++) {
             double offsetX = ThreadLocalRandom.current().nextDouble(-0.5, 0.5);
             double offsetY = ThreadLocalRandom.current().nextDouble(0, 0.5);

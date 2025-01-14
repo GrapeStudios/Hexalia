@@ -105,7 +105,7 @@ public class SaltBlock extends BaseEntityBlock {
         if (heldItem.isEmpty()) {
             return InteractionResult.PASS;
         } else if (saltBlockEntity.addStack(player.getAbilities().instabuild ? heldItem.copy() : heldItem)) {
-            playPlaceSound(world, saltBlockEntity.getBlockPos());
+            playItemSound(world, saltBlockEntity.getBlockPos());
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.PASS;
@@ -118,16 +118,12 @@ public class SaltBlock extends BaseEntityBlock {
         } else if (!player.getInventory().add(saltBlockEntity.removeStack())) {
             Containers.dropItemStack(world, pos.getX(), pos.getY(), pos.getZ(), saltBlockEntity.removeStack());
         }
-        playRemoveSound(world, pos);
+        playItemSound(world, pos);
     }
 
 
-    private void playPlaceSound(Level pLevel, BlockPos pPos) {
-        pLevel.playSound(null, pPos, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 1.0f, 1.0f);
-    }
-
-    private void playRemoveSound(Level pLevel, BlockPos pPos) {
-        pLevel.playSound(null, pPos, SoundEvents.ITEM_FRAME_REMOVE_ITEM, SoundSource.BLOCKS, 1.0f, 1.0f);
+    private void playItemSound(Level pLevel, BlockPos pos) {
+        pLevel.playSound(null, pos, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 0.8f, 0.5f);
     }
 
 
