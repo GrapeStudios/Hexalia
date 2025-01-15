@@ -124,7 +124,11 @@ public class RitualTableBlock extends BaseEntityBlock {
 
     private InteractionResult handleItemInteraction(Level pLevel, RitualTableBlockEntity ritualTableBlockEntity, Player player, InteractionHand pHand) {
         if (ritualTableBlockEntity.isEmpty()) {
-            return addItemFromHand(pLevel, ritualTableBlockEntity, player, pHand);
+            InteractionResult result = addItemFromHand(pLevel, ritualTableBlockEntity, player, pHand);
+            if (result.consumesAction()) {
+                spawnParticleEffect(pLevel, ritualTableBlockEntity.getBlockPos(), ParticleTypes.POOF, 5, 10);
+            }
+            return result;
         } else if (pHand.equals(InteractionHand.MAIN_HAND)) {
             removeItemFromBlock(pLevel, ritualTableBlockEntity, player);
             return InteractionResult.sidedSuccess(pLevel.isClientSide);
