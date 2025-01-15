@@ -153,6 +153,9 @@
   "advancements.hexalia.rabbage.title": "Is This Cabbage Biting?",
   "advancements.hexalia.rabbage.description": "Obtain a Rabbage, the cabbage that bites your enemies.",
 
+  "message.hexalia.ritual.missing_ingredients": "The ritual has failed due to missing ingredients.",
+  "message.hexalia.ritual.invalid_crops": "Natural energy is weak; fully grown crops are missing.",
+
   "block.hexalia.cottonwood_leaves": "Cottonwood Leaves",
   "block.hexalia.cottonwood_catkin": "Cottonwood Catkin",
   "block.hexalia.cottonwood_log": "Cottonwood Log",

@@ -11,6 +11,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
@@ -22,10 +23,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BaseEntityBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -167,7 +165,12 @@ public class RitualTableBlock extends BaseEntityBlock {
         SimpleContainer inventory = new SimpleContainer(ritualTable.getContainerSize());
         ItemStack inputStack = ritualTable.getItem(0);
 
+        if (!isRitualReady(world, pos)) {
+            return false;
+        }
+
         if (inputStack.isEmpty()) {
+            sendMessageToPlayer(world, pos, "message.hexalia.ritual.missing_ingredients");
             return false;
         }
 
@@ -176,20 +179,26 @@ public class RitualTableBlock extends BaseEntityBlock {
                 TransmutationRecipe.Type.INSTANCE, ritualTable, world);
 
         if (recipeOptional.isEmpty()) {
+            sendMessageToPlayer(world, pos, "message.hexalia.ritual.missing_ingredients");
             return false;
         }
 
         TransmutationRecipe recipe = recipeOptional.get();
         boolean hasRequiredSalt = processSaltBlocks(world, pos, recipe, false);
-        if (hasRequiredSalt) {
-            processSaltBlocks(world, pos, recipe, true);
-            ritualTable.removeItem(0, 1);
-            ritualTable.setItem(0, recipe.getResultItem(world.registryAccess()).copy());
-            ritualTable.setChanged();
-            world.sendBlockUpdated(pos, world.getBlockState(pos), world.getBlockState(pos), Block.UPDATE_ALL);
-            return true;
+
+        if (!hasRequiredSalt) {
+            sendMessageToPlayer(world, pos, "message.hexalia.ritual.missing_ingredients");
+            return false;
         }
-        return false;
+
+        processSaltBlocks(world, pos, recipe, true);
+        ritualTable.removeItem(0, 1);
+        ritualTable.setItem(0, recipe.getResultItem(world.registryAccess()).copy());
+        ritualTable.setChanged();
+        world.sendBlockUpdated(pos, world.getBlockState(pos), world.getBlockState(pos), Block.UPDATE_ALL);
+
+        validateAndResetCrops(world, pos, true);
+        return true;
     }
 
     private boolean processSaltBlocks(Level pLevel, BlockPos tablePos, TransmutationRecipe pRecipe, boolean consume) {
@@ -219,6 +228,67 @@ public class RitualTableBlock extends BaseEntityBlock {
         return requiredSaltItems.isEmpty();
     }
 
+    private boolean isRitualReady(Level world, BlockPos tablePos) {
+
+        BlockPos[] saltPositions = {
+                tablePos.offset(-2, 0, 0),
+                tablePos.offset(2, 0, 0),
+                tablePos.offset(0, 0, -2),
+                tablePos.offset(0, 0, 2)
+        };
+
+        for (BlockPos pos : saltPositions) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (!(blockEntity instanceof SaltBlockEntity)) {
+                sendMessageToPlayer(world, tablePos, "message.hexalia.ritual.missing_ingredients");
+                return false;
+            }
+        }
+
+        boolean cropsValid = validateAndResetCrops(world, tablePos, false);
+        if (!cropsValid) {
+            sendMessageToPlayer(world, tablePos, "message.hexalia.ritual.invalid_crops");
+        }
+
+        return cropsValid;
+    }
+
+    private boolean validateAndResetCrops(Level world, BlockPos tablePos, boolean resetCrops) {
+        BlockPos[] cropPositions = {
+                tablePos.offset(-2, 0, -2), tablePos.offset(-1, 0, -2), tablePos.offset(1, 0, -2), tablePos.offset(2, 0, -2),
+                tablePos.offset(-2, 0, -1), tablePos.offset(-1, 0, -1), tablePos.offset(1, 0, -1), tablePos.offset(2, 0, -1),
+                tablePos.offset(-2, 0,  1), tablePos.offset(-1, 0,  1), tablePos.offset(1, 0,  1), tablePos.offset(2, 0,  1),
+                tablePos.offset(-2, 0,  2), tablePos.offset(-1, 0,  2), tablePos.offset(1, 0,  2), tablePos.offset(2, 0,  2)
+        };
+
+        boolean allCropsValid = true;
+
+        for (BlockPos pos : cropPositions) {
+            BlockState state = world.getBlockState(pos);
+
+            if (state.getBlock() instanceof CropBlock crop) {
+                if (crop.getAge(state) < crop.getMaxAge()) {
+                    allCropsValid = false;
+
+                } else if (resetCrops) {
+                    BlockState resetState = crop.getStateForAge(0);
+                    world.setBlockAndUpdate(pos, resetState);
+                }
+            } else {
+                allCropsValid = false;
+            }
+        }
+        return allCropsValid;
+    }
+
+    private void sendMessageToPlayer(Level world, BlockPos pos, String messageKey) {
+        if (!world.isClientSide) {
+            Player nearestPlayer = world.getNearestPlayer(pos.getX(), pos.getY(), pos.getZ(), 5, false);
+            if (nearestPlayer != null) {
+                nearestPlayer.displayClientMessage(Component.translatable(messageKey), true);
+            }
+        }
+    }
 
     private void spawnParticleEffect(Level pLevel, BlockPos pPos, SimpleParticleType particleType, int minParticles, int maxParticles) {
         int particleCount = ThreadLocalRandom.current().nextInt(minParticles, maxParticles);
@@ -231,7 +301,8 @@ public class RitualTableBlock extends BaseEntityBlock {
     }
 
     private void playItemSound(Level pLevel, BlockPos pos) {
-        pLevel.playSound(null, pos, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 0.8f, 0.5f);
+        pLevel.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.8f, 0.5f);
+        pLevel.playSound(null, pos, SoundEvents.CHISELED_BOOKSHELF_PICKUP_ENCHANTED, SoundSource.BLOCKS, 0.8f, 0.5f);
     }
 
     private void playRitualSound(Level pLevel, BlockPos pos) {
