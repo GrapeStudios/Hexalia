@@ -114,7 +114,7 @@ public class SaltBlockEntity extends BlockEntity implements WorldlyContainer {
 
     public ItemStack removeStack() {
         if (!isEmpty()) {
-            ItemStack itemStack = getItem(0).split(1); // Changed 1 to 0
+            ItemStack itemStack = getItem(0).split(1);
             setChanged();
             return itemStack;
         }
