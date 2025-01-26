@@ -3,15 +3,15 @@
   "category": "equipment",
   "key": {
     "P": {
-      "item": "minecraft:cobblestone"
+      "item": "minecraft:stick"
     },
     "S": {
-      "item": "minecraft:stick"
+      "item": "minecraft:cobblestone"
     }
   },
   "pattern": [
-    "S",
-    "P"
+    " S",
+    "P "
   ],
   "result": {
     "item": "hexalia:stone_dagger"

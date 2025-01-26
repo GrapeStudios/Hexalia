@@ -1,0 +1,23 @@
+{
+  "type": "hexalia:transmutation",
+  "input": {
+    "item": "minecraft:azure_bluet"
+  },
+  "output": {
+    "item": "hexalia:grimshade"
+  },
+  "salt_items": [
+    {
+      "item": "hexalia:dreamshroom_paste"
+    },
+    {
+      "item": "minecraft:black_dye"
+    },
+    {
+      "item": "minecraft:coal"
+    },
+    {
+      "item": "minecraft:rotten_flesh"
+    }
+  ]
+}

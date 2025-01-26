@@ -89,10 +89,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(pWriter);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.STONE_DAGGER.get())
-                .pattern("S")
-                .pattern("P")
-                .define('P', Blocks.COBBLESTONE)
-                .define('S', Items.STICK)
+                .pattern(" S")
+                .pattern("P ")
+                .define('S', Blocks.COBBLESTONE)
+                .define('P', Items.STICK)
                 .unlockedBy("has_cobblestone",
                         inventoryTrigger(ItemPredicate.Builder.item().of(Blocks.COBBLESTONE).build()))
                 .save(pWriter);
@@ -354,6 +354,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(pWriter);
         new TransmutationRecipeBuilder(List.of(ModItems.GHOST_FERN_POWDER.get(), ModItems.DREAMSHROOM_PASTE.get(), Items.BONE_MEAL, Items.FLINT),
                 Blocks.POPPY, ModBlocks.MORPHORA.get())
+                .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEXBOOK.get()).build()))
+                .save(pWriter);
+        new TransmutationRecipeBuilder(List.of(ModItems.DREAMSHROOM_PASTE.get(), Items.BLACK_DYE, Items.COAL, Items.ROTTEN_FLESH),
+                Blocks.AZURE_BLUET, ModBlocks.GRIMSHADE.get())
                 .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEXBOOK.get()).build()))
                 .save(pWriter);
 

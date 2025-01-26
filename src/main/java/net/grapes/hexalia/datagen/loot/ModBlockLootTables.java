@@ -60,6 +60,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(ModBlocks.COTTONWOOD_CATKIN.get(),
                 this.createSingleItemTable(Items.STRING));
         this.dropSelf(ModBlocks.MORPHORA.get());
+        this.dropSelf(ModBlocks.GRIMSHADE.get());
 
         // General Blocks
         this.dropSelf(ModBlocks.INFUSED_DIRT.get());
