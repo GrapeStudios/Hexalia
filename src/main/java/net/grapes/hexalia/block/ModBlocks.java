@@ -59,6 +59,8 @@ public class ModBlocks {
             () -> new GhostFernBlock(() -> MobEffects.INVISIBILITY, 6, BlockBehaviour.Properties.copy(Blocks.AZALEA).noCollission()));
     public static final RegistryObject<Block> MORPHORA = registerBlock("morphora",
             () -> new MorphoraBlock (BlockBehaviour.Properties.copy(Blocks.AZALEA).noCollission()));
+    public static final RegistryObject<Block> GRIMSHADE = registerBlock("grimshade",
+            () -> new GrimshadeBlock (BlockBehaviour.Properties.copy(Blocks.AZALEA).noCollission()));
 
     // Decorative Plants
     public static final RegistryObject<Block> HENBANE = registerBlock("henbane",

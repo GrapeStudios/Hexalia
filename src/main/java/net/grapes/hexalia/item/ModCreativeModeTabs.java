@@ -31,6 +31,7 @@ public class ModCreativeModeTabs {
 
                         // Functional Plants
                         output.accept(ModBlocks.MORPHORA.get());
+                        output.accept(ModBlocks.GRIMSHADE.get());
 
                         // Other Resources
                         output.accept(ModItems.RESIN.get());
