@@ -99,13 +99,11 @@ public class RitualTableBlock extends BaseEntityBlock {
         ItemStack heldItem = pPlayer.getItemInHand(pHand);
 
         if (pHand == InteractionHand.MAIN_HAND) {
-            // Handle removing items
             if (!ritualTableBlockEntity.isEmpty() && heldItem.isEmpty()) {
                 removeItemFromBlock(pLevel, ritualTableBlockEntity, pPlayer);
                 return InteractionResult.sidedSuccess(pLevel.isClientSide);
             }
 
-            // Handle adding items (exclude Hex Focus)
             if (!heldItem.isEmpty() && ritualTableBlockEntity.isEmpty() && !heldItem.is(ModItems.HEX_FOCUS.get())) {
                 if (ritualTableBlockEntity.addStack(heldItem.split(1))) {
                     playItemSound(pLevel, pPos);
@@ -114,7 +112,6 @@ public class RitualTableBlock extends BaseEntityBlock {
                 }
             }
 
-            // Handle ritual activation with Hex Focus
             if (heldItem.is(ModItems.HEX_FOCUS.get())) {
                 if (ritualTableBlockEntity.canStartRitual(pLevel, pPos)) {
                     boolean success = ritualTableBlockEntity.startRitual();

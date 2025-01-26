@@ -68,7 +68,6 @@ public class RitualTableBlockEntity extends BlockEntity implements WorldlyContai
     }
 
     private void performRitualEffect(ServerLevel level, BlockPos pos) {
-        // Add your ritual logic here (e.g., particle effects, item transformations, etc.)
         level.sendParticles(ParticleTypes.ENCHANT, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5,
                 20, 0.5, 0.5, 0.5, 0.1);
         level.playSound(null, pos, ModSounds.RITUAL_SUCCESS.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
