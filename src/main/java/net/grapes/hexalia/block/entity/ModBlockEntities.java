@@ -33,6 +33,10 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("tidal_bloom_be", () ->
                     BlockEntityType.Builder.of(TidalBloomBlockEntity::new, ModBlocks.TIDAL_BLOOM.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<WindsongBlockEntity>> WINDSONG_BE =
+            BLOCK_ENTITIES.register("windsong_be", () ->
+                    BlockEntityType.Builder.of(WindsongBlockEntity::new, ModBlocks.WINDSONG.get()).build(null));
+
     public static final RegistryObject<BlockEntityType<ModSignBlockEntity>> MOD_SIGN =
             BLOCK_ENTITIES.register("mod_sign", () ->
                     BlockEntityType.Builder.of(ModSignBlockEntity::new, ModBlocks.COTTONWOOD_SIGN.get(), ModBlocks.COTTONWOOD_WALL_SIGN.get(),

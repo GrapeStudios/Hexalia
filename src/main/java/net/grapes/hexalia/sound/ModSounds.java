@@ -15,6 +15,8 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> MANDRAKE_SCREAM = registerSoundEvent("mandrake_scream");
     public static final RegistryObject<SoundEvent> RITUAL_SUCCESS = registerSoundEvent("ritual_success");
     public static final RegistryObject<SoundEvent> CONVERSION = registerSoundEvent("conversion");
+    public static final RegistryObject<SoundEvent> WIND_BURST = registerSoundEvent("wind_burst");
+    public static final RegistryObject<SoundEvent> WIND_DEFLECT = registerSoundEvent("wind_deflect");
 
     private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
         ResourceLocation id = new ResourceLocation(HexaliaMod.MOD_ID, name);
