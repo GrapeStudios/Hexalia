@@ -29,6 +29,10 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("brew_shelf_block_entity", () ->
                     BlockEntityType.Builder.of(BrewShelfBlockEntity::new, ModBlocks.BREW_SHELF.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<TidalBloomBlockEntity>> TIDAL_BLOOM_BE =
+            BLOCK_ENTITIES.register("tidal_bloom_be", () ->
+                    BlockEntityType.Builder.of(TidalBloomBlockEntity::new, ModBlocks.TIDAL_BLOOM.get()).build(null));
+
     public static final RegistryObject<BlockEntityType<ModSignBlockEntity>> MOD_SIGN =
             BLOCK_ENTITIES.register("mod_sign", () ->
                     BlockEntityType.Builder.of(ModSignBlockEntity::new, ModBlocks.COTTONWOOD_SIGN.get(), ModBlocks.COTTONWOOD_WALL_SIGN.get(),
