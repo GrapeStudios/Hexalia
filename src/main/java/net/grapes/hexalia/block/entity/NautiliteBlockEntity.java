@@ -50,11 +50,15 @@ public class NautiliteBlockEntity extends BlockEntity {
                     if (player.isInWaterOrRain()) {
                         player.addEffect(new MobEffectInstance(MobEffects.CONDUIT_POWER, 40, 0, true, false));
                     }
+
+                    if (player.hasEffect(MobEffects.DIG_SLOWDOWN)) {
+                        player.removeEffect(MobEffects.DIG_SLOWDOWN);
+                    }
                 }
 
                 for (LivingEntity mob : mobs) {
                     if ((mob instanceof Drowned || mob instanceof Guardian) && mob.isInWaterOrRain() && pPos.closerThan(mob.blockPosition(), EFFECT_RADIUS)) {
-                        mob.hurt(pLevel.damageSources().magic(), 4.0F);
+                        mob.hurt(pLevel.damageSources().magic(), 2.0F);
                         serverLevel.sendParticles(ParticleTypes.BUBBLE, mob.getX(), mob.getY(), mob.getZ(), 10, 0.5, 0.5, 0.5, 0.1);
                     }
                 }

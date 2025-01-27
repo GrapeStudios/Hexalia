@@ -19,7 +19,6 @@
   "block.hexalia.infused_farmland": "Infused Farmland",
   "block.hexalia.salt_ore": "Salt Ore",
   "block.hexalia.salt_block": "Salt Block",
-  "block.hexalia.salt": "Salt",
   "block.hexalia.salt_lamp": "Salt Lamp",
   "block.hexalia.small_cauldron": "Small Cauldron",
   "block.hexalia.rustic_oven": "Rustic Oven",
@@ -44,6 +43,7 @@
   "block.hexalia.grimshade": "Grimshade",
   "block.hexalia.nautilite": "Tidal Bloom",
   "block.hexalia.windsong": "Windsong",
+  "block.hexalia.ritual_brazier": "Ritual Brazier",
 
   "item.hexalia.mortar_and_pestle": "Mortar and Pestle",
   "item.hexalia.spirit_bloom_powder": "Spirit Bloom Powder",
@@ -160,6 +160,7 @@
 
   "message.hexalia.ritual.missing_ingredients": "The ritual has failed due to missing ingredients.",
   "message.hexalia.ritual.invalid_crops": "Natural energy is weak; fully grown crops are missing.",
+  "message.hexalia.ritual.missing_salt": "The ritual braziers must have to perform the ritual.",
 
   "block.hexalia.cottonwood_leaves": "Cottonwood Leaves",
   "block.hexalia.cottonwood_catkin": "Cottonwood Catkin",
