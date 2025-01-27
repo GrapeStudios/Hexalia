@@ -62,13 +62,14 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.STONE_DAGGER.get());
                         output.accept(ModItems.HEX_FOCUS.get());
 
-                        // Functional bLOCKS
+                        // Functional Blocks
                         output.accept(ModBlocks.RUSTIC_OVEN.get());
                         output.accept(ModItems.SMALL_CAULDRON.get());
                         output.accept(ModBlocks.BREW_SHELF.get());
                         output.accept(ModItems.RITUAL_TABLE.get());
                         output.accept(ModBlocks.INFUSED_DIRT.get());
                         output.accept(ModBlocks.INFUSED_FARMLAND.get());
+                        output.accept(ModBlocks.RITUAL_BRAZIER.get());
 
                         // Salt
                         output.accept(ModItems.SALT.get());

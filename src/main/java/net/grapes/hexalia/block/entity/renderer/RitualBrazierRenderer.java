@@ -2,7 +2,7 @@ package net.grapes.hexalia.block.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.grapes.hexalia.block.entity.SaltBlockEntity;
+import net.grapes.hexalia.block.entity.RitualBrazierBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -16,19 +16,16 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
 
-public class SaltBlockEntityRenderer implements BlockEntityRenderer<SaltBlockEntity> {
-
-    public SaltBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
-
-    }
+public class RitualBrazierRenderer implements BlockEntityRenderer<RitualBrazierBlockEntity> {
+    public RitualBrazierRenderer(BlockEntityRendererProvider.Context context) {}
 
     @Override
-    public void render(SaltBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
+    public void render(RitualBrazierBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
         ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
         ItemStack itemStack = pBlockEntity.getRenderStack();
 
         pPoseStack.pushPose();
-        pPoseStack.translate(0.5f, 0.25f, 0.5f);
+        pPoseStack.translate(0.5f, 0.40f, 0.5f);
         pPoseStack.scale(1f, 1f, 1f);
         pPoseStack.mulPose(Axis.YP.rotationDegrees((float)(System.currentTimeMillis() / 50 % 360)));
 

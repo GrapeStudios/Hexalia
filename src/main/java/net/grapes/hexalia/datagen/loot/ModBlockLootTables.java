@@ -63,6 +63,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.GRIMSHADE.get());
         this.dropSelf(ModBlocks.NAUTILITE.get());
         this.dropSelf(ModBlocks.WINDSONG.get());
+        this.dropSelf(ModBlocks.RITUAL_BRAZIER.get());
 
         // General Blocks
         this.dropSelf(ModBlocks.INFUSED_DIRT.get());
@@ -70,7 +71,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 this.createSingleItemTable(ModBlocks.INFUSED_DIRT.get()));
         this.add(ModBlocks.RITUAL_TABLE.get(),
                 this.createSingleItemTable(ModItems.RITUAL_TABLE.get()));
-        this.dropSelf(ModBlocks.SALT.get());
         this.dropSelf(ModBlocks.SALT_LAMP.get());
         this.dropSelf(ModBlocks.CANDLE_SKULL.get());
         this.dropSelf(ModBlocks.DREAMCATCHER.get());

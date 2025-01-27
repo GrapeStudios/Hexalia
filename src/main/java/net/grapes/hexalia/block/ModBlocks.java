@@ -113,20 +113,19 @@ public class ModBlocks {
             () -> new SaltLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE)
                     .instrument(NoteBlockInstrument.BANJO).strength(4f).requiresCorrectToolForDrops()
                     .lightLevel(state -> 12)));
-    public static final RegistryObject<Block> SALT = BLOCKS.register("salt",
-            () -> new SaltBlock(BlockBehaviour.Properties.copy(Blocks.TRIPWIRE)));
 
     // Functional Blocks
     public static final RegistryObject<Block> SMALL_CAULDRON = BLOCKS.register("small_cauldron",
             () -> new SmallCauldronBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
     public static final RegistryObject<Block> RUSTIC_OVEN = registerBlock("rustic_oven",
             () -> new RusticOvenBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK)
-                    .instrument(NoteBlockInstrument.BANJO).strength(4f).requiresCorrectToolForDrops()
                     .lightLevel(state -> 12).noOcclusion()));
     public static final RegistryObject<Block> RITUAL_TABLE = BLOCKS.register("ritual_table",
             () -> new RitualTableBlock(BlockBehaviour.Properties.copy(Blocks.STONE).noOcclusion()));
     public static final RegistryObject<Block> BREW_SHELF = registerBlock("brew_shelf",
             () -> new BrewShelfBlock(BlockBehaviour.Properties.copy(Blocks.CHISELED_BOOKSHELF).noOcclusion()));
+    public static final RegistryObject<Block> RITUAL_BRAZIER = registerBlock("ritual_brazier",
+            () -> new RitualBrazierBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).noOcclusion()));
 
     // Decorative Blocks
     public static final RegistryObject<Block> PARCHMENT = registerBlock("parchment",

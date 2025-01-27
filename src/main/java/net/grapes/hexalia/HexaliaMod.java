@@ -71,7 +71,6 @@ public class HexaliaMod
         event.enqueueWork(() -> {
             ModRegistries.registerCompostable();
 
-
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.SPIRIT_BLOOM.getId(), ModBlocks.POTTED_SPIRIT_BLOOM);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.DREAMSHROOM.getId(), ModBlocks.POTTED_DREAMSHROOM);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.HENBANE.getId(), ModBlocks.POTTED_HENBANE);

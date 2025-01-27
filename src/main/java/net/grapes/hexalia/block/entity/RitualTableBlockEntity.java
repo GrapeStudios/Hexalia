@@ -1,5 +1,6 @@
 package net.grapes.hexalia.block.entity;
 
+import net.grapes.hexalia.block.custom.RitualBrazierBlock;
 import net.grapes.hexalia.recipe.TransmutationRecipe;
 import net.grapes.hexalia.sound.ModSounds;
 import net.minecraft.core.BlockPos;
@@ -117,18 +118,22 @@ public class RitualTableBlockEntity extends BlockEntity implements WorldlyContai
     }
 
     private boolean isRitualReady(Level world, BlockPos tablePos) {
-
-        BlockPos[] saltPositions = {
+        BlockPos[] brazierPositions = {
                 tablePos.offset(-2, 0, 0),
                 tablePos.offset(2, 0, 0),
                 tablePos.offset(0, 0, -2),
                 tablePos.offset(0, 0, 2)
         };
 
-        for (BlockPos pos : saltPositions) {
-            BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (!(blockEntity instanceof SaltBlockEntity)) {
-                sendMessageToPlayer(world, tablePos, "message.hexalia.ritual.missing_ingredients");
+        for (BlockPos pos : brazierPositions) {
+            BlockState blockState = world.getBlockState(pos);
+            if (!(blockState.getBlock() instanceof RitualBrazierBlock)) {
+                sendMessageToPlayer(world, tablePos, "message.hexalia.ritual.missing_brazier");
+                return false;
+            }
+
+            if (!blockState.getValue(RitualBrazierBlock.SALTED)) {
+                sendMessageToPlayer(world, tablePos, "message.hexalia.ritual.missing_salt");
                 return false;
             }
         }
@@ -173,20 +178,31 @@ public class RitualTableBlockEntity extends BlockEntity implements WorldlyContai
         NonNullList<ItemStack> requiredSaltItems = NonNullList.create();
         requiredSaltItems.addAll(pRecipe.getSaltItems());
 
-        for (Direction direction : Direction.Plane.HORIZONTAL) {
-            BlockPos saltPos = tablePos.relative(direction, 2);
-            BlockEntity saltEntity = pLevel.getBlockEntity(saltPos);
+        BlockPos[] brazierPositions = {
+                tablePos.offset(-2, 0, 0),
+                tablePos.offset(2, 0, 0),
+                tablePos.offset(0, 0, -2),
+                tablePos.offset(0, 0, 2)
+        };
 
-            if (saltEntity instanceof SaltBlockEntity saltBlock) {
+        for (BlockPos pos : brazierPositions) {
+            BlockEntity blockEntity = pLevel.getBlockEntity(pos);
+            if (blockEntity instanceof RitualBrazierBlockEntity brazier) {
                 Iterator<ItemStack> iterator = requiredSaltItems.iterator();
                 while (iterator.hasNext()) {
                     ItemStack item = iterator.next();
-                    if (ItemStack.isSameItemSameTags(saltBlock.getItem(0), item)) {
+                    if (ItemStack.isSameItemSameTags(brazier.getItem(0), item)) {
                         iterator.remove();
                         if (consume) {
-                            saltBlock.removeStack();
-                            saltBlock.setChanged();
-                            pLevel.sendBlockUpdated(saltPos, pLevel.getBlockState(saltPos), pLevel.getBlockState(saltPos), Block.UPDATE_ALL);
+                            brazier.removeStack();
+                            brazier.setChanged();
+
+                            BlockState brazierState = pLevel.getBlockState(pos);
+                            if (brazierState.getValue(RitualBrazierBlock.SALTED)) {
+                                pLevel.setBlock(pos, brazierState.setValue(RitualBrazierBlock.SALTED, false), Block.UPDATE_ALL);
+                            }
+
+                            pLevel.sendBlockUpdated(pos, pLevel.getBlockState(pos), pLevel.getBlockState(pos), Block.UPDATE_ALL);
                         }
                         break;
                     }

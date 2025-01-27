@@ -21,7 +21,7 @@ public class ModItems {
 
     // Resources
     public static final RegistryObject<Item> SALT = ITEMS.register("salt",
-            () -> new BlockItem(ModBlocks.SALT.get(), new Item.Properties()));
+            () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RESIN = ITEMS.register("resin",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ANCIENT_SEED = ITEMS.register("ancient_seed",

@@ -1,5 +1,6 @@
 package net.grapes.hexalia.block.entity;
 
+import net.grapes.hexalia.block.custom.RitualBrazierBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -14,12 +15,12 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class SaltBlockEntity extends BlockEntity implements WorldlyContainer {
+public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyContainer {
 
     NonNullList<ItemStack> inventory = NonNullList.withSize(1, ItemStack.EMPTY);
 
-    public SaltBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntities.SALT_BE.get(), pPos, pBlockState);
+    public RitualBrazierBlockEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntities.GEMSPIRE_BE.get(), pos, state);
     }
 
     @Override
@@ -53,6 +54,10 @@ public class SaltBlockEntity extends BlockEntity implements WorldlyContainer {
             return ItemStack.EMPTY;
         }
         return this.inventory.get(slot);
+    }
+
+    public ItemStack getRenderStack() {
+        return inventory.get(0);
     }
 
     @Override
@@ -119,14 +124,6 @@ public class SaltBlockEntity extends BlockEntity implements WorldlyContainer {
             return itemStack;
         }
         return ItemStack.EMPTY;
-    }
-
-    public ItemStack getRenderStack() {
-        ItemStack stack = inventory.get(0);
-        if (stack.isEmpty()) {
-            stack = inventory.get(0);
-        }
-        return stack;
     }
 
     @Nullable
