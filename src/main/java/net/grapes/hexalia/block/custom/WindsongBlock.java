@@ -1,6 +1,5 @@
 package net.grapes.hexalia.block.custom;
 
-import net.grapes.hexalia.block.entity.TidalBloomBlockEntity;
 import net.grapes.hexalia.block.entity.WindsongBlockEntity;
 import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.sound.ModSounds;

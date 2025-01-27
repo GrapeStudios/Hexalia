@@ -29,9 +29,9 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("brew_shelf_block_entity", () ->
                     BlockEntityType.Builder.of(BrewShelfBlockEntity::new, ModBlocks.BREW_SHELF.get()).build(null));
 
-    public static final RegistryObject<BlockEntityType<TidalBloomBlockEntity>> TIDAL_BLOOM_BE =
-            BLOCK_ENTITIES.register("tidal_bloom_be", () ->
-                    BlockEntityType.Builder.of(TidalBloomBlockEntity::new, ModBlocks.TIDAL_BLOOM.get()).build(null));
+    public static final RegistryObject<BlockEntityType<NautiliteBlockEntity>> NAUTILITE_BE =
+            BLOCK_ENTITIES.register("nautilite_be", () ->
+                    BlockEntityType.Builder.of(NautiliteBlockEntity::new, ModBlocks.NAUTILITE.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<WindsongBlockEntity>> WINDSONG_BE =
             BLOCK_ENTITIES.register("windsong_be", () ->

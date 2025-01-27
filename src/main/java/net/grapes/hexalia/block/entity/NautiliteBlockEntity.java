@@ -20,13 +20,13 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
-public class TidalBloomBlockEntity extends BlockEntity {
+public class NautiliteBlockEntity extends BlockEntity {
     private int activeTicks = 0;
     private static final int DURATION = 2400;
     private static final int EFFECT_RADIUS = 16;
 
-    public TidalBloomBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntities.TIDAL_BLOOM_BE.get(), pPos, pBlockState);
+    public NautiliteBlockEntity(BlockPos pPos, BlockState pBlockState) {
+        super(ModBlockEntities.NAUTILITE_BE.get(), pPos, pBlockState);
     }
 
     public void activate() {
@@ -37,7 +37,7 @@ public class TidalBloomBlockEntity extends BlockEntity {
         return this.activeTicks > 0;
     }
 
-    public static void tick(Level pLevel, BlockPos pPos, BlockState pState, TidalBloomBlockEntity pBlockEntity) {
+    public static void tick(Level pLevel, BlockPos pPos, BlockState pState, NautiliteBlockEntity pBlockEntity) {
         if (pBlockEntity.isActive()) {
             pBlockEntity.activeTicks--;
 

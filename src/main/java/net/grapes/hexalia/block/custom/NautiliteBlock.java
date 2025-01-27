@@ -1,8 +1,6 @@
 package net.grapes.hexalia.block.custom;
 
-import net.grapes.hexalia.block.ModBlocks;
-import net.grapes.hexalia.block.entity.ModBlockEntities;
-import net.grapes.hexalia.block.entity.TidalBloomBlockEntity;
+import net.grapes.hexalia.block.entity.NautiliteBlockEntity;
 import net.grapes.hexalia.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -36,7 +34,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public class TidalBloomBlock extends BushBlock implements EntityBlock {
+public class NautiliteBlock extends BushBlock implements EntityBlock {
 
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 
@@ -49,7 +47,7 @@ public class TidalBloomBlock extends BushBlock implements EntityBlock {
         return SHAPE;
     }
 
-    public TidalBloomBlock(Properties pProperties) {
+    public NautiliteBlock(Properties pProperties) {
         super(pProperties);
         this.registerDefaultState(this.defaultBlockState().setValue(WATERLOGGED, false));
     }
@@ -64,7 +62,7 @@ public class TidalBloomBlock extends BushBlock implements EntityBlock {
         if (pPlayer.getItemInHand(pHand).getItem() == ModItems.HEX_FOCUS.get()) {
             if (!pLevel.isClientSide) {
                 BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
-                if (blockEntity instanceof TidalBloomBlockEntity tidalBloomBlockEntity && !tidalBloomBlockEntity.isActive()) {
+                if (blockEntity instanceof NautiliteBlockEntity tidalBloomBlockEntity && !tidalBloomBlockEntity.isActive()) {
                     tidalBloomBlockEntity.activate();
                     playActivationEffects((ServerLevel) pLevel, pPos);
                 }
@@ -100,15 +98,15 @@ public class TidalBloomBlock extends BushBlock implements EntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pPos, BlockState pState) {
-        return new TidalBloomBlockEntity(pPos, pState);
+        return new NautiliteBlockEntity(pPos, pState);
     }
 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
         return pLevel.isClientSide ? null : (level, pos, state, blockEntity) -> {
-            if (blockEntity instanceof TidalBloomBlockEntity tidalBloomBlockEntity) {
-                TidalBloomBlockEntity.tick(level, pos, state, tidalBloomBlockEntity);
+            if (blockEntity instanceof NautiliteBlockEntity tidalBloomBlockEntity) {
+                NautiliteBlockEntity.tick(level, pos, state, tidalBloomBlockEntity);
             }
         };
     }

@@ -61,7 +61,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 this.createSingleItemTable(Items.STRING));
         this.dropSelf(ModBlocks.MORPHORA.get());
         this.dropSelf(ModBlocks.GRIMSHADE.get());
-        this.dropSelf(ModBlocks.TIDAL_BLOOM.get());
+        this.dropSelf(ModBlocks.NAUTILITE.get());
         this.dropSelf(ModBlocks.WINDSONG.get());
 
         // General Blocks

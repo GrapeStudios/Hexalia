@@ -61,8 +61,8 @@ public class ModBlocks {
             () -> new MorphoraBlock (BlockBehaviour.Properties.copy(Blocks.AZALEA).noCollission()));
     public static final RegistryObject<Block> GRIMSHADE = registerBlock("grimshade",
             () -> new GrimshadeBlock (BlockBehaviour.Properties.copy(Blocks.AZALEA).noCollission()));
-    public static final RegistryObject<Block> TIDAL_BLOOM = registerBlock("tidal_bloom",
-            () -> new TidalBloomBlock (BlockBehaviour.Properties.copy(Blocks.AZALEA).noCollission()));
+    public static final RegistryObject<Block> NAUTILITE = registerBlock("nautilite",
+            () -> new NautiliteBlock(BlockBehaviour.Properties.copy(Blocks.AZALEA).noCollission()));
     public static final RegistryObject<Block> WINDSONG = registerBlock("windsong",
             () -> new WindsongBlock (BlockBehaviour.Properties.copy(Blocks.AZALEA).noCollission()));
 

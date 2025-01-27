@@ -42,7 +42,7 @@
   "block.hexalia.potted_cottonwood_sapling": "Potted Cottonwood Sapling",
   "block.hexalia.morphora": "Morphora",
   "block.hexalia.grimshade": "Grimshade",
-  "block.hexalia.tidal_bloom": "Tidal Bloom",
+  "block.hexalia.nautilite": "Tidal Bloom",
   "block.hexalia.windsong": "Windsong",
 
   "item.hexalia.mortar_and_pestle": "Mortar and Pestle",
@@ -117,6 +117,8 @@
   "sounds.hexalia.mandrake_scream": "Mandrake screamed",
   "sounds.hexalia.ritual_success": "Ritual completed",
   "sounds.hexalia.conversion": "Block converted",
+  "sounds.hexalia.wind_burst": "Wind bursts",
+  "sounds.hexalia.wind_deflect": "Projectile deflected",
 
   "effect.hexalia.bloodlust": "Bloodlust",
   "effect.hexalia.bloodlust.description": "Increases strength, and restores 25% of the damage dealt to your foes",

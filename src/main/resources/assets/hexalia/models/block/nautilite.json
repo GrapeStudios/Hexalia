@@ -2,6 +2,6 @@
   "parent": "minecraft:block/cross",
   "render_type": "cutout",
   "textures": {
-    "cross": "hexalia:block/tidal_bloom"
+    "cross": "hexalia:block/nautilite"
   }
 }
