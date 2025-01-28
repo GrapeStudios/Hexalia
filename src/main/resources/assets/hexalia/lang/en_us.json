@@ -41,7 +41,7 @@
   "block.hexalia.potted_cottonwood_sapling": "Potted Cottonwood Sapling",
   "block.hexalia.morphora": "Morphora",
   "block.hexalia.grimshade": "Grimshade",
-  "block.hexalia.nautilite": "Tidal Bloom",
+  "block.hexalia.nautilite": "Nautilite",
   "block.hexalia.windsong": "Windsong",
   "block.hexalia.ritual_brazier": "Ritual Brazier",
 
@@ -160,7 +160,7 @@
 
   "message.hexalia.ritual.missing_ingredients": "The ritual has failed due to missing ingredients.",
   "message.hexalia.ritual.invalid_crops": "Natural energy is weak; fully grown crops are missing.",
-  "message.hexalia.ritual.missing_salt": "The ritual braziers must have to perform the ritual.",
+  "message.hexalia.ritual.missing_salt": "The ritual braziers must have salt to perform the ritual.",
 
   "block.hexalia.cottonwood_leaves": "Cottonwood Leaves",
   "block.hexalia.cottonwood_catkin": "Cottonwood Catkin",

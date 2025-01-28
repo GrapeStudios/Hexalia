@@ -37,7 +37,6 @@ public class HexFocusItem extends Item {
             }
 
             if (VALID_BLOCKS.contains(block)) {
-                // Only trigger particles and sound for valid blocks
                 pLevel.levelEvent(BLOCK_BREAK_EVENT_ID, pPos, Block.getId(pState));
                 pLevel.playSound(null, pPos, SoundEvents.AMETHYST_BLOCK_HIT,
                         SoundSource.BLOCKS, 1.0f, 1.0f);
@@ -46,6 +45,6 @@ public class HexFocusItem extends Item {
                 return InteractionResult.SUCCESS;
             }
         }
-        return InteractionResult.PASS; // Return PASS for invalid interactions
+        return InteractionResult.PASS;
     }
 }
