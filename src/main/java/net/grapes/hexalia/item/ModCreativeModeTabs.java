@@ -39,6 +39,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.RESIN.get());
                         output.accept(ModItems.SILK_FIBER.get());
                         output.accept(ModItems.SILKWORM.get());
+                        output.accept(ModItems.MOON_CRYSTAL.get());
 
                         // Seeds
                         output.accept(ModItems.MANDRAKE_SEEDS.get());

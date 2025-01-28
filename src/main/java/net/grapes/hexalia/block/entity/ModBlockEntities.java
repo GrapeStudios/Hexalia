@@ -33,7 +33,7 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("windsong_block_entity", () ->
                     BlockEntityType.Builder.of(WindsongBlockEntity::new, ModBlocks.WINDSONG.get()).build(null));
 
-    public static final RegistryObject<BlockEntityType<RitualBrazierBlockEntity>> GEMSPIRE_BE =
+    public static final RegistryObject<BlockEntityType<RitualBrazierBlockEntity>> RITUAL_BRAZIER_BE =
             BLOCK_ENTITIES.register("ritual_brazier_block_entity", () ->
                     BlockEntityType.Builder.of(RitualBrazierBlockEntity::new, ModBlocks.RITUAL_BRAZIER.get()).build(null));
 

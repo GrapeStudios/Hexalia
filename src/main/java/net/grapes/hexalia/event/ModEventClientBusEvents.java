@@ -36,7 +36,7 @@ public class ModEventClientBusEvents {
         event.registerBlockEntityRenderer(ModBlockEntities.RITUAL_TABLE_BE.get(), RitualTableBlockEntityRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.MOD_SIGN.get(), SignRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.MOD_HANGING_SIGN.get(), HangingSignRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntities.GEMSPIRE_BE.get(), RitualBrazierRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.RITUAL_BRAZIER_BE.get(), RitualBrazierRenderer::new);
     }
 
     @SubscribeEvent

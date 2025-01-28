@@ -30,6 +30,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SILKWORM = ITEMS.register("silkworm",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MOON_CRYSTAL = ITEMS.register("moon_crystal",
+            () -> new Item(new Item.Properties()));
 
     // Crops, Plants & Seeds
     public static final RegistryObject<Item> SIREN_KELP = ITEMS.register("siren_kelp",

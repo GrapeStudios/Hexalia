@@ -1,15 +1,25 @@
 package net.grapes.hexalia.block.entity;
 
-import net.grapes.hexalia.block.custom.RitualBrazierBlock;
+import net.grapes.hexalia.item.ModItems;
+import net.grapes.hexalia.particle.ModParticles;
+import net.grapes.hexalia.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.Containers;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
@@ -17,10 +27,64 @@ import org.jetbrains.annotations.Nullable;
 
 public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyContainer {
 
-    NonNullList<ItemStack> inventory = NonNullList.withSize(1, ItemStack.EMPTY);
+    private static final int MOONLIGHT_DURATION = 200;
+    private int timer = 0;
+    private NonNullList<ItemStack> inventory = NonNullList.withSize(1, ItemStack.EMPTY);
 
     public RitualBrazierBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.GEMSPIRE_BE.get(), pos, state);
+        super(ModBlockEntities.RITUAL_BRAZIER_BE.get(), pos, state);
+    }
+
+    public static void tick(Level pLevel, BlockPos pPos, BlockState pState, RitualBrazierBlockEntity pBlockEntity) {
+        if (pLevel.isClientSide) return;
+
+        ItemStack itemStack = pBlockEntity.getItem(0);
+
+        if (itemStack.is(Items.AMETHYST_SHARD)) {
+            pBlockEntity.timer++;
+
+            if (pBlockEntity.timer >= MOONLIGHT_DURATION) {
+                if (isNight(pLevel) && isExposedToMoon(pLevel, pPos)) {
+                    pBlockEntity.setItem(0, ItemStack.EMPTY);
+                    pBlockEntity.timer = 0;
+                    pBlockEntity.setChanged();
+
+                    pLevel.sendBlockUpdated(pPos, pState, pState, Block.UPDATE_ALL);
+
+                    ItemStack moonCrystalStack = new ItemStack(ModItems.MOON_CRYSTAL.get());
+                    Containers.dropItemStack(pLevel, pPos.getX() + 0.5, pPos.getY() + 1.0, pPos.getZ() + 0.5, moonCrystalStack);
+
+                    spawnParticles(pLevel, pPos);
+                    pLevel.playSound(null, pPos, SoundEvents.AMETHYST_BLOCK_BREAK, SoundSource.BLOCKS, 1.0f, 1.0f);
+                } else {
+                    pBlockEntity.timer = 0;
+                }
+            }
+        } else {
+            pBlockEntity.timer = 0;
+        }
+    }
+
+    private static void spawnParticles(Level level, BlockPos pos) {
+        if (level instanceof ServerLevel serverLevel) {
+            double x = pos.getX() + 0.5;
+            double y = pos.getY() + 1.0;
+            double z = pos.getZ() + 0.5;
+
+            serverLevel.sendParticles(ParticleTypes.POOF, x, y, z, 10, 0.2, 0.2, 0.2, 0.02);
+        }
+    }
+
+    private static boolean isNight(Level level) {
+        long time = level.getDayTime();
+        return time > 13000 && time < 23000;
+    }
+
+    private static boolean isExposedToMoon(Level level, BlockPos pos) {
+        if (level instanceof ServerLevel serverLevel) {
+            return serverLevel.canSeeSky(pos);
+        }
+        return false;
     }
 
     @Override
@@ -95,12 +159,14 @@ public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyCont
         super.load(pTag);
         this.inventory = NonNullList.withSize(1, ItemStack.EMPTY);
         ContainerHelper.loadAllItems(pTag, inventory);
+        this.timer = pTag.getInt("Timer"); // Load the timer
     }
 
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         super.saveAdditional(pTag);
         ContainerHelper.saveAllItems(pTag, inventory);
+        pTag.putInt("Timer", timer); // Save the timer
     }
 
     @Override
@@ -131,5 +197,4 @@ public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyCont
     public ClientboundBlockEntityDataPacket getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
     }
-
 }
