@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "hexalia:ghost_fern_powder"
+        "recipe": "hexalia:spirit_powder"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "hexalia:ghost_fern_powder"
+      "hexalia:spirit_powder"
     ]
   },
   "sends_telemetry_event": false

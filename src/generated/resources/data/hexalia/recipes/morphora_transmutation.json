@@ -8,10 +8,10 @@
   },
   "salt_items": [
     {
-      "item": "hexalia:ghost_fern_powder"
+      "item": "hexalia:ghost_powder"
     },
     {
-      "item": "hexalia:dreamshroom_paste"
+      "item": "hexalia:dream_paste"
     },
     {
       "item": "minecraft:bone_meal"

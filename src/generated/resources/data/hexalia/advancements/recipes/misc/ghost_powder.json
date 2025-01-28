@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "hexalia:dreamshroom_paste"
+        "recipe": "hexalia:ghost_powder"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "hexalia:dreamshroom_paste"
+      "hexalia:ghost_powder"
     ]
   },
   "sends_telemetry_event": false

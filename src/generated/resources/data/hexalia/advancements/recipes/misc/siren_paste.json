@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "hexalia:siren_kelp_paste"
+        "recipe": "hexalia:siren_paste"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "hexalia:siren_kelp_paste"
+      "hexalia:siren_paste"
     ]
   },
   "sends_telemetry_event": false

@@ -49,8 +49,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                         Items.COOKED_SALMON);
 
         this.tag(ModTags.Items.CRUSHED_PLANTS)
-                .add(ModItems.DREAMSHROOM_PASTE.get(), ModItems.SPIRIT_BLOOM_POWDER.get(),
-                        ModItems.SIREN_KELP_PASTE.get(), ModItems.GHOST_FERN_POWDER.get());
+                .add(ModItems.DREAM_PASTE.get(), ModItems.SPIRIT_POWDER.get(),
+                        ModItems.SIREN_PASTE.get(), ModItems.GHOST_POWDER.get());
 
         this.tag(ModTags.Items.BREWS)
                 .add(ModItems.BREW_OF_SIPHON.get(), ModItems.BREW_OF_HOMESTEAD.get(),

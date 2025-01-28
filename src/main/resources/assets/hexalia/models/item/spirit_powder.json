@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "hexalia:item/ghost_fern_powder"
+    "layer0": "hexalia:item/spirit_powder"
   }
 }

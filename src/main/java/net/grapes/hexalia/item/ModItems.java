@@ -54,13 +54,13 @@ public class ModItems {
             () -> new PlaceOnWaterBlockItem(ModBlocks.DUCKWEED.get(), new Item.Properties()));
 
     // Refined Resources
-    public static final RegistryObject<Item> SIREN_KELP_PASTE = ITEMS.register("siren_kelp_paste",
+    public static final RegistryObject<Item> SIREN_PASTE = ITEMS.register("siren_paste",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> SPIRIT_BLOOM_POWDER = ITEMS.register("spirit_bloom_powder",
+    public static final RegistryObject<Item> SPIRIT_POWDER = ITEMS.register("spirit_powder",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> DREAMSHROOM_PASTE = ITEMS.register("dreamshroom_paste",
+    public static final RegistryObject<Item> DREAM_PASTE = ITEMS.register("dream_paste",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> GHOST_FERN_POWDER = ITEMS.register("ghost_fern_powder",
+    public static final RegistryObject<Item> GHOST_POWDER = ITEMS.register("ghost_powder",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> PURIFYING_SALTS = ITEMS.register("purifying_salts",
             () -> new PurifyingSaltsItem(new Item.Properties()));

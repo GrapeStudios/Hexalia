@@ -24,10 +24,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.GHOST_FERN.get());
 
                         // Crushed Plants (Powder and Paste)
-                        output.accept(ModItems.SPIRIT_BLOOM_POWDER.get());
-                        output.accept(ModItems.DREAMSHROOM_PASTE.get());
-                        output.accept(ModItems.SIREN_KELP_PASTE.get());
-                        output.accept(ModItems.GHOST_FERN_POWDER.get());
+                        output.accept(ModItems.SPIRIT_POWDER.get());
+                        output.accept(ModItems.DREAM_PASTE.get());
+                        output.accept(ModItems.SIREN_PASTE.get());
+                        output.accept(ModItems.GHOST_POWDER.get());
 
                         // Functional Plants
                         output.accept(ModBlocks.MORPHORA.get());

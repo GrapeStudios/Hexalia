@@ -8,10 +8,10 @@
   },
   "salt_items": [
     {
-      "item": "hexalia:ghost_fern_powder"
+      "item": "hexalia:ghost_powder"
     },
     {
-      "item": "hexalia:spirit_bloom_powder"
+      "item": "hexalia:spirit_powder"
     },
     {
       "item": "minecraft:string"

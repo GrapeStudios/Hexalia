@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "hexalia:spirit_bloom_powder"
+        "recipe": "hexalia:dream_paste"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "hexalia:spirit_bloom_powder"
+      "hexalia:dream_paste"
     ]
   },
   "sends_telemetry_event": false

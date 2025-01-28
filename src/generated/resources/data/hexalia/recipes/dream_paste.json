@@ -3,13 +3,13 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "hexalia:spirit_bloom"
+      "item": "hexalia:dreamshroom"
     },
     {
       "item": "hexalia:mortar_and_pestle"
     }
   ],
   "result": {
-    "item": "hexalia:spirit_bloom_powder"
+    "item": "hexalia:dream_paste"
   }
 }

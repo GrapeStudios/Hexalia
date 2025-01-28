@@ -275,28 +275,28 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         inventoryTrigger(ItemPredicate.Builder.item().of(Items.BOWL).build()))
                 .save(pWriter);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SPIRIT_BLOOM_POWDER.get())
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SPIRIT_POWDER.get())
                 .requires(ModBlocks.SPIRIT_BLOOM.get())
                 .requires(ModItems.MORTAR_AND_PESTLE.get())
                 .unlockedBy("has_mortar_and_pestle",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.MORTAR_AND_PESTLE.get()).build()))
                 .save(pWriter);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SIREN_KELP_PASTE.get())
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SIREN_PASTE.get())
                 .requires(ModItems.SIREN_KELP.get())
                 .requires(ModItems.MORTAR_AND_PESTLE.get())
                 .unlockedBy("has_mortar_and_pestle",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.MORTAR_AND_PESTLE.get()).build()))
                 .save(pWriter);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DREAMSHROOM_PASTE.get())
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DREAM_PASTE.get())
                 .requires(ModBlocks.DREAMSHROOM.get())
                 .requires(ModItems.MORTAR_AND_PESTLE.get())
                 .unlockedBy("has_mortar_and_pestle",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.MORTAR_AND_PESTLE.get()).build()))
                 .save(pWriter);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GHOST_FERN_POWDER.get())
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GHOST_POWDER.get())
                 .requires(ModBlocks.GHOST_FERN.get())
                 .requires(ModItems.MORTAR_AND_PESTLE.get())
                 .unlockedBy("has_mortar_and_pestle",
@@ -318,23 +318,23 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(pWriter, new ResourceLocation(getSimpleRecipeName(ModItems.SALT.get()) + "_"));
 
         // Recipes for Small Cauldron Brews
-        new SmallCauldronRecipeBuilder(List.of(Blocks.CACTUS, ModItems.SPIRIT_BLOOM_POWDER.get(), ModItems.DREAMSHROOM_PASTE.get()),
+        new SmallCauldronRecipeBuilder(List.of(Blocks.CACTUS, ModItems.SPIRIT_POWDER.get(), ModItems.DREAM_PASTE.get()),
                 ModItems.RUSTIC_BOTTLE.get(), ModItems.BREW_OF_SPIKESKIN.get())
                 .unlockedBy("has_rustic_bottle", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.RUSTIC_BOTTLE.get()).build()))
                 .save(pWriter);
-        new SmallCauldronRecipeBuilder(List.of(Items.SLIME_BALL, ModItems.DREAMSHROOM_PASTE.get(), ModItems.SIREN_KELP_PASTE.get()),
+        new SmallCauldronRecipeBuilder(List.of(Items.SLIME_BALL, ModItems.DREAM_PASTE.get(), ModItems.SIREN_PASTE.get()),
                 ModItems.RUSTIC_BOTTLE.get(), ModItems.BREW_OF_SLIMEWALKER.get())
                 .unlockedBy("has_rustic_bottle", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.RUSTIC_BOTTLE.get()).build()))
                 .save(pWriter);
-        new SmallCauldronRecipeBuilder(List.of(Items.SUGAR, Items.RAW_IRON, ModItems.GHOST_FERN_POWDER.get()),
+        new SmallCauldronRecipeBuilder(List.of(Items.SUGAR, Items.RAW_IRON, ModItems.GHOST_POWDER.get()),
                 ModItems.RUSTIC_BOTTLE.get(), ModItems.BREW_OF_SIPHON.get())
                 .unlockedBy("has_rustic_bottle", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.RUSTIC_BOTTLE.get()).build()))
                 .save(pWriter);
-        new SmallCauldronRecipeBuilder(List.of(Items.ENDER_PEARL, ModItems.RESIN.get(), ModItems.SPIRIT_BLOOM_POWDER.get()),
+        new SmallCauldronRecipeBuilder(List.of(Items.ENDER_PEARL, ModItems.RESIN.get(), ModItems.SPIRIT_POWDER.get()),
                 ModItems.RUSTIC_BOTTLE.get(), ModItems.BREW_OF_HOMESTEAD.get())
                 .unlockedBy("has_rustic_bottle", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.RUSTIC_BOTTLE.get()).build()))
                 .save(pWriter);
-        new SmallCauldronRecipeBuilder(List.of(Items.REDSTONE, ModItems.SIREN_KELP_PASTE.get(), ModItems.DREAMSHROOM_PASTE.get()),
+        new SmallCauldronRecipeBuilder(List.of(Items.REDSTONE, ModItems.SIREN_PASTE.get(), ModItems.DREAM_PASTE.get()),
                 ModItems.RUSTIC_BOTTLE.get(), ModItems.BREW_OF_BLOODLUST.get())
                 .unlockedBy("has_rustic_bottle", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.RUSTIC_BOTTLE.get()).build()))
                 .save(pWriter);
@@ -348,15 +348,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 Items.WHEAT_SEEDS, ModItems.RABBAGE_SEEDS.get())
                 .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEXBOOK.get()).build()))
                 .save(pWriter);
-        new TransmutationRecipeBuilder(List.of(ModItems.GHOST_FERN_POWDER.get(), ModItems.SPIRIT_BLOOM_POWDER.get(), Items.STRING, Items.EXPERIENCE_BOTTLE),
+        new TransmutationRecipeBuilder(List.of(ModItems.GHOST_POWDER.get(), ModItems.SPIRIT_POWDER.get(), Items.STRING, Items.EXPERIENCE_BOTTLE),
                 Items.DIAMOND, ModItems.WISDOM_GEM.get())
                 .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEXBOOK.get()).build()))
                 .save(pWriter);
-        new TransmutationRecipeBuilder(List.of(ModItems.GHOST_FERN_POWDER.get(), ModItems.DREAMSHROOM_PASTE.get(), Items.BONE_MEAL, Items.FLINT),
+        new TransmutationRecipeBuilder(List.of(ModItems.GHOST_POWDER.get(), ModItems.DREAM_PASTE.get(), Items.BONE_MEAL, Items.FLINT),
                 Blocks.POPPY, ModBlocks.MORPHORA.get())
                 .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEXBOOK.get()).build()))
                 .save(pWriter);
-        new TransmutationRecipeBuilder(List.of(ModItems.DREAMSHROOM_PASTE.get(), Items.BLACK_DYE, Items.COAL, Items.ROTTEN_FLESH),
+        new TransmutationRecipeBuilder(List.of(ModItems.DREAM_PASTE.get(), Items.BLACK_DYE, Items.COAL, Items.ROTTEN_FLESH),
                 Blocks.AZURE_BLUET, ModBlocks.GRIMSHADE.get())
                 .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEXBOOK.get()).build()))
                 .save(pWriter);

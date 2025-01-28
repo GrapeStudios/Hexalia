@@ -8,10 +8,10 @@
       "item": "minecraft:redstone"
     },
     {
-      "item": "hexalia:siren_kelp_paste"
+      "item": "hexalia:siren_paste"
     },
     {
-      "item": "hexalia:dreamshroom_paste"
+      "item": "hexalia:dream_paste"
     }
   ],
   "output": {
