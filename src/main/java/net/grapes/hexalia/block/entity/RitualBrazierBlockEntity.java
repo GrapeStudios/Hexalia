@@ -1,8 +1,6 @@
 package net.grapes.hexalia.block.entity;
 
 import net.grapes.hexalia.item.ModItems;
-import net.grapes.hexalia.particle.ModParticles;
-import net.grapes.hexalia.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;

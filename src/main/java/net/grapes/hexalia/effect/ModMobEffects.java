@@ -27,9 +27,11 @@ public class ModMobEffects {
     public static final RegistryObject<MobEffect> SIPHON = MOB_EFFECTS.register("siphon",
             () -> new SiphonEffect(MobEffectCategory.BENEFICIAL, 0xEAEAEA, 3.0).addAttributeModifier(Attributes.ATTACK_SPEED,
                     "f47ac10b-58cc-4372-a567-0e02b2c3d479", 0.4f, AttributeModifier.Operation.ADDITION));
-
     public static final RegistryObject<MobEffect> SLIMEWALKER = MOB_EFFECTS.register("slimewalker",
             () -> new SlimewalkerEffect(MobEffectCategory.BENEFICIAL, 0x2CFB03));
+
+    public static final RegistryObject<MobEffect> DAYBLOOM = MOB_EFFECTS.register("daybloom",
+            () -> new DaybloomEffect(MobEffectCategory.NEUTRAL, 0x8BFF8B));
 
     public static final RegistryObject<MobEffect> STUNNED = MOB_EFFECTS.register("stunned",
             () -> new StunnedEffect(MobEffectCategory.HARMFUL, 0xFFFFDD));

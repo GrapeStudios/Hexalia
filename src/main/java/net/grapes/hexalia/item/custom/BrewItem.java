@@ -1,14 +1,13 @@
-package net.grapes.hexalia.item.custom.brews;
+package net.grapes.hexalia.item.custom;
 
-import net.grapes.hexalia.effect.ModMobEffects;
 import net.grapes.hexalia.item.ModItems;
-import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -20,17 +19,21 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.function.Supplier;
 
-public class SlimewalkerBrewItem extends Item {
-    public SlimewalkerBrewItem(Properties pProperties) {
+public class BrewItem extends Item {
+
+    private final Supplier<MobEffect> effectSupplier;
+    private final int duration;
+    private final int amplifier;
+    private final Component tooltip;
+
+    public BrewItem(Properties pProperties, Supplier<MobEffect> effectSupplier, int duration, int amplifier, Component tooltip) {
         super(pProperties);
-    }
-
-    @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        pPlayer.getItemInHand(pUsedHand);
-        pPlayer.startUsingItem(pUsedHand);
-        return super.use(pLevel, pPlayer, pUsedHand);
+        this.effectSupplier = effectSupplier;
+        this.duration = duration;
+        this.amplifier = amplifier;
+        this.tooltip = tooltip;
     }
 
     @Override
@@ -43,7 +46,10 @@ public class SlimewalkerBrewItem extends Item {
         }
 
         if (!world.isClientSide) {
-            user.addEffect(new MobEffectInstance(ModMobEffects.SLIMEWALKER.get(), 2400));
+            MobEffect effect = effectSupplier.get();
+            if (effect != null) {
+                user.addEffect(new MobEffectInstance(effect, duration, amplifier));
+            }
         }
 
         if (stack.isEmpty()) {
@@ -62,18 +68,24 @@ public class SlimewalkerBrewItem extends Item {
     }
 
     @Override
+    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
+        pPlayer.getItemInHand(pUsedHand);
+        pPlayer.startUsingItem(pUsedHand);
+        return super.use(pLevel, pPlayer, pUsedHand);
+    }
+
+    @Override
+    public int getUseDuration(ItemStack pStack) {
+        return 32;
+    }
+
+    @Override
     public UseAnim getUseAnimation(ItemStack pStack) {
         return UseAnim.DRINK;
     }
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(Component.translatable("tooltip.hexalia.slimewalker_brew").withStyle(ChatFormatting.BLUE));
-        pTooltipComponents.add(Component.translatable("tooltip.hexalia.slimewalker_brew_2").withStyle(ChatFormatting.GRAY));
-    }
-
-    @Override
-    public int getUseDuration(ItemStack pStack) {
-        return 32;
+        pTooltipComponents.add(tooltip); // Add the supplied tooltip
     }
 }

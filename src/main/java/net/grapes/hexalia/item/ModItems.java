@@ -2,11 +2,13 @@ package net.grapes.hexalia.item;
 
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.effect.ModMobEffects;
 import net.grapes.hexalia.entity.ModEntities;
 import net.grapes.hexalia.entity.custom.ModBoatEntity;
 import net.grapes.hexalia.item.custom.*;
-import net.grapes.hexalia.item.custom.brews.*;
 import net.grapes.hexalia.util.ModToolTiers;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -77,15 +79,22 @@ public class ModItems {
     public static final RegistryObject<Item> RUSTIC_BOTTLE = ITEMS.register("rustic_bottle",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BREW_OF_SPIKESKIN = ITEMS.register("brew_of_spikeskin",
-            () -> new SpikeskinBrewItem(new Item.Properties().stacksTo(16)));
+            () -> new BrewItem(new Item.Properties().stacksTo(16), ModMobEffects.SPIKESKIN, 2400, 0,
+                    Component.translatable("tooltip.hexalia.spikeskin_brew").withStyle(ChatFormatting.BLUE)));
     public static final RegistryObject<Item> BREW_OF_BLOODLUST = ITEMS.register("brew_of_bloodlust",
-            () -> new BoodlustBrewItem(new Item.Properties().stacksTo(16)));
+            () -> new BrewItem(new Item.Properties().stacksTo(16), ModMobEffects.BLOODLUST, 2400, 0,
+                    Component.translatable("tooltip.hexalia.bloodlust_brew").withStyle(ChatFormatting.BLUE)));
     public static final RegistryObject<Item> BREW_OF_SLIMEWALKER = ITEMS.register("brew_of_slimewalker",
-            () -> new SlimewalkerBrewItem(new Item.Properties().stacksTo(16)));
+            () -> new BrewItem(new Item.Properties().stacksTo(16), ModMobEffects.SLIMEWALKER, 2400, 0,
+                    Component.translatable("tooltip.hexalia.slimewalker_brew").withStyle(ChatFormatting.BLUE)));
     public static final RegistryObject<Item> BREW_OF_HOMESTEAD = ITEMS.register("brew_of_homestead",
             () -> new HomesteadBrewItem(new Item.Properties().stacksTo(16)));
     public static final RegistryObject<Item> BREW_OF_SIPHON = ITEMS.register("brew_of_siphon",
-            () -> new SiphonBrewItem(new Item.Properties().stacksTo(16)));
+            () -> new BrewItem(new Item.Properties().stacksTo(16), ModMobEffects.SIPHON, 2400, 0,
+                    Component.translatable("tooltip.hexalia.siphon_brew").withStyle(ChatFormatting.BLUE)));
+    public static final RegistryObject<Item> BREW_OF_DAYBLOOM = ITEMS.register("brew_of_daybloom",
+            () -> new BrewItem(new Item.Properties().stacksTo(16), ModMobEffects.DAYBLOOM, 2400, 0,
+                    Component.translatable("tooltip.hexalia.daybloom").withStyle(ChatFormatting.BLUE)));
 
     // Tools & Others
     public static final RegistryObject<Item> MORTAR_AND_PESTLE = ITEMS.register("mortar_and_pestle",

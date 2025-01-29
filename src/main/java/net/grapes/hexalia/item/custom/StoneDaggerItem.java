@@ -21,10 +21,10 @@ import java.util.Map;
 import java.util.Set;
 
 public class StoneDaggerItem extends Item {
-    private static final Set<Block> STRIPPABLE_LOGS = Set.of(Blocks.DARK_OAK_LOG, Blocks.ACACIA_LOG);
+    private static final Set<Block> STRIPPABLE_LOGS = Set.of(Blocks.DARK_OAK_LOG, ModBlocks.COTTONWOOD_LOG.get());
     private static final Map<Block, Block> STRIPPED_BLOCKS = Map.of(
             Blocks.DARK_OAK_LOG, Blocks.STRIPPED_DARK_OAK_LOG,
-            Blocks.ACACIA_LOG, Blocks.STRIPPED_ACACIA_LOG
+            ModBlocks.STRIPPED_COTTONWOOD_LOG.get(), Blocks.STRIPPED_ACACIA_LOG
     );
 
     public StoneDaggerItem(Properties pProperties) {

@@ -1,4 +1,4 @@
-package net.grapes.hexalia.item.custom.brews;
+package net.grapes.hexalia.item.custom;
 
 import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.util.TeleportUtil;

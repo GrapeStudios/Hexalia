@@ -41,7 +41,6 @@ public class KelpweaveBlade extends SwordItem {
         return player.isInWaterOrRain();
     }
 
-
     private void attemptRepair(ItemStack pStack, Level pLevel) {
         if (pLevel.random.nextFloat() < REPAIR_CHANCE) {
             pStack.setDamageValue(pStack.getDamageValue() - 1);

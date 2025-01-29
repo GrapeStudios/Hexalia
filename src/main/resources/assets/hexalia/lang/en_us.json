@@ -79,6 +79,7 @@
   "item.hexalia.brew_of_spikeskin": "Brew Of Spikeskin",
   "item.hexalia.brew_of_homestead": "Brew Of Homestead",
   "item.hexalia.brew_of_siphon": "Brew Of Siphon",
+  "item.hexalia.brew_of_daybloom": "Brew Of Daybloom",
   "item.hexalia.small_cauldron": "Small Cauldron",
   "item.hexalia.ritual_table": "Ritual Table",
   "item.hexalia.hex_focus": "Hex Focus",
@@ -102,9 +103,9 @@
   "tooltip.hexalia.homestead_brew": "Teleports to your spawn",
   "tooltip.hexalia.siphon_brew": "Siphon (2:00)",
   "tooltip.hexalia.slimewalker_brew": "Slimewalker (2:00)",
-  "tooltip.hexalia.slimewalker_brew_2": "Holding SHIFT makes you bounce like a Slime.",
   "tooltip.hexalia.bloodlust_brew": "Bloodlust (2:00)",
   "tooltip.hexalia.spikeskin_brew": "Spikeskin (2:00)",
+  "tooltip.hexalia.daybloom": "Daybloom (2:00)",
   "tooltip.hexalia.hold_shift": "Hold SHIFT for more information",
   "tooltip.hexalia.bogged_armor": "Full Set Bonus:",
   "tooltip.hexalia.bogged_armor_2": "Poison Immunity and Water Breathing",
@@ -134,6 +135,8 @@
   "effect.hexalia.siphon.description": "Increases mining speed and the user attracts items in the ground from a 5 block distance",
   "effect.hexalia.bleeding": "Bleeding",
   "effect.hexalia.bleeding.description": "Deals damage each tick similar to the Poison effect.",
+  "effect.hexalia.daybloom": "Daybloom",
+  "effect.hexalia.daybloom.description": "During the day the player is healed and has increased speed, but darkness hurts the player.",
 
   "entity.hexalia.silk_moth_entity": "Silk Moth",
 

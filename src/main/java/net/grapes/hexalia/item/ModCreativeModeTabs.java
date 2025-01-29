@@ -84,6 +84,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BREW_OF_SLIMEWALKER.get());
                         output.accept(ModItems.BREW_OF_HOMESTEAD.get());
                         output.accept(ModItems.BREW_OF_SIPHON.get());
+                        output.accept(ModItems.BREW_OF_DAYBLOOM.get());
 
                         // Decorative Plants
                         output.accept(ModBlocks.HENBANE.get());
