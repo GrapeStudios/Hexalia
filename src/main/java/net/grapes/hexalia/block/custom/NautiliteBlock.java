@@ -29,23 +29,11 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public class NautiliteBlock extends BushBlock implements EntityBlock {
+public class NautiliteBlock extends MagicalFlowerBlock implements EntityBlock {
 
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
-
-    public static final VoxelShape SHAPE = Shapes.or(
-            Shapes.box(0.125, 0, 0.0625, 0.9375, 0.4375, 0.9375)
-    );
-
-    @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return SHAPE;
-    }
 
     public NautiliteBlock(Properties pProperties) {
         super(pProperties);

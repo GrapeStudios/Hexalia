@@ -53,7 +53,7 @@ public class WindsongBlockEntity extends BlockEntity {
 
             if (this.activeTicks <= 0) {
                 pLevel.playSound(null, pPos, ModSounds.WIND_BURST.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
-                pLevel.destroyBlock(pPos, false); // Break the block without dropping items
+                pLevel.destroyBlock(pPos, false);
             }
         }
     }

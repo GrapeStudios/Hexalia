@@ -9,6 +9,7 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -56,6 +57,14 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         this.tag(BlockTags.SWORD_EFFICIENT)
                 .add(ModBlocks.LOTUS_FLOWER.get());
+
+        this.tag(BlockTags.CROPS)
+                .add(ModBlocks.SUNFIRE_TOMATO_CROP.get(),
+                        ModBlocks.MANDRAKE_CROP.get(), ModBlocks.RABBAGE_CROP.get(),
+                        ModBlocks.SALTSPROUT.get(), ModBlocks.CHILLBERRY_BUSH.get());
+
+        this.tag(BlockTags.SAPLINGS)
+                .add(ModBlocks.WILLOW_SAPLING.get(), ModBlocks.COTTONWOOD_SAPLING.get());
 
         // Custom Tags
         this.tag(ModTags.Blocks.HEATING_BLOCKS)

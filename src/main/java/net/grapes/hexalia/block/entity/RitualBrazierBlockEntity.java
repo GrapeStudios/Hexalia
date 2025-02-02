@@ -157,14 +157,14 @@ public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyCont
         super.load(pTag);
         this.inventory = NonNullList.withSize(1, ItemStack.EMPTY);
         ContainerHelper.loadAllItems(pTag, inventory);
-        this.timer = pTag.getInt("Timer"); // Load the timer
+        this.timer = pTag.getInt("Timer");
     }
 
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         super.saveAdditional(pTag);
         ContainerHelper.saveAllItems(pTag, inventory);
-        pTag.putInt("Timer", timer); // Save the timer
+        pTag.putInt("Timer", timer);
     }
 
     @Override

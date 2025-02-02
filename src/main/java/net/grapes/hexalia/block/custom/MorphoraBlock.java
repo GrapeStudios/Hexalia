@@ -9,20 +9,14 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class MorphoraBlock extends BushBlock {
-
-    public static final VoxelShape SHAPE = Shapes.or(
-            Shapes.box(0.125, 0, 0.0625, 0.9375, 0.4375, 0.9375)
-    );
+public class MorphoraBlock extends MagicalFlowerBlock {
 
     private static final Map<Block, Block> CONVERSION_MAP = new HashMap<>();
 
@@ -37,11 +31,6 @@ public class MorphoraBlock extends BushBlock {
         CONVERSION_MAP.put(Blocks.ANDESITE, Blocks.DIORITE);
         CONVERSION_MAP.put(Blocks.ICE, Blocks.BLUE_ICE);
         CONVERSION_MAP.put(Blocks.BLACKSTONE, Blocks.CALCITE);
-    }
-
-    @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return SHAPE;
     }
 
     public MorphoraBlock(Properties pProperties) {

@@ -20,27 +20,15 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public class WindsongBlock extends BushBlock implements EntityBlock {
+public class WindsongBlock extends MagicalFlowerBlock implements EntityBlock {
 
     public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
-
-    public static final VoxelShape SHAPE = Shapes.or(
-            Shapes.box(0.125, 0, 0.0625, 0.9375, 0.4375, 0.9375)
-    );
 
     public WindsongBlock(Properties pProperties) {
         super(pProperties);
         this.registerDefaultState(this.defaultBlockState().setValue(ACTIVE, false));
-    }
-
-    @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return SHAPE;
     }
 
     @Override

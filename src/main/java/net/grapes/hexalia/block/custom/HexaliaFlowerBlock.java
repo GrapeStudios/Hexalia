@@ -21,8 +21,8 @@ import net.minecraft.world.phys.BlockHitResult;
 
 import java.util.function.Supplier;
 
-public class HPlantBlock extends FlowerBlock {
-    public HPlantBlock(Supplier<MobEffect> effectSupplier, int pEffectDuration, Properties pProperties) {
+public class HexaliaFlowerBlock extends FlowerBlock {
+    public HexaliaFlowerBlock(Supplier<MobEffect> effectSupplier, int pEffectDuration, Properties pProperties) {
         super(effectSupplier, pEffectDuration, pProperties);
     }
 

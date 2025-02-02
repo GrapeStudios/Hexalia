@@ -13,29 +13,37 @@ public class ModBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
             DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, HexaliaMod.MOD_ID);
 
+    // Custom Block Entities
+
     public static final RegistryObject<BlockEntityType<SmallCauldronBlockEntity>> SMALL_CAULDRON_BE =
-            BLOCK_ENTITIES.register("small_cauldron_block_entity", () ->
-                    BlockEntityType.Builder.of(SmallCauldronBlockEntity::new, ModBlocks.SMALL_CAULDRON.get()).build(null));
+            BLOCK_ENTITIES.register("small_cauldron_block_entity", () -> BlockEntityType.Builder.of(SmallCauldronBlockEntity::new,
+                    ModBlocks.SMALL_CAULDRON.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<RitualTableBlockEntity>> RITUAL_TABLE_BE =
-            BLOCK_ENTITIES.register("ritual_table_block_entity", () ->
-                    BlockEntityType.Builder.of(RitualTableBlockEntity::new, ModBlocks.RITUAL_TABLE.get()).build(null));
+            BLOCK_ENTITIES.register("ritual_table_block_entity", () -> BlockEntityType.Builder.of(RitualTableBlockEntity::new,
+                    ModBlocks.RITUAL_TABLE.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<BrewShelfBlockEntity>> BREW_SHELF_BLOCK_BE =
-            BLOCK_ENTITIES.register("brew_shelf_block_entity", () ->
-                    BlockEntityType.Builder.of(BrewShelfBlockEntity::new, ModBlocks.BREW_SHELF.get()).build(null));
+            BLOCK_ENTITIES.register("brew_shelf_block_entity", () -> BlockEntityType.Builder.of(BrewShelfBlockEntity::new,
+                    ModBlocks.BREW_SHELF.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<NautiliteBlockEntity>> NAUTILITE_BE =
-            BLOCK_ENTITIES.register("nautilite_block_entity", () ->
-                    BlockEntityType.Builder.of(NautiliteBlockEntity::new, ModBlocks.NAUTILITE.get()).build(null));
+            BLOCK_ENTITIES.register("nautilite_block_entity", () -> BlockEntityType.Builder.of(NautiliteBlockEntity::new,
+                    ModBlocks.NAUTILITE.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<WindsongBlockEntity>> WINDSONG_BE =
-            BLOCK_ENTITIES.register("windsong_block_entity", () ->
-                    BlockEntityType.Builder.of(WindsongBlockEntity::new, ModBlocks.WINDSONG.get()).build(null));
+            BLOCK_ENTITIES.register("windsong_block_entity", () -> BlockEntityType.Builder.of(WindsongBlockEntity::new,
+                    ModBlocks.WINDSONG.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<LunarLilyBlockEntity>> LUNAR_LILY_BE =
+            BLOCK_ENTITIES.register("lunar_lily_block_entity", () -> BlockEntityType.Builder.of(LunarLilyBlockEntity::new,
+                    ModBlocks.LUNAR_LILY.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<RitualBrazierBlockEntity>> RITUAL_BRAZIER_BE =
-            BLOCK_ENTITIES.register("ritual_brazier_block_entity", () ->
-                    BlockEntityType.Builder.of(RitualBrazierBlockEntity::new, ModBlocks.RITUAL_BRAZIER.get()).build(null));
+            BLOCK_ENTITIES.register("ritual_brazier_block_entity", () -> BlockEntityType.Builder.of(RitualBrazierBlockEntity::new,
+                    ModBlocks.RITUAL_BRAZIER.get()).build(null));
+
+    // Mod Signs
 
     public static final RegistryObject<BlockEntityType<ModSignBlockEntity>> MOD_SIGN =
             BLOCK_ENTITIES.register("mod_sign", () ->

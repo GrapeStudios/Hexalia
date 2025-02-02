@@ -46,7 +46,7 @@ public class ModBlocks {
 
     // Functional Plants
     public static final RegistryObject<Block> SPIRIT_BLOOM = registerBlock("spirit_bloom",
-            () -> new HPlantBlock(() -> MobEffects.POISON, 6, BlockBehaviour.Properties.copy(Blocks.ALLIUM)));
+            () -> new HexaliaFlowerBlock(() -> MobEffects.POISON, 6, BlockBehaviour.Properties.copy(Blocks.ALLIUM)));
     public static final RegistryObject<Block> POTTED_SPIRIT_BLOOM = BLOCKS.register("potted_spirit_bloom",
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), SPIRIT_BLOOM, BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM)));
     public static final RegistryObject<Block> DREAMSHROOM = registerBlock("dreamshroom",
@@ -65,6 +65,8 @@ public class ModBlocks {
             () -> new NautiliteBlock(BlockBehaviour.Properties.copy(Blocks.AZALEA).noCollission()));
     public static final RegistryObject<Block> WINDSONG = registerBlock("windsong",
             () -> new WindsongBlock (BlockBehaviour.Properties.copy(Blocks.AZALEA).noCollission()));
+    public static final RegistryObject<Block> LUNAR_LILY = registerBlock("lunar_lily",
+            () -> new LunarLilyBlock(BlockBehaviour.Properties.copy(Blocks.AZALEA).noCollission()));
 
     // Decorative Plants
     public static final RegistryObject<Block> HENBANE = registerBlock("henbane",
@@ -74,7 +76,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> LOTUS_FLOWER = BLOCKS.register("lotus_flower",
             () -> new WaterPlantBlock(BlockBehaviour.Properties.copy(Blocks.LILY_PAD).lightLevel(state -> 6)));
     public static final RegistryObject<Block> PALE_MUSHROOM = registerBlock("pale_mushroom",
-            () -> new HMushroomBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_MUSHROOM).lightLevel(state -> 4)));
+            () -> new HexaliaMushroomBlock(BlockBehaviour.Properties.copy(Blocks.BROWN_MUSHROOM).lightLevel(state -> 4)));
     public static final RegistryObject<Block> POTTED_PALE_MUSHROOM = BLOCKS.register("potted_pale_mushroom",
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), PALE_MUSHROOM, BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM)));
     public static final RegistryObject<Block> WITCHWEED = registerBlock("witchweed",
@@ -129,7 +131,7 @@ public class ModBlocks {
 
     // Decorative Blocks
     public static final RegistryObject<Block> PARCHMENT = registerBlock("parchment",
-            () -> new HWallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD)
+            () -> new HexaliaWallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD)
                     .instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0f)));
     public static final RegistryObject<Block> DREAMCATCHER = registerBlock("dreamcatcher",
             () -> new DreamcatcherBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD)

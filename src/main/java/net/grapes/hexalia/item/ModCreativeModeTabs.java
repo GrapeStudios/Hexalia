@@ -34,6 +34,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.GRIMSHADE.get());
                         output.accept(ModBlocks.NAUTILITE.get());
                         output.accept(ModBlocks.WINDSONG.get());
+                        output.accept(ModBlocks.LUNAR_LILY.get());
 
                         // Other Resources
                         output.accept(ModItems.RESIN.get());

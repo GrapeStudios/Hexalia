@@ -22,26 +22,13 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.SkullBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
-import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.IPlantable;
 
-public class GrimshadeBlock extends BushBlock {
-
-    public static final VoxelShape SHAPE = Shapes.or(
-            Shapes.box(0.125, 0, 0.0625, 0.9375, 0.4375, 0.9375)
-    );
-
-    @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return SHAPE;
-    }
+public class GrimshadeBlock extends MagicalFlowerBlock {
 
     public GrimshadeBlock(Properties pProperties) {
         super(pProperties);
@@ -53,7 +40,7 @@ public class GrimshadeBlock extends BushBlock {
             if (!pLevel.isClientSide) {
                 spawnActivationEffects(pLevel, pPos);
                 transformSkulls((ServerLevel) pLevel, pPos);
-                transformSkeletons((ServerLevel) pLevel, pPos); // Call directly instead of scheduling
+                transformSkeletons((ServerLevel) pLevel, pPos);
             }
             return InteractionResult.SUCCESS;
         }

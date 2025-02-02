@@ -14,7 +14,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.function.Supplier;
 
-public class GhostFernBlock extends HPlantBlock {
+public class GhostFernBlock extends HexaliaFlowerBlock {
 
     public static final VoxelShape SHAPE = Shapes.or(
             Shapes.box(0.125, 0, 0.0625, 0.9375, 0.4375, 0.9375)

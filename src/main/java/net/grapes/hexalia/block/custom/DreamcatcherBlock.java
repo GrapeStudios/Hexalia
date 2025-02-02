@@ -10,7 +10,7 @@ import net.minecraft.world.phys.AABB;
 
 import java.util.List;
 
-public class DreamcatcherBlock extends HWallBlock {
+public class DreamcatcherBlock extends HexaliaWallBlock {
 
     private static final int CHECK_RADIUS = 16;
 

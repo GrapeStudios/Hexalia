@@ -64,6 +64,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.NAUTILITE.get());
         this.dropSelf(ModBlocks.WINDSONG.get());
         this.dropSelf(ModBlocks.RITUAL_BRAZIER.get());
+        this.dropSelf(ModBlocks.LUNAR_LILY.get());
 
         // General Blocks
         this.dropSelf(ModBlocks.INFUSED_DIRT.get());

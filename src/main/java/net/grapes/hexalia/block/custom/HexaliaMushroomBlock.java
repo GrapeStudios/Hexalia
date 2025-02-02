@@ -1,6 +1,5 @@
 package net.grapes.hexalia.block.custom;
 
-import net.grapes.hexalia.block.ModBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BushBlock;
@@ -14,10 +13,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.item.context.BlockPlaceContext;
 
-public class HMushroomBlock extends BushBlock {
+public class HexaliaMushroomBlock extends BushBlock {
     public static final VoxelShape SHAPE = Block.box(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
 
-    public HMushroomBlock(BlockBehaviour.Properties properties) {
+    public HexaliaMushroomBlock(BlockBehaviour.Properties properties) {
         super(properties);
     }
 
