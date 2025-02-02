@@ -19,7 +19,7 @@ public class DaybloomEffect extends MobEffect {
         if (entity instanceof Player player) {
             Level level = player.level();
 
-            if (isInDarkArea(player, level)) {
+            if (isNight(level)) {
                 player.hurt(player.damageSources().magic(), 1.0F);
             }
             if (isDay(level)) {
@@ -33,11 +33,11 @@ public class DaybloomEffect extends MobEffect {
 
     private boolean isDay(Level level) {
         long time = level.getDayTime();
-        return time >= 0 && time < 13000; // Daytime is from 0 to 13000 ticks
+        return time >= 0 && time < 13000;
     }
 
-    private boolean isInDarkArea(Player player, Level level) {
-        return level.getMaxLocalRawBrightness(player.blockPosition()) < 8;
+    private boolean isNight(Level level) {
+        return level.getMoonBrightness() > 0.25;
     }
 
     private void increaseSpeed(Player player, int amplifier) {

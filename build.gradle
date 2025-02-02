@@ -69,7 +69,6 @@ repositories {
     maven {
         url "https://repo.spongepowered.org/repository/maven-public/"
     }
-    maven { url 'https://maven.blamejared.com' }
 
     maven {
         // location of the maven that hosts JEI files since January 2023
@@ -94,9 +93,6 @@ dependencies {
 
     implementation fg.deobf("com.github.glitchfiend:TerraBlender-forge:${minecraft_version}-${terrablender_version}")
 
-    compileOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}:api")
-    runtimeOnly fg.deobf("vazkii.patchouli:Patchouli:${patchouli_version}")
-
     // compile against the JEI API but do not include it at runtime
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
@@ -117,7 +113,6 @@ tasks.named('processResources', ProcessResources).configure {
             mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
             mod_authors: mod_authors, mod_description: mod_description,
             terrablender_version_range: terrablender_version_range,
-            patchouli_version_range: patchouli_version_range,
             geckolib_version_range: geckolib_version_range,
     ]
     inputs.properties replaceProperties

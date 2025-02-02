@@ -160,8 +160,6 @@ public class ModItems {
             () -> new ModBoatItem(true, ModBoatEntity.Type.WILLOW, new Item.Properties()));
 
     // Addon/Compat Items
-    public static final RegistryObject<Item> HEXBOOK = ITEMS.register("hexbook",
-            () -> new HexbookItem(new Item.Properties().stacksTo(1)));
 
     public static RegistryObject<Item> WITCH_SALAD;
     static {

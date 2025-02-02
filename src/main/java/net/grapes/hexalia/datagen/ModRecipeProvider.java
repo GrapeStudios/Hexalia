@@ -260,13 +260,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SILKWORM.get()).build()))
                 .save(pWriter);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.HEXBOOK.get(), 1)
-                .requires(ModTags.Items.CRUSHED_PLANTS)
-                .requires(Items.BOOK)
-                .unlockedBy("has_book",
-                        inventoryTrigger(ItemPredicate.Builder.item().of(Items.BOOK).build()))
-                .save(pWriter);
-
         // Shapeless Recipes for Mortar & Pestle and Refined Resources
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MORTAR_AND_PESTLE.get())
                 .requires(Items.BOWL)
@@ -342,23 +335,23 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         // Recipes for Transmutation Items
         new TransmutationRecipeBuilder(List.of(ModItems.RESIN.get(), ModItems.SIREN_KELP.get(), Items.WOODEN_SWORD, Items.STRING),
                 ModItems.ANCIENT_SEED.get(), ModItems.KELPWEAVE_BLADE.get())
-                .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEXBOOK.get()).build()))
+                .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEX_FOCUS.get()).build()))
                 .save(pWriter);
         new TransmutationRecipeBuilder(List.of(ModItems.RESIN.get(), ModBlocks.SPIRIT_BLOOM.get(), Items.WOODEN_SWORD, Items.SNOWBALL),
                 Items.WHEAT_SEEDS, ModItems.RABBAGE_SEEDS.get())
-                .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEXBOOK.get()).build()))
+                .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEX_FOCUS.get()).build()))
                 .save(pWriter);
         new TransmutationRecipeBuilder(List.of(ModItems.GHOST_POWDER.get(), ModItems.SPIRIT_POWDER.get(), Items.STRING, Items.EXPERIENCE_BOTTLE),
                 Items.DIAMOND, ModItems.WISDOM_GEM.get())
-                .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEXBOOK.get()).build()))
+                .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEX_FOCUS.get()).build()))
                 .save(pWriter);
         new TransmutationRecipeBuilder(List.of(ModItems.GHOST_POWDER.get(), ModItems.DREAM_PASTE.get(), Items.BONE_MEAL, Items.FLINT),
                 Blocks.POPPY, ModBlocks.MORPHORA.get())
-                .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEXBOOK.get()).build()))
+                .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEX_FOCUS.get()).build()))
                 .save(pWriter);
         new TransmutationRecipeBuilder(List.of(ModItems.DREAM_PASTE.get(), Items.BLACK_DYE, Items.COAL, Items.ROTTEN_FLESH),
                 Blocks.AZURE_BLUET, ModBlocks.GRIMSHADE.get())
-                .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEXBOOK.get()).build()))
+                .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEX_FOCUS.get()).build()))
                 .save(pWriter);
 
         // Recipes for Wood-related Blocks
