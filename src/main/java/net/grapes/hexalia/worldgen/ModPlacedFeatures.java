@@ -57,7 +57,7 @@ public class ModPlacedFeatures {
                         BiomeFilter.biome()));
 
         register(context, CHILLBERRY_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.CHILLBERRY_KEY),
-                List.of(RarityFilter.onAverageOnceEvery(16), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,
+                List.of(RarityFilter.onAverageOnceEvery(8), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,
                         BiomeFilter.biome()));
 
         register(context, WILD_SUNFIRE_TOMATO_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.WILD_SUNFIRE_TOMATO_KEY),
@@ -82,7 +82,7 @@ public class ModPlacedFeatures {
                         BiomeFilter.biome()));
 
         register(context, LAVENDER_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.LAVENDER_KEY),
-                List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,
+                List.of(RarityFilter.onAverageOnceEvery(10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,
                         BiomeFilter.biome()));
 
         register(context, LOTUS_FLOWER_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.LOTUS_FLOWER_KEY),

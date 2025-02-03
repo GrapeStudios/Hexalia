@@ -82,7 +82,7 @@ public class ModConfiguredFeatures {
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.SIREN_KELP.get())))));
 
         register(context, CHILLBERRY_KEY, Feature.RANDOM_PATCH,
-                new RandomPatchConfiguration(15, 8, 4, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                new RandomPatchConfiguration(30, 8, 4, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.CHILLBERRY_BUSH.get().defaultBlockState()
                                 .setValue(SweetBerryBushBlock.AGE, 3))))));
 
@@ -108,7 +108,7 @@ public class ModConfiguredFeatures {
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.BEGONIA.get())))));
 
         register(context, LAVENDER_KEY, Feature.FLOWER,
-                new RandomPatchConfiguration(3, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                new RandomPatchConfiguration(15, 7, 5, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.LAVENDER.get())))));
 
         register(context, LOTUS_FLOWER_KEY, Feature.RANDOM_PATCH,
