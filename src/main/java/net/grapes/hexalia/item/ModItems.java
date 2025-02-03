@@ -131,6 +131,8 @@ public class ModItems {
             () -> new WeatherIdol(new Item.Properties()));
     public static final RegistryObject<Item> RAIN_IDOL = ITEMS.register("rain_idol",
             () -> new WeatherIdol(new Item.Properties()));
+    public static final RegistryObject<Item> THUNDER_IDOL = ITEMS.register("thunder_idol",
+            () -> new WeatherIdol(new Item.Properties()));
 
     // Entity
     public static final RegistryObject<Item> BOTTLED_MOTH = ITEMS.register("bottled_moth",

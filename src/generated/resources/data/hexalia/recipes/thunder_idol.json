@@ -9,13 +9,16 @@
       "item": "minecraft:string"
     },
     {
-      "item": "hexalia:moon_crystal"
+      "item": "hexalia:air_node"
+    },
+    {
+      "item": "hexalia:water_node"
     },
     {
       "item": "hexalia:fire_node"
     }
   ],
   "result": {
-    "item": "hexalia:clear_idol"
+    "item": "hexalia:thunder_idol"
   }
 }

@@ -36,6 +36,9 @@ public class WeatherIdol extends Item {
                 } else if (stack.getItem() == ModItems.CLEAR_IDOL.get()) {
                     serverLevel.setWeatherParameters(6000, 0, false, false);
                     player.displayClientMessage(Component.translatable("message.hexalia.clear_idol"), true);
+                } else if (stack.getItem() == ModItems.THUNDER_IDOL.get()) {
+                    serverLevel.setWeatherParameters(0, 6000, true, true);
+                    player.displayClientMessage(Component.translatable("message.hexalia.thunder_idol"), true);
                 }
             }
             if (!player.isCreative()) {

@@ -292,7 +292,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(ModItems.SILK_IDOL.get())
                 .requires(Items.STRING)
                 .requires(ModItems.MOON_CRYSTAL.get())
+                .requires(ModItems.FIRE_NODE.get())
+                .unlockedBy("has_silk_idol",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SILK_IDOL.get()).build()))
+                .save(pWriter);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.THUNDER_IDOL.get(), 1)
+                .requires(ModItems.SILK_IDOL.get())
+                .requires(Items.STRING)
                 .requires(ModItems.AIR_NODE.get())
+                .requires(ModItems.WATER_NODE.get())
+                .requires(ModItems.FIRE_NODE.get())
                 .unlockedBy("has_silk_idol",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SILK_IDOL.get()).build()))
                 .save(pWriter);

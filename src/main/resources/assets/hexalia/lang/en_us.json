@@ -103,6 +103,7 @@
   "item.hexalia.silk_idol": "Silk Idol",
   "item.hexalia.clear_idol": "Clear Idol",
   "item.hexalia.rain_idol": "Rain Idol",
+  "item.hexalia.thunder_idol": "Thunder Idol",
 
   "biome.hexalia.enchanted_bayou": "Enchanted Bayou",
 
@@ -188,6 +189,7 @@
   "message.hexalia.ritual.missing_salt": "The ritual braziers must have salt to perform the ritual.",
   "message.hexalia.rain_idol": "The skies darken as rain begins to fall...",
   "message.hexalia.clear_idol": "The clouds part, revealing a clear sky...",
+  "message.hexalia.thunder_idol": "The skies roars as thunders begin to clash...",
 
   "block.hexalia.cottonwood_leaves": "Cottonwood Leaves",
   "block.hexalia.cottonwood_catkin": "Cottonwood Catkin",

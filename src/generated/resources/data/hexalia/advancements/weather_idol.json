@@ -11,6 +11,16 @@
       },
       "trigger": "minecraft:consume_item"
     },
+    "use_thunder_idol": {
+      "conditions": {
+        "item": {
+          "items": [
+            "hexalia:thunder_idol"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
     "use_weather_idol": {
       "conditions": {
         "item": {
@@ -31,7 +41,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "hexalia:rain_idol"
+      "item": "hexalia:thunder_idol"
     },
     "show_toast": true,
     "title": {

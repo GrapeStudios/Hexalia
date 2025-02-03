@@ -74,6 +74,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SILK_IDOL.get());
                         output.accept(ModItems.RAIN_IDOL.get());
                         output.accept(ModItems.CLEAR_IDOL.get());
+                        output.accept(ModItems.THUNDER_IDOL.get());
 
                         // Functional Blocks
                         output.accept(ModBlocks.RUSTIC_OVEN.get());
