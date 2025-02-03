@@ -1,17 +1,15 @@
 {
   "parent": "hexalia:salt",
   "criteria": {
-    "has_purifying_salts": {
+    "use_weather_idol": {
       "conditions": {
-        "items": [
-          {
-            "items": [
-              "hexalia:purifying_salts"
-            ]
-          }
-        ]
+        "item": {
+          "items": [
+            "hexalia:purifying_salts"
+          ]
+        }
       },
-      "trigger": "minecraft:inventory_changed"
+      "trigger": "minecraft:consume_item"
     }
   },
   "display": {
@@ -32,7 +30,7 @@
   },
   "requirements": [
     [
-      "has_purifying_salts"
+      "use_weather_idol"
     ]
   ],
   "sends_telemetry_event": true

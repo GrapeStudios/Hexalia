@@ -5,6 +5,7 @@ import net.grapes.hexalia.item.ModItems;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.DisplayInfo;
 import net.minecraft.advancements.FrameType;
+import net.minecraft.advancements.critereon.ConsumeItemTrigger;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.network.chat.Component;
@@ -85,7 +86,7 @@ public class ModAdvancementsProvider implements ForgeAdvancementProvider.Advance
                         new ResourceLocation(HexaliaMod.MOD_ID, "textures/block/willow_mossy_wood.png"), FrameType.GOAL,
                         true, true, false))
                 .parent(saltItem)
-                .addCriterion("has_purifying_salts", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.PURIFYING_SALTS.get()))
+                .addCriterion("use_weather_idol", ConsumeItemTrigger.TriggerInstance.usedItem(ModItems.PURIFYING_SALTS.get()))
                 .save(saver, new ResourceLocation(HexaliaMod.MOD_ID, "purifying_salts"), existingFileHelper);
 
         Advancement ritualTable = Advancement.Builder.advancement()
@@ -107,5 +108,19 @@ public class ModAdvancementsProvider implements ForgeAdvancementProvider.Advance
                 .parent(ritualTable)
                 .addCriterion("has_rabbage", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.RABBAGE.get()))
                 .save(saver, new ResourceLocation(HexaliaMod.MOD_ID, "rabbage"), existingFileHelper);
-    }
+
+        Advancement weatherIdolAdvancement = Advancement.Builder.advancement()
+                .display(new DisplayInfo(new ItemStack(ModItems.RAIN_IDOL.get()), // Display item
+                        Component.translatable("advancements.hexalia.weather_idol.title"),
+                        Component.translatable("advancements.hexalia.weather_idol.description"),
+                        new ResourceLocation(HexaliaMod.MOD_ID, "textures/block/willow_mossy_wood.png"),
+                        FrameType.TASK, true, true, false))
+                .parent(rootAdvancement) // Optional parent advancement
+                .addCriterion("use_weather_idol", ConsumeItemTrigger.TriggerInstance.usedItem(ModItems.RAIN_IDOL.get()))
+                .addCriterion("use_clear_idol", ConsumeItemTrigger.TriggerInstance.usedItem(ModItems.CLEAR_IDOL.get()))
+                .requirements(new String[][] {
+                        { "use_weather_idol", "use_clear_idol" }
+                })
+                .save(saver, new ResourceLocation(HexaliaMod.MOD_ID, "weather_idol"), existingFileHelper);
+        }
 }

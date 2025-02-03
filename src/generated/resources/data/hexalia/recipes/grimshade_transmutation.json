@@ -8,16 +8,16 @@
   },
   "salt_items": [
     {
-      "item": "hexalia:dream_paste"
+      "item": "hexalia:ghost_powder"
+    },
+    {
+      "item": "minecraft:wither_rose"
+    },
+    {
+      "item": "minecraft:bone"
     },
     {
       "item": "minecraft:black_dye"
-    },
-    {
-      "item": "minecraft:coal"
-    },
-    {
-      "item": "minecraft:rotten_flesh"
     }
   ]
 }

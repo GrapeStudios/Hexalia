@@ -8,10 +8,10 @@
       "item": "minecraft:slime_ball"
     },
     {
-      "item": "hexalia:dream_paste"
+      "item": "minecraft:feather"
     },
     {
-      "item": "hexalia:siren_paste"
+      "item": "minecraft:spider_eye"
     }
   ],
   "output": {

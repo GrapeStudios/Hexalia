@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.Block;
 public class ModTags {
     public static class Items {
         // Custom Item Tags
-        public static final TagKey<Item> CRUSHED_PLANTS = tag("crushed_plants");
+        public static final TagKey<Item> REFINED_HERBS = tag("refined_herbs");
         public static final TagKey<Item> BREWS = tag("brews");
 
         // Common Item Tags

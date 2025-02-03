@@ -21,7 +21,7 @@ public class ExperienceMixin {
         if (source.getEntity() instanceof Player player) {
             ItemStack offHandStack = player.getItemInHand(InteractionHand.OFF_HAND);
 
-            if (offHandStack.getItem() == ModItems.WISDOM_GEM.get()) {
+            if (offHandStack.getItem() == ModItems.SAGE_PENDANT.get()) {
                 System.out.println("Wisdom Gem detected in offhand");
 
                 int experience = getExperiencePoints();

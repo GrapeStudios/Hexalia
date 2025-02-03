@@ -25,7 +25,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
     protected void addTags(HolderLookup.Provider pProvider) {
         // Tags
         this.tag(ItemTags.FOX_FOOD)
-                .add(ModItems.CHILLBERRIES.get());
+                .add(ModItems.CHILLBERRIES.get(), ModItems.MOON_BERRIES.get());
 
         this.tag(ItemTags.FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM.get().asItem(), ModBlocks.HENBANE.get().asItem(),
@@ -48,7 +48,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                         Items.COOKED_RABBIT, Items.COOKED_COD,
                         Items.COOKED_SALMON);
 
-        this.tag(ModTags.Items.CRUSHED_PLANTS)
+        this.tag(ModTags.Items.REFINED_HERBS)
                 .add(ModItems.DREAM_PASTE.get(), ModItems.SPIRIT_POWDER.get(),
                         ModItems.SIREN_PASTE.get(), ModItems.GHOST_POWDER.get());
 
@@ -65,7 +65,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModBlocks.DREAMSHROOM.get().asItem(), ModBlocks.PALE_MUSHROOM.get().asItem());
 
         this.tag(ModTags.Items.BERRIES)
-                .add(ModItems.CHILLBERRIES.get());
+                .add(ModItems.CHILLBERRIES.get(), ModItems.MOON_BERRIES.get());
 
         this.tag(ModTags.Items.SEEDS)
                 .add(ModItems.MANDRAKE_SEEDS.get(), ModItems.SUNFIRE_TOMATO_SEEDS.get(),

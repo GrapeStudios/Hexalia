@@ -29,6 +29,12 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SIREN_PASTE.get());
                         output.accept(ModItems.GHOST_POWDER.get());
 
+                        // Nodes
+                        output.accept(ModItems.FIRE_NODE.get());
+                        output.accept(ModItems.WATER_NODE.get());
+                        output.accept(ModItems.AIR_NODE.get());
+                        output.accept(ModItems.EARTH_NODE.get());
+
                         // Functional Plants
                         output.accept(ModBlocks.MORPHORA.get());
                         output.accept(ModBlocks.GRIMSHADE.get());
@@ -37,10 +43,10 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.LUNAR_LILY.get());
 
                         // Other Resources
-                        output.accept(ModItems.RESIN.get());
+                        output.accept(ModItems.TREE_RESIN.get());
+                        output.accept(ModItems.MOON_CRYSTAL.get());
                         output.accept(ModItems.SILK_FIBER.get());
                         output.accept(ModItems.SILKWORM.get());
-                        output.accept(ModItems.MOON_CRYSTAL.get());
 
                         // Seeds
                         output.accept(ModItems.MANDRAKE_SEEDS.get());
@@ -53,16 +59,21 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.CHILLBERRIES.get());
                         output.accept(ModItems.RABBAGE.get());
                         output.accept(ModItems.SALTSPROUT.get());
+                        output.accept(ModItems.MOON_BERRIES.get());
 
                         // Food
                         output.accept(ModItems.MANDRAKE_STEW.get());
                         output.accept(ModItems.SPICY_SANDWICH.get());
                         output.accept(ModItems.CHILLBERRY_PIE.get());
+                        output.accept(ModItems.MOON_BERRY_COOKIE.get());
 
                         // Tools
                         output.accept(ModItems.MORTAR_AND_PESTLE.get());
                         output.accept(ModItems.STONE_DAGGER.get());
                         output.accept(ModItems.HEX_FOCUS.get());
+                        output.accept(ModItems.SILK_IDOL.get());
+                        output.accept(ModItems.RAIN_IDOL.get());
+                        output.accept(ModItems.CLEAR_IDOL.get());
 
                         // Functional Blocks
                         output.accept(ModBlocks.RUSTIC_OVEN.get());
@@ -89,6 +100,8 @@ public class ModCreativeModeTabs {
 
                         // Decorative Plants
                         output.accept(ModBlocks.HENBANE.get());
+                        output.accept(ModBlocks.BEGONIA.get());
+                        output.accept(ModBlocks.LAVENDER.get());
                         output.accept(ModItems.LOTUS_FLOWER.get());
                         output.accept(ModBlocks.PALE_MUSHROOM.get());
                         output.accept(ModBlocks.WITCHWEED.get());
@@ -105,7 +118,7 @@ public class ModCreativeModeTabs {
                         // Rare Items
                         output.accept(ModItems.ANCIENT_SEED.get());
                         output.accept(ModItems.KELPWEAVE_BLADE.get());
-                        output.accept(ModItems.WISDOM_GEM.get());
+                        output.accept(ModItems.SAGE_PENDANT.get());
 
                         // Armor Items
                         output.accept(ModItems.EARPLUGS.get());

@@ -8,16 +8,16 @@
   },
   "salt_items": [
     {
-      "item": "hexalia:resin"
+      "item": "hexalia:siren_paste"
     },
     {
-      "item": "hexalia:siren_kelp"
+      "item": "hexalia:water_node"
     },
     {
-      "item": "minecraft:wooden_sword"
+      "item": "minecraft:iron_nugget"
     },
     {
-      "item": "minecraft:string"
+      "item": "minecraft:kelp"
     }
   ]
 }

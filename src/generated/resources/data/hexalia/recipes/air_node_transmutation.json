@@ -1,0 +1,23 @@
+{
+  "type": "hexalia:transmutation",
+  "input": {
+    "item": "minecraft:amethyst_shard"
+  },
+  "output": {
+    "item": "hexalia:air_node"
+  },
+  "salt_items": [
+    {
+      "item": "minecraft:feather"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "minecraft:string"
+    },
+    {
+      "item": "minecraft:dandelion"
+    }
+  ]
+}

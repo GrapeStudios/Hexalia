@@ -24,6 +24,8 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> WILD_SUNFIRE_TOMATO_PLACED_KEY = registerKey("wild_sunfire_tomato_placed");
     public static final ResourceKey<PlacedFeature> WILD_MANDRAKE_PLACED_KEY = registerKey("wild_mandrake_placed");
     public static final ResourceKey<PlacedFeature> HENBANE_PLACED_KEY = registerKey("henbane_placed");
+    public static final ResourceKey<PlacedFeature> BEGONIA_PLACED_KEY = registerKey("begonia_placed");
+    public static final ResourceKey<PlacedFeature> LAVENDER_PLACED_KEY = registerKey("lavender_placed");
 
     public static final ResourceKey<PlacedFeature> COTTONWOOD_PLACED_KEY = registerKey("cottonwood_placed");
     public static final ResourceKey<PlacedFeature> WILLOW_PLACED_KEY = registerKey("willow_placed");
@@ -72,6 +74,14 @@ public class ModPlacedFeatures {
 
         // Decorative Plants
         register(context, HENBANE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.HENBANE_KEY),
+                List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,
+                        BiomeFilter.biome()));
+
+        register(context, BEGONIA_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.BEGONIA_KEY),
+                List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,
+                        BiomeFilter.biome()));
+
+        register(context, LAVENDER_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.LAVENDER_KEY),
                 List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,
                         BiomeFilter.biome()));
 

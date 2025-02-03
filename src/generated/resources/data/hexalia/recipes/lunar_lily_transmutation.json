@@ -1,0 +1,23 @@
+{
+  "type": "hexalia:transmutation",
+  "input": {
+    "item": "minecraft:lily_of_the_valley"
+  },
+  "output": {
+    "item": "hexalia:lunar_lily"
+  },
+  "salt_items": [
+    {
+      "item": "hexalia:moon_crystal"
+    },
+    {
+      "item": "hexalia:earth_node"
+    },
+    {
+      "item": "minecraft:bone_meal"
+    },
+    {
+      "item": "minecraft:glowstone_dust"
+    }
+  ]
+}

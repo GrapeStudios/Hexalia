@@ -40,7 +40,7 @@ public class RitualBrazierBlock extends BaseEntityBlock implements EntityBlock {
         super(pProperties);
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(FACING, Direction.NORTH)
-                .setValue(SALTED, false)); // Default to unsalted
+                .setValue(SALTED, false));
     }
 
     @Override
@@ -64,17 +64,15 @@ public class RitualBrazierBlock extends BaseEntityBlock implements EntityBlock {
         }
 
         if (pHand == InteractionHand.MAIN_HAND) {
-            // Check if the player is holding salt and the block is not already salted
             if (heldItem.is(ModItems.SALT.get()) && !pState.getValue(SALTED)) {
                 pLevel.setBlock(pPos, pState.setValue(SALTED, true), Block.UPDATE_ALL);
                 if (!pPlayer.isCreative()) {
-                    heldItem.shrink(1); // Consume the salt
+                    heldItem.shrink(1);
                 }
                 pLevel.playSound(null, pPos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1.0f, 1.0f); // Play bone meal sound
                 return InteractionResult.sidedSuccess(pLevel.isClientSide);
             }
 
-            // Handle item insertion/removal
             if (!heldItem.isEmpty() && ritualBrazierBlockEntity.isEmpty() && !heldItem.is(ModItems.HEX_FOCUS.get()) && !heldItem.is(ModItems.SALT.get())) {
                 if (ritualBrazierBlockEntity.addStack(heldItem.split(1))) {
                     playItemSound(pLevel, pPos);
@@ -96,8 +94,6 @@ public class RitualBrazierBlock extends BaseEntityBlock implements EntityBlock {
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
             if (blockEntity instanceof RitualBrazierBlockEntity ritualBrazierBlockEntity) {
                 Containers.dropContents(pLevel, pPos, ritualBrazierBlockEntity);
-
-                // Drop salt if the block is salted
                 if (pState.getValue(SALTED)) {
                     Containers.dropItemStack(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), new ItemStack(ModItems.SALT.get()));
                 }
@@ -111,12 +107,12 @@ public class RitualBrazierBlock extends BaseEntityBlock implements EntityBlock {
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
         return this.defaultBlockState()
                 .setValue(FACING, pContext.getHorizontalDirection().getOpposite())
-                .setValue(SALTED, false); // Default to unsalted
+                .setValue(SALTED, false);
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(FACING, SALTED); // Add SALTED property
+        pBuilder.add(FACING, SALTED);
     }
 
     @Override

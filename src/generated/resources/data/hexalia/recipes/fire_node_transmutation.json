@@ -1,0 +1,23 @@
+{
+  "type": "hexalia:transmutation",
+  "input": {
+    "item": "minecraft:amethyst_shard"
+  },
+  "output": {
+    "item": "hexalia:fire_node"
+  },
+  "salt_items": [
+    {
+      "item": "minecraft:coal"
+    },
+    {
+      "item": "hexalia:sunfire_tomato"
+    },
+    {
+      "item": "minecraft:gunpowder"
+    },
+    {
+      "item": "minecraft:sunflower"
+    }
+  ]
+}

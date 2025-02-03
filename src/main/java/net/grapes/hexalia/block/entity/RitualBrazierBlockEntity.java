@@ -14,6 +14,7 @@ import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.Containers;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -23,11 +24,18 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Map;
+
 public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyContainer {
 
     private static final int MOONLIGHT_DURATION = 200;
     private int timer = 0;
     private NonNullList<ItemStack> inventory = NonNullList.withSize(1, ItemStack.EMPTY);
+
+    private static final Map<Item, Item> TRANSFORMATIONS = Map.of(
+            Items.AMETHYST_SHARD, ModItems.MOON_CRYSTAL.get(),
+            Items.GLOW_BERRIES, ModItems.MOON_BERRIES.get()
+    );
 
     public RitualBrazierBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.RITUAL_BRAZIER_BE.get(), pos, state);
@@ -37,8 +45,9 @@ public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyCont
         if (pLevel.isClientSide) return;
 
         ItemStack itemStack = pBlockEntity.getItem(0);
+        Item resultItem = TRANSFORMATIONS.get(itemStack.getItem());
 
-        if (itemStack.is(Items.AMETHYST_SHARD)) {
+        if (resultItem != null) {
             pBlockEntity.timer++;
 
             if (pBlockEntity.timer >= MOONLIGHT_DURATION) {
@@ -49,8 +58,8 @@ public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyCont
 
                     pLevel.sendBlockUpdated(pPos, pState, pState, Block.UPDATE_ALL);
 
-                    ItemStack moonCrystalStack = new ItemStack(ModItems.MOON_CRYSTAL.get());
-                    Containers.dropItemStack(pLevel, pPos.getX() + 0.5, pPos.getY() + 1.0, pPos.getZ() + 0.5, moonCrystalStack);
+                    ItemStack resultStack = new ItemStack(resultItem);
+                    Containers.dropItemStack(pLevel, pPos.getX() + 0.5, pPos.getY() + 1.0, pPos.getZ() + 0.5, resultStack);
 
                     spawnParticles(pLevel, pPos);
                     pLevel.playSound(null, pPos, SoundEvents.AMETHYST_BLOCK_BREAK, SoundSource.BLOCKS, 1.0f, 1.0f);

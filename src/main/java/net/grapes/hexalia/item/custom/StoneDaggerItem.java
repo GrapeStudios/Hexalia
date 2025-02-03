@@ -75,7 +75,7 @@ public class StoneDaggerItem extends Item {
             level.setBlock(blockPos, strippedBlock.defaultBlockState()
                     .setValue(RotatedPillarBlock.AXIS, state.getValue(RotatedPillarBlock.AXIS)), 3);
 
-            Block.popResource(level, blockPos, new ItemStack(ModItems.RESIN.get()));
+            Block.popResource(level, blockPos, new ItemStack(ModItems.TREE_RESIN.get()));
 
             handleItemDamage(player, pContext.getItemInHand(), pContext);
         }

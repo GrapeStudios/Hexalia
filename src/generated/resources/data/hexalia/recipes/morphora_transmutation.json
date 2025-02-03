@@ -8,16 +8,16 @@
   },
   "salt_items": [
     {
-      "item": "hexalia:ghost_powder"
-    },
-    {
       "item": "hexalia:dream_paste"
     },
     {
-      "item": "minecraft:bone_meal"
+      "item": "hexalia:spirit_powder"
     },
     {
-      "item": "minecraft:flint"
+      "item": "hexalia:earth_node"
+    },
+    {
+      "item": "hexalia:tree_resin"
     }
   ]
 }

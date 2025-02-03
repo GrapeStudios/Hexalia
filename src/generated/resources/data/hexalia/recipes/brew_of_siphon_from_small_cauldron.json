@@ -5,13 +5,13 @@
   },
   "ingredients": [
     {
-      "item": "minecraft:sugar"
+      "item": "minecraft:flint"
     },
     {
-      "item": "minecraft:raw_iron"
+      "item": "minecraft:gold_nugget"
     },
     {
-      "item": "hexalia:ghost_powder"
+      "item": "hexalia:mandrake"
     }
   ],
   "output": {

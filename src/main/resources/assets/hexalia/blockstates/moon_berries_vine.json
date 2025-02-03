@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "berries=false": {
+      "model": "hexalia:block/moon_berries_vine"
+    },
+    "berries=true": {
+      "model": "hexalia:block/moon_berries_vine_lit"
+    }
+  }
+}

@@ -73,6 +73,17 @@ public class ModBlocks {
             () -> new FlowerBlock(() -> MobEffects.ABSORPTION, 6, BlockBehaviour.Properties.copy(Blocks.ALLIUM)));
     public static final RegistryObject<Block> POTTED_HENBANE = BLOCKS.register("potted_henbane",
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), HENBANE, BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM)));
+
+
+    public static final RegistryObject<Block> BEGONIA = registerBlock("begonia",
+            () -> new FlowerBlock(() -> MobEffects.REGENERATION, 6, BlockBehaviour.Properties.copy(Blocks.ALLIUM)));
+    public static final RegistryObject<Block> POTTED_BEGONIA = BLOCKS.register("potted_begonia",
+            () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), BEGONIA, BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM)));
+    public static final RegistryObject<Block> LAVENDER = registerBlock("lavender",
+            () -> new FlowerBlock(() -> MobEffects.LUCK, 6, BlockBehaviour.Properties.copy(Blocks.ALLIUM)));
+    public static final RegistryObject<Block> POTTED_LAVENDER = BLOCKS.register("potted_lavender",
+            () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), LAVENDER, BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM)));
+
     public static final RegistryObject<Block> LOTUS_FLOWER = BLOCKS.register("lotus_flower",
             () -> new WaterPlantBlock(BlockBehaviour.Properties.copy(Blocks.LILY_PAD).lightLevel(state -> 6)));
     public static final RegistryObject<Block> PALE_MUSHROOM = registerBlock("pale_mushroom",
@@ -106,6 +117,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> SALTSPROUT = BLOCKS.register("saltsprout",
             () -> new SaltsproutBlock(BlockBehaviour.Properties.copy(Blocks.SWEET_BERRY_BUSH)));
 
+    public static final RegistryObject<Block> MOON_BERRIES_VINES = BLOCKS.register("moon_berries_vine",
+            () -> new MoonBerryVineBlock(BlockBehaviour.Properties.copy(Blocks.CAVE_VINES)));
+    public static final RegistryObject<Block> MOON_BERRIES_VINES_PLANT = BLOCKS.register("moon_berries_vine_plant",
+            () -> new MoonBerryVinePlantBlock(BlockBehaviour.Properties.copy(Blocks.CAVE_VINES_PLANT)));
+
     //  Mineral-Related Blocks
     public static final RegistryObject<Block> SALT_ORE = registerBlock("salt_ore",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
@@ -120,8 +136,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> SMALL_CAULDRON = BLOCKS.register("small_cauldron",
             () -> new SmallCauldronBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).noOcclusion()));
     public static final RegistryObject<Block> RUSTIC_OVEN = registerBlock("rustic_oven",
-            () -> new RusticOvenBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_BLACK)
-                    .lightLevel(state -> 12).noOcclusion()));
+            () -> new RusticOvenBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_BRICKS).noOcclusion()));
     public static final RegistryObject<Block> RITUAL_TABLE = BLOCKS.register("ritual_table",
             () -> new RitualTableBlock(BlockBehaviour.Properties.copy(Blocks.STONE).noOcclusion()));
     public static final RegistryObject<Block> BREW_SHELF = registerBlock("brew_shelf",

@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "hexalia:item/wisdom_gem"
+    "layer0": "hexalia:item/moon_berries"
   }
 }

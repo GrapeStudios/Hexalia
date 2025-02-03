@@ -10,6 +10,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CaveVines;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -59,12 +60,20 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 createTallPlantBlock(ModBlocks.HEXED_BULRUSH.get()));
         this.add(ModBlocks.COTTONWOOD_CATKIN.get(),
                 this.createSingleItemTable(Items.STRING));
+        this.dropSelf(ModBlocks.BEGONIA.get());
+        this.add(ModBlocks.POTTED_BEGONIA.get(),
+                createPotFlowerItemTable(ModBlocks.BEGONIA.get()));
+        this.dropSelf(ModBlocks.LAVENDER.get());
+        this.add(ModBlocks.POTTED_LAVENDER.get(),
+                createPotFlowerItemTable(ModBlocks.LAVENDER.get()));
         this.dropSelf(ModBlocks.MORPHORA.get());
         this.dropSelf(ModBlocks.GRIMSHADE.get());
         this.dropSelf(ModBlocks.NAUTILITE.get());
         this.dropSelf(ModBlocks.WINDSONG.get());
         this.dropSelf(ModBlocks.RITUAL_BRAZIER.get());
         this.dropSelf(ModBlocks.LUNAR_LILY.get());
+        this.add(ModBlocks.MOON_BERRIES_VINES.get(), vinesDrop(ModBlocks.MOON_BERRIES_VINES.get()));
+        this.add(ModBlocks.MOON_BERRIES_VINES_PLANT.get(), vinesDrop(ModBlocks.MOON_BERRIES_VINES_PLANT.get()));
 
         // General Blocks
         this.dropSelf(ModBlocks.INFUSED_DIRT.get());
@@ -81,11 +90,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.SMALL_CAULDRON.get());
         this.add(ModBlocks.SALT_ORE.get(), block ->
                 createOreDrop(ModBlocks.SALT_ORE.get(), ModItems.SALT.get()));
-
-        // Change amount
         this.add(ModBlocks.SALT_BLOCK.get(), block ->
                 createOreDrop(ModBlocks.SALT_ORE.get(), ModItems.SALT.get()));
-
         this.add(ModBlocks.SILKWORM_COCOON.get(),
                 this.createSingleItemTable(ModItems.SILKWORM.get()));
 
@@ -192,6 +198,12 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                         .setRolls(ConstantValue.exactly(1))
                         .add(LootItem.lootTableItem(bulrushBlock)
                                 .when(lowerHalfCondition)));
+    }
+
+    protected static LootTable.Builder vinesDrop(Block pBlock) {
+        return LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(ModItems.MOON_BERRIES.get()))
+                .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(pBlock).setProperties(StatePropertiesPredicate.Builder.properties()
+                        .hasProperty(CaveVines.BERRIES, true))));
     }
 
     @Override

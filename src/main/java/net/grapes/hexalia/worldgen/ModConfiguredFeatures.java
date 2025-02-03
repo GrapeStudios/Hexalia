@@ -48,6 +48,8 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_SUNFIRE_TOMATO_KEY = registerKey("wild_sunfire_tomato");
     public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_MANDRAKE_KEY = registerKey("wild_mandrake");
     public static final ResourceKey<ConfiguredFeature<?, ?>> HENBANE_KEY = registerKey("henbane");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> BEGONIA_KEY = registerKey("begonia");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> LAVENDER_KEY = registerKey("lavender");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> COTTONWOOD_KEY = registerKey("cottonwood_key");
     public static final ResourceKey<ConfiguredFeature<?, ?>> WILLOW_KEY = registerKey("willow_key");
@@ -76,7 +78,7 @@ public class ModConfiguredFeatures {
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.DREAMSHROOM.get())))));
 
         register(context, SIREN_KELP_KEY, Feature.RANDOM_PATCH,
-                new RandomPatchConfiguration(5, 6, 2, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                new RandomPatchConfiguration(2, 3, 1, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.SIREN_KELP.get())))));
 
         register(context, CHILLBERRY_KEY, Feature.RANDOM_PATCH,
@@ -100,6 +102,14 @@ public class ModConfiguredFeatures {
         register(context, HENBANE_KEY, Feature.FLOWER,
                 new RandomPatchConfiguration(3, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.HENBANE.get())))));
+
+        register(context, BEGONIA_KEY, Feature.FLOWER,
+                new RandomPatchConfiguration(3, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                        new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.BEGONIA.get())))));
+
+        register(context, LAVENDER_KEY, Feature.FLOWER,
+                new RandomPatchConfiguration(3, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                        new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.LAVENDER.get())))));
 
         register(context, LOTUS_FLOWER_KEY, Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(5, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,

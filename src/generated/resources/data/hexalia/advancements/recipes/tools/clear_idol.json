@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_hex_focus": {
+    "has_silk_idol": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:hex_focus"
+              "hexalia:silk_idol"
             ]
           }
         ]
@@ -15,21 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "hexalia:wisdom_gem"
+        "recipe": "hexalia:clear_idol"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_hex_focus",
+      "has_silk_idol",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "hexalia:wisdom_gem"
+      "hexalia:clear_idol"
     ]
   },
-  "sends_telemetry_event": true
+  "sends_telemetry_event": false
 }

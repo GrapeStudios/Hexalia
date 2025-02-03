@@ -1,0 +1,48 @@
+{
+  "parent": "hexalia:root",
+  "criteria": {
+    "use_clear_idol": {
+      "conditions": {
+        "item": {
+          "items": [
+            "hexalia:clear_idol"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    },
+    "use_weather_idol": {
+      "conditions": {
+        "item": {
+          "items": [
+            "hexalia:rain_idol"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "hexalia:textures/block/willow_mossy_wood.png",
+    "description": {
+      "translate": "advancements.hexalia.weather_idol.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "hexalia:rain_idol"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.hexalia.weather_idol.title"
+    }
+  },
+  "requirements": [
+    [
+      "use_weather_idol",
+      "use_clear_idol"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

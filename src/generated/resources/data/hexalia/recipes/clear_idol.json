@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "hexalia:silk_idol"
+    },
+    {
+      "item": "minecraft:string"
+    },
+    {
+      "item": "hexalia:moon_crystal"
+    },
+    {
+      "item": "hexalia:air_node"
+    }
+  ],
+  "result": {
+    "item": "hexalia:clear_idol"
+  }
+}
