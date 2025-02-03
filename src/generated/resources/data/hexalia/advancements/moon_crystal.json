@@ -1,12 +1,12 @@
 {
-  "parent": "hexalia:root",
+  "parent": "hexalia:ritual_brazier",
   "criteria": {
-    "has_ritual_table": {
+    "has_moon_crystal": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:ritual_table"
+              "hexalia:moon_crystal"
             ]
           }
         ]
@@ -18,21 +18,21 @@
     "announce_to_chat": true,
     "background": "hexalia:textures/block/willow_log.png",
     "description": {
-      "translate": "advancements.hexalia.ritual_table.description"
+      "translate": "advancements.hexalia.moon_crystal.description"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "hexalia:ritual_table"
+      "item": "hexalia:moon_crystal"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.hexalia.ritual_table.title"
+      "translate": "advancements.hexalia.moon_crystal.title"
     }
   },
   "requirements": [
     [
-      "has_ritual_table"
+      "has_moon_crystal"
     ]
   ],
   "sends_telemetry_event": true

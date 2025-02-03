@@ -1,5 +1,5 @@
 {
-  "parent": "hexalia:small_cauldron",
+  "parent": "hexalia:root",
   "criteria": {
     "has_slimewalker_brew": {
       "conditions": {
@@ -16,7 +16,7 @@
   },
   "display": {
     "announce_to_chat": true,
-    "background": "hexalia:textures/block/willow_mossy_wood.png",
+    "background": "hexalia:textures/block/willow_log.png",
     "description": {
       "translate": "advancements.hexalia.salt_item.description"
     },

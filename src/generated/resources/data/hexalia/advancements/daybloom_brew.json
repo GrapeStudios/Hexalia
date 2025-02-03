@@ -1,11 +1,11 @@
 {
-  "parent": "hexalia:salt",
+  "parent": "hexalia:small_cauldron",
   "criteria": {
-    "use_weather_idol": {
+    "use_daybloom_brew": {
       "conditions": {
         "item": {
           "items": [
-            "hexalia:purifying_salts"
+            "hexalia:brew_of_daybloom"
           ]
         }
       },
@@ -16,21 +16,21 @@
     "announce_to_chat": true,
     "background": "hexalia:textures/block/willow_log.png",
     "description": {
-      "translate": "advancements.hexalia.purifying_salts.description"
+      "translate": "advancements.hexalia.daybloom_brew.description"
     },
     "frame": "goal",
     "hidden": false,
     "icon": {
-      "item": "hexalia:purifying_salts"
+      "item": "hexalia:brew_of_daybloom"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.hexalia.purifying_salts.title"
+      "translate": "advancements.hexalia.daybloom_brew.title"
     }
   },
   "requirements": [
     [
-      "use_weather_idol"
+      "use_daybloom_brew"
     ]
   ],
   "sends_telemetry_event": true

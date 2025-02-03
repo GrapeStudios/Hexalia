@@ -1,0 +1,84 @@
+{
+  "parent": "hexalia:ritual_table",
+  "criteria": {
+    "has_air_node": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexalia:air_node"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_earth_node": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexalia:earth_node"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_fire_node": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexalia:fire_node"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_water_node": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexalia:water_node"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "hexalia:textures/block/willow_log.png",
+    "description": {
+      "translate": "advancements.hexalia.elemental_nodes.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "hexalia:fire_node"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.hexalia.elemental_nodes.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_water_node"
+    ],
+    [
+      "has_air_node"
+    ],
+    [
+      "has_earth_node"
+    ],
+    [
+      "has_fire_node"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,22 +1,20 @@
 {
   "parent": "hexalia:small_cauldron",
   "criteria": {
-    "has_slimewalker_brew": {
+    "use_slimewalker_brew": {
       "conditions": {
-        "items": [
-          {
-            "items": [
-              "hexalia:brew_of_slimewalker"
-            ]
-          }
-        ]
+        "item": {
+          "items": [
+            "hexalia:brew_of_slimewalker"
+          ]
+        }
       },
-      "trigger": "minecraft:inventory_changed"
+      "trigger": "minecraft:consume_item"
     }
   },
   "display": {
     "announce_to_chat": true,
-    "background": "hexalia:textures/block/willow_mossy_wood.png",
+    "background": "hexalia:textures/block/willow_log.png",
     "description": {
       "translate": "advancements.hexalia.slimey_brew.description"
     },
@@ -32,7 +30,7 @@
   },
   "requirements": [
     [
-      "has_slimewalker_brew"
+      "use_slimewalker_brew"
     ]
   ],
   "sends_telemetry_event": true
