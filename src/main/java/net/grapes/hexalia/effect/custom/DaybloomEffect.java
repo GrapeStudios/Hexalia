@@ -20,7 +20,7 @@ public class DaybloomEffect extends MobEffect {
             Level level = player.level();
 
             if (isNight(level)) {
-                player.hurt(player.damageSources().magic(), 1.0F);
+                player.hurt(player.damageSources().magic(), 1.5F);
             }
             if (isDay(level)) {
                 player.heal(2.0F);
@@ -36,8 +36,9 @@ public class DaybloomEffect extends MobEffect {
         return time >= 0 && time < 13000;
     }
 
-    private boolean isNight(Level level) {
-        return level.getMoonBrightness() > 0.25;
+    private static boolean isNight(Level level) {
+        long time = level.getDayTime() % 24000;
+        return time >= 13000 && time <= 23000;
     }
 
     private void increaseSpeed(Player player, int amplifier) {

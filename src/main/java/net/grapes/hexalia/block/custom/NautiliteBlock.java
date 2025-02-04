@@ -30,7 +30,7 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
-public class NautiliteBlock extends MagicalFlowerBlock implements EntityBlock {
+public class NautiliteBlock extends EnchantedPlantBlock implements EntityBlock {
 
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
 

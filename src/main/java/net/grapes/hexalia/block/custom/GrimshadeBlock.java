@@ -28,7 +28,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.common.IPlantable;
 
-public class GrimshadeBlock extends MagicalFlowerBlock {
+public class GrimshadeBlock extends EnchantedPlantBlock {
 
     public GrimshadeBlock(Properties pProperties) {
         super(pProperties);

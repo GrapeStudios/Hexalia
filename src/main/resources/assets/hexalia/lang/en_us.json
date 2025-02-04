@@ -128,6 +128,7 @@
   "tooltip.hexalia.purifying_salts": "Removes negative status effects",
   "tooltip.hexalia.rabbage": "Can be thrown to cause bleeding",
   "tooltip.hexalia.bottled_moth": "Contains: %s",
+  "tooltip.hexalia.enchanted_plant": "Enchanted Plant",
 
   "sounds.hexalia.mandrake_scream": "Mandrake screamed",
   "sounds.hexalia.ritual_success": "Ritual completed",

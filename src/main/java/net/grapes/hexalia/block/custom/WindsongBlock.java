@@ -4,12 +4,15 @@ import net.grapes.hexalia.block.entity.WindsongBlockEntity;
 import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.sound.ModSounds;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
@@ -20,13 +23,18 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
-public class WindsongBlock extends MagicalFlowerBlock implements EntityBlock {
+public class WindsongBlock extends EnchantedPlantBlock implements EntityBlock {
 
     public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
 
     public WindsongBlock(Properties pProperties) {
         super(pProperties);
         this.registerDefaultState(this.defaultBlockState().setValue(ACTIVE, false));
+    }
+
+    @Override
+    protected boolean mayPlaceOn(BlockState pState, BlockGetter pGetter, BlockPos pPos) {
+        return (pState.isFaceSturdy(pGetter, pPos, Direction.UP) && !pState.is(Blocks.MAGMA_BLOCK));
     }
 
     @Override

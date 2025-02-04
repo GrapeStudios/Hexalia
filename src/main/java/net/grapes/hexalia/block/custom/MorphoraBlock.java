@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MorphoraBlock extends MagicalFlowerBlock {
+public class MorphoraBlock extends EnchantedPlantBlock {
 
     private static final Map<Block, Block> CONVERSION_MAP = new HashMap<>();
 

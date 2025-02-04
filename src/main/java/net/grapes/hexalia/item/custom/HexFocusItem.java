@@ -41,7 +41,7 @@ public class HexFocusItem extends Item {
                 pLevel.playSound(null, pPos, SoundEvents.AMETHYST_BLOCK_HIT,
                         SoundSource.BLOCKS, 1.0f, 1.0f);
                 pLevel.setBlockAndUpdate(pPos, ModBlocks.RITUAL_TABLE.get().defaultBlockState());
-                pPlayer.getCooldowns().addCooldown(this, 3);
+                pPlayer.getCooldowns().addCooldown(this, 60);
                 return InteractionResult.SUCCESS;
             }
         }

@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class LunarLilyBlockEntity extends BlockEntity {
 
     private static final int DURATION = 1200;
-    private static final int BONEMEAL_INTERVAL = 120;
+    private static final int BONEMEAL_INTERVAL = 240;
 
     private long activationTime = -1;
 
@@ -24,6 +24,11 @@ public class LunarLilyBlockEntity extends BlockEntity {
     public static void tick(Level level, BlockPos pos, BlockState state, LunarLilyBlockEntity entity) {
         if (level instanceof ServerLevel serverLevel && entity.isActive()) {
             long elapsedTime = level.getGameTime() - entity.activationTime;
+
+            if (!isNight(level)) {
+                entity.deactivate();
+                return;
+            }
 
             if (elapsedTime >= DURATION) {
                 entity.deactivate();
@@ -37,6 +42,7 @@ public class LunarLilyBlockEntity extends BlockEntity {
             entity.setChanged();
         }
     }
+
 
     private static void applyBonemealToCropsAndSaplings(ServerLevel level, BlockPos centerPos) {
         BlockPos.betweenClosedStream(centerPos.offset(-4, -2, -4), centerPos.offset(4, 2, 4)).forEach(pos -> {
@@ -55,7 +61,7 @@ public class LunarLilyBlockEntity extends BlockEntity {
     }
 
     public boolean isActive() {
-        return activationTime > 0 && (level != null && (level.getGameTime() - activationTime) < DURATION);
+        return activationTime > 0 && level != null && level.getGameTime() >= activationTime;
     }
 
     public void activate(long gameTime) {
@@ -66,6 +72,11 @@ public class LunarLilyBlockEntity extends BlockEntity {
     public void deactivate() {
         this.activationTime = -1;
         this.setChanged();
+    }
+
+    private static boolean isNight(Level level) {
+        long time = level.getDayTime() % 24000;
+        return time >= 13000 && time <= 23000;
     }
 
     @Override
@@ -79,4 +90,5 @@ public class LunarLilyBlockEntity extends BlockEntity {
         super.load(pTag);
         this.activationTime = pTag.getLong("activationTime");
     }
+
 }

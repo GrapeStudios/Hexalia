@@ -21,7 +21,7 @@ import net.minecraft.world.phys.BlockHitResult;
 
 import javax.annotation.Nullable;
 
-public class LunarLilyBlock extends MagicalFlowerBlock implements EntityBlock {
+public class LunarLilyBlock extends EnchantedPlantBlock implements EntityBlock {
 
     public LunarLilyBlock(Properties pProperties) {
         super(pProperties);
@@ -83,6 +83,7 @@ public class LunarLilyBlock extends MagicalFlowerBlock implements EntityBlock {
     }
 
     private static boolean isNight(Level level) {
-        return level.getMoonBrightness() > 0.25;
+        long time = level.getDayTime() % 24000;
+        return time >= 13000 && time <= 23000;
     }
 }
