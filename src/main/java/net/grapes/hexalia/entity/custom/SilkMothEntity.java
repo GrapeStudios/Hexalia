@@ -148,7 +148,8 @@ public class SilkMothEntity extends Animal implements GeoEntity {
                     case BLACK -> 3;
                     default -> 0;
                 };
-                entityTag.putInt("CustomModelData", customModelData);
+                entityTag.putInt("SilkMothVariant", variant.getId());
+                entityTag.putInt("CustomModelData", variant.getId());
 
                 mothBottle.setTag(entityTag);
 

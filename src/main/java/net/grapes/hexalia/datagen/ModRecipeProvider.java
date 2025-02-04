@@ -40,10 +40,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.DREAMCATCHER.get())
                 .pattern(" S ")
                 .pattern("SPS")
-                .pattern("ASA")
+                .pattern("ATA")
                 .define('P', Items.STRING)
                 .define('S', Items.STICK)
                 .define('A', Items.FEATHER)
+                .define('T', ModItems.FIRE_NODE.get())
                 .unlockedBy("has_stick",
                         inventoryTrigger(ItemPredicate.Builder.item().of(Items.STICK).build()))
                 .save(pWriter);
@@ -130,8 +131,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(pWriter);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.CANDLE_SKULL.get())
-                .pattern("S")
                 .pattern("P")
+                .pattern("S")
                 .define('P', Items.CANDLE)
                 .define('S', Items.SKELETON_SKULL)
                 .unlockedBy("has_skeleton_skull",

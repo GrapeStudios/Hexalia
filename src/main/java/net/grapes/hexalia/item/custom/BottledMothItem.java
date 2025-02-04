@@ -41,17 +41,22 @@ public class BottledMothItem extends Item {
 
         if (!world.isClientSide && player != null) {
             BlockPos spawnPos = blockPos.relative(direction);
-            SilkMothEntity silkMothEntity = new SilkMothEntity(ModEntities.SILK_MOTH_ENTITY.get(), world);
 
+            SilkMothEntity silkMothEntity = new SilkMothEntity(ModEntities.SILK_MOTH_ENTITY.get(), world);
             CompoundTag nbt = itemStack.getTag();
+
             if (nbt != null) {
-                SilkMothVariant variant = SilkMothVariant.byId(nbt.getInt("SilkMothVariant"));
-                silkMothEntity.setVariant(variant);
-                silkMothEntity.load(nbt);
+                if (nbt.contains("SilkMothVariant")) {
+                    silkMothEntity.setVariant(SilkMothVariant.byId(nbt.getInt("SilkMothVariant")));
+                }
+                if (nbt.contains(MOTH_NAME)) {
+                    silkMothEntity.setCustomName(Component.literal(nbt.getString(MOTH_NAME)));
+                }
             }
 
             silkMothEntity.moveTo(spawnPos.getX() + 0.5, spawnPos.getY(), spawnPos.getZ() + 0.5, 0, 0);
             world.addFreshEntity(silkMothEntity);
+
             world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ITEM_PICKUP, SoundSource.PLAYERS, 1.0F, 1.0F);
 
             itemStack.shrink(1);

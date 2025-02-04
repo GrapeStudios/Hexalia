@@ -10,8 +10,8 @@
     }
   },
   "pattern": [
-    "S",
-    "P"
+    "P",
+    "S"
   ],
   "result": {
     "item": "hexalia:candle_skull"

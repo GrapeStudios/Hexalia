@@ -10,12 +10,15 @@
     },
     "S": {
       "item": "minecraft:stick"
+    },
+    "T": {
+      "item": "hexalia:fire_node"
     }
   },
   "pattern": [
     " S ",
     "SPS",
-    "ASA"
+    "ATA"
   ],
   "result": {
     "item": "hexalia:dreamcatcher"
