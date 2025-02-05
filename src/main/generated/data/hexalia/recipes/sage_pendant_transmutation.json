@@ -1,0 +1,23 @@
+{
+  "type": "hexalia:transmutation",
+  "input": {
+    "item": "minecraft:diamond"
+  },
+  "output": {
+    "item": "hexalia:sage_pendant"
+  },
+  "salt_items": [
+    {
+      "item": "hexalia:spirit_powder"
+    },
+    {
+      "item": "minecraft:gold_nugget"
+    },
+    {
+      "item": "minecraft:book"
+    },
+    {
+      "item": "minecraft:experience_bottle"
+    }
+  ]
+}

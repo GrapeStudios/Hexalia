@@ -17,36 +17,33 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
+
         // Vanilla Tags
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
-                .add(ModBlocks.SALT_ORE)
-                .add(ModBlocks.SALT_BLOCK)
-                .add(ModBlocks.SALT_LAMP)
-                .add(ModBlocks.RUSTIC_OVEN)
-                .add(ModBlocks.SMALL_CAULDRON)
-                .add(ModBlocks.RITUAL_TABLE);
-
-        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
-                .add(ModBlocks.SALT_ORE)
-                .add(ModBlocks.SALT_BLOCK)
-                .add(ModBlocks.SALT_LAMP)
-                .add(ModBlocks.SMALL_CAULDRON)
-                .add(ModBlocks.RUSTIC_OVEN)
-                .add(ModBlocks.RITUAL_TABLE);
+                .add(ModBlocks.SALT_ORE).add(ModBlocks.SALT_BLOCK)
+                .add(ModBlocks.SALT_LAMP).add(ModBlocks.RUSTIC_OVEN)
+                .add(ModBlocks.SMALL_CAULDRON).add(ModBlocks.RITUAL_TABLE);
 
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
                 .add(ModBlocks.BREW_SHELF)
                 .add(ModBlocks.LOTUS_FLOWER);
 
+        getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
+                .add(ModBlocks.SALT_ORE).add(ModBlocks.SALT_BLOCK)
+                .add(ModBlocks.SALT_LAMP).add(ModBlocks.SMALL_CAULDRON)
+                .add(ModBlocks.RUSTIC_OVEN).add(ModBlocks.RITUAL_TABLE);
+
         getOrCreateTagBuilder(BlockTags.FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM, ModBlocks.HENBANE,
                         ModBlocks.WITCHWEED, ModBlocks.GHOST_FERN,
-                        ModBlocks.NIGHTSHADE_BUSH);
+                        ModBlocks.NIGHTSHADE_BUSH, ModBlocks.BEGONIA,
+                        ModBlocks.LAVENDER);
 
         getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM, ModBlocks.HENBANE,
                         ModBlocks.WITCHWEED, ModBlocks.GHOST_FERN,
-                        ModBlocks.NIGHTSHADE_BUSH);
+                        ModBlocks.NIGHTSHADE_BUSH, ModBlocks.BEGONIA,
+                        ModBlocks.LAVENDER);
 
         getOrCreateTagBuilder(BlockTags.FROG_PREFER_JUMP_TO)
                 .add(ModBlocks.LOTUS_FLOWER);
@@ -56,6 +53,47 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         getOrCreateTagBuilder(BlockTags.SWORD_EFFICIENT)
                 .add(ModBlocks.LOTUS_FLOWER);
+
+        getOrCreateTagBuilder(BlockTags.CROPS)
+                .add(ModBlocks.SUNFIRE_TOMATO_CROP,
+                        ModBlocks.MANDRAKE_CROP, ModBlocks.RABBAGE_CROP,
+                        ModBlocks.SALTSPROUT, ModBlocks.CHILLBERRY_BUSH);
+
+        getOrCreateTagBuilder(BlockTags.SAPLINGS)
+                .add(ModBlocks.WILLOW_SAPLING, ModBlocks.COTTONWOOD_SAPLING);
+
+        // Custom Tags
+        getOrCreateTagBuilder(ModTags.Blocks.HEATING_BLOCKS)
+                .add(Blocks.MAGMA_BLOCK, Blocks.LAVA,
+                        Blocks.CAMPFIRE, Blocks.SOUL_CAMPFIRE,
+                        Blocks.FIRE, Blocks.SOUL_FIRE,
+                        ModBlocks.RUSTIC_OVEN);
+
+        getOrCreateTagBuilder(ModTags.Blocks.ATTRACTS_MOTH)
+                .add(Blocks.LANTERN, Blocks.SEA_LANTERN,
+                        Blocks.SOUL_LANTERN, ModBlocks.SALT_LAMP,
+                        Blocks.END_ROD, ModBlocks.LUNAR_LILY);
+
+        getOrCreateTagBuilder(ModTags.Blocks.COCOON_LOGS)
+                .add(ModBlocks.COTTONWOOD_LOG, Blocks.DARK_OAK_LOG);
+
+        getOrCreateTagBuilder(ModTags.Blocks.COTTONWOOD_LOGS)
+                .add(ModBlocks.COTTONWOOD_LOG, ModBlocks.STRIPPED_COTTONWOOD_LOG,
+                        ModBlocks.COTTONWOOD_WOOD, ModBlocks.STRIPPED_COTTONWOOD_WOOD);
+
+        getOrCreateTagBuilder(ModTags.Blocks.WILLOW_LOGS)
+                .add(ModBlocks.WILLOW_LOG, ModBlocks.STRIPPED_WILLOW_LOG,
+                        ModBlocks.WILLOW_WOOD, ModBlocks.STRIPPED_WILLOW_WOOD);
+
+        // Common Tags
+        getOrCreateTagBuilder(ModTags.Blocks.ORES)
+                .add(ModBlocks.SALT_ORE);
+
+        getOrCreateTagBuilder(ModTags.Blocks.SALT_ORES)
+                .add(ModBlocks.SALT_ORE);
+
+        getOrCreateTagBuilder(ModTags.Blocks.SALT_BLOCKS)
+                .add(ModBlocks.SALT_BLOCK);
 
         // Tags for Tree Related Blocks
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN)
@@ -89,35 +127,5 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.ALL_HANGING_SIGNS)
                 .add(ModBlocks.COTTONWOOD_WALL_SIGN, ModBlocks.COTTONWOOD_HANGING_WALL_SIGN,
                         ModBlocks.WILLOW_WALL_SIGN, ModBlocks.WILLOW_HANGING_WALL_SIGN);
-
-        // Custom Tags
-        getOrCreateTagBuilder(ModTags.Blocks.HEATING_BLOCKS)
-                .add(Blocks.MAGMA_BLOCK, Blocks.LAVA,
-                        Blocks.CAMPFIRE, Blocks.FIRE, ModBlocks.RUSTIC_OVEN);
-
-        getOrCreateTagBuilder(ModTags.Blocks.ATTRACTS_MOTH)
-                .add(Blocks.LANTERN, Blocks.SEA_LANTERN,
-                        Blocks.SOUL_LANTERN, ModBlocks.SALT_LAMP, Blocks.END_ROD);
-
-        getOrCreateTagBuilder(ModTags.Blocks.COCOON_LOGS)
-                .add(ModBlocks.COTTONWOOD_LOG, Blocks.DARK_OAK_LOG);
-
-        getOrCreateTagBuilder(ModTags.Blocks.COTTONWOOD_LOGS)
-                .add(ModBlocks.COTTONWOOD_LOG, ModBlocks.STRIPPED_COTTONWOOD_LOG,
-                        ModBlocks.COTTONWOOD_WOOD, ModBlocks.STRIPPED_COTTONWOOD_WOOD);
-
-        getOrCreateTagBuilder(ModTags.Blocks.WILLOW_LOGS)
-                .add(ModBlocks.WILLOW_LOG, ModBlocks.STRIPPED_WILLOW_LOG,
-                        ModBlocks.WILLOW_WOOD, ModBlocks.STRIPPED_WILLOW_WOOD);
-
-        // Common Tags
-        getOrCreateTagBuilder(ModTags.Blocks.ORES)
-                .add(ModBlocks.SALT_ORE);
-
-        getOrCreateTagBuilder(ModTags.Blocks.SALT_ORES)
-                .add(ModBlocks.SALT_ORE);
-
-        getOrCreateTagBuilder(ModTags.Blocks.SALT_BLOCKS)
-                .add(ModBlocks.SALT_BLOCK);
     }
 }

@@ -1,0 +1,23 @@
+{
+  "type": "hexalia:transmutation",
+  "input": {
+    "item": "minecraft:amethyst_shard"
+  },
+  "output": {
+    "item": "hexalia:water_node"
+  },
+  "salt_items": [
+    {
+      "item": "minecraft:lily_pad"
+    },
+    {
+      "item": "hexalia:siren_paste"
+    },
+    {
+      "item": "minecraft:prismarine_shard"
+    },
+    {
+      "item": "minecraft:ink_sac"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "parent": "minecraft:hexaliaritual_brazier",
+  "criteria": {
+    "has_moon_crystal": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexalia:moon_crystal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "hexalia:textures/block/willow_log.png",
+    "description": {
+      "translate": "advancements.hexalia.moon_crystal.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "hexalia:moon_crystal"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.hexalia.moon_crystal.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_moon_crystal"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

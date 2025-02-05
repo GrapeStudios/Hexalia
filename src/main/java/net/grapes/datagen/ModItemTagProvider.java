@@ -19,25 +19,22 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         // Tags
         getOrCreateTagBuilder(ItemTags.FOX_FOOD)
-                .add(ModItems.CHILLBERRIES);
+                .add(ModItems.CHILLBERRIES).add(ModItems.MOON_BERRIES);
 
         getOrCreateTagBuilder(ItemTags.FLOWERS)
-                .add(ModBlocks.SPIRIT_BLOOM.asItem())
-                .add(ModBlocks.HENBANE.asItem())
-                .add(ModBlocks.WITCHWEED.asItem())
-                .add(ModBlocks.GHOST_FERN.asItem())
-                .add(ModBlocks.NIGHTSHADE_BUSH.asItem());
+                .add(ModBlocks.SPIRIT_BLOOM.asItem()).add(ModBlocks.HENBANE.asItem())
+                .add(ModBlocks.WITCHWEED.asItem()).add(ModBlocks.GHOST_FERN.asItem())
+                .add(ModBlocks.NIGHTSHADE_BUSH.asItem()).add(ModBlocks.BEGONIA.asItem())
+                .add(ModBlocks.LAVENDER.asItem());
 
         getOrCreateTagBuilder(ItemTags.SMALL_FLOWERS)
-                .add(ModBlocks.SPIRIT_BLOOM.asItem())
-                .add(ModBlocks.HENBANE.asItem())
-                .add(ModBlocks.WITCHWEED.asItem())
-                .add(ModBlocks.GHOST_FERN.asItem())
-                .add(ModBlocks.NIGHTSHADE_BUSH.asItem());
+                .add(ModBlocks.SPIRIT_BLOOM.asItem()).add(ModBlocks.HENBANE.asItem())
+                .add(ModBlocks.WITCHWEED.asItem()).add(ModBlocks.GHOST_FERN.asItem())
+                .add(ModBlocks.NIGHTSHADE_BUSH.asItem()).add(ModBlocks.BEGONIA.asItem())
+                .add(ModBlocks.LAVENDER.asItem());
 
         getOrCreateTagBuilder(ItemTags.VILLAGER_PLANTABLE_SEEDS)
-                .add(ModItems.RABBAGE_SEEDS)
-                .add(ModItems.SUNFIRE_TOMATO_SEEDS)
+                .add(ModItems.RABBAGE_SEEDS).add(ModItems.SUNFIRE_TOMATO_SEEDS)
                 .add(ModItems.MANDRAKE_SEEDS);
 
         // Custom Tags
@@ -47,14 +44,15 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                         Items.COOKED_RABBIT, Items.COOKED_COD,
                         Items.COOKED_SALMON);
 
-        getOrCreateTagBuilder(ModTags.Items.CRUSHED_PLANTS)
-                .add(ModItems.DREAMSHROOM_PASTE, ModItems.SIREN_KELP_PASTE,
-                        ModItems.SPIRIT_BLOOM_POWDER, ModItems.GHOST_FERN_POWDER);
+        getOrCreateTagBuilder(ModTags.Items.CRUSHED_HERBS)
+                .add(ModItems.DREAM_PASTE, ModItems.SIREN_PASTE,
+                        ModItems.SPIRIT_POWDER, ModItems.GHOST_POWDER);
 
         getOrCreateTagBuilder(ModTags.Items.BREWS)
                 .add(ModItems.BREW_OF_HOMESTEAD, ModItems.BREW_OF_BLOODLUST,
                         ModItems.BREW_OF_SLIMEWALKER, ModItems.BREW_OF_SPIKESKIN,
-                        ModItems.BREW_OF_SIPHON, ModItems.RUSTIC_BOTTLE);
+                        ModItems.BREW_OF_SIPHON, ModItems.BREW_OF_DAYBLOOM,
+                        ModItems.RUSTIC_BOTTLE);
 
         getOrCreateTagBuilder(ModTags.Items.COTTONWOOD_LOGS)
                 .add(ModBlocks.COTTONWOOD_LOG.asItem(), ModBlocks.STRIPPED_COTTONWOOD_LOG.asItem(),
@@ -73,7 +71,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModBlocks.PALE_MUSHROOM.asItem());
 
         getOrCreateTagBuilder(ModTags.Items.BERRIES)
-                .add(ModItems.CHILLBERRIES);
+                .add(ModItems.CHILLBERRIES).add(ModItems.MOON_BERRIES);
 
         getOrCreateTagBuilder(ModTags.Items.SEEDS)
                 .add(ModItems.MANDRAKE_SEEDS, ModItems.SUNFIRE_TOMATO_SEEDS,
@@ -87,10 +85,6 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         getOrCreateTagBuilder(ModTags.Items.ORES)
                 .add(ModBlocks.SALT_ORE.asItem());
-
-        // Armor Tags
-        /* getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR)
-                .add(ModItems.BOGGED_HAT, ModItems.BOGGED_ROBE, ModItems.BOGGED_PANTS, ModItems.BOGGED_BOOTS);*/
 
         // Tags for Tree Related Items
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN)

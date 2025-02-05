@@ -9,7 +9,6 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.block.entity.ModBlockEntities;
 import net.grapes.hexalia.block.entity.renderer.RitualTableBlockEntityRenderer;
-import net.grapes.hexalia.block.entity.renderer.SaltBlockEntityRenderer;
 import net.grapes.hexalia.entity.ModBoats;
 import net.grapes.hexalia.entity.ModEntities;
 import net.grapes.hexalia.entity.client.SilkMothRenderer;
@@ -50,7 +49,7 @@ public class HexaliaModClient implements ClientModInitializer {
                 ModBlocks.SIREN_KELP, ModBlocks.MANDRAKE_CROP,
                 ModBlocks.CHILLBERRY_BUSH, ModBlocks.SUNFIRE_TOMATO_CROP,
                 ModBlocks.WILD_MANDRAKE, ModBlocks.WILD_SUNFIRE_TOMATO,
-                ModBlocks.SALT, ModBlocks.RABBAGE_CROP,
+                ModBlocks.RABBAGE_CROP,
                 ModBlocks.PARCHMENT, ModBlocks.DREAMCATCHER,
                 ModBlocks.POTTED_HENBANE, ModBlocks.HENBANE,
                 ModBlocks.CANDLE_SKULL, ModBlocks.SALT_LAMP,
@@ -69,7 +68,6 @@ public class HexaliaModClient implements ClientModInitializer {
 
     private void registerBlockEntityRenderers() {
         BlockEntityRendererFactories.register(ModBlockEntities.RITUAL_TABLE_BE, RitualTableBlockEntityRenderer::new);
-        BlockEntityRendererFactories.register(ModBlockEntities.SALT_BE, SaltBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.MOD_SIGN_BLOCK_ENTITY, SignBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.MOD_HANGING_SIGN_BLOCK_ENTITY, HangingSignBlockEntityRenderer::new);
     }

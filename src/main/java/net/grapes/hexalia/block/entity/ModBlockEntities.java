@@ -20,10 +20,10 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(RitualTableBlockEntity::new,
                             ModBlocks.RITUAL_TABLE).build(null));
 
-    public static final BlockEntityType<SaltBlockEntity> SALT_BE =
+    /* public static final BlockEntityType<SaltBlockEntity> SALT_BE =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(HexaliaMod.MOD_ID, "salt_block_entity"),
                     FabricBlockEntityTypeBuilder.create(SaltBlockEntity::new,
-                            ModBlocks.SALT).build(null));
+                            ModBlocks.SALT).build(null));*/
 
     public static final BlockEntityType<BrewShelfBlockEntity> BREW_SHELF_BE =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(HexaliaMod.MOD_ID, "brew_shelf_block_entity"),

@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:hexaliasalt",
+  "parent": "hexalia:root",
   "criteria": {
     "has_ritual_table": {
       "conditions": {
@@ -16,7 +16,7 @@
   },
   "display": {
     "announce_to_chat": true,
-    "background": "hexalia:textures/block/salt_block.png",
+    "background": "hexalia:textures/block/willow_log.png",
     "description": {
       "translate": "advancements.hexalia.ritual_table.description"
     },

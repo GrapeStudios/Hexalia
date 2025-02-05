@@ -1,7 +1,6 @@
 package net.grapes.hexalia.block.custom;
 
 import net.grapes.hexalia.block.entity.RitualTableBlockEntity;
-import net.grapes.hexalia.block.entity.SaltBlockEntity;
 import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.particle.ModParticles;
 import net.grapes.hexalia.recipe.TransmutationRecipe;
@@ -85,7 +84,7 @@ public class RitualTableBlock extends BlockWithEntity implements BlockEntityProv
         return new RitualTableBlockEntity(pos, state);
     }
 
-    @Override
+   /* @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             if (world.getBlockEntity(pos) instanceof RitualTableBlockEntity ritualTableBlockEntity) {
@@ -257,5 +256,5 @@ public class RitualTableBlock extends BlockWithEntity implements BlockEntityProv
             double z = pos.getZ() + 0.5 + random.nextDouble(-PARTICLE_OFFSET, PARTICLE_OFFSET);
             world.addParticle(particleType, x, y, z, 0.0D, 0.03D, 0.0D);
         }
-    }
+    }*/
 }

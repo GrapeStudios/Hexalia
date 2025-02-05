@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_nightshade_bush": {
+    "has_lavender": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:nightshade_bush"
+              "hexalia:lavender"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_nightshade_bush",
+      "has_lavender",
       "has_the_recipe"
     ]
   ],

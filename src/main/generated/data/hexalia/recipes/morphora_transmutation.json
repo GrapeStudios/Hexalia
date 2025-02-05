@@ -1,0 +1,23 @@
+{
+  "type": "hexalia:transmutation",
+  "input": {
+    "item": "minecraft:poppy"
+  },
+  "output": {
+    "item": "hexalia:morphora"
+  },
+  "salt_items": [
+    {
+      "item": "hexalia:dream_paste"
+    },
+    {
+      "item": "hexalia:spirit_powder"
+    },
+    {
+      "item": "hexalia:earth_node"
+    },
+    {
+      "item": "hexalia:tree_resin"
+    }
+  ]
+}

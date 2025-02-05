@@ -1,6 +1,6 @@
 package net.grapes.hexalia.item.custom;
 
-import net.grapes.hexalia.item.client.GhostVeilRenderer;
+import net.grapes.hexalia.item.client.BoggedBootsRenderer;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.Entity;
@@ -42,14 +42,14 @@ public class GhostVeilItem extends ArmorItem implements GeoItem {
     @Override
     public void createRenderer(Consumer<Object> consumer) {
         consumer.accept(new RenderProvider() {
-            private GhostVeilRenderer renderer;
+            private BoggedBootsRenderer renderer;
 
             @Override
             public BipedEntityModel<LivingEntity> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack,
                                                                         EquipmentSlot equipmentSlot, BipedEntityModel<LivingEntity> original) {
 
                 if (this.renderer == null)
-                    this.renderer = new GhostVeilRenderer();
+                    this.renderer = new BoggedBootsRenderer();
 
                 this.renderer.prepForRender(livingEntity, itemStack, equipmentSlot, original);
 

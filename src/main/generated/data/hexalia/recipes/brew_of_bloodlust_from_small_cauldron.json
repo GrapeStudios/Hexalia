@@ -5,13 +5,13 @@
   },
   "ingredients": [
     {
-      "item": "minecraft:redstone"
+      "item": "minecraft:beef"
     },
     {
-      "item": "hexalia:siren_kelp_paste"
+      "item": "hexalia:siren_paste"
     },
     {
-      "item": "hexalia:dreamshroom_paste"
+      "item": "hexalia:saltsprout"
     }
   ],
   "output": {

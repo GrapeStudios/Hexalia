@@ -9,7 +9,7 @@ import net.minecraft.util.Identifier;
 
 public class ModTags {
     public static class Items {
-        public static final TagKey<Item> CRUSHED_PLANTS = createItemTag("crushed_plants");
+        public static final TagKey<Item> CRUSHED_HERBS = createItemTag("crushed_herbs");
         public static final TagKey<Item> BREWS = createItemTag("brews");
         public static final TagKey<Item> COTTONWOOD_LOGS = createItemTag("cottonwood_logs");
         public static final TagKey<Item> WILLOW_LOGS = createItemTag("willow_logs");

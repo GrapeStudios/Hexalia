@@ -1,11 +1,11 @@
 {
   "criteria": {
-    "has_hexbook": {
+    "has_hex_focus": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:hexbook"
+              "hexalia:hex_focus"
             ]
           }
         ]
@@ -15,14 +15,14 @@
   },
   "display": {
     "announce_to_chat": true,
-    "background": "hexalia:textures/block/salt_block.png",
+    "background": "hexalia:textures/block/willow_log.png",
     "description": {
       "translate": "advancements.hexalia.root.description"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "hexalia:hexbook"
+      "item": "hexalia:hex_focus"
     },
     "show_toast": true,
     "title": {
@@ -31,7 +31,7 @@
   },
   "requirements": [
     [
-      "has_hexbook"
+      "has_hex_focus"
     ]
   ],
   "sends_telemetry_event": true

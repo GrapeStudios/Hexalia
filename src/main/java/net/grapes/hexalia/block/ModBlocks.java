@@ -49,6 +49,16 @@ public class ModBlocks {
             new SirenKelpBlock(FabricBlockSettings.copyOf(Blocks.SEAGRASS)));
     public static final Block GHOST_FERN = registerBlock("ghost_fern",
             new GhostFernBlock(StatusEffects.INVISIBILITY, 6, FabricBlockSettings.copyOf(Blocks.AZALEA).noCollision()));
+    public static final Block MORPHORA = registerBlock("morphora",
+            new Block(FabricBlockSettings.copyOf(Blocks.AZALEA)));
+    public static final Block GRIMSHADE = registerBlock("grimshade",
+            new Block(FabricBlockSettings.copyOf(Blocks.AZALEA)));
+    public static final Block NAUTILITE = registerBlock("nautilite",
+            new Block(FabricBlockSettings.copyOf(Blocks.AZALEA)));
+    public static final Block WINDSONG = registerBlock("windsong",
+            new Block(FabricBlockSettings.copyOf(Blocks.AZALEA)));
+    public static final Block LUNAR_LILY = registerBlock("lunar_lily",
+            new Block(FabricBlockSettings.copyOf(Blocks.AZALEA)));
 
     // Decorative Plants
     public static final Block HENBANE = registerBlock("henbane",
@@ -71,6 +81,14 @@ public class ModBlocks {
             new FlowerPotBlock(NIGHTSHADE_BUSH, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
     public static final Block DUCKWEED = registerBlockWithoutBlockItem("duckweed",
             new WaterPlantBlock(FabricBlockSettings.copyOf(Blocks.LILY_PAD).noCollision()));
+    public static final Block BEGONIA = registerBlock("begonia",
+            new FlowerBlock(StatusEffects.REGENERATION, 6, FabricBlockSettings.copyOf(Blocks.ALLIUM)));
+    public static final Block POTTED_BEGONIA = registerBlockWithoutBlockItem("potted_begonia",
+            new FlowerPotBlock(HENBANE, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
+    public static final Block LAVENDER = registerBlock("lavender",
+            new FlowerBlock(StatusEffects.REGENERATION, 6, FabricBlockSettings.copyOf(Blocks.ALLIUM)));
+    public static final Block POTTED_LAVENDER = registerBlockWithoutBlockItem("potted_lavender",
+            new FlowerPotBlock(HENBANE, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
 
     // Crop & Wild Crop Blocks
     public static final Block MANDRAKE_CROP = registerBlockWithoutBlockItem("mandrake_crop",
@@ -88,6 +106,11 @@ public class ModBlocks {
     public static final Block SALTSPROUT = registerBlockWithoutBlockItem("saltsprout",
             new SaltSproutBlock(FabricBlockSettings.copyOf(Blocks.SWEET_BERRY_BUSH)));
 
+    public static final Block MOON_BERRIES_VINE = registerBlockWithoutBlockItem("moon_berries_vine",
+            new Block(FabricBlockSettings.copyOf(Blocks.AZALEA)));
+    public static final Block MOON_BERRIES_VINE_PLANT = registerBlockWithoutBlockItem("moon_berries_vine_plant",
+            new Block(FabricBlockSettings.copyOf(Blocks.AZALEA)));
+
     // Mineral-Related Blocks
     public static final Block SALT_ORE = registerBlock("salt_ore",
             new Block(FabricBlockSettings.copyOf(Blocks.COAL_ORE)));
@@ -96,8 +119,6 @@ public class ModBlocks {
     public static final Block SALT_LAMP = registerBlockWithoutBlockItem("salt_lamp",
             new SaltLampBlock(FabricBlockSettings.create().mapColor(MapColor.WHITE).instrument(Instrument.BANJO)
                     .strength(4f).requiresTool().luminance(state -> 12)));
-    public static final Block SALT = registerBlockWithoutBlockItem("salt",
-            new SaltBlock(FabricBlockSettings.copyOf(Blocks.TRIPWIRE)));
 
     // Functional Blocks
     public static final Block SMALL_CAULDRON = registerBlockWithoutBlockItem("small_cauldron",
@@ -109,6 +130,8 @@ public class ModBlocks {
             new RitualTableBlock(FabricBlockSettings.copyOf(Blocks.STONE).nonOpaque()));
     public static final Block BREW_SHELF = registerBlock("brew_shelf",
             new BrewShelfBlock(FabricBlockSettings.copyOf(Blocks.CHISELED_BOOKSHELF).nonOpaque()));
+    public static final Block RITUAL_BRAZIER = registerBlock("ritual_brazier",
+            new Block(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN).nonOpaque()));
 
     // Decorative Blocks
     public static final Block PARCHMENT = registerBlock("parchment",

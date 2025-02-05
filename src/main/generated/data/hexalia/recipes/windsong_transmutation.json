@@ -1,0 +1,23 @@
+{
+  "type": "hexalia:transmutation",
+  "input": {
+    "item": "minecraft:oxeye_daisy"
+  },
+  "output": {
+    "item": "hexalia:windsong"
+  },
+  "salt_items": [
+    {
+      "item": "hexalia:air_node"
+    },
+    {
+      "item": "hexalia:ghost_powder"
+    },
+    {
+      "item": "minecraft:feather"
+    },
+    {
+      "item": "minecraft:phantom_membrane"
+    }
+  ]
+}

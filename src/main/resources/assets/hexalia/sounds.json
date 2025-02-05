@@ -6,10 +6,31 @@
     ]
   },
 
-  "completed_ritual": {
-    "subtitle": "sounds.hexalia.completed_ritual",
+  "ritual_success": {
+    "subtitle": "sounds.hexalia.ritual_success",
     "sounds": [
-      "hexalia:completed_ritual"
+      "hexalia:ritual_success"
+    ]
+  },
+
+  "conversion": {
+    "subtitle": "sounds.hexalia.conversion",
+    "sounds": [
+      "hexalia:conversion"
+    ]
+  },
+
+  "wind_burst": {
+    "subtitle": "sounds.hexalia.wind_burst",
+    "sounds": [
+      "hexalia:wind_burst"
+    ]
+  },
+
+  "wind_deflect": {
+    "subtitle": "sounds.hexalia.wind_deflect",
+    "sounds": [
+      "hexalia:wind_deflect"
     ]
   }
 }

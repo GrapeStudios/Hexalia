@@ -3,7 +3,7 @@
 	"texture_size": [64, 64],
 	"textures": {
 		"2": "hexalia:block/rustic_oven",
-		"particle": "hexalia:block/rustic_oven"
+		"particle": "minecraft:block/deepslate_bricks"
 	},
 	"elements": [
 		{

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:wheat"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "hexalia:moon_berries"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "item": "hexalia:moon_berry_cookie"
+  }
+}

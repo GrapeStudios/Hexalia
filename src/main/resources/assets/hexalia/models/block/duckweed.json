@@ -1,5 +1,6 @@
 {
   "ambientocclusion": false,
+  "render_type": "cutout",
   "textures": {
     "1": "hexalia:block/duckweed",
     "particle": "hexalia:block/duckweed"

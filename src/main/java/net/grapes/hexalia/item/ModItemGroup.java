@@ -21,14 +21,28 @@ public class ModItemGroup {
                         entries.add(ModItems.SIREN_KELP);
                         entries.add(ModBlocks.GHOST_FERN);
 
-                        // Crushed Plants (Powder and Paste)
-                        entries.add(ModItems.SIREN_KELP_PASTE);
-                        entries.add(ModItems.SPIRIT_BLOOM_POWDER);
-                        entries.add(ModItems.DREAMSHROOM_PASTE);
-                        entries.add(ModItems.GHOST_FERN_POWDER);
+                        // Crushed Herbs
+                        entries.add(ModItems.SIREN_PASTE);
+                        entries.add(ModItems.SPIRIT_POWDER);
+                        entries.add(ModItems.DREAM_PASTE);
+                        entries.add(ModItems.GHOST_POWDER);
+
+                        // Elemental Nodes
+                        entries.add(ModItems.FIRE_NODE);
+                        entries.add(ModItems.WATER_NODE);
+                        entries.add(ModItems.AIR_NODE);
+                        entries.add(ModItems.EARTH_NODE);
+
+                        // Enchanted Plants
+                        entries.add(ModBlocks.MORPHORA);
+                        entries.add(ModBlocks.GRIMSHADE);
+                        entries.add(ModBlocks.NAUTILITE);
+                        entries.add(ModBlocks.WINDSONG);
+                        entries.add(ModBlocks.LUNAR_LILY);
 
                         // Other  Resources
-                        entries.add(ModItems.RESIN);
+                        entries.add(ModItems.TREE_RESIN);
+                        entries.add(ModItems.MOON_CRYSTAL);
                         entries.add(ModItems.SILK_FIBER);
                         entries.add(ModItems.SILKWORM);
 
@@ -43,17 +57,22 @@ public class ModItemGroup {
                         entries.add(ModItems.CHILLBERRIES);
                         entries.add(ModItems.RABBAGE);
                         entries.add(ModItems.SALTSPROUT);
+                        entries.add(ModItems.MOON_BERRIES);
 
                         // Food
                         entries.add(ModItems.MANDRAKE_STEW);
                         entries.add(ModItems.SPICY_SANDWICH);
                         entries.add(ModItems.CHILLBERRY_PIE);
+                        entries.add(ModItems.MOON_BERRY_COOKIE);
 
                         // Tools
-                        entries.add(ModItems.HEXBOOK);
                         entries.add(ModItems.MORTAR_AND_PESTLE);
                         entries.add(ModItems.STONE_DAGGER);
                         entries.add(ModItems.HEX_FOCUS);
+                        entries.add(ModItems.SILK_IDOL);
+                        entries.add(ModItems.RAIN_IDOL);
+                        entries.add(ModItems.CLEAR_IDOL);
+                        entries.add(ModItems.STORM_IDOL);
 
                         // Functional Blocks
                         entries.add(ModBlocks.RUSTIC_OVEN);
@@ -62,11 +81,11 @@ public class ModItemGroup {
                         entries.add(ModItems.RITUAL_TABLE);
                         entries.add(ModBlocks.INFUSED_DIRT);
                         entries.add(ModBlocks.INFUSED_FARMLAND);
+                        entries.add(ModBlocks.RITUAL_BRAZIER);
 
                         // Salt
                         entries.add(ModItems.SALT);
                         entries.add(ModItems.PURIFYING_SALTS);
-                        // entries.add(ModBlocks.SALT_ORE);
                         entries.add(ModBlocks.SALT_BLOCK);
 
                         // Brews
@@ -76,9 +95,12 @@ public class ModItemGroup {
                         entries.add(ModItems.BREW_OF_SLIMEWALKER);
                         entries.add(ModItems.BREW_OF_HOMESTEAD);
                         entries.add(ModItems.BREW_OF_SIPHON);
+                        entries.add(ModItems.BREW_OF_DAYBLOOM);
 
                         // Decorative Plants
                         entries.add(ModBlocks.HENBANE);
+                        entries.add(ModBlocks.BEGONIA);
+                        entries.add(ModBlocks.LAVENDER);
                         entries.add(ModItems.LOTUS_FLOWER);
                         entries.add(ModBlocks.PALE_MUSHROOM);
                         entries.add(ModBlocks.WITCHWEED);
@@ -95,14 +117,10 @@ public class ModItemGroup {
                         // Rare Items
                         entries.add(ModItems.ANCIENT_SEED);
                         entries.add(ModItems.KELPWEAVE_BLADE);
-                        entries.add(ModItems.WISDOM_GEM);
+                        entries.add(ModItems.SAGE_PENDANT);
 
                         // Armor Items
-                        /* Work In Progress -
-                        entries.add(ModItems.BOGGED_HAT);
-                        entries.add(ModItems.BOGGED_ROBE);
-                        entries.add(ModItems.BOGGED_PANTS);
-                        entries.add(ModItems.BOGGED_BOOTS);*/
+                        entries.add(ModItems.BOGGED_BOOTS);
                         entries.add(ModItems.GHOSTVEIL);
                         entries.add(ModItems.EARPLUGS);
 
