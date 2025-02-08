@@ -18,7 +18,7 @@ import java.util.List;
 public class WindsongBlockEntity extends BlockEntity {
 
     private int activeTicks = 0;
-    private static final int DURATION = 300;
+    private static final int DURATION = 600;
     private static final int AREA_RADIUS = 6;
     private int particleCooldown = 0;
 
