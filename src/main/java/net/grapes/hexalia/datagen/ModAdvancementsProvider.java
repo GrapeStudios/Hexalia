@@ -111,17 +111,17 @@ public class ModAdvancementsProvider implements ForgeAdvancementProvider.Advance
                 .save(saver, new ResourceLocation(HexaliaMod.MOD_ID, "rabbage"), existingFileHelper);
 
         Advancement weatherIdolAdvancement = Advancement.Builder.advancement()
-                .display(new DisplayInfo(new ItemStack(ModItems.THUNDER_IDOL.get()),
+                .display(new DisplayInfo(new ItemStack(ModItems.STORM_IDOL.get()),
                         Component.translatable("advancements.hexalia.weather_idol.title"),
                         Component.translatable("advancements.hexalia.weather_idol.description"),
                         new ResourceLocation(HexaliaMod.MOD_ID, "textures/block/willow_log.png"),
                         FrameType.TASK, true, true, false))
-                .parent(rootAdvancement) // Optional parent advancement
-                .addCriterion("use_weather_idol", ConsumeItemTrigger.TriggerInstance.usedItem(ModItems.RAIN_IDOL.get()))
+                .parent(rootAdvancement)
+                .addCriterion("use_rain_idol", ConsumeItemTrigger.TriggerInstance.usedItem(ModItems.RAIN_IDOL.get()))
                 .addCriterion("use_clear_idol", ConsumeItemTrigger.TriggerInstance.usedItem(ModItems.CLEAR_IDOL.get()))
-                .addCriterion("use_thunder_idol", ConsumeItemTrigger.TriggerInstance.usedItem(ModItems.THUNDER_IDOL.get()))
+                .addCriterion("use_storm_idol", ConsumeItemTrigger.TriggerInstance.usedItem(ModItems.STORM_IDOL.get()))
                 .requirements(new String[][] {
-                        { "use_weather_idol", "use_clear_idol" }
+                        { "use_weather_idol", "use_clear_idol", "use_storm_idol" }
                 })
                 .save(saver, new ResourceLocation(HexaliaMod.MOD_ID, "weather_idol"), existingFileHelper);
 

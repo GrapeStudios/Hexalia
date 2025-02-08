@@ -65,7 +65,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern(" P ")
                 .pattern(" S ")
                 .define('P', Items.TORCH)
-                .define('S', ModTags.Items.SALT_DUSTS)
+                .define('S', ModTags.Items.SALT)
                 .define('A', Items.COPPER_INGOT)
                 .unlockedBy("has_salt",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SALT.get()).build()))
@@ -155,7 +155,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("SPS")
                 .pattern(" S ")
                 .define('P', Items.ROTTEN_FLESH)
-                .define('S', ModTags.Items.SALT_DUSTS)
+                .define('S', ModTags.Items.SALT)
                 .unlockedBy("has_salt",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SALT.get()).build()))
                 .save(pWriter);
@@ -188,7 +188,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModBlocks.BEGONIA.get()).build()))
                 .save(pWriter);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.PURPLE_DYE)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BLACK_DYE)
                 .requires(ModBlocks.NIGHTSHADE_BUSH.get())
                 .unlockedBy("has_nightshade_bush",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModBlocks.NIGHTSHADE_BUSH.get()).build()))
@@ -269,7 +269,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(pWriter);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.PURIFYING_SALTS.get())
-                .requires(ModTags.Items.SALT_DUSTS)
+                .requires(ModTags.Items.SALT)
                 .requires(ModTags.Items.REFINED_HERBS)
                 .requires(Items.LEATHER)
                 .unlockedBy("has_salt",
@@ -310,7 +310,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SILK_IDOL.get()).build()))
                 .save(pWriter);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.THUNDER_IDOL.get(), 1)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.STORM_IDOL.get(), 1)
                 .requires(ModItems.SILK_IDOL.get())
                 .requires(Items.STRING)
                 .requires(ModItems.AIR_NODE.get())

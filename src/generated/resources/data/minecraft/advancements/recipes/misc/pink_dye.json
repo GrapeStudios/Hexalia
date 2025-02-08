@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_lavender": {
+    "has_begonia": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:lavender"
+              "hexalia:begonia"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:purple_dye"
+        "recipe": "minecraft:pink_dye"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_lavender",
+      "has_begonia",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:purple_dye"
+      "minecraft:pink_dye"
     ]
   },
   "sends_telemetry_event": false

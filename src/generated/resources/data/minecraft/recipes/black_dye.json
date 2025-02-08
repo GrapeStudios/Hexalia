@@ -3,10 +3,10 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "hexalia:lavender"
+      "item": "hexalia:nightshade_bush"
     }
   ],
   "result": {
-    "item": "minecraft:purple_dye"
+    "item": "minecraft:black_dye"
   }
 }

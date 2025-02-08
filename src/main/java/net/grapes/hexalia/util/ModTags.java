@@ -17,7 +17,7 @@ public class ModTags {
         public static final TagKey<Item> BREWS = tag("brews");
 
         // Common Item Tags
-        public static final TagKey<Item> SALT_DUSTS = forgeTag("salt_dusts");
+        public static final TagKey<Item> SALT = forgeTag("salt");
         public static final TagKey<Item> BERRIES = forgeTag("berries");
         public static final TagKey<Item> SEEDS = forgeTag("seeds");
         public static final TagKey<Item> MUSHROOMS = forgeTag("mushrooms");

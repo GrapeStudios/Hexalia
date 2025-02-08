@@ -41,12 +41,14 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         this.tag(BlockTags.FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM.get(), ModBlocks.HENBANE.get(),
                         ModBlocks.WITCHWEED.get(), ModBlocks.GHOST_FERN.get(),
-                        ModBlocks.NIGHTSHADE_BUSH.get());
+                        ModBlocks.NIGHTSHADE_BUSH.get(), ModBlocks.BEGONIA.get(),
+                        ModBlocks.LAVENDER.get());
 
         this.tag(BlockTags.SMALL_FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM.get(), ModBlocks.HENBANE.get(),
                         ModBlocks.WITCHWEED.get(), ModBlocks.GHOST_FERN.get(),
-                        ModBlocks.NIGHTSHADE_BUSH.get());
+                        ModBlocks.NIGHTSHADE_BUSH.get(), ModBlocks.BEGONIA.get(),
+                        ModBlocks.LAVENDER.get());
 
         this.tag(BlockTags.FROG_PREFER_JUMP_TO)
                 .add(ModBlocks.LOTUS_FLOWER.get());
@@ -74,7 +76,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         this.tag(ModTags.Blocks.ATTRACTS_MOTH)
                 .add(Blocks.LANTERN, Blocks.SEA_LANTERN,
-                        Blocks.SOUL_LANTERN, ModBlocks.SALT_LAMP.get());
+                        Blocks.SOUL_LANTERN, ModBlocks.SALT_LAMP.get(),
+                        Blocks.END_ROD, ModBlocks.LUNAR_LILY.get());
+
         this.tag(ModTags.Blocks.COCOON_LOGS)
                 .add(Blocks.DARK_OAK_LOG, ModBlocks.COTTONWOOD_LOG.get());
 

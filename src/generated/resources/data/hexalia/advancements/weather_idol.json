@@ -11,21 +11,21 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "use_thunder_idol": {
+    "use_rain_idol": {
       "conditions": {
         "item": {
           "items": [
-            "hexalia:thunder_idol"
+            "hexalia:rain_idol"
           ]
         }
       },
       "trigger": "minecraft:consume_item"
     },
-    "use_weather_idol": {
+    "use_storm_idol": {
       "conditions": {
         "item": {
           "items": [
-            "hexalia:rain_idol"
+            "hexalia:storm_idol"
           ]
         }
       },
@@ -41,7 +41,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "hexalia:thunder_idol"
+      "item": "hexalia:storm_idol"
     },
     "show_toast": true,
     "title": {
@@ -51,7 +51,8 @@
   "requirements": [
     [
       "use_weather_idol",
-      "use_clear_idol"
+      "use_clear_idol",
+      "use_storm_idol"
     ]
   ],
   "sends_telemetry_event": true

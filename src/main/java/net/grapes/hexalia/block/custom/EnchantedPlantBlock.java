@@ -32,6 +32,6 @@ public class EnchantedPlantBlock extends BushBlock {
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
-        pTooltip.add(Component.translatable("tooltip.hexalia.enchanted_plant").withStyle(ChatFormatting.DARK_GREEN));
+        pTooltip.add(Component.translatable("tooltip.hexalia.enchanted_plant").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.ITALIC));
     }
 }

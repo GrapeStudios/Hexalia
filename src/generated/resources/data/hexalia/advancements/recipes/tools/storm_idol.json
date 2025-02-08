@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_lavender": {
+    "has_silk_idol": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:lavender"
+              "hexalia:silk_idol"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:purple_dye"
+        "recipe": "hexalia:storm_idol"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_lavender",
+      "has_silk_idol",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:purple_dye"
+      "hexalia:storm_idol"
     ]
   },
   "sends_telemetry_event": false

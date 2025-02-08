@@ -23,7 +23,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SIREN_KELP.get());
                         output.accept(ModBlocks.GHOST_FERN.get());
 
-                        // Crushed Plants (Powder and Paste)
+                        // Crushed Herbs
                         output.accept(ModItems.SPIRIT_POWDER.get());
                         output.accept(ModItems.DREAM_PASTE.get());
                         output.accept(ModItems.SIREN_PASTE.get());
@@ -35,7 +35,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.AIR_NODE.get());
                         output.accept(ModItems.EARTH_NODE.get());
 
-                        // Functional Plants
+                        // Enchanted Plants
                         output.accept(ModBlocks.MORPHORA.get());
                         output.accept(ModBlocks.GRIMSHADE.get());
                         output.accept(ModBlocks.NAUTILITE.get());
@@ -74,7 +74,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.SILK_IDOL.get());
                         output.accept(ModItems.RAIN_IDOL.get());
                         output.accept(ModItems.CLEAR_IDOL.get());
-                        output.accept(ModItems.THUNDER_IDOL.get());
+                        output.accept(ModItems.STORM_IDOL.get());
 
                         // Functional Blocks
                         output.accept(ModBlocks.RUSTIC_OVEN.get());
@@ -84,6 +84,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.INFUSED_DIRT.get());
                         output.accept(ModBlocks.INFUSED_FARMLAND.get());
                         output.accept(ModBlocks.RITUAL_BRAZIER.get());
+                        output.accept(ModBlocks.DREAMCATCHER.get());
 
                         // Salt
                         output.accept(ModItems.SALT.get());
@@ -112,7 +113,6 @@ public class ModCreativeModeTabs {
 
                         // Decorative Blocks
                         output.accept(ModBlocks.PARCHMENT.get());
-                        output.accept(ModBlocks.DREAMCATCHER.get());
                         output.accept(ModItems.CANDLE_SKULL.get());
                         output.accept(ModItems.SALT_LAMP.get());
 

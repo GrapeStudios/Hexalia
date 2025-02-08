@@ -33,5 +33,11 @@ public class ModRegistries {
         ComposterBlock.COMPOSTABLES.put(ModItems.SUNFIRE_TOMATO.get(), 0.6F);
         ComposterBlock.COMPOSTABLES.put(ModItems.RABBAGE.get(), 0.6F);
         ComposterBlock.COMPOSTABLES.put(ModItems.SALTSPROUT.get(), 0.6F);
+
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.MORPHORA.get(), 0.8F);
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.GRIMSHADE.get(), 0.8F);
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.NAUTILITE.get(), 0.8F);
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.WINDSONG.get(), 0.8F);
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.NAUTILITE.get(), 0.8F);
     }
 }

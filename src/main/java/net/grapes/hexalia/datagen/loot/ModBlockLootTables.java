@@ -67,11 +67,19 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(ModBlocks.POTTED_LAVENDER.get(),
                 createPotFlowerItemTable(ModBlocks.LAVENDER.get()));
         this.dropSelf(ModBlocks.MORPHORA.get());
+        this.add(ModBlocks.POTTED_MORPHORA.get(),
+                createPotFlowerItemTable(ModBlocks.MORPHORA.get()));
         this.dropSelf(ModBlocks.GRIMSHADE.get());
+        this.add(ModBlocks.POTTED_GRIMSHADE.get(),
+                createPotFlowerItemTable(ModBlocks.GRIMSHADE.get()));
         this.dropSelf(ModBlocks.NAUTILITE.get());
         this.dropSelf(ModBlocks.WINDSONG.get());
+        this.add(ModBlocks.POTTED_WINDSONG.get(),
+                createPotFlowerItemTable(ModBlocks.WINDSONG.get()));
         this.dropSelf(ModBlocks.RITUAL_BRAZIER.get());
         this.dropSelf(ModBlocks.LUNAR_LILY.get());
+        this.add(ModBlocks.POTTED_LUNAR_LILY.get(),
+                createPotFlowerItemTable(ModBlocks.LUNAR_LILY.get()));
         this.add(ModBlocks.MOON_BERRIES_VINES.get(), vinesDrop(ModBlocks.MOON_BERRIES_VINES.get()));
         this.add(ModBlocks.MOON_BERRIES_VINES_PLANT.get(), vinesDrop(ModBlocks.MOON_BERRIES_VINES_PLANT.get()));
 

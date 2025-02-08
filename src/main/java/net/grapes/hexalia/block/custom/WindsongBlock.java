@@ -67,8 +67,8 @@ public class WindsongBlock extends EnchantedPlantBlock implements EntityBlock {
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
         return pLevel.isClientSide ? null : (level, pos, state, blockEntity) -> {
-            if (blockEntity instanceof WindsongBlockEntity windflowerBlockEntity) {
-                windflowerBlockEntity.tick(level, pos, state);
+            if (blockEntity instanceof WindsongBlockEntity windsong) {
+                windsong.tick(level, pos, state);
             }
         };
     }

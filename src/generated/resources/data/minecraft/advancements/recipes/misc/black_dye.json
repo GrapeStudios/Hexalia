@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_silk_idol": {
+    "has_nightshade_bush": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:silk_idol"
+              "hexalia:nightshade_bush"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "hexalia:thunder_idol"
+        "recipe": "minecraft:black_dye"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_silk_idol",
+      "has_nightshade_bush",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "hexalia:thunder_idol"
+      "minecraft:black_dye"
     ]
   },
   "sends_telemetry_event": false

@@ -49,8 +49,8 @@ public class NautiliteBlock extends EnchantedPlantBlock implements EntityBlock {
         if (pPlayer.getItemInHand(pHand).getItem() == ModItems.HEX_FOCUS.get()) {
             if (!pLevel.isClientSide) {
                 BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
-                if (blockEntity instanceof NautiliteBlockEntity tidalBloomBlockEntity && !tidalBloomBlockEntity.isActive()) {
-                    tidalBloomBlockEntity.activate();
+                if (blockEntity instanceof NautiliteBlockEntity nautiliteBlockEntity && !nautiliteBlockEntity.isActive()) {
+                    nautiliteBlockEntity.activate();
                     playActivationEffects((ServerLevel) pLevel, pPos);
                 }
             }
@@ -92,8 +92,8 @@ public class NautiliteBlock extends EnchantedPlantBlock implements EntityBlock {
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
         return pLevel.isClientSide ? null : (level, pos, state, blockEntity) -> {
-            if (blockEntity instanceof NautiliteBlockEntity tidalBloomBlockEntity) {
-                NautiliteBlockEntity.tick(level, pos, state, tidalBloomBlockEntity);
+            if (blockEntity instanceof NautiliteBlockEntity nautilite) {
+                NautiliteBlockEntity.tick(level, pos, state, nautilite);
             }
         };
     }

@@ -3,10 +3,10 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "hexalia:lavender"
+      "item": "hexalia:begonia"
     }
   ],
   "result": {
-    "item": "minecraft:purple_dye"
+    "item": "minecraft:pink_dye"
   }
 }

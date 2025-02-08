@@ -30,12 +30,14 @@ public class ModItemTagProvider extends ItemTagsProvider {
         this.tag(ItemTags.FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM.get().asItem(), ModBlocks.HENBANE.get().asItem(),
                         ModBlocks.WITCHWEED.get().asItem(), ModBlocks.GHOST_FERN.get().asItem(),
-                        ModBlocks.NIGHTSHADE_BUSH.get().asItem());
+                        ModBlocks.NIGHTSHADE_BUSH.get().asItem(), ModBlocks.BEGONIA.get().asItem(),
+                        ModBlocks.LAVENDER.get().asItem());
 
         this.tag(ItemTags.SMALL_FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM.get().asItem(), ModBlocks.HENBANE.get().asItem(),
                         ModBlocks.WITCHWEED.get().asItem(), ModBlocks.GHOST_FERN.get().asItem(),
-                        ModBlocks.NIGHTSHADE_BUSH.get().asItem());
+                        ModBlocks.NIGHTSHADE_BUSH.get().asItem(), ModBlocks.BEGONIA.get().asItem(),
+                        ModBlocks.LAVENDER.get().asItem());
 
         this.tag(ItemTags.VILLAGER_PLANTABLE_SEEDS)
                 .add(ModItems.RABBAGE_SEEDS.get(), ModItems.SUNFIRE_TOMATO_SEEDS.get(),
@@ -58,7 +60,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                         ModItems.BREW_OF_SPIKESKIN.get(), ModItems.RUSTIC_BOTTLE.get());
 
         // Common Tags
-        this.tag(ModTags.Items.SALT_DUSTS)
+        this.tag(ModTags.Items.SALT)
                 .add(ModItems.SALT.get());
 
         this.tag(ModTags.Items.MUSHROOMS)

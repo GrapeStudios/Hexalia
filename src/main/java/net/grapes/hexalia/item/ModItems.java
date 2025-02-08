@@ -83,7 +83,7 @@ public class ModItems {
     public static final RegistryObject<Item> CHILLBERRY_PIE = ITEMS.register("chillberry_pie",
             () -> new Item(new Item.Properties().food(ModFoodProperties.CHILLBERRY_PIE)));
     public static final RegistryObject<Item> MANDRAKE_STEW = ITEMS.register("mandrake_stew",
-            () -> new Item(new Item.Properties().food(ModFoodProperties.MANDRAKE_STEW)));
+            () -> new BowlFoodItem(new Item.Properties().food(ModFoodProperties.MANDRAKE_STEW)));
     public static final RegistryObject<Item> MOON_BERRY_COOKIE = ITEMS.register("moon_berry_cookie",
             () -> new Item(new Item.Properties().food(ModFoodProperties.MOON_BERRY_COOKIE)));
 
@@ -131,7 +131,7 @@ public class ModItems {
             () -> new WeatherIdol(new Item.Properties()));
     public static final RegistryObject<Item> RAIN_IDOL = ITEMS.register("rain_idol",
             () -> new WeatherIdol(new Item.Properties()));
-    public static final RegistryObject<Item> THUNDER_IDOL = ITEMS.register("thunder_idol",
+    public static final RegistryObject<Item> STORM_IDOL = ITEMS.register("storm_idol",
             () -> new WeatherIdol(new Item.Properties()));
 
     // Entity
