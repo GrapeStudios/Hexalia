@@ -10,7 +10,7 @@ import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class GhostFernBlock extends HPlantBlock {
+public class GhostFernBlock extends HexaliaFlowerBlock {
     protected static final VoxelShape SHAPE = VoxelShapes.union(
             VoxelShapes.cuboid(0.125, 0, 0.0625, 0.9375, 0.4375, 0.9375)
     );

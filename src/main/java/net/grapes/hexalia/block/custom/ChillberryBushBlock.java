@@ -24,12 +24,16 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
+import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.event.GameEvent;
 
 public class ChillberryBushBlock extends PlantBlock implements Fertilizable {
+
+    protected static final VoxelShape SHAPE = Block.createCuboidShape(5.0, 0.0, 5.0, 11.0, 10.0, 11.0);
+
     public static final int MAX_AGE = 3;
     public static final IntProperty AGE = IntProperty.of("age", 0, 3);
 
@@ -41,6 +45,10 @@ public class ChillberryBushBlock extends PlantBlock implements Fertilizable {
     @Override
     public ItemStack getPickStack(BlockView world, BlockPos pos, BlockState state) {
         return new ItemStack(ModItems.CHILLBERRIES);
+    }
+
+    public static VoxelShape getSHAPE() {
+        return SHAPE;
     }
 
     @Override

@@ -1,13 +1,13 @@
-package net.grapes.hexalia.effect;
+package net.grapes.hexalia.effect.custom;
 
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 
-public class BloodlustEffect extends StatusEffect {
+public class SpikeskinEffect extends StatusEffect {
     protected final double modifier;
 
-    protected BloodlustEffect(StatusEffectCategory category, int color, double modifier) {
+    public SpikeskinEffect(StatusEffectCategory category, int color, double modifier) {
         super(category, color);
         this.modifier = modifier;
     }

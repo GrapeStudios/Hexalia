@@ -3,15 +3,13 @@ package net.grapes.hexalia.block.custom;
 import net.grapes.hexalia.block.entity.RitualTableBlockEntity;
 import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.particle.ModParticles;
-import net.grapes.hexalia.recipe.TransmutationRecipe;
 import net.grapes.hexalia.sound.ModSounds;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
-import net.minecraft.particle.ParticleEffect;
+import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -30,9 +28,6 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RitualTableBlock extends BlockWithEntity implements BlockEntityProvider {
@@ -40,12 +35,9 @@ public class RitualTableBlock extends BlockWithEntity implements BlockEntityProv
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final VoxelShape SHAPE = createShape();
 
-    public static final int REQUIRED_DISTANCE = 2;
-    private static final double PARTICLE_OFFSET = 0.5;
-    private static final int PARTICLE_COUNT = 8;
-
     public RitualTableBlock(Settings settings) {
         super(settings);
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
     }
 
     private static VoxelShape createShape() {
@@ -69,13 +61,13 @@ public class RitualTableBlock extends BlockWithEntity implements BlockEntityProv
     }
 
     @Override
-    public BlockRenderType getRenderType(BlockState state) {
-        return BlockRenderType.MODEL;
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPE;
     }
 
     @Override
-    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        return SHAPE;
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
     }
 
     @Nullable
@@ -84,7 +76,7 @@ public class RitualTableBlock extends BlockWithEntity implements BlockEntityProv
         return new RitualTableBlockEntity(pos, state);
     }
 
-   /* @Override
+    @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             if (world.getBlockEntity(pos) instanceof RitualTableBlockEntity ritualTableBlockEntity) {
@@ -97,164 +89,75 @@ public class RitualTableBlock extends BlockWithEntity implements BlockEntityProv
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ItemStack heldItem = player.getStackInHand(hand);
         BlockEntity blockEntity = world.getBlockEntity(pos);
 
         if (!(blockEntity instanceof RitualTableBlockEntity ritualTableBlockEntity)) {
             return ActionResult.PASS;
         }
 
-        if (heldItem.getItem().equals(ModItems.HEX_FOCUS)) {
-            if (performTransmutation(ritualTableBlockEntity, world, pos)) {
-                spawnParticleEffect(world, pos, ModParticles.LEAVES_PARTICLE);
-                spawnParticleEffect(world, pos, ParticleTypes.ENCHANT);
-                playRitualCompletedSound(world, ritualTableBlockEntity.getPos());
-                return ActionResult.SUCCESS;
-            } else {
-                spawnParticleEffect(world, pos, ParticleTypes.SMOKE);
-                return ActionResult.SUCCESS;
-            }
-        } else {
-            return handleItemInteraction(world, ritualTableBlockEntity, player, hand);
-        }
-    }
-
-    private ActionResult handleItemInteraction(World world, RitualTableBlockEntity ritualTableBlockEntity, PlayerEntity player, Hand hand) {
-        if (ritualTableBlockEntity.isEmpty()) {
-            return addItemFromHand(world, ritualTableBlockEntity, player, hand);
-        } else if (hand.equals(Hand.MAIN_HAND)) {
-            removeItemFromBlock(world, ritualTableBlockEntity, player);
-            return ActionResult.SUCCESS;
-        }
-        return ActionResult.PASS;
-    }
-
-    private ActionResult addItemFromHand(World world, RitualTableBlockEntity ritualTableBlockEntity, PlayerEntity player, Hand hand) {
         ItemStack heldItem = player.getStackInHand(hand);
-        ItemStack offHandItem = player.getOffHandStack();
 
-        if (!offHandItem.isEmpty()) {
-            if (hand.equals(Hand.MAIN_HAND) && !(heldItem.getItem() instanceof BlockItem)) {
-                return ActionResult.PASS;
-            }
-            if (hand.equals(Hand.OFF_HAND)) {
-                return ActionResult.PASS;
-            }
-        }
-        if (heldItem.isEmpty()) {
-            return ActionResult.PASS;
-        } else if (ritualTableBlockEntity.addItem(player.getAbilities().creativeMode ? heldItem.copy() : heldItem)) {
-            playPlaceSound(world, ritualTableBlockEntity.getPos());
-            return ActionResult.SUCCESS;
-        }
-        return ActionResult.PASS;
-    }
-
-    private void removeItemFromBlock(World world, RitualTableBlockEntity ritualTableBlockEntity, PlayerEntity player) {
-        BlockPos pos = ritualTableBlockEntity.getPos();
-        ItemStack removedItem = ritualTableBlockEntity.removeItem();
-
-        if (player.isCreative()) {
-            ritualTableBlockEntity.removeItem();
-        } else if (!player.getInventory().insertStack(removedItem)) {
-            ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), removedItem);
-        }
-        playRemoveSound(world, pos);
-    }
-
-    private void playPlaceSound(World world, BlockPos pos) {
-        world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 1f);
-    }
-
-    private void playRemoveSound(World world, BlockPos pos) {
-        world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 1f, 1f);
-    }
-
-    private void playRitualCompletedSound(World world, BlockPos pos) {
-        world.playSound(null, pos, ModSounds.RITUAL_SUCCESS, SoundCategory.BLOCKS, 1.5f, 1f);
-    }
-
-    private boolean performTransmutation(RitualTableBlockEntity ritualTable, World world, BlockPos pos) {
-        ItemStack inputStack = ritualTable.getStack(0);
-
-        Optional<TransmutationRecipe> recipeOptional = world.getRecipeManager().getFirstMatch(TransmutationRecipe.Type.INSTANCE, ritualTable, world);
-
-        if (recipeOptional.isPresent()) {
-            TransmutationRecipe recipe = recipeOptional.get();
-
-            if (checkSaltBlocks(world, pos, recipe)) {
-                consumeSaltBlocks(world, pos, recipe);
-                ritualTable.removeStack(0);
-                ritualTable.setStack(0, recipe.getOutput(world.getRegistryManager()).copy());
-                ritualTable.markDirty();
-                world.updateListeners(pos, world.getBlockState(pos), world.getBlockState(pos), Block.NOTIFY_ALL);
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private boolean checkSaltBlocks(World world, BlockPos tablePos, TransmutationRecipe recipe) {
-        Direction[] directions = {Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST};
-        List<ItemStack> requiredSaltItems = new ArrayList<>(recipe.getSaltItems());
-
-        for (Direction direction : directions) {
-            BlockPos saltPos = tablePos.offset(direction, REQUIRED_DISTANCE);
-            BlockEntity blockEntity = world.getBlockEntity(saltPos);
-
-            if (!(blockEntity instanceof SaltBlockEntity saltBlockEntity)) {
-                return false;
+        if (hand == Hand.MAIN_HAND) {
+            if (!ritualTableBlockEntity.isEmpty() && heldItem.isEmpty()) {
+                removeItemFromBlock(world, ritualTableBlockEntity, player);
+                return ActionResult.SUCCESS;
             }
 
-            ItemStack saltStack = saltBlockEntity.getStack(0);
-            boolean found = false;
-
-            for (ItemStack requiredSaltItem : requiredSaltItems) {
-                if (ItemStack.areItemsEqual(saltStack, requiredSaltItem)) {
-                    requiredSaltItems.remove(requiredSaltItem);
-                    found = true;
-                    break;
+            if (!heldItem.isEmpty() && ritualTableBlockEntity.isEmpty() && !heldItem.isOf(ModItems.HEX_FOCUS)) {
+                if (ritualTableBlockEntity.addItem(heldItem.split(1))) {
+                    playItemSound(world, pos);
+                    spawnParticleEffect(world, pos, ParticleTypes.POOF, 5, 10);
+                    return ActionResult.SUCCESS;
                 }
             }
 
-            if (!found) {
-                return false;
-            }
-        }
-
-        return requiredSaltItems.isEmpty();
-    }
-
-    private void consumeSaltBlocks(World world, BlockPos tablePos, TransmutationRecipe recipe) {
-        Direction[] directions = {Direction.NORTH, Direction.SOUTH, Direction.EAST, Direction.WEST};
-        List<ItemStack> requiredSaltItems = new ArrayList<>(recipe.getSaltItems());
-
-        for (Direction direction : directions) {
-            BlockPos saltPos = tablePos.offset(direction, REQUIRED_DISTANCE);
-            BlockEntity blockEntity = world.getBlockEntity(saltPos);
-
-            if (blockEntity instanceof SaltBlockEntity saltBlockEntity) {
-                ItemStack saltStack = saltBlockEntity.getStack(0);
-
-                for (ItemStack requiredSaltItem : requiredSaltItems) {
-                    if (ItemStack.areItemsEqual(saltStack, requiredSaltItem)) {
-                        saltBlockEntity.removeStack(0);
-                        requiredSaltItems.remove(requiredSaltItem);
-                        saltBlockEntity.markDirty();
-                        break;
+            if (heldItem.isOf(ModItems.HEX_FOCUS)) {
+                if (ritualTableBlockEntity.canStartRitual(world, pos)) {
+                    boolean success = ritualTableBlockEntity.startRitual();
+                    if (success) {
+                        spawnSuccessEffect(world, pos);
                     }
                 }
+                return ActionResult.SUCCESS;
             }
+        }
+        return ActionResult.PASS;
+    }
+
+
+
+    private void removeItemFromBlock(World world, RitualTableBlockEntity ritualTableBlockEntity, PlayerEntity player) {
+        ItemStack stack = ritualTableBlockEntity.removeItem();
+        if (!player.getInventory().insertStack(stack)) {
+            ItemScatterer.spawn(world, player.getX(), player.getY(), player.getZ(), stack);
+        }
+        playItemSound(world, ritualTableBlockEntity.getPos());
+    }
+
+    private void spawnSuccessEffect(World world, BlockPos pos) {
+        spawnParticleEffect(world, pos, ParticleTypes.ENCHANT, 10, 20);
+        spawnParticleEffect(world, pos, ModParticles.LEAVES_PARTICLE, 10, 20);
+        playRitualSound(world, pos);
+    }
+
+    private void spawnParticleEffect(World world, BlockPos pos, DefaultParticleType particleType, int minParticles, int maxParticles) {
+        int particleCount = ThreadLocalRandom.current().nextInt(minParticles, maxParticles);
+        for (int i = 0; i < particleCount; i++) {
+            double offsetX = ThreadLocalRandom.current().nextDouble(-0.5, 0.5);
+            double offsetY = ThreadLocalRandom.current().nextDouble(0, 0.5);
+            double offsetZ = ThreadLocalRandom.current().nextDouble(-0.5, 0.5);
+            world.addParticle(particleType, pos.getX() + 0.5 + offsetX, pos.getY() + 1.0 + offsetY,
+                    pos.getZ() + 0.5 + offsetZ, 0, 0, 0);
         }
     }
 
-    private void spawnParticleEffect(World world, BlockPos pos, ParticleEffect particleType) {
-        ThreadLocalRandom random = ThreadLocalRandom.current();
-        for (int i = 0; i < PARTICLE_COUNT; i++) {
-            double x = pos.getX() + 0.5 + random.nextDouble(-PARTICLE_OFFSET, PARTICLE_OFFSET);
-            double y = pos.getY() + 1.0;
-            double z = pos.getZ() + 0.5 + random.nextDouble(-PARTICLE_OFFSET, PARTICLE_OFFSET);
-            world.addParticle(particleType, x, y, z, 0.0D, 0.03D, 0.0D);
-        }
-    }*/
+    private void playItemSound(World world, BlockPos pos) {
+        world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8f, 0.5f);
+        world.playSound(null, pos, SoundEvents.BLOCK_CHISELED_BOOKSHELF_PICKUP_ENCHANTED,
+                SoundCategory.BLOCKS, 0.8f, 0.5f);
+    }
+
+    private void playRitualSound(World world, BlockPos pos) {
+        world.playSound(null, pos, ModSounds.RITUAL_SUCCESS, SoundCategory.BLOCKS, 1.0f, 1.0f);
+    }
 }

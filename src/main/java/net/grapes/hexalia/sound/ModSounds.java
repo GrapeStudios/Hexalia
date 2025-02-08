@@ -10,6 +10,9 @@ public class ModSounds {
 
     public static final SoundEvent MANDRAKE_SCREAM = registerSoundEvent("mandrake_scream");
     public static final SoundEvent RITUAL_SUCCESS = registerSoundEvent("ritual_success");
+    public static final SoundEvent CONVERSION = registerSoundEvent("conversion");
+    public static final SoundEvent WIND_BURST = registerSoundEvent("wind_burst");
+    public static final SoundEvent WIND_DEFLECT = registerSoundEvent("wind_deflect");
 
     private static SoundEvent registerSoundEvent(String name) {
         Identifier identifier = new Identifier(HexaliaMod.MOD_ID, name);

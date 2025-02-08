@@ -1,4 +1,4 @@
-package net.grapes.hexalia.effect;
+package net.grapes.hexalia.effect.custom;
 
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
@@ -15,7 +15,7 @@ import java.util.List;
 public class SiphonEffect extends StatusEffect {
     protected final double modifier;
 
-    protected SiphonEffect(StatusEffectCategory category, int color, double modifier) {
+    public SiphonEffect(StatusEffectCategory category, int color, double modifier) {
         super(category, color);
         this.modifier = modifier;
     }

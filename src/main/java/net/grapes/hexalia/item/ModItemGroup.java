@@ -82,6 +82,7 @@ public class ModItemGroup {
                         entries.add(ModBlocks.INFUSED_DIRT);
                         entries.add(ModBlocks.INFUSED_FARMLAND);
                         entries.add(ModBlocks.RITUAL_BRAZIER);
+                        entries.add(ModBlocks.DREAMCATCHER);
 
                         // Salt
                         entries.add(ModItems.SALT);
@@ -110,7 +111,6 @@ public class ModItemGroup {
 
                         // Decorative Blocks
                         entries.add(ModBlocks.PARCHMENT);
-                        entries.add(ModBlocks.DREAMCATCHER);
                         entries.add(ModItems.CANDLE_SKULL);
                         entries.add(ModItems.SALT_LAMP);
 
@@ -148,6 +148,7 @@ public class ModItemGroup {
                         entries.add(ModBlocks.WILLOW_LEAVES);
                         entries.add(ModBlocks.WILLOW_LOG);
                         entries.add(ModBlocks.WILLOW_WOOD);
+                        entries.add(ModBlocks.WILLOW_MOSSY_WOOD);
                         entries.add(ModBlocks.STRIPPED_WILLOW_LOG);
                         entries.add(ModBlocks.STRIPPED_WILLOW_WOOD);
                         entries.add(ModBlocks.WILLOW_PLANKS);

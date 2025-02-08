@@ -1,4 +1,4 @@
-package net.grapes.hexalia.effect;
+package net.grapes.hexalia.effect.custom;
 
 import net.grapes.hexalia.mixin.accessors.ExhaustionAccessorMixin;
 import net.minecraft.entity.LivingEntity;
@@ -9,7 +9,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.GameRules;
 
 public class OverfedEffect extends StatusEffect {
-    protected OverfedEffect(StatusEffectCategory category, int color) {
+    public OverfedEffect(StatusEffectCategory category, int color) {
         super(category, color);
     }
 

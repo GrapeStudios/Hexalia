@@ -1,4 +1,4 @@
-package net.grapes.hexalia.effect;
+package net.grapes.hexalia.effect.custom;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
@@ -8,7 +8,7 @@ public class BleedingEffect extends StatusEffect {
 
     private static final float BASE_DAMAGE = 0.5f;
 
-    protected BleedingEffect(StatusEffectCategory category, int color) {
+    public BleedingEffect(StatusEffectCategory category, int color) {
         super(category, color);
     }
 

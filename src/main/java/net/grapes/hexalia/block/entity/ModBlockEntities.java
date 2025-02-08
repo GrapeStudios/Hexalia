@@ -20,15 +20,30 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(RitualTableBlockEntity::new,
                             ModBlocks.RITUAL_TABLE).build(null));
 
-    /* public static final BlockEntityType<SaltBlockEntity> SALT_BE =
-            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(HexaliaMod.MOD_ID, "salt_block_entity"),
-                    FabricBlockEntityTypeBuilder.create(SaltBlockEntity::new,
-                            ModBlocks.SALT).build(null));*/
+    public static final BlockEntityType<RitualBrazierBlockEntity> RITUAL_BRAZIER_BE =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(HexaliaMod.MOD_ID, "ritual_brazier_block_entity"),
+                    FabricBlockEntityTypeBuilder.create(RitualBrazierBlockEntity::new,
+                            ModBlocks.RITUAL_BRAZIER).build(null));
 
     public static final BlockEntityType<BrewShelfBlockEntity> BREW_SHELF_BE =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(HexaliaMod.MOD_ID, "brew_shelf_block_entity"),
                     FabricBlockEntityTypeBuilder.create(BrewShelfBlockEntity::new,
                             ModBlocks.BREW_SHELF).build(null));
+
+    public static final BlockEntityType<NautiliteBlockEntity> NAUTILITE_BE =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(HexaliaMod.MOD_ID, "nautilite_block_entity"),
+                    FabricBlockEntityTypeBuilder.create(NautiliteBlockEntity::new,
+                            ModBlocks.NAUTILITE).build(null));
+
+    public static final BlockEntityType<WindsongBlockEntity> WINDSONG_BE =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(HexaliaMod.MOD_ID, "windsong_block_entity"),
+                    FabricBlockEntityTypeBuilder.create(WindsongBlockEntity::new,
+                            ModBlocks.WINDSONG).build(null));
+
+    public static final BlockEntityType<LunarLilyBlockEntity> LUNAR_LILY_BE =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(HexaliaMod.MOD_ID, "lunar_lily_block_entity"),
+                    FabricBlockEntityTypeBuilder.create(LunarLilyBlockEntity::new,
+                            ModBlocks.LUNAR_LILY).build(null));
 
     // Sign and Hanging Sign Entities
     public static final BlockEntityType<ModSignBlockEntity> MOD_SIGN_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE,

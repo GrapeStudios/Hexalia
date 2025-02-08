@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.block.entity.ModBlockEntities;
+import net.grapes.hexalia.block.entity.renderer.RitualBrazierRenderer;
 import net.grapes.hexalia.block.entity.renderer.RitualTableBlockEntityRenderer;
 import net.grapes.hexalia.entity.ModBoats;
 import net.grapes.hexalia.entity.ModEntities;
@@ -62,12 +63,20 @@ public class HexaliaModClient implements ClientModInitializer {
                 ModBlocks.POTTED_PALE_MUSHROOM, ModBlocks.WITCHWEED,
                 ModBlocks.GHOST_FERN, ModBlocks.HEXED_BULRUSH,
                 ModBlocks.NIGHTSHADE_BUSH, ModBlocks.POTTED_NIGHTSHADE_BUSH,
-                ModBlocks.SALTSPROUT, ModBlocks.DUCKWEED
+                ModBlocks.SALTSPROUT, ModBlocks.DUCKWEED,
+                ModBlocks.MOON_BERRIES_VINE, ModBlocks.MOON_BERRIES_VINE_PLANT,
+                ModBlocks.GRIMSHADE, ModBlocks.POTTED_GRIMSHADE,
+                ModBlocks.BEGONIA, ModBlocks.POTTED_MORPHORA,
+                ModBlocks.RITUAL_BRAZIER, ModBlocks.MORPHORA,
+                ModBlocks.LAVENDER, ModBlocks.NAUTILITE,
+                ModBlocks.WINDSONG, ModBlocks.LUNAR_LILY,
+                ModBlocks.POTTED_WINDSONG, ModBlocks.POTTED_LUNAR_LILY
         );
     }
 
     private void registerBlockEntityRenderers() {
         BlockEntityRendererFactories.register(ModBlockEntities.RITUAL_TABLE_BE, RitualTableBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.RITUAL_BRAZIER_BE, RitualBrazierRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.MOD_SIGN_BLOCK_ENTITY, SignBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.MOD_HANGING_SIGN_BLOCK_ENTITY, HangingSignBlockEntityRenderer::new);
     }

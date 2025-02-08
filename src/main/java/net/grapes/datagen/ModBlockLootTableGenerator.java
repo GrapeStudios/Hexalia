@@ -54,14 +54,20 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.LAVENDER);
         addPottedPlantDrops(ModBlocks.POTTED_LAVENDER);
         addDrop(ModBlocks.MORPHORA);
+        addPottedPlantDrops(ModBlocks.POTTED_MORPHORA);
         addDrop(ModBlocks.GRIMSHADE);
+        addPottedPlantDrops(ModBlocks.POTTED_GRIMSHADE);
         addDrop(ModBlocks.NAUTILITE);
         addDrop(ModBlocks.WINDSONG);
+        addPottedPlantDrops(ModBlocks.POTTED_WINDSONG);
         addDrop(ModBlocks.LUNAR_LILY);
-       /*this.addDrop(ModBlocks.MOON_BERRIES_VINE,
+        addPottedPlantDrops(ModBlocks.POTTED_LUNAR_LILY);
+
+        this.addDrop(ModBlocks.MOON_BERRIES_VINE,
                moonBerriesDrop(ModBlocks.MOON_BERRIES_VINE));
        this.addDrop(ModBlocks.MOON_BERRIES_VINE_PLANT,
-               moonBerriesDrop(ModBlocks.MOON_BERRIES_VINE_PLANT));*/
+               moonBerriesDrop(ModBlocks.MOON_BERRIES_VINE_PLANT));
+       addDrop(ModBlocks.RITUAL_BRAZIER);
 
         // Other Blocks
         addDrop(ModBlocks.INFUSED_DIRT);

@@ -1,4 +1,4 @@
-package net.grapes.hexalia.effect;
+package net.grapes.hexalia.effect.custom;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
@@ -6,7 +6,7 @@ import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.util.math.Vec3d;
 
 public class StunnedEffect extends StatusEffect {
-    protected StunnedEffect(StatusEffectCategory category, int color) {
+    public StunnedEffect(StatusEffectCategory category, int color) {
         super(category, color);
     }
 

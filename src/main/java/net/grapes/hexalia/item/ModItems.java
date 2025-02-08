@@ -102,7 +102,7 @@ public class ModItems {
             new BrewItem(new FabricItemSettings().maxCount(16), ()-> ModEffects.SIPHON, 2400, 0,
                     Text.translatable("tooltip.hexalia.siphon_brew").formatted(Formatting.BLUE)));
     public static final Item BREW_OF_DAYBLOOM = registerItem("brew_of_daybloom",
-            new BrewItem(new FabricItemSettings().maxCount(16), ()-> ModEffects.BLOODLUST, 2400, 0,
+            new BrewItem(new FabricItemSettings().maxCount(16), ()-> ModEffects.DAYBLOOM, 2400, 0,
                     Text.translatable("tooltip.hexalia.daybloom").formatted(Formatting.BLUE)));
     public static final Item BREW_OF_HOMESTEAD = registerItem("brew_of_homestead",
             new HomesteadBrewItem(new FabricItemSettings().recipeRemainder(ModItems.RUSTIC_BOTTLE).maxCount(16)));

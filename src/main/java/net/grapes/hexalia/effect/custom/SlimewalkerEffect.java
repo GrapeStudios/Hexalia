@@ -1,4 +1,4 @@
-package net.grapes.hexalia.effect;
+package net.grapes.hexalia.effect.custom;
 
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
@@ -9,7 +9,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
 public class SlimewalkerEffect extends StatusEffect {
-    protected SlimewalkerEffect(StatusEffectCategory category, int color) {
+    public SlimewalkerEffect(StatusEffectCategory category, int color) {
         super(category, color);
     }
 

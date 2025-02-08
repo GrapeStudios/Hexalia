@@ -19,9 +19,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class HPlantBlock extends FlowerBlock {
+public class HexaliaFlowerBlock extends FlowerBlock {
 
-    public HPlantBlock(StatusEffect suspiciousStewEffect, int effectDuration, Settings settings) {
+    public HexaliaFlowerBlock(StatusEffect suspiciousStewEffect, int effectDuration, Settings settings) {
         super(suspiciousStewEffect, effectDuration, settings);
     }
 

@@ -12,7 +12,7 @@
 		"sources": "https://github.com/GrapeStudios/Hexalia"
 	},
 	"license": "MIT",
-	"icon": "resources/assets/icon.png",
+	"icon": "assets/hexalia/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
