@@ -2,7 +2,7 @@ package net.grapes.hexalia;
 
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
-import net.grapes.datagen.*;
+import net.grapes.hexalia.datagen.*;
 import net.grapes.hexalia.world.ModConfiguredFeatures;
 import net.grapes.hexalia.world.ModPlacedFeatures;
 import net.grapes.hexalia.world.biome.ModBiomes;

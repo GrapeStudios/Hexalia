@@ -1,4 +1,4 @@
-package net.grapes.datagen.custom;
+package net.grapes.hexalia.datagen.custom;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;

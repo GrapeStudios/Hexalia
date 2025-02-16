@@ -1,9 +1,9 @@
-package net.grapes.datagen;
+package net.grapes.hexalia.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
-import net.grapes.datagen.custom.SmallCauldronRecipeBuilder;
-import net.grapes.datagen.custom.TransmutationRecipeBuilder;
+import net.grapes.hexalia.datagen.custom.SmallCauldronRecipeBuilder;
+import net.grapes.hexalia.datagen.custom.TransmutationRecipeBuilder;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.util.ModTags;
