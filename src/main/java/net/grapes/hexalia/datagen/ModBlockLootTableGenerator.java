@@ -82,6 +82,7 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.SMALL_CAULDRON);
         addDrop(ModBlocks.SILKWORM_COCOON);
         this.addDrop(ModBlocks.SILKWORM_COCOON, ModItems.SILKWORM);
+        addDrop(ModBlocks.SALT_BLOCK, oreDrops(ModBlocks.SALT_BLOCK, ModItems.SALT));
 
         // Crop Blocks
         addDrop(ModBlocks.WILD_SUNFIRE_TOMATO);
