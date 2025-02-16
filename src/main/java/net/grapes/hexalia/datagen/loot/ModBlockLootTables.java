@@ -96,10 +96,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.BREW_SHELF.get());
         this.dropSelf(ModBlocks.RUSTIC_OVEN.get());
         this.dropSelf(ModBlocks.SMALL_CAULDRON.get());
-        this.add(ModBlocks.SALT_ORE.get(), block ->
-                createOreDrop(ModBlocks.SALT_ORE.get(), ModItems.SALT.get()));
         this.add(ModBlocks.SALT_BLOCK.get(), block ->
-                createOreDrop(ModBlocks.SALT_ORE.get(), ModItems.SALT.get()));
+                createOreDrop(ModBlocks.SALT_BLOCK.get(), ModItems.SALT.get()));
         this.add(ModBlocks.SILKWORM_COCOON.get(),
                 this.createSingleItemTable(ModItems.SILKWORM.get()));
 

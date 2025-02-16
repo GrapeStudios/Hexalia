@@ -24,7 +24,7 @@
                   }
                 }
               ],
-              "name": "hexalia:salt_ore"
+              "name": "hexalia:salt_block"
             },
             {
               "type": "minecraft:item",

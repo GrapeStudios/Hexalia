@@ -16,16 +16,23 @@ public class ModTags {
         public static final TagKey<Item> REFINED_HERBS = tag("refined_herbs");
         public static final TagKey<Item> BREWS = tag("brews");
 
-        // Common Item Tags
-        public static final TagKey<Item> SALT = forgeTag("salt");
-        public static final TagKey<Item> BERRIES = forgeTag("berries");
-        public static final TagKey<Item> SEEDS = forgeTag("seeds");
-        public static final TagKey<Item> MUSHROOMS = forgeTag("mushrooms");
+        // Forge Item Tags
+        public static final TagKey<Item> BREAD = forgeItemTag("bread");
 
-        public static final TagKey<Item> ORES = forgeTag("ores");
-        public static final TagKey<Item> SALT_ORES = forgeTag("salt_ores");
-        public static final TagKey<Item> SALT_BLOCKS = forgeTag("salt_blocks");
-        public static final TagKey<Item> COOKED_MEATS = forgeTag("cooked_meats");
+        public static final TagKey<Item> CROPS = forgeItemTag("crops");
+        public static final TagKey<Item> CROPS_TOMATO = forgeItemTag("crops/tomato");
+
+        public static final TagKey<Item> VEGETABLES = forgeItemTag("vegetables");
+        public static final TagKey<Item> VEGETABLES_TOMATO = forgeItemTag("vegetables/tomato");
+
+        public static final TagKey<Item> SALT = forgeItemTag("salt");
+        public static final TagKey<Item> BERRIES = forgeItemTag("berries");
+        public static final TagKey<Item> SEEDS = forgeItemTag("seeds");
+        public static final TagKey<Item> MUSHROOMS = forgeItemTag("mushrooms");
+
+        public static final TagKey<Item> SALT_BLOCKS = forgeItemTag("salt_blocks");
+
+        public static final TagKey<Item> COOKED_MEATS = forgeItemTag("cooked_meats");
 
         // Wood-related Tags
         public static final TagKey<Item> COTTONWOOD_LOGS = tag("cottonwood_logs");
@@ -34,7 +41,7 @@ public class ModTags {
         private static TagKey<Item> tag(String name){
             return ItemTags.create(new ResourceLocation(HexaliaMod.MOD_ID, name));
         }
-        private static TagKey<Item> forgeTag(String name){
+        private static TagKey<Item> forgeItemTag(String name){
             return ItemTags.create(new ResourceLocation("forge", name));
         }
     }
@@ -53,8 +60,6 @@ public class ModTags {
         public static final TagKey<Block> COCOON_LOGS = tag("cocoon_logs");
 
         // Common Block Tags
-        public static final TagKey<Block> ORES = forgeTag("ores");
-        public static final TagKey<Block> SALT_ORES = forgeTag("salt_ores");
         public static final TagKey<Block> SALT_BLOCKS = forgeTag("salt_blocks");
 
         // Wood-related Tags

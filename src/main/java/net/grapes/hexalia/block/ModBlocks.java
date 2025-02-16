@@ -135,8 +135,6 @@ public class ModBlocks {
             () -> new MoonBerryVinePlantBlock(BlockBehaviour.Properties.copy(Blocks.CAVE_VINES_PLANT)));
 
     //  Mineral-Related Blocks
-    public static final RegistryObject<Block> SALT_ORE = registerBlock("salt_ore",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
     public static final RegistryObject<Block> SALT_BLOCK = registerBlock("salt_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
     public static final RegistryObject<Block> SALT_LAMP = BLOCKS.register("salt_lamp",

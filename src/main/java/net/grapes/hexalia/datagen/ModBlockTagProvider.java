@@ -23,7 +23,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         // Common Tags
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(ModBlocks.SALT_ORE.get(), ModBlocks.SALT_LAMP.get(),
+                .add(ModBlocks.SALT_LAMP.get(),
                         ModBlocks.SALT_LAMP.get(), ModBlocks.RUSTIC_OVEN.get(),
                         ModBlocks.SMALL_CAULDRON.get(), ModBlocks.RITUAL_TABLE.get(),
                         ModBlocks.SALT_BLOCK.get());
@@ -32,7 +32,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.BREW_SHELF.get(), ModBlocks.LOTUS_FLOWER.get());
 
         this.tag(BlockTags.NEEDS_STONE_TOOL)
-                .add(ModBlocks.SALT_ORE.get(), ModBlocks.SALT_LAMP.get(),
+                .add(ModBlocks.SALT_LAMP.get(),
                         ModBlocks.SALT_LAMP.get(), ModBlocks.RUSTIC_OVEN.get(),
                         ModBlocks.SMALL_CAULDRON.get(), ModBlocks.BREW_SHELF.get(),
                         ModBlocks.LOTUS_FLOWER.get(), ModBlocks.RITUAL_TABLE.get(),
@@ -83,12 +83,6 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(Blocks.DARK_OAK_LOG, ModBlocks.COTTONWOOD_LOG.get());
 
         // Common Tags
-        this.tag(ModTags.Blocks.ORES)
-                .add(ModBlocks.SALT_ORE.get());
-
-        this.tag(ModTags.Blocks.SALT_ORES)
-                .add(ModBlocks.SALT_ORE.get());
-
         this.tag(ModTags.Blocks.SALT_BLOCKS)
                 .add(ModBlocks.SALT_BLOCK.get());
 

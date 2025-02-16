@@ -253,7 +253,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.SPICY_SANDWICH.get())
                 .requires(ModItems.SUNFIRE_TOMATO.get())
-                .requires(Items.BREAD)
+                .requires(ModTags.Items.BREAD)
                 .requires(ModTags.Items.COOKED_MEATS)
                 .unlockedBy("has_sunfire_tomato",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SUNFIRE_TOMATO.get()).build()))
@@ -262,8 +262,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, ModItems.MANDRAKE_STEW.get())
                 .requires(ModItems.MANDRAKE.get())
                 .requires(Items.BOWL)
-                .requires(Items.CARROT)
-                .requires(Items.POTATO)
+                .requires(ModTags.Items.VEGETABLES)
+                .requires(ModTags.Items.VEGETABLES)
                 .unlockedBy("has_mandrake",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.MANDRAKE.get()).build()))
                 .save(pWriter);

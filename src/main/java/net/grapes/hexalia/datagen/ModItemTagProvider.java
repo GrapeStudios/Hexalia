@@ -44,11 +44,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                         ModItems.MANDRAKE_SEEDS.get());
 
         // Custom Tags
-        this.tag(ModTags.Items.COOKED_MEATS)
-                .add(Items.COOKED_BEEF, Items.COOKED_CHICKEN,
-                        Items.COOKED_MUTTON, Items.COOKED_PORKCHOP,
-                        Items.COOKED_RABBIT, Items.COOKED_COD,
-                        Items.COOKED_SALMON);
+
 
         this.tag(ModTags.Items.REFINED_HERBS)
                 .add(ModItems.DREAM_PASTE.get(), ModItems.SPIRIT_POWDER.get(),
@@ -59,9 +55,25 @@ public class ModItemTagProvider extends ItemTagsProvider {
                         ModItems.BREW_OF_SLIMEWALKER.get(), ModItems.BREW_OF_BLOODLUST.get(),
                         ModItems.BREW_OF_SPIKESKIN.get(), ModItems.RUSTIC_BOTTLE.get());
 
-        // Common Tags
+        // Conventional Tags
         this.tag(ModTags.Items.SALT)
                 .add(ModItems.SALT.get());
+
+        this.tag(ModTags.Items.BREAD)
+                .add(Items.BREAD);
+
+        this.tag(ModTags.Items.CROPS)
+                .add(ModItems.SALTSPROUT.get());
+
+        this.tag(ModTags.Items.CROPS_TOMATO)
+                .add(ModItems.SUNFIRE_TOMATO.get());
+
+        this.tag(ModTags.Items.VEGETABLES)
+                .add(ModItems.SUNFIRE_TOMATO.get(),
+                        Items.CARROT, Items.POTATO);
+
+        this.tag(ModTags.Items.VEGETABLES_TOMATO)
+                .add(ModItems.SUNFIRE_TOMATO.get());
 
         this.tag(ModTags.Items.MUSHROOMS)
                 .add(ModBlocks.DREAMSHROOM.get().asItem(), ModBlocks.PALE_MUSHROOM.get().asItem());
@@ -73,14 +85,15 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.MANDRAKE_SEEDS.get(), ModItems.SUNFIRE_TOMATO_SEEDS.get(),
                         ModItems.RABBAGE_SEEDS.get());
 
-        this.tag(ModTags.Items.ORES)
-                .add(ModBlocks.SALT_ORE.get().asItem());
-
-        this.tag(ModTags.Items.SALT_ORES)
-                .add(ModBlocks.SALT_ORE.get().asItem());
-
         this.tag(ModTags.Items.SALT_BLOCKS)
                 .add(ModBlocks.SALT_BLOCK.get().asItem());
+
+        this.tag(ModTags.Items.COOKED_MEATS)
+                .add(Items.COOKED_BEEF, Items.COOKED_CHICKEN,
+                        Items.COOKED_MUTTON, Items.COOKED_PORKCHOP,
+                        Items.COOKED_RABBIT, Items.COOKED_COD,
+                        Items.COOKED_SALMON);
+
 
         // Wood-related Tags
         this.tag(ItemTags.LOGS_THAT_BURN)

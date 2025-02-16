@@ -6,7 +6,7 @@
       "item": "hexalia:sunfire_tomato"
     },
     {
-      "item": "minecraft:bread"
+      "tag": "forge:bread"
     },
     {
       "tag": "forge:cooked_meats"
