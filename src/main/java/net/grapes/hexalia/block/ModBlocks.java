@@ -120,8 +120,6 @@ public class ModBlocks {
             new MoonBerryVinePlantBlock(FabricBlockSettings.copyOf(Blocks.CAVE_VINES_PLANT)));
 
     // Mineral-Related Blocks
-    public static final Block SALT_ORE = registerBlock("salt_ore",
-            new Block(FabricBlockSettings.copyOf(Blocks.COAL_ORE)));
     public static final Block SALT_BLOCK = registerBlock("salt_block",
             new Block(FabricBlockSettings.copyOf(Blocks.STONE)));
     public static final Block SALT_LAMP = registerBlockWithoutBlockItem("salt_lamp",

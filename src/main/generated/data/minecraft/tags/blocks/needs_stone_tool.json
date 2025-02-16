@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "hexalia:salt_ore",
     "hexalia:salt_block",
     "hexalia:salt_lamp",
     "hexalia:small_cauldron",

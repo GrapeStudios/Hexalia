@@ -50,7 +50,7 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
                 createTallPlantBlock(ModBlocks.HEXED_BULRUSH));
         this.addDrop(ModBlocks.COTTONWOOD_CATKIN, Items.STRING);
         addDrop(ModBlocks.BEGONIA);
-        addPottedPlantDrops(ModBlocks.POTTED_BEGONIA);;
+        addPottedPlantDrops(ModBlocks.POTTED_BEGONIA);
         addDrop(ModBlocks.LAVENDER);
         addPottedPlantDrops(ModBlocks.POTTED_LAVENDER);
         addDrop(ModBlocks.MORPHORA);
@@ -80,7 +80,6 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.BREW_SHELF);
         addDrop(ModBlocks.RUSTIC_OVEN);
         addDrop(ModBlocks.SMALL_CAULDRON);
-        addDrop(ModBlocks.SALT_ORE, oreDrops(ModBlocks.SALT_ORE, ModItems.SALT));
         addDrop(ModBlocks.SILKWORM_COCOON);
         this.addDrop(ModBlocks.SILKWORM_COCOON, ModItems.SILKWORM);
 

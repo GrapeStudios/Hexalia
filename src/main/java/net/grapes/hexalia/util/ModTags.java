@@ -9,21 +9,30 @@ import net.minecraft.util.Identifier;
 
 public class ModTags {
     public static class Items {
+
         public static final TagKey<Item> CRUSHED_HERBS = createItemTag("crushed_herbs");
         public static final TagKey<Item> BREWS = createItemTag("brews");
         public static final TagKey<Item> COTTONWOOD_LOGS = createItemTag("cottonwood_logs");
         public static final TagKey<Item> WILLOW_LOGS = createItemTag("willow_logs");
+
+        // Conventional Item Tags
+        public static final TagKey<Item> FOODS = createCommonItemTag("foods");
+
+        public static final TagKey<Item> FOODS_BREADS = createCommonItemTag("foods/breads");
+        public static final TagKey<Item> CROPS = createCommonItemTag("crops");
+        public static final TagKey<Item> CROPS_TOMATO = createCommonItemTag("crops/tomato");
+        public static final TagKey<Item> FOODS_BERRIES = createCommonItemTag("foods/berries");
+        public static final TagKey<Item> FOODS_COOKED_MEATS = createCommonItemTag("foods/cooked_meats");
+
+        public static final TagKey<Item> FOODS_VEGETABLES = createCommonItemTag("foods/vegetables");
+        public static final TagKey<Item> FOODS_VEGETABLES_TOMATO = createCommonItemTag("foods/vegetables/tomatoes");
 
         public static final TagKey<Item> SALT_DUSTS = createCommonItemTag("salt_dusts");
         public static final TagKey<Item> BERRIES = createCommonItemTag("berries");
         public static final TagKey<Item> SEEDS = createCommonItemTag("seeds");
         public static final TagKey<Item> MUSHROOMS = createCommonItemTag("mushrooms");
 
-        public static final TagKey<Item> ORES = createCommonItemTag("ores");
-        public static final TagKey<Item> SALT_ORES = createCommonItemTag("salt_ores");
         public static final TagKey<Item> SALT_BLOCKS = createCommonItemTag("salt_blocks");
-        public static final TagKey<Item> COOKED_MEATS = createCommonItemTag("cooked_meats");
-
 
         private static TagKey<Item> createItemTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(HexaliaMod.MOD_ID, name));
@@ -43,8 +52,6 @@ public class ModTags {
         public static final TagKey<Block> COCOON_LOGS = createBlockTag("cocoon_logs");
 
         // Common Block Tags
-        public static final TagKey<Block> ORES = createCommonBlockTag("ores");
-        public static final TagKey<Block> SALT_ORES = createCommonBlockTag("salt_ores");
         public static final TagKey<Block> SALT_BLOCKS = createCommonBlockTag("salt_blocks");
 
         private static TagKey<Block> createBlockTag(String name) {

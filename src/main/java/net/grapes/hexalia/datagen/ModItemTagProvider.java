@@ -38,12 +38,6 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.MANDRAKE_SEEDS);
 
         // Custom Tags
-        getOrCreateTagBuilder(ModTags.Items.COOKED_MEATS)
-                .add(Items.COOKED_BEEF, Items.COOKED_CHICKEN,
-                        Items.COOKED_MUTTON, Items.COOKED_PORKCHOP,
-                        Items.COOKED_RABBIT, Items.COOKED_COD,
-                        Items.COOKED_SALMON);
-
         getOrCreateTagBuilder(ModTags.Items.CRUSHED_HERBS)
                 .add(ModItems.DREAM_PASTE, ModItems.SIREN_PASTE,
                         ModItems.SPIRIT_POWDER, ModItems.GHOST_POWDER);
@@ -62,7 +56,38 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModBlocks.WILLOW_LOG.asItem(), ModBlocks.STRIPPED_WILLOW_LOG.asItem(),
                         ModBlocks.WILLOW_WOOD.asItem(), ModBlocks.STRIPPED_WILLOW_WOOD.asItem());
 
-        // Common Tags
+        // Conventional Tags
+
+        getOrCreateTagBuilder(ModTags.Items.FOODS)
+                .add(ModItems.SIREN_KELP, ModItems.CHILLBERRIES,
+                        ModItems.SUNFIRE_TOMATO, ModItems.MOON_BERRIES,
+                        ModItems.SALTSPROUT, ModItems.CHILLBERRY_PIE,
+                        ModItems.MANDRAKE_STEW, ModItems.MOON_BERRY_COOKIE);
+
+        getOrCreateTagBuilder(ModTags.Items.CROPS)
+                .add(ModItems.SALTSPROUT);
+
+        getOrCreateTagBuilder(ModTags.Items.CROPS_TOMATO)
+                .add(ModItems.SUNFIRE_TOMATO);
+
+        getOrCreateTagBuilder(ModTags.Items.FOODS_BERRIES)
+                .add(ModItems.CHILLBERRIES).add(ModItems.MOON_BERRIES);
+
+        getOrCreateTagBuilder(ModTags.Items.FOODS_VEGETABLES)
+                .add(ModItems.SUNFIRE_TOMATO);
+
+        getOrCreateTagBuilder(ModTags.Items.FOODS_VEGETABLES_TOMATO)
+                .add(ModItems.SUNFIRE_TOMATO);
+
+        getOrCreateTagBuilder(ModTags.Items.FOODS_COOKED_MEATS)
+                .add(Items.COOKED_BEEF, Items.COOKED_CHICKEN,
+                        Items.COOKED_MUTTON, Items.COOKED_PORKCHOP,
+                        Items.COOKED_RABBIT, Items.COOKED_COD,
+                        Items.COOKED_SALMON);
+
+        getOrCreateTagBuilder(ModTags.Items.FOODS_BREADS)
+                .add(Items.BREAD);
+
         getOrCreateTagBuilder(ModTags.Items.SALT_DUSTS)
                 .add(ModItems.SALT);
 
@@ -77,14 +102,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.MANDRAKE_SEEDS, ModItems.SUNFIRE_TOMATO_SEEDS,
                         ModItems.RABBAGE_SEEDS);
 
-        getOrCreateTagBuilder(ModTags.Items.SALT_ORES)
-                .add(ModBlocks.SALT_ORE.asItem());
-
         getOrCreateTagBuilder(ModTags.Items.SALT_BLOCKS)
                 .add(ModBlocks.SALT_BLOCK.asItem());
-
-        getOrCreateTagBuilder(ModTags.Items.ORES)
-                .add(ModBlocks.SALT_ORE.asItem());
 
         // Tags for Tree Related Items
         getOrCreateTagBuilder(ItemTags.LOGS_THAT_BURN)

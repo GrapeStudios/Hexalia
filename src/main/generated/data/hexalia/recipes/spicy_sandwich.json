@@ -3,13 +3,13 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "minecraft:bread"
+      "tag": "c:foods/breads"
     },
     {
       "item": "hexalia:sunfire_tomato"
     },
     {
-      "tag": "c:cooked_meats"
+      "tag": "c:foods/cooked_meats"
     }
   ],
   "result": {

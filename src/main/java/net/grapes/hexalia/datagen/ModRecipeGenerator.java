@@ -210,17 +210,17 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .offerTo(exporter);
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.SPICY_SANDWICH)
-                .input(Items.BREAD)
+                .input(ModTags.Items.FOODS_BREADS)
                 .input(ModItems.SUNFIRE_TOMATO)
-                .input(ModTags.Items.COOKED_MEATS)
+                .input(ModTags.Items.FOODS_COOKED_MEATS)
                 .criterion(hasItem(ModItems.SUNFIRE_TOMATO), conditionsFromItem(ModItems.SUNFIRE_TOMATO))
                 .offerTo(exporter);
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.FOOD, ModItems.MANDRAKE_STEW)
                 .input(ModItems.MANDRAKE)
                 .input(Items.BOWL)
-                .input(Items.CARROT)
-                .input(Items.POTATO)
+                .input(ModTags.Items.FOODS_VEGETABLES)
+                .input(ModTags.Items.FOODS_VEGETABLES)
                 .criterion(hasItem(ModItems.MANDRAKE), conditionsFromItem(ModItems.MANDRAKE))
                 .offerTo(exporter);
 
