@@ -74,7 +74,8 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.CHILLBERRIES).add(ModItems.MOON_BERRIES);
 
         getOrCreateTagBuilder(ModTags.Items.FOODS_VEGETABLES)
-                .add(ModItems.SUNFIRE_TOMATO);
+                .add(ModItems.SUNFIRE_TOMATO).add(Items.CARROT)
+                .add(Items.POTATO);
 
         getOrCreateTagBuilder(ModTags.Items.FOODS_VEGETABLES_TOMATO)
                 .add(ModItems.SUNFIRE_TOMATO);
