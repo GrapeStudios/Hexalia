@@ -9,6 +9,7 @@ import net.grapes.hexalia.entity.client.ModBoatRenderer;
 import net.grapes.hexalia.entity.client.SilkMothRenderer;
 import net.grapes.hexalia.item.ModCreativeModeTabs;
 import net.grapes.hexalia.item.ModItems;
+import net.grapes.hexalia.loot.ModLootModifiers;
 import net.grapes.hexalia.particle.ModParticles;
 import net.grapes.hexalia.recipe.ModRecipes;
 import net.grapes.hexalia.screen.ModMenuTypes;
@@ -63,6 +64,7 @@ public class HexaliaMod
         ModRecipes.register(modEventBus);
         ModTreeDecorators.register(modEventBus);
         ModEntities.register(modEventBus);
+        ModLootModifiers.register(modEventBus);
 
         GeckoLib.initialize();
     }
