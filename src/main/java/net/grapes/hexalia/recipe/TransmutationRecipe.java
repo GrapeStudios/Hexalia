@@ -32,14 +32,16 @@ public class TransmutationRecipe implements Recipe<RitualTableBlockEntity> {
     }
 
     @Override
-    public boolean matches(RitualTableBlockEntity inv, World world) {
-        // Check if the inventory matches the recipe requirements
-        ItemStack inputStack = inv.getStack(0);
-        if (!ItemStack.areItemsEqual(inputStack, this.input)) {
+    public boolean matches(RitualTableBlockEntity blockEntity, World world) {
+        ItemStack itemInSlot = blockEntity.getStack(0);
+
+        if (!ItemStack.areEqual(itemInSlot, input)) {
             return false;
         }
-        return true;
+
+        return blockEntity.processSaltBlocks(world, blockEntity.getPos(), this, false);
     }
+
 
     @Override
     public ItemStack craft(RitualTableBlockEntity inventory, DynamicRegistryManager registryManager) {

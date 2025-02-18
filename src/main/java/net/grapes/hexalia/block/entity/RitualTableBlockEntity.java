@@ -184,7 +184,7 @@ public class RitualTableBlockEntity extends BlockEntity implements ImplementedIn
         return allCropsValid;
     }
 
-    private boolean processSaltBlocks(World world, BlockPos tablePos, TransmutationRecipe recipe, boolean consume) {
+    public boolean processSaltBlocks(World world, BlockPos tablePos, TransmutationRecipe recipe, boolean consume) {
         DefaultedList<ItemStack> requiredSaltItems = DefaultedList.of();
         requiredSaltItems.addAll(recipe.getSaltItems());
 
