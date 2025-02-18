@@ -174,7 +174,7 @@ public class RitualTableBlockEntity extends BlockEntity implements WorldlyContai
         return allCropsValid;
     }
 
-    private boolean processSaltBlocks(Level pLevel, BlockPos tablePos, TransmutationRecipe pRecipe, boolean consume) {
+    public boolean processSaltBlocks(Level pLevel, BlockPos tablePos, TransmutationRecipe pRecipe, boolean consume) {
         NonNullList<ItemStack> requiredSaltItems = NonNullList.create();
         requiredSaltItems.addAll(pRecipe.getSaltItems());
 

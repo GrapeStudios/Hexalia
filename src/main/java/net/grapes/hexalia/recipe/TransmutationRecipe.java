@@ -34,8 +34,13 @@ public class TransmutationRecipe implements Recipe<RitualTableBlockEntity> {
 
     @Override
     public boolean matches(RitualTableBlockEntity blockEntity, Level world) {
-        ItemStack itemInSlot = blockEntity.getItem(0); // get the item in the Ritual Table
-        return ItemStack.isSameItem(itemInSlot, input);
+        ItemStack itemInSlot = blockEntity.getItem(0);
+
+        if (!ItemStack.isSameItem(itemInSlot, input)) {
+            return false;
+        }
+
+        return blockEntity.processSaltBlocks(world, blockEntity.getBlockPos(), this, false);
     }
 
     @Override
