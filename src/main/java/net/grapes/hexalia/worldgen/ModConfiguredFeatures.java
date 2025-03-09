@@ -167,7 +167,7 @@ public class ModConfiguredFeatures {
                 BlockStateProvider.simple(ModBlocks.WILLOW_LOG.get()),
                 new UpwardsBranchingTrunkPlacer(2, 1, 5, UniformInt.of(1, 4), 0.5f,
                         UniformInt.of(0, 1), holdergetter.getOrThrow(BlockTags.MANGROVE_LOGS_CAN_GROW_THROUGH)),
-                BlockStateProvider.simple(ModBlocks.COTTONWOOD_LEAVES.get()),
+                BlockStateProvider.simple(ModBlocks.WILLOW_LEAVES.get()),
                 new RandomSpreadFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), ConstantInt.of(2), 70),
                 Optional.of(new MangroveRootPlacer(UniformInt.of(1, 1),
                         BlockStateProvider.simple(ModBlocks.WILLOW_MOSSY_WOOD.get()),
