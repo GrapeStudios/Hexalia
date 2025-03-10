@@ -68,9 +68,10 @@ public class HexaliaModClient implements ClientModInitializer {
                 ModBlocks.GRIMSHADE, ModBlocks.POTTED_GRIMSHADE,
                 ModBlocks.BEGONIA, ModBlocks.POTTED_MORPHORA,
                 ModBlocks.RITUAL_BRAZIER, ModBlocks.MORPHORA,
-                ModBlocks.LAVENDER, ModBlocks.NAUTILITE,
-                ModBlocks.WINDSONG, ModBlocks.LUNAR_LILY,
-                ModBlocks.POTTED_WINDSONG, ModBlocks.POTTED_LUNAR_LILY
+                ModBlocks.LAVENDER, ModBlocks.POTTED_LAVENDER,
+                ModBlocks.NAUTILITE, ModBlocks.WINDSONG, ModBlocks.LUNAR_LILY,
+                ModBlocks.POTTED_WINDSONG, ModBlocks.POTTED_LUNAR_LILY,
+                ModBlocks.POTTED_BEGONIA
         );
     }
 
