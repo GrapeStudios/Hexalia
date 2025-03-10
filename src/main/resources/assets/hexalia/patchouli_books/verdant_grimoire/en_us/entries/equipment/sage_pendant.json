@@ -1,5 +1,5 @@
 {
-  "category": "hexalia:items",
+  "category": "hexalia:equipment",
   "name": "Sage's Pendant",
   "icon": "hexalia:sage_pendant",
   "sortnum": 2,
@@ -13,7 +13,7 @@
       "type": "patchouli:spotlight",
       "title": "Diamond Transmutation",
       "item": "hexalia:ritual_table",
-      "text": "This item can only be obtained through a $(l:hexalia:rituals/transmutation_ritual)Transmutation Ritual$() using a Diamond as a catalyst."
+      "text": "This item can only be obtained through a $(l:hexalia:rituals/ritual_of_transmutation)Transmutation Ritual$() using a Diamond as a catalyst."
     }
   ]
 }

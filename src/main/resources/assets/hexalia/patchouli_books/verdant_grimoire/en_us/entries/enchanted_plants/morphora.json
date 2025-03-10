@@ -7,7 +7,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "hexalia:morphora",
-      "text": "The Morphora is a flower that turns blocks in a 9x9 area underneath the flower into other blocks. See the available morphs in the next page."
+      "text": "The Morphora is a flower that turns blocks in a 9x9 area underneath the flower into other blocks. See the available morphs in the next page.$(br2)It requires activation by right-clicking it with a $(l:hexalia:items/hex_focus)Hex Focus$()."
     },
     {
       "type": "hexalia:transmutation",
