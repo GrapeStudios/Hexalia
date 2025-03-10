@@ -236,5 +236,8 @@
   "item.hexalia.willow_boat": "Willow Boat",
   "item.hexalia.willow_chest_boat": "Willow Chest Boat",
   "block.hexalia.willow_sign": "Willow Sign",
-  "block.hexalia.willow_hanging_sign": "Willow Hanging Sign"
+  "block.hexalia.willow_hanging_sign": "Willow Hanging Sign",
+
+  "item.hexalia.verdant_grimoire": "Verdant Grimoire",
+  "item.hexalia.verdant_grimoire.landing_text": "A well-detailed book is your trusted tool in matters of witchcraft and plant care."
 }

@@ -6,11 +6,10 @@
       "item": "hexalia:mortar_and_pestle"
     },
     {
-      "item": "hexalia:silk_fiber"
+      "item": "hexalia:saltsprout"
     }
   ],
   "result": {
-    "count": 3,
     "item": "minecraft:string"
   }
 }

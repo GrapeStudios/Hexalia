@@ -322,17 +322,17 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
                 .offerTo(exporter);
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.STRING, 3)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.STRING)
                 .input(ModItems.MORTAR_AND_PESTLE)
-                .input(ModItems.SILK_FIBER)
+                .input(ModItems.SALTSPROUT)
                 .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
-                .offerTo(exporter);
+                .offerTo(exporter, new Identifier(getRecipeName(Items.STRING) + "_from_mortar_and_pestle"));
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SALT)
                 .input(ModItems.MORTAR_AND_PESTLE)
                 .input(ModItems.SALTSPROUT)
                 .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
-                .offerTo(exporter, new Identifier(getRecipeName(ModItems.SALTSPROUT)));
+                .offerTo(exporter, new Identifier(getRecipeName(ModItems.SALT) + "_from_mortar_and_pestle"));
 
         // Recipes for Small Cauldron Brews
         new SmallCauldronRecipeBuilder(List.of(Blocks.CACTUS, ModItems.MANDRAKE, ModItems.GHOST_POWDER),

@@ -181,6 +181,14 @@ public class ModItems {
         }
     }
 
+    public static Item VERDANT_GRIMOIRE;
+    static {
+        if (ModUtils.isModLoaded("patchouli")) {
+            VERDANT_GRIMOIRE = registerItem("verdant_grimoire",
+                    new GrimoireItem(new FabricItemSettings()));
+        }
+    }
+
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(HexaliaMod.MOD_ID, name), item);
     }

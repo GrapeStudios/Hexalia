@@ -51,6 +51,11 @@ repositories {
 	}
 
 	maven { url "https://maven.shedaniel.me" }
+
+	maven {
+		name "patchouli"
+		url "https://maven.blamejared.com"
+	}
 }
 
 fabricApi {
@@ -73,6 +78,8 @@ dependencies {
 
 	modImplementation("software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}")
 	implementation("com.eliotlash.mclib:mclib:20")
+
+	modImplementation "vazkii.patchouli:Patchouli:${patchouli_version}"
 
 	modImplementation "com.github.glitchfiend:TerraBlender-fabric:${terrablender_version}"
 

@@ -3,6 +3,7 @@ package net.grapes.hexalia.item;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.util.ModUtils;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -167,6 +168,10 @@ public class ModItemGroup {
 
                         // Spawn Eggs
                         entries.add(ModItems.SILK_MOTH_SPAWN_EGG);
+
+                        if (ModUtils.isModLoaded("patchouli")) {
+                            entries.add(ModItems.VERDANT_GRIMOIRE);
+                        }
                     }).build());
     public static void registerItemGroups(){
     }

@@ -93,11 +93,11 @@ public class ModBlocks {
     public static final Block BEGONIA = registerBlock("begonia",
             new FlowerBlock(StatusEffects.REGENERATION, 6, FabricBlockSettings.copyOf(Blocks.ALLIUM)));
     public static final Block POTTED_BEGONIA = registerBlockWithoutBlockItem("potted_begonia",
-            new FlowerPotBlock(HENBANE, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
+            new FlowerPotBlock(BEGONIA, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
     public static final Block LAVENDER = registerBlock("lavender",
             new FlowerBlock(StatusEffects.REGENERATION, 6, FabricBlockSettings.copyOf(Blocks.ALLIUM)));
     public static final Block POTTED_LAVENDER = registerBlockWithoutBlockItem("potted_lavender",
-            new FlowerPotBlock(HENBANE, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
+            new FlowerPotBlock(LAVENDER, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
 
     // Crop & Wild Crop Blocks
     public static final Block MANDRAKE_CROP = registerBlockWithoutBlockItem("mandrake_crop",
