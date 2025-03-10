@@ -3,13 +3,14 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "hexalia:saltsprout"
+      "item": "hexalia:silk_fiber"
     },
     {
       "item": "hexalia:mortar_and_pestle"
     }
   ],
   "result": {
-    "item": "hexalia:salt"
+    "count": 3,
+    "item": "minecraft:string"
   }
 }

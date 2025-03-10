@@ -94,12 +94,17 @@ public class HexaliaMod
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if(event.getTab() == ModCreativeModeTabs.HEXALIA_TAB.get()) {
+        if (event.getTab() == ModCreativeModeTabs.HEXALIA_TAB.get()) {
             if (ModList.get().isLoaded("farmersdelight")) {
                 event.accept(ModItems.WITCH_SALAD);
             }
+
+            if (ModList.get().isLoaded("patchouli")) {
+                event.accept(ModItems.VERDANT_GRIMOIRE);
+            }
         }
     }
+
 
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {

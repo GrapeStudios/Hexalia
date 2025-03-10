@@ -361,14 +361,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(ModItems.MORTAR_AND_PESTLE.get())
                 .unlockedBy("has_mortar_and_pestle",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.MORTAR_AND_PESTLE.get()).build()))
-                .save(pWriter);
+                .save(pWriter, new ResourceLocation(getSimpleRecipeName(Items.STRING) + "_from_mortar_and_pestle"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SALT.get())
                 .requires(ModItems.SALTSPROUT.get())
                 .requires(ModItems.MORTAR_AND_PESTLE.get())
                 .unlockedBy("has_mortar_and_pestle",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.MORTAR_AND_PESTLE.get()).build()))
-                .save(pWriter, new ResourceLocation(getSimpleRecipeName(ModItems.SALT.get()) + "_"));
+                .save(pWriter, new ResourceLocation(getSimpleRecipeName(ModItems.SALT.get()) + "_from_mortar_and_pestle"));
 
         // Recipes for Small Cauldron Brews
         new SmallCauldronRecipeBuilder(List.of(Blocks.CACTUS, ModItems.MANDRAKE.get(), ModItems.GHOST_POWDER.get()),

@@ -23,7 +23,7 @@
     "foliage_provider": {
       "type": "minecraft:simple_state_provider",
       "state": {
-        "Name": "hexalia:cottonwood_leaves",
+        "Name": "hexalia:willow_leaves",
         "Properties": {
           "distance": "7",
           "persistent": "false",

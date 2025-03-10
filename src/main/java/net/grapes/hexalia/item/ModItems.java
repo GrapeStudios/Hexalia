@@ -189,6 +189,14 @@ public class ModItems {
         }
     }
 
+    public static RegistryObject<Item> VERDANT_GRIMOIRE;
+    static {
+        if (ModList.get().isLoaded("patchouli")) {
+            VERDANT_GRIMOIRE = ITEMS.register("verdant_grimoire",
+                    () -> new GrimoireItem(new Item.Properties()));
+        }
+    }
+
     public static void register(IEventBus eventBus){
         ITEMS.register(eventBus);
     }

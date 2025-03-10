@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:salt_"
+        "recipe": "minecraft:string_from_mortar_and_pestle"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:salt_"
+      "minecraft:string_from_mortar_and_pestle"
     ]
   },
   "sends_telemetry_event": false
