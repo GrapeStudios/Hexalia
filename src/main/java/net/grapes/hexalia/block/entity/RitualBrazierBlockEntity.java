@@ -1,22 +1,23 @@
 package net.grapes.hexalia.block.entity;
 
-import net.grapes.hexalia.item.ModItems;
+import net.grapes.hexalia.recipe.RitualBrazierRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.Connection;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.Containers;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -24,18 +25,15 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Map;
+import java.util.Optional;
 
 public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyContainer {
 
-    private static final int MOONLIGHT_DURATION = 200;
+    private static final int MOONLIGHT_DURATION = 400;
     private int timer = 0;
+    private boolean active = false;
     private NonNullList<ItemStack> inventory = NonNullList.withSize(1, ItemStack.EMPTY);
 
-    private static final Map<Item, Item> TRANSFORMATIONS = Map.of(
-            Items.AMETHYST_SHARD, ModItems.MOON_CRYSTAL.get(),
-            Items.GLOW_BERRIES, ModItems.MOON_BERRIES.get()
-    );
 
     public RitualBrazierBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.RITUAL_BRAZIER_BE.get(), pos, state);
@@ -44,35 +42,69 @@ public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyCont
     public static void tick(Level pLevel, BlockPos pPos, BlockState pState, RitualBrazierBlockEntity pBlockEntity) {
         if (pLevel.isClientSide) return;
 
-        ItemStack itemStack = pBlockEntity.getItem(0);
-        Item resultItem = TRANSFORMATIONS.get(itemStack.getItem());
+        if (pBlockEntity.active && !pBlockEntity.isEmpty()) {
+            ItemStack itemStack = pBlockEntity.getItem(0);
+            Optional<RitualBrazierRecipe> recipe = pLevel.getRecipeManager()
+                    .getRecipeFor(RitualBrazierRecipe.Type.INSTANCE, new SimpleContainer(itemStack), pLevel);
 
-        if (resultItem != null) {
-            pBlockEntity.timer++;
+            if (recipe.isPresent()) {
+                if (isNight(pLevel)) {
+                    pBlockEntity.timer++;
 
-            if (pBlockEntity.timer >= MOONLIGHT_DURATION) {
-                if (isNight(pLevel) && isExposedToMoon(pLevel, pPos)) {
-                    pBlockEntity.setItem(0, ItemStack.EMPTY);
-                    pBlockEntity.timer = 0;
-                    pBlockEntity.setChanged();
+                    if (pBlockEntity.timer >= MOONLIGHT_DURATION) {
+                        pBlockEntity.setItem(0, ItemStack.EMPTY);
+                        pBlockEntity.timer = 0;
+                        pBlockEntity.setActive(false);
+                        pBlockEntity.setChanged();
 
-                    pLevel.sendBlockUpdated(pPos, pState, pState, Block.UPDATE_ALL);
+                        ItemStack resultStack = recipe.get().getResultItem(pLevel.registryAccess()).copy();
+                        Containers.dropItemStack(pLevel, pPos.getX() + 0.5, pPos.getY() + 1.0, pPos.getZ() + 0.5, resultStack);
 
-                    ItemStack resultStack = new ItemStack(resultItem);
-                    Containers.dropItemStack(pLevel, pPos.getX() + 0.5, pPos.getY() + 1.0, pPos.getZ() + 0.5, resultStack);
-
-                    spawnParticles(pLevel, pPos);
-                    pLevel.playSound(null, pPos, SoundEvents.AMETHYST_BLOCK_BREAK, SoundSource.BLOCKS, 1.0f, 1.0f);
+                        spawnPoofParticles(pLevel, pPos);
+                        pLevel.playSound(null, pPos, SoundEvents.AMETHYST_BLOCK_BREAK, SoundSource.BLOCKS, 1.0f, 1.0f);
+                    }
                 } else {
-                    pBlockEntity.timer = 0;
+                    pBlockEntity.cancelRitual();
                 }
+            } else {
+                pBlockEntity.cancelRitual();
             }
-        } else {
-            pBlockEntity.timer = 0;
         }
     }
 
-    private static void spawnParticles(Level level, BlockPos pos) {
+    public boolean startMoonRitual(Player player) {
+        if (isEmpty()) {
+            player.displayClientMessage(Component.translatable("message.hexalia.moonlight_ritual.invalid_item"), true);
+            return false;
+        }
+
+        ItemStack itemStack = getItem(0);
+        Optional<RitualBrazierRecipe> recipe = level.getRecipeManager()
+                .getRecipeFor(RitualBrazierRecipe.Type.INSTANCE, new SimpleContainer(itemStack), level);
+
+        if (recipe.isEmpty()) {
+            player.displayClientMessage(Component.translatable("message.hexalia.moonlight_ritual.invalid_item"), true);
+            return false;
+        }
+
+        if (!isNight(level)) {
+            player.displayClientMessage(Component.translatable("message.hexalia.moonlight_ritual.not_night"), true);
+            return false;
+        }
+
+        this.timer = 1;
+        this.setActive(true);
+        player.displayClientMessage(Component.translatable("message.hexalia.moonlight_ritual.started"), true);
+        return true;
+    }
+
+    public void cancelRitual() {
+        this.timer = 0;
+        this.setActive(false);
+        this.setChanged();
+    }
+
+    private static void spawnPoofParticles(Level level, BlockPos pos) {
         if (level instanceof ServerLevel serverLevel) {
             double x = pos.getX() + 0.5;
             double y = pos.getY() + 1.0;
@@ -82,16 +114,24 @@ public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyCont
         }
     }
 
-    private static boolean isNight(Level level) {
-        long time = level.getDayTime();
-        return time > 13000 && time < 23000;
+    public void setActive(boolean active) {
+        if (this.active != active) {
+            this.active = active;
+            this.setChanged();
+            if (level != null && !level.isClientSide) {
+                level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(),
+                        Block.UPDATE_ALL);
+            }
+        }
     }
 
-    private static boolean isExposedToMoon(Level level, BlockPos pos) {
-        if (level instanceof ServerLevel serverLevel) {
-            return serverLevel.canSeeSky(pos);
-        }
-        return false;
+    public boolean isActive() {
+        return active;
+    }
+
+    private static boolean isNight(Level level) {
+        long time = level.getDayTime();
+        return time > 12500 && time < 23000;
     }
 
     @Override
@@ -120,6 +160,13 @@ public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyCont
     }
 
     @Override
+    public void handleUpdateTag(CompoundTag tag) {
+        super.handleUpdateTag(tag);
+        this.active = tag.getBoolean("Active");
+        ContainerHelper.loadAllItems(tag, this.inventory);
+    }
+
+    @Override
     public ItemStack getItem(int slot) {
         if (slot < 0 || slot >= this.inventory.size()) {
             return ItemStack.EMPTY;
@@ -128,7 +175,7 @@ public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyCont
     }
 
     public ItemStack getRenderStack() {
-        return inventory.get(0);
+        return getItem(0);
     }
 
     @Override
@@ -144,6 +191,10 @@ public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyCont
     @Override
     public void setItem(int pSlot, ItemStack pStack) {
         inventory.set(pSlot, pStack);
+        setChanged();
+        if (level != null && !level.isClientSide) {
+            level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_ALL);
+        }
     }
 
     @Override
@@ -167,6 +218,7 @@ public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyCont
         this.inventory = NonNullList.withSize(1, ItemStack.EMPTY);
         ContainerHelper.loadAllItems(pTag, inventory);
         this.timer = pTag.getInt("Timer");
+        this.active = pTag.getBoolean("Active");
     }
 
     @Override
@@ -174,11 +226,15 @@ public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyCont
         super.saveAdditional(pTag);
         ContainerHelper.saveAllItems(pTag, inventory);
         pTag.putInt("Timer", timer);
+        pTag.putBoolean("Active", active);
     }
 
     @Override
     public CompoundTag getUpdateTag() {
-        return saveWithoutMetadata();
+        CompoundTag tag = super.getUpdateTag();
+        tag.putBoolean("Active", this.active);
+        ContainerHelper.saveAllItems(tag, inventory);
+        return tag;
     }
 
     public boolean addStack(ItemStack itemStack) {
@@ -192,11 +248,24 @@ public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyCont
 
     public ItemStack removeStack() {
         if (!isEmpty()) {
-            ItemStack itemStack = getItem(0).split(1);
+            if (this.active) {
+                this.cancelRitual();
+            }
+            ItemStack itemStack = getItem(0).copy();
+            setItem(0, ItemStack.EMPTY);
             setChanged();
             return itemStack;
         }
         return ItemStack.EMPTY;
+    }
+
+    @Override
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
+        super.onDataPacket(net, pkt);
+        if (level != null && level.isClientSide) {
+            level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(),
+                    Block.UPDATE_ALL);
+        }
     }
 
     @Nullable

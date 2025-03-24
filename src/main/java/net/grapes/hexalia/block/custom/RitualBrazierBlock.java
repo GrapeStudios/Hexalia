@@ -5,8 +5,10 @@ import net.grapes.hexalia.block.entity.RitualBrazierBlockEntity;
 import net.grapes.hexalia.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -48,6 +50,25 @@ public class RitualBrazierBlock extends BaseEntityBlock implements EntityBlock {
         return SHAPE;
     }
 
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        super.animateTick(state, level, pos, random);
+
+        if (level.isClientSide) {
+            BlockEntity be = level.getBlockEntity(pos);
+            if (be instanceof RitualBrazierBlockEntity brazier && brazier.isActive()) {
+                double x = pos.getX() + 0.5;
+                double y = pos.getY() + 0.7;
+                double z = pos.getZ() + 0.5;
+
+                level.addParticle(ParticleTypes.ELECTRIC_SPARK,
+                        x + (random.nextDouble()-0.5)*0.3,
+                        y + random.nextDouble()*0.3,
+                        z + (random.nextDouble()-0.5)*0.3,
+                        0, 0.02, 0);
+            }
+        }
+    }
 
     @Override
     public RenderShape getRenderShape(BlockState pState) {
@@ -71,6 +92,14 @@ public class RitualBrazierBlock extends BaseEntityBlock implements EntityBlock {
                 }
                 pLevel.playSound(null, pPos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1.0f, 1.0f); // Play bone meal sound
                 return InteractionResult.sidedSuccess(pLevel.isClientSide);
+            }
+
+            if (heldItem.is(ModItems.HEX_FOCUS.get()) && !pState.getValue(SALTED)) {
+                if (ritualBrazierBlockEntity.startMoonRitual(pPlayer)) {
+                    return InteractionResult.sidedSuccess(pLevel.isClientSide);
+                } else {
+                    return InteractionResult.PASS;
+                }
             }
 
             if (!heldItem.isEmpty() && ritualBrazierBlockEntity.isEmpty() && !heldItem.is(ModItems.HEX_FOCUS.get()) && !heldItem.is(ModItems.SALT.get())) {

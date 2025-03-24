@@ -24,15 +24,29 @@ public class RitualBrazierRenderer implements BlockEntityRenderer<RitualBrazierB
         ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
         ItemStack itemStack = pBlockEntity.getRenderStack();
 
+        if (itemStack.isEmpty()) return;
+
         pPoseStack.pushPose();
-        pPoseStack.translate(0.5f, 0.40f, 0.5f);
+
+        pPoseStack.translate(0.5f, 0.4f, 0.5f);
+
+        if (pBlockEntity.isActive()) {
+            double time = (pBlockEntity.getLevel().getGameTime() + pPartialTick) / 8.0;
+            float verticalOffset = (float) Math.sin(time) * 0.08f;
+
+            pPoseStack.translate(0, verticalOffset, 0);
+        }
+
+        // Apply scaling and rotation
         pPoseStack.scale(1f, 1f, 1f);
-        pPoseStack.mulPose(Axis.YP.rotationDegrees((float)(System.currentTimeMillis() / 50 % 360)));
+        pPoseStack.mulPose(Axis.YP.rotationDegrees((float) (System.currentTimeMillis() / 50 % 360)));
 
         itemRenderer.renderStatic(itemStack, ItemDisplayContext.GROUND, getLightLevel(pBlockEntity.getLevel(),
                 pBlockEntity.getBlockPos()), OverlayTexture.NO_OVERLAY, pPoseStack, pBuffer, pBlockEntity.getLevel(), 1);
+
         pPoseStack.popPose();
     }
+
 
     private int getLightLevel(Level level, BlockPos pos) {
         int bLight = level.getBrightness(LightLayer.BLOCK, pos);

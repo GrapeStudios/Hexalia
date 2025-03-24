@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_lavender": {
+    "has_amethyst_block": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:lavender"
+              "minecraft:amethyst_block"
             ]
           }
         ]
@@ -15,21 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:purple_dye"
+        "recipe": "hexalia:moon_crystal_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_lavender",
+      "has_amethyst_block",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:purple_dye"
+      "hexalia:moon_crystal_block"
     ]
   },
-  "sends_telemetry_event": false
+  "sends_telemetry_event": true
 }

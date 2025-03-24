@@ -17,6 +17,9 @@ public class ModRecipes {
     public static final RegistryObject<RecipeSerializer<TransmutationRecipe>> TRANSMUTATION_SERIALIZER =
             SERIALIZERS.register("transmutation", () -> TransmutationRecipe.Serializer.INSTANCE);
 
+    public static final RegistryObject<RecipeSerializer<RitualBrazierRecipe>> RITUAL_BRAZIER_SERIALIZER =
+            SERIALIZERS.register("ritual_brazier", () -> RitualBrazierRecipe.Serializer.INSTANCE);
+
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);
     }

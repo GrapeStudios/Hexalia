@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_begonia": {
+    "has_glow_berries": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:begonia"
+              "minecraft:amethyst_shard"
             ]
           }
         ]
@@ -15,21 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:pink_dye"
+        "recipe": "hexalia:moon_crystal"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_begonia",
+      "has_glow_berries",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:pink_dye"
+      "hexalia:moon_crystal"
     ]
   },
-  "sends_telemetry_event": false
+  "sends_telemetry_event": true
 }

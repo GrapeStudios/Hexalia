@@ -45,6 +45,7 @@ public class ModCreativeModeTabs {
                         // Other Resources
                         output.accept(ModItems.TREE_RESIN.get());
                         output.accept(ModItems.MOON_CRYSTAL.get());
+                        output.accept(ModBlocks.MOON_CRYSTAL_BLOCK.get());
                         output.accept(ModItems.SILK_FIBER.get());
                         output.accept(ModItems.SILKWORM.get());
 

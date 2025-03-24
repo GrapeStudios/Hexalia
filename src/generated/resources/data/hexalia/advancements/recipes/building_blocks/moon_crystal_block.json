@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_silk_fiber": {
+    "has_moon_crystal": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:silk_fiber"
+              "hexalia:moon_crystal"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:cobweb"
+        "recipe": "hexalia:moon_crystal_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_silk_fiber",
+      "has_moon_crystal",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:cobweb"
+      "hexalia:moon_crystal_block"
     ]
   },
   "sends_telemetry_event": false

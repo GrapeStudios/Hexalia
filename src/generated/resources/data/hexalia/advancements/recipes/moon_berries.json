@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_nightshade_bush": {
+    "has_glow_berries": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:nightshade_bush"
+              "minecraft:glow_berries"
             ]
           }
         ]
@@ -15,21 +15,21 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:black_dye"
+        "recipe": "hexalia:moon_berries"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_nightshade_bush",
+      "has_glow_berries",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:black_dye"
+      "hexalia:moon_berries"
     ]
   },
-  "sends_telemetry_event": false
+  "sends_telemetry_event": true
 }

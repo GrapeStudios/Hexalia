@@ -141,6 +141,8 @@ public class ModBlocks {
             () -> new SaltLampBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE)
                     .instrument(NoteBlockInstrument.BANJO).strength(4f).requiresCorrectToolForDrops()
                     .lightLevel(state -> 12)));
+    public static final RegistryObject<Block> MOON_CRYSTAL_BLOCK = registerBlock("moon_crystal_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)));
 
     // Functional Blocks
     public static final RegistryObject<Block> SMALL_CAULDRON = BLOCKS.register("small_cauldron",

@@ -100,6 +100,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 createOreDrop(ModBlocks.SALT_BLOCK.get(), ModItems.SALT.get()));
         this.add(ModBlocks.SILKWORM_COCOON.get(),
                 this.createSingleItemTable(ModItems.SILKWORM.get()));
+        this.dropSelf(ModBlocks.MOON_CRYSTAL_BLOCK.get());
 
         // Crop Blocks
         this.add(ModBlocks.WILD_SUNFIRE_TOMATO.get(),
