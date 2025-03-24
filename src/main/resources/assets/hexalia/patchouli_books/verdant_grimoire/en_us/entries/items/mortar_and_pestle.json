@@ -31,11 +31,11 @@
     },
     {
       "type": "patchouli:crafting",
-      "recipe": "minecraft:salt_from_mortar_and_pestle"
+      "recipe": "hexalia:salt_from_mortar_and_pestle"
     },
     {
       "type": "patchouli:crafting",
-      "recipe": "minecraft:string_from_mortar_and_pestle"
+      "recipe": "hexalia:string_from_mortar_and_pestle"
     }
   ]
 }

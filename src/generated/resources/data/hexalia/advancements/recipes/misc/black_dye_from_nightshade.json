@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_mortar_and_pestle": {
+    "has_nightshade_bush": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:mortar_and_pestle"
+              "hexalia:nightshade_bush"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:salt_from_mortar_and_pestle"
+        "recipe": "hexalia:black_dye_from_nightshade"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_mortar_and_pestle",
+      "has_nightshade_bush",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:salt_from_mortar_and_pestle"
+      "hexalia:black_dye_from_nightshade"
     ]
   },
   "sends_telemetry_event": false

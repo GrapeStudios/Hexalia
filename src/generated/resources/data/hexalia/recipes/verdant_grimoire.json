@@ -3,14 +3,13 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "hexalia:silk_fiber"
+      "item": "minecraft:book"
     },
     {
-      "item": "hexalia:mortar_and_pestle"
+      "tag": "hexalia:refined_herbs"
     }
   ],
   "result": {
-    "count": 3,
-    "item": "minecraft:string"
+    "item": "hexalia:verdant_grimoire"
   }
 }

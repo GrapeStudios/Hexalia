@@ -66,7 +66,7 @@ public class ModBiomeModifiers {
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
         context.register(ADD_SIREN_KELP, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(Tags.Biomes.IS_WATER),
+                biomes.getOrThrow(ModTags.Biomes.HAS_SIREN_KELP),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.SIREN_KELP_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 

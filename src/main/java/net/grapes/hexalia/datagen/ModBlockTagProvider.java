@@ -114,7 +114,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.COTTONWOOD_FENCE.get(), ModBlocks.WILLOW_FENCE.get());
 
         this.tag(BlockTags.SIGNS)
-                .add(ModBlocks.COTTONWOOD_SIGN.get(), ModBlocks.COTTONWOOD_WALL_SIGN.get(), ModBlocks.COTTONWOOD_SIGN.get(),
+                .add(ModBlocks.COTTONWOOD_SIGN.get(), ModBlocks.COTTONWOOD_WALL_SIGN.get(), ModBlocks.WILLOW_SIGN.get(),
                         ModBlocks.WILLOW_WALL_SIGN.get());
         this.tag(BlockTags.ALL_HANGING_SIGNS)
                 .add(ModBlocks.COTTONWOOD_WALL_SIGN.get(), ModBlocks.COTTONWOOD_HANGING_WALL_SIGN.get(),

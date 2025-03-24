@@ -7,7 +7,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "hexalia:chillberries",
-      "text": "Chillberries can be found in Taiga and Snowy Taiga biomes, and their bushes cause freezing."
+      "text": "Chillberries can be found in the Taiga biome, and their bushes cause freezing."
     },
     {
       "type": "patchouli:crafting",
@@ -41,7 +41,7 @@
     },
     {
       "type": "patchouli:crafting",
-      "recipe": "minecraft:salt_from_mortar_and_pestle",
+      "recipe": "hexalia:salt_from_mortar_and_pestle",
       "text": "Salt can be obtained from this item by crushing it in a Mortar & Pestle."
     },
     {

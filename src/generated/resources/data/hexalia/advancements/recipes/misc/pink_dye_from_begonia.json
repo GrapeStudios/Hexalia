@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_mortar_and_pestle": {
+    "has_begonia": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:mortar_and_pestle"
+              "hexalia:begonia"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:string_from_mortar_and_pestle"
+        "recipe": "hexalia:pink_dye_from_begonia"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_mortar_and_pestle",
+      "has_begonia",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:string_from_mortar_and_pestle"
+      "hexalia:pink_dye_from_begonia"
     ]
   },
   "sends_telemetry_event": false

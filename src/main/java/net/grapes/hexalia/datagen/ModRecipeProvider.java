@@ -1,6 +1,7 @@
 package net.grapes.hexalia.datagen;
 
 import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.datagen.custom.RitualBrazierRecipeBuilder;
 import net.grapes.hexalia.datagen.custom.SmallCauldronRecipeBuilder;
 import net.grapes.hexalia.datagen.custom.TransmutationRecipeBuilder;
 import net.grapes.hexalia.item.ModItems;
@@ -158,7 +159,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('S', ModTags.Items.SALT)
                 .unlockedBy("has_salt",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SALT.get()).build()))
-                .save(pWriter);
+                .save(pWriter, new ResourceLocation("hexalia", "leather_from_salt"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Blocks.COBWEB)
                 .pattern(" S ")
@@ -168,36 +169,44 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('S', Items.STRING)
                 .unlockedBy("has_silk_fiber",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SILK_FIBER.get()).build()))
-                .save(pWriter);
+                .save(pWriter, new ResourceLocation("hexalia", "cobweb_from_fiber"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.YELLOW_DYE)
                 .requires(ModBlocks.HENBANE.get())
                 .unlockedBy("has_henbane",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModBlocks.HENBANE.get()).build()))
-                .save(pWriter);
+                .save(pWriter, new ResourceLocation("hexalia", "yellow_dye_from_henbane"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.PURPLE_DYE)
                 .requires(ModBlocks.LAVENDER.get())
                 .unlockedBy("has_lavender",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModBlocks.LAVENDER.get()).build()))
-                .save(pWriter);
+                .save(pWriter, new ResourceLocation("hexalia", "purple_dye_from_begonia"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.PINK_DYE)
                 .requires(ModBlocks.BEGONIA.get())
                 .unlockedBy("has_begonia",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModBlocks.BEGONIA.get()).build()))
-                .save(pWriter);
+                .save(pWriter, new ResourceLocation("hexalia", "pink_dye_from_begonia"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.BLACK_DYE)
                 .requires(ModBlocks.NIGHTSHADE_BUSH.get())
                 .unlockedBy("has_nightshade_bush",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModBlocks.NIGHTSHADE_BUSH.get()).build()))
-                .save(pWriter);
+                .save(pWriter, new ResourceLocation("hexalia", "black_dye_from_nightshade"));
 
         // Reversible Compacting Recipes for Blocks
         nineBlockStorageRecipes(pWriter, RecipeCategory.BUILDING_BLOCKS, ModItems.SALT.get(),
                 RecipeCategory.BUILDING_BLOCKS, ModBlocks.SALT_BLOCK.get(),
                 "hexalia:salt", "salt","hexalia:salt_block", "salt");
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.MOON_CRYSTAL_BLOCK.get())
+                .pattern("PP")
+                .pattern("PP")
+                .define('P', ModItems.MOON_CRYSTAL.get())
+                .unlockedBy("has_moon_crystal",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.MOON_CRYSTAL.get()).build()))
+                .save(pWriter);
 
         // Armor Recipes
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.GHOSTVEIL.get())
@@ -335,6 +344,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.MORTAR_AND_PESTLE.get()).build()))
                 .save(pWriter);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.VERDANT_GRIMOIRE.get())
+                .requires(Items.BOOK)
+                .requires(ModTags.Items.REFINED_HERBS)
+                .unlockedBy("has_book",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(Items.BOOK).build()))
+                .save(pWriter);
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SIREN_PASTE.get())
                 .requires(ModItems.SIREN_KELP.get())
                 .requires(ModItems.MORTAR_AND_PESTLE.get())
@@ -361,14 +377,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(ModItems.MORTAR_AND_PESTLE.get())
                 .unlockedBy("has_mortar_and_pestle",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.MORTAR_AND_PESTLE.get()).build()))
-                .save(pWriter, new ResourceLocation(getSimpleRecipeName(Items.STRING) + "_from_mortar_and_pestle"));
+                .save(pWriter, new ResourceLocation("hexalia", "string_from_mortar_and_pestle"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SALT.get())
                 .requires(ModItems.SALTSPROUT.get())
                 .requires(ModItems.MORTAR_AND_PESTLE.get())
                 .unlockedBy("has_mortar_and_pestle",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.MORTAR_AND_PESTLE.get()).build()))
-                .save(pWriter, new ResourceLocation(getSimpleRecipeName(ModItems.SALT.get()) + "_from_mortar_and_pestle"));
+                .save(pWriter, new ResourceLocation("hexalia", "salt_from_mortar_and_pestle"));
 
         // Recipes for Small Cauldron Brews
         new SmallCauldronRecipeBuilder(List.of(Blocks.CACTUS, ModItems.MANDRAKE.get(), ModItems.GHOST_POWDER.get()),
@@ -446,9 +462,26 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEX_FOCUS.get()).build()))
                 .save(pWriter);
 
+        // Recipes for Moonlight Ritual Items
+        new RitualBrazierRecipeBuilder(Items.GLOW_BERRIES, ModItems.MOON_BERRIES.get())
+                .unlockedBy("has_glow_berries", has(Items.GLOW_BERRIES))
+                .save(pWriter);
+        new RitualBrazierRecipeBuilder(Items.AMETHYST_SHARD, ModItems.MOON_CRYSTAL.get())
+                .unlockedBy("has_glow_berries", has(Items.AMETHYST_SHARD))
+                .save(pWriter);
+        new RitualBrazierRecipeBuilder(Blocks.AMETHYST_BLOCK, ModBlocks.MOON_CRYSTAL_BLOCK.get())
+                .unlockedBy("has_amethyst_block", has(Blocks.AMETHYST_BLOCK))
+                .save(pWriter);
+
         // Recipes for Wood-related Blocks
         planksFromLog(pWriter, ModBlocks.COTTONWOOD_PLANKS.get(), ModTags.Items.COTTONWOOD_LOGS, 4);
-        oneToOneConversionRecipe(pWriter, ModBlocks.COTTONWOOD_BUTTON.get(), ModBlocks.COTTONWOOD_PLANKS.get(), "wooden_button");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.COTTONWOOD_BUTTON.get())
+                .requires(ModBlocks.COTTONWOOD_PLANKS.get())
+                .unlockedBy("has_cottonwood_planks",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(ModBlocks.COTTONWOOD_PLANKS.get()).build()))
+                .save(pWriter);
+
         trapdoorBuilder(ModBlocks.COTTONWOOD_TRAPDOOR.get(), Ingredient.of(ModBlocks.COTTONWOOD_PLANKS.get()))
                 .unlockedBy("has_planks", inventoryTrigger(ItemPredicate.Builder.item().of(ModBlocks.COTTONWOOD_PLANKS.get()).build()))
                 .save(pWriter);
@@ -476,7 +509,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         hangingSign(pWriter, ModItems.COTTONWOOD_HANGING_SIGN.get(), ModBlocks.STRIPPED_COTTONWOOD_LOG.get());
 
         planksFromLog(pWriter, ModBlocks.WILLOW_PLANKS.get(), ModTags.Items.WILLOW_LOGS, 4);
-        oneToOneConversionRecipe(pWriter, ModBlocks.WILLOW_BUTTON.get(), ModBlocks.WILLOW_PLANKS.get(), "wooden_button");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModBlocks.WILLOW_BUTTON.get())
+                .requires(ModBlocks.WILLOW_PLANKS.get())
+                .unlockedBy("has_willow_planks",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(ModBlocks.WILLOW_PLANKS.get()).build()))
+                .save(pWriter);
+
         trapdoorBuilder(ModBlocks.WILLOW_TRAPDOOR.get(), Ingredient.of(ModBlocks.WILLOW_PLANKS.get()))
                 .unlockedBy("has_planks", inventoryTrigger(ItemPredicate.Builder.item().of(ModBlocks.WILLOW_PLANKS.get()).build()))
                 .save(pWriter);

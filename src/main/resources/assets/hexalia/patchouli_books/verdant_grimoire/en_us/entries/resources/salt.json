@@ -19,7 +19,7 @@
     },
     {
       "type": "patchouli:crafting",
-      "recipe": "minecraft:leather",
+      "recipe": "hexalia:leather_from_salt",
       "text": "You can combine Salt with Rotten Flesh to obtain Leather."
     },
     {

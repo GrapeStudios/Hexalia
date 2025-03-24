@@ -51,6 +51,8 @@ public class ModTags {
                 (new ResourceLocation(HexaliaMod.MOD_ID, "has_mandrakes")));
         public static final TagKey<Biome> HAS_DREAMSHROOMS = TagKey.create(Registries.BIOME,
                 (new ResourceLocation(HexaliaMod.MOD_ID, "has_dreamshrooms")));
+        public static final TagKey<Biome> HAS_SIREN_KELP = TagKey.create(Registries.BIOME,
+                (new ResourceLocation(HexaliaMod.MOD_ID, "has_siren_kelp")));
     }
 
     public static class Blocks {

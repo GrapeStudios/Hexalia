@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cottonwood_planks": {
+    "has_lavender": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:cottonwood_planks"
+              "hexalia:lavender"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:cottonwood_button_from_cottonwood_planks"
+        "recipe": "hexalia:purple_dye_from_begonia"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_cottonwood_planks",
+      "has_lavender",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:cottonwood_button_from_cottonwood_planks"
+      "hexalia:purple_dye_from_begonia"
     ]
   },
   "sends_telemetry_event": false

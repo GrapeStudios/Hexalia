@@ -6,6 +6,7 @@ import net.grapes.hexalia.worldgen.biome.ModBiomes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;
+import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -29,6 +30,9 @@ public class ModBiomeTagProvider extends BiomeTagsProvider {
                 .addOptional(ModBiomes.ENCHANTED_BAYOU.location())
                 .add(Biomes.MUSHROOM_FIELDS);
         this.tag(Tags.Biomes.IS_SWAMP)
+                .addOptional(ModBiomes.ENCHANTED_BAYOU.location());
+        this.tag(ModTags.Biomes.HAS_SIREN_KELP)
+                .addTag(BiomeTags.IS_OCEAN)
                 .addOptional(ModBiomes.ENCHANTED_BAYOU.location());
     }
 }

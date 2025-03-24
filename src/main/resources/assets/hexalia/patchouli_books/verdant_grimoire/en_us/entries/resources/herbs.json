@@ -21,7 +21,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "hexalia:siren_kelp",
-      "text": "These small kelp plants can be found in the bottom of the Ocean and Deep Ocean biomes. It can be used to create Siren Paste.$(br2)The kelp can be eaten and will grant you the Water Breathing effect for 10 seconds."
+      "text": "These small kelp plants can be found in the bottom of Ocean biomes. It can be used to create Siren Paste.$(br2)The kelp can be eaten and will grant you the Water Breathing effect for 10 seconds."
     },
     {
       "type": "patchouli:spotlight",

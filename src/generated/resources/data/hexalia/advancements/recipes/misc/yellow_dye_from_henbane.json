@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:yellow_dye"
+        "recipe": "hexalia:yellow_dye_from_henbane"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:yellow_dye"
+      "hexalia:yellow_dye_from_henbane"
     ]
   },
   "sends_telemetry_event": false

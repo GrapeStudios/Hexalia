@@ -1,34 +1,34 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_salt": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "hexalia:willow_button"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_willow_planks": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:salt"
+              "hexalia:willow_planks"
             ]
           }
         ]
       },
       "trigger": "minecraft:inventory_changed"
-    },
-    "has_the_recipe": {
-      "conditions": {
-        "recipe": "minecraft:leather"
-      },
-      "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_salt",
+      "has_willow_planks",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:leather"
+      "hexalia:willow_button"
     ]
   },
   "sends_telemetry_event": false
