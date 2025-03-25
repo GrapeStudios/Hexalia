@@ -11,7 +11,9 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 
 public class ModTags {
+
     public static class Items {
+
         // Custom Item Tags
         public static final TagKey<Item> REFINED_HERBS = tag("refined_herbs");
         public static final TagKey<Item> BREWS = tag("brews");
@@ -74,5 +76,29 @@ public class ModTags {
         private static TagKey<Block> forgeTag(String name){
             return BlockTags.create(new ResourceLocation("forge", name));
         }
+    }
+
+    // Compatibility Tags
+    public static class Compat {
+
+    // Serene Seasons
+    public static final String SERENE_SEASONS = "sereneseasons";
+    public static final TagKey<Block> SERENE_SEASONS_AUTUMN_CROPS_BLOCK = externalBlockTag(SERENE_SEASONS, "autumn_crops");
+    public static final TagKey<Block> SERENE_SEASONS_SPRING_CROPS_BLOCK = externalBlockTag(SERENE_SEASONS, "spring_crops");
+    public static final TagKey<Block> SERENE_SEASONS_SUMMER_CROPS_BLOCK = externalBlockTag(SERENE_SEASONS, "summer_crops");
+    public static final TagKey<Block> SERENE_SEASONS_WINTER_CROPS_BLOCK = externalBlockTag(SERENE_SEASONS, "winter_crops");
+    public static final TagKey<Block> SERENE_SEASONS_UNBREAKABLE_FERTILE_CROPS = externalBlockTag(SERENE_SEASONS, "unbreakable_infertile_crops");
+    public static final TagKey<Item> SERENE_SEASONS_AUTUMN_CROPS = externalItemTag(SERENE_SEASONS, "autumn_crops");
+    public static final TagKey<Item> SERENE_SEASONS_SPRING_CROPS = externalItemTag(SERENE_SEASONS, "spring_crops");
+    public static final TagKey<Item> SERENE_SEASONS_SUMMER_CROPS = externalItemTag(SERENE_SEASONS, "summer_crops");
+    public static final TagKey<Item> SERENE_SEASONS_WINTER_CROPS = externalItemTag(SERENE_SEASONS, "winter_crops");
+
+    private static TagKey<Item> externalItemTag(String modId, String path) {
+        return ItemTags.create(new ResourceLocation(modId, path));
+    }
+
+    private static TagKey<Block> externalBlockTag(String modId, String path) {
+        return BlockTags.create(new ResourceLocation(modId, path));
+    }
     }
 }
