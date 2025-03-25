@@ -1,7 +1,7 @@
 {
   "type": "minecraft:jigsaw",
-  "biomes": "#hexalia:has_structure/salt_oasis",
-  "start_pool": "hexalia:salt_oasis/start_pool",
+  "biomes": "#hexalia:has_structure/barren_hut",
+  "start_pool": "hexalia:barren_hut/start_pool",
   "size": 2,
   "max_distance_from_center": 80,
   "step": "surface_structures",
