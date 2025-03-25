@@ -117,8 +117,8 @@
 
   "hexalia.container.brew_shelf": "Brew Shelf",
 
-  "tooltip.hexalia.small_cauldron_gui": "Requires heat",
-  "tooltip.hexalia.ritual_table_gui": "Right-click with a Hex Focus",
+  "tooltip.hexalia.heat": "A heat source is required",
+  "tooltip.hexalia.hex_focus_gui": "Right-click with a Hex Focus",
   "tooltip.hexalia.homestead_brew": "Teleports to your spawn",
   "tooltip.hexalia.siphon_brew": "Siphon (2:00)",
   "tooltip.hexalia.slimewalker_brew": "Slimewalker (2:00)",
@@ -244,5 +244,10 @@
   "block.hexalia.willow_hanging_sign": "Willow Hanging Sign",
 
   "item.hexalia.verdant_grimoire": "Verdant Grimoire",
-  "item.hexalia.verdant_grimoire.landing_text": "A well-detailed book is your trusted tool in matters of witchcraft and plant care."
+  "item.hexalia.verdant_grimoire.landing_text": "A well-detailed book is your trusted tool in matters of witchcraft and plant care.",
+
+  "jei.info.wild_sunfire_tomatoes": "Sunfire Tomatoes are found in the savanna biome or planted in Barren Huts.",
+  "jei.info.wild_mandrakes": "Mandrakes are found in the forest biome.",
+  "jei.info.saltsprout": "Saltsprout can be found planted in Barren Huts.",
+  "jei.info.chillberry_bushes": "Chillberry Bushes are found in the Taiga biome."
 }
