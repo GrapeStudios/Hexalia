@@ -42,12 +42,12 @@
     },
     {
       "type": "patchouli:crafting",
-      "recipe": "minecraft:cobweb",
+      "recipe": "hexalia:cobweb_from_fiber",
       "text": "You can also combine strings with a Silk Fiber in order to craft a Cobweb block."
     },
     {
       "type": "patchouli:crafting",
-      "recipe": "minecraft:string_from_mortar_and_pestle",
+      "recipe": "hexalia:string_from_mortar_and_pestle",
       "text": "Strings can be obtained from Silk Fiber by crushing it in a $(l:hexalia:items/mortar_and_pestle)Mortar and Pestle$()"
     }
   ]
