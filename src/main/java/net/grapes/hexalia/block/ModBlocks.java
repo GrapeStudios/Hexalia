@@ -209,9 +209,9 @@ public class ModBlocks {
             () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR).noOcclusion(), BlockSetType.OAK));
 
     public static final RegistryObject<Block> COTTONWOOD_SIGN = BLOCKS.register("cottonwood_sign",
-            () -> new ModStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), ModWoodTypes.COTTONWOOD));
+            () -> new ModStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).noCollission(), ModWoodTypes.COTTONWOOD));
     public static final RegistryObject<Block> COTTONWOOD_WALL_SIGN  = BLOCKS.register("cottonwood_wall_sign",
-            () -> new ModWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), ModWoodTypes.COTTONWOOD));
+            () -> new ModWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN).noCollission(), ModWoodTypes.COTTONWOOD));
     public static final RegistryObject<Block> COTTONWOOD_HANGING_SIGN  = BLOCKS.register("cottonwood_hanging_sign",
             () -> new ModHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), ModWoodTypes.COTTONWOOD));
     public static final RegistryObject<Block> COTTONWOOD_HANGING_WALL_SIGN = BLOCKS.register("cottonwood_hanging_wall_sign",
@@ -255,9 +255,9 @@ public class ModBlocks {
             () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR).noOcclusion(), BlockSetType.OAK));
 
     public static final RegistryObject<Block> WILLOW_SIGN = BLOCKS.register("willow_sign",
-            () -> new ModStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), ModWoodTypes.WILLOW));
+            () -> new ModStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).noCollission(), ModWoodTypes.WILLOW));
     public static final RegistryObject<Block> WILLOW_WALL_SIGN  = BLOCKS.register("willow_wall_sign",
-            () -> new ModWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), ModWoodTypes.WILLOW));
+            () -> new ModWallSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_WALL_SIGN).noCollission(), ModWoodTypes.WILLOW));
     public static final RegistryObject<Block> WILLOW_HANGING_SIGN  = BLOCKS.register("willow_hanging_sign",
             () -> new ModHangingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS), ModWoodTypes.WILLOW));
     public static final RegistryObject<Block> WILLOW_HANGING_WALL_SIGN = BLOCKS.register("willow_hanging_wall_sign",
