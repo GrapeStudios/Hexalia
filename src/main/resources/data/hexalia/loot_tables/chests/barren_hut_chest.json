@@ -16,7 +16,7 @@
               "function": "minecraft:set_count",
               "count": {
                 "min": 1,
-                "max": 4
+                "max": 3
               }
             }
           ]
@@ -106,7 +106,7 @@
         {
           "type": "minecraft:item",
           "weight": 2,
-          "name": "minecraft:emerald",
+          "name": "minecraft:dead_bush",
           "functions": [
             {
               "function": "minecraft:set_count",

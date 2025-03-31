@@ -2,14 +2,16 @@
   "structures": [
     {
       "structure": "hexalia:barren_hut",
-      "weight": 2
+      "weight": 1
     }
   ],
   "placement": {
     "salt": 453593018,
+
     "spacing": 20,
-    "separation": 15,
-    "type": "minecraft:random_spread",
-    "spread_type": "minecraft:linear"
+
+    "separation": 6,
+
+    "type": "minecraft:random_spread"
   }
 }
