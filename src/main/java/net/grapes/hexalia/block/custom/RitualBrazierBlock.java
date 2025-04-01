@@ -1,5 +1,6 @@
 package net.grapes.hexalia.block.custom;
 
+import net.grapes.hexalia.block.entity.LunarLilyBlockEntity;
 import net.grapes.hexalia.block.entity.ModBlockEntities;
 import net.grapes.hexalia.block.entity.RitualBrazierBlockEntity;
 import net.grapes.hexalia.item.ModItems;
@@ -10,6 +11,8 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
@@ -20,6 +23,7 @@ import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
@@ -45,14 +49,23 @@ public class RitualBrazierBlock extends BlockWithEntity implements BlockEntityPr
     }
 
     @Override
-    public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        BlockPos blockPos = pos.down();
-        BlockState blockState = world.getBlockState(blockPos);
-        return this.canRunOnTop(world, blockPos, blockState);
-    }
+    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+        super.randomDisplayTick(state, world, pos, random);
 
-    private boolean canRunOnTop(BlockView world, BlockPos pos, BlockState floor) {
-        return floor.isSideSolidFullSquare(world, pos, Direction.UP) || floor.isOf(Blocks.HOPPER);
+        if (world.isClient) {
+            BlockEntity be = world.getBlockEntity(pos);
+            if (be instanceof RitualBrazierBlockEntity brazier && brazier.isActive()) {
+                double x = pos.getX() + 0.5;
+                double y = pos.getY() + 0.7;
+                double z = pos.getZ() + 0.5;
+
+                world.addParticle(ParticleTypes.ELECTRIC_SPARK,
+                        x + (random.nextDouble()-0.5)*0.3,
+                        y + random.nextDouble()*0.3,
+                        z + (random.nextDouble()-0.5)*0.3,
+                        0, 0.02, 0);
+            }
+        }
     }
 
     @Override
@@ -65,7 +78,7 @@ public class RitualBrazierBlock extends BlockWithEntity implements BlockEntityPr
         BlockEntity blockEntity = world.getBlockEntity(pos);
         ItemStack heldItem = player.getStackInHand(hand);
 
-        if (!(blockEntity instanceof  RitualBrazierBlockEntity ritualBrazierBlockEntity)) {
+        if (!(blockEntity instanceof RitualBrazierBlockEntity ritualBrazierBlockEntity)) {
             return ActionResult.PASS;
         }
 
@@ -75,44 +88,39 @@ public class RitualBrazierBlock extends BlockWithEntity implements BlockEntityPr
                 if (!player.isCreative()) {
                     heldItem.decrement(1);
                 }
-                world.playSound(null, pos, SoundEvents.ITEM_BONE_MEAL_USE, SoundCategory.BLOCKS, 0.5f, 0.5f);
+                world.playSound(null, pos, SoundEvents.ITEM_BONE_MEAL_USE, SoundCategory.BLOCKS, 1.0f, 1.0f);
                 return ActionResult.success(world.isClient);
             }
 
-            if (!heldItem.isEmpty() && ritualBrazierBlockEntity.isEmpty() && !heldItem.isOf(ModItems.HEX_FOCUS)
-                    && !heldItem.isOf(ModItems.SALT)) {
-                if (ritualBrazierBlockEntity.addItem(heldItem.split(1))) {
+            if (heldItem.isOf(ModItems.HEX_FOCUS) && !state.get(SALTED)) {
+                if (ritualBrazierBlockEntity.startMoonRitual(player)) {
+                    return ActionResult.success(world.isClient);
+                } else {
+                    return ActionResult.PASS;
+                }
+            }
+
+            if (!heldItem.isEmpty() && ritualBrazierBlockEntity.isEmpty() && !heldItem.isOf(ModItems.HEX_FOCUS) && !heldItem.isOf(ModItems.SALT)) {
+                if (ritualBrazierBlockEntity.addStack(heldItem.split(1))) {
                     playItemSound(world, pos);
-                    return ActionResult.SUCCESS;
+                    return ActionResult.success(world.isClient);
                 }
             }
 
             if (!ritualBrazierBlockEntity.isEmpty() && heldItem.isEmpty()) {
                 removeItemFromBlock(world, ritualBrazierBlockEntity, player);
-                return ActionResult.SUCCESS;
+                return ActionResult.success(world.isClient);
             }
         }
         return ActionResult.PASS;
-    }
-
-    private void removeItemFromBlock(World world, RitualBrazierBlockEntity ritualBrazierBlockEntity, PlayerEntity player) {
-        ItemStack stack = ritualBrazierBlockEntity.removeItem();
-        if (!player.getInventory().insertStack(stack)) {
-            ItemScatterer.spawn(world, player.getX(), player.getY(), player.getZ(), stack);
-        }
-        playItemSound(world, ritualBrazierBlockEntity.getPos());
-    }
-
-    private void playItemSound(World world, BlockPos pos) {
-        world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.5f, 0.5f);
     }
 
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof RitualBrazierBlockEntity brazier) {
-                ItemScatterer.spawn(world, pos, brazier);
+            if (blockEntity instanceof RitualBrazierBlockEntity ritualBrazierBlockEntity) {
+                ItemScatterer.spawn(world, pos, ritualBrazierBlockEntity);
                 if (state.get(SALTED)) {
                     ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModItems.SALT));
                 }
@@ -121,12 +129,16 @@ public class RitualBrazierBlock extends BlockWithEntity implements BlockEntityPr
         super.onStateReplaced(state, world, pos, newState, moved);
     }
 
-
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
         return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing()
                 .getOpposite()).with(SALTED, false);
+    }
+
+    @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        builder.add(FACING, SALTED);
     }
 
     @Override
@@ -139,10 +151,16 @@ public class RitualBrazierBlock extends BlockWithEntity implements BlockEntityPr
         return state.rotate(mirror.getRotation(state.get(FACING)));
     }
 
-    @Override
-    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
-        super.appendProperties(builder);
-        builder.add(FACING, SALTED);
+    private void removeItemFromBlock(World world, RitualBrazierBlockEntity ritualBrazierBlockEntity, PlayerEntity player) {
+        ItemStack stack = ritualBrazierBlockEntity.removeStack();
+        if (!player.getInventory().insertStack(stack)) {
+            ItemScatterer.spawn(world, player.getX(), player.getY(), player.getZ(), stack);
+        }
+        playItemSound(world, ritualBrazierBlockEntity.getPos());
+    }
+
+    private void playItemSound(World world, BlockPos pos) {
+        world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.5f, 0.5f);
     }
 
     @Nullable
@@ -158,10 +176,9 @@ public class RitualBrazierBlock extends BlockWithEntity implements BlockEntityPr
             return null;
         }
         return type == ModBlockEntities.RITUAL_BRAZIER_BE ? (world1, pos, state1, blockEntity) -> {
-            if (blockEntity instanceof RitualBrazierBlockEntity brazier) {
-                RitualBrazierBlockEntity.tick(world1, pos, state1, brazier);
+            if (blockEntity instanceof RitualBrazierBlockEntity ritualBrazier) {
+                RitualBrazierBlockEntity.tick(world1, pos, state1, ritualBrazier);
             }
         } : null;
     }
-
 }

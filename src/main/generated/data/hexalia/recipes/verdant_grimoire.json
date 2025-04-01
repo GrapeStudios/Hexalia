@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:book"
+    },
+    {
+      "tag": "hexalia:crushed_herbs"
+    }
+  ],
+  "result": {
+    "item": "hexalia:verdant_grimoire"
+  }
+}

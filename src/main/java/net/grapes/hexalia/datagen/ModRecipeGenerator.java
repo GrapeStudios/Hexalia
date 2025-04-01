@@ -2,6 +2,8 @@ package net.grapes.hexalia.datagen;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.grapes.hexalia.HexaliaMod;
+import net.grapes.hexalia.datagen.custom.RitualBrazierRecipeBuilder;
 import net.grapes.hexalia.datagen.custom.SmallCauldronRecipeBuilder;
 import net.grapes.hexalia.datagen.custom.TransmutationRecipeBuilder;
 import net.grapes.hexalia.block.ModBlocks;
@@ -322,6 +324,12 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
                 .offerTo(exporter);
 
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.VERDANT_GRIMOIRE)
+                .input(Items.BOOK)
+                .input(ModTags.Items.CRUSHED_HERBS)
+                .criterion(hasItem(Items.BOOK), conditionsFromItem(Items.BOOK))
+                .offerTo(exporter);
+
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.STRING)
                 .input(ModItems.MORTAR_AND_PESTLE)
                 .input(ModItems.SALTSPROUT)
@@ -362,64 +370,62 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
 
         // Recipes for Transmutation Items
         new TransmutationRecipeBuilder(List.of(ModItems.GHOST_POWDER, Items.WITHER_ROSE, Items.BONE, Items.BLACK_DYE),
-                Blocks.AZURE_BLUET, ModBlocks.GRIMSHADE)
-                .criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
+                Blocks.AZURE_BLUET, ModBlocks.GRIMSHADE).criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
                 .offerTo(exporter);
-
         new TransmutationRecipeBuilder(List.of(ModItems.DREAM_PASTE, Items.IRON_NUGGET, Items.SWEET_BERRIES, Blocks.POPPY),
-                Items.BEETROOT_SEEDS, ModItems.RABBAGE_SEEDS)
-                .criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
+                Items.BEETROOT_SEEDS, ModItems.RABBAGE_SEEDS).criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
                 .offerTo(exporter);
 
         new TransmutationRecipeBuilder(List.of(ModItems.SPIRIT_POWDER, Items.GOLD_NUGGET, Items.BOOK, Items.EXPERIENCE_BOTTLE),
-                Items.DIAMOND, ModItems.SAGE_PENDANT)
-                .criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
+                Items.DIAMOND, ModItems.SAGE_PENDANT).criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
                 .offerTo(exporter);
 
         new TransmutationRecipeBuilder(List.of(ModItems.DREAM_PASTE, ModItems.SPIRIT_POWDER, ModItems.EARTH_NODE, ModItems.TREE_RESIN),
-                Blocks.POPPY, ModBlocks.MORPHORA)
-                .criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
+                Blocks.POPPY, ModBlocks.MORPHORA).criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
                 .offerTo(exporter);
 
         new TransmutationRecipeBuilder(List.of(ModItems.SIREN_PASTE, ModItems.WATER_NODE, Items.IRON_NUGGET, Items.KELP),
-                ModItems.ANCIENT_SEED, ModItems.KELPWEAVE_BLADE)
-                .criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
+                ModItems.ANCIENT_SEED, ModItems.KELPWEAVE_BLADE).criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
                 .offerTo(exporter);
 
         new TransmutationRecipeBuilder(List.of(ModItems.SIREN_PASTE, ModItems.WATER_NODE, Items.NAUTILUS_SHELL, Items.PRISMARINE_CRYSTALS),
-                Items.KELP, ModBlocks.NAUTILITE)
-                .criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
+                Items.KELP, ModBlocks.NAUTILITE).criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
                 .offerTo(exporter);
 
         new TransmutationRecipeBuilder(List.of(ModItems.AIR_NODE, ModItems.GHOST_POWDER, Items.FEATHER, Items.PHANTOM_MEMBRANE),
-                Blocks.OXEYE_DAISY, ModBlocks.WINDSONG)
-                .criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
+                Blocks.OXEYE_DAISY, ModBlocks.WINDSONG).criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
                 .offerTo(exporter);
 
         new TransmutationRecipeBuilder(List.of(ModItems.MOON_CRYSTAL, ModItems.EARTH_NODE, Items.BONE_MEAL, Items.GLOWSTONE_DUST),
-                Blocks.LILY_OF_THE_VALLEY, ModBlocks.LUNAR_LILY)
-                .criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
+                Blocks.LILY_OF_THE_VALLEY, ModBlocks.LUNAR_LILY).criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
                 .offerTo(exporter);
 
         new TransmutationRecipeBuilder(List.of(Items.COAL, ModItems.SUNFIRE_TOMATO, Items.GUNPOWDER, Blocks.SUNFLOWER),
-                Items.AMETHYST_SHARD, ModItems.FIRE_NODE)
-                .criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
+                Items.AMETHYST_SHARD, ModItems.FIRE_NODE).criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
                 .offerTo(exporter);
 
         new TransmutationRecipeBuilder(List.of(Items.FEATHER, Items.GLASS_BOTTLE, Items.STRING, Blocks.DANDELION),
-                Items.AMETHYST_SHARD, ModItems.AIR_NODE)
-                .criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
+                Items.AMETHYST_SHARD, ModItems.AIR_NODE).criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
                 .offerTo(exporter);
 
         new TransmutationRecipeBuilder(List.of(Blocks.LILY_PAD, ModItems.SIREN_PASTE, Items.PRISMARINE_SHARD, Items.INK_SAC),
-                Items.AMETHYST_SHARD, ModItems.WATER_NODE)
-                .criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
+                Items.AMETHYST_SHARD, ModItems.WATER_NODE).criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
                 .offerTo(exporter);
 
         new TransmutationRecipeBuilder(List.of(ModItems.TREE_RESIN, Items.CLAY_BALL, Items.FLINT, ModItems.MANDRAKE),
-                Items.AMETHYST_SHARD, ModItems.EARTH_NODE)
-                .criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
+                Items.AMETHYST_SHARD, ModItems.EARTH_NODE).criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
                 .offerTo(exporter);
+
+        // Moon Rituals
+        new RitualBrazierRecipeBuilder(Items.AMETHYST_SHARD, ModItems.MOON_CRYSTAL)
+                .criterion("has_amethyst_shard", conditionsFromItem(Items.AMETHYST_SHARD))
+                .offerTo(exporter, new Identifier(HexaliaMod.MOD_ID, "moon_crystal_from_amethyst_shard"));
+        new RitualBrazierRecipeBuilder(Items.GLOW_BERRIES, ModItems.MOON_BERRIES)
+                .criterion("has_glow_berries", conditionsFromItem(Items.AMETHYST_SHARD))
+                .offerTo(exporter, new Identifier(HexaliaMod.MOD_ID, "moon_berries_from_amethyst_shard"));
+        new RitualBrazierRecipeBuilder(Blocks.AMETHYST_BLOCK, ModBlocks.MOON_CRYSTAL_BLOCK)
+                .criterion("has_amethyst_block", conditionsFromItem(Items.AMETHYST_SHARD))
+                .offerTo(exporter, new Identifier(HexaliaMod.MOD_ID, "moon_crystal_block_from_amethyst_shard"));
 
         // Recipes for Wooden Blocks
         offerPlanksRecipe(exporter, ModBlocks.COTTONWOOD_PLANKS, ModTags.Items.COTTONWOOD_LOGS, 4);

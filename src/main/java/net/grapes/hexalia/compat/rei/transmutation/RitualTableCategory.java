@@ -1,4 +1,4 @@
-package net.grapes.hexalia.compat.rei;
+package net.grapes.hexalia.compat.rei.transmutation;
 
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
@@ -11,6 +11,7 @@ import me.shedaniel.rei.api.common.display.basic.BasicDisplay;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.grapes.hexalia.HexaliaMod;
+import net.grapes.hexalia.compat.rei.HexaliaREIClientPlugin;
 import net.grapes.hexalia.item.ModItems;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -74,7 +75,7 @@ public class RitualTableCategory implements DisplayCategory<BasicDisplay> {
                         .entries(ingredientEntries.get(4))
                         .markInput().disableBackground());
                 widgets.add(Widgets.createTooltip(new Rectangle(startPoint.x + 4, startPoint.y + 63, 16, 16),
-                        Text.translatable("tooltip.hexalia.ritual_table_gui")));
+                        Text.translatable("tooltip.hexalia.hex_focus_gui")));
             }
         }
 

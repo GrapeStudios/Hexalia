@@ -1,4 +1,4 @@
-package net.grapes.hexalia.compat.rei;
+package net.grapes.hexalia.compat.rei.brewing;
 
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
@@ -11,6 +11,7 @@ import me.shedaniel.rei.api.common.display.basic.BasicDisplay;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.grapes.hexalia.HexaliaMod;
+import net.grapes.hexalia.compat.rei.HexaliaREIClientPlugin;
 import net.grapes.hexalia.item.ModItems;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -51,7 +52,6 @@ public class SmallCauldronCategory implements DisplayCategory<BasicDisplay> {
 
         List<EntryIngredient> ingredientEntries = display.getInputEntries();
         if (ingredientEntries != null) {
-            // Skip the last entry which is the bottle slot
             for (int i = 0; i < ingredientEntries.size() - 1; i++) {
                 Point slotLoc = new Point(startPoint.x + 1 + i % 3 * 18, startPoint.y + 11 + (i / 3) * 18);
                 widgets.add(Widgets.createSlot(slotLoc).entries(ingredientEntries.get(i)).markInput().disableBackground());

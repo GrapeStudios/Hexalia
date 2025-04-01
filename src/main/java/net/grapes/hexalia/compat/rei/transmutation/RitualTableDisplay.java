@@ -1,4 +1,4 @@
-package net.grapes.hexalia.compat.rei;
+package net.grapes.hexalia.compat.rei.transmutation;
 
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.display.basic.BasicDisplay;

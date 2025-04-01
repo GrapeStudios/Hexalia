@@ -19,21 +19,30 @@ import net.minecraft.world.World;
 import java.util.Objects;
 
 public class RitualBrazierRenderer implements BlockEntityRenderer<RitualBrazierBlockEntity> {
-    public RitualBrazierRenderer(BlockEntityRendererFactory.Context context) {
-    }
+    public RitualBrazierRenderer(BlockEntityRendererFactory.Context context) {}
 
     @Override
     public void render(RitualBrazierBlockEntity blockEntity, float partialTick, MatrixStack poseStack, VertexConsumerProvider buffer, int packedLight, int packedOverlay) {
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
         ItemStack itemStack = blockEntity.getRenderStack();
 
+        if (itemStack.isEmpty()) return;
+
         poseStack.push();
-        poseStack.translate(0.5f, 0.40f, 0.5f);
+        poseStack.translate(0.5f, 0.4f, 0.5f);
+
+        if (blockEntity.isActive()) {
+            double time = (Objects.requireNonNull(blockEntity.getWorld()).getTime() + partialTick) / 8.0;
+            float verticalOffset = (float) Math.sin(time) * 0.08f;
+            poseStack.translate(0, verticalOffset, 0);
+        }
+
         poseStack.scale(1f, 1f, 1f);
         poseStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees((float)(System.currentTimeMillis() / 50 % 360)));
 
-        itemRenderer.renderItem(itemStack, ModelTransformationMode.GROUND, getLightLevel(Objects.requireNonNull(blockEntity.getWorld()),
-                blockEntity.getPos()), OverlayTexture.DEFAULT_UV, poseStack, buffer, blockEntity.getWorld(), 1);
+        itemRenderer.renderItem(itemStack, ModelTransformationMode.GROUND, getLightLevel(blockEntity.getWorld(), blockEntity.getPos()),
+                OverlayTexture.DEFAULT_UV, poseStack, buffer, blockEntity.getWorld(), 1);
+
         poseStack.pop();
     }
 
@@ -42,5 +51,4 @@ public class RitualBrazierRenderer implements BlockEntityRenderer<RitualBrazierB
         int skyLight = world.getLightLevel(LightType.SKY, pos);
         return LightmapTextureManager.pack(blockLight, skyLight);
     }
-
 }

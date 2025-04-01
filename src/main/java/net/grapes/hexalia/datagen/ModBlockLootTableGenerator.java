@@ -65,9 +65,12 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
 
         this.addDrop(ModBlocks.MOON_BERRIES_VINE,
                moonBerriesDrop(ModBlocks.MOON_BERRIES_VINE));
-       this.addDrop(ModBlocks.MOON_BERRIES_VINE_PLANT,
+
+        this.addDrop(ModBlocks.MOON_BERRIES_VINE_PLANT,
                moonBerriesDrop(ModBlocks.MOON_BERRIES_VINE_PLANT));
-       addDrop(ModBlocks.RITUAL_BRAZIER);
+
+        addDrop(ModBlocks.RITUAL_BRAZIER);
+        addDrop(ModBlocks.MOON_CRYSTAL_BLOCK);
 
         // Other Blocks
         addDrop(ModBlocks.INFUSED_DIRT);

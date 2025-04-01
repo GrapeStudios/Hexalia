@@ -125,6 +125,8 @@ public class ModBlocks {
     public static final Block SALT_LAMP = registerBlockWithoutBlockItem("salt_lamp",
             new SaltLampBlock(FabricBlockSettings.create().mapColor(MapColor.WHITE).instrument(Instrument.BANJO)
                     .strength(4f).requiresTool().luminance(state -> 12)));
+    public static final Block MOON_CRYSTAL_BLOCK = registerBlock("moon_crystal_block",
+            new Block(FabricBlockSettings.copyOf(Blocks.AMETHYST_BLOCK)));
 
     // Functional Blocks
     public static final Block SMALL_CAULDRON = registerBlockWithoutBlockItem("small_cauldron",

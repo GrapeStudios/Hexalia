@@ -13,10 +13,13 @@
       "type": "patchouli:image",
       "title": "Ritual Brazier",
       "images": [
-        "hexalia:textures/gui/patchouli/moonlight_ritual.png"
+        "hexalia:textures/gui/patchouli/ritual_brazier.png"
       ],
-      "border": false,
-      "text": "These are the current moonlit items."
+      "border": true
+    },
+    {
+      "type": "hexalia:ritual_brazier",
+      "recipe": "hexalia:moon_crystal_from_ritual"
     },
     {
       "type": "patchouli:spotlight",
@@ -24,9 +27,22 @@
       "text": "Moon Crystals can be used in several recipes, and will be very useful later on. For now, it can be used to craft Weather Idols and transmutation rituals."
     },
     {
+      "type": "hexalia:ritual_brazier",
+      "recipe": "hexalia:moon_berries_from_ritual"
+    },
+    {
       "type": "patchouli:spotlight",
       "item": "hexalia:moon_berries",
       "text": "Moon Berries are edible food items that can also be planted and grow from vines.$(br2)The berry can also be used to craft $(l:hexalia:resources/crops)Moon Berry Cookies$()."
+    },
+    {
+      "type": "hexalia:ritual_brazier",
+      "recipe": "hexalia:moon_crystal_block_from_ritual"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:moon_crystal_block",
+      "text": "Moon Crystal Blocks serves as decoration or can be used as way to compact and store Moon Crystals. This block will have an important usage in the future."
     }
   ]
 }
