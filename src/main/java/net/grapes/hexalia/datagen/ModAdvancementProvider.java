@@ -27,7 +27,8 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                 .display(new AdvancementDisplay(new ItemStack(ModItems.HEX_FOCUS),
                         Text.translatable("advancements.hexalia.root.title"),
                         Text.translatable("advancements.hexalia.root.description"),
-                        new Identifier(HexaliaMod.MOD_ID, "textures/block/willow_log.png"), AdvancementFrame.TASK,
+                        new Identifier(HexaliaMod.MOD_ID, "textures/block/willow_log.png"),
+                        AdvancementFrame.TASK,
                         true, true, false))
                 .criterion("has_hex_focus", InventoryChangedCriterion.Conditions.items(ModItems.HEX_FOCUS))
                 .build(consumer, HexaliaMod.MOD_ID + ":root");
@@ -36,7 +37,8 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                 .display(new AdvancementDisplay(new ItemStack(ModItems.SMALL_CAULDRON),
                         Text.translatable("advancements.hexalia.small_cauldron.title"),
                         Text.translatable("advancements.hexalia.small_cauldron.description"),
-                        new Identifier(HexaliaMod.MOD_ID, "textures/block/willow_log.png"), AdvancementFrame.TASK,
+                        new Identifier(HexaliaMod.MOD_ID, "textures/block/willow_log.png"),
+                        AdvancementFrame.TASK,
                         true, true, false))
                 .parent(rootAdvancement)
                 .criterion("has_small_cauldron", InventoryChangedCriterion.Conditions.items(ModItems.SMALL_CAULDRON))
@@ -50,7 +52,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         true, true, false))
                 .parent(rootAdvancement)
                 .criterion("has_mortar_and_pestle", InventoryChangedCriterion.Conditions.items(ModItems.MORTAR_AND_PESTLE))
-                .build(consumer, HexaliaMod.MOD_ID + "mortar_and_pestle");
+                .build(consumer, HexaliaMod.MOD_ID + ":mortar_and_pestle");
 
         Advancement stoneDagger = Advancement.Builder.create()
                 .display(new AdvancementDisplay(new ItemStack(ModItems.STONE_DAGGER),
@@ -60,7 +62,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         true, true, false))
                 .parent(rootAdvancement)
                 .criterion("has_stone_dagger", InventoryChangedCriterion.Conditions.items(ModItems.STONE_DAGGER))
-                .build(consumer, HexaliaMod.MOD_ID + "stone_dagger");
+                .build(consumer, HexaliaMod.MOD_ID + ":stone_dagger");
 
         Advancement slimeyBrew = Advancement.Builder.create()
                 .display(new AdvancementDisplay(new ItemStack(ModItems.BREW_OF_SLIMEWALKER),
@@ -70,7 +72,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         true, true, false))
                 .parent(smallCauldron)
                 .criterion("use_slimewalker_brew", ConsumeItemCriterion.Conditions.item(ModItems.BREW_OF_DAYBLOOM))
-                .build(consumer, HexaliaMod.MOD_ID + "slimey_brew");
+                .build(consumer, HexaliaMod.MOD_ID + ":slimey_brew");
 
         Advancement saltItem = Advancement.Builder.create()
                 .display(new AdvancementDisplay(new ItemStack(ModItems.SALT),
@@ -80,7 +82,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         true, true, false))
                 .parent(rootAdvancement)
                 .criterion("has_salt", InventoryChangedCriterion.Conditions.items(ModItems.SALT))
-                .build(consumer, HexaliaMod.MOD_ID + "salt");
+                .build(consumer, HexaliaMod.MOD_ID + ":salt");
 
         Advancement purifyingSalts = Advancement.Builder.create()
                 .display(new AdvancementDisplay(new ItemStack(ModItems.PURIFYING_SALTS),
@@ -90,7 +92,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         true, true, false))
                 .parent(saltItem)
                 .criterion("has_purifying_salts", InventoryChangedCriterion.Conditions.items(ModItems.PURIFYING_SALTS))
-                .build(consumer, HexaliaMod.MOD_ID + "purifying_salts");
+                .build(consumer, HexaliaMod.MOD_ID + ":purifying_salts");
 
         Advancement ritualTable = Advancement.Builder.create()
                 .display(new AdvancementDisplay(new ItemStack(ModItems.RITUAL_TABLE),
@@ -100,7 +102,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         true, true, false))
                 .parent(rootAdvancement)
                 .criterion("has_ritual_table", InventoryChangedCriterion.Conditions.items(ModItems.RITUAL_TABLE))
-                .build(consumer, HexaliaMod.MOD_ID + "ritual_table");
+                .build(consumer, HexaliaMod.MOD_ID + ":ritual_table");
 
         Advancement rabbage = Advancement.Builder.create()
                 .display(new AdvancementDisplay(new ItemStack(ModItems.RABBAGE),
@@ -110,7 +112,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         true, true, false))
                 .parent(ritualTable)
                 .criterion("has_rabbage", InventoryChangedCriterion.Conditions.items(ModItems.RABBAGE))
-                .build(consumer, HexaliaMod.MOD_ID + "rabbage");
+                .build(consumer, HexaliaMod.MOD_ID + ":rabbage");
 
         Advancement weatherIdols = Advancement.Builder.create()
                 .display(new AdvancementDisplay(new ItemStack(ModItems.STORM_IDOL),
@@ -122,7 +124,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                 .criterion("use_rain_idol", ConsumeItemCriterion.Conditions.item(ModItems.RAIN_IDOL))
                 .criterion("has_clear_idol", ConsumeItemCriterion.Conditions.item(ModItems.CLEAR_IDOL))
                 .criterion("has_storm_idol", ConsumeItemCriterion.Conditions.item(ModItems.STORM_IDOL))
-                .build(consumer, HexaliaMod.MOD_ID + "elemental_nodes");
+                .build(consumer, HexaliaMod.MOD_ID + ":elemental_nodes");
 
         Advancement elementalNodes = Advancement.Builder.create()
                 .display(new AdvancementDisplay(new ItemStack(ModItems.FIRE_NODE),
@@ -135,7 +137,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                 .criterion("has_air_node", InventoryChangedCriterion.Conditions.items(ModItems.AIR_NODE))
                 .criterion("has_earth_node", InventoryChangedCriterion.Conditions.items(ModItems.EARTH_NODE))
                 .criterion("has_fire_node", InventoryChangedCriterion.Conditions.items(ModItems.FIRE_NODE))
-                .build(consumer, HexaliaMod.MOD_ID + "elemental_nodes");
+                .build(consumer, HexaliaMod.MOD_ID + ":elemental_nodes");
 
         Advancement ritualBrazier = Advancement.Builder.create()
                 .display(new AdvancementDisplay(new ItemStack(ModBlocks.RITUAL_BRAZIER),
@@ -145,7 +147,7 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         true, true, false))
                 .parent(ritualTable)
                 .criterion("has_ritual_brazier", InventoryChangedCriterion.Conditions.items(ModBlocks.RITUAL_BRAZIER))
-                .build(consumer, HexaliaMod.MOD_ID + "ritual_brazier");
+                .build(consumer, HexaliaMod.MOD_ID + ":ritual_brazier");
 
         Advancement moonCrystal = Advancement.Builder.create()
                 .display(new AdvancementDisplay(new ItemStack(ModItems.MOON_CRYSTAL),
@@ -155,16 +157,17 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                         true, true, false))
                 .parent(ritualBrazier)
                 .criterion("has_moon_crystal", InventoryChangedCriterion.Conditions.items(ModItems.MOON_CRYSTAL))
-                .build(consumer, HexaliaMod.MOD_ID + "moon_crystal");
+                .build(consumer, HexaliaMod.MOD_ID + ":moon_crystal");
 
         Advancement daybloomBrew = Advancement.Builder.create()
                 .display(new AdvancementDisplay(new ItemStack(ModItems.BREW_OF_DAYBLOOM),
                         Text.translatable("advancements.hexalia.daybloom_brew.title"),
                         Text.translatable("advancements.hexalia.daybloom_brew.description"),
-                        new Identifier(HexaliaMod.MOD_ID, "textures/block/willow_log.png"), AdvancementFrame.TASK,
+                        new Identifier(HexaliaMod.MOD_ID, "textures/block/willow_log.png"),
+                        AdvancementFrame.TASK,
                         true, true, false))
                 .parent(smallCauldron)
                 .criterion("use_daybloom", ConsumeItemCriterion.Conditions.item(ModItems.BREW_OF_DAYBLOOM))
-                .build(consumer, HexaliaMod.MOD_ID + "daybloom");
+                .build(consumer, HexaliaMod.MOD_ID + ":daybloom_brew");
     }
 }

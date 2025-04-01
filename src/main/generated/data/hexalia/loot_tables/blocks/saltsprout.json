@@ -6,6 +6,16 @@
       "entries": [
         {
           "type": "minecraft:item",
+          "name": "hexalia:saltsprout"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
           "conditions": [
             {
               "block": "hexalia:saltsprout",
@@ -20,7 +30,28 @@
               "enchantment": "minecraft:fortune",
               "formula": "minecraft:ore_drops",
               "function": "minecraft:apply_bonus"
-            },
+            }
+          ],
+          "name": "hexalia:saltsprout"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "hexalia:saltsprout",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "age": "3"
+              }
+            }
+          ],
+          "functions": [
             {
               "enchantment": "minecraft:fortune",
               "formula": "minecraft:binomial_with_bonus_count",

@@ -21,6 +21,7 @@ import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.predicate.StatePredicate;
+import net.minecraft.state.property.IntProperty;
 
 public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
 
@@ -30,8 +31,13 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
 
     @Override
     public void generate() {
+        generatePlantsAndFlowers();
+        generateFunctionalBlocks();
+        generateCrops();
+        generateTreeBlocks();
+    }
 
-        // Plants & Flowers
+    private void generatePlantsAndFlowers() {
         addDrop(ModBlocks.SPIRIT_BLOOM);
         addPottedPlantDrops(ModBlocks.POTTED_SPIRIT_BLOOM);
         addDrop(ModBlocks.DREAMSHROOM);
@@ -46,8 +52,7 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.GHOST_FERN);
         addDrop(ModBlocks.NIGHTSHADE_BUSH);
         addPottedPlantDrops(ModBlocks.POTTED_NIGHTSHADE_BUSH);
-        this.addDrop(ModBlocks.HEXED_BULRUSH,
-                createTallPlantBlock(ModBlocks.HEXED_BULRUSH));
+        this.addDrop(ModBlocks.HEXED_BULRUSH, createTallPlantBlock(ModBlocks.HEXED_BULRUSH));
         this.addDrop(ModBlocks.COTTONWOOD_CATKIN, Items.STRING);
         addDrop(ModBlocks.BEGONIA);
         addPottedPlantDrops(ModBlocks.POTTED_BEGONIA);
@@ -62,17 +67,13 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addPottedPlantDrops(ModBlocks.POTTED_WINDSONG);
         addDrop(ModBlocks.LUNAR_LILY);
         addPottedPlantDrops(ModBlocks.POTTED_LUNAR_LILY);
+        this.addDrop(ModBlocks.MOON_BERRIES_VINE, moonBerriesDrop(ModBlocks.MOON_BERRIES_VINE));
+        this.addDrop(ModBlocks.MOON_BERRIES_VINE_PLANT, moonBerriesDrop(ModBlocks.MOON_BERRIES_VINE_PLANT));
+    }
 
-        this.addDrop(ModBlocks.MOON_BERRIES_VINE,
-               moonBerriesDrop(ModBlocks.MOON_BERRIES_VINE));
-
-        this.addDrop(ModBlocks.MOON_BERRIES_VINE_PLANT,
-               moonBerriesDrop(ModBlocks.MOON_BERRIES_VINE_PLANT));
-
+    private void generateFunctionalBlocks() {
         addDrop(ModBlocks.RITUAL_BRAZIER);
         addDrop(ModBlocks.MOON_CRYSTAL_BLOCK);
-
-        // Other Blocks
         addDrop(ModBlocks.INFUSED_DIRT);
         addDrop(ModBlocks.INFUSED_FARMLAND, drops(ModBlocks.INFUSED_DIRT));
         addDrop(ModBlocks.RITUAL_TABLE, drops(ModItems.RITUAL_TABLE));
@@ -85,9 +86,25 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.SMALL_CAULDRON);
         addDrop(ModBlocks.SILKWORM_COCOON);
         this.addDrop(ModBlocks.SILKWORM_COCOON, ModItems.SILKWORM);
-        addDrop(ModBlocks.SALT_BLOCK, oreDrops(ModBlocks.SALT_BLOCK, ModItems.SALT));
+        addDrop(ModBlocks.SALT_BLOCK, LootTable.builder()
+                .pool(LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .with(ItemEntry.builder(ModItems.SALT)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0f, 3.0f)))
+                        )
+                )
+                .pool(LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .with(ItemEntry.builder(ModItems.SALT)
+                                .conditionally(WITH_SILK_TOUCH.invert())
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 2.0f)))
+                                .apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE))
+                        )
+                )
+        );
+    }
 
-        // Crop Blocks
+    private void generateCrops() {
         addDrop(ModBlocks.WILD_SUNFIRE_TOMATO);
         this.addDrop(ModBlocks.WILD_SUNFIRE_TOMATO, ModItems.SUNFIRE_TOMATO_SEEDS);
         addDrop(ModBlocks.WILD_MANDRAKE);
@@ -104,9 +121,13 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         BlockStatePropertyLootCondition.Builder builder5 = BlockStatePropertyLootCondition.builder(ModBlocks.SALTSPROUT)
                 .properties(StatePredicate.Builder.create().exactMatch(RabbageCropBlock.AGE, 3));
         this.addDrop(ModBlocks.SALTSPROUT, this.createSimpleCropBlock(ModBlocks.SALTSPROUT, ModItems.SALTSPROUT, builder5));
-        this.addDrop(ModBlocks.CHILLBERRY_BUSH, this.createHarvestablePlantBlock(ModBlocks.CHILLBERRY_BUSH, ModItems.CHILLBERRIES));
+        this.addDrop(ModBlocks.CHILLBERRY_BUSH, createHarvestablePlantBlock(
+                ModBlocks.CHILLBERRY_BUSH, ModItems.CHILLBERRIES,
+                ChillberryBushBlock.AGE, 3, 2.0F, 3.0F));
+    }
 
-        // Drops for Tree-Related Blocks
+    private void generateTreeBlocks() {
+        // Cottonwood
         addDrop(ModBlocks.COTTONWOOD_LEAVES, leavesDrops(ModBlocks.COTTONWOOD_LEAVES, ModBlocks.COTTONWOOD_SAPLING, SAPLING_DROP_CHANCE));
         addDrop(ModBlocks.COTTONWOOD_LOG);
         addDrop(ModBlocks.COTTONWOOD_WOOD);
@@ -123,10 +144,6 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.COTTONWOOD_FENCE_GATE);
         addDrop(ModBlocks.COTTONWOOD_TRAPDOOR);
         addDrop(ModBlocks.COTTONWOOD_DOOR, doorDrops(ModBlocks.COTTONWOOD_DOOR));
-        addDrop(ModBlocks.COTTONWOOD_SIGN);
-        addDrop(ModBlocks.COTTONWOOD_WALL_SIGN);
-        addDrop(ModBlocks.COTTONWOOD_HANGING_WALL_SIGN);
-        addDrop(ModBlocks.COTTONWOOD_HANGING_SIGN);
 
         addDrop(ModBlocks.WILLOW_LEAVES, leavesDrops(ModBlocks.WILLOW_LEAVES, ModBlocks.WILLOW_SAPLING, SAPLING_DROP_CHANCE));
         addDrop(ModBlocks.WILLOW_LOG);
@@ -144,10 +161,6 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.WILLOW_FENCE_GATE);
         addDrop(ModBlocks.WILLOW_TRAPDOOR);
         addDrop(ModBlocks.WILLOW_DOOR, doorDrops(ModBlocks.WILLOW_DOOR));
-        addDrop(ModBlocks.WILLOW_SIGN);
-        addDrop(ModBlocks.WILLOW_WALL_SIGN);
-        addDrop(ModBlocks.WILLOW_HANGING_WALL_SIGN);
-        addDrop(ModBlocks.WILLOW_HANGING_SIGN);
     }
 
     protected LootTable.Builder createTallPlantBlock(Block bulrushBlock) {
@@ -168,33 +181,41 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
                         .exactMatch(CaveVines.BERRIES, true))));
     }
 
-    protected LootTable.Builder createSimpleCropBlock(Block cropBlock, Item grownCropItem, LootCondition.Builder dropGrownCropCondition) {
+    protected LootTable.Builder createSimpleCropBlock(Block cropBlock, Item cropItem, LootCondition.Builder dropGrownCropCondition) {
         return LootTable.builder()
                 .pool(LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(grownCropItem)
+                        .with(ItemEntry.builder(cropItem))
+                )
+                .pool(LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .with(ItemEntry.builder(cropItem)
                                 .conditionally(dropGrownCropCondition)
                                 .apply(ApplyBonusLootFunction.oreDrops(Enchantments.FORTUNE))
-                                .apply(ApplyBonusLootFunction.binomialWithBonusCount(Enchantments.FORTUNE, 0.5714286F, 3))));
+                        )
+                )
+                .pool(LootPool.builder()
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .with(ItemEntry.builder(cropItem)
+                                .conditionally(dropGrownCropCondition)
+                                .apply(ApplyBonusLootFunction.binomialWithBonusCount(Enchantments.FORTUNE, 0.5714286F, 3))
+                        )
+                );
     }
 
-    protected LootTable.Builder createHarvestablePlantBlock(Block bushBlock, Item chillberryItem) {
-        LootCondition.Builder age3Condition = BlockStatePropertyLootCondition.builder(bushBlock)
-                .properties(StatePredicate.Builder.create().exactMatch(ChillberryBushBlock.AGE, 3));
-
-        LootCondition.Builder age2Condition = BlockStatePropertyLootCondition.builder(bushBlock)
-                .properties(StatePredicate.Builder.create().exactMatch(ChillberryBushBlock.AGE, 2));
+    protected LootTable.Builder createHarvestablePlantBlock(Block bushBlock, Item harvestedItem, IntProperty ageProperty, int maxAge, float minDropAtMaxAge, float maxDropAtMaxAge) {
+        LootCondition.Builder maxAgeCondition = BlockStatePropertyLootCondition.builder(bushBlock)
+                .properties(StatePredicate.Builder.create().exactMatch(ageProperty, maxAge));
 
         return LootTable.builder()
                 .pool(LootPool.builder()
-                        .with(ItemEntry.builder(chillberryItem)
-                                .conditionally(age3Condition)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2.0F, 3.0F)))
-                                .apply(ApplyBonusLootFunction.binomialWithBonusCount(Enchantments.FORTUNE, 1, 3))))
+                        .rolls(ConstantLootNumberProvider.create(1))
+                        .with(ItemEntry.builder(harvestedItem))
+                )
                 .pool(LootPool.builder()
-                        .with(ItemEntry.builder(chillberryItem)
-                                .conditionally(age2Condition)
-                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0F, 2.0F)))
-                                .apply(ApplyBonusLootFunction.binomialWithBonusCount(Enchantments.FORTUNE, 1, 3))));
+                        .with(ItemEntry.builder(harvestedItem)
+                                .conditionally(maxAgeCondition)
+                                .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(minDropAtMaxAge, maxDropAtMaxAge)))
+                                .apply(ApplyBonusLootFunction.binomialWithBonusCount(Enchantments.FORTUNE, 1, 2))));
     }
 }

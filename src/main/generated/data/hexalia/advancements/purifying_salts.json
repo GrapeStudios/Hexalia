@@ -1,12 +1,12 @@
 {
-  "parent": "minecraft:hexaliaritual_brazier",
+  "parent": "hexalia:salt",
   "criteria": {
-    "has_moon_crystal": {
+    "has_purifying_salts": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:moon_crystal"
+              "hexalia:purifying_salts"
             ]
           }
         ]
@@ -18,21 +18,21 @@
     "announce_to_chat": true,
     "background": "hexalia:textures/block/willow_log.png",
     "description": {
-      "translate": "advancements.hexalia.moon_crystal.description"
+      "translate": "advancements.hexalia.purifying_salts.description"
     },
-    "frame": "task",
+    "frame": "goal",
     "hidden": false,
     "icon": {
-      "item": "hexalia:moon_crystal"
+      "item": "hexalia:purifying_salts"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.hexalia.moon_crystal.title"
+      "translate": "advancements.hexalia.purifying_salts.title"
     }
   },
   "requirements": [
     [
-      "has_moon_crystal"
+      "has_purifying_salts"
     ]
   ],
   "sends_telemetry_event": true

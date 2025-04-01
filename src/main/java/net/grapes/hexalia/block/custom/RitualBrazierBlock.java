@@ -12,6 +12,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.registry.Registries;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -83,7 +84,8 @@ public class RitualBrazierBlock extends BlockWithEntity implements BlockEntityPr
         }
 
         if (hand == Hand.MAIN_HAND) {
-            if (heldItem.isOf(ModItems.SALT) && !state.get(SALTED)) {
+            Identifier itemId = Registries.ITEM.getId(heldItem.getItem());
+            if (itemId.getPath().contains("salt") && !state.get(SALTED)) {
                 world.setBlockState(pos, state.with(SALTED, true), Block.NOTIFY_ALL);
                 if (!player.isCreative()) {
                     heldItem.decrement(1);

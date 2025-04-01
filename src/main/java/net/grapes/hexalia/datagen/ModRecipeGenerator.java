@@ -143,6 +143,13 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.SILK_FIBER), conditionsFromItem(ModItems.SILK_FIBER))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.SILK_IDOL)));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.MOON_CRYSTAL_BLOCK)
+                .pattern("PP")
+                .pattern("PP")
+                .input('P', ModItems.MOON_CRYSTAL)
+                .criterion(hasItem(ModItems.MOON_CRYSTAL), conditionsFromItem(ModItems.MOON_CRYSTAL))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.MOON_CRYSTAL_BLOCK)));
+
         // Recipes for vanilla items or blocks.
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.LEATHER)
                 .pattern(" S ")
@@ -292,6 +299,11 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.SILK_IDOL), conditionsFromItem(ModItems.SILK_IDOL))
                 .offerTo(exporter);
 
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MOON_CRYSTAL, 4)
+                .input(ModBlocks.MOON_CRYSTAL_BLOCK)
+                .criterion(hasItem(ModBlocks.MOON_CRYSTAL_BLOCK), conditionsFromItem(ModBlocks.MOON_CRYSTAL_BLOCK))
+                .offerTo(exporter);
+
 
         // Shapeless Recipe for Mortar & Pestle, and Mortar & Pestle Resources
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MORTAR_AND_PESTLE)
@@ -332,7 +344,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.STRING)
                 .input(ModItems.MORTAR_AND_PESTLE)
-                .input(ModItems.SALTSPROUT)
+                .input(ModItems.SILK_FIBER)
                 .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
                 .offerTo(exporter, new Identifier(getRecipeName(Items.STRING) + "_from_mortar_and_pestle"));
 

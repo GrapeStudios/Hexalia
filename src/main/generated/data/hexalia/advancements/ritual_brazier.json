@@ -1,12 +1,12 @@
 {
-  "parent": "minecraft:hexaliaritual_table",
+  "parent": "hexalia:ritual_table",
   "criteria": {
-    "has_rabbage": {
+    "has_ritual_brazier": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:rabbage"
+              "hexalia:ritual_brazier"
             ]
           }
         ]
@@ -18,21 +18,21 @@
     "announce_to_chat": true,
     "background": "hexalia:textures/block/willow_log.png",
     "description": {
-      "translate": "advancements.hexalia.rabbage.description"
+      "translate": "advancements.hexalia.ritual_brazier.description"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "hexalia:rabbage"
+      "item": "hexalia:ritual_brazier"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.hexalia.rabbage.title"
+      "translate": "advancements.hexalia.ritual_brazier.title"
     }
   },
   "requirements": [
     [
-      "has_rabbage"
+      "has_ritual_brazier"
     ]
   ],
   "sends_telemetry_event": true

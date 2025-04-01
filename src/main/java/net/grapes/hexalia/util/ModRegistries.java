@@ -5,32 +5,45 @@ import net.grapes.hexalia.entity.ModEntities;
 import net.grapes.hexalia.entity.custom.SilkMothEntity;
 import net.grapes.hexalia.item.ModItems;
 import net.minecraft.block.ComposterBlock;
+import net.minecraft.item.Item;
 
 public class ModRegistries {
-    public static void registerModStuff(){
-        registerModCompostable();
-        registerAttributes();
+    public static void registerModStuff() {
+        registerCompostables();
+        registerEntityAttributes();
     }
 
-    private static void registerModCompostable() {
+    public static final float SMALL = 0.3f;
+    public static final float MEDIUM = 0.5f;
+    public static final float LARGE = 0.65f;
 
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(ModItems.MANDRAKE_SEEDS, 0.3f);
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(ModItems.SUNFIRE_TOMATO_SEEDS, 0.3f);
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(ModItems.RABBAGE_SEEDS, 0.3f);
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(ModItems.CHILLBERRIES, 0.3f);
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(ModItems.LOTUS_FLOWER, 0.3f);
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(ModItems.DUCKWEED, 0.3f);
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(ModItems.MOON_BERRIES, 0.3f);
+    private static void registerCompostables() {
+        // Seeds and small plants (30% chance)
+        registerCompostable(ModItems.MANDRAKE_SEEDS, SMALL);
+        registerCompostable(ModItems.SUNFIRE_TOMATO_SEEDS, SMALL);
+        registerCompostable(ModItems.RABBAGE_SEEDS, SMALL);
+        registerCompostable(ModItems.CHILLBERRIES, SMALL);
+        registerCompostable(ModItems.LOTUS_FLOWER, SMALL);
+        registerCompostable(ModItems.DUCKWEED, SMALL);
+        registerCompostable(ModItems.MOON_BERRIES, SMALL);
 
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(ModItems.SIREN_KELP, 0.5f);
+        // Medium-value items (50% chance)
+        registerCompostable(ModItems.SIREN_KELP, MEDIUM);
 
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(ModItems.MANDRAKE, 0.6f);
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(ModItems.SUNFIRE_TOMATO, 0.6f);
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(ModItems.RABBAGE, 0.6f);
-
+        // High-value crops (60% chance)
+        registerCompostable(ModItems.MANDRAKE, LARGE);
+        registerCompostable(ModItems.SUNFIRE_TOMATO, LARGE);
+        registerCompostable(ModItems.RABBAGE, LARGE);
     }
 
-    public static void registerAttributes() {
-        FabricDefaultAttributeRegistry.register(ModEntities.SILK_MOTH, SilkMothEntity.setAttributes());
+    private static void registerCompostable(Item item, float chance) {
+        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(item.asItem(), chance);
+    }
+
+    private static void registerEntityAttributes() {
+        FabricDefaultAttributeRegistry.register(
+                ModEntities.SILK_MOTH,
+                SilkMothEntity.setAttributes()
+        );
     }
 }

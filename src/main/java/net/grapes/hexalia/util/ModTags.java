@@ -62,4 +62,26 @@ public class ModTags {
             return TagKey.of(RegistryKeys.BLOCK, new Identifier("c", name));
         }
     }
+
+    public static class Compat {
+        // Serene Seasons
+        public static final String SERENE_SEASONS = "sereneseasons";
+        public static final TagKey<Block> SERENE_SEASONS_AUTUMN_CROPS_BLOCK = externalBlockTag(SERENE_SEASONS, "autumn_crops");
+        public static final TagKey<Block> SERENE_SEASONS_SPRING_CROPS_BLOCK = externalBlockTag(SERENE_SEASONS, "spring_crops");
+        public static final TagKey<Block> SERENE_SEASONS_SUMMER_CROPS_BLOCK = externalBlockTag(SERENE_SEASONS, "summer_crops");
+        public static final TagKey<Block> SERENE_SEASONS_WINTER_CROPS_BLOCK = externalBlockTag(SERENE_SEASONS, "winter_crops");
+        public static final TagKey<Block> SERENE_SEASONS_UNBREAKABLE_FERTILE_CROPS = externalBlockTag(SERENE_SEASONS, "unbreakable_infertile_crops");
+        public static final TagKey<Item> SERENE_SEASONS_AUTUMN_CROPS = externalItemTag(SERENE_SEASONS, "autumn_crops");
+        public static final TagKey<Item> SERENE_SEASONS_SPRING_CROPS = externalItemTag(SERENE_SEASONS, "spring_crops");
+        public static final TagKey<Item> SERENE_SEASONS_SUMMER_CROPS = externalItemTag(SERENE_SEASONS, "summer_crops");
+        public static final TagKey<Item> SERENE_SEASONS_WINTER_CROPS = externalItemTag(SERENE_SEASONS, "winter_crops");
+
+        private static TagKey<Item> externalItemTag(String modId, String path) {
+            return TagKey.of(RegistryKeys.ITEM, new Identifier(modId, path));
+        }
+
+        private static TagKey<Block> externalBlockTag(String modId, String path) {
+            return TagKey.of(RegistryKeys.BLOCK, new Identifier(modId, path));
+        }
+    }
 }

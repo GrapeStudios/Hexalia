@@ -44,6 +44,7 @@ public class ModItemGroup {
                         // Other  Resources
                         entries.add(ModItems.TREE_RESIN);
                         entries.add(ModItems.MOON_CRYSTAL);
+                        entries.add(ModBlocks.MOON_CRYSTAL_BLOCK);
                         entries.add(ModItems.SILK_FIBER);
                         entries.add(ModItems.SILKWORM);
 
