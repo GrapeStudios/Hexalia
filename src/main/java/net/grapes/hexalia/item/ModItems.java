@@ -106,6 +106,9 @@ public class ModItems {
                     Text.translatable("tooltip.hexalia.daybloom").formatted(Formatting.BLUE)));
     public static final Item BREW_OF_HOMESTEAD = registerItem("brew_of_homestead",
             new HomesteadBrewItem(new FabricItemSettings().recipeRemainder(ModItems.RUSTIC_BOTTLE).maxCount(16)));
+    public static final Item BREW_OF_ARACHNID_GRACE = registerItem("brew_of_arachnid_grace",
+            new BrewItem(new FabricItemSettings().maxCount(16), ()-> ModEffects.ARACHNID_GRACE, 2400, 0,
+                    Text.translatable("tooltip.hexalia.arachnid_grace").formatted(Formatting.BLUE)));
 
     // Tools & Others
     public static final Item MORTAR_AND_PESTLE = registerItem("mortar_and_pestle",
@@ -120,8 +123,10 @@ public class ModItems {
             new BlockItem(ModBlocks.RITUAL_TABLE, new FabricItemSettings()));
     public static final Item CANDLE_SKULL = registerItem("candle_skull",
             new BlockItem(ModBlocks.CANDLE_SKULL, new FabricItemSettings().rarity(Rarity.UNCOMMON)));
+    public static final Item WITHER_CANDLE_SKULL = registerItem("wither_candle_skull",
+            new BlockItem(ModBlocks.WITHER_CANDLE_SKULL, new FabricItemSettings().rarity(Rarity.UNCOMMON)));
     public static final Item HEX_FOCUS = registerItem("hex_focus",
-            new HexFocusItem(new FabricItemSettings()));
+            new HexFocusItem(new FabricItemSettings().maxCount(1)));
     public static final Item SAGE_PENDANT = registerItem("sage_pendant",
             new Item(new FabricItemSettings().maxCount(1).maxDamage(60).rarity(Rarity.UNCOMMON)));
     public static final Item SILK_IDOL = registerItem("silk_idol",

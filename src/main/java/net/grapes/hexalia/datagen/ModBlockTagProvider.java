@@ -29,48 +29,37 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     private void addMiningTags() {
         // Pickaxe mineable blocks
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
-                .add(ModBlocks.SALT_BLOCK)
-                .add(ModBlocks.SALT_LAMP)
-                .add(ModBlocks.RUSTIC_OVEN)
-                .add(ModBlocks.SMALL_CAULDRON)
-                .add(ModBlocks.RITUAL_TABLE)
-                .add(ModBlocks.MOON_CRYSTAL_BLOCK);
+                .add(ModBlocks.SALT_BLOCK).add(ModBlocks.SALT_LAMP)
+                .add(ModBlocks.RUSTIC_OVEN).add(ModBlocks.SMALL_CAULDRON)
+                .add(ModBlocks.RITUAL_TABLE).add(ModBlocks.MOON_CRYSTAL_BLOCK);
 
         // Axe mineable blocks
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
-                .add(ModBlocks.BREW_SHELF)
-                .add(ModBlocks.LOTUS_FLOWER);
+                .add(ModBlocks.LOTUS_FLOWER).add(ModBlocks.SHELF)
+                .add(ModBlocks.CENSER);
 
         // Requires stone tool
         getOrCreateTagBuilder(BlockTags.NEEDS_STONE_TOOL)
-                .add(ModBlocks.SALT_BLOCK)
-                .add(ModBlocks.SALT_LAMP)
-                .add(ModBlocks.SMALL_CAULDRON)
-                .add(ModBlocks.RUSTIC_OVEN)
-                .add(ModBlocks.RITUAL_TABLE)
-                .add(ModBlocks.MOON_CRYSTAL_BLOCK);
+                .add(ModBlocks.SALT_BLOCK).add(ModBlocks.SHELF)
+                .add(ModBlocks.SALT_LAMP).add(ModBlocks.SMALL_CAULDRON)
+                .add(ModBlocks.RUSTIC_OVEN).add(ModBlocks.RITUAL_TABLE)
+                .add(ModBlocks.MOON_CRYSTAL_BLOCK).add(ModBlocks.CENSER);
     }
 
     private void addPlantTags() {
         // Flower tags
         getOrCreateTagBuilder(BlockTags.FLOWERS)
-                .add(ModBlocks.SPIRIT_BLOOM)
-                .add(ModBlocks.HENBANE)
-                .add(ModBlocks.WITCHWEED)
-                .add(ModBlocks.GHOST_FERN)
-                .add(ModBlocks.NIGHTSHADE_BUSH)
-                .add(ModBlocks.BEGONIA)
-                .add(ModBlocks.LAVENDER);
+                .add(ModBlocks.SPIRIT_BLOOM).add(ModBlocks.HENBANE)
+                .add(ModBlocks.WITCHWEED).add(ModBlocks.GHOST_FERN)
+                .add(ModBlocks.NIGHTSHADE_BUSH).add(ModBlocks.BEGONIA)
+                .add(ModBlocks.LAVENDER).add(ModBlocks.DAHLIA);
 
         // Small flowers if appropriate
         getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS)
-                .add(ModBlocks.SPIRIT_BLOOM)
-                .add(ModBlocks.HENBANE)
-                .add(ModBlocks.WITCHWEED)
-                .add(ModBlocks.GHOST_FERN)
-                .add(ModBlocks.NIGHTSHADE_BUSH)
-                .add(ModBlocks.BEGONIA)
-                .add(ModBlocks.LAVENDER);
+                .add(ModBlocks.SPIRIT_BLOOM).add(ModBlocks.HENBANE)
+                .add(ModBlocks.WITCHWEED).add(ModBlocks.GHOST_FERN)
+                .add(ModBlocks.NIGHTSHADE_BUSH).add(ModBlocks.BEGONIA)
+                .add(ModBlocks.LAVENDER).add(ModBlocks.DAHLIA);
 
         // Special plant properties
         getOrCreateTagBuilder(BlockTags.FROG_PREFER_JUMP_TO)
@@ -111,7 +100,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(Blocks.SEA_LANTERN)
                 .add(Blocks.SOUL_LANTERN)
                 .add(ModBlocks.SALT_LAMP)
-                .add(Blocks.END_ROD);
+                .add(Blocks.END_ROD)
+                .add(Blocks.TORCH);
     }
 
     private void addTreeRelatedTags() {
@@ -155,7 +145,26 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.COTTONWOOD_SLAB)
                 .add(ModBlocks.WILLOW_SLAB);
 
-        // Continue with other wooden block types...
+        getOrCreateTagBuilder(BlockTags.WOODEN_BUTTONS)
+                .add(ModBlocks.COTTONWOOD_BUTTON)
+                .add(ModBlocks.WILLOW_BUTTON);
+
+        getOrCreateTagBuilder(BlockTags.WOODEN_PRESSURE_PLATES)
+                .add(ModBlocks.COTTONWOOD_PRESSURE_PLATE)
+                .add(ModBlocks.WILLOW_PRESSURE_PLATE);
+
+        getOrCreateTagBuilder(BlockTags.WOODEN_TRAPDOORS)
+                .add(ModBlocks.COTTONWOOD_TRAPDOOR)
+                .add(ModBlocks.WILLOW_TRAPDOOR);
+
+        getOrCreateTagBuilder(BlockTags.FENCE_GATES)
+                .add(ModBlocks.COTTONWOOD_FENCE_GATE)
+                .add(ModBlocks.WILLOW_FENCE_GATE);
+
+        getOrCreateTagBuilder(BlockTags.WOODEN_FENCES)
+                .add(ModBlocks.COTTONWOOD_FENCE)
+                .add(ModBlocks.WILLOW_FENCE);
+       
         getOrCreateTagBuilder(BlockTags.WOODEN_DOORS)
                 .add(ModBlocks.COTTONWOOD_DOOR)
                 .add(ModBlocks.WILLOW_DOOR);
@@ -192,19 +201,13 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         // Flower pots
         getOrCreateTagBuilder(BlockTags.FLOWER_POTS)
-                .add(ModBlocks.POTTED_SPIRIT_BLOOM)
-                .add(ModBlocks.POTTED_DREAMSHROOM)
-                .add(ModBlocks.POTTED_LAVENDER)
-                .add(ModBlocks.POTTED_BEGONIA)
-                .add(ModBlocks.POTTED_NIGHTSHADE_BUSH)
-                .add(ModBlocks.POTTED_PALE_MUSHROOM)
-                .add(ModBlocks.POTTED_HENBANE)
-                .add(ModBlocks.POTTED_LUNAR_LILY)
-                .add(ModBlocks.POTTED_GRIMSHADE)
-                .add(ModBlocks.POTTED_WINDSONG)
-                .add(ModBlocks.POTTED_MORPHORA)
-                .add(ModBlocks.POTTED_COTTONWOOD_SAPLING)
-                .add(ModBlocks.POTTED_WILLOW_SAPLING);
+                .add(ModBlocks.POTTED_SPIRIT_BLOOM).add(ModBlocks.POTTED_DREAMSHROOM)
+                .add(ModBlocks.POTTED_LAVENDER).add(ModBlocks.POTTED_BEGONIA)
+                .add(ModBlocks.POTTED_NIGHTSHADE_BUSH).add(ModBlocks.POTTED_PALE_MUSHROOM)
+                .add(ModBlocks.POTTED_HENBANE).add(ModBlocks.POTTED_LUNAR_LILY)
+                .add(ModBlocks.POTTED_GRIMSHADE).add(ModBlocks.POTTED_WINDSONG)
+                .add(ModBlocks.POTTED_MORPHORA).add(ModBlocks.POTTED_COTTONWOOD_SAPLING)
+                .add(ModBlocks.POTTED_WILLOW_SAPLING).add(ModBlocks.POTTED_DAHLIA);
 
         // Dirt
         getOrCreateTagBuilder(BlockTags.DIRT)

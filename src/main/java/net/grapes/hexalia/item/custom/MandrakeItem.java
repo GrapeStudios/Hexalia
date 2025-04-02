@@ -50,7 +50,7 @@ public class MandrakeItem extends Item {
             List<Entity> entities = world.getOtherEntities(player, player.getBoundingBox().expand(5.0));
             for (Entity entity : entities) {
                 if (entity instanceof LivingEntity livingEntity &&
-                        !(player.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.EARPLUGS))) {
+                        !(player.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.EARPLUGS) && !(player.isCreative()))) {
                     livingEntity.addStatusEffect(new StatusEffectInstance(ModEffects.STUNNED, 60, 0));
                 }
             }

@@ -49,7 +49,6 @@ public class ExperienceMixin {
 
     private void reduceDurability(ItemStack stack, PlayerEntity player) {
         if (!player.isCreative() && stack.isDamageable()) {
-            System.out.println("Reducing durability by: 1");
             stack.damage(1, player, (p) -> p.sendToolBreakStatus(Hand.OFF_HAND));
             if (stack.isEmpty()) {
                 player.setStackInHand(Hand.OFF_HAND, ItemStack.EMPTY);

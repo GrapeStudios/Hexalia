@@ -21,6 +21,11 @@
     },
     {
       "type": "patchouli:spotlight",
+      "item": "hexalia:dahlia",
+      "text": "The Dahlia is a flower that can be found in the Flower Forest biome and can be used to obtain Orange Dye."
+    },
+    {
+      "type": "patchouli:spotlight",
       "item": "hexalia:pale_mushroom",
       "text": "These are  shiny Mushrooms that glows in the night and can be potted as a source of lighting."
     },
@@ -52,6 +57,10 @@
     {
       "type": "patchouli:crafting",
       "recipe": "hexalia:candle_skull"
+    },
+    {
+      "type": "patchouli:crafting",
+      "recipe": "hexalia:wither_candle_skull"
     },
     {
       "type": "patchouli:crafting",

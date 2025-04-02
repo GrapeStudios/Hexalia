@@ -10,6 +10,7 @@ import net.minecraft.util.Identifier;
 public class ModTags {
     public static class Items {
 
+        public static final TagKey<Item> HERBS = createItemTag("herbs");
         public static final TagKey<Item> CRUSHED_HERBS = createItemTag("crushed_herbs");
         public static final TagKey<Item> BREWS = createItemTag("brews");
         public static final TagKey<Item> COTTONWOOD_LOGS = createItemTag("cottonwood_logs");
@@ -33,7 +34,7 @@ public class ModTags {
         public static final TagKey<Item> MUSHROOMS = createCommonItemTag("mushrooms");
 
         public static final TagKey<Item> SALT_BLOCKS = createCommonItemTag("salt_blocks");
-
+        
         private static TagKey<Item> createItemTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, new Identifier(HexaliaMod.MOD_ID, name));
         }

@@ -1,6 +1,5 @@
 package net.grapes.hexalia.block.custom;
 
-import net.grapes.hexalia.block.entity.LunarLilyBlockEntity;
 import net.grapes.hexalia.block.entity.ModBlockEntities;
 import net.grapes.hexalia.block.entity.RitualBrazierBlockEntity;
 import net.grapes.hexalia.item.ModItems;
@@ -13,7 +12,6 @@ import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.registry.Registries;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
@@ -28,8 +26,6 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.world.WorldAccess;
-import net.minecraft.world.WorldView;
 import org.jetbrains.annotations.Nullable;
 
 public class RitualBrazierBlock extends BlockWithEntity implements BlockEntityProvider {

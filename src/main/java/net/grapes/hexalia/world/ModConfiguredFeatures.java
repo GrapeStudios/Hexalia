@@ -38,13 +38,20 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> CHILLBERRY_KEY = registerKey("chillberry");
     public static final RegistryKey<ConfiguredFeature<?, ?>> DREAMSHROOM_KEY = registerKey("dreamshroom");
     public static final RegistryKey<ConfiguredFeature<?, ?>> SIREN_KELP_KEY = registerKey("siren_kelp");
+    
     public static final RegistryKey<ConfiguredFeature<?, ?>> WILD_SUNFIRE_TOMATO_KEY = registerKey("wild_sunfire_tomato");
     public static final RegistryKey<ConfiguredFeature<?, ?>> WILD_MANDRAKE_KEY = registerKey("wild_mandrake");
+    
     public static final RegistryKey<ConfiguredFeature<?, ?>> HENBANE_KEY = registerKey("henbane");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> BEGONIA_KEY = registerKey("begonia");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> LAVENDER_KEY = registerKey("lavender");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> DAHLIA_KEY = registerKey("dahlia");
+    
     public static final RegistryKey<ConfiguredFeature<?, ?>> DARK_OAK_COCOON_KEY = registerKey("dark_oak_cocoon_tree");
     public static final RegistryKey<ConfiguredFeature<?, ?>> COTTONWOOD_KEY = registerKey("cottonwood");
     public static final RegistryKey<ConfiguredFeature<?, ?>> COTTONWOOD_COCOON_KEY = registerKey("cottonwood_cocoon");
     public static final RegistryKey<ConfiguredFeature<?, ?>> WILLOW_KEY = registerKey("willow_key");
+    
     public static final RegistryKey<ConfiguredFeature<?, ?>> LOTUS_FLOWER_KEY = registerKey("lotus_flower_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> PALE_MUSHROOM_KEY = registerKey("pale_mushroom_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> WITCHWEED_KEY = registerKey("witchweed_key");
@@ -90,6 +97,18 @@ public class ModConfiguredFeatures {
         register(context, HENBANE_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
                 PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
                         new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.HENBANE)))));
+
+        register(context, BEGONIA_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
+                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
+                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.BEGONIA)))));
+        
+        register(context, LAVENDER_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
+                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
+                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.LAVENDER)))));
+        
+        register(context, DAHLIA_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
+                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
+                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.DAHLIA)))));
 
         register(context, LOTUS_FLOWER_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(5,
                 PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,

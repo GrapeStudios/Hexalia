@@ -33,24 +33,17 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         // Plants
         getOrCreateTagBuilder(ItemTags.FLOWERS)
-                .add(ModBlocks.SPIRIT_BLOOM.asItem())
-                .add(ModBlocks.HENBANE.asItem())
-                .add(ModBlocks.WITCHWEED.asItem())
-                .add(ModBlocks.GHOST_FERN.asItem())
-                .add(ModBlocks.NIGHTSHADE_BUSH.asItem())
-                .add(ModBlocks.BEGONIA.asItem())
-                .add(ModBlocks.LAVENDER.asItem());
+                .add(ModBlocks.SPIRIT_BLOOM.asItem()).add(ModBlocks.HENBANE.asItem())
+                .add(ModBlocks.WITCHWEED.asItem()).add(ModBlocks.GHOST_FERN.asItem())
+                .add(ModBlocks.NIGHTSHADE_BUSH.asItem()).add(ModBlocks.BEGONIA.asItem())
+                .add(ModBlocks.LAVENDER.asItem()).add(ModBlocks.DAHLIA.asItem());
 
         // Copy to small flowers if appropriate
         getOrCreateTagBuilder(ItemTags.SMALL_FLOWERS)
-                .add(ModBlocks.SPIRIT_BLOOM.asItem())
-                .add(ModBlocks.HENBANE.asItem())
-                .add(ModBlocks.WITCHWEED.asItem())
-                .add(ModBlocks.GHOST_FERN.asItem())
-                .add(ModBlocks.NIGHTSHADE_BUSH.asItem())
-                .add(ModBlocks.BEGONIA.asItem())
-                .add(ModBlocks.LAVENDER.asItem());
-
+                .add(ModBlocks.SPIRIT_BLOOM.asItem()).add(ModBlocks.HENBANE.asItem())
+                .add(ModBlocks.WITCHWEED.asItem()).add(ModBlocks.GHOST_FERN.asItem())
+                .add(ModBlocks.NIGHTSHADE_BUSH.asItem()).add(ModBlocks.BEGONIA.asItem())
+                .add(ModBlocks.LAVENDER.asItem()).add(ModBlocks.DAHLIA.asItem());
         // Villager related
         getOrCreateTagBuilder(ItemTags.VILLAGER_PLANTABLE_SEEDS)
                 .add(ModItems.RABBAGE_SEEDS)
@@ -60,12 +53,17 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
     private void addCustomTags() {
         // Herbs and magical components
+        getOrCreateTagBuilder(ModTags.Items.HERBS)
+                .add(ModBlocks.DREAMSHROOM.asItem())
+                .add(ModItems.SIREN_KELP)
+                .add(ModBlocks.SPIRIT_BLOOM.asItem())
+                .add(ModBlocks.GHOST_FERN.asItem());
+
         getOrCreateTagBuilder(ModTags.Items.CRUSHED_HERBS)
                 .add(ModItems.DREAM_PASTE)
                 .add(ModItems.SIREN_PASTE)
                 .add(ModItems.SPIRIT_POWDER)
                 .add(ModItems.GHOST_POWDER);
-
         // Brews
         getOrCreateTagBuilder(ModTags.Items.BREWS)
                 .add(ModItems.BREW_OF_HOMESTEAD)
@@ -74,6 +72,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.BREW_OF_SPIKESKIN)
                 .add(ModItems.BREW_OF_SIPHON)
                 .add(ModItems.BREW_OF_DAYBLOOM)
+                .add(ModItems.BREW_OF_ARACHNID_GRACE)
                 .add(ModItems.RUSTIC_BOTTLE);
 
         // Minerals

@@ -22,7 +22,7 @@
     {
       "type": "hexalia:small_cauldron",
       "recipe": "hexalia:brew_of_slimewalker_from_small_cauldron",
-      "text": "Grants the $(#6aa84f)Slimewalker$() effect, allowing you to vertically climb walls and negating fall damage. If you press the $(#6aa84f)sneak$() key, you will bounce upwards."
+      "text": "Grants the $(#6aa84f)Slimewalker$() effect negates fall damage. If you press the $(#6aa84f)sneak$() key, you will bounce upwards."
     },
     {
       "type": "hexalia:small_cauldron",
@@ -38,6 +38,11 @@
       "type": "hexalia:small_cauldron",
       "recipe": "hexalia:brew_of_daybloom_from_small_cauldron",
       "text": "Grants the $(#f1c232)Daybloom$() effect, increasing movement speed and regeneration during the day, however, exposure to dark areas will damage you."
+    },
+    {
+      "type": "hexalia:small_cauldron",
+      "recipe": "hexalia:brew_of_arachnid_grace_from_small_cauldron",
+      "text": "Grants the $(#E0E0E0)Arachnid Grace$() effect, which allows you to move through cobwebs, climb walls vertically and be immune to poison."
     }
   ]
 }

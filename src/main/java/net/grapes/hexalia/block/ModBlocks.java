@@ -30,7 +30,7 @@ public class ModBlocks {
     public static final Block INFUSED_DIRT = registerBlock("infused_dirt",
             new InfusedDirtBlock(FabricBlockSettings.copyOf(Blocks.DIRT).sounds(BlockSoundGroup.MUD)));
     public static final Block INFUSED_FARMLAND = registerBlock("infused_farmland",
-            new InfusedFarmlandBlock(FabricBlockSettings.copyOf(Blocks.FARMLAND).sounds(BlockSoundGroup.MUD)));
+            new InfusedFarmlandBlock(FabricBlockSettings.copyOf(Blocks.FARMLAND).sounds(BlockSoundGroup.MUD).ticksRandomly()));
     public static final Block SILKWORM_COCOON = registerBlock("silkworm_cocoon",
             new CocoonBlock(FabricBlockSettings.create().mapColor(MapColor.WHITE_GRAY).instrument(Instrument.BANJO)
                     .strength(0.5f).noCollision()));
@@ -98,7 +98,11 @@ public class ModBlocks {
             new FlowerBlock(StatusEffects.REGENERATION, 6, FabricBlockSettings.copyOf(Blocks.ALLIUM)));
     public static final Block POTTED_LAVENDER = registerBlockWithoutBlockItem("potted_lavender",
             new FlowerPotBlock(LAVENDER, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
-
+    public static final Block DAHLIA = registerBlock("dahlia",
+            new FlowerBlock(StatusEffects.ABSORPTION, 6, FabricBlockSettings.copyOf(Blocks.ALLIUM)));
+    public static final Block POTTED_DAHLIA = registerBlockWithoutBlockItem("potted_dahlia",
+            new FlowerPotBlock(DAHLIA, FabricBlockSettings.copyOf(Blocks.POTTED_ALLIUM)));
+    
     // Crop & Wild Crop Blocks
     public static final Block MANDRAKE_CROP = registerBlockWithoutBlockItem("mandrake_crop",
             new MandrakeCropBlock(FabricBlockSettings.copyOf(Blocks.POTATOES)));
@@ -136,13 +140,18 @@ public class ModBlocks {
                     .strength(4f).requiresTool().luminance(state -> 12).nonOpaque()));
     public static final Block RITUAL_TABLE = registerBlockWithoutBlockItem("ritual_table",
             new RitualTableBlock(FabricBlockSettings.copyOf(Blocks.STONE).nonOpaque()));
-    public static final Block BREW_SHELF = registerBlock("brew_shelf",
-            new BrewShelfBlock(FabricBlockSettings.copyOf(Blocks.CHISELED_BOOKSHELF).nonOpaque()));
     public static final Block RITUAL_BRAZIER = registerBlock("ritual_brazier",
             new RitualBrazierBlock(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN).nonOpaque()));
     public static final Block DREAMCATCHER = registerBlock("dreamcatcher",
             new DreamcatcherBlock(FabricBlockSettings.create().mapColor(MapColor.OAK_TAN)
                     .instrument(Instrument.BASS).noCollision().strength(1.0f)));
+    public static final Block SHELF = registerBlock("shelf",
+            new ShelfBlock(FabricBlockSettings.create().sounds(BlockSoundGroup.WOOD)
+                    .nonOpaque().strength(2.0f)));
+    public static final Block CENSER = registerBlock("censer",
+            new CenserBlock(FabricBlockSettings.create().mapColor(MapColor.BROWN)
+                    .instrument(Instrument.BASS).sounds(BlockSoundGroup.WOOD).strength(2.0f)
+                    .luminance(state -> state.get(CenserBlock.LIT) ? 12 : 0).nonOpaque()));
 
     // Decorative Blocks
     public static final Block PARCHMENT = registerBlock("parchment",
@@ -150,6 +159,9 @@ public class ModBlocks {
                     .noCollision().strength(1.0f)));
     public static final Block CANDLE_SKULL = registerBlockWithoutBlockItem("candle_skull",
             new CandleSkullBlock(FabricBlockSettings.create().mapColor(MapColor.WHITE_GRAY)
+                    .instrument(Instrument.GUITAR).strength(1.0f).luminance(state -> state.get(CandleSkullBlock.LIT) ? 12 : 0)));
+    public static final Block WITHER_CANDLE_SKULL = registerBlockWithoutBlockItem("wither_candle_skull",
+            new CandleSkullBlock(FabricBlockSettings.create().mapColor(MapColor.BLACK)
                     .instrument(Instrument.GUITAR).strength(1.0f).luminance(state -> state.get(CandleSkullBlock.LIT) ? 12 : 0)));
 
     // Tree-Related Blocks
@@ -255,6 +267,7 @@ public class ModBlocks {
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.HENBANE, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.BEGONIA, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.LAVENDER, 0.5F);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.DAHLIA, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.PALE_MUSHROOM, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.WITCHWEED, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.GHOST_FERN, 0.5F);
@@ -294,6 +307,7 @@ public class ModBlocks {
         instance.add(ModBlocks.NIGHTSHADE_BUSH, 60, 100);
         instance.add(ModBlocks.LAVENDER, 60, 100);
         instance.add(ModBlocks.BEGONIA, 60, 100);
+        instance.add(ModBlocks.DAHLIA, 60, 100);
         instance.add(ModBlocks.MOON_BERRIES_VINE, 60, 100);
         instance.add(ModBlocks.MOON_BERRIES_VINE_PLANT, 60, 100);
         instance.add(ModBlocks.RITUAL_BRAZIER, 5, 20);

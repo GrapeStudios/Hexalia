@@ -25,11 +25,6 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(RitualBrazierBlockEntity::new,
                             ModBlocks.RITUAL_BRAZIER).build(null));
 
-    public static final BlockEntityType<BrewShelfBlockEntity> BREW_SHELF_BE =
-            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(HexaliaMod.MOD_ID, "brew_shelf_block_entity"),
-                    FabricBlockEntityTypeBuilder.create(BrewShelfBlockEntity::new,
-                            ModBlocks.BREW_SHELF).build(null));
-
     public static final BlockEntityType<NautiliteBlockEntity> NAUTILITE_BE =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(HexaliaMod.MOD_ID, "nautilite_block_entity"),
                     FabricBlockEntityTypeBuilder.create(NautiliteBlockEntity::new,
@@ -44,6 +39,16 @@ public class ModBlockEntities {
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(HexaliaMod.MOD_ID, "lunar_lily_block_entity"),
                     FabricBlockEntityTypeBuilder.create(LunarLilyBlockEntity::new,
                             ModBlocks.LUNAR_LILY).build(null));
+
+    public static final BlockEntityType<ShelfBlockEntity> SHELF_BE =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(HexaliaMod.MOD_ID, "shelf_block_entity"),
+                    FabricBlockEntityTypeBuilder.create(ShelfBlockEntity::new,
+                            ModBlocks.SHELF).build(null));
+
+    public static final BlockEntityType<CenserBlockEntity> CENSER_BE =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(HexaliaMod.MOD_ID, "censer_block_entity"),
+                    FabricBlockEntityTypeBuilder.create(CenserBlockEntity::new,
+                            ModBlocks.CENSER).build(null));
 
     // Sign and Hanging Sign Entities
     public static final BlockEntityType<ModSignBlockEntity> MOD_SIGN_BLOCK_ENTITY = Registry.register(Registries.BLOCK_ENTITY_TYPE,

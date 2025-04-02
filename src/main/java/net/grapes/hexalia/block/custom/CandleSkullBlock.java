@@ -1,6 +1,7 @@
 package net.grapes.hexalia.block.custom;
 
 import com.google.common.collect.ImmutableList;
+import net.grapes.hexalia.block.ModBlocks;
 import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
@@ -137,14 +138,25 @@ public class CandleSkullBlock extends Block {
         return PARTICLE_OFFSETS;
     }
 
-    private static void spawnCandleParticles(World world, Vec3d vec3d, Random random) {
-        float f = random.nextFloat();
-        if (f < 0.3f) {
-            world.addParticle(ParticleTypes.SMOKE, vec3d.x, vec3d.y, vec3d.z, 0.0, 0.0, 0.0);
-            if (f < 0.17f) {
-                world.playSound(vec3d.x + 0.5, vec3d.y + 0.5, vec3d.z + 0.5, SoundEvents.BLOCK_CANDLE_AMBIENT, SoundCategory.BLOCKS, 1.0f + random.nextFloat(), random.nextFloat() * 0.7f + 0.3f, false);
+    private static void spawnCandleParticles(World world, Vec3d vec3, Random random) {
+        float chance = random.nextFloat();
+        if (chance < 0.3f) {
+            world.addParticle(ParticleTypes.SMOKE, vec3.x, vec3.y, vec3.z, 0.0, 0.0, 0.0);
+            if (chance < 0.17f) {
+                world.playSound(vec3.x + 0.5, vec3.y + 0.5, vec3.z + 0.5,
+                        SoundEvents.BLOCK_CANDLE_AMBIENT, SoundCategory.BLOCKS,
+                        1.0f + random.nextFloat(), random.nextFloat() * 0.7f + 0.3f, false);
             }
         }
-        world.addParticle(ParticleTypes.SMALL_FLAME, vec3d.x, vec3d.y, vec3d.z, 0.0, 0.0, 0.0);
+
+        BlockPos pos = new BlockPos((int)Math.floor(vec3.x), (int)Math.floor(vec3.y), (int)Math.floor(vec3.z));
+        BlockState state = world.getBlockState(pos);
+        Block block = state.getBlock();
+
+        if (block == ModBlocks.WITHER_CANDLE_SKULL) {
+            world.addParticle(ParticleTypes.SOUL_FIRE_FLAME, vec3.x, vec3.y, vec3.z, 0.0, 0.0, 0.0);
+        } else {
+            world.addParticle(ParticleTypes.FLAME, vec3.x, vec3.y, vec3.z, 0.0, 0.0, 0.0);
+        }
     }
 }

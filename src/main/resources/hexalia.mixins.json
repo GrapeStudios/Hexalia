@@ -1,16 +1,19 @@
 {
-	"required": true,
-	"package": "net.grapes.hexalia.mixin",
-	"compatibilityLevel": "JAVA_17",
-	"mixins": [
-		"ExampleMixin",
-		"accessors.ExhaustionAccessorMixin",
-		"InfusedPlantingMixin",
-		"LivingEntityMixin",
-		"ExperienceMixin",
-		"SugarCanePlantingMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
+  "required": true,
+  "package": "net.grapes.hexalia.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "AnvilMixin",
+    "CobwebMixin",
+    "ExperienceMixin",
+    "ItemCombinerMenuAccessor",
+    "LivingEntityMixin",
+    "MobMixin",
+    "SugarCanePlantingMixin",
+    "accessors.AnvilScreenHandlerAccessor",
+    "accessors.ExhaustionAccessorMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
 	}
 }

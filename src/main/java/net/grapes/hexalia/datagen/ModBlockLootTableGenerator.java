@@ -69,6 +69,8 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addPottedPlantDrops(ModBlocks.POTTED_LUNAR_LILY);
         this.addDrop(ModBlocks.MOON_BERRIES_VINE, moonBerriesDrop(ModBlocks.MOON_BERRIES_VINE));
         this.addDrop(ModBlocks.MOON_BERRIES_VINE_PLANT, moonBerriesDrop(ModBlocks.MOON_BERRIES_VINE_PLANT));
+        addDrop(ModBlocks.DAHLIA);
+        addPottedPlantDrops(ModBlocks.POTTED_DAHLIA);
     }
 
     private void generateFunctionalBlocks() {
@@ -81,7 +83,6 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.CANDLE_SKULL);
         addDrop(ModBlocks.DREAMCATCHER);
         addDrop(ModBlocks.PARCHMENT);
-        addDrop(ModBlocks.BREW_SHELF);
         addDrop(ModBlocks.RUSTIC_OVEN);
         addDrop(ModBlocks.SMALL_CAULDRON);
         addDrop(ModBlocks.SILKWORM_COCOON);
@@ -102,6 +103,8 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
                         )
                 )
         );
+        addDrop(ModBlocks.SHELF);
+        addDrop(ModBlocks.CENSER);
     }
 
     private void generateCrops() {

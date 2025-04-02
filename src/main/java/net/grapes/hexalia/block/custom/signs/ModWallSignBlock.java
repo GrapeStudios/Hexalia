@@ -1,11 +1,9 @@
 package net.grapes.hexalia.block.custom.signs;
 
-import net.grapes.hexalia.block.entity.ModHangingSignBlockEntity;
 import net.grapes.hexalia.block.entity.ModSignBlockEntity;
 import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.util.ModWoodTypes;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.HangingSignBlock;
 import net.minecraft.block.WallSignBlock;
 import net.minecraft.block.WoodType;
 import net.minecraft.block.entity.BlockEntity;

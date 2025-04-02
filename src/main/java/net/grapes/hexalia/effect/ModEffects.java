@@ -29,6 +29,8 @@ public class ModEffects {
                             EntityAttributeModifier.Operation.ADDITION));
     public static final StatusEffect SLIMEWALKER = registerStatusEffect("slimewalker",
             new SlimewalkerEffect(StatusEffectCategory.BENEFICIAL, 0x2CFB03));
+    public static final StatusEffect ARACHNID_GRACE = registerStatusEffect("arachnid_grace",
+            new ArachnidGraceEffect(StatusEffectCategory.BENEFICIAL, 0xE0E0E0));
 
     public static final StatusEffect DAYBLOOM = registerStatusEffect("daybloom",
             new DaybloomEffect(StatusEffectCategory.NEUTRAL, 0x8BFF8B));

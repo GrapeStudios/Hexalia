@@ -21,10 +21,9 @@ import net.minecraft.world.*;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class InfusedFarmlandBlock extends Block {
+public class InfusedFarmlandBlock extends FarmlandBlock {
+
     private static final VoxelShape SHAPE = Block.createCuboidShape(0.0, 0.0, 0.0, 16.0, 15.0, 16.0);
-    private static final double PARTICLE_OFFSET = 0.5;
-    private static final int PARTICLE_COUNT = 8;
 
     public InfusedFarmlandBlock(Settings settings) {
         super(settings);
@@ -46,9 +45,41 @@ public class InfusedFarmlandBlock extends Block {
     }
 
     @Override
+    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        if (!world.hasRain(pos.up())) {
+            return;
+        }
+
+        BlockState aboveState = world.getBlockState(pos.up());
+        Block aboveBlock = aboveState.getBlock();
+
+        if (aboveBlock instanceof Fertilizable fertilizable) {
+            if (fertilizable.isFertilizable(world, pos.up(), aboveState, false)) {
+                if (fertilizable.canGrow(world, world.random, pos.up(), aboveState)) {
+                    fertilizable.grow(world, world.random, pos.up(), aboveState);
+
+                    world.getPlayers().forEach(player -> {
+                        if (player.squaredDistanceTo(pos.getX(), pos.getY(), pos.getZ()) < 64 * 64) {
+                            world.spawnParticles(player,
+                                    ModParticles.INFUSED_BUBBLE_PARTICLE,
+                                    true,
+                                    pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5,
+                                    8,
+                                    0.5, 0.0, 0.5,
+                                    0.05);
+                        }
+                    });
+
+                    world.syncWorldEvent(2005, pos.up(), 0);
+                }
+            }
+        }
+    }
+
+    @Override
     public boolean canPlaceAt(BlockState state, WorldView world, BlockPos pos) {
-        BlockState blockState = world.getBlockState(pos.up());
-        return !blockState.isSolid() || blockState.getBlock() instanceof FenceGateBlock || blockState.getBlock() instanceof PistonExtensionBlock;
+        BlockState aboveState = world.getBlockState(pos.up());
+        return super.canPlaceAt(state, world, pos) || aboveState.getBlock() instanceof GourdBlock;
     }
 
     @Override
@@ -82,12 +113,14 @@ public class InfusedFarmlandBlock extends Block {
     }
 
     private void spawnBubbleParticles(World world, BlockPos pos) {
-        ThreadLocalRandom random = ThreadLocalRandom.current();
-        for (int i = 0; i < PARTICLE_COUNT; i++) {
-            double x = pos.getX() + 0.5 + random.nextDouble(-PARTICLE_OFFSET, PARTICLE_OFFSET);
-            double y = pos.getY() + 1.0;
-            double z = pos.getZ() + 0.5 + random.nextDouble(-PARTICLE_OFFSET, PARTICLE_OFFSET);
-            world.addParticle(ModParticles.INFUSED_BUBBLE_PARTICLE, x, y, z, 0.0D, 0.05D, 0.0D);
+        if (world.isClient) {
+            ThreadLocalRandom random = ThreadLocalRandom.current();
+            for (int i = 0; i < 8; i++) {
+                double x = pos.getX() + 0.5 + random.nextDouble(-0.5, 0.5);
+                double y = pos.getY() + 1.0;
+                double z = pos.getZ() + 0.5 + random.nextDouble(-0.5, 0.5);
+                world.addParticle(ModParticles.INFUSED_BUBBLE_PARTICLE, x, y, z, 0.0D, 0.05D, 0.0D);
+            }
         }
     }
 }

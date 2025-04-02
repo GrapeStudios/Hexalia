@@ -16,7 +16,7 @@ public class ModItemGroup {
             new Identifier(HexaliaMod.MOD_ID, "hexalia"),
             FabricItemGroup.builder().displayName(Text.translatable("itemgroup.hexalia"))
                     .icon(() -> new ItemStack(ModItems.HEX_FOCUS)).entries((displayContext, entries) -> {
-                        // Magical Plants
+                        // Herbs
                         entries.add(ModBlocks.SPIRIT_BLOOM);
                         entries.add(ModBlocks.DREAMSHROOM);
                         entries.add(ModItems.SIREN_KELP);
@@ -79,11 +79,12 @@ public class ModItemGroup {
                         // Functional Blocks
                         entries.add(ModBlocks.RUSTIC_OVEN);
                         entries.add(ModItems.SMALL_CAULDRON);
-                        entries.add(ModBlocks.BREW_SHELF);
+                        entries.add(ModBlocks.SHELF);
                         entries.add(ModItems.RITUAL_TABLE);
                         entries.add(ModBlocks.INFUSED_DIRT);
                         entries.add(ModBlocks.INFUSED_FARMLAND);
                         entries.add(ModBlocks.RITUAL_BRAZIER);
+                        entries.add(ModBlocks.CENSER);
                         entries.add(ModBlocks.DREAMCATCHER);
 
                         // Salt
@@ -99,11 +100,13 @@ public class ModItemGroup {
                         entries.add(ModItems.BREW_OF_HOMESTEAD);
                         entries.add(ModItems.BREW_OF_SIPHON);
                         entries.add(ModItems.BREW_OF_DAYBLOOM);
+                        entries.add(ModItems.BREW_OF_ARACHNID_GRACE);
 
                         // Decorative Plants
                         entries.add(ModBlocks.HENBANE);
                         entries.add(ModBlocks.BEGONIA);
                         entries.add(ModBlocks.LAVENDER);
+                        entries.add(ModBlocks.DAHLIA);
                         entries.add(ModItems.LOTUS_FLOWER);
                         entries.add(ModBlocks.PALE_MUSHROOM);
                         entries.add(ModBlocks.WITCHWEED);
@@ -114,6 +117,7 @@ public class ModItemGroup {
                         // Decorative Blocks
                         entries.add(ModBlocks.PARCHMENT);
                         entries.add(ModItems.CANDLE_SKULL);
+                        entries.add(ModItems.WITHER_CANDLE_SKULL);
                         entries.add(ModItems.SALT_LAMP);
 
                         // Rare Items
@@ -122,9 +126,9 @@ public class ModItemGroup {
                         entries.add(ModItems.SAGE_PENDANT);
 
                         // Armor Items
-                        entries.add(ModItems.BOGGED_BOOTS);
-                        entries.add(ModItems.GHOSTVEIL);
                         entries.add(ModItems.EARPLUGS);
+                        entries.add(ModItems.GHOSTVEIL);
+                        entries.add(ModItems.BOGGED_BOOTS);
 
                         // Wood-related Items
                         entries.add(ModBlocks.COTTONWOOD_SAPLING);
@@ -170,9 +174,16 @@ public class ModItemGroup {
                         // Spawn Eggs
                         entries.add(ModItems.SILK_MOTH_SPAWN_EGG);
 
+                        // Compat Items
                         if (ModUtils.isModLoaded("patchouli")) {
                             entries.add(ModItems.VERDANT_GRIMOIRE);
                         }
+
+                        if (ModUtils.isModLoaded("farmersdelight")) {
+                            entries.add(ModItems.WITCH_SALAD);
+                        }
+
+
                     }).build());
     public static void registerItemGroups(){
     }

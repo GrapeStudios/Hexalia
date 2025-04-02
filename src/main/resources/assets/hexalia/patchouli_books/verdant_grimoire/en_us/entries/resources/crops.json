@@ -7,7 +7,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "hexalia:chillberries",
-      "text": "Chillberries can be found in Taiga and Snowy Taiga biomes, and their bushes cause freezing."
+      "text": "Chillberries can be found in the Taiga biome, and their bushes cause freezing."
     },
     {
       "type": "patchouli:crafting",
@@ -37,7 +37,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "hexalia:saltsprout",
-      "text": "Saltsprouts are found naturally in $(l:hexalia:resources/salt)Salt Oasis$(), which spawns in Deserts.$(br2)This crop can only be planted in Sand or Infused Farmland."
+      "text": "Saltsprouts are found naturally in $(l:hexalia:world_gen/structures)Barren Hut$(), which spawns in Deserts.$(br2)This crop can only be planted in Sand or Infused Farmland."
     },
     {
       "type": "patchouli:crafting",

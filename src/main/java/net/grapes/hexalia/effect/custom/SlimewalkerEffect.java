@@ -9,13 +9,13 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 
 public class SlimewalkerEffect extends StatusEffect {
+
     public SlimewalkerEffect(StatusEffectCategory category, int color) {
         super(category, color);
     }
 
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        // Bounce effect on the player
         if (entity.isOnGround() && entity.bypassesLandingEffects()) {
             Vec3d movement = entity.getVelocity();
             entity.setVelocity(movement.x, 1D, movement.z);
@@ -29,16 +29,8 @@ public class SlimewalkerEffect extends StatusEffect {
                 entity.getWorld().addParticle(ParticleTypes.ITEM_SLIME, entity.getX() + (double) a2, entity.getY(), entity.getZ() +
                         (double) a3, 0.0D, 0.0D, 0.0D);
             }
-
         }
         entity.fallDistance = 0.0F;
-        // Climbing effect on the player
-        if(entity.horizontalCollision) {
-            Vec3d intialVec = entity.getVelocity();
-            Vec3d climbVec = new Vec3d(intialVec.x, 0.2D, intialVec.z);
-            entity.setVelocity(climbVec.x * 0.92D, climbVec.y * 0.98D, climbVec.z * 0.92D);
-        }
-
         super.applyUpdateEffect(entity, amplifier);
     }
 
@@ -47,4 +39,3 @@ public class SlimewalkerEffect extends StatusEffect {
         return true;
     }
 }
-

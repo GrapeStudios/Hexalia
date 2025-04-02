@@ -117,15 +117,6 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(Items.AMETHYST_SHARD), conditionsFromItem(Items.AMETHYST_SHARD))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.HEX_FOCUS)));
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.BREW_SHELF)
-                .pattern("SSS")
-                .pattern("SPS")
-                .pattern("SSS")
-                .input('P', ModItems.RUSTIC_BOTTLE)
-                .input('S', ItemTags.PLANKS)
-                .criterion(hasItem(ModItems.RUSTIC_BOTTLE), conditionsFromItem(ModItems.RUSTIC_BOTTLE))
-                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.BREW_SHELF)));
-
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.CANDLE_SKULL)
                 .pattern("S")
                 .pattern("T")
@@ -133,6 +124,14 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input('T', Items.SKELETON_SKULL)
                 .criterion(hasItem(Items.SKELETON_SKULL), conditionsFromItem(Items.SKELETON_SKULL))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.CANDLE_SKULL)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.WITHER_CANDLE_SKULL)
+                .pattern("S")
+                .pattern("T")
+                .input('S', Items.CANDLE)
+                .input('T', Items.WITHER_SKELETON_SKULL)
+                .criterion(hasItem(Items.WITHER_SKELETON_SKULL), conditionsFromItem(Items.WITHER_SKELETON_SKULL))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.WITHER_CANDLE_SKULL)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SILK_IDOL)
                 .pattern(" S ")
@@ -142,6 +141,24 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input('P', ModTags.Items.CRUSHED_HERBS)
                 .criterion(hasItem(ModItems.SILK_FIBER), conditionsFromItem(ModItems.SILK_FIBER))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.SILK_IDOL)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.SHELF)
+                .pattern(" P ")
+                .pattern("S S")
+                .input('S', Blocks.COBBLED_DEEPSLATE)
+                .input('P', Items.STICK)
+                .criterion(hasItem(Blocks.COBBLED_DEEPSLATE), conditionsFromItem(Blocks.COBBLED_DEEPSLATE))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.SHELF)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.CENSER)
+                .pattern(" P ")
+                .pattern("APA")
+                .pattern("SSS")
+                .input('S', ItemTags.LOGS_THAT_BURN)
+                .input('A', ItemTags.COALS)
+                .input('P', Items.BRICK)
+                .criterion(hasItem(Items.BRICK), conditionsFromItem(Items.BRICK))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.CENSER)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.MOON_CRYSTAL_BLOCK)
                 .pattern("PP")
@@ -237,6 +254,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input(ModTags.Items.SALT_DUSTS)
                 .input(Items.LEATHER)
                 .input(ModTags.Items.CRUSHED_HERBS)
+                .input(ModTags.Items.CRUSHED_HERBS)
                 .criterion(hasItem(ModItems.SALT), conditionsFromItem(ModItems.SALT))
                 .offerTo(exporter);
 
@@ -253,6 +271,11 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.PURPLE_DYE)
                 .input(ModBlocks.LAVENDER)
                 .criterion(hasItem(ModBlocks.LAVENDER), conditionsFromItem(ModBlocks.LAVENDER))
+                .offerTo(exporter);
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.ORANGE_DYE)
+                .input(ModBlocks.DAHLIA)
+                .criterion(hasItem(ModBlocks.DAHLIA), conditionsFromItem(ModBlocks.HENBANE))
                 .offerTo(exporter);
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.PINK_DYE)
@@ -338,7 +361,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.VERDANT_GRIMOIRE)
                 .input(Items.BOOK)
-                .input(ModTags.Items.CRUSHED_HERBS)
+                .input(ModTags.Items.HERBS)
                 .criterion(hasItem(Items.BOOK), conditionsFromItem(Items.BOOK))
                 .offerTo(exporter);
 
@@ -379,6 +402,10 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 ModItems.RUSTIC_BOTTLE, ModItems.BREW_OF_DAYBLOOM)
                 .criterion(hasItem(ModItems.RUSTIC_BOTTLE), conditionsFromItem(ModItems.RUSTIC_BOTTLE))
                 .offerTo(exporter);
+        new SmallCauldronRecipeBuilder(List.of(ModItems.DREAM_PASTE, Items.SPIDER_EYE, Items.BLACK_DYE),
+                ModItems.RUSTIC_BOTTLE, ModItems.BREW_OF_ARACHNID_GRACE)
+                .criterion(hasItem(ModItems.RUSTIC_BOTTLE), conditionsFromItem(ModItems.RUSTIC_BOTTLE))
+                .offerTo(exporter);
 
         // Recipes for Transmutation Items
         new TransmutationRecipeBuilder(List.of(ModItems.GHOST_POWDER, Items.WITHER_ROSE, Items.BONE, Items.BLACK_DYE),
@@ -389,7 +416,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .offerTo(exporter);
 
         new TransmutationRecipeBuilder(List.of(ModItems.SPIRIT_POWDER, Items.GOLD_NUGGET, Items.BOOK, Items.EXPERIENCE_BOTTLE),
-                Items.DIAMOND, ModItems.SAGE_PENDANT).criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
+                ModItems.MOON_CRYSTAL, ModItems.SAGE_PENDANT).criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
                 .offerTo(exporter);
 
         new TransmutationRecipeBuilder(List.of(ModItems.DREAM_PASTE, ModItems.SPIRIT_POWDER, ModItems.EARTH_NODE, ModItems.TREE_RESIN),

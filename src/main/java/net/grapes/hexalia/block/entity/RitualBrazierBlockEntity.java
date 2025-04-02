@@ -28,14 +28,17 @@ import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.world.LightType;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Objects;
 import java.util.Optional;
 
 public class RitualBrazierBlockEntity extends BlockEntity implements SidedInventory {
 
     private static final int MOONLIGHT_DURATION = 400;
+    private static final BlockPos.Mutable mutablePos = new BlockPos.Mutable();
     private int timer = 0;
     private boolean active = false;
     private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
@@ -53,7 +56,7 @@ public class RitualBrazierBlockEntity extends BlockEntity implements SidedInvent
                     .getFirstMatch(RitualBrazierRecipe.Type.INSTANCE, new SimpleInventory(itemStack), world);
 
             if (recipe.isPresent()) {
-                if (isNight(world)) {
+                if (isNight(world, pos)) {
                     blockEntity.timer++;
 
                     if (blockEntity.timer >= MOONLIGHT_DURATION) {
@@ -84,7 +87,7 @@ public class RitualBrazierBlockEntity extends BlockEntity implements SidedInvent
         }
 
         ItemStack itemStack = getStack(0);
-        Optional<RitualBrazierRecipe> recipe = world.getRecipeManager()
+        Optional<RitualBrazierRecipe> recipe = Objects.requireNonNull(world).getRecipeManager()
                 .getFirstMatch(RitualBrazierRecipe.Type.INSTANCE, new SimpleInventory(itemStack), world);
 
         if (recipe.isEmpty()) {
@@ -92,7 +95,7 @@ public class RitualBrazierBlockEntity extends BlockEntity implements SidedInvent
             return false;
         }
 
-        if (!isNight(world)) {
+        if (!isNight(world, mutablePos)) {
             player.sendMessage(Text.translatable("message.hexalia.moonlight_ritual.not_night"), true);
             return false;
         }
@@ -133,9 +136,16 @@ public class RitualBrazierBlockEntity extends BlockEntity implements SidedInvent
         return active;
     }
 
-    private static boolean isNight(World world) {
-        long time = world.getTimeOfDay();
-        return time > 12500 && time < 23000;
+    private static boolean isNight(World world, BlockPos pos) {
+        BlockPos.Mutable mutablePos = new BlockPos.Mutable(pos.getX(), pos.getY(), pos.getZ());
+        long time = world.getTimeOfDay() % 24000;
+        boolean isTimeNight = time > 12500 && time < 23000;
+
+        if (world.isSkyVisible(mutablePos.up())) {
+            return isTimeNight && world.getLightLevel(LightType.SKY, mutablePos.up()) < 12;
+        }
+
+        return isTimeNight;
     }
 
     @Override

@@ -1,8 +1,7 @@
 package net.grapes.hexalia.networking.packet;
 
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
-import net.grapes.hexalia.block.entity.RitualBrazierBlockEntity;
-import net.grapes.hexalia.block.entity.RitualTableBlockEntity;
+import net.grapes.hexalia.block.entity.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
@@ -15,11 +14,9 @@ import org.jetbrains.annotations.Nullable;
 public class ItemStackSyncS2CPacket {
     public static void receive(MinecraftClient client, ClientPlayNetworkHandler handler,
                                PacketByteBuf buf, PacketSender responseSender) {
-        // Read data from packet
         DefaultedList<ItemStack> stacks = readStacksFromBuffer(buf);
         BlockPos pos = buf.readBlockPos();
 
-        // Update block entities
         client.execute(() -> handleBlockEntityUpdate(client, pos, stacks));
     }
 
@@ -39,20 +36,33 @@ public class ItemStackSyncS2CPacket {
         if (blockEntity == null) return;
 
         if (blockEntity instanceof RitualTableBlockEntity table) {
-            handleTableUpdate(table, stacks);
+            table.setInventory(stacks);
         } else if (blockEntity instanceof RitualBrazierBlockEntity brazier) {
-            handleBrazierUpdate(brazier, stacks);
+            for (int i = 0; i < stacks.size(); i++) {
+                brazier.setStack(i, stacks.get(i));
+            }
+            brazier.markDirty();
+        } else if (blockEntity instanceof ShelfBlockEntity shelf) {
+            for (int i = 0; i < stacks.size(); i++) {
+                shelf.setStack(i, stacks.get(i));
+            }
+            shelf.markDirty();
         }
     }
 
-    private static void handleTableUpdate(RitualTableBlockEntity table, DefaultedList<ItemStack> stacks) {
-        table.setInventory(stacks);
+    private final DefaultedList<ItemStack> stacks;
+    private final BlockPos pos;
+
+    public ItemStackSyncS2CPacket(DefaultedList<ItemStack> stacks, BlockPos pos) {
+        this.stacks = stacks;
+        this.pos = pos;
     }
 
-    private static void handleBrazierUpdate(RitualBrazierBlockEntity brazier, DefaultedList<ItemStack> stacks) {
-        for (int i = 0; i < stacks.size(); i++) {
-            brazier.setStack(i, stacks.get(i));
+    public void write(PacketByteBuf buf) {
+        buf.writeInt(stacks.size());
+        for (ItemStack stack : stacks) {
+            buf.writeItemStack(stack);
         }
-        brazier.markDirty();
+        buf.writeBlockPos(pos);
     }
 }
