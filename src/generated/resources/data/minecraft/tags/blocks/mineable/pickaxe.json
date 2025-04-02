@@ -1,10 +1,10 @@
 {
   "values": [
     "hexalia:salt_lamp",
-    "hexalia:salt_lamp",
     "hexalia:rustic_oven",
     "hexalia:small_cauldron",
     "hexalia:ritual_table",
-    "hexalia:salt_block"
+    "hexalia:salt_block",
+    "hexalia:moon_crystal_block"
   ]
 }

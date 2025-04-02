@@ -145,7 +145,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("SPS")
                 .pattern(" S ")
                 .define('S', ModItems.SILK_FIBER.get())
-                .define('P', ModTags.Items.REFINED_HERBS)
+                .define('P', ModTags.Items.CRUSHED_HERBS)
                 .unlockedBy("has_silk_fiber",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SILK_FIBER.get()).build()))
                 .save(pWriter);
@@ -279,7 +279,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.PURIFYING_SALTS.get())
                 .requires(ModTags.Items.SALT)
-                .requires(ModTags.Items.REFINED_HERBS)
+                .requires(ModTags.Items.CRUSHED_HERBS)
                 .requires(Items.LEATHER)
                 .unlockedBy("has_salt",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SALT.get()).build()))
@@ -329,6 +329,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SILK_IDOL.get()).build()))
                 .save(pWriter);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MOON_CRYSTAL.get(), 4)
+                .requires(ModBlocks.MOON_CRYSTAL_BLOCK.get())
+                .unlockedBy("has_moon_crystal_block",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(ModBlocks.MOON_CRYSTAL_BLOCK.get()).build()))
+                .save(pWriter);
+
         // Shapeless Recipes for Mortar & Pestle and Refined Resources
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MORTAR_AND_PESTLE.get())
                 .requires(Items.BOWL)
@@ -346,7 +352,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.VERDANT_GRIMOIRE.get())
                 .requires(Items.BOOK)
-                .requires(ModTags.Items.REFINED_HERBS)
+                .requires(ModTags.Items.CRUSHED_HERBS)
                 .unlockedBy("has_book",
                         inventoryTrigger(ItemPredicate.Builder.item().of(Items.BOOK).build()))
                 .save(pWriter);

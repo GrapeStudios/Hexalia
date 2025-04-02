@@ -6,6 +6,7 @@ import net.grapes.hexalia.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -29,6 +30,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
 public class RitualBrazierBlock extends BaseEntityBlock implements EntityBlock {
@@ -85,12 +87,13 @@ public class RitualBrazierBlock extends BaseEntityBlock implements EntityBlock {
         }
 
         if (pHand == InteractionHand.MAIN_HAND) {
-            if (heldItem.is(ModItems.SALT.get()) && !pState.getValue(SALTED)) {
+            ResourceLocation itemId = ForgeRegistries.ITEMS.getKey(heldItem.getItem());
+            if (itemId != null && itemId.getPath().contains("salt") && !pState.getValue(SALTED)) {
                 pLevel.setBlock(pPos, pState.setValue(SALTED, true), Block.UPDATE_ALL);
                 if (!pPlayer.isCreative()) {
                     heldItem.shrink(1);
                 }
-                pLevel.playSound(null, pPos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1.0f, 1.0f); // Play bone meal sound
+                pLevel.playSound(null, pPos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1.0f, 1.0f);
                 return InteractionResult.sidedSuccess(pLevel.isClientSide);
             }
 

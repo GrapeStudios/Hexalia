@@ -3,7 +3,7 @@
   "category": "equipment",
   "key": {
     "P": {
-      "tag": "hexalia:refined_herbs"
+      "tag": "hexalia:crushed_herbs"
     },
     "S": {
       "item": "hexalia:silk_fiber"

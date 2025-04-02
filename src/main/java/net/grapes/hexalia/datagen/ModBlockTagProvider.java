@@ -19,95 +19,247 @@ public class ModBlockTagProvider extends BlockTagsProvider {
     }
 
     @Override
-    protected void addTags(HolderLookup.Provider pProvider) {
+    protected void addTags(HolderLookup.Provider provider) {
+        addMiningTags();
+        addPlantTags();
+        addFunctionalTags();
+        addTreeRelatedTags();
+        addCustomModTags();
+        addAdditionalTags();
+        addSereneSeasonsTags();
+    }
 
-        // Common Tags
-        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.SALT_LAMP.get(),
-                ModBlocks.SALT_LAMP.get(), ModBlocks.RUSTIC_OVEN.get(),
-                ModBlocks.SMALL_CAULDRON.get(), ModBlocks.RITUAL_TABLE.get(),
-                ModBlocks.SALT_BLOCK.get());
-        this.tag(BlockTags.MINEABLE_WITH_AXE).add(ModBlocks.BREW_SHELF.get(),
-                ModBlocks.LOTUS_FLOWER.get());
-        this.tag(BlockTags.NEEDS_STONE_TOOL).add(ModBlocks.SALT_LAMP.get(),
-                ModBlocks.SALT_LAMP.get(), ModBlocks.RUSTIC_OVEN.get(),
-                ModBlocks.SMALL_CAULDRON.get(), ModBlocks.BREW_SHELF.get(),
-                ModBlocks.LOTUS_FLOWER.get(), ModBlocks.RITUAL_TABLE.get(),
-                ModBlocks.SALT_BLOCK.get());
-        this.tag(BlockTags.FLOWERS).add(ModBlocks.SPIRIT_BLOOM.get(),
-                ModBlocks.HENBANE.get(), ModBlocks.WITCHWEED.get(),
-                ModBlocks.GHOST_FERN.get(), ModBlocks.NIGHTSHADE_BUSH.get(),
-                ModBlocks.BEGONIA.get(), ModBlocks.LAVENDER.get());
-        this.tag(BlockTags.SMALL_FLOWERS).add(ModBlocks.SPIRIT_BLOOM.get(),
-                ModBlocks.HENBANE.get(), ModBlocks.WITCHWEED.get(),
-                ModBlocks.GHOST_FERN.get(), ModBlocks.NIGHTSHADE_BUSH.get(),
-                ModBlocks.BEGONIA.get(), ModBlocks.LAVENDER.get());
-        this.tag(BlockTags.FROG_PREFER_JUMP_TO).add(ModBlocks.LOTUS_FLOWER.get());
-        this.tag(BlockTags.INSIDE_STEP_SOUND_BLOCKS).add(ModBlocks.LOTUS_FLOWER.get());
-        this.tag(BlockTags.SWORD_EFFICIENT).add(ModBlocks.LOTUS_FLOWER.get());
-        this.tag(BlockTags.CROPS).add(ModBlocks.SUNFIRE_TOMATO_CROP.get(),
-                        ModBlocks.MANDRAKE_CROP.get(), ModBlocks.RABBAGE_CROP.get(),
-                        ModBlocks.SALTSPROUT.get(), ModBlocks.CHILLBERRY_BUSH.get());
-        this.tag(BlockTags.SAPLINGS).add(ModBlocks.WILLOW_SAPLING.get(),
-                ModBlocks.COTTONWOOD_SAPLING.get());
+    private void addMiningTags() {
+        // Pickaxe mineable blocks
+        tag(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(ModBlocks.SALT_LAMP.get())
+                .add(ModBlocks.RUSTIC_OVEN.get())
+                .add(ModBlocks.SMALL_CAULDRON.get())
+                .add(ModBlocks.RITUAL_TABLE.get())
+                .add(ModBlocks.SALT_BLOCK.get())
+                .add(ModBlocks.MOON_CRYSTAL_BLOCK.get());
 
-        // Custom Tags
-        this.tag(ModTags.Blocks.HEATING_BLOCKS).add(Blocks.MAGMA_BLOCK,
-                Blocks.LAVA, Blocks.CAMPFIRE, Blocks.SOUL_CAMPFIRE,
-                Blocks.FIRE, Blocks.SOUL_FIRE, ModBlocks.RUSTIC_OVEN.get());
-        this.tag(ModTags.Blocks.ATTRACTS_MOTH).add(Blocks.LANTERN,
-                Blocks.SEA_LANTERN, Blocks.SOUL_LANTERN, ModBlocks.SALT_LAMP.get(),
-                Blocks.END_ROD);
-        this.tag(ModTags.Blocks.COCOON_LOGS).add(Blocks.DARK_OAK_LOG,
-                ModBlocks.COTTONWOOD_LOG.get());
+        // Axe mineable blocks
+        tag(BlockTags.MINEABLE_WITH_AXE)
+                .add(ModBlocks.BREW_SHELF.get())
+                .add(ModBlocks.LOTUS_FLOWER.get());
 
-        // Forge Tags
-        this.tag(ModTags.Blocks.SALT_BLOCKS).add(ModBlocks.SALT_BLOCK.get());
+        // Tool requirements
+        tag(BlockTags.NEEDS_STONE_TOOL)
+                .add(ModBlocks.SALT_LAMP.get())
+                .add(ModBlocks.RUSTIC_OVEN.get())
+                .add(ModBlocks.SMALL_CAULDRON.get())
+                .add(ModBlocks.BREW_SHELF.get())
+                .add(ModBlocks.LOTUS_FLOWER.get())
+                .add(ModBlocks.RITUAL_TABLE.get())
+                .add(ModBlocks.SALT_BLOCK.get())
+                .add(ModBlocks.MOON_CRYSTAL_BLOCK.get());
+    }
 
-        // Compatibility Tags
-        this.tag(ModTags.Compat.SERENE_SEASONS_SPRING_CROPS_BLOCK).add(ModBlocks.RABBAGE_CROP.get())
-                .add(ModBlocks.MANDRAKE_CROP.get());
-        this.tag(ModTags.Compat.SERENE_SEASONS_SUMMER_CROPS_BLOCK).add(ModBlocks.RABBAGE_CROP.get())
-                .add(ModBlocks.MANDRAKE_CROP.get()).add(ModBlocks.SUNFIRE_TOMATO_CROP.get());
-        this.tag(ModTags.Compat.SERENE_SEASONS_AUTUMN_CROPS_BLOCK).add(ModBlocks.RABBAGE_CROP.get())
-                .add(ModBlocks.SUNFIRE_TOMATO_CROP.get());
-        this.tag(ModTags.Compat.SERENE_SEASONS_WINTER_CROPS_BLOCK).add(ModBlocks.RABBAGE_CROP.get());
-        this.tag(ModTags.Compat.SERENE_SEASONS_UNBREAKABLE_FERTILE_CROPS).add(ModBlocks.MANDRAKE_CROP.get());
+    private void addPlantTags() {
+        // Flower tags
+        tag(BlockTags.FLOWERS)
+                .add(ModBlocks.SPIRIT_BLOOM.get())
+                .add(ModBlocks.HENBANE.get())
+                .add(ModBlocks.WITCHWEED.get())
+                .add(ModBlocks.GHOST_FERN.get())
+                .add(ModBlocks.NIGHTSHADE_BUSH.get())
+                .add(ModBlocks.BEGONIA.get())
+                .add(ModBlocks.LAVENDER.get());
 
-        // Wood-related Tags
-        this.tag(BlockTags.LOGS_THAT_BURN).addTag(ModTags.Blocks.COTTONWOOD_LOGS)
+        // Small flowers
+        tag(BlockTags.SMALL_FLOWERS)
+                .add(ModBlocks.SPIRIT_BLOOM.get())
+                .add(ModBlocks.HENBANE.get())
+                .add(ModBlocks.WITCHWEED.get())
+                .add(ModBlocks.GHOST_FERN.get())
+                .add(ModBlocks.NIGHTSHADE_BUSH.get())
+                .add(ModBlocks.BEGONIA.get())
+                .add(ModBlocks.LAVENDER.get());
+
+        // Special plant properties
+        tag(BlockTags.FROG_PREFER_JUMP_TO)
+                .add(ModBlocks.LOTUS_FLOWER.get());
+
+        tag(BlockTags.INSIDE_STEP_SOUND_BLOCKS)
+                .add(ModBlocks.LOTUS_FLOWER.get());
+
+        tag(BlockTags.SWORD_EFFICIENT)
+                .add(ModBlocks.LOTUS_FLOWER.get());
+
+        // Crops
+        tag(BlockTags.CROPS)
+                .add(ModBlocks.SUNFIRE_TOMATO_CROP.get())
+                .add(ModBlocks.MANDRAKE_CROP.get())
+                .add(ModBlocks.RABBAGE_CROP.get())
+                .add(ModBlocks.SALTSPROUT.get())
+                .add(ModBlocks.CHILLBERRY_BUSH.get());
+
+        // Saplings
+        tag(BlockTags.SAPLINGS)
+                .add(ModBlocks.WILLOW_SAPLING.get())
+                .add(ModBlocks.COTTONWOOD_SAPLING.get());
+    }
+
+    private void addFunctionalTags() {
+        tag(ModTags.Blocks.HEATING_BLOCKS)
+                .add(Blocks.MAGMA_BLOCK)
+                .add(Blocks.LAVA)
+                .add(Blocks.CAMPFIRE)
+                .add(Blocks.SOUL_CAMPFIRE)
+                .add(Blocks.FIRE)
+                .add(Blocks.SOUL_FIRE)
+                .add(ModBlocks.RUSTIC_OVEN.get());
+
+        tag(ModTags.Blocks.ATTRACTS_MOTH)
+                .add(Blocks.LANTERN)
+                .add(Blocks.SEA_LANTERN)
+                .add(Blocks.SOUL_LANTERN)
+                .add(ModBlocks.SALT_LAMP.get())
+                .add(Blocks.END_ROD)
+                .add(Blocks.TORCH);
+    }
+
+    private void addTreeRelatedTags() {
+        // Cottonwood
+        tag(ModTags.Blocks.COTTONWOOD_LOGS)
+                .add(ModBlocks.COTTONWOOD_LOG.get())
+                .add(ModBlocks.STRIPPED_COTTONWOOD_LOG.get())
+                .add(ModBlocks.COTTONWOOD_WOOD.get())
+                .add(ModBlocks.STRIPPED_COTTONWOOD_WOOD.get());
+
+        // Willow
+        tag(ModTags.Blocks.WILLOW_LOGS)
+                .add(ModBlocks.WILLOW_LOG.get())
+                .add(ModBlocks.STRIPPED_WILLOW_LOG.get())
+                .add(ModBlocks.WILLOW_WOOD.get())
+                .add(ModBlocks.STRIPPED_WILLOW_WOOD.get())
+                .add(ModBlocks.WILLOW_MOSSY_WOOD.get());
+
+        // Special log types
+        tag(ModTags.Blocks.COCOON_LOGS)
+                .add(Blocks.DARK_OAK_LOG)
+                .add(ModBlocks.COTTONWOOD_LOG.get());
+
+        // Vanilla wood categories
+        tag(BlockTags.LOGS_THAT_BURN)
+                .addTag(ModTags.Blocks.COTTONWOOD_LOGS)
                 .addTag(ModTags.Blocks.WILLOW_LOGS);
-        this.tag(BlockTags.LEAVES).add(ModBlocks.COTTONWOOD_LEAVES.get(),
-                ModBlocks.WILLOW_LEAVES.get());
-        this.tag(BlockTags.PLANKS).add(ModBlocks.COTTONWOOD_PLANKS.get(),
-                ModBlocks.WILLOW_PLANKS.get());
-        this.tag(BlockTags.WOODEN_STAIRS).add(ModBlocks.COTTONWOOD_STAIRS.get(),
-                ModBlocks.WILLOW_STAIRS.get());
-        this.tag(BlockTags.WOODEN_SLABS).add(ModBlocks.COTTONWOOD_SLAB.get(),
-                ModBlocks.WILLOW_SLAB.get());
-        this.tag(BlockTags.WOODEN_DOORS).add(ModBlocks.COTTONWOOD_DOOR.get(),
-                ModBlocks.WILLOW_DOOR.get());
-        this.tag(BlockTags.WOODEN_BUTTONS).add(ModBlocks.COTTONWOOD_BUTTON.get(),
-                ModBlocks.WILLOW_BUTTON.get());
-        this.tag(BlockTags.WOODEN_PRESSURE_PLATES).add(ModBlocks.COTTONWOOD_PRESSURE_PLATE.get(),
-                ModBlocks.WILLOW_PRESSURE_PLATE.get());
-        this.tag(BlockTags.WOODEN_TRAPDOORS).add(ModBlocks.COTTONWOOD_TRAPDOOR.get(),
-                ModBlocks.WILLOW_TRAPDOOR.get());
-        this.tag(BlockTags.FENCE_GATES).add(ModBlocks.COTTONWOOD_FENCE_GATE.get(),
-                ModBlocks.WILLOW_FENCE_GATE.get());
-        this.tag(BlockTags.WOODEN_FENCES).add(ModBlocks.COTTONWOOD_FENCE.get(),
-                ModBlocks.WILLOW_FENCE.get());
-        this.tag(BlockTags.SIGNS).add(ModBlocks.COTTONWOOD_SIGN.get(),
-                ModBlocks.COTTONWOOD_WALL_SIGN.get(), ModBlocks.WILLOW_SIGN.get(),
-                ModBlocks.WILLOW_WALL_SIGN.get());
-        this.tag(BlockTags.ALL_HANGING_SIGNS).add(ModBlocks.COTTONWOOD_WALL_SIGN.get(),
-                ModBlocks.COTTONWOOD_HANGING_WALL_SIGN.get(), ModBlocks.WILLOW_WALL_SIGN.get(),
-                ModBlocks.WILLOW_HANGING_WALL_SIGN.get());
-        this.tag(ModTags.Blocks.COTTONWOOD_LOGS).add(ModBlocks.COTTONWOOD_LOG.get(),
-                ModBlocks.STRIPPED_COTTONWOOD_LOG.get(), ModBlocks.COTTONWOOD_WOOD.get(),
-                ModBlocks.STRIPPED_COTTONWOOD_WOOD.get());
 
-        this.tag(ModTags.Blocks.WILLOW_LOGS).add(ModBlocks.WILLOW_LOG.get(),
-                ModBlocks.STRIPPED_WILLOW_LOG.get(), ModBlocks.WILLOW_WOOD.get(),
-                ModBlocks.STRIPPED_WILLOW_WOOD.get(), ModBlocks.WILLOW_MOSSY_WOOD.get());
+        tag(BlockTags.LEAVES)
+                .add(ModBlocks.COTTONWOOD_LEAVES.get())
+                .add(ModBlocks.WILLOW_LEAVES.get());
+
+        // Wooden items
+        tag(BlockTags.PLANKS)
+                .add(ModBlocks.COTTONWOOD_PLANKS.get())
+                .add(ModBlocks.WILLOW_PLANKS.get());
+
+        tag(BlockTags.WOODEN_STAIRS)
+                .add(ModBlocks.COTTONWOOD_STAIRS.get())
+                .add(ModBlocks.WILLOW_STAIRS.get());
+
+        tag(BlockTags.WOODEN_SLABS)
+                .add(ModBlocks.COTTONWOOD_SLAB.get())
+                .add(ModBlocks.WILLOW_SLAB.get());
+
+        tag(BlockTags.WOODEN_BUTTONS)
+                .add(ModBlocks.COTTONWOOD_BUTTON.get())
+                .add(ModBlocks.WILLOW_BUTTON.get());
+
+        tag(BlockTags.WOODEN_PRESSURE_PLATES)
+                .add(ModBlocks.COTTONWOOD_PRESSURE_PLATE.get())
+                .add(ModBlocks.WILLOW_PRESSURE_PLATE.get());
+
+        tag(BlockTags.WOODEN_TRAPDOORS)
+                .add(ModBlocks.COTTONWOOD_TRAPDOOR.get())
+                .add(ModBlocks.WILLOW_TRAPDOOR.get());
+
+        tag(BlockTags.FENCE_GATES)
+                .add(ModBlocks.COTTONWOOD_FENCE_GATE.get())
+                .add(ModBlocks.WILLOW_FENCE_GATE.get());
+
+        tag(BlockTags.WOODEN_FENCES)
+                .add(ModBlocks.COTTONWOOD_FENCE.get())
+                .add(ModBlocks.WILLOW_FENCE.get());
+
+        tag(BlockTags.WOODEN_DOORS)
+                .add(ModBlocks.COTTONWOOD_DOOR.get())
+                .add(ModBlocks.WILLOW_DOOR.get());
+
+        // Signs
+        tag(BlockTags.SIGNS)
+                .add(ModBlocks.COTTONWOOD_SIGN.get())
+                .add(ModBlocks.COTTONWOOD_WALL_SIGN.get())
+                .add(ModBlocks.WILLOW_SIGN.get())
+                .add(ModBlocks.WILLOW_WALL_SIGN.get());
+
+        tag(BlockTags.ALL_HANGING_SIGNS)
+                .add(ModBlocks.COTTONWOOD_HANGING_SIGN.get())
+                .add(ModBlocks.COTTONWOOD_HANGING_WALL_SIGN.get())
+                .add(ModBlocks.WILLOW_HANGING_SIGN.get())
+                .add(ModBlocks.WILLOW_HANGING_WALL_SIGN.get());
+    }
+
+    private void addCustomModTags() {
+        tag(ModTags.Blocks.SALT_BLOCKS)
+                .add(ModBlocks.SALT_BLOCK.get());
+    }
+
+    private void addAdditionalTags() {
+        // Climbable vines
+        tag(BlockTags.CLIMBABLE)
+                .add(ModBlocks.MOON_BERRIES_VINES.get())
+                .add(ModBlocks.MOON_BERRIES_VINES_PLANT.get());
+
+        // Cave vines
+        tag(BlockTags.CAVE_VINES)
+                .add(ModBlocks.MOON_BERRIES_VINES.get())
+                .add(ModBlocks.MOON_BERRIES_VINES_PLANT.get());
+
+        // Flower pots
+        tag(BlockTags.FLOWER_POTS)
+                .add(ModBlocks.POTTED_SPIRIT_BLOOM.get())
+                .add(ModBlocks.POTTED_DREAMSHROOM.get())
+                .add(ModBlocks.POTTED_LAVENDER.get())
+                .add(ModBlocks.POTTED_BEGONIA.get())
+                .add(ModBlocks.POTTED_NIGHTSHADE_BUSH.get())
+                .add(ModBlocks.POTTED_PALE_MUSHROOM.get())
+                .add(ModBlocks.POTTED_HENBANE.get())
+                .add(ModBlocks.POTTED_LUNAR_LILY.get())
+                .add(ModBlocks.POTTED_GRIMSHADE.get())
+                .add(ModBlocks.POTTED_WINDSONG.get())
+                .add(ModBlocks.POTTED_MORPHORA.get())
+                .add(ModBlocks.POTTED_COTTONWOOD_SAPLING.get())
+                .add(ModBlocks.POTTED_WILLOW_SAPLING.get());
+
+        // Dirt
+        tag(BlockTags.DIRT)
+                .add(ModBlocks.INFUSED_DIRT.get());
+
+        // Mushroom growth
+        tag(BlockTags.MUSHROOM_GROW_BLOCK)
+                .add(ModBlocks.INFUSED_DIRT.get());
+    }
+
+    private void addSereneSeasonsTags() {
+        tag(ModTags.Compat.SERENE_SEASONS_SPRING_CROPS_BLOCK)
+                .add(ModBlocks.RABBAGE_CROP.get())
+                .add(ModBlocks.MANDRAKE_CROP.get());
+
+        tag(ModTags.Compat.SERENE_SEASONS_SUMMER_CROPS_BLOCK)
+                .add(ModBlocks.RABBAGE_CROP.get())
+                .add(ModBlocks.MANDRAKE_CROP.get())
+                .add(ModBlocks.SUNFIRE_TOMATO_CROP.get());
+
+        tag(ModTags.Compat.SERENE_SEASONS_AUTUMN_CROPS_BLOCK)
+                .add(ModBlocks.RABBAGE_CROP.get())
+                .add(ModBlocks.SUNFIRE_TOMATO_CROP.get());
+
+        tag(ModTags.Compat.SERENE_SEASONS_WINTER_CROPS_BLOCK)
+                .add(ModBlocks.RABBAGE_CROP.get());
+
+        tag(ModTags.Compat.SERENE_SEASONS_UNBREAKABLE_FERTILE_CROPS)
+                .add(ModBlocks.MANDRAKE_CROP.get());
     }
 }

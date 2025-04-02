@@ -3,13 +3,11 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "minecraft:book"
-    },
-    {
-      "tag": "hexalia:crushed_herbs"
+      "item": "hexalia:moon_crystal_block"
     }
   ],
   "result": {
-    "item": "hexalia:verdant_grimoire"
+    "count": 4,
+    "item": "hexalia:moon_crystal"
   }
 }

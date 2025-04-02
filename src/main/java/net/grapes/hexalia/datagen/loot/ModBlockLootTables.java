@@ -33,62 +33,56 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
+        generatePlantsAndFlowers();
+        generateFunctionalBlocks();
+        generateCrops();
+        generateTreeRelatedBlocks();
+    }
 
-        // Plants & Flowers
+    private void generatePlantsAndFlowers() {
+        // Simple drops
         this.dropSelf(ModBlocks.SPIRIT_BLOOM.get());
-        this.add(ModBlocks.POTTED_SPIRIT_BLOOM.get(),
-                createPotFlowerItemTable(ModBlocks.SPIRIT_BLOOM.get()));
         this.dropSelf(ModBlocks.DREAMSHROOM.get());
-        this.add(ModBlocks.POTTED_DREAMSHROOM.get(),
-                createPotFlowerItemTable(ModBlocks.DREAMSHROOM.get()));
-        this.add(ModBlocks.SIREN_KELP.get(),
-                this.createSingleItemTable(ModItems.SIREN_KELP.get()));
         this.dropSelf(ModBlocks.HENBANE.get());
-        this.add(ModBlocks.POTTED_HENBANE.get(),
-                createPotFlowerItemTable(ModBlocks.HENBANE.get()));
         this.dropSelf(ModBlocks.LOTUS_FLOWER.get());
         this.dropSelf(ModBlocks.PALE_MUSHROOM.get());
-        this.add(ModBlocks.POTTED_PALE_MUSHROOM.get(),
-                createPotFlowerItemTable(ModBlocks.PALE_MUSHROOM.get()));
         this.dropSelf(ModBlocks.WITCHWEED.get());
         this.dropSelf(ModBlocks.GHOST_FERN.get());
         this.dropSelf(ModBlocks.NIGHTSHADE_BUSH.get());
         this.dropSelf(ModBlocks.DUCKWEED.get());
-        this.add(ModBlocks.POTTED_NIGHTSHADE_BUSH.get(),
-                createPotFlowerItemTable(ModBlocks.NIGHTSHADE_BUSH.get()));
-        this.add(ModBlocks.HEXED_BULRUSH.get(),
-                createTallPlantBlock(ModBlocks.HEXED_BULRUSH.get()));
-        this.add(ModBlocks.COTTONWOOD_CATKIN.get(),
-                this.createSingleItemTable(Items.STRING));
         this.dropSelf(ModBlocks.BEGONIA.get());
-        this.add(ModBlocks.POTTED_BEGONIA.get(),
-                createPotFlowerItemTable(ModBlocks.BEGONIA.get()));
         this.dropSelf(ModBlocks.LAVENDER.get());
-        this.add(ModBlocks.POTTED_LAVENDER.get(),
-                createPotFlowerItemTable(ModBlocks.LAVENDER.get()));
         this.dropSelf(ModBlocks.MORPHORA.get());
-        this.add(ModBlocks.POTTED_MORPHORA.get(),
-                createPotFlowerItemTable(ModBlocks.MORPHORA.get()));
         this.dropSelf(ModBlocks.GRIMSHADE.get());
-        this.add(ModBlocks.POTTED_GRIMSHADE.get(),
-                createPotFlowerItemTable(ModBlocks.GRIMSHADE.get()));
         this.dropSelf(ModBlocks.NAUTILITE.get());
         this.dropSelf(ModBlocks.WINDSONG.get());
-        this.add(ModBlocks.POTTED_WINDSONG.get(),
-                createPotFlowerItemTable(ModBlocks.WINDSONG.get()));
-        this.dropSelf(ModBlocks.RITUAL_BRAZIER.get());
         this.dropSelf(ModBlocks.LUNAR_LILY.get());
-        this.add(ModBlocks.POTTED_LUNAR_LILY.get(),
-                createPotFlowerItemTable(ModBlocks.LUNAR_LILY.get()));
+
+        // Potted plants
+        this.add(ModBlocks.POTTED_SPIRIT_BLOOM.get(), createPotFlowerItemTable(ModBlocks.SPIRIT_BLOOM.get()));
+        this.add(ModBlocks.POTTED_DREAMSHROOM.get(), createPotFlowerItemTable(ModBlocks.DREAMSHROOM.get()));
+        this.add(ModBlocks.POTTED_HENBANE.get(), createPotFlowerItemTable(ModBlocks.HENBANE.get()));
+        this.add(ModBlocks.POTTED_PALE_MUSHROOM.get(), createPotFlowerItemTable(ModBlocks.PALE_MUSHROOM.get()));
+        this.add(ModBlocks.POTTED_NIGHTSHADE_BUSH.get(), createPotFlowerItemTable(ModBlocks.NIGHTSHADE_BUSH.get()));
+        this.add(ModBlocks.POTTED_BEGONIA.get(), createPotFlowerItemTable(ModBlocks.BEGONIA.get()));
+        this.add(ModBlocks.POTTED_LAVENDER.get(), createPotFlowerItemTable(ModBlocks.LAVENDER.get()));
+        this.add(ModBlocks.POTTED_MORPHORA.get(), createPotFlowerItemTable(ModBlocks.MORPHORA.get()));
+        this.add(ModBlocks.POTTED_GRIMSHADE.get(), createPotFlowerItemTable(ModBlocks.GRIMSHADE.get()));
+        this.add(ModBlocks.POTTED_WINDSONG.get(), createPotFlowerItemTable(ModBlocks.WINDSONG.get()));
+        this.add(ModBlocks.POTTED_LUNAR_LILY.get(), createPotFlowerItemTable(ModBlocks.LUNAR_LILY.get()));
+
+        // Special plants
+        this.add(ModBlocks.SIREN_KELP.get(), this.createSingleItemTable(ModItems.SIREN_KELP.get()));
+        this.add(ModBlocks.HEXED_BULRUSH.get(), createTallPlantBlock(ModBlocks.HEXED_BULRUSH.get()));
+        this.add(ModBlocks.COTTONWOOD_CATKIN.get(), this.createSingleItemTable(Items.STRING));
         this.add(ModBlocks.MOON_BERRIES_VINES.get(), vinesDrop(ModBlocks.MOON_BERRIES_VINES.get()));
         this.add(ModBlocks.MOON_BERRIES_VINES_PLANT.get(), vinesDrop(ModBlocks.MOON_BERRIES_VINES_PLANT.get()));
+    }
 
-        // General Blocks
+    private void generateFunctionalBlocks() {
+        // Simple drops
+        this.dropSelf(ModBlocks.RITUAL_BRAZIER.get());
         this.dropSelf(ModBlocks.INFUSED_DIRT.get());
-        this.add(ModBlocks.INFUSED_FARMLAND.get(),
-                this.createSingleItemTable(ModBlocks.INFUSED_DIRT.get()));
-        this.add(ModBlocks.RITUAL_TABLE.get(),
-                this.createSingleItemTable(ModItems.RITUAL_TABLE.get()));
         this.dropSelf(ModBlocks.SALT_LAMP.get());
         this.dropSelf(ModBlocks.CANDLE_SKULL.get());
         this.dropSelf(ModBlocks.DREAMCATCHER.get());
@@ -96,17 +90,21 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.BREW_SHELF.get());
         this.dropSelf(ModBlocks.RUSTIC_OVEN.get());
         this.dropSelf(ModBlocks.SMALL_CAULDRON.get());
-        this.add(ModBlocks.SALT_BLOCK.get(), block ->
-                createOreDrop(ModBlocks.SALT_BLOCK.get(), ModItems.SALT.get()));
-        this.add(ModBlocks.SILKWORM_COCOON.get(),
-                this.createSingleItemTable(ModItems.SILKWORM.get()));
         this.dropSelf(ModBlocks.MOON_CRYSTAL_BLOCK.get());
 
-        // Crop Blocks
-        this.add(ModBlocks.WILD_SUNFIRE_TOMATO.get(),
-                this.createSingleItemTable(ModItems.SUNFIRE_TOMATO_SEEDS.get()));
-        this.add(ModBlocks.WILD_MANDRAKE.get(),
-                this.createSingleItemTable(ModItems.MANDRAKE_SEEDS.get()));
+        // Special drops
+        this.add(ModBlocks.INFUSED_FARMLAND.get(), this.createSingleItemTable(ModBlocks.INFUSED_DIRT.get()));
+        this.add(ModBlocks.RITUAL_TABLE.get(), this.createSingleItemTable(ModItems.RITUAL_TABLE.get()));
+        this.add(ModBlocks.SALT_BLOCK.get(), block -> createOreDrop(ModBlocks.SALT_BLOCK.get(), ModItems.SALT.get()));
+        this.add(ModBlocks.SILKWORM_COCOON.get(), this.createSingleItemTable(ModItems.SILKWORM.get()));
+    }
+
+    private void generateCrops() {
+        // Wild Crops
+        this.add(ModBlocks.WILD_SUNFIRE_TOMATO.get(), this.createSingleItemTable(ModItems.SUNFIRE_TOMATO_SEEDS.get()));
+        this.add(ModBlocks.WILD_MANDRAKE.get(), this.createSingleItemTable(ModItems.MANDRAKE_SEEDS.get()));
+
+        // Main Crops
         LootItemCondition.Builder lootItemCondition$builder1 = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.MANDRAKE_CROP.get())
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(MandrakeCropBlock.AGE, 3));
         this.add(ModBlocks.MANDRAKE_CROP.get(), this.createCropDrops(ModBlocks.MANDRAKE_CROP.get(),
@@ -119,13 +117,17 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(RabbageCropBlock.AGE, 3));
         this.add(ModBlocks.RABBAGE_CROP.get(), this.createCropDrops(ModBlocks.RABBAGE_CROP.get(),
                 ModItems.RABBAGE.get(), ModItems.RABBAGE_SEEDS.get(), lootItemCondition$builder3));
+
+        // Special Crops
         LootItemCondition.Builder lootItemCondition$builder4 = LootItemBlockStatePropertyCondition.hasBlockStateProperties(ModBlocks.SALTSPROUT.get())
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(SaltsproutBlock.AGE, 2));
         this.add(ModBlocks.SALTSPROUT.get(), this.createSimpleCropBlock(ModBlocks.SALTSPROUT.get(),
                 ModItems.SALTSPROUT.get(), lootItemCondition$builder4));
-        this.add(ModBlocks.CHILLBERRY_BUSH.get(), createHarvestablePlantBlock(ModBlocks.CHILLBERRY_BUSH.get(), ModItems.CHILLBERRIES.get()));
+        this.add(ModBlocks.CHILLBERRY_BUSH.get(), createBerryBushDrops(ModBlocks.CHILLBERRY_BUSH.get(), ModItems.CHILLBERRIES.get()));
+    }
 
-        // Drops for Wood-related Blocks
+    private void generateTreeRelatedBlocks() {
+        // Cottonwood
         this.add(ModBlocks.COTTONWOOD_LEAVES.get(), createLeavesDrops(ModBlocks.COTTONWOOD_LEAVES.get(), ModBlocks.COTTONWOOD_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         this.dropSelf(ModBlocks.COTTONWOOD_LOG.get());
         this.dropSelf(ModBlocks.COTTONWOOD_WOOD.get());
@@ -147,6 +149,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(ModBlocks.COTTONWOOD_HANGING_SIGN.get(), createSingleItemTable(ModBlocks.COTTONWOOD_HANGING_SIGN.get()));
         this.add(ModBlocks.COTTONWOOD_HANGING_WALL_SIGN.get(), createSingleItemTable(ModBlocks.COTTONWOOD_HANGING_SIGN.get()));
 
+        // Willow
         this.add(ModBlocks.WILLOW_LEAVES.get(), createLeavesDrops(ModBlocks.WILLOW_LEAVES.get(), ModBlocks.WILLOW_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         this.dropSelf(ModBlocks.WILLOW_LOG.get());
         this.dropSelf(ModBlocks.WILLOW_WOOD.get());
@@ -168,7 +171,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(ModBlocks.WILLOW_WALL_SIGN.get(), createSingleItemTable(ModBlocks.WILLOW_SIGN.get()));
         this.add(ModBlocks.WILLOW_HANGING_SIGN.get(), createSingleItemTable(ModBlocks.WILLOW_HANGING_SIGN.get()));
         this.add(ModBlocks.WILLOW_HANGING_WALL_SIGN.get(), createSingleItemTable(ModBlocks.WILLOW_HANGING_SIGN.get()));
-
     }
 
     protected LootTable.Builder createSimpleCropBlock(Block pCropBlock, Item pGrownCropItem, LootItemCondition.Builder pDropGrownCropCondition) {
@@ -177,7 +179,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                         .apply(ApplyBonusCount.addBonusBinomialDistributionCount(Enchantments.BLOCK_FORTUNE, 0.5714286F, 3)))));
     }
 
-    protected LootTable.Builder createHarvestablePlantBlock(Block bushBlock, Item chillberryItem) {
+    protected LootTable.Builder createBerryBushDrops(Block bushBlock, Item chillberryItem) {
         LootItemCondition.Builder age3Condition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(bushBlock)
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(ChillberryBushBlock.AGE, 3));
         LootItemCondition.Builder age2Condition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(bushBlock)
