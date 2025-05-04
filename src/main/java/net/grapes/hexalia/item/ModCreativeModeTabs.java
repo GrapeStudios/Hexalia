@@ -80,11 +80,12 @@ public class ModCreativeModeTabs {
                         // Functional Blocks
                         output.accept(ModBlocks.RUSTIC_OVEN.get());
                         output.accept(ModItems.SMALL_CAULDRON.get());
-                        output.accept(ModBlocks.BREW_SHELF.get());
+                        output.accept(ModBlocks.SHELF.get());
                         output.accept(ModItems.RITUAL_TABLE.get());
                         output.accept(ModBlocks.INFUSED_DIRT.get());
                         output.accept(ModBlocks.INFUSED_FARMLAND.get());
                         output.accept(ModBlocks.RITUAL_BRAZIER.get());
+                        output.accept(ModBlocks.CENSER.get());
                         output.accept(ModBlocks.DREAMCATCHER.get());
 
                         // Salt
@@ -100,6 +101,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModItems.BREW_OF_HOMESTEAD.get());
                         output.accept(ModItems.BREW_OF_SIPHON.get());
                         output.accept(ModItems.BREW_OF_DAYBLOOM.get());
+                        output.accept(ModItems.BREW_OF_ARACHNID_GRACE.get());
 
                         // Decorative Plants
                         output.accept(ModBlocks.HENBANE.get());
@@ -115,6 +117,7 @@ public class ModCreativeModeTabs {
                         // Decorative Blocks
                         output.accept(ModBlocks.PARCHMENT.get());
                         output.accept(ModItems.CANDLE_SKULL.get());
+                        output.accept(ModItems.WITHER_CANDLE_SKULL.get());
                         output.accept(ModItems.SALT_LAMP.get());
 
                         // Rare Items

@@ -1,6 +1,7 @@
 package net.grapes.hexalia.block.custom;
 
 import com.google.common.collect.ImmutableList;
+import net.grapes.hexalia.block.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -136,7 +137,16 @@ public class CandleSkullBlock extends Block {
                         SoundSource.BLOCKS, 1.0f + pRandom.nextFloat(), pRandom.nextFloat() * 0.7f + 0.3f, false);
             }
         }
-        pLevel.addParticle(ParticleTypes.FLAME, vec3.x, vec3.y, vec3.z, 0.0, 0.0, 0.0);
+
+        BlockPos pos = new BlockPos((int)Math.floor(vec3.x), (int)Math.floor(vec3.y), (int)Math.floor(vec3.z));
+        BlockState state = pLevel.getBlockState(pos);
+        Block block = state.getBlock();
+
+        if (block == ModBlocks.WITHER_CANDLE_SKULL.get()) {
+            pLevel.addParticle(ParticleTypes.SOUL_FIRE_FLAME, vec3.x, vec3.y, vec3.z, 0.0, 0.0, 0.0);
+        } else {
+            pLevel.addParticle(ParticleTypes.FLAME, vec3.x, vec3.y, vec3.z, 0.0, 0.0, 0.0);
+        }
     }
 
     public static Iterable<Vec3> getParticleOffsets() {

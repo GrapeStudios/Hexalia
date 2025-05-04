@@ -1,0 +1,20 @@
+{
+  "type": "hexalia:small_cauldron",
+  "bottle_slot": {
+    "item": "hexalia:rustic_bottle"
+  },
+  "ingredients": [
+    {
+      "item": "hexalia:dream_paste"
+    },
+    {
+      "item": "minecraft:spider_eye"
+    },
+    {
+      "item": "minecraft:black_dye"
+    }
+  ],
+  "output": {
+    "item": "hexalia:brew_of_arachnid_grace"
+  }
+}

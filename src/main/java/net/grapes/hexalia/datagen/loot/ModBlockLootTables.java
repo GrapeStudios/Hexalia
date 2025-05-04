@@ -85,12 +85,14 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.INFUSED_DIRT.get());
         this.dropSelf(ModBlocks.SALT_LAMP.get());
         this.dropSelf(ModBlocks.CANDLE_SKULL.get());
+        this.dropSelf(ModBlocks.WITHER_CANDLE_SKULL.get());
         this.dropSelf(ModBlocks.DREAMCATCHER.get());
         this.dropSelf(ModBlocks.PARCHMENT.get());
-        this.dropSelf(ModBlocks.BREW_SHELF.get());
         this.dropSelf(ModBlocks.RUSTIC_OVEN.get());
         this.dropSelf(ModBlocks.SMALL_CAULDRON.get());
         this.dropSelf(ModBlocks.MOON_CRYSTAL_BLOCK.get());
+        this.dropSelf(ModBlocks.SHELF.get());
+        this.dropSelf(ModBlocks.CENSER.get());
 
         // Special drops
         this.add(ModBlocks.INFUSED_FARMLAND.get(), this.createSingleItemTable(ModBlocks.INFUSED_DIRT.get()));

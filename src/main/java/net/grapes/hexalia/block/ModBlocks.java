@@ -38,7 +38,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> INFUSED_DIRT = registerBlock("infused_dirt",
             () -> new InfusedDirtBlock(BlockBehaviour.Properties.copy(Blocks.DIRT).sound(SoundType.MUD)));
     public static final RegistryObject<Block> INFUSED_FARMLAND = registerBlock("infused_farmland",
-            () -> new InfusedFarmlandBlock(BlockBehaviour.Properties.copy(Blocks.DIRT).noOcclusion()
+            () -> new InfusedFarmlandBlock(BlockBehaviour.Properties.copy(Blocks.DIRT).noOcclusion().randomTicks()
                     .sound(SoundType.MUD)));
     public static final RegistryObject<Block> SILKWORM_COCOON = registerBlock("silkworm_cocoon",
             () -> new CocoonBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_LIGHT_GRAY)
@@ -85,7 +85,6 @@ public class ModBlocks {
             () -> new FlowerBlock(() -> MobEffects.ABSORPTION, 6, BlockBehaviour.Properties.copy(Blocks.ALLIUM)));
     public static final RegistryObject<Block> POTTED_HENBANE = BLOCKS.register("potted_henbane",
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), HENBANE, BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM)));
-
 
     public static final RegistryObject<Block> BEGONIA = registerBlock("begonia",
             () -> new FlowerBlock(() -> MobEffects.REGENERATION, 6, BlockBehaviour.Properties.copy(Blocks.ALLIUM)));
@@ -151,19 +150,27 @@ public class ModBlocks {
             () -> new RusticOvenBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_BRICKS).noOcclusion()));
     public static final RegistryObject<Block> RITUAL_TABLE = BLOCKS.register("ritual_table",
             () -> new RitualTableBlock(BlockBehaviour.Properties.copy(Blocks.STONE).noOcclusion()));
-    public static final RegistryObject<Block> BREW_SHELF = registerBlock("brew_shelf",
-            () -> new BrewShelfBlock(BlockBehaviour.Properties.copy(Blocks.CHISELED_BOOKSHELF).noOcclusion()));
     public static final RegistryObject<Block> RITUAL_BRAZIER = registerBlock("ritual_brazier",
             () -> new RitualBrazierBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).noOcclusion()));
+    public static final RegistryObject<Block> CENSER = registerBlock("censer",
+            () -> new CenserBlock(BlockBehaviour.Properties.of().mapColor(MapColor.PODZOL).instrument(NoteBlockInstrument.BASS).strength(2.0F).sound(SoundType.WOOD)
+                    .lightLevel(state -> state.getValue(LIT) ? 15 : 0).noOcclusion()));
     public static final RegistryObject<Block> DREAMCATCHER = registerBlock("dreamcatcher",
             () -> new DreamcatcherBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD)
                     .instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0f)));
+    public static final RegistryObject<Block> SHELF = registerBlock("shelf",
+            () -> new ShelfBlock(BlockBehaviour.Properties.of().strength(2.0f)
+                    .sound(SoundType.WOOD).noOcclusion()));
 
     // Decorative Blocks
     public static final RegistryObject<Block> PARCHMENT = registerBlock("parchment",
             () -> new HexaliaWallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD)
                     .instrument(NoteBlockInstrument.BASS).noCollission().strength(1.0f)));
     public static final RegistryObject<Block> CANDLE_SKULL = BLOCKS.register("candle_skull",
+            () -> new CandleSkullBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE)
+                    .instrument(NoteBlockInstrument.GUITAR).strength(1.0f)
+                    .lightLevel(state -> state.getValue(LIT) ? 12 : 0)));
+    public static final RegistryObject<Block> WITHER_CANDLE_SKULL = BLOCKS.register("wither_candle_skull",
             () -> new CandleSkullBlock(BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE)
                     .instrument(NoteBlockInstrument.GUITAR).strength(1.0f)
                     .lightLevel(state -> state.getValue(LIT) ? 12 : 0)));

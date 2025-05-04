@@ -5,10 +5,14 @@
 	"minVersion": "0.8",
 	"refmap": "mixins.hexalia.refmap.json",
 	"mixins": [
-		"InfusedPlantingMixin",
 		"LivingEntityMixin",
 		"ExperienceMixin",
-		"SugarCanePlanting"
+		"SugarCanePlanting",
+		"CobwebMixin",
+		"ItemCombinerMenuAccessor",
+		"AnvilMixin",
+		"MobMixin",
+		"FishingHookMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

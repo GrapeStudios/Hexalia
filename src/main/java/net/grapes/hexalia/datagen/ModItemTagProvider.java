@@ -66,11 +66,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
     private void addCustomTags() {
         // Herbs and magical components
-        tag(ModTags.Items.CRUSHED_HERBS)
-                .add(ModItems.DREAM_PASTE.get())
-                .add(ModItems.SIREN_PASTE.get())
-                .add(ModItems.SPIRIT_POWDER.get())
-                .add(ModItems.GHOST_POWDER.get());
+        tag(ModTags.Items.HERBS)
+                .add(ModBlocks.SPIRIT_BLOOM.get().asItem())
+                .add(ModItems.SIREN_KELP.get())
+                .add(ModBlocks.DREAMSHROOM.get().asItem())
+                .add(ModBlocks.GHOST_FERN.get().asItem());
 
         // Brews
         tag(ModTags.Items.BREWS)
@@ -80,6 +80,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.BREW_OF_SPIKESKIN.get())
                 .add(ModItems.BREW_OF_SIPHON.get())
                 .add(ModItems.BREW_OF_DAYBLOOM.get())
+                .add(ModItems.BREW_OF_ARACHNID_GRACE.get())
                 .add(ModItems.RUSTIC_BOTTLE.get());
 
         // Minerals

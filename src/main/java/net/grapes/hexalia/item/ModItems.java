@@ -107,6 +107,9 @@ public class ModItems {
     public static final RegistryObject<Item> BREW_OF_DAYBLOOM = ITEMS.register("brew_of_daybloom",
             () -> new BrewItem(new Item.Properties().stacksTo(16), ModMobEffects.DAYBLOOM, 2400, 0,
                     Component.translatable("tooltip.hexalia.daybloom").withStyle(ChatFormatting.BLUE)));
+    public static final RegistryObject<Item> BREW_OF_ARACHNID_GRACE = ITEMS.register("brew_of_arachnid_grace",
+            () -> new BrewItem(new Item.Properties().stacksTo(16), ModMobEffects.ARACHNID_GRACE, 2400, 0,
+                    Component.translatable("tooltip.hexalia.arachnid_grace").withStyle(ChatFormatting.BLUE)));
 
     // Tools & Others
     public static final RegistryObject<Item> MORTAR_AND_PESTLE = ITEMS.register("mortar_and_pestle",
@@ -121,8 +124,10 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.RITUAL_TABLE.get(),new Item.Properties()));
     public static final RegistryObject<Item> CANDLE_SKULL = ITEMS.register("candle_skull",
             () -> new BlockItem(ModBlocks.CANDLE_SKULL.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> WITHER_CANDLE_SKULL = ITEMS.register("wither_candle_skull",
+            () -> new BlockItem(ModBlocks.WITHER_CANDLE_SKULL.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> HEX_FOCUS = ITEMS.register("hex_focus",
-            () -> new HexFocusItem(new Item.Properties()));
+            () -> new HexFocusItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SAGE_PENDANT = ITEMS.register("sage_pendant",
             () -> new Item(new Item.Properties().durability(60).rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> SILK_IDOL = ITEMS.register("silk_idol",

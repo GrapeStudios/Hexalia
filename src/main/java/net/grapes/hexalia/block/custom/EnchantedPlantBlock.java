@@ -28,7 +28,7 @@ public class EnchantedPlantBlock extends BushBlock {
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
             Vec3 vec3 = pState.getOffset(pLevel, pPos);
             return SHAPE.move(vec3.x, vec3.y, vec3.z);
-        }
+    }
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {

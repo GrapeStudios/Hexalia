@@ -30,10 +30,10 @@ import java.util.Optional;
 public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyContainer {
 
     private static final int MOONLIGHT_DURATION = 400;
+    private static final BlockPos.MutableBlockPos mutableWorldPosition = new BlockPos.MutableBlockPos();
     private int timer = 0;
     private boolean active = false;
     private NonNullList<ItemStack> inventory = NonNullList.withSize(1, ItemStack.EMPTY);
-
 
     public RitualBrazierBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.RITUAL_BRAZIER_BE.get(), pos, state);
@@ -48,7 +48,7 @@ public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyCont
                     .getRecipeFor(RitualBrazierRecipe.Type.INSTANCE, new SimpleContainer(itemStack), pLevel);
 
             if (recipe.isPresent()) {
-                if (isNight(pLevel)) {
+                if (isNight(pLevel, pPos)) {
                     pBlockEntity.timer++;
 
                     if (pBlockEntity.timer >= MOONLIGHT_DURATION) {
@@ -87,7 +87,7 @@ public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyCont
             return false;
         }
 
-        if (!isNight(level)) {
+        if (!isNight(level, worldPosition)) {
             player.displayClientMessage(Component.translatable("message.hexalia.moonlight_ritual.not_night"), true);
             return false;
         }
@@ -129,9 +129,16 @@ public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyCont
         return active;
     }
 
-    private static boolean isNight(Level level) {
-        long time = level.getDayTime();
-        return time > 12500 && time < 23000;
+    private static boolean isNight(Level level, BlockPos pos) {
+        mutableWorldPosition.set(pos.getX(), pos.getY(), pos.getZ());
+        long time = level.getDayTime() % 24000;
+        boolean isTimeNight = time > 12500 && time < 23000;
+
+        if (level.canSeeSky(mutableWorldPosition.above())) {
+            return isTimeNight && level.getSkyDarken() > 4;
+        }
+
+        return isTimeNight;
     }
 
     @Override

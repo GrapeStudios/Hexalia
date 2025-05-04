@@ -3,8 +3,10 @@ package net.grapes.hexalia.event;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.block.entity.ModBlockEntities;
+import net.grapes.hexalia.block.entity.renderer.CenserBlockRenderer;
 import net.grapes.hexalia.block.entity.renderer.RitualBrazierRenderer;
 import net.grapes.hexalia.block.entity.renderer.RitualTableBlockEntityRenderer;
+import net.grapes.hexalia.block.entity.renderer.ShelfBlockRenderer;
 import net.grapes.hexalia.particle.ModParticles;
 import net.grapes.hexalia.particle.custom.*;
 import net.minecraft.client.renderer.BiomeColors;
@@ -37,6 +39,8 @@ public class ModEventClientBusEvents {
         event.registerBlockEntityRenderer(ModBlockEntities.MOD_SIGN.get(), SignRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.MOD_HANGING_SIGN.get(), HangingSignRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.RITUAL_BRAZIER_BE.get(), RitualBrazierRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.SHELF_BE.get(), ShelfBlockRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.CENSER_BE.get(), CenserBlockRenderer::new);
     }
 
     @SubscribeEvent

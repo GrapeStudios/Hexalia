@@ -41,7 +41,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         // Axe mineable blocks
         tag(BlockTags.MINEABLE_WITH_AXE)
-                .add(ModBlocks.BREW_SHELF.get())
+                .add(ModBlocks.SHELF.get())
+                .add(ModBlocks.CENSER.get())
                 .add(ModBlocks.LOTUS_FLOWER.get());
 
         // Tool requirements
@@ -49,7 +50,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.SALT_LAMP.get())
                 .add(ModBlocks.RUSTIC_OVEN.get())
                 .add(ModBlocks.SMALL_CAULDRON.get())
-                .add(ModBlocks.BREW_SHELF.get())
+                .add(ModBlocks.SHELF.get())
+                .add(ModBlocks.CENSER.get())
                 .add(ModBlocks.LOTUS_FLOWER.get())
                 .add(ModBlocks.RITUAL_TABLE.get())
                 .add(ModBlocks.SALT_BLOCK.get())

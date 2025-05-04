@@ -110,6 +110,26 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         inventoryTrigger(ItemPredicate.Builder.item().of(Blocks.COBBLED_DEEPSLATE).build()))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.SHELF.get())
+                .pattern("PPP")
+                .pattern("S S")
+                .define('P', Items.COBBLED_DEEPSLATE_SLAB)
+                .define('S', Items.STICK)
+                .unlockedBy("has_cobbled_deepslate",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(Blocks.COBBLED_DEEPSLATE_SLAB).build()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.CENSER.get())
+                .pattern(" P ")
+                .pattern("PAP")
+                .pattern("SSS")
+                .define('P', Items.BRICK)
+                .define('S', ItemTags.LOGS)
+                .define('A', ItemTags.COALS)
+                .unlockedBy("has_brick",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(Items.BRICK).build()))
+                .save(pWriter);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.HEX_FOCUS.get())
                 .pattern("  S")
                 .pattern(" P ")
@@ -121,16 +141,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         inventoryTrigger(ItemPredicate.Builder.item().of(Items.AMETHYST_SHARD).build()))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.BREW_SHELF.get())
-                .pattern("SSS")
-                .pattern("SPS")
-                .pattern("SSS")
-                .define('P', ModItems.RUSTIC_BOTTLE.get())
-                .define('S', ItemTags.PLANKS)
-                .unlockedBy("has_rustic_bottle",
-                        inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.RUSTIC_BOTTLE.get()).build()))
-                .save(pWriter);
-
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.CANDLE_SKULL.get())
                 .pattern("P")
                 .pattern("S")
@@ -140,12 +150,21 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         inventoryTrigger(ItemPredicate.Builder.item().of(Items.SKELETON_SKULL).build()))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.WITHER_CANDLE_SKULL.get())
+                .pattern("P")
+                .pattern("S")
+                .define('P', Items.CANDLE)
+                .define('S', Items.WITHER_SKELETON_SKULL)
+                .unlockedBy("has_skeleton_skull",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(Items.WITHER_SKELETON_SKULL).build()))
+                .save(pWriter);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SILK_IDOL.get())
                 .pattern(" S ")
                 .pattern("SPS")
                 .pattern(" S ")
                 .define('S', ModItems.SILK_FIBER.get())
-                .define('P', ModTags.Items.CRUSHED_HERBS)
+                .define('P', ModTags.Items.HERBS)
                 .unlockedBy("has_silk_fiber",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SILK_FIBER.get()).build()))
                 .save(pWriter);
@@ -279,7 +298,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.PURIFYING_SALTS.get())
                 .requires(ModTags.Items.SALT)
-                .requires(ModTags.Items.CRUSHED_HERBS)
+                .requires(ModTags.Items.HERBS)
                 .requires(Items.LEATHER)
                 .unlockedBy("has_salt",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SALT.get()).build()))
@@ -352,7 +371,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.VERDANT_GRIMOIRE.get())
                 .requires(Items.BOOK)
-                .requires(ModTags.Items.CRUSHED_HERBS)
+                .requires(ModTags.Items.HERBS)
                 .unlockedBy("has_book",
                         inventoryTrigger(ItemPredicate.Builder.item().of(Items.BOOK).build()))
                 .save(pWriter);
@@ -413,8 +432,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 ModItems.RUSTIC_BOTTLE.get(), ModItems.BREW_OF_SIPHON.get())
                 .unlockedBy("has_rustic_bottle", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.RUSTIC_BOTTLE.get()).build()))
                 .save(pWriter);
-        new SmallCauldronRecipeBuilder(List.of(ModItems.MOON_BERRIES.get(), ModItems.SUNFIRE_TOMATO.get(), Items.BLACK_DYE),
+        new SmallCauldronRecipeBuilder(List.of(ModItems.MOON_BERRIES.get(), ModItems.SUNFIRE_TOMATO.get(), ModItems.SPIRIT_POWDER.get()),
                 ModItems.RUSTIC_BOTTLE.get(), ModItems.BREW_OF_DAYBLOOM.get())
+                .unlockedBy("has_rustic_bottle", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.RUSTIC_BOTTLE.get()).build()))
+                .save(pWriter);
+        new SmallCauldronRecipeBuilder(List.of(ModItems.DREAM_PASTE.get(), Items.SPIDER_EYE, Items.BLACK_DYE),
+                ModItems.RUSTIC_BOTTLE.get(), ModItems.BREW_OF_ARACHNID_GRACE.get())
                 .unlockedBy("has_rustic_bottle", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.RUSTIC_BOTTLE.get()).build()))
                 .save(pWriter);
 

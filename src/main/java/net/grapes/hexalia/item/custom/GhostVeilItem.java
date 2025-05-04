@@ -74,20 +74,10 @@ public class GhostVeilItem extends ArmorItem implements GeoItem {
     public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected) {
         if (entity instanceof Player player) {
             if (!world.isClientSide && player.isCrouching() && player.getItemBySlot(EquipmentSlot.CHEST).equals(stack)) {
-                List<LivingEntity> nearbyEntities = world.getEntitiesOfClass(LivingEntity.class,
-                        player.getBoundingBox().inflate(10), mob -> mob instanceof Monster);
-
-                for (LivingEntity mob : nearbyEntities) {
-                    if (mob instanceof Monster hostileMob) {
-                        hostileMob.setTarget(null);
-                    }
-                }
-
                 if (stack.isDamageableItem() && world.getGameTime() % 20 == 0) {
                     stack.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(EquipmentSlot.CHEST));
                 }
             }
         }
     }
-
 }

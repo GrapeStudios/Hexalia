@@ -14,23 +14,23 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShovelItem;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.FenceGateBlock;
-import net.minecraft.world.level.block.piston.PistonHeadBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.ForgeHooks;
+import net.minecraftforge.common.PlantType;
 
 import java.util.concurrent.ThreadLocalRandom;
 
 @SuppressWarnings("deprecation")
 
-public class InfusedFarmlandBlock extends Block {
+public class InfusedFarmlandBlock extends FarmBlock {
 
     public static final VoxelShape SHAPE = Block.box(0.0, 0.0, 0.0, 16.0, 15.0, 16.0);
 
@@ -59,10 +59,9 @@ public class InfusedFarmlandBlock extends Block {
     }
 
     @Override
-    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
-        BlockState blockState = pLevel.getBlockState(pPos.above());
-        return !blockState.isSolid() || blockState.getBlock() instanceof FenceGateBlock
-                || blockState.getBlock() instanceof PistonHeadBlock;
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        BlockState aboveState = level.getBlockState(pos.above());
+        return super.canSurvive(state, level, pos) || aboveState.getBlock() instanceof StemGrownBlock;
     }
 
     @Override
@@ -73,11 +72,41 @@ public class InfusedFarmlandBlock extends Block {
     }
 
     @Override
-    public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pPos, BlockPos pNeighborPos) {
-        if (pDirection == Direction.UP && !pState.canSurvive(pLevel, pPos)) {
-            pLevel.scheduleTick(pPos, this, 1);
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+        if (!level.isRainingAt(pos.above())) {
+            return;
         }
-        return super.updateShape(pState, pDirection, pNeighborState, pLevel, pPos, pNeighborPos);
+
+        BlockState aboveState = level.getBlockState(pos.above());
+        Block aboveBlock = aboveState.getBlock();
+
+        if (aboveBlock instanceof BonemealableBlock growable) {
+            if (growable.isValidBonemealTarget(level, pos.above(), aboveState, false) &&
+                    ForgeHooks.onCropsGrowPre(level, pos.above(), aboveState, true)) {
+
+                growable.performBonemeal(level, level.random, pos.above(), aboveState);
+
+                level.sendParticles(ModParticles.INFUSED_BUBBLE_PARTICLE.get(),
+                        pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5,
+                        8, 0.5, 0.0, 0.5, 0.05);
+
+                level.levelEvent(2005, pos.above(), 0);
+
+                ForgeHooks.onCropsGrowPost(level, pos.above(), aboveState);
+            }
+        }
+    }
+
+    @Override
+    public BlockState getStateForPlacement(BlockPlaceContext context) {
+        return !this.defaultBlockState().canSurvive(context.getLevel(), context.getClickedPos())
+                ? ModBlocks.INFUSED_DIRT.get().defaultBlockState() : super.getStateForPlacement(context);
+    }
+
+    @Override
+    public boolean canSustainPlant(BlockState state, BlockGetter world, BlockPos pos, Direction facing, net.minecraftforge.common.IPlantable plantable) {
+        net.minecraftforge.common.PlantType plantType = plantable.getPlantType(world, pos.relative(facing));
+        return plantType == PlantType.CROP || plantType == PlantType.PLAINS;
     }
 
     private void setToInfusedDirt(Level pLevel, BlockPos pPos) {

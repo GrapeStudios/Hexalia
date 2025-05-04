@@ -14,7 +14,6 @@ public class ModBlockEntities {
             DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, HexaliaMod.MOD_ID);
 
     // Custom Block Entities
-
     public static final RegistryObject<BlockEntityType<SmallCauldronBlockEntity>> SMALL_CAULDRON_BE =
             BLOCK_ENTITIES.register("small_cauldron_block_entity", () -> BlockEntityType.Builder.of(SmallCauldronBlockEntity::new,
                     ModBlocks.SMALL_CAULDRON.get()).build(null));
@@ -22,10 +21,6 @@ public class ModBlockEntities {
     public static final RegistryObject<BlockEntityType<RitualTableBlockEntity>> RITUAL_TABLE_BE =
             BLOCK_ENTITIES.register("ritual_table_block_entity", () -> BlockEntityType.Builder.of(RitualTableBlockEntity::new,
                     ModBlocks.RITUAL_TABLE.get()).build(null));
-
-    public static final RegistryObject<BlockEntityType<BrewShelfBlockEntity>> BREW_SHELF_BLOCK_BE =
-            BLOCK_ENTITIES.register("brew_shelf_block_entity", () -> BlockEntityType.Builder.of(BrewShelfBlockEntity::new,
-                    ModBlocks.BREW_SHELF.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<NautiliteBlockEntity>> NAUTILITE_BE =
             BLOCK_ENTITIES.register("nautilite_block_entity", () -> BlockEntityType.Builder.of(NautiliteBlockEntity::new,
@@ -43,8 +38,15 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("ritual_brazier_block_entity", () -> BlockEntityType.Builder.of(RitualBrazierBlockEntity::new,
                     ModBlocks.RITUAL_BRAZIER.get()).build(null));
 
-    // Mod Signs
+    public static final RegistryObject<BlockEntityType<ShelfBlockEntity>> SHELF_BE =
+            BLOCK_ENTITIES.register("shelf_block_entity", () -> BlockEntityType.Builder.of(ShelfBlockEntity::new,
+                    ModBlocks.SHELF.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<CenserBlockEntity>> CENSER_BE =
+            BLOCK_ENTITIES.register("censer_block_entity", () -> BlockEntityType.Builder.of(CenserBlockEntity::new,
+                    ModBlocks.CENSER.get()).build(null));
+
+    // Mod Signs
     public static final RegistryObject<BlockEntityType<ModSignBlockEntity>> MOD_SIGN =
             BLOCK_ENTITIES.register("mod_sign", () ->
                     BlockEntityType.Builder.of(ModSignBlockEntity::new, ModBlocks.COTTONWOOD_SIGN.get(), ModBlocks.COTTONWOOD_WALL_SIGN.get(),
