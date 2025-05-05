@@ -15,7 +15,8 @@ public class ModTags {
     public static class Items {
 
         // Custom Item Tags
-        public static final TagKey<Item> HERBS = tag("crushed_herbs");
+        public static final TagKey<Item> HERBS = tag("herbs");
+        public static final TagKey<Item> CRUSHED_HERBS = tag("crushed_herbs");
         public static final TagKey<Item> BREWS = tag("brews");
 
         // Forge Item Tags

@@ -72,6 +72,12 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModBlocks.DREAMSHROOM.get().asItem())
                 .add(ModBlocks.GHOST_FERN.get().asItem());
 
+        tag(ModTags.Items.CRUSHED_HERBS)
+                .add(ModItems.SPIRIT_POWDER.get().asItem())
+                .add(ModItems.SIREN_KELP.get())
+                .add(ModItems.DREAM_PASTE.get().asItem())
+                .add(ModItems.GHOST_POWDER.get().asItem());
+
         // Brews
         tag(ModTags.Items.BREWS)
                 .add(ModItems.BREW_OF_HOMESTEAD.get())

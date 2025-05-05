@@ -6,7 +6,6 @@ import net.grapes.hexalia.block.entity.CenserBlockEntity;
 import net.grapes.hexalia.item.ModItems;
 import net.grapes.hexalia.sound.ModSounds;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -20,7 +19,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.HopperBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.HopperBlockEntity;
 import net.minecraft.world.phys.AABB;
@@ -28,10 +26,12 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.*;
 import java.util.function.BiConsumer;
-import java.util.stream.Collectors;
 
 public class CenserEffectHandler {
+
     public static final int AREA_RADIUS = 16;
+    public static final int EFFECT_DURATION = 7200;
+
     public static final Map<HerbCombination, BiConsumer<Level, BlockPos>> EFFECTS = Map.of(
             new HerbCombination(ModItems.SIREN_KELP.get(), ModBlocks.SPIRIT_BLOOM.get().asItem()), CenserEffectHandler::applyFireproofPresence,
             new HerbCombination(ModBlocks.GHOST_FERN.get().asItem(), ModBlocks.SPIRIT_BLOOM.get().asItem()), CenserEffectHandler::applyUndeadVeil,
@@ -60,7 +60,6 @@ public class CenserEffectHandler {
             return this.duration <= 0;
         }
 
-        // Only keep the combo getter since it's actually used
         public HerbCombination combo() {
             return combo;
         }
@@ -68,15 +67,29 @@ public class CenserEffectHandler {
 
     private static final Map<BlockPos, ActiveCenserEffect> ACTIVE_EFFECTS = new HashMap<>();
 
+    public static void registerActiveEffect(Level level, BlockPos pos, HerbCombination combo, int remainingTime) {
+        if (level.isClientSide()) return;
+
+        ACTIVE_EFFECTS.put(pos, new ActiveCenserEffect(null, remainingTime, combo));
+
+        applyEffects(level, pos, combo);
+    }
+
+    public static void removeActiveEffect(BlockPos pos) {
+        ACTIVE_EFFECTS.remove(pos);
+    }
+
     public static void startEffect(Level level, BlockPos pos, HerbCombination combo) {
         if (level.isClientSide()) return;
 
-        // Skip effect type lookup since we know the combo is valid
-        // Default duration (20 seconds = 400 ticks)
-        ACTIVE_EFFECTS.put(pos, new ActiveCenserEffect(null, 400, combo)); // type isn't actually used
+        ACTIVE_EFFECTS.put(pos, new ActiveCenserEffect(null, EFFECT_DURATION, combo));
 
-        // Apply initial effect
         applyEffects(level, pos, combo);
+
+        if (level.getBlockEntity(pos) instanceof CenserBlockEntity censer) {
+            censer.setActiveCombination(combo);
+            censer.setBurnTime(EFFECT_DURATION);
+        }
     }
 
     public static void updateEffects(Level level) {

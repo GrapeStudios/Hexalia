@@ -77,7 +77,7 @@ public class ModItems {
     public static final RegistryObject<Item> GHOST_POWDER = ITEMS.register("ghost_powder",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> PURIFYING_SALTS = ITEMS.register("purifying_salts",
-            () -> new PurifyingSaltsItem(new Item.Properties()));
+            () -> new PurifyingSaltsItem(new Item.Properties().durability(6)));
     public static final RegistryObject<Item> SPICY_SANDWICH = ITEMS.register("spicy_sandwich",
             () -> new Item(new Item.Properties().food(ModFoodProperties.SPICY_SANDWICH)));
     public static final RegistryObject<Item> CHILLBERRY_PIE = ITEMS.register("chillberry_pie",

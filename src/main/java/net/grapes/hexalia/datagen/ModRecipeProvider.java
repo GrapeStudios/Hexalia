@@ -164,7 +164,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("SPS")
                 .pattern(" S ")
                 .define('S', ModItems.SILK_FIBER.get())
-                .define('P', ModTags.Items.HERBS)
+                .define('P', ModTags.Items.CRUSHED_HERBS)
                 .unlockedBy("has_silk_fiber",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SILK_FIBER.get()).build()))
                 .save(pWriter);
@@ -298,7 +298,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.PURIFYING_SALTS.get())
                 .requires(ModTags.Items.SALT)
-                .requires(ModTags.Items.HERBS)
+                .requires(ModTags.Items.CRUSHED_HERBS)
+                .requires(ModTags.Items.CRUSHED_HERBS)
                 .requires(Items.LEATHER)
                 .unlockedBy("has_salt",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SALT.get()).build()))

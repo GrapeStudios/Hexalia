@@ -38,14 +38,16 @@ public class PurifyingSaltsItem extends Item {
     }
 
     @Override
-    public ItemStack finishUsingItem(ItemStack pStack, Level level, LivingEntity user) {
+    public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity user) {
         if (user instanceof ServerPlayer serverPlayer) {
             serverPlayer.awardStat(Stats.ITEM_USED.get(this));
-            CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, pStack);
+            CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
         }
 
         if (user instanceof Player player && !player.getAbilities().instabuild) {
-            pStack.shrink(1);
+            stack.hurtAndBreak(1, user, (entity) -> {
+                entity.broadcastBreakEvent(user.getUsedItemHand());
+            });
         }
 
         level.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.BONE_MEAL_USE,
@@ -66,7 +68,7 @@ public class PurifyingSaltsItem extends Item {
             }
         }
 
-        return pStack.isEmpty() ? ItemStack.EMPTY : pStack;
+        return stack;
     }
 
     @Override

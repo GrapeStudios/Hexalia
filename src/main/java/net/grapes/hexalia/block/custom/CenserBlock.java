@@ -152,6 +152,7 @@ public class CenserBlock extends BaseEntityBlock {
                         if (!pPlayer.getInventory().add(removedStack)) {
                             pPlayer.drop(removedStack, false);
                         }
+                        pLevel.playSound(null, pPos, SoundEvents.ITEM_FRAME_REMOVE_ITEM, SoundSource.BLOCKS, 0.5f, 1.0f);
                         return InteractionResult.SUCCESS;
                     }
                 }

@@ -87,7 +87,7 @@ public class ModAdvancementsProvider implements ForgeAdvancementProvider.Advance
                         new ResourceLocation(HexaliaMod.MOD_ID, "textures/block/willow_log.png"), FrameType.GOAL,
                         true, true, false))
                 .parent(saltItem)
-                .addCriterion("use_weather_idol", ConsumeItemTrigger.TriggerInstance.usedItem(ModItems.PURIFYING_SALTS.get()))
+                .addCriterion("use_purifying_salts", ConsumeItemTrigger.TriggerInstance.usedItem(ModItems.PURIFYING_SALTS.get()))
                 .save(saver, new ResourceLocation(HexaliaMod.MOD_ID, "purifying_salts"), existingFileHelper);
 
         Advancement ritualTable = Advancement.Builder.advancement()

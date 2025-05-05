@@ -22,17 +22,19 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class CenserBlockEntity extends BlockEntity {
+
     private static final int SIZE = 2;
     private final NonNullList<ItemStack> items = NonNullList.withSize(SIZE, ItemStack.EMPTY);
     private HerbCombination activeCombination = null;
-
     private int burnTime = 0;
-    public static final int MAX_BURN_TIME = 600; // 5 minutes
+    public static final int MAX_BURN_TIME = 7200;
     private static final int EFFECT_INTERVAL = 40; // Apply effects every 2 seconds
+    private boolean effectActive = false;
 
     public CenserBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.CENSER_BE.get(), pos, state);
     }
+
 
     public void tick(Level level, BlockPos pos, BlockState state) {
         if (!state.getValue(CenserBlock.LIT)) return;
@@ -40,30 +42,43 @@ public class CenserBlockEntity extends BlockEntity {
         if (burnTime > 0) {
             burnTime--;
 
-            // Apply effects at interval using stored combination
             if (burnTime % EFFECT_INTERVAL == 0 && activeCombination != null) {
                 CenserEffectHandler.applyEffects(level, pos, activeCombination);
+
+                if (!effectActive) {
+                    CenserEffectHandler.registerActiveEffect(level, pos, activeCombination, burnTime);
+                    effectActive = true;
+                }
             }
 
             if (burnTime <= 0) {
                 extinguish(level, pos, state);
             }
+
             setChanged();
         }
     }
 
 
     private void extinguish(Level level, BlockPos pos, BlockState state) {
-        // Clear effects before extinguishing
         if (activeCombination != null) {
             CenserEffectHandler.clearPlayerEffectsInRange(level, pos);
+            CenserEffectHandler.removeActiveEffect(pos);
             activeCombination = null;
+            effectActive = false;
         }
 
         level.setBlockAndUpdate(pos, state.setValue(CenserBlock.LIT, false));
         level.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5f, 1.0f);
         setChanged();
         sendUpdate();
+    }
+
+    public void reactivateEffect() {
+        if (activeCombination != null && burnTime > 0 && !effectActive && level != null) {
+            CenserEffectHandler.registerActiveEffect(level, worldPosition, activeCombination, burnTime);
+            effectActive = true;
+        }
     }
 
     public void setBurnTime(int time) {
@@ -126,20 +141,24 @@ public class CenserBlockEntity extends BlockEntity {
     public void load(CompoundTag tag) {
         super.load(tag);
         ContainerHelper.loadAllItems(tag, items);
+
         for (int i = 0; i < items.size(); i++) {
             ItemStack stack = items.get(i);
             if (stack.isEmpty()) continue;
             if (stack.getCount() <= 0 || stack.getCount() > stack.getMaxStackSize()) {
                 stack.setCount(1);
             }
-            if (tag.contains("ActiveCombination")) {
-                CompoundTag comboTag = tag.getCompound("ActiveCombination");
-                Item item1 = Item.byId(comboTag.getInt("Item1"));
-                Item item2 = Item.byId(comboTag.getInt("Item2"));
-                this.activeCombination = new HerbCombination(item1, item2);
-            }
         }
+
+        if (tag.contains("ActiveCombination")) {
+            CompoundTag comboTag = tag.getCompound("ActiveCombination");
+            Item item1 = Item.byId(comboTag.getInt("Item1"));
+            Item item2 = Item.byId(comboTag.getInt("Item2"));
+            this.activeCombination = new HerbCombination(item1, item2);
+        }
+
         burnTime = tag.getInt("BurnTime");
+        effectActive = tag.getBoolean("EffectActive");
     }
 
     @Override
@@ -147,11 +166,21 @@ public class CenserBlockEntity extends BlockEntity {
         super.saveAdditional(tag);
         ContainerHelper.saveAllItems(tag, items);
         tag.putInt("BurnTime", burnTime);
+        tag.putBoolean("EffectActive", effectActive);
+
         if (activeCombination != null) {
             CompoundTag comboTag = new CompoundTag();
             comboTag.putInt("Item1", Item.getId(activeCombination.item1()));
             comboTag.putInt("Item2", Item.getId(activeCombination.item2()));
             tag.put("ActiveCombination", comboTag);
+        }
+    }
+
+    @Override
+    public void onLoad() {
+        super.onLoad();
+        if (level != null && !level.isClientSide && activeCombination != null && burnTime > 0) {
+            reactivateEffect();
         }
     }
 
