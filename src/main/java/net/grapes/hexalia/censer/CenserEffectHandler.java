@@ -99,15 +99,12 @@ public class CenserEffectHandler {
             BlockPos pos = entry.getKey();
             ActiveCenserEffect effect = entry.getValue();
 
-            // Update duration using the new method
             effect.decrementDuration();
 
             if (effect.isExpired()) {
-                // Effect expired
                 clearEffect(level, pos, effect.combo());
                 it.remove();
             } else {
-                // Reapply effect
                 applyEffects(level, pos, effect.combo());
             }
         }
@@ -142,7 +139,7 @@ public class CenserEffectHandler {
             entity.setRemainingFireTicks(0);
             entity.addEffect(new MobEffectInstance(
                     MobEffects.FIRE_RESISTANCE,
-                    100,  // 5 seconds
+                    100,
                     0,
                     false,
                     false,
@@ -158,18 +155,15 @@ public class CenserEffectHandler {
                         e -> e instanceof Monster &&
                                 e.getClassification(false) == MobCategory.MONSTER)
                 .forEach(mob -> {
-                    // Clear all target references
                     mob.setTarget(null);
                     mob.setLastHurtByMob(null);
                     mob.setLastHurtByPlayer(null);
 
-                    // Handle special mob types
                     if (mob instanceof NeutralMob neutralMob) {
                         neutralMob.setPersistentAngerTarget(null);
                         neutralMob.stopBeingAngry();
                     }
 
-                    // Visual indicator
                     if (!mob.hasEffect(MobEffects.GLOWING)) {
                         mob.addEffect(new MobEffectInstance(
                                 MobEffects.GLOWING,
@@ -180,8 +174,7 @@ public class CenserEffectHandler {
                         ));
                     }
 
-                    // Disable AI targeting temporarily
-                    mob.setNoActionTime(40); // 2 second cooldown
+                    mob.setNoActionTime(40);
                 });
     }
 
@@ -260,12 +253,10 @@ public class CenserEffectHandler {
     }
 
     private static void playSuctionEffects(ServerLevel level, Vec3 pos) {
-        // Play sound
         level.playSound(null, pos.x, pos.y, pos.z,
                 ModSounds.WIND_BURST.get(), SoundSource.BLOCKS,
                 0.7f, 0.9f + level.random.nextFloat() * 0.2f);
 
-        // Spawn particles (matching your Windsong implementation)
         for (int i = 0; i < 8; i++) {
             double angle = level.random.nextDouble() * 2 * Math.PI;
             double radius = level.random.nextDouble() * 0.5;
@@ -275,9 +266,9 @@ public class CenserEffectHandler {
 
             level.sendParticles(ParticleTypes.EFFECT,
                     x, y, z,
-                    1,  // Count
-                    0, 0, 0,  // Delta
-                    0.1); // Speed
+                    1,
+                    0, 0, 0,
+                    0.1);
         }
     }
 
@@ -297,13 +288,8 @@ public class CenserEffectHandler {
         return nearest;
     }
 
-    ////
-
     public static boolean isValidCombination(Item item1, Item item2) {
-        // Create a temporary combination (order doesn't matter)
         HerbCombination combo = new HerbCombination(item1, item2);
-
-        // Check if this combination exists in our effects map
         return EFFECTS.containsKey(combo);
     }
 
@@ -318,7 +304,6 @@ public class CenserEffectHandler {
     public static boolean isEffectActiveInArea(Level level, BlockPos pos, EffectType effectType) {
         AABB area = new AABB(pos).inflate(AREA_RADIUS);
 
-        // Get all block entities in the area
         List<BlockEntity> blockEntities = new ArrayList<>();
         BlockPos.betweenClosedStream(
                         BlockPos.containing(area.minX, area.minY, area.minZ),
@@ -341,7 +326,6 @@ public class CenserEffectHandler {
 
                         HerbCombination combo = new HerbCombination(herb1.getItem(), herb2.getItem());
 
-                        // Check if this combination matches the requested effect type
                         return getEffectTypeForCombination(combo) == effectType;
                     }
                     return false;
@@ -349,7 +333,6 @@ public class CenserEffectHandler {
     }
 
     private static EffectType getEffectTypeForCombination(HerbCombination combo) {
-        // Create a mapping of combinations to effect types
         Map<HerbCombination, EffectType> combinationToEffect = Map.of(
                 new HerbCombination(ModItems.SIREN_KELP.get(), ModBlocks.SPIRIT_BLOOM.get().asItem()), EffectType.FIREPROOF_PRESENCE,
                 new HerbCombination(ModBlocks.GHOST_FERN.get().asItem(), ModBlocks.SPIRIT_BLOOM.get().asItem()), EffectType.UNDEAD_VEIL,
@@ -381,7 +364,7 @@ public class CenserEffectHandler {
         if (combo.equals(new HerbCombination(ModBlocks.DREAMSHROOM.get().asItem(), ModBlocks.GHOST_FERN.get().asItem()))) {
             return "message.hexalia.censer.suction_zone";
         }
-        return "message.hexalia.censer.generic_effect"; // Fallback
+        return "message.hexalia.censer.generic_effect";
     }
 }
 

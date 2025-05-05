@@ -18,9 +18,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class CenserBlockRenderer implements BlockEntityRenderer<CenserBlockEntity> {
     private final ItemRenderer itemRenderer;
-    private static final float ITEM_SCALE = 0.75f; // Increased from 0.35f
-    private static final float BASE_Y_OFFSET = 6/16f + 0.01f; // 6 pixels up + slight offset
-    private static final float ITEM_SPACING = 0.02f; // Vertical spacing between items
+    private static final float ITEM_SCALE = 0.75f;
+    private static final float BASE_Y_OFFSET = 6/16f + 0.01f;
+    private static final float ITEM_SPACING = 0.02f;
 
     public CenserBlockRenderer(BlockEntityRendererProvider.Context context) {
         this.itemRenderer = context.getItemRenderer();
@@ -39,22 +39,19 @@ public class CenserBlockRenderer implements BlockEntityRenderer<CenserBlockEntit
         Direction facing = state.getValue(CenserBlock.FACING);
 
         poseStack.pushPose();
-        // Center position accounting for block facing
         poseStack.translate(0.5, 0.0, 0.5);
         poseStack.mulPose(Axis.YP.rotationDegrees(-facing.toYRot()));
 
-        // Position items in the center of the bowl area
         float currentY = BASE_Y_OFFSET;
-        float itemX = 0f;       // Centered X position
-        float itemZ = -0.0625f; // Slightly toward front
+        float itemX = 0f;
+        float itemZ = -0.0625f;
 
         for (ItemStack stack : items) {
             if (stack.isEmpty()) continue;
 
             poseStack.pushPose();
-            // Position and orient the item flat in the bowl
             poseStack.translate(itemX, currentY, itemZ);
-            poseStack.mulPose(Axis.XP.rotationDegrees(90)); // Lay items flat
+            poseStack.mulPose(Axis.XP.rotationDegrees(90));
             poseStack.scale(ITEM_SCALE, ITEM_SCALE, ITEM_SCALE);
 
             itemRenderer.renderStatic(
@@ -69,7 +66,7 @@ public class CenserBlockRenderer implements BlockEntityRenderer<CenserBlockEntit
             );
 
             poseStack.popPose();
-            currentY += ITEM_SPACING; // Stack next item slightly higher
+            currentY += ITEM_SPACING;
         }
 
         poseStack.popPose();

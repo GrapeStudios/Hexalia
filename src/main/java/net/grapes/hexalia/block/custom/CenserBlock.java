@@ -80,7 +80,6 @@ public class CenserBlock extends BaseEntityBlock {
                 boolean isLit = newState.getValue(LIT);
 
                 if (wasLit && !isLit) {
-                    // Turning off the censer: clear rendering items
                     censer.clearItems();
                     world.sendBlockUpdated(pos, oldState, newState, Block.UPDATE_ALL);
                 }
@@ -203,7 +202,6 @@ public class CenserBlock extends BaseEntityBlock {
     @Override
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
         if (pState.getValue(LIT)) {
-            // Play crackling sounds (same as campfire)
             if (pRandom.nextInt(10) == 0) {
                 pLevel.playLocalSound(
                         pPos.getX() + 0.5D,
@@ -217,7 +215,6 @@ public class CenserBlock extends BaseEntityBlock {
                 );
             }
 
-            // Main smoke particles (always visible, frequent like campfire)
             pLevel.addAlwaysVisibleParticle(
                     ParticleTypes.CAMPFIRE_COSY_SMOKE,
                     true,
@@ -229,7 +226,6 @@ public class CenserBlock extends BaseEntityBlock {
                     0.0D
             );
 
-            // Secondary smoke particles (denser at source)
             pLevel.addParticle(
                     ParticleTypes.SMOKE,
                     pPos.getX() + 0.5D + pRandom.nextDouble() / 4.0D * (pRandom.nextBoolean() ? 1 : -1),
@@ -247,7 +243,7 @@ public class CenserBlock extends BaseEntityBlock {
                         pPos.getX() + 0.5D,
                         pPos.getY() + 0.3D,
                         pPos.getZ() + 0.5D,
-                        pRandom.nextFloat() / 8.0F,  // Very subtle movement
+                        pRandom.nextFloat() / 8.0F,
                         0.0D,
                         pRandom.nextFloat() / 8.0F
                 );
@@ -259,9 +255,9 @@ public class CenserBlock extends BaseEntityBlock {
     public void onRemove(BlockState state, Level world, BlockPos pos, BlockState newState, boolean moved) {
         if (!state.is(newState.getBlock())) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof CenserBlockEntity censer) {  // Changed from ShelfBlockEntity
+            if (blockEntity instanceof CenserBlockEntity censer) {
                 if (world instanceof ServerLevel) {
-                    Containers.dropContents(world, pos, censer.getItems());  // Simplified drop
+                    Containers.dropContents(world, pos, censer.getItems());
                 }
                 world.updateNeighbourForOutputSignal(pos, this);
             }
