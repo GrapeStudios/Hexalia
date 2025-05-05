@@ -1,7 +1,7 @@
 {
   "parent": "hexalia:salt",
   "criteria": {
-    "use_weather_idol": {
+    "use_purifying_salts": {
       "conditions": {
         "item": {
           "items": [
@@ -21,7 +21,8 @@
     "frame": "goal",
     "hidden": false,
     "icon": {
-      "item": "hexalia:purifying_salts"
+      "item": "hexalia:purifying_salts",
+      "nbt": "{Damage:0}"
     },
     "show_toast": true,
     "title": {
@@ -30,7 +31,7 @@
   },
   "requirements": [
     [
-      "use_weather_idol"
+      "use_purifying_salts"
     ]
   ],
   "sends_telemetry_event": true

@@ -45,7 +45,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModBlocks.GHOST_FERN.get().asItem())
                 .add(ModBlocks.NIGHTSHADE_BUSH.get().asItem())
                 .add(ModBlocks.BEGONIA.get().asItem())
-                .add(ModBlocks.LAVENDER.get().asItem());
+                .add(ModBlocks.LAVENDER.get().asItem())
+                .add(ModBlocks.DAHLIA.get().asItem());
 
         // Small flowers
         tag(ItemTags.SMALL_FLOWERS)
@@ -55,7 +56,8 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModBlocks.GHOST_FERN.get().asItem())
                 .add(ModBlocks.NIGHTSHADE_BUSH.get().asItem())
                 .add(ModBlocks.BEGONIA.get().asItem())
-                .add(ModBlocks.LAVENDER.get().asItem());
+                .add(ModBlocks.LAVENDER.get().asItem())
+                .add(ModBlocks.DAHLIA.get().asItem());
 
         // Villager related
         tag(ItemTags.VILLAGER_PLANTABLE_SEEDS)
@@ -95,6 +97,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
         tag(ModTags.Items.SALT_BLOCKS)
                 .add(ModBlocks.SALT_BLOCK.get().asItem());
+
+        tag(ModTags.Items.GEMS_DIAMOND)
+                .add(Items.DIAMOND);
 
         // Fungi
         tag(ModTags.Items.MUSHROOMS)

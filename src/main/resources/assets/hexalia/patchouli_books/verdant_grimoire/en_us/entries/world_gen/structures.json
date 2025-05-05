@@ -18,13 +18,13 @@
     },
     {
       "type": "patchouli:text",
-      "text": "The Salt Oasis is a structure found in the desert, it consist of a small oasis of water in which you can find Salt Blocks.$(br2)The Oasis also hosts plants that grows in arid biomes such as Wild Sunfire Tomatoes and Saltsprout."
+      "text": "The Barren Hut is a structure found in the desert, it consist of a hut in which you can find Salt Blocks.$(br2)The Barren Hut also hosts a new type of plant, the Saltsprout."
     },
     {
       "type": "patchouli:image",
-      "title": "Salt Oasis",
+      "title": "Barren Hut",
       "images": [
-        "hexalia:textures/gui/patchouli/salt_oasis.png"
+        "hexalia:textures/gui/patchouli/barren_hut.png"
       ],
       "border": true
     }

@@ -111,7 +111,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(pWriter);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.SHELF.get())
-                .pattern("PPP")
+                .pattern(" P ")
                 .pattern("S S")
                 .define('P', Items.COBBLED_DEEPSLATE_SLAB)
                 .define('S', Items.STICK)
@@ -213,6 +213,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_nightshade_bush",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModBlocks.NIGHTSHADE_BUSH.get()).build()))
                 .save(pWriter, new ResourceLocation("hexalia", "black_dye_from_nightshade"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.ORANGE_DYE)
+                .requires(ModBlocks.DAHLIA.get())
+                .unlockedBy("has_dahlia",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(ModBlocks.DAHLIA.get()).build()))
+                .save(pWriter, new ResourceLocation("hexalia", "orange_dye_from_dahlia"));
 
         // Reversible Compacting Recipes for Blocks
         nineBlockStorageRecipes(pWriter, RecipeCategory.BUILDING_BLOCKS, ModItems.SALT.get(),
@@ -452,7 +458,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEX_FOCUS.get()).build()))
                 .save(pWriter);
         new TransmutationRecipeBuilder(List.of(ModItems.SPIRIT_POWDER.get(), Items.GOLD_NUGGET, Items.BOOK, Items.EXPERIENCE_BOTTLE),
-                Items.DIAMOND, ModItems.SAGE_PENDANT.get())
+                ModItems.MOON_CRYSTAL.get(), ModItems.SAGE_PENDANT.get())
                 .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEX_FOCUS.get()).build()))
                 .save(pWriter);
         new TransmutationRecipeBuilder(List.of(ModItems.DREAM_PASTE.get(), ModItems.SPIRIT_POWDER.get(), ModItems.EARTH_NODE.get(), ModItems.TREE_RESIN.get()),

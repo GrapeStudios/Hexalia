@@ -37,6 +37,8 @@ public class ModTags {
 
         public static final TagKey<Item> COOKED_MEATS = forgeItemTag("cooked_meats");
 
+        public static final TagKey<Item> GEMS_DIAMOND = forgeItemTag("gems/diamond");
+
         // Wood-related Tags
         public static final TagKey<Item> COTTONWOOD_LOGS = tag("cottonwood_logs");
         public static final TagKey<Item> WILLOW_LOGS = tag("willow_logs");

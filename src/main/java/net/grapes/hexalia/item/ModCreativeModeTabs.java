@@ -107,6 +107,7 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.HENBANE.get());
                         output.accept(ModBlocks.BEGONIA.get());
                         output.accept(ModBlocks.LAVENDER.get());
+                        output.accept(ModBlocks.DAHLIA.get());
                         output.accept(ModItems.LOTUS_FLOWER.get());
                         output.accept(ModBlocks.PALE_MUSHROOM.get());
                         output.accept(ModBlocks.WITCHWEED.get());

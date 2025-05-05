@@ -67,7 +67,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.GHOST_FERN.get())
                 .add(ModBlocks.NIGHTSHADE_BUSH.get())
                 .add(ModBlocks.BEGONIA.get())
-                .add(ModBlocks.LAVENDER.get());
+                .add(ModBlocks.LAVENDER.get())
+                .add(ModBlocks.DAHLIA.get());
 
         // Small flowers
         tag(BlockTags.SMALL_FLOWERS)
@@ -77,7 +78,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.GHOST_FERN.get())
                 .add(ModBlocks.NIGHTSHADE_BUSH.get())
                 .add(ModBlocks.BEGONIA.get())
-                .add(ModBlocks.LAVENDER.get());
+                .add(ModBlocks.LAVENDER.get())
+                .add(ModBlocks.DAHLIA.get());
 
         // Special plant properties
         tag(BlockTags.FROG_PREFER_JUMP_TO)
@@ -233,7 +235,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.POTTED_WINDSONG.get())
                 .add(ModBlocks.POTTED_MORPHORA.get())
                 .add(ModBlocks.POTTED_COTTONWOOD_SAPLING.get())
-                .add(ModBlocks.POTTED_WILLOW_SAPLING.get());
+                .add(ModBlocks.POTTED_WILLOW_SAPLING.get())
+                .add(ModBlocks.POTTED_DAHLIA.get());
 
         // Dirt
         tag(BlockTags.DIRT)

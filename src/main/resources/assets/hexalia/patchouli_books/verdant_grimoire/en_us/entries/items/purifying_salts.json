@@ -7,7 +7,7 @@
     {
       "type": "patchouli:spotlight",
       "item": "hexalia:purifying_salts",
-      "text": "This item can be use to $(#bcbcbc)remove all negative status effects$() from the player, similar to drinking milk."
+      "text": "This item can be use to $(#bcbcbc)remove all negative status effects$() from the player, similar to drinking milk, the item can be used up to 6 times before it is consumed."
     },
     {
       "type": "patchouli:crafting",

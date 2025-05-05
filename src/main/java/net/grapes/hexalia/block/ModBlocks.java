@@ -95,6 +95,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> POTTED_LAVENDER = BLOCKS.register("potted_lavender",
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), LAVENDER, BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM)));
 
+    public static final RegistryObject<Block> DAHLIA = registerBlock("dahlia",
+            () -> new FlowerBlock(() -> MobEffects.LUCK, 6, BlockBehaviour.Properties.copy(Blocks.ALLIUM)));
+    public static final RegistryObject<Block> POTTED_DAHLIA = BLOCKS.register("potted_dahlia",
+            () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), DAHLIA, BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM)));
+
     public static final RegistryObject<Block> LOTUS_FLOWER = BLOCKS.register("lotus_flower",
             () -> new WaterPlantBlock(BlockBehaviour.Properties.copy(Blocks.LILY_PAD).lightLevel(state -> 6)));
     public static final RegistryObject<Block> PALE_MUSHROOM = registerBlock("pale_mushroom",

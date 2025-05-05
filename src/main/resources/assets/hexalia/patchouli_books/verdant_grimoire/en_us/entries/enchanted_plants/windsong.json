@@ -12,6 +12,11 @@
     {
       "type": "hexalia:transmutation",
       "recipe": "hexalia:windsong_transmutation"
+    },
+    {
+      "type": "patchouli:spotlight",
+      "item": "hexalia:censer",
+      "text": "If a Windsong is planted in the Censer block while the $(l:hexalia:block/censer)Suction Zone$() effect is active, items dropped on the ground will be moved to the inventory of the nearest hopper in the area."
     }
   ]
 }

@@ -50,6 +50,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> HENBANE_KEY = registerKey("henbane");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BEGONIA_KEY = registerKey("begonia");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LAVENDER_KEY = registerKey("lavender");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DAHLIA_KEY = registerKey("dahlia");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> COTTONWOOD_KEY = registerKey("cottonwood_key");
     public static final ResourceKey<ConfiguredFeature<?, ?>> WILLOW_KEY = registerKey("willow_key");
@@ -110,6 +111,10 @@ public class ModConfiguredFeatures {
         register(context, LAVENDER_KEY, Feature.FLOWER,
                 new RandomPatchConfiguration(15, 7, 5, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.LAVENDER.get())))));
+
+        register(context, DAHLIA_KEY, Feature.FLOWER,
+                new RandomPatchConfiguration(15, 7, 5, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                        new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.DAHLIA.get())))));
 
         register(context, LOTUS_FLOWER_KEY, Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(5, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,

@@ -31,6 +31,7 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_DARK_OAK_COCOON = registerKey("add_dark_oak_cocoon");
     public static final ResourceKey<BiomeModifier> ADD_BEGONIA = registerKey("add_begonia");
     public static final ResourceKey<BiomeModifier> ADD_LAVENDER = registerKey("add_lavender");
+    public static final ResourceKey<BiomeModifier> ADD_DAHLIA = registerKey("add_dahlia");
 
     public static final ResourceKey<BiomeModifier> ADD_DUCKWEED = registerKey("add_duckweed");
     public static final ResourceKey<BiomeModifier> ADD_HEXED_BULRUSH = registerKey("add_hexed_bulrush");
@@ -50,6 +51,7 @@ public class ModBiomeModifiers {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);
         Optional<Holder.Reference<Biome>> taigaBiome = biomes.get(Biomes.TAIGA);
+        Optional<Holder.Reference<Biome>> flowerForest = biomes.get(Biomes.FLOWER_FOREST);
         Optional<Holder.Reference<Biome>> savannaBiome = biomes.get(Biomes.SAVANNA);
         Optional<Holder.Reference<Biome>> darkForestBiome = biomes.get(Biomes.DARK_FOREST);
         Optional<Holder.Reference<Biome>> enchantedBayou = biomes.get(ModBiomes.ENCHANTED_BAYOU);
@@ -97,6 +99,10 @@ public class ModBiomeModifiers {
         context.register(ADD_LAVENDER, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(taigaBiome.get()),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.LAVENDER_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+        context.register(ADD_DAHLIA, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(flowerForest.get()),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.DAHLIA_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
         context.register(ADD_DUCKWEED, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(enchantedBayou.get()),
