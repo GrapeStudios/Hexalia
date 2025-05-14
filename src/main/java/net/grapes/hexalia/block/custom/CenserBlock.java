@@ -74,7 +74,7 @@ public class CenserBlock extends BlockWithEntity {
 
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
-        if (state.getBlock() != newState.getBlock()) {  // Changed from == to !=
+        if (state.getBlock() != newState.getBlock()) {
             BlockEntity blockEntity = world.getBlockEntity(pos);
             if (blockEntity instanceof CenserBlockEntity censer) {
                 for (int i = 0; i < censer.getItems().size(); i++) {

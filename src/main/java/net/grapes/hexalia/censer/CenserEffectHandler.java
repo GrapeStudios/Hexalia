@@ -37,6 +37,8 @@ public class CenserEffectHandler {
     public static final int AREA_RADIUS = 16;
     public static final int EFFECT_DURATION = 7200;
 
+    private static final Map<World, Set<BlockPos>> UNDEAD_VEIL_CACHE = new WeakHashMap<>();
+
     public static final Map<HerbCombination, BiConsumer<World, BlockPos>> EFFECTS = Map.of(
             new HerbCombination(ModItems.SIREN_KELP, ModBlocks.SPIRIT_BLOOM.asItem()), CenserEffectHandler::applyFireproofPresence,
             new HerbCombination(ModBlocks.GHOST_FERN.asItem(), ModBlocks.SPIRIT_BLOOM.asItem()), CenserEffectHandler::applyUndeadVeil,
@@ -72,15 +74,86 @@ public class CenserEffectHandler {
 
     private static final Map<BlockPos, ActiveCenserEffect> ACTIVE_EFFECTS = new HashMap<>();
 
+    private static final Map<World, Set<EffectArea>> ACTIVE_EFFECT_AREAS = new HashMap<>();
+
+    public static class EffectArea {
+        private final BlockPos center;
+        private final EffectType effectType;
+        private int remainingTicks;
+
+        public EffectArea(BlockPos center, EffectType effectType, int duration) {
+            this.center = center;
+            this.effectType = effectType;
+            this.remainingTicks = duration;
+        }
+
+        public BlockPos getCenter() {
+            return center;
+        }
+
+        public EffectType getEffectType() {
+            return effectType;
+        }
+
+        public boolean containsPos(BlockPos pos) {
+            return pos.isWithinDistance(this.center, AREA_RADIUS);
+        }
+
+        public void decrementTicks() {
+            this.remainingTicks--;
+        }
+
+        public boolean isExpired() {
+            return this.remainingTicks <= 0;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            EffectArea that = (EffectArea) o;
+            return center.equals(that.center) && effectType == that.effectType;
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(center, effectType);
+        }
+    }
+
     public static void registerActiveEffect(World world, BlockPos pos, HerbCombination combo, int remainingTime) {
         if (world.isClient()) return;
 
         ACTIVE_EFFECTS.put(pos, new ActiveCenserEffect(null, remainingTime, combo));
         applyEffects(world, pos, combo);
+
+        EffectType effectType = getEffectTypeForCombination(combo);
+        if (effectType != null) {
+            registerEffectArea(world, pos, effectType, remainingTime);
+        }
     }
 
     public static void removeActiveEffect(BlockPos pos) {
         ACTIVE_EFFECTS.remove(pos);
+    }
+
+    private static void registerEffectArea(World world, BlockPos pos, EffectType effectType, int duration) {
+        ACTIVE_EFFECT_AREAS.computeIfAbsent(world, k -> new HashSet<>())
+                .add(new EffectArea(pos, effectType, duration));
+
+        if (effectType == EffectType.UNDEAD_VEIL) {
+            UNDEAD_VEIL_CACHE.computeIfAbsent(world, k -> new HashSet<>()).add(pos.toImmutable());
+        }
+    }
+
+    public static void removeEffectArea(World world, BlockPos pos) {
+        if (ACTIVE_EFFECT_AREAS.containsKey(world)) {
+            ACTIVE_EFFECT_AREAS.get(world).removeIf(area -> area.getCenter().equals(pos));
+
+            if (UNDEAD_VEIL_CACHE.containsKey(world)) {
+                UNDEAD_VEIL_CACHE.get(world).remove(pos);
+            }
+        }
     }
 
     public static void startEffect(World world, BlockPos pos, HerbCombination combo) {
@@ -89,10 +162,30 @@ public class CenserEffectHandler {
         ACTIVE_EFFECTS.put(pos, new ActiveCenserEffect(null, EFFECT_DURATION, combo));
         applyEffects(world, pos, combo);
 
+        EffectType effectType = getEffectTypeForCombination(combo);
+        if (effectType != null) {
+            registerEffectArea(world, pos, effectType, EFFECT_DURATION);
+        }
+
         if (world.getBlockEntity(pos) instanceof CenserBlockEntity censer) {
             censer.setActiveCombination(combo);
             censer.setBurnTime(EFFECT_DURATION);
         }
+    }
+
+    public static boolean isUndeadVeilActiveInArea(World world, BlockPos pos) {
+        if (!(world instanceof ServerWorld)) return false;
+
+        Set<BlockPos> veilPositions = UNDEAD_VEIL_CACHE.get(world);
+        if (veilPositions == null || veilPositions.isEmpty()) return false;
+
+        double radiusSquared = AREA_RADIUS * AREA_RADIUS;
+        for (BlockPos center : veilPositions) {
+            if (pos.getSquaredDistance(center) <= radiusSquared) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public static void updateEffects(World world) {
@@ -111,6 +204,17 @@ public class CenserEffectHandler {
                 applyEffects(world, pos, effect.combo());
             }
         }
+
+        if (ACTIVE_EFFECT_AREAS.containsKey(world)) {
+            Iterator<EffectArea> areaIt = ACTIVE_EFFECT_AREAS.get(world).iterator();
+            while (areaIt.hasNext()) {
+                EffectArea area = areaIt.next();
+                area.decrementTicks();
+                if (area.isExpired()) {
+                    areaIt.remove();
+                }
+            }
+        }
     }
 
     private static void clearEffect(World world, BlockPos pos, HerbCombination combo) {
@@ -119,6 +223,8 @@ public class CenserEffectHandler {
             player.getCommandTags().remove("HexaliaAnvilHarmony");
             player.getCommandTags().remove("HexaliaFishersBoon");
         });
+
+        removeEffectArea(world, pos);
     }
 
     public enum EffectType {
@@ -336,37 +442,23 @@ public class CenserEffectHandler {
 
             player.readNbt(nbt);
         });
+
+        removeEffectArea(world, pos);
     }
 
     public static boolean isEffectActiveInArea(World world, BlockPos pos, EffectType effectType) {
-        Box area = new Box(pos).expand(AREA_RADIUS);
+        if (!(world instanceof ServerWorld)) return false; // Skip on client
 
-        List<BlockEntity> blockEntities = new ArrayList<>();
-        BlockPos.stream(
-                        BlockPos.ofFloored(area.minX, area.minY, area.minZ),
-                        BlockPos.ofFloored(area.maxX, area.maxY, area.maxZ))
-                .forEach(blockPos -> {
-                    BlockEntity be = world.getBlockEntity(blockPos);
-                    if (be != null) {
-                        blockEntities.add(be);
-                    }
-                });
+        Set<EffectArea> areas = ACTIVE_EFFECT_AREAS.get(world);
+        if (areas == null || areas.isEmpty()) return false;
 
-        return blockEntities.stream()
-                .anyMatch(be -> {
-                    if (be instanceof CenserBlockEntity censer) {
-                        if (!censer.getCachedState().get(CenserBlock.LIT)) return false;
-
-                        ItemStack herb1 = censer.getStack(0);
-                        ItemStack herb2 = censer.getStack(1);
-                        if (herb1.isEmpty() || herb2.isEmpty()) return false;
-
-                        HerbCombination combo = new HerbCombination(herb1.getItem(), herb2.getItem());
-
-                        return getEffectTypeForCombination(combo) == effectType;
-                    }
-                    return false;
-                });
+        for (EffectArea area : areas) {
+            if (area.getEffectType() == effectType &&
+                    pos.getSquaredDistance(area.getCenter()) <= AREA_RADIUS * AREA_RADIUS) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static EffectType getEffectTypeForCombination(HerbCombination combo) {

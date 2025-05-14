@@ -6,6 +6,9 @@ import net.minecraft.entity.*;
 import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.boss.WitherEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.mob.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
@@ -18,6 +21,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(MobEntity.class)
 public abstract class MobMixin extends LivingEntity {
+
+    @Unique
+    private int hexalia$lastCheckTick = -100;
+    @Unique
+    private boolean hexalia$lastCheckResult = false;
+
     protected MobMixin(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
     }
@@ -52,22 +61,45 @@ public abstract class MobMixin extends LivingEntity {
             return false;
         }
 
-        PlayerEntity nearestPlayer = this.getWorld().getClosestPlayer(
-                TargetPredicate.createAttackable(),
-                (MobEntity)(Object)this,
-                this.getX(),
-                this.getEyeY(),
-                this.getZ()
-        );
+        int currentTick = this.age;
+        if (currentTick - hexalia$lastCheckTick < 10) {
+            return hexalia$lastCheckResult;
+        }
 
-        boolean censerActive = CenserEffectHandler.isEffectActiveInArea(
-                this.getWorld(),
-                this.getBlockPos(),
-                CenserEffectHandler.EffectType.UNDEAD_VEIL);
+        hexalia$lastCheckTick = currentTick;
 
-        boolean ghostVeilActive = nearestPlayer != null && isGhostVeilSneaking(nearestPlayer);
+        if (!hexalia$lastCheckResult) {
+            PlayerEntity nearestPlayer = this.getWorld().getClosestPlayer(
+                    TargetPredicate.createAttackable(),
+                    (MobEntity)(Object)this,
+                    this.getX(),
+                    this.getEyeY(),
+                    this.getZ()
+            );
 
-        return censerActive || ghostVeilActive;
+            hexalia$lastCheckResult = CenserEffectHandler.isUndeadVeilActiveInArea(
+                    this.getWorld(),
+                    this.getBlockPos()
+            ) || (nearestPlayer != null && isGhostVeilSneaking(nearestPlayer));
+        }
+
+        return hexalia$lastCheckResult;
+    }
+
+    @Inject(method = "tick", at = @At("HEAD"))
+    private void hexalia$resetCheck(CallbackInfo ci) {
+        if (this.age % 100 == 0) {
+            hexalia$lastCheckTick = -100;
+            hexalia$lastCheckResult = false;
+        }
+    }
+
+    private static final TrackedData<Boolean> IGNORE_PLAYERS_CACHE =
+            DataTracker.registerData(MobEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+
+    @Inject(method = "initDataTracker", at = @At("TAIL"))
+    private void injectDataTracker(CallbackInfo ci) {
+        this.getDataTracker().startTracking(IGNORE_PLAYERS_CACHE, false);
     }
 
     @Unique
