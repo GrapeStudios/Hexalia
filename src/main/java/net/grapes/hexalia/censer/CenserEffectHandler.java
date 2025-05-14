@@ -19,7 +19,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.HopperBlockEntity;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
@@ -31,6 +30,8 @@ public class CenserEffectHandler {
 
     public static final int AREA_RADIUS = 16;
     public static final int EFFECT_DURATION = 7200;
+
+    private static final Map<Level, Set<BlockPos>> UNDEAD_VEIL_CACHE = new WeakHashMap<>();
 
     public static final Map<HerbCombination, BiConsumer<Level, BlockPos>> EFFECTS = Map.of(
             new HerbCombination(ModItems.SIREN_KELP.get(), ModBlocks.SPIRIT_BLOOM.get().asItem()), CenserEffectHandler::applyFireproofPresence,
@@ -71,13 +72,28 @@ public class CenserEffectHandler {
         if (level.isClientSide()) return;
 
         ACTIVE_EFFECTS.put(pos, new ActiveCenserEffect(null, remainingTime, combo));
-
         applyEffects(level, pos, combo);
+
+        if (getEffectTypeForCombination(combo) == EffectType.UNDEAD_VEIL) {
+            UNDEAD_VEIL_CACHE.computeIfAbsent(level, k -> new HashSet<>()).add(pos.immutable());
+        }
     }
 
     public static void removeActiveEffect(BlockPos pos) {
+        ActiveCenserEffect effect = ACTIVE_EFFECTS.get(pos);
+        if (effect != null) {
+            EffectType effectType = getEffectTypeForCombination(effect.combo());
+            if (effectType == EffectType.UNDEAD_VEIL) {
+                for (Map.Entry<Level, Set<BlockPos>> entry : UNDEAD_VEIL_CACHE.entrySet()) {
+                    if (entry.getValue().remove(pos)) {
+                        break;
+                    }
+                }
+            }
+        }
         ACTIVE_EFFECTS.remove(pos);
     }
+
 
     public static void startEffect(Level level, BlockPos pos, HerbCombination combo) {
         if (level.isClientSide()) return;
@@ -111,7 +127,6 @@ public class CenserEffectHandler {
     }
 
     private static void clearEffect(Level level, BlockPos pos, HerbCombination combo) {
-        // Clear any persistent effects
         AABB area = new AABB(pos).inflate(AREA_RADIUS);
         level.getEntitiesOfClass(Player.class, area).forEach(player -> {
             player.getPersistentData().remove("HexaliaAnvilHarmony");
@@ -272,7 +287,6 @@ public class CenserEffectHandler {
         }
     }
 
-    // Helper method to find the nearest entity
     private static <T extends Entity> T findNearestEntity(Vec3 position, List<T> entities) {
         T nearest = null;
         double closestDistance = Double.MAX_VALUE;
@@ -301,34 +315,40 @@ public class CenserEffectHandler {
         });
     }
 
+    public static boolean isUndeadVeilActiveInArea(Level level, BlockPos pos) {
+        if (level.isClientSide()) return false;
+
+        Set<BlockPos> veilPositions = UNDEAD_VEIL_CACHE.get(level);
+        if (veilPositions == null || veilPositions.isEmpty()) return false;
+
+        double radiusSquared = AREA_RADIUS * AREA_RADIUS;
+        for (BlockPos center : veilPositions) {
+            if (pos.distSqr(center) <= radiusSquared) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static boolean isEffectActiveInArea(Level level, BlockPos pos, EffectType effectType) {
+        if (effectType == EffectType.UNDEAD_VEIL) {
+            return isUndeadVeilActiveInArea(level, pos);
+        }
+
         AABB area = new AABB(pos).inflate(AREA_RADIUS);
-
-        List<BlockEntity> blockEntities = new ArrayList<>();
-        BlockPos.betweenClosedStream(
-                        BlockPos.containing(area.minX, area.minY, area.minZ),
+        return BlockPos.betweenClosedStream(BlockPos.containing(area.minX, area.minY, area.minZ),
                         BlockPos.containing(area.maxX, area.maxY, area.maxZ))
-                .forEach(blockPos -> {
-                    BlockEntity be = level.getBlockEntity(blockPos);
-                    if (be != null) {
-                        blockEntities.add(be);
-                    }
-                });
+                .map(level::getBlockEntity)
+                .filter(be -> be instanceof CenserBlockEntity)
+                .map(be -> (CenserBlockEntity) be)
+                .anyMatch(censer -> {
+                    if (!censer.getBlockState().getValue(CenserBlock.LIT)) return false;
 
-        return blockEntities.stream()
-                .anyMatch(be -> {
-                    if (be instanceof CenserBlockEntity censer) {
-                        if (!censer.getBlockState().getValue(CenserBlock.LIT)) return false;
+                    ItemStack herb1 = censer.getItem(0);
+                    ItemStack herb2 = censer.getItem(1);
+                    if (herb1.isEmpty() || herb2.isEmpty()) return false;
 
-                        ItemStack herb1 = censer.getItem(0);
-                        ItemStack herb2 = censer.getItem(1);
-                        if (herb1.isEmpty() || herb2.isEmpty()) return false;
-
-                        HerbCombination combo = new HerbCombination(herb1.getItem(), herb2.getItem());
-
-                        return getEffectTypeForCombination(combo) == effectType;
-                    }
-                    return false;
+                    return getEffectTypeForCombination(new HerbCombination(herb1.getItem(), herb2.getItem())) == effectType;
                 });
     }
 
