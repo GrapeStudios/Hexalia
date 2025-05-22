@@ -1,6 +1,7 @@
 package net.grapes.hexalia.censer;
 
 import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.block.ModPoiTypes;
 import net.grapes.hexalia.block.custom.CenserBlock;
 import net.grapes.hexalia.block.entity.CenserBlockEntity;
 import net.grapes.hexalia.item.ModItems;
@@ -12,6 +13,8 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.village.poi.PoiManager.Occupancy;
+import net.minecraft.world.entity.ai.village.poi.PoiRecord;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.Monster;
@@ -335,9 +338,11 @@ public class CenserEffectHandler {
             return isUndeadVeilActiveInArea(level, pos);
         }
 
-        AABB area = new AABB(pos).inflate(AREA_RADIUS);
-        return BlockPos.betweenClosedStream(BlockPos.containing(area.minX, area.minY, area.minZ),
-                        BlockPos.containing(area.maxX, area.maxY, area.maxZ))
+        if (!(level instanceof ServerLevel sl)) return false;
+        
+        return sl.getPoiManager()
+                .getInSquare(it -> Objects.equals(it.get(), ModPoiTypes.CENSER.get()), pos, AREA_RADIUS, Occupancy.ANY)
+                .map(PoiRecord::getPos)
                 .map(level::getBlockEntity)
                 .filter(be -> be instanceof CenserBlockEntity)
                 .map(be -> (CenserBlockEntity) be)

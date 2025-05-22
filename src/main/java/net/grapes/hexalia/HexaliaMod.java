@@ -2,6 +2,7 @@ package net.grapes.hexalia;
 
 import com.mojang.logging.LogUtils;
 import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.block.ModPoiTypes;
 import net.grapes.hexalia.block.entity.ModBlockEntities;
 import net.grapes.hexalia.effect.ModMobEffects;
 import net.grapes.hexalia.entity.ModEntities;
@@ -55,6 +56,7 @@ public class HexaliaMod
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
+        ModPoiTypes.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
         ModMobEffects.register(modEventBus);
         ModSounds.register(modEventBus);
