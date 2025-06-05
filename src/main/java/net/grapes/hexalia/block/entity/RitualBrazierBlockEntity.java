@@ -56,7 +56,7 @@ public class RitualBrazierBlockEntity extends BlockEntity implements SidedInvent
                     .getFirstMatch(RitualBrazierRecipe.Type.INSTANCE, new SimpleInventory(itemStack), world);
 
             if (recipe.isPresent()) {
-                if (isNight(world, pos)) {
+                if (canPerformMoonlightRitual(world, pos)) {
                     blockEntity.timer++;
 
                     if (blockEntity.timer >= MOONLIGHT_DURATION) {
@@ -95,7 +95,7 @@ public class RitualBrazierBlockEntity extends BlockEntity implements SidedInvent
             return false;
         }
 
-        if (!isNight(world, mutablePos)) {
+        if (!canPerformMoonlightRitual(world, mutablePos)) {
             player.sendMessage(Text.translatable("message.hexalia.moonlight_ritual.not_night"), true);
             return false;
         }
@@ -136,16 +136,10 @@ public class RitualBrazierBlockEntity extends BlockEntity implements SidedInvent
         return active;
     }
 
-    private static boolean isNight(World world, BlockPos pos) {
-        BlockPos.Mutable mutablePos = new BlockPos.Mutable(pos.getX(), pos.getY(), pos.getZ());
-        long time = world.getTimeOfDay() % 24000;
-        boolean isTimeNight = time > 12500 && time < 23000;
-
-        if (world.isSkyVisible(mutablePos.up())) {
-            return isTimeNight && world.getLightLevel(LightType.SKY, mutablePos.up()) < 12;
-        }
-
-        return isTimeNight;
+    private static boolean canPerformMoonlightRitual(World world, BlockPos pos) {
+        int moonPhase = world.getMoonPhase();
+        return (moonPhase == 0 || moonPhase == 1 || moonPhase == 7) &&
+                world.isSkyVisible(pos.up());
     }
 
     @Override
