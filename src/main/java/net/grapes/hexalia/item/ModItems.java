@@ -83,7 +83,7 @@ public class ModItems {
     public static final RegistryObject<Item> CHILLBERRY_PIE = ITEMS.register("chillberry_pie",
             () -> new Item(new Item.Properties().food(ModFoodProperties.CHILLBERRY_PIE)));
     public static final RegistryObject<Item> MANDRAKE_STEW = ITEMS.register("mandrake_stew",
-            () -> new BowlFoodItem(new Item.Properties().food(ModFoodProperties.MANDRAKE_STEW)));
+            () -> new BowlFoodItem(new Item.Properties().food(ModFoodProperties.MANDRAKE_STEW).stacksTo(1)));
     public static final RegistryObject<Item> MOON_BERRY_COOKIE = ITEMS.register("moon_berry_cookie",
             () -> new Item(new Item.Properties().food(ModFoodProperties.MOON_BERRY_COOKIE)));
 

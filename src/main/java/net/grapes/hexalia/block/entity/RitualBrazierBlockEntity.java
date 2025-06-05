@@ -19,6 +19,7 @@ import net.minecraft.world.WorldlyContainer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LightLayer;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -48,7 +49,7 @@ public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyCont
                     .getRecipeFor(RitualBrazierRecipe.Type.INSTANCE, new SimpleContainer(itemStack), pLevel);
 
             if (recipe.isPresent()) {
-                if (isNight(pLevel, pPos)) {
+                if (canPerformMoonlightRitual(pLevel, pPos)) {
                     pBlockEntity.timer++;
 
                     if (pBlockEntity.timer >= MOONLIGHT_DURATION) {
@@ -87,7 +88,7 @@ public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyCont
             return false;
         }
 
-        if (!isNight(level, worldPosition)) {
+        if (!canPerformMoonlightRitual(level, worldPosition)) {
             player.displayClientMessage(Component.translatable("message.hexalia.moonlight_ritual.not_night"), true);
             return false;
         }
@@ -129,16 +130,10 @@ public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyCont
         return active;
     }
 
-    private static boolean isNight(Level level, BlockPos pos) {
-        mutableWorldPosition.set(pos.getX(), pos.getY(), pos.getZ());
-        long time = level.getDayTime() % 24000;
-        boolean isTimeNight = time > 12500 && time < 23000;
-
-        if (level.canSeeSky(mutableWorldPosition.above())) {
-            return isTimeNight && level.getSkyDarken() > 4;
-        }
-
-        return isTimeNight;
+    private static boolean canPerformMoonlightRitual(Level level, BlockPos pos) {
+        int moonPhase = level.getMoonPhase();
+        return (moonPhase == 0 || moonPhase == 1 || moonPhase == 7) &&
+                level.canSeeSky(pos.above());
     }
 
     @Override
