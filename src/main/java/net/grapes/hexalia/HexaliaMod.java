@@ -75,6 +75,8 @@ public class HexaliaMod
 
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.SPIRIT_BLOOM.getId(), ModBlocks.POTTED_SPIRIT_BLOOM);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.DREAMSHROOM.getId(), ModBlocks.POTTED_DREAMSHROOM);
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.GHOST_FERN.getId(), ModBlocks.POTTED_GHOST_FERN);
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.CELESTIAL_BLOOM.getId(), ModBlocks.POTTED_CELESTIAL_BLOOM);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.HENBANE.getId(), ModBlocks.POTTED_HENBANE);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.PALE_MUSHROOM.getId(), ModBlocks.POTTED_PALE_MUSHROOM);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.NIGHTSHADE_BUSH.getId(), ModBlocks.POTTED_NIGHTSHADE_BUSH);
@@ -85,7 +87,7 @@ public class HexaliaMod
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.MORPHORA.getId(), ModBlocks.POTTED_MORPHORA);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.GRIMSHADE.getId(), ModBlocks.POTTED_GRIMSHADE);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.WINDSONG.getId(), ModBlocks.POTTED_WINDSONG);
-            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.LUNAR_LILY.getId(), ModBlocks.POTTED_LUNAR_LILY);
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.ASTRYLIS.getId(), ModBlocks.POTTED_ASTRYLIS);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.DAHLIA.getId(), ModBlocks.POTTED_DAHLIA);
 
             SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ModSurfaceRules.makeRules());

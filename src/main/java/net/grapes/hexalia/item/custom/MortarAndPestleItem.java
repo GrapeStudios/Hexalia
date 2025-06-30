@@ -16,7 +16,7 @@ public class MortarAndPestleItem extends Item {
     @Override
     public ItemStack getCraftingRemainingItem(ItemStack itemStack) {
         ItemStack result = itemStack.copy();
-        result.setDamageValue(result.getDamageValue() + 1);
+        result.setDamageValue(result.getDamageValue() - 1);
 
         if (result.getDamageValue() >= result.getMaxDamage()) {
             return ItemStack.EMPTY;

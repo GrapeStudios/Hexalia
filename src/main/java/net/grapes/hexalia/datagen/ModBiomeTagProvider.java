@@ -34,5 +34,8 @@ public class ModBiomeTagProvider extends BiomeTagsProvider {
         this.tag(ModTags.Biomes.HAS_SIREN_KELP)
                 .addTag(BiomeTags.IS_OCEAN)
                 .addOptional(ModBiomes.ENCHANTED_BAYOU.location());
+        this.tag(ModTags.Biomes.HAS_GHOST_FERNS)
+                .add(Biomes.DARK_FOREST)
+                .addOptional(ModBiomes.ENCHANTED_BAYOU.location());
     }
 }

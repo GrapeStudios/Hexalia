@@ -35,7 +35,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
         // Animal food
         tag(ItemTags.FOX_FOOD)
                 .add(ModItems.CHILLBERRIES.get())
-                .add(ModItems.MOON_BERRIES.get());
+                .add(ModItems.GALEBERRIES.get());
 
         // Plants
         tag(ItemTags.FLOWERS)
@@ -43,6 +43,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModBlocks.HENBANE.get().asItem())
                 .add(ModBlocks.WITCHWEED.get().asItem())
                 .add(ModBlocks.GHOST_FERN.get().asItem())
+                .add(ModBlocks.CELESTIAL_BLOOM.get().asItem())
                 .add(ModBlocks.NIGHTSHADE_BUSH.get().asItem())
                 .add(ModBlocks.BEGONIA.get().asItem())
                 .add(ModBlocks.LAVENDER.get().asItem())
@@ -54,6 +55,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModBlocks.HENBANE.get().asItem())
                 .add(ModBlocks.WITCHWEED.get().asItem())
                 .add(ModBlocks.GHOST_FERN.get().asItem())
+                .add(ModBlocks.CELESTIAL_BLOOM.get().asItem())
                 .add(ModBlocks.NIGHTSHADE_BUSH.get().asItem())
                 .add(ModBlocks.BEGONIA.get().asItem())
                 .add(ModBlocks.LAVENDER.get().asItem())
@@ -105,6 +107,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
         tag(ModTags.Items.MUSHROOMS)
                 .add(ModBlocks.DREAMSHROOM.get().asItem())
                 .add(ModBlocks.PALE_MUSHROOM.get().asItem());
+
+        // Offhand Equipment
+        tag(ModTags.Items.OFFHAND_EQUIPMENT)
+                .add(ModItems.HEX_FOCUS.get())
+                .addTag(ModTags.Items.SALT);
     }
 
     private void addTreeRelatedTags() {
@@ -184,7 +191,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
         // Specific food types
         tag(ModTags.Items.BERRIES)
                 .add(ModItems.CHILLBERRIES.get())
-                .add(ModItems.MOON_BERRIES.get());
+                .add(ModItems.GALEBERRIES.get());
 
         tag(ModTags.Items.VEGETABLES)
                 .add(ModItems.SUNFIRE_TOMATO.get())
@@ -209,7 +216,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
         tag(ModTags.Items.BERRIES)
                 .add(ModItems.CHILLBERRIES.get())
-                .add(ModItems.MOON_BERRIES.get());
+                .add(ModItems.GALEBERRIES.get());
 
         tag(ModTags.Items.SEEDS)
                 .add(ModItems.MANDRAKE_SEEDS.get())

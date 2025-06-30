@@ -20,33 +20,20 @@ public class RitualBrazierRenderer implements BlockEntityRenderer<RitualBrazierB
     public RitualBrazierRenderer(BlockEntityRendererProvider.Context context) {}
 
     @Override
-    public void render(RitualBrazierBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
+    public void render(RitualBrazierBlockEntity blockEntity, float pPartialTick, PoseStack poseStack, MultiBufferSource bufferSource, int pPackedLight, int pPackedOverlay) {
         ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
-        ItemStack itemStack = pBlockEntity.getRenderStack();
+        ItemStack stack = blockEntity.getStoredItem();
 
-        if (itemStack.isEmpty()) return;
+        poseStack.pushPose();
+        poseStack.translate(0.5f, 0.4f, 0.5f);
+        poseStack.scale(1f, 1f, 1f);
+        poseStack.mulPose(Axis.YP.rotationDegrees(blockEntity.getRenderingRotation()));
 
-        pPoseStack.pushPose();
+        itemRenderer.renderStatic(stack, ItemDisplayContext.GROUND, getLightLevel(blockEntity.getLevel(),
+                blockEntity.getBlockPos()), OverlayTexture.NO_OVERLAY, poseStack, bufferSource, blockEntity.getLevel(), 1);
 
-        pPoseStack.translate(0.5f, 0.4f, 0.5f);
-
-        if (pBlockEntity.isActive()) {
-            double time = (pBlockEntity.getLevel().getGameTime() + pPartialTick) / 8.0;
-            float verticalOffset = (float) Math.sin(time) * 0.08f;
-
-            pPoseStack.translate(0, verticalOffset, 0);
-        }
-
-        // Apply scaling and rotation
-        pPoseStack.scale(1f, 1f, 1f);
-        pPoseStack.mulPose(Axis.YP.rotationDegrees((float) (System.currentTimeMillis() / 50 % 360)));
-
-        itemRenderer.renderStatic(itemStack, ItemDisplayContext.GROUND, getLightLevel(pBlockEntity.getLevel(),
-                pBlockEntity.getBlockPos()), OverlayTexture.NO_OVERLAY, pPoseStack, pBuffer, pBlockEntity.getLevel(), 1);
-
-        pPoseStack.popPose();
+        poseStack.popPose();
     }
-
 
     private int getLightLevel(Level level, BlockPos pos) {
         int bLight = level.getBrightness(LightLayer.BLOCK, pos);

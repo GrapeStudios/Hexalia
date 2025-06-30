@@ -27,6 +27,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> BEGONIA_PLACED_KEY = registerKey("begonia_placed");
     public static final ResourceKey<PlacedFeature> LAVENDER_PLACED_KEY = registerKey("lavender_placed");
     public static final ResourceKey<PlacedFeature> DAHLIA_PLACED_KEY = registerKey("dahlia_placed");
+    public static final ResourceKey<PlacedFeature> CELESTIAL_BLOOM_PLACED_KEY = registerKey("celestial_bloom_placed");
 
     public static final ResourceKey<PlacedFeature> COTTONWOOD_PLACED_KEY = registerKey("cottonwood_placed");
     public static final ResourceKey<PlacedFeature> WILLOW_PLACED_KEY = registerKey("willow_placed");
@@ -70,6 +71,10 @@ public class ModPlacedFeatures {
                         BiomeFilter.biome()));
 
         register(context, GHOST_FERN_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.GHOST_FERN_KEY),
+                List.of(CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                        BiomeFilter.biome()));
+
+        register(context, CELESTIAL_BLOOM_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.CELESTIAL_BLOOM_KEY),
                 List.of(CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
                         BiomeFilter.biome()));
 

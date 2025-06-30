@@ -30,9 +30,9 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("windsong_block_entity", () -> BlockEntityType.Builder.of(WindsongBlockEntity::new,
                     ModBlocks.WINDSONG.get()).build(null));
 
-    public static final RegistryObject<BlockEntityType<LunarLilyBlockEntity>> LUNAR_LILY_BE =
-            BLOCK_ENTITIES.register("lunar_lily_block_entity", () -> BlockEntityType.Builder.of(LunarLilyBlockEntity::new,
-                    ModBlocks.LUNAR_LILY.get()).build(null));
+    public static final RegistryObject<BlockEntityType<AstrylisBlockEntity>> ASTRYLIS_BE =
+            BLOCK_ENTITIES.register("astrylis_block_entity", () -> BlockEntityType.Builder.of(AstrylisBlockEntity::new,
+                    ModBlocks.ASTRYLIS.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<RitualBrazierBlockEntity>> RITUAL_BRAZIER_BE =
             BLOCK_ENTITIES.register("ritual_brazier_block_entity", () -> BlockEntityType.Builder.of(RitualBrazierBlockEntity::new,

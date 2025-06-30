@@ -18,6 +18,7 @@ public class ModTags {
         public static final TagKey<Item> HERBS = tag("herbs");
         public static final TagKey<Item> CRUSHED_HERBS = tag("crushed_herbs");
         public static final TagKey<Item> BREWS = tag("brews");
+        public static final TagKey<Item> OFFHAND_EQUIPMENT = tag("offhand_equipment");
 
         // Forge Item Tags
         public static final TagKey<Item> BREAD = forgeItemTag("bread");
@@ -58,6 +59,8 @@ public class ModTags {
                 (new ResourceLocation(HexaliaMod.MOD_ID, "has_dreamshrooms")));
         public static final TagKey<Biome> HAS_SIREN_KELP = TagKey.create(Registries.BIOME,
                 (new ResourceLocation(HexaliaMod.MOD_ID, "has_siren_kelp")));
+        public static final TagKey<Biome> HAS_GHOST_FERNS = TagKey.create(Registries.BIOME,
+                (new ResourceLocation(HexaliaMod.MOD_ID, "has_ghost_ferns")));
     }
 
     public static class Blocks {

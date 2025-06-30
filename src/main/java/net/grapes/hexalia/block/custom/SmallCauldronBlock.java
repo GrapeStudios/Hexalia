@@ -4,6 +4,7 @@ import net.grapes.hexalia.block.entity.HeatingBlockEntity;
 import net.grapes.hexalia.block.entity.ModBlockEntities;
 import net.grapes.hexalia.block.entity.SmallCauldronBlockEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.RandomSource;
@@ -37,8 +38,10 @@ public class SmallCauldronBlock extends BaseEntityBlock implements HeatingBlockE
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     private static final VoxelShape SHAPE = Shapes.or(Block.box(2.0, 0, 2.0, 14.0, 11.0, 14.0),
             Block.box(3.0, 1.0, 3.0, 13.0, 12.0, 13.0));
+
     public SmallCauldronBlock(Properties pProperties) {
         super(pProperties);
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }
 
     @Override
@@ -119,13 +122,13 @@ public class SmallCauldronBlock extends BaseEntityBlock implements HeatingBlockE
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (!pLevel.isClientSide()) {
             BlockEntity entity = pLevel.getBlockEntity(pPos);
-            if(entity instanceof SmallCauldronBlockEntity) {
-                NetworkHooks.openScreen(((ServerPlayer)pPlayer), (SmallCauldronBlockEntity)entity, pPos);
+            if (entity instanceof SmallCauldronBlockEntity cauldronEntity) {
+                cauldronEntity.setLastInteractedPlayer(pPlayer);
+                NetworkHooks.openScreen(((ServerPlayer) pPlayer), cauldronEntity, pPos);
             } else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }
         }
-
         return InteractionResult.sidedSuccess(pLevel.isClientSide());
     }
 

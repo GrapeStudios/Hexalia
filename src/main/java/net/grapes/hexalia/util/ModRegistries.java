@@ -19,6 +19,7 @@ public class ModRegistries {
 
         ComposterBlock.COMPOSTABLES.put(ModBlocks.SPIRIT_BLOOM.get().asItem(), 0.5F);
         ComposterBlock.COMPOSTABLES.put(ModBlocks.DREAMSHROOM.get().asItem(), 0.5F);
+        ComposterBlock.COMPOSTABLES.put(ModBlocks.CELESTIAL_BLOOM.get().asItem(), 0.5F);
         ComposterBlock.COMPOSTABLES.put(ModItems.SIREN_KELP.get(), 0.5F);
         ComposterBlock.COMPOSTABLES.put(ModBlocks.HENBANE.get().asItem(), 0.5F);
         ComposterBlock.COMPOSTABLES.put(ModBlocks.BEGONIA.get().asItem(), 0.5F);

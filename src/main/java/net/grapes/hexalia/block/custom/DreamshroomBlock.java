@@ -21,7 +21,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
-public class DreamshroomBlock extends HexaliaMushroomBlock {
+public class DreamshroomBlock extends ShroomBlock {
 
     private static final double MAX_HORIZONTAL_OFFSET = 0.1;
     private static final double PARTICLE_START_Y_OFFSET = 0.3;

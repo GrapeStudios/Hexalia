@@ -191,10 +191,10 @@ public class RitualTableBlockEntity extends BlockEntity implements WorldlyContai
                 Iterator<ItemStack> iterator = requiredSaltItems.iterator();
                 while (iterator.hasNext()) {
                     ItemStack item = iterator.next();
-                    if (ItemStack.isSameItemSameTags(brazier.getItem(0), item)) {
+                    if (ItemStack.isSameItemSameTags(brazier.getStoredItem(), item)) {
                         iterator.remove();
                         if (consume) {
-                            brazier.removeStack();
+                            brazier.removeItem();
                             brazier.setChanged();
 
                             BlockState brazierState = pLevel.getBlockState(pos);

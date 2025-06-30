@@ -148,15 +148,15 @@ public class ModAdvancementsProvider implements ForgeAdvancementProvider.Advance
                 .addCriterion("has_ritual_brazier", InventoryChangeTrigger.TriggerInstance.hasItems(ModBlocks.RITUAL_BRAZIER.get().asItem()))
                 .save(saver, new ResourceLocation(HexaliaMod.MOD_ID, "ritual_brazier"), existingFileHelper);
 
-    Advancement moonCrystal  = Advancement.Builder.advancement()
-            .display(new DisplayInfo(new ItemStack(ModItems.MOON_CRYSTAL.get()),
-                    Component.translatable("advancements.hexalia.moon_crystal.title"),
-                    Component.translatable("advancements.hexalia.moon_crystal.description"),
+    Advancement celestialCrystal  = Advancement.Builder.advancement()
+            .display(new DisplayInfo(new ItemStack(ModItems.CELESTIAL_CRYSTAL.get()),
+                    Component.translatable("advancements.hexalia.celestial_crystal.title"),
+                    Component.translatable("advancements.hexalia.celestial_crystal.description"),
                     new ResourceLocation(HexaliaMod.MOD_ID, "textures/block/willow_log.png"), FrameType.TASK,
                     true, true, false))
             .parent(ritualBrazier)
-            .addCriterion("has_moon_crystal", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.MOON_CRYSTAL.get().asItem()))
-            .save(saver, new ResourceLocation(HexaliaMod.MOD_ID, "moon_crystal"), existingFileHelper);
+            .addCriterion("has_celestial_crystal", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.CELESTIAL_CRYSTAL.get().asItem()))
+            .save(saver, new ResourceLocation(HexaliaMod.MOD_ID, "celestial_crystal"), existingFileHelper);
 
         Advancement daybloomBrew = Advancement.Builder.advancement()
                 .display(new DisplayInfo(new ItemStack(ModItems.BREW_OF_DAYBLOOM.get()),

@@ -72,5 +72,4 @@ public class WindsongBlock extends EnchantedPlantBlock implements EntityBlock {
             }
         };
     }
-
 }

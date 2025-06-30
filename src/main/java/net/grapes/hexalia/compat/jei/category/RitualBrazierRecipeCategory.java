@@ -32,14 +32,12 @@ public class RitualBrazierRecipeCategory implements IRecipeCategory<RitualBrazie
     private final IDrawable background;
     private final IDrawable icon;
     private final IDrawable hexIcon;
-    private final IDrawable moonlightIcon;
 
     public RitualBrazierRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 0, 0,118, 80);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK,
                 new ItemStack(ModBlocks.RITUAL_BRAZIER.get()));
         this.hexIcon = helper.createDrawable(TEXTURE, 0, 0,16, 16);
-        this.moonlightIcon = helper.createDrawable(TEXTURE, 0, 0,16, 16);
     }
 
     @Override
@@ -74,15 +72,12 @@ public class RitualBrazierRecipeCategory implements IRecipeCategory<RitualBrazie
     @Override
     public void draw(RitualBrazierRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
         hexIcon.draw(guiGraphics, 4, 55);
-        moonlightIcon.draw(guiGraphics, 51, 31);
     }
 
     @Override
     public List<Component> getTooltipStrings(RitualBrazierRecipe recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
         if (mouseX >= 4 && mouseX < 20 && mouseY >= 55 && mouseY < 71) {
             return List.of(Component.translatable("tooltip.hexalia.hex_focus_gui"));
-        } else if (mouseX >= 51 && mouseX < 67 && mouseY >= 31 && mouseY < 47) {
-            return List.of(Component.translatable("message.hexalia.moonlight_ritual.not_night"));
         }
         return IRecipeCategory.super.getTooltipStrings(recipe, recipeSlotsView, mouseX, mouseY);
     }

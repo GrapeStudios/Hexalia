@@ -32,6 +32,7 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_BEGONIA = registerKey("add_begonia");
     public static final ResourceKey<BiomeModifier> ADD_LAVENDER = registerKey("add_lavender");
     public static final ResourceKey<BiomeModifier> ADD_DAHLIA = registerKey("add_dahlia");
+    public static final ResourceKey<BiomeModifier> ADD_CELESTIAL_BLOOM = registerKey("add_celestial_bloom");
 
     public static final ResourceKey<BiomeModifier> ADD_DUCKWEED = registerKey("add_duckweed");
     public static final ResourceKey<BiomeModifier> ADD_HEXED_BULRUSH = registerKey("add_hexed_bulrush");
@@ -55,6 +56,7 @@ public class ModBiomeModifiers {
         Optional<Holder.Reference<Biome>> savannaBiome = biomes.get(Biomes.SAVANNA);
         Optional<Holder.Reference<Biome>> darkForestBiome = biomes.get(Biomes.DARK_FOREST);
         Optional<Holder.Reference<Biome>> enchantedBayou = biomes.get(ModBiomes.ENCHANTED_BAYOU);
+        Optional<Holder.Reference<Biome>> meadowBiome = biomes.get(Biomes.MEADOW);
 
         // Functional Plants
         context.register(ADD_SPIRIT_BLOOM, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
@@ -85,6 +87,11 @@ public class ModBiomeModifiers {
         context.register(ADD_WILD_MANDRAKE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(ModTags.Biomes.HAS_MANDRAKES),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.WILD_MANDRAKE_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+
+        context.register(ADD_CELESTIAL_BLOOM, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(meadowBiome.get()),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.CELESTIAL_BLOOM_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
         // Decorative Plants
@@ -121,7 +128,7 @@ public class ModBiomeModifiers {
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.PALE_MUSHROOM_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
         context.register(ADD_GHOST_FERN, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                HolderSet.direct(enchantedBayou.get()),
+                biomes.getOrThrow(ModTags.Biomes.HAS_GHOST_FERNS),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.GHOST_FERN_PLACED_KEY)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
         context.register(ADD_NIGHTSHADE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(

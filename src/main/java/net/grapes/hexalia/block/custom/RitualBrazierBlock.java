@@ -1,27 +1,26 @@
 package net.grapes.hexalia.block.custom;
 
-import net.grapes.hexalia.block.entity.ModBlockEntities;
 import net.grapes.hexalia.block.entity.RitualBrazierBlockEntity;
 import net.grapes.hexalia.item.ModItems;
+import net.grapes.hexalia.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
-import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -30,7 +29,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
 public class RitualBrazierBlock extends BaseEntityBlock implements EntityBlock {
@@ -52,88 +50,6 @@ public class RitualBrazierBlock extends BaseEntityBlock implements EntityBlock {
         return SHAPE;
     }
 
-    @Override
-    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        super.animateTick(state, level, pos, random);
-
-        if (level.isClientSide) {
-            BlockEntity be = level.getBlockEntity(pos);
-            if (be instanceof RitualBrazierBlockEntity brazier && brazier.isActive()) {
-                double x = pos.getX() + 0.5;
-                double y = pos.getY() + 0.7;
-                double z = pos.getZ() + 0.5;
-
-                level.addParticle(ParticleTypes.ELECTRIC_SPARK,
-                        x + (random.nextDouble()-0.5)*0.3,
-                        y + random.nextDouble()*0.3,
-                        z + (random.nextDouble()-0.5)*0.3,
-                        0, 0.02, 0);
-            }
-        }
-    }
-
-    @Override
-    public RenderShape getRenderShape(BlockState pState) {
-        return RenderShape.MODEL;
-    }
-
-    @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
-        ItemStack heldItem = pPlayer.getItemInHand(pHand);
-
-        if (!(blockEntity instanceof RitualBrazierBlockEntity ritualBrazierBlockEntity)) {
-            return InteractionResult.PASS;
-        }
-
-        if (pHand == InteractionHand.MAIN_HAND) {
-            ResourceLocation itemId = ForgeRegistries.ITEMS.getKey(heldItem.getItem());
-            if (itemId != null && itemId.getPath().contains("salt") && !pState.getValue(SALTED)) {
-                pLevel.setBlock(pPos, pState.setValue(SALTED, true), Block.UPDATE_ALL);
-                if (!pPlayer.isCreative()) {
-                    heldItem.shrink(1);
-                }
-                pLevel.playSound(null, pPos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1.0f, 1.0f);
-                return InteractionResult.sidedSuccess(pLevel.isClientSide);
-            }
-
-            if (heldItem.is(ModItems.HEX_FOCUS.get()) && !pState.getValue(SALTED)) {
-                if (ritualBrazierBlockEntity.startMoonRitual(pPlayer)) {
-                    return InteractionResult.sidedSuccess(pLevel.isClientSide);
-                } else {
-                    return InteractionResult.PASS;
-                }
-            }
-
-            if (!heldItem.isEmpty() && ritualBrazierBlockEntity.isEmpty() && !heldItem.is(ModItems.HEX_FOCUS.get()) && !heldItem.is(ModItems.SALT.get())) {
-                if (ritualBrazierBlockEntity.addStack(heldItem.split(1))) {
-                    playItemSound(pLevel, pPos);
-                    return InteractionResult.sidedSuccess(pLevel.isClientSide);
-                }
-            }
-
-            if (!ritualBrazierBlockEntity.isEmpty() && heldItem.isEmpty()) {
-                removeItemFromBlock(pLevel, ritualBrazierBlockEntity, pPlayer);
-                return InteractionResult.sidedSuccess(pLevel.isClientSide);
-            }
-        }
-        return InteractionResult.PASS;
-    }
-
-    @Override
-    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
-        if (pState.getBlock() != pNewState.getBlock()) {
-            BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
-            if (blockEntity instanceof RitualBrazierBlockEntity ritualBrazierBlockEntity) {
-                Containers.dropContents(pLevel, pPos, ritualBrazierBlockEntity);
-                if (pState.getValue(SALTED)) {
-                    Containers.dropItemStack(pLevel, pPos.getX(), pPos.getY(), pPos.getZ(), new ItemStack(ModItems.SALT.get()));
-                }
-            }
-        }
-        super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
-    }
-
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
@@ -148,40 +64,115 @@ public class RitualBrazierBlock extends BaseEntityBlock implements EntityBlock {
     }
 
     @Override
-    public BlockState rotate(BlockState pState, Rotation pRotation) {
-        return pState.setValue(FACING, pRotation.rotate(pState.getValue(FACING)));
+    public RenderShape getRenderShape(BlockState pState) {
+        return RenderShape.MODEL;
     }
 
     @Override
-    public BlockState mirror(BlockState pState, Mirror pMirror) {
-        return pState.rotate(pMirror.getRotation(pState.getValue(FACING)));
-    }
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+        BlockEntity tileEntity = level.getBlockEntity(pos);
+        ItemStack stack = player.getItemInHand(hand);
 
-    private void removeItemFromBlock(Level pLevel, RitualBrazierBlockEntity ritualBrazierBlockEntity, Player player) {
-        ItemStack stack = ritualBrazierBlockEntity.removeStack();
-        if (!player.getInventory().add(stack)) {
-            Containers.dropItemStack(pLevel, player.getX(), player.getY(), player.getZ(), stack);
+        if (!(tileEntity instanceof RitualBrazierBlockEntity brazier)) {
+            return  InteractionResult.PASS;
         }
-        playItemSound(pLevel, ritualBrazierBlockEntity.getBlockPos());
+
+        ItemStack heldStack = player.getItemInHand(hand);
+        ItemStack offhandStack = player.getOffhandItem();
+
+        if (hand == InteractionHand.MAIN_HAND && !state.getValue(SALTED)) {
+            if (stack.is(ModTags.Items.SALT) && !state.getValue(SALTED)) {
+                level.setBlock(pos, state.setValue(SALTED, true), Block.UPDATE_ALL);
+                if (!player.isCreative()) {
+                    heldStack.shrink(1);
+                }
+                level.playSound(null, pos, SoundEvents.BONE_MEAL_USE, SoundSource.BLOCKS, 1.0f, 1.0f);
+                return  InteractionResult.SUCCESS;
+            }
+        }
+
+        if (brazier.isEmpty()) {
+            if (!offhandStack.isEmpty()) {
+                if (hand == InteractionHand.MAIN_HAND && !offhandStack.is(ModTags.Items.OFFHAND_EQUIPMENT) && !(heldStack.getItem() instanceof BlockItem)) {
+                    return InteractionResult.PASS;
+                }
+                if (hand == InteractionHand.OFF_HAND && offhandStack.is(ModTags.Items.OFFHAND_EQUIPMENT)) {
+                    return InteractionResult.PASS;
+                }
+            }
+
+            if (heldStack.isEmpty()) {
+                return InteractionResult.PASS;
+            } else if (brazier.addItem(player.getAbilities().instabuild ? heldStack.copy() : heldStack)) {
+                playItemSound(level, pos);
+                return InteractionResult.SUCCESS;
+            }
+
+        } else if (!heldStack.isEmpty() || !offhandStack.isEmpty()) {
+            ItemStack focusStack = heldStack.is(ModItems.HEX_FOCUS.get()) ? heldStack :
+                    offhandStack.is(ModItems.HEX_FOCUS.get()) ? offhandStack :
+                            ItemStack.EMPTY;
+
+            if (!focusStack.isEmpty()) {
+                if (!level.isClientSide()) {
+                    RitualBrazierBlockEntity.RitualResult result = brazier.tryCelestialRitual();
+                    switch (result) {
+                        case SUCCESS -> {
+                            spawnPoofParticles(level, pos);
+                            level.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 0.25f, 0.25f);
+                        }
+                        case NO_CELESTIAL_BLOOMS -> player.displayClientMessage(Component.translatable("message.hexalia.ritual_brazier.no_celestial_blooms"), true);
+                        case INVALID_ITEM -> player.displayClientMessage(Component.translatable("message.hexalia.ritual_brazier.invalid_item"), true);
+                    }
+                }
+                return InteractionResult.SUCCESS;
+            }
+
+
+        } else if (hand == InteractionHand.MAIN_HAND) {
+            if (!player.isCreative()) {
+                if (!player.getInventory().add(brazier.removeItem())) {
+                    Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), brazier.removeItem());
+                }
+            } else {
+                brazier.removeItem();
+            }
+            playItemSound(level, pos);
+            return InteractionResult.SUCCESS;
+        }
+
+        return InteractionResult.PASS;
     }
 
-    private void playItemSound(Level pLevel, BlockPos pos) {
-        pLevel.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.5f, 0.5f);
+    @Override
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean movedByPiston) {
+        if (state.getBlock() != newState.getBlock()) {
+            BlockEntity be = level.getBlockEntity(pos);
+            if (be instanceof RitualBrazierBlockEntity brazier) {
+                Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), brazier.getStoredItem());
+                if (state.getValue(SALTED)) {
+                    Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModItems.SALT.get()));
+                }
+            }
+        }
+        super.onRemove(state, level, pos, newState, movedByPiston);
+    }
+
+    private static void spawnPoofParticles(Level level, BlockPos pos) {
+        if (level instanceof ServerLevel server) {
+            server.sendParticles(ParticleTypes.POOF,
+                    pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5,
+                    10, 0.2, 0.2, 0.2, 0.02);
+        }
+    }
+
+    private void playItemSound(Level level, BlockPos pos) {
+        level.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.25f, 0.25f);
     }
 
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new RitualBrazierBlockEntity(pos, state);
-    }
-
-    @Nullable
-    @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
-        if (pLevel.isClientSide()) {
-            return null;
-        }
-        return createTickerHelper(pBlockEntityType, ModBlockEntities.RITUAL_BRAZIER_BE.get(), (pLevel1, pPos, pState1, pBlockEntity)
-                -> pBlockEntity.tick(pLevel1, pPos, pState1, pBlockEntity));
     }
 }

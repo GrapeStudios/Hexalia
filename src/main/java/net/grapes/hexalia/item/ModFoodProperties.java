@@ -21,9 +21,8 @@ public class ModFoodProperties {
     public static final FoodProperties SPICY_SANDWICH = new FoodProperties.Builder().nutrition(6).saturationMod(0.6f)
             .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 900), 1.0f).build();
 
-    public static final FoodProperties MOON_BERRIES = new FoodProperties.Builder().nutrition(2).saturationMod(0.3f)
-            .build();
-    public static final FoodProperties MOON_BERRY_COOKIE = new FoodProperties.Builder().nutrition(2).saturationMod(0.1F)
+    public static final FoodProperties GALEBERRIES = new FoodProperties.Builder().nutrition(2).saturationMod(0.3f).build();
+    public static final FoodProperties GALEBERRIES_COOKIE = new FoodProperties.Builder().nutrition(2).saturationMod(0.1F)
             .effect(() -> new MobEffectInstance(MobEffects.NIGHT_VISION, 600), 1.0f).build();
 
 

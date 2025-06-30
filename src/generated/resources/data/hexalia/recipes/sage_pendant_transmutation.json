@@ -1,7 +1,7 @@
 {
   "type": "hexalia:transmutation",
   "input": {
-    "item": "hexalia:moon_crystal"
+    "item": "hexalia:celestial_crystal"
   },
   "output": {
     "item": "hexalia:sage_pendant"

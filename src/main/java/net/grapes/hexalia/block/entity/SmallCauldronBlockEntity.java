@@ -7,6 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
@@ -31,7 +32,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 
 public class SmallCauldronBlockEntity extends BlockEntity implements MenuProvider, HeatingBlockEntity {
-
     private final ItemStackHandler itemHandler = new ItemStackHandler(5) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -58,15 +58,16 @@ public class SmallCauldronBlockEntity extends BlockEntity implements MenuProvide
     protected final ContainerData data;
     private int progress = 0;
     private int maxProgress = 175;
-
+    private final int DEFAULT_MAX_PROGRESS = 175;
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
+    @Nullable private Player lastInteractedPlayer;
 
     public SmallCauldronBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.SMALL_CAULDRON_BE.get(), pPos, pBlockState);
         this.data = new ContainerData() {
             @Override
             public int get(int pIndex) {
-                return switch (pIndex){
+                return switch (pIndex) {
                     case 0 -> SmallCauldronBlockEntity.this.progress;
                     case 1 -> SmallCauldronBlockEntity.this.maxProgress;
                     default -> 0;
@@ -75,10 +76,10 @@ public class SmallCauldronBlockEntity extends BlockEntity implements MenuProvide
 
             @Override
             public void set(int pIndex, int pValue) {
-                switch (pIndex){
+                switch (pIndex) {
                     case 0 -> SmallCauldronBlockEntity.this.progress = pValue;
                     case 1 -> SmallCauldronBlockEntity.this.maxProgress = pValue;
-                };
+                }
             }
 
             @Override
@@ -130,6 +131,8 @@ public class SmallCauldronBlockEntity extends BlockEntity implements MenuProvide
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         pTag.put("inventory", itemHandler.serializeNBT());
+        pTag.putInt("small_cauldron.progress", progress);
+        pTag.putInt("small_cauldron.max_progress", maxProgress);
         super.saveAdditional(pTag);
     }
 
@@ -137,12 +140,15 @@ public class SmallCauldronBlockEntity extends BlockEntity implements MenuProvide
     public void load(CompoundTag pTag) {
         super.load(pTag);
         itemHandler.deserializeNBT(pTag.getCompound("inventory"));
+        progress = pTag.getInt("small_cauldron.progress");
+        maxProgress = pTag.getInt("small_cauldron.max_progress");
     }
 
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
         if (isOutputSlotEmptyOrReceivable() && hasRecipe() && isHeated()) {
             increaseCraftingProcess();
             setChanged(pLevel, pPos, pState);
+
             if (hasProgressFinished()) {
                 craftItem();
                 resetProgress();
@@ -154,22 +160,37 @@ public class SmallCauldronBlockEntity extends BlockEntity implements MenuProvide
 
     private void resetProgress() {
         this.progress = 0;
+        this.maxProgress = DEFAULT_MAX_PROGRESS;
     }
 
     private void craftItem() {
         Optional<SmallCauldronRecipe> recipe = getCurrentRecipe();
-        ItemStack resultItem = recipe.get().getResultItem(getLevel().registryAccess());
+        if (recipe.isEmpty()) return;
 
-        getCurrentRecipe().ifPresent(recipes -> {
-            itemHandler.extractItem(INPUT_SLOT_1, 1, false);
-            itemHandler.extractItem(INPUT_SLOT_2, 1, false);
-            itemHandler.extractItem(INPUT_SLOT_3, 1, false);
-            itemHandler.extractItem(BOTTLE_SLOT, 1, false);
-
-        });
+        SmallCauldronRecipe currentRecipe = recipe.get();
+        ItemStack resultItem = currentRecipe.getResultItem(getLevel().registryAccess());
 
         this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(resultItem.getItem(),
                 this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + resultItem.getCount()));
+
+        itemHandler.extractItem(INPUT_SLOT_1, 1, false);
+        itemHandler.extractItem(INPUT_SLOT_2, 1, false);
+        itemHandler.extractItem(INPUT_SLOT_3, 1, false);
+        itemHandler.extractItem(BOTTLE_SLOT, 1, false);
+
+        if (lastInteractedPlayer != null && currentRecipe.getExperience() > 0) {
+            grantExperience(lastInteractedPlayer, currentRecipe.getExperience());
+        }
+    }
+
+    private void grantExperience(Player player, float experience) {
+        if (experience > 0 && !player.level().isClientSide) {
+            player.giveExperiencePoints((int) experience);
+        }
+    }
+
+    public void setLastInteractedPlayer(Player player) {
+        this.lastInteractedPlayer = player;
     }
 
     private boolean hasProgressFinished() {
@@ -182,15 +203,18 @@ public class SmallCauldronBlockEntity extends BlockEntity implements MenuProvide
 
     private boolean hasRecipe() {
         Optional<SmallCauldronRecipe> recipe = getCurrentRecipe();
-
         if (recipe.isEmpty()) {
             return false;
         }
-        ItemStack resultItem = recipe.get().getResultItem(getLevel().registryAccess());
+
+        SmallCauldronRecipe currentRecipe = recipe.get();
+        ItemStack resultItem = currentRecipe.getResultItem(getLevel().registryAccess());
+
+        this.maxProgress = currentRecipe.getBrewTime();
 
         return canInsertAmountIntoOutputSlot(resultItem.getCount())
                 && canInsertItemIntoOutputSlot(resultItem.getItem())
-                && hasRequiredIngredients(recipe.get());
+                && hasRequiredIngredients(currentRecipe);
     }
 
     private boolean hasRequiredIngredients(SmallCauldronRecipe recipe) {

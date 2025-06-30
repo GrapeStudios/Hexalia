@@ -32,7 +32,7 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SILKWORM = ITEMS.register("silkworm",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> MOON_CRYSTAL = ITEMS.register("moon_crystal",
+    public static final RegistryObject<Item> CELESTIAL_CRYSTAL = ITEMS.register("celestial_crystal",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> FIRE_NODE = ITEMS.register("fire_node",
             () -> new Item(new Item.Properties()));
@@ -58,8 +58,8 @@ public class ModItems {
             () -> new ItemNameBlockItem(ModBlocks.SUNFIRE_TOMATO_CROP.get(), new Item.Properties()));
     public static final RegistryObject<Item> RABBAGE_SEEDS = ITEMS.register("rabbage_seeds",
             () -> new ItemNameBlockItem(ModBlocks.RABBAGE_CROP.get(), new Item.Properties()));
-    public static final RegistryObject<Item> MOON_BERRIES = ITEMS.register("moon_berries",
-            () -> new ItemNameBlockItem(ModBlocks.MOON_BERRIES_VINES.get(), new Item.Properties().food(ModFoodProperties.MOON_BERRIES)));
+    public static final RegistryObject<Item> GALEBERRIES = ITEMS.register("galeberries",
+            () -> new ItemNameBlockItem(ModBlocks.GALEBERRIES_VINE.get(), new Item.Properties().food(ModFoodProperties.GALEBERRIES)));
     public static final RegistryObject<Item> LOTUS_FLOWER = ITEMS.register("lotus_flower",
             () -> new PlaceOnWaterBlockItem(ModBlocks.LOTUS_FLOWER.get(), new Item.Properties()));
     public static final RegistryObject<Item> SALTSPROUT = ITEMS.register("saltsprout",
@@ -84,8 +84,8 @@ public class ModItems {
             () -> new Item(new Item.Properties().food(ModFoodProperties.CHILLBERRY_PIE)));
     public static final RegistryObject<Item> MANDRAKE_STEW = ITEMS.register("mandrake_stew",
             () -> new BowlFoodItem(new Item.Properties().food(ModFoodProperties.MANDRAKE_STEW).stacksTo(1)));
-    public static final RegistryObject<Item> MOON_BERRY_COOKIE = ITEMS.register("moon_berry_cookie",
-            () -> new Item(new Item.Properties().food(ModFoodProperties.MOON_BERRY_COOKIE)));
+    public static final RegistryObject<Item> GALEBERRIES_COOKIE = ITEMS.register("galeberries_cookie",
+            () -> new Item(new Item.Properties().food(ModFoodProperties.GALEBERRIES_COOKIE)));
 
     // Brews
     public static final RegistryObject<Item> RUSTIC_BOTTLE = ITEMS.register("rustic_bottle",
@@ -113,7 +113,7 @@ public class ModItems {
 
     // Tools & Others
     public static final RegistryObject<Item> MORTAR_AND_PESTLE = ITEMS.register("mortar_and_pestle",
-            () -> new MortarAndPestleItem(new Item.Properties()));
+            () -> new MortarAndPestleItem(new Item.Properties().durability(64)));
     public static final RegistryObject<Item> SMALL_CAULDRON = ITEMS.register("small_cauldron",
             () -> new BlockItem(ModBlocks.SMALL_CAULDRON.get(), new Item.Properties()));
     public static final RegistryObject<Item> SALT_LAMP = ITEMS.register("salt_lamp",

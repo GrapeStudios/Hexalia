@@ -1,278 +1,222 @@
 package net.grapes.hexalia.block.entity;
 
+import net.grapes.hexalia.HexaliaMod;
+import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.block.custom.RitualBrazierBlock;
 import net.grapes.hexalia.recipe.RitualBrazierRecipe;
+import net.grapes.hexalia.util.ModUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.Connection;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.Containers;
 import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.WorldlyContainer;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LightLayer;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
-public class RitualBrazierBlockEntity extends BlockEntity implements WorldlyContainer {
+@Mod.EventBusSubscriber(modid = HexaliaMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+public class RitualBrazierBlockEntity extends SyncBlockEntity {
 
-    private static final int MOONLIGHT_DURATION = 400;
-    private static final BlockPos.MutableBlockPos mutableWorldPosition = new BlockPos.MutableBlockPos();
-    private int timer = 0;
-    private boolean active = false;
-    private NonNullList<ItemStack> inventory = NonNullList.withSize(1, ItemStack.EMPTY);
+    public enum RitualResult {
+        SUCCESS,
+        NO_CELESTIAL_BLOOMS,
+        INVALID_ITEM
+    }
+
+    private final ItemStackHandler inventory;
+    private final LazyOptional<IItemHandler> inventoryOptional;
+    private boolean isRitualFocusItem;
+    private float rotation;
 
     public RitualBrazierBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.RITUAL_BRAZIER_BE.get(), pos, state);
+        this.inventory = createHandler();
+        this.inventoryOptional = LazyOptional.of(() -> inventory);
+        this.isRitualFocusItem = false;
     }
 
-    public static void tick(Level pLevel, BlockPos pPos, BlockState pState, RitualBrazierBlockEntity pBlockEntity) {
-        if (pLevel.isClientSide) return;
+    private ItemStackHandler createHandler() {
+        return new ItemStackHandler(1) {
+            @Override
+            protected void onContentsChanged(int slot) {
+                inventoryChanged();
+            }
 
-        if (pBlockEntity.active && !pBlockEntity.isEmpty()) {
-            ItemStack itemStack = pBlockEntity.getItem(0);
-            Optional<RitualBrazierRecipe> recipe = pLevel.getRecipeManager()
-                    .getRecipeFor(RitualBrazierRecipe.Type.INSTANCE, new SimpleContainer(itemStack), pLevel);
+            @Override
+            public int getSlotLimit(int slot) {
+                return 1;
+            }
+        };
+    }
 
-            if (recipe.isPresent()) {
-                if (canPerformMoonlightRitual(pLevel, pPos)) {
-                    pBlockEntity.timer++;
+    public RitualResult tryCelestialRitual() {
+        if (level == null || isRitualFocusItem) return RitualResult.INVALID_ITEM;
 
-                    if (pBlockEntity.timer >= MOONLIGHT_DURATION) {
-                        pBlockEntity.setItem(0, ItemStack.EMPTY);
-                        pBlockEntity.timer = 0;
-                        pBlockEntity.setActive(false);
-                        pBlockEntity.setChanged();
+        if (!hasEnoughNearbyCelestialBlooms()) {
+            return RitualResult.NO_CELESTIAL_BLOOMS;
+        }
 
-                        ItemStack resultStack = recipe.get().getResultItem(pLevel.registryAccess()).copy();
-                        Containers.dropItemStack(pLevel, pPos.getX() + 0.5, pPos.getY() + 1.0, pPos.getZ() + 0.5, resultStack);
+        Optional<RitualBrazierRecipe> matchingRecipe = level.getRecipeManager()
+                .getRecipeFor(RitualBrazierRecipe.Type.INSTANCE, new SimpleContainer(getStoredItem()), level);
 
-                        spawnPoofParticles(pLevel, pPos);
-                        pLevel.playSound(null, pPos, SoundEvents.AMETHYST_BLOCK_BREAK, SoundSource.BLOCKS, 1.0f, 1.0f);
-                    }
-                } else {
-                    pBlockEntity.cancelRitual();
+        if (matchingRecipe.isEmpty()) {
+            return RitualResult.INVALID_ITEM;
+        }
+
+        ItemStack resultStack = matchingRecipe.get().getResultItem(level.registryAccess());
+        Direction direction = getBlockState().getValue(RitualBrazierBlock.FACING).getCounterClockWise();
+
+        ModUtil.spawnItemEntity(level, resultStack.copy(),
+                worldPosition.getX() + 0.5 + (direction.getStepX() * 0.2),
+                worldPosition.getY() + 0.2,
+                worldPosition.getZ() + 0.5 + (direction.getStepZ() * 0.2),
+                direction.getStepX() * 0.2F, 0.0F, direction.getStepZ() * 0.2F);
+
+        removeItem();
+        return RitualResult.SUCCESS;
+    }
+
+    public boolean hasEnoughNearbyCelestialBlooms() {
+        if (level == null) return false;
+
+        int count = 0;
+        BlockPos origin = getBlockPos();
+
+        for (int dx = -3; dx <= 3; dx++) {
+            for (int dz = -3; dz <= 3; dz++) {
+                if (dx == 0 && dz == 0) continue;
+
+                BlockPos checkPos = origin.offset(dx, 0, dz);
+                if (level.getBlockState(checkPos).is(ModBlocks.CELESTIAL_BLOOM.get())) {
+                    count++;
+                    if (count >= 2) return true;
                 }
-            } else {
-                pBlockEntity.cancelRitual();
             }
         }
+        return false;
     }
 
-    public boolean startMoonRitual(Player player) {
-        if (isEmpty()) {
-            player.displayClientMessage(Component.translatable("message.hexalia.moonlight_ritual.invalid_item"), true);
-            return false;
-        }
-
-        ItemStack itemStack = getItem(0);
-        Optional<RitualBrazierRecipe> recipe = level.getRecipeManager()
-                .getRecipeFor(RitualBrazierRecipe.Type.INSTANCE, new SimpleContainer(itemStack), level);
-
-        if (recipe.isEmpty()) {
-            player.displayClientMessage(Component.translatable("message.hexalia.moonlight_ritual.invalid_item"), true);
-            return false;
-        }
-
-        if (!canPerformMoonlightRitual(level, worldPosition)) {
-            player.displayClientMessage(Component.translatable("message.hexalia.moonlight_ritual.not_night"), true);
-            return false;
-        }
-
-        this.timer = 1;
-        this.setActive(true);
-        player.displayClientMessage(Component.translatable("message.hexalia.moonlight_ritual.started"), true);
-        return true;
-    }
-
-    public void cancelRitual() {
-        this.timer = 0;
-        this.setActive(false);
-        this.setChanged();
-    }
-
-    private static void spawnPoofParticles(Level level, BlockPos pos) {
-        if (level instanceof ServerLevel serverLevel) {
-            double x = pos.getX() + 0.5;
-            double y = pos.getY() + 1.0;
-            double z = pos.getZ() + 0.5;
-
-            serverLevel.sendParticles(ParticleTypes.POOF, x, y, z, 10, 0.2, 0.2, 0.2, 0.02);
+    public void playSound(SoundEvent sound, float volume, float pitch) {
+        if (level != null) {
+            level.playSound(null, worldPosition.getX() + 0.5F, worldPosition.getY() + 0.5F,
+                    worldPosition.getZ() + 0.5F, sound, SoundSource.BLOCKS, volume, pitch);
         }
     }
 
-    public void setActive(boolean active) {
-        if (this.active != active) {
-            this.active = active;
-            this.setChanged();
-            if (level != null && !level.isClientSide) {
-                level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(),
-                        Block.UPDATE_ALL);
-            }
-        }
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    private static boolean canPerformMoonlightRitual(Level level, BlockPos pos) {
-        int moonPhase = level.getMoonPhase();
-        return (moonPhase == 0 || moonPhase == 1 || moonPhase == 7) &&
-                level.canSeeSky(pos.above());
-    }
-
-    @Override
-    public int[] getSlotsForFace(@NotNull Direction direction) {
-        return new int[]{0};
-    }
-
-    @Override
-    public boolean canPlaceItemThroughFace(int pIndex, ItemStack pItemStack, @Nullable Direction pDirection) {
-        return true;
-    }
-
-    @Override
-    public boolean canTakeItemThroughFace(int pIndex, ItemStack pStack, Direction pDirection) {
-        return true;
-    }
-
-    @Override
-    public int getContainerSize() {
-        return 1;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return inventory.get(0).isEmpty();
-    }
-
-    @Override
-    public void handleUpdateTag(CompoundTag tag) {
-        super.handleUpdateTag(tag);
-        this.active = tag.getBoolean("Active");
-        ContainerHelper.loadAllItems(tag, this.inventory);
-    }
-
-    @Override
-    public ItemStack getItem(int slot) {
-        if (slot < 0 || slot >= this.inventory.size()) {
-            return ItemStack.EMPTY;
-        }
-        return this.inventory.get(slot);
-    }
-
-    public ItemStack getRenderStack() {
-        return getItem(0);
-    }
-
-    @Override
-    public ItemStack removeItem(int pSlot, int pAmount) {
-        return ContainerHelper.removeItem(inventory, pSlot, pAmount);
-    }
-
-    @Override
-    public ItemStack removeItemNoUpdate(int pSlot) {
-        return ContainerHelper.takeItem(inventory, pSlot);
-    }
-
-    @Override
-    public void setItem(int pSlot, ItemStack pStack) {
-        inventory.set(pSlot, pStack);
-        setChanged();
-        if (level != null && !level.isClientSide) {
-            level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), Block.UPDATE_ALL);
-        }
-    }
-
-    @Override
-    public boolean stillValid(Player pPlayer) {
-        return worldPosition.distSqr(pPlayer.blockPosition()) <= 16;
-    }
-
-    @Override
-    public void clearContent() {
-        inventory.clear();
-    }
-
-    @Override
-    public int getMaxStackSize() {
-        return 1;
-    }
-
-    @Override
-    public void load(CompoundTag pTag) {
-        super.load(pTag);
-        this.inventory = NonNullList.withSize(1, ItemStack.EMPTY);
-        ContainerHelper.loadAllItems(pTag, inventory);
-        this.timer = pTag.getInt("Timer");
-        this.active = pTag.getBoolean("Active");
-    }
-
-    @Override
-    protected void saveAdditional(CompoundTag pTag) {
-        super.saveAdditional(pTag);
-        ContainerHelper.saveAllItems(pTag, inventory);
-        pTag.putInt("Timer", timer);
-        pTag.putBoolean("Active", active);
-    }
-
-    @Override
-    public CompoundTag getUpdateTag() {
-        CompoundTag tag = super.getUpdateTag();
-        tag.putBoolean("Active", this.active);
-        ContainerHelper.saveAllItems(tag, inventory);
-        return tag;
-    }
-
-    public boolean addStack(ItemStack itemStack) {
+    public boolean addItem(ItemStack itemStack) {
         if (isEmpty() && !itemStack.isEmpty()) {
-            setItem(0, itemStack.split(1));
-            setChanged();
+            inventory.setStackInSlot(0, itemStack.split(1));
+            isRitualFocusItem = false;
+            inventoryChanged();
             return true;
         }
         return false;
     }
 
-    public ItemStack removeStack() {
+    public ItemStack removeItem() {
         if (!isEmpty()) {
-            if (this.active) {
-                this.cancelRitual();
-            }
-            ItemStack itemStack = getItem(0).copy();
-            setItem(0, ItemStack.EMPTY);
-            setChanged();
-            return itemStack;
+            isRitualFocusItem = false;
+            ItemStack item = getStoredItem().split(1);
+            inventoryChanged();
+            return item;
         }
         return ItemStack.EMPTY;
+    }
+
+    public IItemHandler getInventory() {
+        return inventory;
+    }
+
+    public ItemStack getStoredItem() {
+        return inventory.getStackInSlot(0);
+    }
+
+    public boolean isEmpty() {
+        return inventory.getStackInSlot(0).isEmpty();
+    }
+
+    public float getRenderingRotation() {
+        rotation += 0.5f;
+        if (rotation >= 360) {
+            rotation = 0;
+        }
+        return rotation;
+    }
+
+    @Override
+    public void setRemoved() {
+        super.setRemoved();
+        inventoryOptional.invalidate();
+    }
+
+    @Override
+    public CompoundTag getUpdateTag() {
+        CompoundTag tag = super.getUpdateTag();
+        tag.putBoolean("IsItemImbued", this.isRitualFocusItem);
+        tag.put("Inventory", this.inventory.serializeNBT());
+        return tag;
+    }
+
+    @Override
+    public void handleUpdateTag(CompoundTag tag) {
+        super.handleUpdateTag(tag);
+        isRitualFocusItem = tag.getBoolean("IsItemImbued");
+        inventory.deserializeNBT(tag.getCompound("Inventory"));
+    }
+
+    @Override
+    public @Nullable ClientboundBlockEntityDataPacket getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
     }
 
     @Override
     public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt) {
         super.onDataPacket(net, pkt);
         if (level != null && level.isClientSide) {
-            level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(),
-                    Block.UPDATE_ALL);
+            level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
         }
     }
 
-    @Nullable
     @Override
-    public ClientboundBlockEntityDataPacket getUpdatePacket() {
-        return ClientboundBlockEntityDataPacket.create(this);
+    public void load(CompoundTag tag) {
+        super.load(tag);
+        isRitualFocusItem = tag.getBoolean("IsItemImbued");
+        inventory.deserializeNBT(tag.getCompound("Inventory"));
+    }
+
+    @Override
+    protected void saveAdditional(CompoundTag tag) {
+        super.saveAdditional(tag);
+        tag.putBoolean("IsItemImbued", isRitualFocusItem);
+        tag.put("Inventory", inventory.serializeNBT());
+    }
+
+    @Override
+    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+        if (cap == ForgeCapabilities.ITEM_HANDLER) {
+            return inventoryOptional.cast();
+        }
+        return super.getCapability(cap, side);
+    }
+
+    @SubscribeEvent
+    public static void attachCapabilities(AttachCapabilitiesEvent<BlockEntity> event) {
+        if (event.getObject() instanceof RitualBrazierBlockEntity) {
+        }
     }
 }

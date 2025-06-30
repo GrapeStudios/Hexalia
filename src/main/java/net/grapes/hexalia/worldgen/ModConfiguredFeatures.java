@@ -51,6 +51,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> BEGONIA_KEY = registerKey("begonia");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LAVENDER_KEY = registerKey("lavender");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DAHLIA_KEY = registerKey("dahlia");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CELESTIAL_BLOOM_KEY = registerKey("celestial_bloom");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> COTTONWOOD_KEY = registerKey("cottonwood_key");
     public static final ResourceKey<ConfiguredFeature<?, ?>> WILLOW_KEY = registerKey("willow_key");
@@ -98,6 +99,10 @@ public class ModConfiguredFeatures {
         register(context, GHOST_FERN_KEY, Feature.RANDOM_PATCH,
                 new RandomPatchConfiguration(1, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
                         new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.GHOST_FERN.get())))));
+
+        register(context, CELESTIAL_BLOOM_KEY, Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(1, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK,
+                        new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.CELESTIAL_BLOOM.get())))));
 
         // Decorative Plants
         register(context, HENBANE_KEY, Feature.FLOWER,

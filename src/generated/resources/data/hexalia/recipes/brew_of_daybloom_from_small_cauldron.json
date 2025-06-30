@@ -3,9 +3,11 @@
   "bottle_slot": {
     "item": "hexalia:rustic_bottle"
   },
+  "brew_time": 175,
+  "experience": 5.0,
   "ingredients": [
     {
-      "item": "hexalia:moon_berries"
+      "item": "hexalia:galeberries"
     },
     {
       "item": "hexalia:sunfire_tomato"

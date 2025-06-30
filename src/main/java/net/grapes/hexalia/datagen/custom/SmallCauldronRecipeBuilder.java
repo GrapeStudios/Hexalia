@@ -24,10 +24,11 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class SmallCauldronRecipeBuilder implements RecipeBuilder {
-
     private final List<Ingredient> ingredients = new ArrayList<>();
     private final Item result;
     private final Item bottleSlotItem;
+    private int brewTime = 175;
+    private float experience = 5.0f;
     private final Advancement.Builder advancement = Advancement.Builder.advancement();
 
     public SmallCauldronRecipeBuilder(List<ItemLike> ingredients, ItemLike bottleSlotItem, ItemLike result) {
@@ -36,6 +37,16 @@ public class SmallCauldronRecipeBuilder implements RecipeBuilder {
         }
         this.bottleSlotItem = bottleSlotItem.asItem();
         this.result = result.asItem();
+    }
+
+    public SmallCauldronRecipeBuilder brewTime(int brewTime) {
+        this.brewTime = brewTime;
+        return this;
+    }
+
+    public SmallCauldronRecipeBuilder experience(float experience) {
+        this.experience = experience;
+        return this;
     }
 
     @Override
@@ -59,11 +70,9 @@ public class SmallCauldronRecipeBuilder implements RecipeBuilder {
         this.advancement.parent(new ResourceLocation("recipes/root"))
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(pRecipeId))
                 .rewards(AdvancementRewards.Builder.recipe(pRecipeId)).requirements(RequirementsStrategy.OR);
-
         pFinishedRecipeConsumer.accept(new Result(pRecipeId, this.result, this.ingredients, this.bottleSlotItem,
-                this.advancement, new ResourceLocation(pRecipeId.getNamespace(), "recipes/"
+                this.brewTime, this.experience, this.advancement, new ResourceLocation(pRecipeId.getNamespace(), "recipes/"
                 + pRecipeId.getPath())));
-
     }
 
     public static class Result implements FinishedRecipe {
@@ -71,15 +80,19 @@ public class SmallCauldronRecipeBuilder implements RecipeBuilder {
         private final Item result;
         private final List<Ingredient> ingredients;
         private final Item bottleSlotItem;
+        private final int brewTime;
+        private final float experience;
         private final Advancement.Builder advancement;
         private final ResourceLocation advancementId;
 
         public Result(ResourceLocation id, Item result, List<Ingredient> ingredients, Item bottleSlotItem,
-                      Advancement.Builder advancement, ResourceLocation advancementId) {
+                      int brewTime, float experience, Advancement.Builder advancement, ResourceLocation advancementId) {
             this.id = id;
             this.result = result;
             this.ingredients = ingredients;
             this.bottleSlotItem = bottleSlotItem;
+            this.brewTime = brewTime;
+            this.experience = experience;
             this.advancement = advancement;
             this.advancementId = advancementId;
         }
@@ -101,6 +114,9 @@ public class SmallCauldronRecipeBuilder implements RecipeBuilder {
             JsonObject jsonOutput = new JsonObject();
             jsonOutput.addProperty("item", ForgeRegistries.ITEMS.getKey(this.result).toString());
             pJson.add("output", jsonOutput);
+
+            pJson.addProperty("brew_time", this.brewTime);
+            pJson.addProperty("experience", this.experience);
         }
 
         @Override

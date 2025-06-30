@@ -15,9 +15,7 @@ public class ModMobEffects {
     public static final DeferredRegister<MobEffect> MOB_EFFECTS =
             DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, HexaliaMod.MOD_ID);
 
-    public static final RegistryObject<MobEffect> OVERFED = MOB_EFFECTS.register("overfed",
-            () -> new OverfedEffect(MobEffectCategory.BENEFICIAL, 0xDCD789).addAttributeModifier(Attributes.MOVEMENT_SPEED,
-                    "BF8B6E3F-3328-4C0A-AA66-3BA6BB6DBEF6", -0.1f, AttributeModifier.Operation.MULTIPLY_TOTAL));
+
     public static final RegistryObject<MobEffect> BLOODLUST = MOB_EFFECTS.register("bloodlust",
             () -> new BloodlustEffect(MobEffectCategory.BENEFICIAL, 0xB02B2B, 3.0).addAttributeModifier(Attributes.ATTACK_DAMAGE,
                     "648D7064-6A60-4F59-8ABE-C2C23A6DD7A9", 0.0f, AttributeModifier.Operation.ADDITION));
@@ -32,6 +30,9 @@ public class ModMobEffects {
     public static final RegistryObject<MobEffect> ARACHNID_GRACE = MOB_EFFECTS.register("arachnid_grace",
             () -> new ArachnidGraceEffect(MobEffectCategory.BENEFICIAL, 0xE0E0E0));
 
+    public static final RegistryObject<MobEffect> OVERFED = MOB_EFFECTS.register("overfed",
+            () -> new OverfedEffect(MobEffectCategory.NEUTRAL, 0xDCD789).addAttributeModifier(Attributes.MOVEMENT_SPEED,
+                    "BF8B6E3F-3328-4C0A-AA66-3BA6BB6DBEF6", -0.1f, AttributeModifier.Operation.MULTIPLY_TOTAL));
     public static final RegistryObject<MobEffect> DAYBLOOM = MOB_EFFECTS.register("daybloom",
             () -> new DaybloomEffect(MobEffectCategory.NEUTRAL, 0x8BFF8B));
 

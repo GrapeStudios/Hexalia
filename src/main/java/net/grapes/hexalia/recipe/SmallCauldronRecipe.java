@@ -13,17 +13,21 @@ import net.minecraft.world.level.Level;
 import net.minecraft.util.GsonHelper;
 
 public class SmallCauldronRecipe implements Recipe<SimpleContainer> {
-
     private final ResourceLocation id;
     private final ItemStack output;
     private final NonNullList<Ingredient> recipeItems;
     private final Ingredient bottleSlot;
+    private final int brewTime;
+    private final float experience;
 
-    public SmallCauldronRecipe(ResourceLocation id, ItemStack output, NonNullList<Ingredient> recipeItems, Ingredient bottleSlot) {
+    public SmallCauldronRecipe(ResourceLocation id, ItemStack output, NonNullList<Ingredient> recipeItems,
+                               Ingredient bottleSlot, int brewTime, float experience) {
         this.id = id;
         this.output = output;
         this.recipeItems = recipeItems;
         this.bottleSlot = bottleSlot;
+        this.brewTime = brewTime;
+        this.experience = experience;
     }
 
     @Override
@@ -58,7 +62,6 @@ public class SmallCauldronRecipe implements Recipe<SimpleContainer> {
         return output.copy();
     }
 
-
     @Override
     public boolean canCraftInDimensions(int width, int height) {
         return true;
@@ -76,6 +79,14 @@ public class SmallCauldronRecipe implements Recipe<SimpleContainer> {
 
     public Ingredient getBottleSlot() {
         return bottleSlot;
+    }
+
+    public int getBrewTime() {
+        return brewTime;
+    }
+
+    public float getExperience() {
+        return experience;
     }
 
     @Override
@@ -104,30 +115,35 @@ public class SmallCauldronRecipe implements Recipe<SimpleContainer> {
         @Override
         public SmallCauldronRecipe fromJson(ResourceLocation id, JsonObject json) {
             ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "output"));
+
             JsonArray ingredients = GsonHelper.getAsJsonArray(json, "ingredients");
             NonNullList<Ingredient> inputs = NonNullList.withSize(ingredients.size(), Ingredient.EMPTY);
-
             for (int i = 0; i < inputs.size(); i++) {
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
             }
 
             Ingredient bottleSlot = Ingredient.fromJson(GsonHelper.getAsJsonObject(json, "bottle_slot"));
 
-            return new SmallCauldronRecipe(id, output, inputs, bottleSlot);
+            // Read brewTime and experience from JSON, with default values if not present
+            int brewTime = GsonHelper.getAsInt(json, "brew_time", 175); // Default to 175 ticks
+            float experience = GsonHelper.getAsFloat(json, "experience", 0.0f); // Default to no experience
+
+            return new SmallCauldronRecipe(id, output, inputs, bottleSlot, brewTime, experience);
         }
 
         @Override
         public SmallCauldronRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
             NonNullList<Ingredient> inputs = NonNullList.withSize(buf.readInt(), Ingredient.EMPTY);
-
             for (int i = 0; i < inputs.size(); i++) {
                 inputs.set(i, Ingredient.fromNetwork(buf));
             }
 
             ItemStack output = buf.readItem();
             Ingredient bottleSlot = Ingredient.fromNetwork(buf);
+            int brewTime = buf.readInt();
+            float experience = buf.readFloat();
 
-            return new SmallCauldronRecipe(id, output, inputs, bottleSlot);
+            return new SmallCauldronRecipe(id, output, inputs, bottleSlot, brewTime, experience);
         }
 
         @Override
@@ -138,6 +154,8 @@ public class SmallCauldronRecipe implements Recipe<SimpleContainer> {
             }
             buf.writeItem(recipe.getResultItem(null));
             recipe.bottleSlot.toNetwork(buf);
+            buf.writeInt(recipe.brewTime);
+            buf.writeFloat(recipe.experience);
         }
     }
 }
