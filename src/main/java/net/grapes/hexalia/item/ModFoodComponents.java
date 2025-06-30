@@ -23,8 +23,8 @@ public class ModFoodComponents {
     public static final FoodComponent SALTSPROUT = new FoodComponent.Builder().hunger(2).saturationModifier(0.1f)
             .statusEffect(new StatusEffectInstance(StatusEffects.HUNGER, 600), 1f).build();
 
-    public static final FoodComponent MOON_BERRIES = new FoodComponent.Builder().hunger(2).saturationModifier(0.3f).build();
-    public static final FoodComponent MOON_BERRY_COOKIE = new FoodComponent.Builder().hunger(6).saturationModifier(0.8f)
+    public static final FoodComponent GALEBERRIES = new FoodComponent.Builder().hunger(2).saturationModifier(0.3f).build();
+    public static final FoodComponent GALEBERRIES_COOKIE = new FoodComponent.Builder().hunger(6).saturationModifier(0.8f)
             .statusEffect(new StatusEffectInstance(StatusEffects.NIGHT_VISION, 900, 1), 1f).build();
 
     public static final FoodComponent WITCH_SALAD = new FoodComponent.Builder().hunger(6).saturationModifier(0.6f)

@@ -160,12 +160,12 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(Items.BRICK), conditionsFromItem(Items.BRICK))
                 .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.CENSER)));
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.MOON_CRYSTAL_BLOCK)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.CELESTIAL_CRYSTAL_BLOCK)
                 .pattern("PP")
                 .pattern("PP")
-                .input('P', ModItems.MOON_CRYSTAL)
-                .criterion(hasItem(ModItems.MOON_CRYSTAL), conditionsFromItem(ModItems.MOON_CRYSTAL))
-                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.MOON_CRYSTAL_BLOCK)));
+                .input('P', ModItems.CELESTIAL_CRYSTAL)
+                .criterion(hasItem(ModItems.CELESTIAL_CRYSTAL), conditionsFromItem(ModItems.CELESTIAL_CRYSTAL))
+                .offerTo(exporter, new Identifier(getRecipeName(ModBlocks.CELESTIAL_CRYSTAL_BLOCK)));
 
         // Recipes for vanilla items or blocks.
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, Items.LEATHER)
@@ -206,6 +206,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input('T', Items.LEATHER)
                 .criterion(hasItem(Items.LEATHER), conditionsFromItem(Items.LEATHER))
                 .offerTo(exporter);
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BOGGED_BOOTS)
                 .pattern("PSP")
                 .pattern("A A")
@@ -289,18 +290,18 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.SILK_FIBER), conditionsFromItem(ModItems.SILK_FIBER))
                 .offerTo(exporter);
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MOON_BERRY_COOKIE, 4)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.GALEBERRIES_COOKIE, 4)
                 .input(Items.WHEAT)
                 .input(Items.WHEAT)
                 .input(Items.SUGAR)
-                .input(ModItems.MOON_BERRIES)
-                .criterion(hasItem(ModItems.MOON_BERRIES), conditionsFromItem(ModItems.MOON_BERRIES))
+                .input(ModItems.GALEBERRIES)
+                .criterion(hasItem(ModItems.GALEBERRIES), conditionsFromItem(ModItems.GALEBERRIES))
                 .offerTo(exporter);
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.RAIN_IDOL)
                 .input(ModItems.SILK_IDOL)
                 .input(Items.STRING)
-                .input(ModItems.MOON_CRYSTAL)
+                .input(ModItems.CELESTIAL_CRYSTAL)
                 .input(ModItems.WATER_NODE)
                 .criterion(hasItem(ModItems.SILK_IDOL), conditionsFromItem(ModItems.SILK_IDOL))
                 .offerTo(exporter);
@@ -308,7 +309,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CLEAR_IDOL)
                 .input(ModItems.SILK_IDOL)
                 .input(Items.STRING)
-                .input(ModItems.MOON_CRYSTAL)
+                .input(ModItems.CELESTIAL_CRYSTAL)
                 .input(ModItems.FIRE_NODE)
                 .criterion(hasItem(ModItems.SILK_IDOL), conditionsFromItem(ModItems.SILK_IDOL))
                 .offerTo(exporter);
@@ -322,9 +323,9 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.SILK_IDOL), conditionsFromItem(ModItems.SILK_IDOL))
                 .offerTo(exporter);
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MOON_CRYSTAL, 4)
-                .input(ModBlocks.MOON_CRYSTAL_BLOCK)
-                .criterion(hasItem(ModBlocks.MOON_CRYSTAL_BLOCK), conditionsFromItem(ModBlocks.MOON_CRYSTAL_BLOCK))
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CELESTIAL_CRYSTAL, 4)
+                .input(ModBlocks.CELESTIAL_CRYSTAL_BLOCK)
+                .criterion(hasItem(ModBlocks.CELESTIAL_CRYSTAL_BLOCK), conditionsFromItem(ModBlocks.CELESTIAL_CRYSTAL_BLOCK))
                 .offerTo(exporter);
 
 
@@ -380,30 +381,44 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
         // Recipes for Small Cauldron Brews
         new SmallCauldronRecipeBuilder(List.of(Blocks.CACTUS, ModItems.MANDRAKE, ModItems.GHOST_POWDER),
                 ModItems.RUSTIC_BOTTLE, ModItems.BREW_OF_SPIKESKIN)
+                .brewTime(175)
+                .experience(5)
                 .criterion(hasItem(ModItems.RUSTIC_BOTTLE), conditionsFromItem(ModItems.RUSTIC_BOTTLE))
                 .offerTo(exporter);
         new SmallCauldronRecipeBuilder(List.of(Items.BEEF, ModItems.SIREN_PASTE, ModItems.SALTSPROUT),
                 ModItems.RUSTIC_BOTTLE, ModItems.BREW_OF_BLOODLUST)
+                .brewTime(175)
+                .experience(5)
                 .criterion(hasItem(ModItems.RUSTIC_BOTTLE), conditionsFromItem(ModItems.RUSTIC_BOTTLE))
                 .offerTo(exporter);
         new SmallCauldronRecipeBuilder(List.of(Items.SLIME_BALL, Items.FEATHER, Items.SPIDER_EYE),
                 ModItems.RUSTIC_BOTTLE, ModItems.BREW_OF_SLIMEWALKER)
+                .brewTime(175)
+                .experience(5)
                 .criterion(hasItem(ModItems.RUSTIC_BOTTLE), conditionsFromItem(ModItems.RUSTIC_BOTTLE))
                 .offerTo(exporter);
         new SmallCauldronRecipeBuilder(List.of(Items.ENDER_PEARL, ModItems.TREE_RESIN, ModItems.SPIRIT_POWDER),
                 ModItems.RUSTIC_BOTTLE, ModItems.BREW_OF_HOMESTEAD)
+                .brewTime(175)
+                .experience(5)
                 .criterion(hasItem(ModItems.RUSTIC_BOTTLE), conditionsFromItem(ModItems.RUSTIC_BOTTLE))
                 .offerTo(exporter);
         new SmallCauldronRecipeBuilder(List.of(Items.FLINT, Items.GOLD_NUGGET, ModItems.MANDRAKE),
                 ModItems.RUSTIC_BOTTLE, ModItems.BREW_OF_SIPHON)
+                .brewTime(175)
+                .experience(5)
                 .criterion(hasItem(ModItems.RUSTIC_BOTTLE), conditionsFromItem(ModItems.RUSTIC_BOTTLE))
                 .offerTo(exporter);
-        new SmallCauldronRecipeBuilder(List.of(ModItems.MOON_BERRIES, ModItems.SUNFIRE_TOMATO, Items.BLACK_DYE),
+        new SmallCauldronRecipeBuilder(List.of(ModItems.GALEBERRIES, ModItems.SUNFIRE_TOMATO, Items.BLACK_DYE),
                 ModItems.RUSTIC_BOTTLE, ModItems.BREW_OF_DAYBLOOM)
+                .brewTime(175)
+                .experience(5)
                 .criterion(hasItem(ModItems.RUSTIC_BOTTLE), conditionsFromItem(ModItems.RUSTIC_BOTTLE))
                 .offerTo(exporter);
         new SmallCauldronRecipeBuilder(List.of(ModItems.DREAM_PASTE, Items.SPIDER_EYE, Items.BLACK_DYE),
                 ModItems.RUSTIC_BOTTLE, ModItems.BREW_OF_ARACHNID_GRACE)
+                .brewTime(175)
+                .experience(5)
                 .criterion(hasItem(ModItems.RUSTIC_BOTTLE), conditionsFromItem(ModItems.RUSTIC_BOTTLE))
                 .offerTo(exporter);
 
@@ -416,7 +431,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .offerTo(exporter);
 
         new TransmutationRecipeBuilder(List.of(ModItems.SPIRIT_POWDER, Items.GOLD_NUGGET, Items.BOOK, Items.EXPERIENCE_BOTTLE),
-                ModItems.MOON_CRYSTAL, ModItems.SAGE_PENDANT).criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
+                ModItems.CELESTIAL_CRYSTAL, ModItems.SAGE_PENDANT).criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
                 .offerTo(exporter);
 
         new TransmutationRecipeBuilder(List.of(ModItems.DREAM_PASTE, ModItems.SPIRIT_POWDER, ModItems.EARTH_NODE, ModItems.TREE_RESIN),
@@ -435,8 +450,8 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 Blocks.OXEYE_DAISY, ModBlocks.WINDSONG).criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
                 .offerTo(exporter);
 
-        new TransmutationRecipeBuilder(List.of(ModItems.MOON_CRYSTAL, ModItems.EARTH_NODE, Items.BONE_MEAL, Items.GLOWSTONE_DUST),
-                Blocks.LILY_OF_THE_VALLEY, ModBlocks.LUNAR_LILY).criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
+        new TransmutationRecipeBuilder(List.of(ModItems.CELESTIAL_CRYSTAL, ModItems.EARTH_NODE, Items.BONE_MEAL, Items.GLOWSTONE_DUST),
+                Blocks.LILY_OF_THE_VALLEY, ModBlocks.ASTRYLIS).criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
                 .offerTo(exporter);
 
         new TransmutationRecipeBuilder(List.of(Items.COAL, ModItems.SUNFIRE_TOMATO, Items.GUNPOWDER, Blocks.SUNFLOWER),
@@ -455,16 +470,16 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 Items.AMETHYST_SHARD, ModItems.EARTH_NODE).criterion(hasItem(ModItems.HEX_FOCUS), conditionsFromItem(ModItems.HEX_FOCUS))
                 .offerTo(exporter);
 
-        // Moon Rituals
-        new RitualBrazierRecipeBuilder(Items.AMETHYST_SHARD, ModItems.MOON_CRYSTAL)
+        // Celestial Ritual
+        new RitualBrazierRecipeBuilder(Items.AMETHYST_SHARD, ModItems.CELESTIAL_CRYSTAL)
                 .criterion("has_amethyst_shard", conditionsFromItem(Items.AMETHYST_SHARD))
-                .offerTo(exporter, new Identifier(HexaliaMod.MOD_ID, "moon_crystal_from_amethyst_shard"));
-        new RitualBrazierRecipeBuilder(Items.GLOW_BERRIES, ModItems.MOON_BERRIES)
+                .offerTo(exporter, new Identifier(HexaliaMod.MOD_ID, "celestial_crystal_from_infusion"));
+        new RitualBrazierRecipeBuilder(Items.GLOW_BERRIES, ModItems.GALEBERRIES)
                 .criterion("has_glow_berries", conditionsFromItem(Items.AMETHYST_SHARD))
-                .offerTo(exporter, new Identifier(HexaliaMod.MOD_ID, "moon_berries_from_amethyst_shard"));
-        new RitualBrazierRecipeBuilder(Blocks.AMETHYST_BLOCK, ModBlocks.MOON_CRYSTAL_BLOCK)
+                .offerTo(exporter, new Identifier(HexaliaMod.MOD_ID, "galeberries_from_infusion"));
+        new RitualBrazierRecipeBuilder(Blocks.AMETHYST_BLOCK, ModBlocks.CELESTIAL_CRYSTAL_BLOCK)
                 .criterion("has_amethyst_block", conditionsFromItem(Items.AMETHYST_SHARD))
-                .offerTo(exporter, new Identifier(HexaliaMod.MOD_ID, "moon_crystal_block_from_amethyst_shard"));
+                .offerTo(exporter, new Identifier(HexaliaMod.MOD_ID, "celestial_crystal_block_from_infusion"));
 
         // Recipes for Wooden Blocks
         offerPlanksRecipe(exporter, ModBlocks.COTTONWOOD_PLANKS, ModTags.Items.COTTONWOOD_LOGS, 4);

@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cross",
-  "render_type": "cutout",
-  "textures": {
-    "cross": "hexalia:block/moon_berries_vine_plant_lit"
-  }
-}

@@ -16,7 +16,7 @@ public class MortarAndPestleItem extends Item {
     @Override
     public ItemStack getRecipeRemainder(ItemStack stack) {
         ItemStack result = stack.copy();
-        result.setDamage(result.getDamage() + 1);
+        result.setDamage(result.getDamage() - 1);
 
         if (result.getDamage() >= result.getMaxDamage()) {
             return ItemStack.EMPTY;

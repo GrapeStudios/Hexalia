@@ -3,6 +3,7 @@ package net.grapes.hexalia.block.custom;
 import net.grapes.hexalia.block.entity.ModBlockEntities;
 import net.grapes.hexalia.block.entity.RitualBrazierBlockEntity;
 import net.grapes.hexalia.item.ModItems;
+import net.grapes.hexalia.util.ModTags;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -10,20 +11,23 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.BlockItem;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.registry.Registries;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.text.Text;
 import net.minecraft.util.*;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
@@ -33,7 +37,7 @@ public class RitualBrazierBlock extends BlockWithEntity implements BlockEntityPr
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty SALTED = BooleanProperty.of("salted");
 
-    private static final VoxelShape SHAPE = Block.createCuboidShape(3.0, 0.0, 3.0, 13.0, 1.0, 13.0);
+    private static final VoxelShape SHAPE = VoxelShapes.union(Block.createCuboidShape(3.0, 0.0, 3.0, 13.0, 1.0, 13.0));
 
     public RitualBrazierBlock(Settings settings) {
         super(settings);
@@ -46,26 +50,6 @@ public class RitualBrazierBlock extends BlockWithEntity implements BlockEntityPr
     }
 
     @Override
-    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        super.randomDisplayTick(state, world, pos, random);
-
-        if (world.isClient) {
-            BlockEntity be = world.getBlockEntity(pos);
-            if (be instanceof RitualBrazierBlockEntity brazier && brazier.isActive()) {
-                double x = pos.getX() + 0.5;
-                double y = pos.getY() + 0.7;
-                double z = pos.getZ() + 0.5;
-
-                world.addParticle(ParticleTypes.ELECTRIC_SPARK,
-                        x + (random.nextDouble()-0.5)*0.3,
-                        y + random.nextDouble()*0.3,
-                        z + (random.nextDouble()-0.5)*0.3,
-                        0, 0.02, 0);
-            }
-        }
-    }
-
-    @Override
     public BlockRenderType getRenderType(BlockState state) {
         return BlockRenderType.MODEL;
     }
@@ -73,52 +57,84 @@ public class RitualBrazierBlock extends BlockWithEntity implements BlockEntityPr
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
-        ItemStack heldItem = player.getStackInHand(hand);
+        ItemStack stack = player.getStackInHand(hand);
 
-        if (!(blockEntity instanceof RitualBrazierBlockEntity ritualBrazierBlockEntity)) {
+        if (!(blockEntity instanceof RitualBrazierBlockEntity brazier)) {
             return ActionResult.PASS;
         }
 
-        if (hand == Hand.MAIN_HAND) {
-            Identifier itemId = Registries.ITEM.getId(heldItem.getItem());
-            if (itemId.getPath().contains("salt") && !state.get(SALTED)) {
+        ItemStack heldStack = player.getStackInHand(hand);
+        ItemStack offhandStack = player.getOffHandStack();
+
+        if (hand == Hand.MAIN_HAND && !state.get(SALTED)) {
+            if (stack.isIn(ModTags.Items.SALT_DUSTS) && !state.get(SALTED)) {
                 world.setBlockState(pos, state.with(SALTED, true), Block.NOTIFY_ALL);
                 if (!player.isCreative()) {
-                    heldItem.decrement(1);
+                    heldStack.decrement(1);
                 }
                 world.playSound(null, pos, SoundEvents.ITEM_BONE_MEAL_USE, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                return ActionResult.success(world.isClient);
+                return ActionResult.success(world.isClient());
             }
+        }
 
-            if (heldItem.isOf(ModItems.HEX_FOCUS) && !state.get(SALTED)) {
-                if (ritualBrazierBlockEntity.startMoonRitual(player)) {
-                    return ActionResult.success(world.isClient);
-                } else {
+        if (brazier.isEmpty()) {
+            if (!offhandStack.isEmpty()) {
+                if (hand == Hand.MAIN_HAND && !offhandStack.isIn(ModTags.Items.OFFHAND_EQUIPMENT) && !(heldStack.getItem() instanceof BlockItem)) {
+                    return ActionResult.PASS;
+                }
+                if (hand == Hand.OFF_HAND && offhandStack.isIn(ModTags.Items.OFFHAND_EQUIPMENT)) {
                     return ActionResult.PASS;
                 }
             }
 
-            if (!heldItem.isEmpty() && ritualBrazierBlockEntity.isEmpty() && !heldItem.isOf(ModItems.HEX_FOCUS) && !heldItem.isOf(ModItems.SALT)) {
-                if (ritualBrazierBlockEntity.addStack(heldItem.split(1))) {
-                    playItemSound(world, pos);
-                    return ActionResult.success(world.isClient);
-                }
+            if (heldStack.isEmpty()) {
+                return ActionResult.PASS;
+            } else if (brazier.addStack(player.getAbilities().creativeMode ? heldStack.copy() : heldStack)) {
+                playItemSound(world, pos);
+                return ActionResult.success(world.isClient());
             }
 
-            if (!ritualBrazierBlockEntity.isEmpty() && heldItem.isEmpty()) {
-                removeItemFromBlock(world, ritualBrazierBlockEntity, player);
-                return ActionResult.success(world.isClient);
+        } else if (!heldStack.isEmpty() || !offhandStack.isEmpty()) {
+            ItemStack focusStack = heldStack.isOf(ModItems.HEX_FOCUS) ? heldStack :
+                    offhandStack.isOf(ModItems.HEX_FOCUS) ? offhandStack :
+                            ItemStack.EMPTY;
+
+            if (!focusStack.isEmpty()) {
+                if (!world.isClient()) {
+                    RitualBrazierBlockEntity.RitualResult result = brazier.tryCelestialRitual();
+                    switch (result) {
+                        case SUCCESS -> {
+                            spawnPoofParticles(world, pos);
+                            world.playSound(null, pos, SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.BLOCKS, 0.25f, 0.25f);
+                        }
+                        case NO_CELESTIAL_BLOOMS -> player.sendMessage(Text.translatable("message.hexalia.ritual_brazier.no_celestial_blooms"), true);
+                        case INVALID_ITEM -> player.sendMessage(Text.translatable("message.hexalia.ritual_brazier.invalid_item"), true);
+                    }
+                }
+                return ActionResult.success(world.isClient());
             }
+
+        } else if (hand == Hand.MAIN_HAND) {
+            if (!player.isCreative()) {
+                if (!player.getInventory().insertStack(brazier.removeStack())) {
+                    ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), brazier.removeStack());
+                }
+            } else {
+                brazier.removeStack();
+            }
+            playItemSound(world, pos);
+            return ActionResult.success(world.isClient());
         }
+
         return ActionResult.PASS;
     }
 
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
         if (state.getBlock() != newState.getBlock()) {
-            BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof RitualBrazierBlockEntity ritualBrazierBlockEntity) {
-                ItemScatterer.spawn(world, pos, ritualBrazierBlockEntity);
+            BlockEntity be = world.getBlockEntity(pos);
+            if (be instanceof RitualBrazierBlockEntity brazier) {
+                ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), brazier.getStoredItem());
                 if (state.get(SALTED)) {
                     ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(ModItems.SALT));
                 }
@@ -127,11 +143,22 @@ public class RitualBrazierBlock extends BlockWithEntity implements BlockEntityPr
         super.onStateReplaced(state, world, pos, newState, moved);
     }
 
+    private static void spawnPoofParticles(World world, BlockPos pos) {
+        if (world instanceof ServerWorld server) {
+            server.spawnParticles(ParticleTypes.POOF,
+                    pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5,
+                    10, 0.2, 0.2, 0.2, 0.02);
+        }
+    }
+
+    private void playItemSound(World world, BlockPos pos) {
+        world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.25f, 0.25f);
+    }
+
     @Nullable
     @Override
     public BlockState getPlacementState(ItemPlacementContext ctx) {
-        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing()
-                .getOpposite()).with(SALTED, false);
+        return this.getDefaultState().with(FACING, ctx.getHorizontalPlayerFacing().getOpposite()).with(SALTED, false);
     }
 
     @Override
@@ -149,34 +176,9 @@ public class RitualBrazierBlock extends BlockWithEntity implements BlockEntityPr
         return state.rotate(mirror.getRotation(state.get(FACING)));
     }
 
-    private void removeItemFromBlock(World world, RitualBrazierBlockEntity ritualBrazierBlockEntity, PlayerEntity player) {
-        ItemStack stack = ritualBrazierBlockEntity.removeStack();
-        if (!player.getInventory().insertStack(stack)) {
-            ItemScatterer.spawn(world, player.getX(), player.getY(), player.getZ(), stack);
-        }
-        playItemSound(world, ritualBrazierBlockEntity.getPos());
-    }
-
-    private void playItemSound(World world, BlockPos pos) {
-        world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.5f, 0.5f);
-    }
-
     @Nullable
     @Override
     public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new RitualBrazierBlockEntity(pos, state);
-    }
-
-    @Nullable
-    @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        if (world.isClient) {
-            return null;
-        }
-        return type == ModBlockEntities.RITUAL_BRAZIER_BE ? (world1, pos, state1, blockEntity) -> {
-            if (blockEntity instanceof RitualBrazierBlockEntity ritualBrazier) {
-                RitualBrazierBlockEntity.tick(world1, pos, state1, ritualBrazier);
-            }
-        } : null;
     }
 }

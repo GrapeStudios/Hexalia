@@ -11,9 +11,9 @@
     },
     {
       "type": "patchouli:image",
-      "title": "Salt Oasis",
+      "title": "Barren Hut",
       "images": [
-        "hexalia:textures/gui/patchouli/salt_oasis.png"
+        "hexalia:textures/gui/patchouli/barren_hut.png"
       ],
       "border": true
     },

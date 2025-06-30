@@ -26,6 +26,8 @@ public class SmallCauldronRecipeBuilder implements CraftingRecipeJsonBuilder {
     private final List<Ingredient> ingredients = new ArrayList<>();
     private final Item result;
     private final Item bottleSlotItem;
+    private int brewTime = 175;
+    private float experience = 5.0f;
     private final Advancement.Builder advancement = Advancement.Builder.create();
 
     public SmallCauldronRecipeBuilder(List<ItemConvertible> ingredients, ItemConvertible bottleSlotItem, ItemConvertible result) {
@@ -34,6 +36,16 @@ public class SmallCauldronRecipeBuilder implements CraftingRecipeJsonBuilder {
         }
         this.bottleSlotItem = bottleSlotItem.asItem();
         this.result = result.asItem();
+    }
+
+    public SmallCauldronRecipeBuilder brewTime(int brewTime) {
+        this.brewTime = brewTime;
+        return this;
+    }
+
+    public SmallCauldronRecipeBuilder experience(float experience) {
+        this.experience = experience;
+        return this;
     }
 
     @Override
@@ -59,7 +71,8 @@ public class SmallCauldronRecipeBuilder implements CraftingRecipeJsonBuilder {
                 .rewards(AdvancementRewards.Builder.recipe(recipeId));
 
         exporter.accept(new JsonBuilder(recipeId, this.result, this.ingredients, this.bottleSlotItem,
-                this.advancement, new Identifier(recipeId.getNamespace(), "recipes/" + recipeId.getPath())));
+                this.brewTime, this.experience, this.advancement,
+                new Identifier(recipeId.getNamespace(), "recipes/" + recipeId.getPath())));
     }
 
     public static class JsonBuilder implements RecipeJsonProvider {
@@ -67,15 +80,19 @@ public class SmallCauldronRecipeBuilder implements CraftingRecipeJsonBuilder {
         private final Item result;
         private final List<Ingredient> ingredients;
         private final Item bottleSlotItem;
+        private final int brewTime;
+        private final float experience;
         private final Advancement.Builder advancement;
         private final Identifier advancementId;
 
         public JsonBuilder(Identifier id, Item result, List<Ingredient> ingredients, Item bottleSlotItem,
-                           Advancement.Builder advancement, Identifier advancementId) {
+                           int brewTime, float experience, Advancement.Builder advancement, Identifier advancementId) {
             this.id = id;
             this.result = result;
             this.ingredients = ingredients;
             this.bottleSlotItem = bottleSlotItem;
+            this.brewTime = brewTime;
+            this.experience = experience;
             this.advancement = advancement;
             this.advancementId = advancementId;
         }
@@ -97,6 +114,10 @@ public class SmallCauldronRecipeBuilder implements CraftingRecipeJsonBuilder {
             JsonObject jsonOutput = new JsonObject();
             jsonOutput.addProperty("item", Registries.ITEM.getId(this.result).toString());
             json.add("output", jsonOutput);
+
+            // Add brewTime and experience to the JSON
+            json.addProperty("brew_time", this.brewTime);
+            json.addProperty("experience", this.experience);
         }
 
         @Override

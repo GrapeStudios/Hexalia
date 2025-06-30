@@ -9,7 +9,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.block.entity.ModBlockEntities;
 import net.grapes.hexalia.block.entity.renderer.CenserBlockRenderer;
-import net.grapes.hexalia.block.entity.renderer.RitualBrazierRenderer;
+import net.grapes.hexalia.block.entity.renderer.RitualBrazierBlockEntityRenderer;
 import net.grapes.hexalia.block.entity.renderer.RitualTableBlockEntityRenderer;
 import net.grapes.hexalia.block.entity.renderer.ShelfBlockRenderer;
 import net.grapes.hexalia.entity.ModBoats;
@@ -66,21 +66,23 @@ public class HexaliaModClient implements ClientModInitializer {
                 ModBlocks.GHOST_FERN, ModBlocks.HEXED_BULRUSH,
                 ModBlocks.NIGHTSHADE_BUSH, ModBlocks.POTTED_NIGHTSHADE_BUSH,
                 ModBlocks.SALTSPROUT, ModBlocks.DUCKWEED,
-                ModBlocks.MOON_BERRIES_VINE, ModBlocks.MOON_BERRIES_VINE_PLANT,
+                ModBlocks.GALEBERRIES_VINE, ModBlocks.GALEBERRIES_VINE_PLANT,
                 ModBlocks.GRIMSHADE, ModBlocks.POTTED_GRIMSHADE,
                 ModBlocks.BEGONIA, ModBlocks.POTTED_MORPHORA,
                 ModBlocks.RITUAL_BRAZIER, ModBlocks.MORPHORA,
                 ModBlocks.LAVENDER, ModBlocks.POTTED_LAVENDER,
-                ModBlocks.NAUTILITE, ModBlocks.WINDSONG, ModBlocks.LUNAR_LILY,
-                ModBlocks.POTTED_WINDSONG, ModBlocks.POTTED_LUNAR_LILY,
+                ModBlocks.NAUTILITE, ModBlocks.WINDSONG, ModBlocks.ASTRYLIS,
+                ModBlocks.POTTED_WINDSONG, ModBlocks.POTTED_ASTRYLIS,
                 ModBlocks.POTTED_BEGONIA, ModBlocks.WITHER_CANDLE_SKULL,
-                ModBlocks.DAHLIA, ModBlocks.POTTED_DAHLIA
+                ModBlocks.DAHLIA, ModBlocks.POTTED_DAHLIA,
+                ModBlocks.CELESTIAL_BLOOM, ModBlocks.POTTED_CELESTIAL_BLOOM,
+                ModBlocks.POTTED_GHOST_FERN
         );
     }
 
     private void registerBlockEntityRenderers() {
         BlockEntityRendererFactories.register(ModBlockEntities.RITUAL_TABLE_BE, RitualTableBlockEntityRenderer::new);
-        BlockEntityRendererFactories.register(ModBlockEntities.RITUAL_BRAZIER_BE, RitualBrazierRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntities.RITUAL_BRAZIER_BE, RitualBrazierBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.MOD_SIGN_BLOCK_ENTITY, SignBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.MOD_HANGING_SIGN_BLOCK_ENTITY, HangingSignBlockEntityRenderer::new);
         BlockEntityRendererFactories.register(ModBlockEntities.SHELF_BE, ShelfBlockRenderer::new);

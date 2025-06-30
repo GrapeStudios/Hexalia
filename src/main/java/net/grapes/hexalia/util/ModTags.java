@@ -15,6 +15,7 @@ public class ModTags {
         public static final TagKey<Item> BREWS = createItemTag("brews");
         public static final TagKey<Item> COTTONWOOD_LOGS = createItemTag("cottonwood_logs");
         public static final TagKey<Item> WILLOW_LOGS = createItemTag("willow_logs");
+        public static final TagKey<Item> OFFHAND_EQUIPMENT = createItemTag("offhand_equipment");
 
         // Conventional Item Tags
         public static final TagKey<Item> FOODS = createCommonItemTag("foods");

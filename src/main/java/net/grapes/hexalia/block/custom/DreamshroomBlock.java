@@ -20,7 +20,7 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class DreamshroomBlock extends HexaliaMushroomBlock {
+public class DreamshroomBlock extends ShroomBlock {
 
     private static final double MAX_HORIZONTAL_OFFSET = 0.1;
     private static final double PARTICLE_START_Y_OFFSET = 0.3;

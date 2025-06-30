@@ -28,8 +28,6 @@ public class RitualBrazierProcessor implements IComponentProcessor {
             case "input":
                 ItemStack[] inputStacks = recipe.getInput().getMatchingStacks();
                 return inputStacks.length > 0 ? IVariable.from(inputStacks[0]) : null;
-            case "moonlight":
-                return IVariable.wrap(true); // Flag for moonlight requirement
             default:
                 return null;
         }

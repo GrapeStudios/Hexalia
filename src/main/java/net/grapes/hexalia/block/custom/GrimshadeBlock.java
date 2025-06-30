@@ -1,5 +1,6 @@
 package net.grapes.hexalia.block.custom;
 
+import net.grapes.hexalia.block.ModBlocks;
 import net.grapes.hexalia.item.ModItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -148,6 +149,10 @@ public class GrimshadeBlock extends EnchantedPlantBlock {
                     skullsTransformed[0]++;
                 } else if (blockState.isOf(Blocks.SKELETON_WALL_SKULL)) {
                     world.setBlockState(blockPos, Blocks.WITHER_SKELETON_WALL_SKULL.getDefaultState()
+                            .with(SkullBlock.ROTATION, blockState.get(SkullBlock.ROTATION)), 3);
+                    skullsTransformed[0]++;
+                } else if (blockState.isOf(ModBlocks.CANDLE_SKULL)) {
+                    world.setBlockState(blockPos, ModBlocks.WITHER_CANDLE_SKULL.getDefaultState()
                             .with(SkullBlock.ROTATION, blockState.get(SkullBlock.ROTATION)), 3);
                     skullsTransformed[0]++;
                 }

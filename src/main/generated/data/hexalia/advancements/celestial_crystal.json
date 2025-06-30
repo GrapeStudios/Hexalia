@@ -1,0 +1,39 @@
+{
+  "parent": "hexalia:ritual_brazier",
+  "criteria": {
+    "has_celestial_crystal": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexalia:celestial_crystal"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "hexalia:textures/block/willow_log.png",
+    "description": {
+      "translate": "advancements.hexalia.celestial_crystal.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "hexalia:celestial_crystal"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.hexalia.celestial_crystal.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_celestial_crystal"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

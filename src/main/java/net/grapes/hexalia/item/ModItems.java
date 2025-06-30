@@ -9,7 +9,7 @@ import net.grapes.hexalia.entity.ModBoats;
 import net.grapes.hexalia.entity.ModEntities;
 import net.grapes.hexalia.item.custom.*;
 import net.grapes.hexalia.util.ModToolMaterials;
-import net.grapes.hexalia.util.ModUtils;
+import net.grapes.hexalia.util.ModUtil;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -31,7 +31,7 @@ public class ModItems {
             new Item(new FabricItemSettings()));
     public static final Item SILKWORM = registerItem("silkworm",
             new Item(new FabricItemSettings()));
-    public static final Item MOON_CRYSTAL = registerItem("moon_crystal",
+    public static final Item CELESTIAL_CRYSTAL = registerItem("celestial_crystal",
             new Item(new FabricItemSettings()));
     public static final Item FIRE_NODE = registerItem("fire_node",
             new Item(new FabricItemSettings()));
@@ -55,8 +55,8 @@ public class ModItems {
             new Item(new FabricItemSettings().food(ModFoodComponents.SUNFIRE_TOMATO)));
     public static final Item SUNFIRE_TOMATO_SEEDS = registerItem("sunfire_tomato_seeds",
             new AliasedBlockItem(ModBlocks.SUNFIRE_TOMATO_CROP, new FabricItemSettings()));
-    public static final Item MOON_BERRIES = registerItem("moon_berries",
-            new AliasedBlockItem(ModBlocks.MOON_BERRIES_VINE, new FabricItemSettings().food(ModFoodComponents.MOON_BERRIES)));
+    public static final Item GALEBERRIES = registerItem("galeberries",
+            new AliasedBlockItem(ModBlocks.GALEBERRIES_VINE, new FabricItemSettings().food(ModFoodComponents.GALEBERRIES)));
     public static final Item RABBAGE_SEEDS = registerItem("rabbage_seeds",
             new AliasedBlockItem(ModBlocks.RABBAGE_CROP, new FabricItemSettings()));
     public static final Item LOTUS_FLOWER = registerItem("lotus_flower",
@@ -83,8 +83,8 @@ public class ModItems {
             new Item(new FabricItemSettings().food(ModFoodComponents.CHILLBERRY_PIE)));
     public static final Item MANDRAKE_STEW = registerItem("mandrake_stew",
             new StewItem(new FabricItemSettings().food(ModFoodComponents.MANDRAKE_STEW).maxCount(1)));
-    public static final Item MOON_BERRY_COOKIE = registerItem("moon_berry_cookie",
-            new Item(new FabricItemSettings().food(ModFoodComponents.MOON_BERRY_COOKIE)));
+    public static final Item GALEBERRIES_COOKIE = registerItem("galeberries_cookie",
+            new Item(new FabricItemSettings().food(ModFoodComponents.GALEBERRIES_COOKIE)));
 
     // Brews
     public static final Item RUSTIC_BOTTLE = registerItem("rustic_bottle",
@@ -112,7 +112,7 @@ public class ModItems {
 
     // Tools & Others
     public static final Item MORTAR_AND_PESTLE = registerItem("mortar_and_pestle",
-            new MortarAndPestleItem(new FabricItemSettings()));
+            new MortarAndPestleItem(new FabricItemSettings().maxDamage(64)));
     public static final Item SMALL_CAULDRON = registerItem("small_cauldron",
             new BlockItem(ModBlocks.SMALL_CAULDRON, new FabricItemSettings()));
     public static final Item SALT_LAMP = registerItem("salt_lamp",
@@ -180,7 +180,7 @@ public class ModItems {
     // Addon/Compat Items
     public static Item WITCH_SALAD;
     static {
-        if (ModUtils.isModLoaded("farmersdelight")) {
+        if (ModUtil.isModLoaded("farmersdelight")) {
             WITCH_SALAD = registerItem("witch_salad",
                     new Item(new FabricItemSettings().food(ModFoodComponents.WITCH_SALAD)));
         }
@@ -188,7 +188,7 @@ public class ModItems {
 
     public static Item VERDANT_GRIMOIRE;
     static {
-        if (ModUtils.isModLoaded("patchouli")) {
+        if (ModUtil.isModLoaded("patchouli")) {
             VERDANT_GRIMOIRE = registerItem("verdant_grimoire",
                     new GrimoireItem(new FabricItemSettings()));
         }

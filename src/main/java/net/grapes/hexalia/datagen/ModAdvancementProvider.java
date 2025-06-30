@@ -149,15 +149,15 @@ public class ModAdvancementProvider extends FabricAdvancementProvider {
                 .criterion("has_ritual_brazier", InventoryChangedCriterion.Conditions.items(ModBlocks.RITUAL_BRAZIER))
                 .build(consumer, HexaliaMod.MOD_ID + ":ritual_brazier");
 
-        Advancement moonCrystal = Advancement.Builder.create()
-                .display(new AdvancementDisplay(new ItemStack(ModItems.MOON_CRYSTAL),
-                        Text.translatable("advancements.hexalia.moon_crystal.title"),
-                        Text.translatable("advancements.hexalia.moon_crystal.description"),
+        Advancement celestialCrystal = Advancement.Builder.create()
+                .display(new AdvancementDisplay(new ItemStack(ModItems.CELESTIAL_CRYSTAL),
+                        Text.translatable("advancements.hexalia.celestial_crystal.title"),
+                        Text.translatable("advancements.hexalia.celestial_crystal.description"),
                         new Identifier(HexaliaMod.MOD_ID, "textures/block/willow_log.png"), AdvancementFrame.TASK,
                         true, true, false))
                 .parent(ritualBrazier)
-                .criterion("has_moon_crystal", InventoryChangedCriterion.Conditions.items(ModItems.MOON_CRYSTAL))
-                .build(consumer, HexaliaMod.MOD_ID + ":moon_crystal");
+                .criterion("has_celestial_crystal", InventoryChangedCriterion.Conditions.items(ModItems.CELESTIAL_CRYSTAL))
+                .build(consumer, HexaliaMod.MOD_ID + ":celestial_crystal");
 
         Advancement daybloomBrew = Advancement.Builder.create()
                 .display(new AdvancementDisplay(new ItemStack(ModItems.BREW_OF_DAYBLOOM),

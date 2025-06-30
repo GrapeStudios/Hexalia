@@ -1,5 +1,6 @@
 {
 	"credit": "Made with Blockbench",
+	"render_type": "cutout",
 	"textures": {
 		"2": "hexalia:block/mandrake_leaves_stage1"
 	},

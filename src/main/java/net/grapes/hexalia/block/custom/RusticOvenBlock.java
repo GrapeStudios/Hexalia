@@ -31,6 +31,7 @@ public class RusticOvenBlock extends Block {
 
     public RusticOvenBlock(Settings settings) {
         super(settings);
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
     }
 
     public void onSteppedOn(World world, BlockPos pos, BlockState state, Entity entity) {

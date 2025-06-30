@@ -12,9 +12,6 @@ import net.minecraft.util.Identifier;
 
 public class ModEffects {
 
-    public static final StatusEffect OVERFED = registerStatusEffect("overfed",
-            new OverfedEffect(StatusEffectCategory.BENEFICIAL, 0xDCD789).addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED,
-                    "BF8B6E3F-3328-4C0A-AA66-3BA6BB6DBEF6", -0.1f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
     public static final StatusEffect BLOODLUST = registerStatusEffect("bloodlust",
             new BloodlustEffect(StatusEffectCategory.BENEFICIAL, 0xB02B2B, 3.0)
                     .addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, "648D7064-6A60-4F59-8ABE-C2C23A6DD7A9", 0.0,
@@ -34,6 +31,9 @@ public class ModEffects {
 
     public static final StatusEffect DAYBLOOM = registerStatusEffect("daybloom",
             new DaybloomEffect(StatusEffectCategory.NEUTRAL, 0x8BFF8B));
+    public static final StatusEffect OVERFED = registerStatusEffect("overfed",
+            new OverfedEffect(StatusEffectCategory.NEUTRAL, 0xDCD789).addAttributeModifier(EntityAttributes.GENERIC_MOVEMENT_SPEED,
+                    "BF8B6E3F-3328-4C0A-AA66-3BA6BB6DBEF6", -0.1f, EntityAttributeModifier.Operation.MULTIPLY_TOTAL));
 
     public static final StatusEffect STUNNED = registerStatusEffect("stunned",
             new StunnedEffect(StatusEffectCategory.HARMFUL, 0xFFFFDD));

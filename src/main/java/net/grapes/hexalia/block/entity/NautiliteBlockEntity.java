@@ -8,6 +8,10 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.DrownedEntity;
 import net.minecraft.entity.mob.GuardianEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.listener.ClientPlayPacketListener;
+import net.minecraft.network.packet.Packet;
+import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -17,12 +21,14 @@ import net.minecraft.util.math.Box;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
 public class NautiliteBlockEntity extends BlockEntity {
 
     private int activeTicks = 0;
+    private long activationTime = -1;
     private static final int DURATION = 2400;
     private static final int EFFECT_RADIUS = 16;
 
@@ -32,6 +38,10 @@ public class NautiliteBlockEntity extends BlockEntity {
 
     public void activate() {
         this.activeTicks = DURATION;
+        if (this.world != null) {
+            this.activationTime = this.world.getTime();
+        }
+        markDirty();
     }
 
     public boolean isActive() {
@@ -39,6 +49,16 @@ public class NautiliteBlockEntity extends BlockEntity {
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, NautiliteBlockEntity blockEntity) {
+        if (blockEntity.activationTime != -1 && world != null) {
+            long currentTime = world.getTime();
+            long elapsed = currentTime - blockEntity.activationTime;
+            int expectedTicks = DURATION - (int)elapsed;
+
+            if (Math.abs(blockEntity.activeTicks - expectedTicks) > 5) {
+                blockEntity.activeTicks = Math.max(0, expectedTicks);
+            }
+        }
+
         if (blockEntity.isActive()) {
             blockEntity.activeTicks--;
 
@@ -51,7 +71,6 @@ public class NautiliteBlockEntity extends BlockEntity {
                     if (player.isTouchingWaterOrRain()) {
                         player.addStatusEffect(new StatusEffectInstance(StatusEffects.CONDUIT_POWER, 40, 0, true, false));
                     }
-
                     if (player.hasStatusEffect(StatusEffects.MINING_FATIGUE)) {
                         player.removeStatusEffect(StatusEffects.MINING_FATIGUE);
                     }
@@ -61,15 +80,18 @@ public class NautiliteBlockEntity extends BlockEntity {
                     if ((mob instanceof DrownedEntity || mob instanceof GuardianEntity) && mob.isTouchingWaterOrRain() &&
                             pos.isWithinDistance(mob.getBlockPos(), EFFECT_RADIUS)) {
                         mob.damage(world.getDamageSources().magic(), 2.0F);
-                        serverWorld.spawnParticles(ParticleTypes.BUBBLE, mob.getX(), mob.getY(),
-                                mob.getZ(), 10, 0.5, 0.5, 0.5, 0.1);
+                        serverWorld.spawnParticles(ParticleTypes.BUBBLE, mob.getX(), mob.getY(), mob.getZ(), 10, 0.5, 0.5, 0.5, 0.1);
                     }
                 }
+
                 emitParticles(serverWorld, pos);
             }
+
             if (blockEntity.activeTicks <= 0) {
                 world.playSound(null, pos, SoundEvents.BLOCK_CONDUIT_DEACTIVATE, SoundCategory.BLOCKS, 1.0f, 1.0f);
                 world.removeBlock(pos, false);
+            } else {
+                blockEntity.markDirty();
             }
         }
     }
@@ -77,7 +99,6 @@ public class NautiliteBlockEntity extends BlockEntity {
     private static void emitParticles(ServerWorld world, BlockPos pos) {
         Vec3d center = new Vec3d(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
         Random random = world.getRandom();
-
         for (int i = 0; i < 5; i++) {
             double x = center.x + (random.nextDouble() - 0.5) * 2;
             double y = center.y + (random.nextDouble() - 0.5) * 2;
@@ -86,4 +107,37 @@ public class NautiliteBlockEntity extends BlockEntity {
         }
     }
 
+    @Override
+    public void readNbt(NbtCompound nbt) {
+        super.readNbt(nbt);
+        this.activeTicks = nbt.getInt("ActiveTicks");
+        this.activationTime = nbt.getLong("ActivationTime");
+
+        if (this.activationTime != -1 && this.world != null && this.activeTicks > 0) {
+            long currentTime = this.world.getTime();
+            long elapsed = currentTime - this.activationTime;
+            this.activeTicks = Math.max(0, DURATION - (int)elapsed);
+        }
+    }
+
+    @Override
+    protected void writeNbt(NbtCompound nbt) {
+        super.writeNbt(nbt);
+        nbt.putInt("ActiveTicks", activeTicks);
+        nbt.putLong("ActivationTime", activationTime);
+    }
+
+    @Override
+    public NbtCompound toInitialChunkDataNbt() {
+        NbtCompound nbt = super.toInitialChunkDataNbt();
+        nbt.putInt("ActiveTicks", activeTicks);
+        nbt.putLong("ActivationTime", activationTime);
+        return nbt;
+    }
+
+    @Nullable
+    @Override
+    public Packet<ClientPlayPacketListener> toUpdatePacket() {
+        return BlockEntityUpdateS2CPacket.create(this);
+    }
 }

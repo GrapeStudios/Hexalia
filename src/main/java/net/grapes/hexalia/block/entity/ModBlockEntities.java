@@ -35,10 +35,10 @@ public class ModBlockEntities {
                     FabricBlockEntityTypeBuilder.create(WindsongBlockEntity::new,
                             ModBlocks.WINDSONG).build(null));
 
-    public static final BlockEntityType<LunarLilyBlockEntity> LUNAR_LILY_BE =
-            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(HexaliaMod.MOD_ID, "lunar_lily_block_entity"),
-                    FabricBlockEntityTypeBuilder.create(LunarLilyBlockEntity::new,
-                            ModBlocks.LUNAR_LILY).build(null));
+    public static final BlockEntityType<AstrylisBlockEntity> ASTRYLIS_BE =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(HexaliaMod.MOD_ID, "astrylis_block_entity"),
+                    FabricBlockEntityTypeBuilder.create(AstrylisBlockEntity::new,
+                            ModBlocks.ASTRYLIS).build(null));
 
     public static final BlockEntityType<ShelfBlockEntity> SHELF_BE =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(HexaliaMod.MOD_ID, "shelf_block_entity"),

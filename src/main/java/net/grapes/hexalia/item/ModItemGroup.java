@@ -3,7 +3,7 @@ package net.grapes.hexalia.item;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.grapes.hexalia.HexaliaMod;
 import net.grapes.hexalia.block.ModBlocks;
-import net.grapes.hexalia.util.ModUtils;
+import net.grapes.hexalia.util.ModUtil;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
@@ -39,12 +39,12 @@ public class ModItemGroup {
                         entries.add(ModBlocks.GRIMSHADE);
                         entries.add(ModBlocks.NAUTILITE);
                         entries.add(ModBlocks.WINDSONG);
-                        entries.add(ModBlocks.LUNAR_LILY);
+                        entries.add(ModBlocks.ASTRYLIS);
 
                         // Other  Resources
                         entries.add(ModItems.TREE_RESIN);
-                        entries.add(ModItems.MOON_CRYSTAL);
-                        entries.add(ModBlocks.MOON_CRYSTAL_BLOCK);
+                        entries.add(ModItems.CELESTIAL_CRYSTAL);
+                        entries.add(ModBlocks.CELESTIAL_CRYSTAL_BLOCK);
                         entries.add(ModItems.SILK_FIBER);
                         entries.add(ModItems.SILKWORM);
 
@@ -59,13 +59,13 @@ public class ModItemGroup {
                         entries.add(ModItems.CHILLBERRIES);
                         entries.add(ModItems.RABBAGE);
                         entries.add(ModItems.SALTSPROUT);
-                        entries.add(ModItems.MOON_BERRIES);
+                        entries.add(ModItems.GALEBERRIES);
 
                         // Food
                         entries.add(ModItems.MANDRAKE_STEW);
                         entries.add(ModItems.SPICY_SANDWICH);
                         entries.add(ModItems.CHILLBERRY_PIE);
-                        entries.add(ModItems.MOON_BERRY_COOKIE);
+                        entries.add(ModItems.GALEBERRIES_COOKIE);
 
                         // Tools
                         entries.add(ModItems.MORTAR_AND_PESTLE);
@@ -175,11 +175,11 @@ public class ModItemGroup {
                         entries.add(ModItems.SILK_MOTH_SPAWN_EGG);
 
                         // Compat Items
-                        if (ModUtils.isModLoaded("patchouli")) {
+                        if (ModUtil.isModLoaded("patchouli")) {
                             entries.add(ModItems.VERDANT_GRIMOIRE);
                         }
 
-                        if (ModUtils.isModLoaded("farmersdelight")) {
+                        if (ModUtil.isModLoaded("farmersdelight")) {
                             entries.add(ModItems.WITCH_SALAD);
                         }
 

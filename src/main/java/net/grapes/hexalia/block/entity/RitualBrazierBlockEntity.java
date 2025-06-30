@@ -3,9 +3,11 @@ package net.grapes.hexalia.block.entity;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.grapes.hexalia.block.ModBlocks;
+import net.grapes.hexalia.block.custom.RitualBrazierBlock;
 import net.grapes.hexalia.networking.ModMessages;
 import net.grapes.hexalia.recipe.RitualBrazierRecipe;
-import net.minecraft.block.Block;
+import net.grapes.hexalia.util.ModUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,128 +20,84 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.Text;
-import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.world.LightType;
-import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Objects;
 import java.util.Optional;
 
 public class RitualBrazierBlockEntity extends BlockEntity implements SidedInventory {
 
-    private static final int MOONLIGHT_DURATION = 400;
-    private static final BlockPos.Mutable mutablePos = new BlockPos.Mutable();
-    private int timer = 0;
-    private boolean active = false;
+    public enum RitualResult {
+        SUCCESS,
+        NO_CELESTIAL_BLOOMS,
+        INVALID_ITEM
+    }
+
     private DefaultedList<ItemStack> inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
+    private float rotation;
+    private boolean active = false;
 
     public RitualBrazierBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntities.RITUAL_BRAZIER_BE, pos, state);
     }
 
-    public static void tick(World world, BlockPos pos, BlockState state, RitualBrazierBlockEntity blockEntity) {
-        if (world.isClient) return;
+    public RitualResult tryCelestialRitual() {
+        if (world == null || isEmpty()) return RitualResult.INVALID_ITEM;
 
-        if (blockEntity.active && !blockEntity.isEmpty()) {
-            ItemStack itemStack = blockEntity.getStack(0);
-            Optional<RitualBrazierRecipe> recipe = world.getRecipeManager()
-                    .getFirstMatch(RitualBrazierRecipe.Type.INSTANCE, new SimpleInventory(itemStack), world);
+        if (!hasEnoughNearbyCelestialBlooms()) {
+            return RitualResult.NO_CELESTIAL_BLOOMS;
+        }
 
-            if (recipe.isPresent()) {
-                if (canPerformMoonlightRitual(world, pos)) {
-                    blockEntity.timer++;
+        Optional<RitualBrazierRecipe> matchingRecipe = world.getRecipeManager()
+                .getFirstMatch(RitualBrazierRecipe.Type.INSTANCE, new SimpleInventory(getStoredItem()), world);
 
-                    if (blockEntity.timer >= MOONLIGHT_DURATION) {
-                        blockEntity.setStack(0, ItemStack.EMPTY);
-                        blockEntity.timer = 0;
-                        blockEntity.setActive(false);
-                        blockEntity.markDirty();
+        if (matchingRecipe.isEmpty()) {
+            return RitualResult.INVALID_ITEM;
+        }
 
-                        ItemStack resultStack = recipe.get().getOutput(world.getRegistryManager()).copy();
-                        ItemScatterer.spawn(world, pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5, resultStack);
+        ItemStack resultStack = matchingRecipe.get().getOutput(world.getRegistryManager()).copy();
+        Direction direction = getCachedState().get(RitualBrazierBlock.FACING).rotateYCounterclockwise();
 
-                        spawnPoofParticles(world, pos);
-                        world.playSound(null, pos, SoundEvents.BLOCK_AMETHYST_BLOCK_BREAK, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                    }
-                } else {
-                    blockEntity.cancelRitual();
+        ModUtil.spawnItemEntity(world, resultStack,
+                pos.getX() + 0.5 + (direction.getOffsetX() * 0.2),
+                pos.getY() + 0.2,
+                pos.getZ() + 0.5 + (direction.getOffsetZ() * 0.2),
+                direction.getOffsetX() * 0.2F, 0.0F, direction.getOffsetZ() * 0.2F);
+
+        removeStack();
+        return RitualResult.SUCCESS;
+    }
+
+    public boolean hasEnoughNearbyCelestialBlooms() {
+        if (world == null) return false;
+
+        int count = 0;
+        BlockPos origin = getPos();
+
+        for (int dx = -3; dx <= 3; dx++) {
+            for (int dz = -3; dz <= 3; dz++) {
+                if (dx == 0 && dz == 0) continue;
+
+                BlockPos checkPos = origin.add(dx, 0, dz);
+                if (world.getBlockState(checkPos).isOf(ModBlocks.CELESTIAL_BLOOM)) {
+                    count++;
+                    if (count >= 2) return true;
                 }
-            } else {
-                blockEntity.cancelRitual();
             }
         }
+        return false;
     }
 
-    public boolean startMoonRitual(PlayerEntity player) {
-        if (isEmpty()) {
-            player.sendMessage(Text.translatable("message.hexalia.moonlight_ritual.invalid_item"), true);
-            return false;
+    public float getRenderingRotation() {
+        rotation += 0.5f;
+        if (rotation >= 360) {
+            rotation = 0;
         }
-
-        ItemStack itemStack = getStack(0);
-        Optional<RitualBrazierRecipe> recipe = Objects.requireNonNull(world).getRecipeManager()
-                .getFirstMatch(RitualBrazierRecipe.Type.INSTANCE, new SimpleInventory(itemStack), world);
-
-        if (recipe.isEmpty()) {
-            player.sendMessage(Text.translatable("message.hexalia.moonlight_ritual.invalid_item"), true);
-            return false;
-        }
-
-        if (!canPerformMoonlightRitual(world, mutablePos)) {
-            player.sendMessage(Text.translatable("message.hexalia.moonlight_ritual.not_night"), true);
-            return false;
-        }
-
-        this.timer = 1;
-        this.setActive(true);
-        player.sendMessage(Text.translatable("message.hexalia.moonlight_ritual.started"), true);
-        return true;
-    }
-
-    public void cancelRitual() {
-        this.timer = 0;
-        this.setActive(false);
-        this.markDirty();
-    }
-
-    private static void spawnPoofParticles(World world, BlockPos pos) {
-        if (world instanceof ServerWorld serverWorld) {
-            double x = pos.getX() + 0.5;
-            double y = pos.getY() + 1.0;
-            double z = pos.getZ() + 0.5;
-
-            serverWorld.spawnParticles(ParticleTypes.POOF, x, y, z, 10, 0.2, 0.2, 0.2, 0.02);
-        }
-    }
-
-    public void setActive(boolean active) {
-        if (this.active != active) {
-            this.active = active;
-            this.markDirty();
-            if (world != null && !world.isClient) {
-                world.updateListeners(pos, getCachedState(), getCachedState(), Block.NOTIFY_ALL);
-            }
-        }
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    private static boolean canPerformMoonlightRitual(World world, BlockPos pos) {
-        int moonPhase = world.getMoonPhase();
-        return (moonPhase == 0 || moonPhase == 1 || moonPhase == 7) &&
-                world.isSkyVisible(pos.up());
+        return rotation;
     }
 
     @Override
@@ -169,13 +127,10 @@ public class RitualBrazierBlockEntity extends BlockEntity implements SidedInvent
 
     @Override
     public ItemStack getStack(int slot) {
-        if (slot < 0 || slot >= this.inventory.size()) {
-            return ItemStack.EMPTY;
-        }
-        return this.inventory.get(slot);
+        return inventory.get(slot);
     }
 
-    public ItemStack getRenderStack() {
+    public ItemStack getStoredItem() {
         return getStack(0);
     }
 
@@ -200,10 +155,10 @@ public class RitualBrazierBlockEntity extends BlockEntity implements SidedInvent
     @Override
     public void setStack(int slot, ItemStack stack) {
         inventory.set(slot, stack);
-        markDirty();
-        if (world != null && !world.isClient) {
-            world.updateListeners(pos, getCachedState(), getCachedState(), Block.NOTIFY_ALL);
+        if (stack.getCount() > getMaxCountPerStack()) {
+            stack.setCount(getMaxCountPerStack());
         }
+        markDirty();
     }
 
     @Override
@@ -214,6 +169,7 @@ public class RitualBrazierBlockEntity extends BlockEntity implements SidedInvent
     @Override
     public void clear() {
         inventory.clear();
+        markDirty();
     }
 
     @Override
@@ -226,24 +182,14 @@ public class RitualBrazierBlockEntity extends BlockEntity implements SidedInvent
         super.readNbt(nbt);
         this.inventory = DefaultedList.ofSize(1, ItemStack.EMPTY);
         Inventories.readNbt(nbt, inventory);
-        this.timer = nbt.getInt("Timer");
-        this.active = nbt.getBoolean("Active");
+        this.rotation = nbt.getFloat("Rotation");
     }
 
     @Override
     protected void writeNbt(NbtCompound nbt) {
         super.writeNbt(nbt);
         Inventories.writeNbt(nbt, inventory);
-        nbt.putInt("Timer", timer);
-        nbt.putBoolean("Active", active);
-    }
-
-    @Override
-    public NbtCompound toInitialChunkDataNbt() {
-        NbtCompound nbt = super.toInitialChunkDataNbt();
-        nbt.putBoolean("Active", this.active);
-        Inventories.writeNbt(nbt, inventory);
-        return nbt;
+        nbt.putFloat("Rotation", rotation);
     }
 
     public boolean addStack(ItemStack itemStack) {
@@ -257,13 +203,9 @@ public class RitualBrazierBlockEntity extends BlockEntity implements SidedInvent
 
     public ItemStack removeStack() {
         if (!isEmpty()) {
-            if (this.active) {
-                this.cancelRitual();
-            }
-            ItemStack itemStack = getStack(0).copy();
-            setStack(0, ItemStack.EMPTY);
+            ItemStack item = getStack(0).split(1);
             markDirty();
-            return itemStack;
+            return item;
         }
         return ItemStack.EMPTY;
     }
@@ -295,5 +237,12 @@ public class RitualBrazierBlockEntity extends BlockEntity implements SidedInvent
     @Override
     public Packet<ClientPlayPacketListener> toUpdatePacket() {
         return BlockEntityUpdateS2CPacket.create(this);
+    }
+
+    @Override
+    public NbtCompound toInitialChunkDataNbt() {
+        NbtCompound nbt = super.toInitialChunkDataNbt();
+        Inventories.writeNbt(nbt, inventory);
+        return nbt;
     }
 }

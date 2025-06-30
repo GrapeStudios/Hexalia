@@ -18,12 +18,17 @@ public class SmallCauldronRecipe implements Recipe<SimpleInventory> {
     private final ItemStack output;
     private final DefaultedList<Ingredient> recipeItems;
     private final Ingredient bottleSlot;
+    private final int brewTime;
+    private final float experience;
 
-    public SmallCauldronRecipe (Identifier id, ItemStack output, DefaultedList<Ingredient> recipeItems, Ingredient bottleSlot) {
+    public SmallCauldronRecipe(Identifier id, ItemStack output, DefaultedList<Ingredient> recipeItems,
+                               Ingredient bottleSlot, int brewTime, float experience) {
         this.id = id;
         this.output = output;
         this.recipeItems = recipeItems;
         this.bottleSlot = bottleSlot;
+        this.brewTime = brewTime;
+        this.experience = experience;
     }
 
     @Override
@@ -77,6 +82,14 @@ public class SmallCauldronRecipe implements Recipe<SimpleInventory> {
         return bottleSlot;
     }
 
+    public int getBrewTime() {
+        return brewTime;
+    }
+
+    public float getExperience() {
+        return experience;
+    }
+
     @Override
     public Identifier getId() {
         return id;
@@ -109,23 +122,30 @@ public class SmallCauldronRecipe implements Recipe<SimpleInventory> {
             DefaultedList<Ingredient> inputs = DefaultedList.ofSize(ingredients.size(), Ingredient.EMPTY);
 
             for (int i = 0; i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.fromJson(ingredients.get(i).getAsJsonObject()));
+                inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
             }
 
             Ingredient bottleSlot = Ingredient.fromJson(JsonHelper.getObject(json, "bottle_slot"));
 
-            return new SmallCauldronRecipe(id, output, inputs, bottleSlot);
+            int brewTime = JsonHelper.getInt(json, "brew_time", 175);
+            float experience = JsonHelper.getFloat(json, "experience", 5.0f);
+
+            return new SmallCauldronRecipe(id, output, inputs, bottleSlot, brewTime, experience);
         }
 
         @Override
         public SmallCauldronRecipe read(Identifier id, PacketByteBuf buf) {
             DefaultedList<Ingredient> inputs = DefaultedList.ofSize(buf.readInt(), Ingredient.EMPTY);
-
-            inputs.replaceAll(ignored -> Ingredient.fromPacket(buf));
+            for (int i = 0; i < inputs.size(); i++) {
+                inputs.set(i, Ingredient.fromPacket(buf));
+            }
 
             ItemStack output = buf.readItemStack();
             Ingredient bottleSlot = Ingredient.fromPacket(buf);
-            return new SmallCauldronRecipe(id, output, inputs, bottleSlot);
+            int brewTime = buf.readInt();
+            float experience = buf.readFloat();
+
+            return new SmallCauldronRecipe(id, output, inputs, bottleSlot, brewTime, experience);
         }
 
         @Override
@@ -136,6 +156,8 @@ public class SmallCauldronRecipe implements Recipe<SimpleInventory> {
             }
             buf.writeItemStack(recipe.getOutput(null));
             recipe.getBottleSlot().write(buf);
+            buf.writeInt(recipe.brewTime);
+            buf.writeFloat(recipe.experience);
         }
     }
 }

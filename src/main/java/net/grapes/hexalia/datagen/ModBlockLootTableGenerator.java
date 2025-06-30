@@ -50,6 +50,7 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addPottedPlantDrops(ModBlocks.POTTED_PALE_MUSHROOM);
         addDrop(ModBlocks.WITCHWEED);
         addDrop(ModBlocks.GHOST_FERN);
+        addPottedPlantDrops(ModBlocks.POTTED_GHOST_FERN);
         addDrop(ModBlocks.NIGHTSHADE_BUSH);
         addPottedPlantDrops(ModBlocks.POTTED_NIGHTSHADE_BUSH);
         this.addDrop(ModBlocks.HEXED_BULRUSH, createTallPlantBlock(ModBlocks.HEXED_BULRUSH));
@@ -65,17 +66,19 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.NAUTILITE);
         addDrop(ModBlocks.WINDSONG);
         addPottedPlantDrops(ModBlocks.POTTED_WINDSONG);
-        addDrop(ModBlocks.LUNAR_LILY);
-        addPottedPlantDrops(ModBlocks.POTTED_LUNAR_LILY);
-        this.addDrop(ModBlocks.MOON_BERRIES_VINE, moonBerriesDrop(ModBlocks.MOON_BERRIES_VINE));
-        this.addDrop(ModBlocks.MOON_BERRIES_VINE_PLANT, moonBerriesDrop(ModBlocks.MOON_BERRIES_VINE_PLANT));
+        addDrop(ModBlocks.ASTRYLIS);
+        addPottedPlantDrops(ModBlocks.POTTED_ASTRYLIS);
+        this.addDrop(ModBlocks.GALEBERRIES_VINE, galeberriesDrop(ModBlocks.GALEBERRIES_VINE));
+        this.addDrop(ModBlocks.GALEBERRIES_VINE_PLANT, galeberriesDrop(ModBlocks.GALEBERRIES_VINE_PLANT));
         addDrop(ModBlocks.DAHLIA);
         addPottedPlantDrops(ModBlocks.POTTED_DAHLIA);
+        addDrop(ModBlocks.CELESTIAL_BLOOM);
+        addPottedPlantDrops(ModBlocks.POTTED_CELESTIAL_BLOOM);
     }
 
     private void generateFunctionalBlocks() {
         addDrop(ModBlocks.RITUAL_BRAZIER);
-        addDrop(ModBlocks.MOON_CRYSTAL_BLOCK);
+        addDrop(ModBlocks.CELESTIAL_CRYSTAL_BLOCK);
         addDrop(ModBlocks.INFUSED_DIRT);
         addDrop(ModBlocks.INFUSED_FARMLAND, drops(ModBlocks.INFUSED_DIRT));
         addDrop(ModBlocks.RITUAL_TABLE, drops(ModItems.RITUAL_TABLE));
@@ -178,8 +181,8 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
                                 .conditionally(lowerHalfCondition)));
     }
 
-    protected LootTable.Builder moonBerriesDrop(Block drop) {
-        return LootTable.builder().pool(LootPool.builder().with(ItemEntry.builder(ModItems.MOON_BERRIES))
+    protected LootTable.Builder galeberriesDrop(Block drop) {
+        return LootTable.builder().pool(LootPool.builder().with(ItemEntry.builder(ModItems.GALEBERRIES))
                 .conditionally(BlockStatePropertyLootCondition.builder(drop).properties(StatePredicate.Builder.create()
                         .exactMatch(CaveVines.BERRIES, true))));
     }

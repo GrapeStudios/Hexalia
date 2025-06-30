@@ -12,7 +12,6 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
@@ -22,6 +21,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
@@ -33,10 +33,13 @@ public class SmallCauldronBlock extends BlockWithEntity implements BlockEntityPr
 
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
+
     protected static final VoxelShape SHAPE = VoxelShapes.union(Block.createCuboidShape(2.0, 0, 2.0, 14.0, 11.0, 14.0),
             Block.createCuboidShape(3.0, 1.0, 3.0, 13.0, 12.0, 13.0));
+
     public SmallCauldronBlock(Settings settings) {
         super(settings);
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
     }
 
     @Override
@@ -114,17 +117,20 @@ public class SmallCauldronBlock extends BlockWithEntity implements BlockEntityPr
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         if (!world.isClient()) {
-            NamedScreenHandlerFactory screenHandlerFactory = ((SmallCauldronBlockEntity) world.getBlockEntity(pos));
-            if (screenHandlerFactory != null) {
-                player.openHandledScreen(screenHandlerFactory);
+            BlockEntity entity = world.getBlockEntity(pos);
+            if (entity instanceof SmallCauldronBlockEntity cauldronEntity) {
+                cauldronEntity.setLastInteractedPlayer(player);
+                player.openHandledScreen(cauldronEntity);
+            } else {
+                throw new IllegalStateException("Our Container provider is missing!");
             }
         }
-        return ActionResult.SUCCESS;
+        return ActionResult.success(world.isClient());
     }
 
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.SMALL_CAULDRON_BE, ((world1, pos, state1, blockEntity) -> blockEntity.brewingTick(world1, pos, state1)));
+        return checkType(type, ModBlockEntities.SMALL_CAULDRON_BE, ((world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1)));
     }
 }

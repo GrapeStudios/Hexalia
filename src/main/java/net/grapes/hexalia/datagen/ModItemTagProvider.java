@@ -29,21 +29,24 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         // Animal food
         getOrCreateTagBuilder(ItemTags.FOX_FOOD)
                 .add(ModItems.CHILLBERRIES)
-                .add(ModItems.MOON_BERRIES);
+                .add(ModItems.GALEBERRIES);
 
         // Plants
         getOrCreateTagBuilder(ItemTags.FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM.asItem()).add(ModBlocks.HENBANE.asItem())
                 .add(ModBlocks.WITCHWEED.asItem()).add(ModBlocks.GHOST_FERN.asItem())
                 .add(ModBlocks.NIGHTSHADE_BUSH.asItem()).add(ModBlocks.BEGONIA.asItem())
-                .add(ModBlocks.LAVENDER.asItem()).add(ModBlocks.DAHLIA.asItem());
+                .add(ModBlocks.LAVENDER.asItem()).add(ModBlocks.DAHLIA.asItem())
+                .add(ModBlocks.CELESTIAL_BLOOM.asItem());
 
         // Copy to small flowers if appropriate
         getOrCreateTagBuilder(ItemTags.SMALL_FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM.asItem()).add(ModBlocks.HENBANE.asItem())
                 .add(ModBlocks.WITCHWEED.asItem()).add(ModBlocks.GHOST_FERN.asItem())
                 .add(ModBlocks.NIGHTSHADE_BUSH.asItem()).add(ModBlocks.BEGONIA.asItem())
-                .add(ModBlocks.LAVENDER.asItem()).add(ModBlocks.DAHLIA.asItem());
+                .add(ModBlocks.LAVENDER.asItem()).add(ModBlocks.DAHLIA.asItem())
+                .add(ModBlocks.CELESTIAL_BLOOM.asItem());
+
         // Villager related
         getOrCreateTagBuilder(ItemTags.VILLAGER_PLANTABLE_SEEDS)
                 .add(ModItems.RABBAGE_SEEDS)
@@ -86,6 +89,11 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ModTags.Items.MUSHROOMS)
                 .add(ModBlocks.DREAMSHROOM.asItem())
                 .add(ModBlocks.PALE_MUSHROOM.asItem());
+
+        // Offhand Equipment
+        getOrCreateTagBuilder(ModTags.Items.OFFHAND_EQUIPMENT)
+                .add(ModItems.HEX_FOCUS.asItem())
+                .add(ModItems.SALT.asItem());
     }
 
     private void addTreeRelatedTags() {
@@ -160,11 +168,11 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.SIREN_KELP)
                 .add(ModItems.CHILLBERRIES)
                 .add(ModItems.SUNFIRE_TOMATO)
-                .add(ModItems.MOON_BERRIES)
+                .add(ModItems.GALEBERRIES)
                 .add(ModItems.SALTSPROUT)
                 .add(ModItems.CHILLBERRY_PIE)
                 .add(ModItems.MANDRAKE_STEW)
-                .add(ModItems.MOON_BERRY_COOKIE);
+                .add(ModItems.GALEBERRIES_COOKIE);
 
         // Crops
         getOrCreateTagBuilder(ModTags.Items.CROPS)
@@ -176,7 +184,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         // Specific food types
         getOrCreateTagBuilder(ModTags.Items.FOODS_BERRIES)
                 .add(ModItems.CHILLBERRIES)
-                .add(ModItems.MOON_BERRIES);
+                .add(ModItems.GALEBERRIES);
 
         getOrCreateTagBuilder(ModTags.Items.FOODS_VEGETABLES)
                 .add(ModItems.SUNFIRE_TOMATO)

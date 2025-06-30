@@ -31,7 +31,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.PICKAXE_MINEABLE)
                 .add(ModBlocks.SALT_BLOCK).add(ModBlocks.SALT_LAMP)
                 .add(ModBlocks.RUSTIC_OVEN).add(ModBlocks.SMALL_CAULDRON)
-                .add(ModBlocks.RITUAL_TABLE).add(ModBlocks.MOON_CRYSTAL_BLOCK);
+                .add(ModBlocks.RITUAL_TABLE).add(ModBlocks.CELESTIAL_CRYSTAL_BLOCK);
 
         // Axe mineable blocks
         getOrCreateTagBuilder(BlockTags.AXE_MINEABLE)
@@ -43,7 +43,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SALT_BLOCK).add(ModBlocks.SHELF)
                 .add(ModBlocks.SALT_LAMP).add(ModBlocks.SMALL_CAULDRON)
                 .add(ModBlocks.RUSTIC_OVEN).add(ModBlocks.RITUAL_TABLE)
-                .add(ModBlocks.MOON_CRYSTAL_BLOCK).add(ModBlocks.CENSER);
+                .add(ModBlocks.CELESTIAL_CRYSTAL_BLOCK).add(ModBlocks.CENSER);
     }
 
     private void addPlantTags() {
@@ -52,14 +52,16 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SPIRIT_BLOOM).add(ModBlocks.HENBANE)
                 .add(ModBlocks.WITCHWEED).add(ModBlocks.GHOST_FERN)
                 .add(ModBlocks.NIGHTSHADE_BUSH).add(ModBlocks.BEGONIA)
-                .add(ModBlocks.LAVENDER).add(ModBlocks.DAHLIA);
+                .add(ModBlocks.LAVENDER).add(ModBlocks.DAHLIA)
+                .add(ModBlocks.CELESTIAL_BLOOM);
 
         // Small flowers if appropriate
         getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM).add(ModBlocks.HENBANE)
                 .add(ModBlocks.WITCHWEED).add(ModBlocks.GHOST_FERN)
                 .add(ModBlocks.NIGHTSHADE_BUSH).add(ModBlocks.BEGONIA)
-                .add(ModBlocks.LAVENDER).add(ModBlocks.DAHLIA);
+                .add(ModBlocks.LAVENDER).add(ModBlocks.DAHLIA)
+                .add(ModBlocks.CELESTIAL_BLOOM);
 
         // Special plant properties
         getOrCreateTagBuilder(BlockTags.FROG_PREFER_JUMP_TO)
@@ -191,23 +193,24 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     private void addAdditionalTags() {
         // Climbable vines
         getOrCreateTagBuilder(BlockTags.CLIMBABLE)
-                .add(ModBlocks.MOON_BERRIES_VINE)
-                .add(ModBlocks.MOON_BERRIES_VINE_PLANT);
+                .add(ModBlocks.GALEBERRIES_VINE)
+                .add(ModBlocks.GALEBERRIES_VINE_PLANT);
 
         // Cave vines
         getOrCreateTagBuilder(BlockTags.CAVE_VINES)
-                .add(ModBlocks.MOON_BERRIES_VINE)
-                .add(ModBlocks.MOON_BERRIES_VINE_PLANT);
+                .add(ModBlocks.GALEBERRIES_VINE)
+                .add(ModBlocks.GALEBERRIES_VINE_PLANT);
 
         // Flower pots
         getOrCreateTagBuilder(BlockTags.FLOWER_POTS)
                 .add(ModBlocks.POTTED_SPIRIT_BLOOM).add(ModBlocks.POTTED_DREAMSHROOM)
                 .add(ModBlocks.POTTED_LAVENDER).add(ModBlocks.POTTED_BEGONIA)
                 .add(ModBlocks.POTTED_NIGHTSHADE_BUSH).add(ModBlocks.POTTED_PALE_MUSHROOM)
-                .add(ModBlocks.POTTED_HENBANE).add(ModBlocks.POTTED_LUNAR_LILY)
+                .add(ModBlocks.POTTED_HENBANE).add(ModBlocks.POTTED_ASTRYLIS)
                 .add(ModBlocks.POTTED_GRIMSHADE).add(ModBlocks.POTTED_WINDSONG)
                 .add(ModBlocks.POTTED_MORPHORA).add(ModBlocks.POTTED_COTTONWOOD_SAPLING)
-                .add(ModBlocks.POTTED_WILLOW_SAPLING).add(ModBlocks.POTTED_DAHLIA);
+                .add(ModBlocks.POTTED_WILLOW_SAPLING).add(ModBlocks.POTTED_DAHLIA)
+                .add(ModBlocks.POTTED_GHOST_FERN).add(ModBlocks.POTTED_CELESTIAL_BLOOM);
 
         // Dirt
         getOrCreateTagBuilder(BlockTags.DIRT)
