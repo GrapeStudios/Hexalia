@@ -1,0 +1,136 @@
+package net.astralya.hexalia.block.custom;
+
+import net.astralya.hexalia.block.entity.HeatingBlockEntity;
+import net.astralya.hexalia.block.entity.ModBlockEntities;
+import net.astralya.hexalia.block.entity.SmallCauldronBlockEntity;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
+import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.state.StateManager;
+import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.state.property.DirectionProperty;
+import net.minecraft.state.property.Properties;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.ItemScatterer;
+import net.minecraft.util.hit.BlockHitResult;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
+import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
+
+public class SmallCauldronBlock extends BlockWithEntity implements BlockEntityProvider, HeatingBlockEntity {
+
+    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
+    public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
+
+    protected static final VoxelShape SHAPE = VoxelShapes.union(Block.createCuboidShape(2.0, 0, 2.0, 14.0, 11.0, 14.0),
+            Block.createCuboidShape(3.0, 1.0, 3.0, 13.0, 12.0, 13.0));
+
+    public SmallCauldronBlock(Settings settings) {
+        super(settings);
+        this.setDefaultState(this.stateManager.getDefaultState().with(FACING, Direction.NORTH));
+    }
+
+    @Override
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPE;
+    }
+
+    @Nullable
+    @Override
+    public BlockState getPlacementState(ItemPlacementContext ctx) {
+        BlockPos blockPos = ctx.getBlockPos();
+        World world = ctx.getWorld();
+        FluidState fluidState = world.getFluidState(blockPos);
+        return getDefaultState()
+                .with(FACING, ctx.getHorizontalPlayerFacing().getOpposite())
+                .with(WATERLOGGED, fluidState.getFluid() == Fluids.WATER);
+    }
+
+    @Override
+    protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
+        super.appendProperties(builder);
+        builder.add(FACING, WATERLOGGED);
+    }
+
+    @Override
+    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+        boolean isHeated = isHeated(world, pos);
+        if (isHeated) {
+            createBrewingParticle(world, pos, random, 3);
+        }
+    }
+
+    public static void createBrewingParticle(World world, BlockPos pos, Random random, int particleFrequency) {
+        if (particleFrequency > 0 && random.nextInt(5) < particleFrequency) {
+            for (int i = 0; i < random.nextInt(1) + 1; ++i) {
+                world.addParticle(ParticleTypes.BUBBLE_POP,
+                        (double)pos.getX() + 0.5,
+                        (double)pos.getY() + 1.0,
+                        (double)pos.getZ() + 0.5,
+                        random.nextGaussian() * 0.02,
+                        random.nextGaussian() * 0.05 + 0.05,
+                        random.nextGaussian() * 0.02);
+            }
+        }
+    }
+
+    @Override
+    public FluidState getFluidState(BlockState state) {
+        return Boolean.TRUE.equals(state.get(WATERLOGGED)) ? Fluids.WATER.getStill(false) : super.getFluidState(state);
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new SmallCauldronBlockEntity(pos, state);
+    }
+
+    @Override
+    public BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
+    }
+
+    @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (state.getBlock() != newState.getBlock()) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof SmallCauldronBlockEntity) {
+                ItemScatterer.spawn(world, pos, (SmallCauldronBlockEntity)blockEntity);
+                world.updateComparators(pos, this);
+            }
+            super.onStateReplaced(state, world, pos, newState, moved);
+        }
+    }
+
+    @Override
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (!world.isClient()) {
+            BlockEntity entity = world.getBlockEntity(pos);
+            if (entity instanceof SmallCauldronBlockEntity cauldronEntity) {
+                cauldronEntity.setLastInteractedPlayer(player);
+                player.openHandledScreen(cauldronEntity);
+            } else {
+                throw new IllegalStateException("Our Container provider is missing!");
+            }
+        }
+        return ActionResult.success(world.isClient());
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return checkType(type, ModBlockEntities.SMALL_CAULDRON_BE, ((world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1)));
+    }
+}

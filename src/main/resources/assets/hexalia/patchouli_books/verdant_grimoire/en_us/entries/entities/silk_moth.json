@@ -42,7 +42,7 @@
     },
     {
       "type": "patchouli:crafting",
-      "recipe": "hexalia:cobweb_from_fiber",
+      "recipe": "hexalia:cobweb",
       "text": "You can also combine strings with a Silk Fiber in order to craft a Cobweb block."
     },
     {
