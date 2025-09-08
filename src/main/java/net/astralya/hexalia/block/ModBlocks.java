@@ -165,7 +165,7 @@ public class ModBlocks {
             new CatkinBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_LEAVES).strength(0.2f)));
     public static final Block COTTONWOOD_SAPLING = registerBlock("cottonwood_sapling",
             new SaplingBlock(ModSaplingGenerators.COTTONWOOD, AbstractBlock.Settings.copy(Blocks.OAK_SAPLING)));
-    public static final Block POTTED_COTTONWOOD_SAPLING = registerBlock("potted_cottonwood_sapling",
+    public static final Block POTTED_COTTONWOOD_SAPLING = registerBlockWithoutBlockItem("potted_cottonwood_sapling",
             new FlowerPotBlock(COTTONWOOD_SAPLING, AbstractBlock.Settings.copy(Blocks.POTTED_OAK_SAPLING)));
     public static final Block COTTONWOOD_LOG = registerBlock("cottonwood_log",
             new PillarBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_LOG)));
@@ -207,7 +207,7 @@ public class ModBlocks {
             new LeavesBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_LEAVES).strength(0.2f)));
     public static final Block WILLOW_SAPLING = registerBlock("willow_sapling",
             new SaplingBlock(ModSaplingGenerators.WILLOW, AbstractBlock.Settings.copy(Blocks.OAK_SAPLING)));
-    public static final Block POTTED_WILLOW_SAPLING = registerBlock("potted_willow_sapling",
+    public static final Block POTTED_WILLOW_SAPLING = registerBlockWithoutBlockItem("potted_willow_sapling",
             new FlowerPotBlock(WILLOW_SAPLING, AbstractBlock.Settings.copy(Blocks.POTTED_OAK_SAPLING)));
     public static final Block WILLOW_LOG = registerBlock("willow_log",
             new PillarBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_LOG)));
