@@ -25,7 +25,6 @@ public class DataMapGenerator extends DataMapProvider {
                 .add(ModItems.CHILLBERRIES.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModItems.GALEBERRIES.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModItems.LOTUS_FLOWER.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
-                .add(ModItems.DUCKWEED.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModBlocks.COTTONWOOD_LEAVES.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModBlocks.COTTONWOOD_SAPLING.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModBlocks.WILLOW_LEAVES.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
@@ -36,14 +35,12 @@ public class DataMapGenerator extends DataMapProvider {
                 .add(ModBlocks.DREAMSHROOM.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModBlocks.CELESTIAL_BLOOM.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModItems.SIREN_KELP.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
-                .add(ModBlocks.HENBANE.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModBlocks.BEGONIA.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModBlocks.LAVENDER.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModBlocks.DAHLIA.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModBlocks.PALE_MUSHROOM.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModBlocks.WITCHWEED.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModBlocks.GHOST_FERN.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
-                .add(ModBlocks.HEXED_BULRUSH.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModBlocks.NIGHTSHADE_BUSH.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
 
                 // 60%
@@ -55,7 +52,7 @@ public class DataMapGenerator extends DataMapProvider {
                 // 80%
                 .add(ModBlocks.MORPHORA.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModBlocks.GRIMSHADE.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
-                .add(ModBlocks.NAUTILITE.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
+                .add(ModItems.NAUTILITE.get().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModBlocks.WINDSONG.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModBlocks.ASTRYLIS.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false);
     }

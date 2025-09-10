@@ -25,6 +25,8 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.SIREN_KELP.get());
                 output.accept(ModBlocks.GHOST_FERN.get());
                 output.accept(ModBlocks.CELESTIAL_BLOOM.get());
+                output.accept(ModItems.LOTUS_FLOWER.get());
+                output.accept(ModBlocks.WITCHWEED.get());
 
                 // Crushed Herbs
                 output.accept(ModItems.SPIRIT_POWDER.get());
@@ -41,7 +43,7 @@ public class ModCreativeModeTabs {
                 // Enchanted Plants
                 output.accept(ModBlocks.MORPHORA.get());
                 output.accept(ModBlocks.GRIMSHADE.get());
-                output.accept(ModBlocks.NAUTILITE.get());
+                output.accept(ModItems.NAUTILITE.get());
                 output.accept(ModBlocks.WINDSONG.get());
                 output.accept(ModBlocks.ASTRYLIS.get());
 
@@ -76,9 +78,11 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.STONE_DAGGER.get());
                 output.accept(ModItems.HEX_FOCUS.get());
                 output.accept(ModItems.SILK_IDOL.get());
-                output.accept(ModItems.RAIN_IDOL.get());
-                output.accept(ModItems.CLEAR_IDOL.get());
-                output.accept(ModItems.STORM_IDOL.get());
+                output.accept(ModItems.RAINFALL_IDOL.get());
+                output.accept(ModItems.CLARITY_IDOL.get());
+                output.accept(ModItems.TEMPEST_IDOL.get());
+                output.accept(ModItems.PURITY_IDOL.get());
+                output.accept(ModItems.MUTAVIS.get());
 
                 // Functional Blocks
                 output.accept(ModBlocks.RUSTIC_OVEN.get());
@@ -93,8 +97,10 @@ public class ModCreativeModeTabs {
 
                 // Salt
                 output.accept(ModItems.SALT.get());
-                output.accept(ModItems.PURIFYING_SALTS.get());
                 output.accept(ModBlocks.SALT_BLOCK.get());
+                output.accept(ModItems.PURIFYING_SAC.get());
+                output.accept(ModItems.FOUL_SAC.get());
+                output.accept(ModItems.FROST_SAC.get());
 
                 // Brews
                 output.accept(ModItems.RUSTIC_BOTTLE.get());
@@ -107,16 +113,11 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.BREW_OF_ARACHNID_GRACE.get());
 
                 // Decorative Plants
-                output.accept(ModBlocks.HENBANE.get());
                 output.accept(ModBlocks.BEGONIA.get());
                 output.accept(ModBlocks.LAVENDER.get());
                 output.accept(ModBlocks.DAHLIA.get());
-                output.accept(ModItems.LOTUS_FLOWER.get());
                 output.accept(ModBlocks.PALE_MUSHROOM.get());
-                output.accept(ModBlocks.WITCHWEED.get());
-                output.accept(ModBlocks.HEXED_BULRUSH.get());
                 output.accept(ModBlocks.NIGHTSHADE_BUSH.get());
-                output.accept(ModItems.DUCKWEED.get());
 
                 // Decorative Blocks
                 output.accept(ModItems.CANDLE_SKULL.get());
@@ -128,7 +129,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.KELPWEAVE_BLADE.get());
                 output.accept(ModItems.SAGE_PENDANT.get());
 
-                //* Armor Items
+                // Armor Items
                 output.accept(ModItems.EARPLUGS.get());
                 output.accept(ModItems.GHOSTVEIL.get());
                 output.accept(ModItems.BOGGED_BOOTS.get());

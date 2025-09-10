@@ -9,14 +9,12 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.block.ModBlocks;
+import net.astralya.hexalia.compat.jei.category.MutationRecipeCategory;
 import net.astralya.hexalia.compat.jei.category.RitualBrazierRecipeCategory;
 import net.astralya.hexalia.compat.jei.category.RitualTableRecipeCategory;
 import net.astralya.hexalia.compat.jei.category.SmallCauldronRecipeCategory;
 import net.astralya.hexalia.item.ModItems;
-import net.astralya.hexalia.recipe.ModRecipes;
-import net.astralya.hexalia.recipe.RitualBrazierRecipe;
-import net.astralya.hexalia.recipe.RitualTableRecipe;
-import net.astralya.hexalia.recipe.SmallCauldronRecipe;
+import net.astralya.hexalia.recipe.*;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
@@ -41,6 +39,7 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipeCategories(new SmallCauldronRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new RitualBrazierRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new RitualTableRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new MutationRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -48,6 +47,7 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.SMALL_CAULDRON.get()), SmallCauldronRecipeCategory.SMALL_CAULDRON_RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.RITUAL_BRAZIER.get()), RitualBrazierRecipeCategory.RITUAL_BRAZIER_RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.RITUAL_TABLE.get()), RitualTableRecipeCategory.RITUAL_TABLE_RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModItems.MUTAVIS.get()), MutationRecipeCategory.MUTATION_RECIPE_RECIPE_TYPE);
     }
 
     @Override
@@ -66,6 +66,10 @@ public class JEIPlugin implements IModPlugin {
                 .getAllRecipesFor(ModRecipes.RITUAL_TABLE_TYPE.get()).stream().map(RecipeHolder::value).toList();
         registration.addRecipes(RitualTableRecipeCategory.RITUAL_TABLE_RECIPE_TYPE, ritualTableRecipes);
 
+        List<MutationRecipe> mutationRecipes = recipeManager
+                .getAllRecipesFor(ModRecipes.MUTATION_TYPE.get()).stream().map(RecipeHolder::value).toList();
+        registration.addRecipes(MutationRecipeCategory.MUTATION_RECIPE_RECIPE_TYPE, mutationRecipes);
+
         registration.addIngredientInfo(List.of(new ItemStack(ModBlocks.WILD_SUNFIRE_TOMATO.get()), new ItemStack(ModItems.SUNFIRE_TOMATO.get()),
                 new ItemStack(ModItems.SUNFIRE_TOMATO_SEEDS.get())), VanillaTypes.ITEM_STACK, Component.translatable("jei.info.wild_sunfire_tomatoes"));
         registration.addIngredientInfo(List.of(new ItemStack(ModBlocks.WILD_MANDRAKE.get()), new ItemStack(ModItems.MANDRAKE.get()), new ItemStack(ModItems.MANDRAKE_SEEDS.get())),
@@ -74,7 +78,6 @@ public class JEIPlugin implements IModPlugin {
                 VanillaTypes.ITEM_STACK, Component.translatable("jei.info.chillberry_bushes"));
         registration.addIngredientInfo(List.of(new ItemStack(ModItems.SALTSPROUT.get())),
                 VanillaTypes.ITEM_STACK, Component.translatable("jei.info.saltsprout"));
-
     }
 
     @Override

@@ -1,5 +1,6 @@
 package net.astralya.hexalia.effect.custom;
 
+import net.astralya.hexalia.Configuration;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,7 +13,7 @@ public class BleedingEffect extends MobEffect {
     @Override
     public boolean applyEffectTick(LivingEntity livingEntity, int amplifier) {
         if (!livingEntity.level().isClientSide && livingEntity.getHealth() > 0f) {
-            float damage = 0.5f + amplifier * 0.2f;
+            float damage = Configuration.BLEEDING_DAMAGE.get().floatValue() + amplifier * 0.2f;
             livingEntity.hurt(livingEntity.damageSources().generic(), damage);
             return true;
         }

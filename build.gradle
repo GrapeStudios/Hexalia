@@ -32,7 +32,6 @@ repositories {
         }
     }
 
-    maven { url = 'https://maven.minecraftforge.net/' }
     maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
 
     maven { url 'https://maven.blamejared.com' }
@@ -104,7 +103,6 @@ dependencies {
     implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}"
 
     implementation  group:'org.spongepowered', name: 'mixin', version: '0.8.5'
-    implementation  'com.github.glitchfiend:TerraBlender-neoforge:' + minecraft_version + '-' + terrablender_version
 
     compileOnly "vazkii.patchouli:Patchouli:${patchouli_version}-NEOFORGE:api"
     runtimeOnly "vazkii.patchouli:Patchouli:${patchouli_version}-NEOFORGE"

@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-13T16:00:17.9287329	Item Models: hexalia
+// 1.21.1	2025-09-15T19:21:34.8537546	Item Models: hexalia
 e5a7da2fe51e60bdf425b0c5e11675c33540c1ee assets/hexalia/models/item/air_node.json
 15249bcc7b4d170a3f881d5072d7c1103423d8ed assets/hexalia/models/item/ancient_seed.json
 5de9112b974a79b8d4daac10d489cae64dc39ad2 assets/hexalia/models/item/bogged_boots.json
@@ -13,17 +13,18 @@ cfd227b4f2c75f3b4cec167a8e45196415e1923a assets/hexalia/models/item/brew_of_siph
 604bdbe2273bfebc51f1bf8262cbb72e36d809f2 assets/hexalia/models/item/celestial_crystal.json
 7fef6cc3c5d979c4902a7276f8611950ac003f36 assets/hexalia/models/item/chillberries.json
 7397384fe6d03cae97e29b2090133a1fe5cec963 assets/hexalia/models/item/chillberry_pie.json
-2fea68a0b7008af16d40aee79fe65ff2fc75b7aa assets/hexalia/models/item/clear_idol.json
+d43917d9d0f65a548a8bb4453a846a7511a8d978 assets/hexalia/models/item/clarity_idol.json
 06956c31de51f8954bd9c2ed8edb563b9485c061 assets/hexalia/models/item/cottonwood_boat.json
 b3b7f44c6753c09edcfb51c9e3a289629ea78054 assets/hexalia/models/item/cottonwood_button.json
 1a72e908de1f440606f4860b5e1f8c233f671666 assets/hexalia/models/item/cottonwood_chest_boat.json
 675760f8766f877ce20aa236471b892ceef89b18 assets/hexalia/models/item/cottonwood_door.json
 d58b191667869ee127680a1a0ec0770eb495fa20 assets/hexalia/models/item/cottonwood_fence.json
 cec671b2e554c629df9baec15d9e52687d5b7a9e assets/hexalia/models/item/dream_paste.json
-c175d8164e3356c5f9d7fa776046e6698e524993 assets/hexalia/models/item/duckweed.json
 de75ec168c080890098ef81645329309a37d16b4 assets/hexalia/models/item/earplugs.json
 276009958a33b1e956c17f75d5ef7467739c65f4 assets/hexalia/models/item/earth_node.json
 d6781f718efec34cbd59ee6d07dcfd85a95d40b3 assets/hexalia/models/item/fire_node.json
+9e1b9711479d253b0a73ad379e32362255521073 assets/hexalia/models/item/foul_sac.json
+1490cfc048883bd696fef9f135e8ff375caabb07 assets/hexalia/models/item/frost_sac.json
 34b951148227342bbab5f0eb6adde1aeeab02c0e assets/hexalia/models/item/galeberries.json
 f404d4aedc070166f4a88d264fb53350909208b0 assets/hexalia/models/item/galeberries_cookie.json
 173b396c4b2e65272532e44773d95d91d7b864e4 assets/hexalia/models/item/ghostveil.json
@@ -35,10 +36,13 @@ c2058b49f67c794d3a6c5774caa1db490c83ad94 assets/hexalia/models/item/lotus_flower
 8fc7a0aa405443f2456962cbb7753edf873e3e3c assets/hexalia/models/item/mandrake_seeds.json
 71f146c3cd8f89ff28b07811c12186ab801fb851 assets/hexalia/models/item/mandrake_stew.json
 d54ba53b7355bcdd462705ca1073aac7283ef186 assets/hexalia/models/item/mortar_and_pestle.json
-20feb6b02bae11b434ba251aafe3d84174ac18ab assets/hexalia/models/item/purifying_salts.json
+2ff112006fe742b17b6784628e4a78c6dacd21ed assets/hexalia/models/item/mutavis.json
+ed2d981fb3b0009a741ca72c686477e2e992bb93 assets/hexalia/models/item/nautilite.json
+352b3438d379aa2635b69ed3dc263a817c428767 assets/hexalia/models/item/purifying_sac.json
+65ac1635ad877e807f9d77843c3b6f781197a510 assets/hexalia/models/item/purity_idol.json
 96ef70f23956b09813a98d0070bfcf41db4485d1 assets/hexalia/models/item/rabbage.json
 4cb16060803b93529e078e9dfb7ce6cbada292b2 assets/hexalia/models/item/rabbage_seeds.json
-556f3a43ffd88568850a41b8a7b2e12a76db57f7 assets/hexalia/models/item/rain_idol.json
+4619943f9f79a9f387e18f58eedb38b436e67168 assets/hexalia/models/item/rainfall_idol.json
 13200812bf863e425ab43634a66ee3dee2d976c5 assets/hexalia/models/item/rustic_bottle.json
 7ffa1600ec826659df74d92269539f54312e06bc assets/hexalia/models/item/sage_pendant.json
 e09fce7524d1a0586c10228035dbdc0e66496db1 assets/hexalia/models/item/salt.json
@@ -53,9 +57,9 @@ bc49373d64572172e6f4ec5003ed75c8f22b3774 assets/hexalia/models/item/saltsprout.j
 821a2ac4b14a011097350a83d29566e06bc8ebb1 assets/hexalia/models/item/spicy_sandwich.json
 e7f7503d997487614b6477b7ca4abd2aea600188 assets/hexalia/models/item/spirit_powder.json
 0adbe5fbd3409a7ad35ed1d68df64b85ceaaa60b assets/hexalia/models/item/stone_dagger.json
-61c5cd66a735c68f9f2cb61085679bc9e0fe7d9a assets/hexalia/models/item/storm_idol.json
 3b221041e13e0fad85eb5fad104ca0b9fc190f8a assets/hexalia/models/item/sunfire_tomato.json
 f78eebd5e0ccffa74122a1686696dfe32e6070b1 assets/hexalia/models/item/sunfire_tomato_seeds.json
+6b3723bd9bd6f3ad6527ad8030f747eb20538902 assets/hexalia/models/item/tempest_idol.json
 b4649b8fe1245bab84615f91af5946f49a912a38 assets/hexalia/models/item/tree_resin.json
 6a8a771af7bcfe1c2f9684591680403e03279dba assets/hexalia/models/item/verdant_grimoire.json
 d35fed367b5038960fa24ac74403a36552e796c9 assets/hexalia/models/item/water_node.json

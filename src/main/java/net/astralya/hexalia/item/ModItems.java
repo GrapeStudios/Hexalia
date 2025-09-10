@@ -6,6 +6,8 @@ import net.astralya.hexalia.block.custom.wood.ModBoatItem;
 import net.astralya.hexalia.effect.ModMobEffects;
 import net.astralya.hexalia.entity.ModEntities;
 import net.astralya.hexalia.entity.boat.ModBoatEntity;
+import net.astralya.hexalia.entity.custom.projectile.FoulSacProjectile;
+import net.astralya.hexalia.entity.custom.projectile.FrostSacProjectile;
 import net.astralya.hexalia.item.custom.*;
 import net.astralya.hexalia.util.ModArmorMaterials;
 import net.astralya.hexalia.util.ModToolTiers;
@@ -57,10 +59,10 @@ public class ModItems {
     // Plants
     public static final DeferredItem<Item> SIREN_KELP = ITEMS.register("siren_kelp",
             () -> new BlockItem(ModBlocks.SIREN_KELP.get(), new Item.Properties().food(ModFoodProperties.SIREN_KELP)));
+    public static final DeferredItem<Item> NAUTILITE = ITEMS.register("nautilite",
+            () -> new BlockItem(ModBlocks.NAUTILITE.get(), new Item.Properties()));
     public static final DeferredItem<BlockItem> LOTUS_FLOWER = ITEMS.register("lotus_flower",
             () -> new PlaceOnWaterBlockItem(ModBlocks.LOTUS_FLOWER.get(), new Item.Properties()));
-    public static final DeferredItem<BlockItem> DUCKWEED = ITEMS.register("duckweed",
-            () -> new PlaceOnWaterBlockItem(ModBlocks.DUCKWEED.get(), new Item.Properties()));
 
     // Refined Resources
     public static final DeferredItem<Item> SPIRIT_POWDER = ITEMS.registerSimpleItem("spirit_powder");
@@ -85,17 +87,25 @@ public class ModItems {
             MortarAndPestleItem::new, new Item.Properties().durability(64));
     public static final DeferredItem<Item> STONE_DAGGER = ITEMS.registerItem("stone_dagger",
             StoneDaggerItem::new, new Item.Properties().durability(16));
-    public static final DeferredItem<Item> PURIFYING_SALTS = ITEMS.registerItem("purifying_salts",
-            PurifyingSaltsItem::new, new Item.Properties().durability(6));
+    public static final DeferredItem<Item> PURIFYING_SAC = ITEMS.registerItem("purifying_sac",
+            PurifyingSacItem::new, new Item.Properties().durability(6));
+    public static final DeferredItem<Item> FOUL_SAC = ITEMS.register("foul_sac",
+            () -> new ThrownSacItem(new Item.Properties(), FoulSacProjectile::new));
+    public static final DeferredItem<Item> FROST_SAC = ITEMS.register("frost_sac",
+            () -> new ThrownSacItem(new Item.Properties(), FrostSacProjectile::new));
     public static final DeferredItem<Item> SAGE_PENDANT = ITEMS.registerItem("sage_pendant",
             Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).durability(64));
     public static final DeferredItem<Item> SILK_IDOL = ITEMS.registerSimpleItem("silk_idol");
-    public static final DeferredItem<Item> CLEAR_IDOL = ITEMS.registerItem("clear_idol",
-            WeatherIdol::new, new Item.Properties());
-    public static final DeferredItem<Item> RAIN_IDOL = ITEMS.registerItem("rain_idol",
-            WeatherIdol::new, new Item.Properties());
-    public static final DeferredItem<Item> STORM_IDOL = ITEMS.registerItem("storm_idol",
-            WeatherIdol::new, new Item.Properties());
+    public static final DeferredItem<Item> CLARITY_IDOL = ITEMS.registerItem("clarity_idol",
+            WeatherIdolItem::new, new Item.Properties());
+    public static final DeferredItem<Item> RAINFALL_IDOL = ITEMS.registerItem("rainfall_idol",
+            WeatherIdolItem::new, new Item.Properties());
+    public static final DeferredItem<Item> TEMPEST_IDOL = ITEMS.registerItem("tempest_idol",
+            WeatherIdolItem::new, new Item.Properties());
+    public static final DeferredItem<Item> PURITY_IDOL = ITEMS.registerItem("purity_idol",
+            PurityIdolItem::new, new Item.Properties());
+    public static final DeferredItem<Item> MUTAVIS = ITEMS.registerItem("mutavis",
+            MutavisItem::new, new Item.Properties());
 
     // Block Items
     public static final DeferredItem<Item> CANDLE_SKULL = ITEMS.register("candle_skull",
@@ -112,31 +122,31 @@ public class ModItems {
             () -> new KelpweaveBlade(ModToolTiers.ANCIENT,
                     new Item.Properties().attributes(SwordItem.createAttributes(ModToolTiers.ANCIENT, 3, -2f))));
     public static final DeferredItem<Item> GHOSTVEIL = ITEMS.register("ghostveil",
-            () -> new GhostVeilItem(ModArmorMaterials.BOGGED, ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(96)));
+            () -> new GhostVeilItem(ModArmorMaterials.GHOST, ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(96)));
     public static final DeferredItem<Item> EARPLUGS = ITEMS.register("earplugs",
-            () -> new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new Item.Properties()));
+            () -> new ArmorItem(ModArmorMaterials.EARPLUGS, ArmorItem.Type.HELMET, new Item.Properties()));
     public static final DeferredItem<Item> BOGGED_BOOTS = ITEMS.register("bogged_boots",
             () -> new BoggedBootsItem(ModArmorMaterials.BOGGED, ArmorItem.Type.BOOTS, new Item.Properties().durability(96)));
 
     // Brews
     public static final DeferredItem<Item> RUSTIC_BOTTLE = ITEMS.registerSimpleItem("rustic_bottle");
     public static final DeferredItem<Item> BREW_OF_SPIKESKIN = ITEMS.register("brew_of_spikeskin",
-            () -> new BrewItem(new Item.Properties(), () -> ModMobEffects.SPIKESKIN, 0,
+            () -> new BrewItem(new Item.Properties().stacksTo(4), () -> ModMobEffects.SPIKESKIN, 20 * 240, 0,
                     Component.translatable("tooltip.hexalia.spikeskin_brew").withStyle(ChatFormatting.BLUE)));
     public static final DeferredItem<Item> BREW_OF_BLOODLUST = ITEMS.register("brew_of_bloodlust",
-            () -> new BrewItem(new Item.Properties(), () -> ModMobEffects.BLOODLUST, 0,
+            () -> new BrewItem(new Item.Properties().stacksTo(4), () -> ModMobEffects.BLOODLUST, 20 * 240, 0,
                     Component.translatable("tooltip.hexalia.bloodlust_brew").withStyle(ChatFormatting.BLUE)));
     public static final DeferredItem<Item> BREW_OF_SLIMEWALKER = ITEMS.register("brew_of_slimewalker",
-            () -> new BrewItem(new Item.Properties(), () -> ModMobEffects.SLIMEWALKER, 0,
+            () -> new BrewItem(new Item.Properties().stacksTo(4), () -> ModMobEffects.SLIMEWALKER, 20 * 240, 0,
                     Component.translatable("tooltip.hexalia.slimewalker_brew").withStyle(ChatFormatting.BLUE)));
     public static final DeferredItem<Item> BREW_OF_SIPHON = ITEMS.register("brew_of_siphon",
-            () -> new BrewItem(new Item.Properties(), () -> ModMobEffects.SIPHON, 0,
+            () -> new BrewItem(new Item.Properties().stacksTo(4), () -> ModMobEffects.SIPHON, 20 * 240, 0,
                     Component.translatable("tooltip.hexalia.siphon_brew").withStyle(ChatFormatting.BLUE)));
     public static final DeferredItem<Item> BREW_OF_DAYBLOOM = ITEMS.register("brew_of_daybloom",
-            () -> new BrewItem(new Item.Properties(), () -> ModMobEffects.DAYBLOOM, 0,
+            () -> new BrewItem(new Item.Properties().stacksTo(4), () -> ModMobEffects.DAYBLOOM, 20 * 240, 0,
                     Component.translatable("tooltip.hexalia.daybloom").withStyle(ChatFormatting.BLUE)));
     public static final DeferredItem<Item> BREW_OF_ARACHNID_GRACE = ITEMS.register("brew_of_arachnid_grace",
-            () -> new BrewItem(new Item.Properties(), () -> ModMobEffects.ARACHNID_GRACE, 0,
+            () -> new BrewItem(new Item.Properties().stacksTo(4), () -> ModMobEffects.ARACHNID_GRACE, 20 * 240, 0,
                     Component.translatable("tooltip.hexalia.arachnid_grace").withStyle(ChatFormatting.BLUE)));
     public static final DeferredItem<Item> BREW_OF_HOMESTEAD = ITEMS.registerItem("brew_of_homestead",
             HomesteadBrewItem::new, new Item.Properties());

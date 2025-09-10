@@ -17,8 +17,6 @@ public class ModParticleType {
             () -> new SimpleParticleType(true));
     public static final Supplier<SimpleParticleType> GHOST = PARTICLE_TYPES.register("ghost",
             () -> new SimpleParticleType(true));
-    public static final Supplier<SimpleParticleType> MOTE = PARTICLE_TYPES.register("mote",
-            () -> new SimpleParticleType(true));
     public static final Supplier<SimpleParticleType> LEAVES = PARTICLE_TYPES.register("leaves",
             () -> new SimpleParticleType(true));
     public static final Supplier<SimpleParticleType> INFUSED_BUBBLES = PARTICLE_TYPES.register("infused_bubbles",

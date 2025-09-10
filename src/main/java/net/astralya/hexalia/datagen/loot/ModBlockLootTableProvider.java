@@ -14,7 +14,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -22,7 +21,6 @@ import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
-import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 
 import java.util.Set;
@@ -45,14 +43,11 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         // Simple drops
         this.dropSelf(ModBlocks.SPIRIT_BLOOM.get());
         this.dropSelf(ModBlocks.DREAMSHROOM.get());
-        this.dropSelf(ModBlocks.HENBANE.get());
         this.dropSelf(ModBlocks.LOTUS_FLOWER.get());
-        this.dropSelf(ModBlocks.PALE_MUSHROOM.get());
         this.dropSelf(ModBlocks.WITCHWEED.get());
         this.dropSelf(ModBlocks.GHOST_FERN.get());
         this.dropSelf(ModBlocks.CELESTIAL_BLOOM.get());
         this.dropSelf(ModBlocks.NIGHTSHADE_BUSH.get());
-        this.dropSelf(ModBlocks.DUCKWEED.get());
         this.dropSelf(ModBlocks.BEGONIA.get());
         this.dropSelf(ModBlocks.LAVENDER.get());
         this.dropSelf(ModBlocks.MORPHORA.get());
@@ -67,8 +62,6 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         this.add(ModBlocks.POTTED_DREAMSHROOM.get(), createPotFlowerItemTable(ModBlocks.DREAMSHROOM.get()));
         this.add(ModBlocks.POTTED_GHOST_FERN.get(), createPotFlowerItemTable(ModBlocks.GHOST_FERN.get()));
         this.add(ModBlocks.POTTED_CELESTIAL_BLOOM.get(), createPotFlowerItemTable(ModBlocks.CELESTIAL_BLOOM.get()));
-        this.add(ModBlocks.POTTED_HENBANE.get(), createPotFlowerItemTable(ModBlocks.HENBANE.get()));
-        this.add(ModBlocks.POTTED_PALE_MUSHROOM.get(), createPotFlowerItemTable(ModBlocks.PALE_MUSHROOM.get()));
         this.add(ModBlocks.POTTED_NIGHTSHADE_BUSH.get(), createPotFlowerItemTable(ModBlocks.NIGHTSHADE_BUSH.get()));
         this.add(ModBlocks.POTTED_BEGONIA.get(), createPotFlowerItemTable(ModBlocks.BEGONIA.get()));
         this.add(ModBlocks.POTTED_LAVENDER.get(), createPotFlowerItemTable(ModBlocks.LAVENDER.get()));
@@ -80,10 +73,10 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
 
         // Special plants
         this.add(ModBlocks.SIREN_KELP.get(), this.createSingleItemTable(ModItems.SIREN_KELP.get()));
-        this.add(ModBlocks.HEXED_BULRUSH.get(), createTallPlantBlock(ModBlocks.HEXED_BULRUSH.get()));
         this.add(ModBlocks.COTTONWOOD_CATKIN.get(), this.createSingleItemTable(Items.STRING));
         this.add(ModBlocks.GALEBERRIES_VINE.get(), vinesDrop(ModBlocks.GALEBERRIES_VINE.get()));
         this.add(ModBlocks.GALEBERRIES_VINE_PLANT.get(), vinesDrop(ModBlocks.GALEBERRIES_VINE_PLANT.get()));
+        this.add(ModBlocks.PALE_MUSHROOM.get(), createPetalsDrops(ModBlocks.PALE_MUSHROOM.get()));
     }
 
     private void generateFunctionalBlocks() {
@@ -208,7 +201,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         );
     }
 
-    protected LootTable.Builder createTallPlantBlock(Block bulrushBlock) {
+    /*protected LootTable.Builder createTallPlantBlock(Block bulrushBlock) {
         LootItemCondition.Builder lowerHalfCondition = LootItemBlockStatePropertyCondition.hasBlockStateProperties(bulrushBlock)
                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(HexedBulrushBlock.HALF, DoubleBlockHalf.LOWER));
 
@@ -217,7 +210,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
                         .setRolls(ConstantValue.exactly(1))
                         .add(LootItem.lootTableItem(bulrushBlock)
                                 .when(lowerHalfCondition)));
-    }
+    }*/
 
     protected static LootTable.Builder vinesDrop(Block pBlock) {
         return LootTable.lootTable().withPool(LootPool.lootPool().add(LootItem.lootTableItem(ModItems.GALEBERRIES.get()))

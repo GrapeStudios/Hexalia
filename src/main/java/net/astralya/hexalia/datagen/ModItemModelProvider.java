@@ -41,8 +41,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.GALEBERRIES.get());
 
         basicItem(ModItems.SIREN_KELP.get());
+        basicItem(ModItems.NAUTILITE.get());
         basicItem(ModItems.LOTUS_FLOWER.get());
-        basicItem(ModItems.DUCKWEED.get());
 
         basicItem(ModItems.SPIRIT_POWDER.get());
         basicItem(ModItems.SIREN_PASTE.get());
@@ -57,12 +57,15 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.HEX_FOCUS.get());
         basicItem(ModItems.MORTAR_AND_PESTLE.get());
         handheldItem(ModItems.STONE_DAGGER.get());
-        basicItem(ModItems.PURIFYING_SALTS.get());
+        basicItem(ModItems.PURIFYING_SAC.get());
         basicItem(ModItems.SAGE_PENDANT.get());
         basicItem(ModItems.SILK_IDOL.get());
-        basicItem(ModItems.CLEAR_IDOL.get());
-        basicItem(ModItems.RAIN_IDOL.get());
-        basicItem(ModItems.STORM_IDOL.get());
+        basicItem(ModItems.CLARITY_IDOL.get());
+        basicItem(ModItems.RAINFALL_IDOL.get());
+        basicItem(ModItems.TEMPEST_IDOL.get());
+        basicItem(ModItems.PURITY_IDOL.get());
+        basicItem(ModItems.FOUL_SAC.get());
+        basicItem(ModItems.FROST_SAC.get());
 
         basicItem(ModItems.CANDLE_SKULL.get());
         basicItem(ModItems.WITHER_CANDLE_SKULL.get());
@@ -72,6 +75,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.GHOSTVEIL.get());
         basicItem(ModItems.EARPLUGS.get());
         basicItem(ModItems.BOGGED_BOOTS.get());
+        basicItem(ModItems.MUTAVIS.get());
 
         basicItem(ModItems.RUSTIC_BOTTLE.get());
         basicItem(ModItems.BREW_OF_SPIKESKIN.get());

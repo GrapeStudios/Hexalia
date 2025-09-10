@@ -4,7 +4,9 @@ import com.mojang.serialization.MapCodec;
 import net.astralya.hexalia.Configuration;
 import net.astralya.hexalia.block.custom.censer.CenserEffectHandler;
 import net.astralya.hexalia.block.custom.censer.HerbCombination;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.block.entity.custom.CenserBlockEntity;
+import net.astralya.hexalia.block.entity.custom.NautiliteBlockEntity;
 import net.astralya.hexalia.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -28,6 +30,8 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -66,47 +70,45 @@ public class CenserBlock extends BaseEntityBlock {
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         ItemStack heldItem = player.getItemInHand(hand);
-        BlockEntity blockEntity = level.getBlockEntity(pos);
-
-        if (!(blockEntity instanceof CenserBlockEntity censer)) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        BlockEntity be = level.getBlockEntity(pos);
+        if (!(be instanceof CenserBlockEntity censer)) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 
         if (heldItem.getItem() instanceof FlintAndSteelItem && !state.getValue(LIT)) {
             ItemStack herb1 = censer.getItem(0);
             ItemStack herb2 = censer.getItem(1);
-
             if (herb1.isEmpty() || herb2.isEmpty()) {
-                if (level.isClientSide()) {
-                    player.displayClientMessage(Component.translatable("message.hexalia.censer_not_full"), true);
-                }
+                if (level.isClientSide()) player.displayClientMessage(Component.translatable("message.hexalia.censer_not_full"), true);
                 return ItemInteractionResult.FAIL;
             }
-
             HerbCombination combo = new HerbCombination(herb1.getItem(), herb2.getItem());
             if (!CenserEffectHandler.isValidCombination(herb1.getItem(), herb2.getItem())) {
-                if (level.isClientSide()) {
-                    player.displayClientMessage(Component.translatable("message.hexalia.invalid_herb_combination"), true);
-                }
+                if (level.isClientSide()) player.displayClientMessage(Component.translatable("message.hexalia.invalid_herb_combination"), true);
                 return ItemInteractionResult.FAIL;
             }
-
-            if (!level.isClientSide()) {
-                sendEffectActivationMessage(level, pos, combo, player);
-                censer.setActiveCombination(combo);
+            if (level.isClientSide()) {
+                censer.clearItems();
+            } else {
                 censer.clearItems();
                 level.setBlockAndUpdate(pos, state.setValue(LIT, true));
+                censer.setActiveCombination(combo);
                 censer.setBurnTime(Configuration.CENSER_EFFECT_DURATION.get());
+                sendEffectActivationMessage(level, pos, combo, player);
                 CenserEffectHandler.startEffect(level, pos, combo);
             }
-
             heldItem.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
             level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0f, level.random.nextFloat() * 0.4F + 0.8F);
             return ItemInteractionResult.SUCCESS;
         }
 
         if (heldItem.getItem() instanceof ShovelItem && state.getValue(LIT)) {
-            if (!level.isClientSide()) {
+            if (level.isClientSide()) {
+                censer.clearItems();
+            } else {
                 level.setBlockAndUpdate(pos, state.setValue(LIT, false));
                 censer.setBurnTime(0);
+                censer.clearItems();
+                censer.setActiveCombination(null);
+                level.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5f, 1.0f);
             }
             return ItemInteractionResult.SUCCESS;
         }
@@ -116,10 +118,8 @@ public class CenserBlock extends BaseEntityBlock {
                 for (int i = 0; i < censer.getItems().size(); i++) {
                     ItemStack stackInSlot = censer.getItem(i);
                     if (!stackInSlot.isEmpty()) {
-                        ItemStack removedStack = censer.removeStack(i);
-                        if (!player.getInventory().add(removedStack)) {
-                            player.drop(removedStack, false);
-                        }
+                        ItemStack removed = censer.removeStack(i);
+                        if (!player.getInventory().add(removed)) player.drop(removed, false);
                         level.playSound(null, pos, SoundEvents.ITEM_FRAME_REMOVE_ITEM, SoundSource.BLOCKS, 0.5f, 1.0f);
                         return ItemInteractionResult.SUCCESS;
                     }
@@ -127,20 +127,16 @@ public class CenserBlock extends BaseEntityBlock {
             } else if (heldItem.is(ModTags.Items.HERBS)) {
                 for (int i = 0; i < censer.getItems().size(); i++) {
                     if (censer.getItem(i).isEmpty()) {
-                        ItemStack stackToInsert = heldItem.copy();
-                        stackToInsert.setCount(1);
-                        censer.setItem(i, stackToInsert);
-                        if (!player.isCreative()) {
-                            heldItem.shrink(1);
-                        }
+                        ItemStack toInsert = heldItem.copy();
+                        toInsert.setCount(1);
+                        censer.setItem(i, toInsert);
+                        if (!player.isCreative()) heldItem.shrink(1);
                         level.playSound(null, pos, SoundEvents.ITEM_FRAME_ADD_ITEM, SoundSource.BLOCKS, 0.5f, 1.0f);
                         return ItemInteractionResult.SUCCESS;
                     }
                 }
             } else {
-                if (level.isClientSide()) {
-                    player.displayClientMessage(Component.translatable("message.hexalia.invalid_item"), true);
-                }
+                if (level.isClientSide()) player.displayClientMessage(Component.translatable("message.hexalia.invalid_item"), true);
                 return ItemInteractionResult.FAIL;
             }
         }
@@ -148,23 +144,20 @@ public class CenserBlock extends BaseEntityBlock {
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
-
     private void sendEffectActivationMessage(Level level, BlockPos pos, HerbCombination combo, Player activatingPlayer) {
-        String messageKey = CenserEffectHandler.getMessageKeyForCombination(combo);
-
+        String key = CenserEffectHandler.getMessageKeyForCombination(combo);
         int radius = Configuration.CENSER_EFFECT_RADIUS.get();
         AABB area = new AABB(pos).inflate(radius);
-
-        for (Player player : level.getEntitiesOfClass(Player.class, area)) {
-            if (!player.getUUID().equals(activatingPlayer.getUUID()) && player instanceof ServerPlayer serverPlayer) {
-                serverPlayer.displayClientMessage(Component.translatable(messageKey), true);
+        for (Player p : level.getEntitiesOfClass(Player.class, area)) {
+            if (!p.getUUID().equals(activatingPlayer.getUUID()) && p instanceof ServerPlayer sp) {
+                sp.displayClientMessage(Component.translatable(key), true);
             }
         }
-
-        if (!level.isClientSide() && activatingPlayer instanceof ServerPlayer serverPlayer) {
-            serverPlayer.displayClientMessage(Component.translatable(messageKey), true);
+        if (!level.isClientSide() && activatingPlayer instanceof ServerPlayer sp) {
+            sp.displayClientMessage(Component.translatable(key), true);
         }
     }
+
 
     @Override
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
@@ -246,5 +239,15 @@ public class CenserBlock extends BaseEntityBlock {
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new CenserBlockEntity(pos, state);
+    }
+
+    @Override
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+        if (level.isClientSide()) {
+            return null;
+        }
+
+        return createTickerHelper(blockEntityType, ModBlockEntityTypes.CENSER.get(),
+                (level1, pos, state1, blockEntity) -> blockEntity.tick(level1, pos, state1));
     }
 }

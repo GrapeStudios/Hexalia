@@ -24,7 +24,6 @@ public class ClientSetUpEvents {
         Minecraft.getInstance().particleEngine.register(ModParticleType.GHOST.get(), GhostParticle.Factory::new);
         Minecraft.getInstance().particleEngine.register(ModParticleType.INFUSED_BUBBLES.get(), InfusedBubbleParticle.Factory::new);
         Minecraft.getInstance().particleEngine.register(ModParticleType.LEAVES.get(), LeavesParticle.Factory::new);
-        Minecraft.getInstance().particleEngine.register(ModParticleType.MOTE.get(), MoteParticle.Factory::new);
         Minecraft.getInstance().particleEngine.register(ModParticleType.SPORE.get(), SporeParticle.Factory::new);
     }
 

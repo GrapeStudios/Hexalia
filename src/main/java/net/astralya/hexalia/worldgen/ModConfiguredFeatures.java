@@ -3,6 +3,8 @@ package net.astralya.hexalia.worldgen;
 import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.block.custom.ChillberryBushBlock;
+import net.astralya.hexalia.worldgen.gen.decorator.CatkinTreeDecorator;
+import net.astralya.hexalia.worldgen.gen.decorator.CocoonTreeDecorator;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -14,7 +16,6 @@ import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
@@ -30,6 +31,7 @@ import net.minecraft.world.level.levelgen.feature.trunkplacers.DarkOakTrunkPlace
 import net.minecraft.world.level.levelgen.feature.trunkplacers.StraightTrunkPlacer;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 public class ModConfiguredFeatures {
@@ -41,7 +43,6 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> CHILLBERRY = registerKey("chillberry");
     public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_SUNFIRE_TOMATO = registerKey("wild_sunfire_tomato");
     public static final ResourceKey<ConfiguredFeature<?, ?>> WILD_MANDRAKE = registerKey("wild_mandrake");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> HENBANE = registerKey("henbane");
     public static final ResourceKey<ConfiguredFeature<?, ?>> BEGONIA = registerKey("begonia");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LAVENDER = registerKey("lavender");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DAHLIA = registerKey("dahlia");
@@ -50,15 +51,12 @@ public class ModConfiguredFeatures {
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> COTTONWOOD = registerKey("cottonwood");
     public static final ResourceKey<ConfiguredFeature<?, ?>> WILLOW = registerKey("willow");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> COTTONWOOD_COCOON = registerKey("cottonwood_cocoon");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DARK_OAK_COCOON = registerKey("dark_oak_cocoon");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> LOTUS_FLOWER = registerKey("lotus_flower");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PALE_MUSHROOM = registerKey("pale_mushroom");
     public static final ResourceKey<ConfiguredFeature<?, ?>> WITCHWEED = registerKey("witchweed");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> HEXED_BULRUSH = registerKey("hexed_bulrush");
     public static final ResourceKey<ConfiguredFeature<?, ?>> NIGHTSHADE_BUSH = registerKey("nightshade_bush");
-    public static final ResourceKey<ConfiguredFeature<?, ?>> DUCKWEED = registerKey("duckweed");
 
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
@@ -83,25 +81,13 @@ public class ModConfiguredFeatures {
     }
 
     private static void registerDecorativePlants(BootstrapContext<ConfiguredFeature<?, ?>> context) {
-        register(context, HENBANE, Feature.FLOWER, patchConfig(ModBlocks.HENBANE.get(), 3, 7, 3));
         register(context, BEGONIA, Feature.FLOWER, patchConfig(ModBlocks.BEGONIA.get(), 3, 7, 3));
         register(context, LAVENDER, Feature.FLOWER, patchConfig(ModBlocks.LAVENDER.get(), 15, 7, 5));
         register(context, DAHLIA, Feature.FLOWER, patchConfig(ModBlocks.DAHLIA.get(), 15, 7, 5));
         register(context, LOTUS_FLOWER, Feature.RANDOM_PATCH, patchConfig(ModBlocks.LOTUS_FLOWER.get(), 5, 3, 7));
         register(context, PALE_MUSHROOM, Feature.RANDOM_PATCH, patchConfig(ModBlocks.PALE_MUSHROOM.get(), 2, 2, 3));
         register(context, WITCHWEED, Feature.RANDOM_PATCH, patchConfig(ModBlocks.WITCHWEED.get(), 20, 10, 5));
-        register(context, HEXED_BULRUSH, Feature.RANDOM_PATCH, patchConfig(ModBlocks.HEXED_BULRUSH.get(), 5, 7, 3));
         register(context, NIGHTSHADE_BUSH, Feature.RANDOM_PATCH, patchConfig(ModBlocks.NIGHTSHADE_BUSH.get(), 3, 7, 3));
-        register(context, DUCKWEED, Feature.RANDOM_PATCH, new RandomPatchConfiguration(
-                64,
-                7,
-                0,
-                PlacementUtils.filtered(
-                        Feature.SIMPLE_BLOCK,
-                        new SimpleBlockConfiguration(BlockStateProvider.simple(ModBlocks.DUCKWEED.get())),
-                        BlockPredicate.ONLY_IN_AIR_PREDICATE
-                )
-        ));
     }
 
     private static void registerTrees(BootstrapContext<ConfiguredFeature<?, ?>> context) {
@@ -110,21 +96,17 @@ public class ModConfiguredFeatures {
                 new DarkOakTrunkPlacer(5, 2, 1),
                 BlockStateProvider.simple(Blocks.DARK_OAK_LEAVES),
                 new DarkOakFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0)) {},
-                new TwoLayersFeatureSize(1, 0, 1)).build());
+                new TwoLayersFeatureSize(1, 0, 1))
+                .decorators(List.of(new CocoonTreeDecorator(0.2f))).build());
 
         register(context, COTTONWOOD, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(ModBlocks.COTTONWOOD_LOG.get()),
                 new StraightTrunkPlacer(6, 2, 1),
                 BlockStateProvider.simple(ModBlocks.COTTONWOOD_LEAVES.get()),
                 new FancyFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), 3) {},
-                new TwoLayersFeatureSize(1, 0, 2)).build());
-
-        register(context, COTTONWOOD_COCOON, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
-                BlockStateProvider.simple(ModBlocks.COTTONWOOD_LOG.get()),
-                new StraightTrunkPlacer(6, 2, 1),
-                BlockStateProvider.simple(ModBlocks.COTTONWOOD_LEAVES.get()),
-                new FancyFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), 3) {},
-                new TwoLayersFeatureSize(1, 0, 2)).build());
+                new TwoLayersFeatureSize(1, 0, 2))
+                .decorators(List.of(new CatkinTreeDecorator()))
+                .build());
 
         // Willow Tree with hanging-style foliage
         register(context, WILLOW, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(

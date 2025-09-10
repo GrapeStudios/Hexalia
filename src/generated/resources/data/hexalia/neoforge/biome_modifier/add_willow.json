@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "minecraft:mangrove_swamp",
+  "features": "hexalia:willow_placed",
+  "step": "vegetal_decoration"
+}

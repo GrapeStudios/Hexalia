@@ -3,7 +3,7 @@
     "facing=east": {
       "model": "hexalia:block/shelf",
       "y": 90
-    },  
+    },
     "facing=north": {
       "model": "hexalia:block/shelf"
     },

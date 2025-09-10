@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "hexalia:lotus_flower"
+    },
+    "P": {
+      "item": "minecraft:leather"
+    },
+    "S": {
+      "tag": "c:salt"
+    }
+  },
+  "pattern": [
+    " S ",
+    "PAP",
+    " P "
+  ],
+  "result": {
+    "count": 1,
+    "id": "hexalia:purifying_sac"
+  }
+}

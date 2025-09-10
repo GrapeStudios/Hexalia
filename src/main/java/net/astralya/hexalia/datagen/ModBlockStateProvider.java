@@ -57,8 +57,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockItem(ModBlocks.STRIPPED_WILLOW_LOG);
         blockItem(ModBlocks.STRIPPED_WILLOW_WOOD);
 
-        tallPlantBlock(ModBlocks.HEXED_BULRUSH.get());
-
         flowerWithPotBlock(ModBlocks.SPIRIT_BLOOM.get(), ModBlocks.POTTED_SPIRIT_BLOOM.get());
         flowerWithPotBlock(ModBlocks.DREAMSHROOM.get(), ModBlocks.POTTED_DREAMSHROOM.get());
         flowerWithPotBlock(ModBlocks.GHOST_FERN.get(), ModBlocks.POTTED_GHOST_FERN.get());
@@ -67,11 +65,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         flowerWithPotBlock(ModBlocks.GRIMSHADE.get(), ModBlocks.POTTED_GRIMSHADE.get());
         flowerWithPotBlock(ModBlocks.WINDSONG.get(), ModBlocks.POTTED_WINDSONG.get());
         flowerWithPotBlock(ModBlocks.ASTRYLIS.get(), ModBlocks.POTTED_ASTRYLIS.get());
-        flowerWithPotBlock(ModBlocks.HENBANE.get(), ModBlocks.POTTED_HENBANE.get());
         flowerWithPotBlock(ModBlocks.BEGONIA.get(), ModBlocks.POTTED_BEGONIA.get());
         flowerWithPotBlock(ModBlocks.LAVENDER.get(), ModBlocks.POTTED_LAVENDER.get());
         flowerWithPotBlock(ModBlocks.DAHLIA.get(), ModBlocks.POTTED_DAHLIA.get());
-        flowerWithPotBlock(ModBlocks.PALE_MUSHROOM.get(), ModBlocks.POTTED_PALE_MUSHROOM.get());
         flowerWithPotBlock(ModBlocks.NIGHTSHADE_BUSH.get(), ModBlocks.POTTED_NIGHTSHADE_BUSH.get());
         flowerWithPotBlock(ModBlocks.WILLOW_SAPLING.get(), ModBlocks.POTTED_WILLOW_SAPLING.get());
         flowerWithPotBlock(ModBlocks.COTTONWOOD_SAPLING.get(), ModBlocks.POTTED_COTTONWOOD_SAPLING.get());

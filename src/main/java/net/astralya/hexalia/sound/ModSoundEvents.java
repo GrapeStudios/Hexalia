@@ -15,6 +15,7 @@ public class ModSoundEvents {
     public static final Supplier<SoundEvent> MANDRAKE_SCREAM = registerSoundEvent("mandrake_scream");
     public static final Supplier<SoundEvent> RITUAL_SUCCESS = registerSoundEvent("ritual_success");
     public static final Supplier<SoundEvent> CONVERSION = registerSoundEvent("conversion");
+    public static final Supplier<SoundEvent> SAC_IMPACT = registerSoundEvent("sac_impact");
 
     private static Supplier<SoundEvent> registerSoundEvent(String name) {
         ResourceLocation id = ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, name);

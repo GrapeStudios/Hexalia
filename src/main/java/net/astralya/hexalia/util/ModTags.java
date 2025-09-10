@@ -20,22 +20,22 @@ public class ModTags {
         public static final TagKey<Item> COTTONWOOD_LOGS = createItemTag("cottonwood_logs");
         public static final TagKey<Item> WILLOW_LOGS = createItemTag("willow_logs");
         public static final TagKey<Item> OFFHAND_EQUIPMENT = createItemTag("offhand_equipment");
+        public static final TagKey<Item> TULIPS = createItemTag("tulips");
 
         // Common Item Tags
-
         public static final TagKey<Item> FOODS = createCommonItemTag("foods");
 
-        public static final TagKey<Item> FOODS_BREADS = createCommonItemTag("foods/breads");
+        public static final TagKey<Item> FOODS_BREAD = createCommonItemTag("foods/bread");
         public static final TagKey<Item> CROPS = createCommonItemTag("crops");
-        public static final TagKey<Item> CROPS_TOMATO = createCommonItemTag("crops/tomato");
-        public static final TagKey<Item> FOODS_BERRIES = createCommonItemTag("foods/berries");
-        public static final TagKey<Item> FOODS_COOKED_MEATS = createCommonItemTag("foods/cooked_meats");
+        public static final TagKey<Item> FOODS_BERRY = createCommonItemTag("foods/berry");
+        public static final TagKey<Item> FOODS_COOKED_MEAT = createCommonItemTag("foods/cooked_meat");
+        public static final TagKey<Item> FOODS_SOUP = createCommonItemTag("foods/soup");
+        public static final TagKey<Item> FOODS_PIE = createCommonItemTag("foods/pie");
+        public static final TagKey<Item> FOODS_FOOD_POISONING = createCommonItemTag("foods/food_poisoning");
 
-        public static final TagKey<Item> FOODS_VEGETABLES = createCommonItemTag("foods/vegetables");
-        public static final TagKey<Item> FOODS_VEGETABLES_TOMATO = createCommonItemTag("foods/vegetables/tomatoes");
+        public static final TagKey<Item> FOODS_VEGETABLE = createCommonItemTag("foods/vegetable");
 
         public static final TagKey<Item> SALT = createCommonItemTag("salt");
-        public static final TagKey<Item> BERRIES = createCommonItemTag("berries");
         public static final TagKey<Item> SEEDS = createCommonItemTag("seeds");
         public static final TagKey<Item> MUSHROOMS = createCommonItemTag("mushrooms");
 
@@ -102,8 +102,8 @@ public class ModTags {
                 ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_siren_kelp"));
         public static final TagKey<Biome> HAS_GHOST_FERNS = TagKey.create(Registries.BIOME,
                 ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_ghost_ferns"));
-        public static final TagKey<Biome> HAS_SPIRIT_BLOOMS = TagKey.create(Registries.BIOME,
-                ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_spirit_blooms"));
+        public static final TagKey<Biome> HAS_SWAMP_VEGETATION = TagKey.create(Registries.BIOME,
+                ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_swamp_vegetation"));
         public static final TagKey<Biome> HAS_DECORATIVE_FLOWERS = TagKey.create(Registries.BIOME,
                 ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_decorative_flowers"));
     }

@@ -35,7 +35,7 @@ public class MandrakeItem extends Item {
             for (Entity entity : entities) {
                 if (entity instanceof LivingEntity livingEntity &&
                         !(player.getItemBySlot(EquipmentSlot.HEAD).is(ModItems.EARPLUGS.get()))) {
-                    livingEntity.addEffect(new MobEffectInstance(ModMobEffects.STUNNED, stunDuration, 0));
+                    livingEntity.addEffect(new MobEffectInstance(ModMobEffects.STUNNED, stunDuration * 20, 0));
                 }
             }
 

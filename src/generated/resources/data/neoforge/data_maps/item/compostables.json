@@ -24,9 +24,6 @@
     "hexalia:dreamshroom": {
       "chance": 0.3
     },
-    "hexalia:duckweed": {
-      "chance": 0.3
-    },
     "hexalia:galeberries": {
       "chance": 0.3
     },
@@ -34,12 +31,6 @@
       "chance": 0.3
     },
     "hexalia:grimshade": {
-      "chance": 0.3
-    },
-    "hexalia:henbane": {
-      "chance": 0.3
-    },
-    "hexalia:hexed_bulrush": {
       "chance": 0.3
     },
     "hexalia:lavender": {

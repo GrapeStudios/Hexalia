@@ -1,6 +1,6 @@
 package net.astralya.hexalia.item.custom;
 
-import net.astralya.hexalia.entity.custom.RabbageProjectile;
+import net.astralya.hexalia.entity.custom.projectile.RabbageProjectile;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -42,6 +42,6 @@ public class RabbageItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable("tooltip.hexalia.rabbage").withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(Component.translatable("tooltip.hexalia.throwable").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.ITALIC));
     }
 }

@@ -43,6 +43,16 @@ public class ModRecipes {
                     return "ritual_table";
                 }
             });
+    
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<MutationRecipe>> MUTATION_SERIALIZER =
+            SERIALIZERS.register("mutation", MutationRecipe.Serializer::new);
+    public static final DeferredHolder<RecipeType<?>, RecipeType<MutationRecipe>> MUTATION_TYPE =
+            TYPES.register("mutation", () -> new RecipeType<MutationRecipe>() {
+                @Override
+                public String toString() {
+                    return "mutation";
+                }
+            });
 
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);

@@ -1,5 +1,6 @@
 package net.astralya.hexalia;
 
+import net.astralya.hexalia.block.ModFlammables;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.block.entity.renderer.CenserBlockEntityRenderer;
@@ -23,8 +24,7 @@ import net.astralya.hexalia.screen.custom.SmallCauldronScreen;
 import net.astralya.hexalia.sound.ModSoundEvents;
 import net.astralya.hexalia.util.ModArmorMaterials;
 import net.astralya.hexalia.util.ModWoodTypes;
-import net.astralya.hexalia.worldgen.biome.ModBiomes;
-import net.astralya.hexalia.worldgen.biome.ModSurfaceRules;
+import net.astralya.hexalia.worldgen.gen.decorator.ModTreeDecorators;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
@@ -53,7 +53,6 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import terrablender.api.SurfaceRuleManager;
 
 @Mod(HexaliaMod.MODID)
 public class HexaliaMod {
@@ -80,6 +79,7 @@ public class HexaliaMod {
         ModLootModifiers.register(modEventBus);
         ModArmorMaterials.register(modEventBus);
         ModComponents.register(modEventBus);
+        ModTreeDecorators.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
@@ -87,8 +87,6 @@ public class HexaliaMod {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            ModBiomes.registerBiomes();
-            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MODID, ModSurfaceRules.makeRules());
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.SPIRIT_BLOOM.getId(), ModBlocks.POTTED_SPIRIT_BLOOM);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.DREAMSHROOM.getId(), ModBlocks.POTTED_DREAMSHROOM);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.GHOST_FERN.getId(), ModBlocks.POTTED_GHOST_FERN);
@@ -97,16 +95,15 @@ public class HexaliaMod {
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.GRIMSHADE.getId(), ModBlocks.POTTED_GRIMSHADE);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.WINDSONG.getId(), ModBlocks.POTTED_WINDSONG);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.ASTRYLIS.getId(), ModBlocks.POTTED_ASTRYLIS);
-            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.HENBANE.getId(), ModBlocks.POTTED_HENBANE);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.BEGONIA.getId(), ModBlocks.POTTED_BEGONIA);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.LAVENDER.getId(), ModBlocks.POTTED_LAVENDER);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.DAHLIA.getId(), ModBlocks.POTTED_DAHLIA);
-            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.PALE_MUSHROOM.getId(), ModBlocks.POTTED_PALE_MUSHROOM);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.NIGHTSHADE_BUSH.getId(), ModBlocks.POTTED_NIGHTSHADE_BUSH);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.COTTONWOOD_SAPLING.getId(), ModBlocks.POTTED_COTTONWOOD_SAPLING);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.WILLOW_SAPLING.getId(), ModBlocks.POTTED_WILLOW_SAPLING);
-
+            event.enqueueWork(ModFlammables::register);
         });
+
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
@@ -127,6 +124,9 @@ public class HexaliaMod {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntities.RABBAGE.get(), ThrownItemRenderer::new);
+            EntityRenderers.register(ModEntities.PURIFYING_SAC.get(), ThrownItemRenderer::new);
+            EntityRenderers.register(ModEntities.FOUL_SAC.get(), ThrownItemRenderer::new);
+            EntityRenderers.register(ModEntities.FROST_SAC.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.MOD_BOAT.get(), context -> new ModBoatRenderer(context, false));
             EntityRenderers.register(ModEntities.MOD_CHEST_BOAT.get(), context -> new ModBoatRenderer(context, true));
 

@@ -7,7 +7,6 @@
 	"mixins": [
 		"LivingEntityMixin",
 		"CobwebMixin",
-		"AnvilMixin",
 		"FishingHookMixin",
 		"MobMixin",
 		"ItemCombinerMenuAccessor"

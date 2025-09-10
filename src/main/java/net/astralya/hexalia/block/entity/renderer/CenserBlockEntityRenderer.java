@@ -16,7 +16,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class CenserBlockEntityRenderer implements BlockEntityRenderer<CenserBlockEntity> {
-
     private final ItemRenderer itemRenderer;
     private static final float ITEM_SCALE = 0.75f;
     private static final float BASE_Y_OFFSET = 6/16f + 0.01f;
@@ -27,16 +26,38 @@ public class CenserBlockEntityRenderer implements BlockEntityRenderer<CenserBloc
     }
 
     @Override
-    public void render(CenserBlockEntity censerBlockEntity, float v, PoseStack poseStack, MultiBufferSource multiBufferSource, int packedLight, int packedOverlay) {
-        Level level = censerBlockEntity.getLevel();
+    public void render(CenserBlockEntity censer, float partialTick, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
+        Level level = censer.getLevel();
         if (level == null) return;
 
-        NonNullList<ItemStack> items = censerBlockEntity.getItems();
-        if (items.isEmpty()) return;
+        BlockState state = censer.getBlockState();
 
-        BlockState state = censerBlockEntity.getBlockState();
+        // RULE: Never render items if the block is lit
+        if (state.hasProperty(CenserBlock.LIT) && state.getValue(CenserBlock.LIT)) {
+            return;
+        }
+
+        // Get items from the block entity
+        NonNullList<ItemStack> items = censer.getItems();
+
+        // Check if we have any non-empty items to render
+        boolean hasItems = false;
+        for (ItemStack stack : items) {
+            if (!stack.isEmpty()) {
+                hasItems = true;
+                break;
+            }
+        }
+
+        // If no items, don't render anything
+        if (!hasItems) return;
+
+        // Additional check: if burn time > 0, don't render (should be consumed)
+        if (censer.getBurnTime() > 0) {
+            return;
+        }
+
         Direction facing = state.getValue(CenserBlock.FACING);
-
         poseStack.pushPose();
         poseStack.translate(0.5, 0.0, 0.5);
         poseStack.mulPose(Axis.YP.rotationDegrees(-facing.toYRot()));
@@ -59,9 +80,9 @@ public class CenserBlockEntityRenderer implements BlockEntityRenderer<CenserBloc
                     packedLight,
                     packedOverlay,
                     poseStack,
-                    multiBufferSource,
+                    buffer,
                     level,
-                    (int) censerBlockEntity.getBlockPos().asLong()
+                    (int) censer.getBlockPos().asLong()
             );
 
             poseStack.popPose();

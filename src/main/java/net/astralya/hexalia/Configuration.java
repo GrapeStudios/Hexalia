@@ -14,15 +14,20 @@ public class Configuration {
     public static final ModConfigSpec.IntValue CENSER_EFFECT_RADIUS;
     public static final ModConfigSpec.IntValue CENSER_EFFECT_DURATION;
 
-    public static final String CATEGORY_BREWS = "brews";
-    public static ModConfigSpec.IntValue BREW_EFFECT_DURATION;
-    public static ModConfigSpec.IntValue BREW_AMPLIFIER_BONUS;
+    public static final String CATEGORY_TOOLS = "tools";
 
-    public static final String CATEGORY_MANDRAKE = "mandrake";
     public static ModConfigSpec.DoubleValue MANDRAKE_SCREAM_RADIUS;
     public static ModConfigSpec.IntValue MANDRAKE_STUN_DURATION;
 
-    public static final String CATEGORY_ENCHANTED_PLANTS = "enchanted_plants";
+    public static ModConfigSpec.IntValue FOUL_SAC_DURATION;
+    public static ModConfigSpec.IntValue FROST_SAC_DURATION;
+    public static ModConfigSpec.IntValue PURIFYING_SAC_DURATION;
+
+    public static ModConfigSpec.DoubleValue SIPHON_RADIUS;
+
+    public static ModConfigSpec.DoubleValue BLEEDING_DAMAGE;
+
+    public static final String CATEGORY_PLANTS = "plants";
 
     public static ModConfigSpec.IntValue NAUTILITE_DURATION;
     public static ModConfigSpec.IntValue NAUTILITE_EFFECT_RADIUS;
@@ -33,10 +38,14 @@ public class Configuration {
     public static ModConfigSpec.IntValue ASTRYLIS_DURATION;
     public static ModConfigSpec.IntValue ASTRYLIS_BONEMEAL_INTERVAL;
 
+    public static ModConfigSpec.IntValue MORPHORA_RADIUS;
+
+    public static ModConfigSpec.BooleanValue GHOST_FERN_EMITS_PARTICLES;
+
     static {
         ModConfigSpec.Builder COMMON_BUILDER = new ModConfigSpec.Builder();
 
-        // --- CATEGORY: Dreamcatcher
+        // --- CATEGORY: Functional Blocks
         COMMON_BUILDER.comment("Functional Blocks Settings").push(FUNCTIONAL_BLOCKS);
         CENSER_EFFECT_RADIUS = COMMON_BUILDER
                 .comment("Radius of the censer's area of effect")
@@ -53,28 +62,36 @@ public class Configuration {
                 .defineInRange("phantomIgniteDuration", 100, 0, 600);
         COMMON_BUILDER.pop();
 
-        // --- CATEGORY: Brews
-        COMMON_BUILDER.comment("Brew Settings").push(CATEGORY_BREWS);
-        BREW_EFFECT_DURATION = COMMON_BUILDER
-                .comment("Fixed duration in ticks for all brew effects. 20 ticks = 1 second. Default: 4800 ticks = 4 minutes")
-                .defineInRange("brewEffectDuration", 4800, 20, 24000);
-        BREW_AMPLIFIER_BONUS = COMMON_BUILDER
-                .comment("Flat amplifier bonus applied to all brews. Default: 0")
-                .defineInRange("brewAmplifierBonus", 0, -2, 5);
-        COMMON_BUILDER.pop();
-
-        // --- CATEGORY: Mandrake
-        COMMON_BUILDER.comment("Mandrake Scream Settings").push(CATEGORY_MANDRAKE);
+        // --- CATEGORY: Tools / Items
+        COMMON_BUILDER.comment("Mandrake & Tool/Item Settings").push(CATEGORY_TOOLS);
         MANDRAKE_SCREAM_RADIUS = COMMON_BUILDER
                 .comment("Radius in blocks around the player affected by the Mandrake's scream. Default: 5.0")
                 .defineInRange("mandrakeScreamRadius", 5.0, 1.0, 32.0);
         MANDRAKE_STUN_DURATION = COMMON_BUILDER
-                .comment("Stun duration in ticks applied by the Mandrake's scream. Default: 60 ticks = 3 seconds")
-                .defineInRange("mandrakeStunDuration", 60, 1, 600);
+                .comment("Stun duration in seconds applied by the Mandrake's scream. Default: 3 seconds")
+                .defineInRange("mandrakeStunDuration", 3, 1, 60);
+
+        FOUL_SAC_DURATION = COMMON_BUILDER
+                .comment("Duration in seconds of the poisonous cloud created by the Foul Sac. Default: 8 seconds")
+                .defineInRange("foulSacDuration", 8, 1, 60);
+        FROST_SAC_DURATION = COMMON_BUILDER
+                .comment("Duration in seconds of the frost cloud created by the Frost Sac. Default: 8 seconds")
+                .defineInRange("frostSacDuration", 8, 1, 60);
+        PURIFYING_SAC_DURATION = COMMON_BUILDER
+                .comment("Duration in seconds of the cleansing cloud created by Purifying Sac. Default: 8 seconds")
+                .defineInRange("purifyingSacDuration", 8, 1, 60);
+
+        SIPHON_RADIUS = COMMON_BUILDER
+                .comment("Radius in blocks for the Siphon effect. Default: 5.0")
+                .defineInRange("siphonRadius", 5.0D, 0.5D, 64.0D);
+
+        BLEEDING_DAMAGE = COMMON_BUILDER
+                .comment("Damage applied by the Bleeding effect (in health points). Default: 0.5")
+                .defineInRange("bleedingDamage", 0.5D, 0.0D, 10.0D);
         COMMON_BUILDER.pop();
 
-        // --- CATEGORY: Enchanted Plants
-        COMMON_BUILDER.comment("Enchanted Plant Settings").push(CATEGORY_ENCHANTED_PLANTS);
+        // --- CATEGORY: Plants
+        COMMON_BUILDER.comment("Enchanted Plant Settings").push(CATEGORY_PLANTS);
         NAUTILITE_DURATION = COMMON_BUILDER
                 .comment("How long (in ticks) the Nautilite stays active before disappearing. 20 ticks = 1 second. Default: 2400 (2 minutes)")
                 .defineInRange("nautiliteDuration", 2400, 100, 24000);
@@ -95,11 +112,22 @@ public class Configuration {
         ASTRYLIS_BONEMEAL_INTERVAL = COMMON_BUILDER
                 .comment("Interval in ticks between bonemeal pulses while Astrylis is active. Default: 240 ticks = 12 seconds")
                 .defineInRange("astrylisBonemealInterval", 240, 20, 1200);
+        MORPHORA_RADIUS = COMMON_BUILDER
+                .comment("Radius in blocks around the Morphora mutates blocks into others. Default: 6")
+                .defineInRange("morphoraEffectRadius", 6, 1, 32);
         COMMON_BUILDER.pop();
 
-
         COMMON_CONFIG = COMMON_BUILDER.build();
+
+        // ---------- CLIENT CONFIG ----------
         ModConfigSpec.Builder CLIENT_BUILDER = new ModConfigSpec.Builder();
+
+        CLIENT_BUILDER.comment("Client-side Visual Settings").push(CATEGORY_PLANTS);
+        GHOST_FERN_EMITS_PARTICLES = CLIENT_BUILDER
+                .comment("If true, Ghost Fern blocks emit ambient particles client-side. Default: true")
+                .define("ghostFernEmitsParticles", true);
+        CLIENT_BUILDER.pop();
+
         CLIENT_CONFIG = CLIENT_BUILDER.build();
     }
 }

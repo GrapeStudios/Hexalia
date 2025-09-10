@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "A": {
+      "item": "hexalia:chillberries"
+    },
+    "P": {
+      "item": "minecraft:leather"
+    },
+    "S": {
+      "item": "minecraft:snowball"
+    }
+  },
+  "pattern": [
+    " S ",
+    "PAP",
+    " P "
+  ],
+  "result": {
+    "count": 1,
+    "id": "hexalia:frost_sac"
+  }
+}

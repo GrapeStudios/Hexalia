@@ -81,17 +81,19 @@ public class InfusedFarmlandBlock extends FarmBlock {
 
     @Override
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (level.isRainingAt(pos.above())) {
-            BlockPos cropPos = pos.above();
-            BlockState cropState = level.getBlockState(cropPos);
-            if (cropState.getBlock() instanceof BonemealableBlock growable) {
-                if (growable.isValidBonemealTarget(level, cropPos, cropState)) {
-                    if (growable.isBonemealSuccess(level, random, cropPos, cropState)) {
-                        growable.performBonemeal(level, random, cropPos, cropState);
-                        level.levelEvent(1505, cropPos, 0);
-                        level.gameEvent(null, GameEvent.BLOCK_CHANGE, cropPos);
-                    }
-                }
+        BlockPos cropPos = pos.above();
+
+        if (!level.isRaining() || !level.canSeeSky(cropPos) || !level.getBiome(cropPos).value().hasPrecipitation()) {
+            return;
+        }
+
+        BlockState cropState = level.getBlockState(cropPos);
+        if (cropState.getBlock() instanceof BonemealableBlock growable) {
+            if (growable.isValidBonemealTarget(level, cropPos, cropState)
+                    && growable.isBonemealSuccess(level, random, cropPos, cropState)) {
+                growable.performBonemeal(level, random, cropPos, cropState);
+                level.levelEvent(1505, cropPos, 0);
+                level.gameEvent(null, GameEvent.BLOCK_CHANGE, cropPos);
             }
         }
     }
@@ -131,8 +133,7 @@ public class InfusedFarmlandBlock extends FarmBlock {
             double x = pos.getX() + 0.5 + random.nextDouble(-0.5, 0.5);
             double y = pos.getY() + 1.0;
             double z = pos.getZ() + 0.5 + random.nextDouble(-0.5, 0.5);
-            level.addParticle(ModParticleType.INFUSED_BUBBLES.get(), x, y, z, 0.0d,
-                    0.05d, 0.0d);
+            level.addParticle(ModParticleType.INFUSED_BUBBLES.get(), x, y, z, 0.0d, 0.05d, 0.0d);
         }
     }
 }

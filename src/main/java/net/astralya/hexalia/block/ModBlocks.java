@@ -54,6 +54,10 @@ public class ModBlocks {
             () -> new CelestialBloomBlock(MobEffects.NIGHT_VISION, 6, BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY).lightLevel(state -> 6)));
     public static final DeferredBlock<Block> POTTED_CELESTIAL_BLOOM = BLOCKS.register("potted_celestial_bloom",
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), CELESTIAL_BLOOM, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY).lightLevel(state -> 6)));
+    public static final DeferredBlock<Block> LOTUS_FLOWER = BLOCKS.register("lotus_flower",
+            () -> new WaterPlantBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LILY_PAD).lightLevel(state -> 6)));
+    public static final DeferredBlock<Block> WITCHWEED = registerBlock("witchweed",
+            () -> new WitchweedBlock(MobEffects.POISON, 6, BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY).dynamicShape().noCollission()));
 
     // Enchanted Plants
     public static final DeferredBlock<Block> MORPHORA = registerBlock("morphora",
@@ -64,8 +68,8 @@ public class ModBlocks {
             () -> new GrimshadeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).noCollission()));
     public static final DeferredBlock<Block> POTTED_GRIMSHADE = BLOCKS.register("potted_grimshade",
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), GRIMSHADE, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY)));
-    public static final DeferredBlock<Block> NAUTILITE = registerBlock("nautilite",
-            () -> new NautiliteBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).noCollission()));
+    public static final DeferredBlock<Block> NAUTILITE = BLOCKS.register("nautilite",
+            () -> new NautiliteBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SEAGRASS)));
     public static final DeferredBlock<Block> WINDSONG = registerBlock("windsong",
             () -> new WindsongBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).noCollission()));
     public static final DeferredBlock<Block> POTTED_WINDSONG = BLOCKS.register("potted_windsong",
@@ -76,10 +80,6 @@ public class ModBlocks {
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), ASTRYLIS, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY)));
 
     // Decorative Flowers
-    public static final DeferredBlock<Block> HENBANE = registerBlock("henbane",
-            () -> new FlowerBlock(MobEffects.ABSORPTION, 6, BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY)));
-    public static final DeferredBlock<Block> POTTED_HENBANE = BLOCKS.register("potted_henbane",
-            () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), HENBANE, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY)));
     public static final DeferredBlock<Block> BEGONIA = registerBlock("begonia",
             () -> new FlowerBlock(MobEffects.REGENERATION, 6, BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY)));
     public static final DeferredBlock<Block> POTTED_BEGONIA = BLOCKS.register("potted_begonia",
@@ -92,20 +92,8 @@ public class ModBlocks {
             () -> new FlowerBlock(MobEffects.DAMAGE_BOOST, 6, BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY)));
     public static final DeferredBlock<Block> POTTED_DAHLIA = BLOCKS.register("potted_dahlia",
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), DAHLIA, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY)));
-
-    // Enchanted Bayou Plants
-    public static final DeferredBlock<Block> LOTUS_FLOWER = BLOCKS.register("lotus_flower",
-            () -> new WaterPlantBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LILY_PAD).lightLevel(state -> 6)));
-    public static final DeferredBlock<Block> DUCKWEED = BLOCKS.register("duckweed",
-            () -> new WaterPlantBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LILY_PAD).noCollission()));
     public static final DeferredBlock<Block> PALE_MUSHROOM = registerBlock("pale_mushroom",
-            () -> new ShroomBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BROWN_MUSHROOM).lightLevel(state -> 4)));
-    public static final DeferredBlock<Block> POTTED_PALE_MUSHROOM = BLOCKS.register("potted_pale_mushroom",
-            () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), PALE_MUSHROOM, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY).lightLevel(state -> 4)));
-    public static final DeferredBlock<Block> WITCHWEED = registerBlock("witchweed",
-            () -> new WitchweedBlock(MobEffects.POISON, 6, BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY)));
-    public static final DeferredBlock<Block> HEXED_BULRUSH = registerBlock("hexed_bulrush",
-            () -> new HexedBulrushBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY).lightLevel(state -> 4)));
+            () -> new PaleMushroomBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BROWN_MUSHROOM).lightLevel(state -> 4)));
     public static final DeferredBlock<Block> NIGHTSHADE_BUSH = registerBlock("nightshade_bush",
             () -> new FlowerBlock(MobEffects.POISON, 6, BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY)));
     public static final DeferredBlock<Block> POTTED_NIGHTSHADE_BUSH = BLOCKS.register("potted_nightshade_bush",
@@ -185,11 +173,11 @@ public class ModBlocks {
     public static final DeferredBlock<Block> COTTONWOOD_STAIRS = registerBlock("cottonwood_stairs",
             () -> new StairBlock(ModBlocks.COTTONWOOD_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS)));
     public static final DeferredBlock<Block> COTTONWOOD_SLAB = registerBlock("cottonwood_slab",
-            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SLAB)));
     public static final DeferredBlock<Block> COTTONWOOD_BUTTON = registerBlock("cottonwood_button",
             () -> new ButtonBlock(BlockSetType.OAK, 10, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON)));
     public static final DeferredBlock<Block> COTTONWOOD_PRESSURE_PLATE = registerBlock("cottonwood_pressure_plate",
-            () -> new PressurePlateBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+            () -> new PressurePlateBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE)));
     public static final DeferredBlock<Block> COTTONWOOD_FENCE = registerBlock("cottonwood_fence",
             () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE)));
     public static final DeferredBlock<Block> COTTONWOOD_FENCE_GATE = registerBlock("cottonwood_fence_gate",
@@ -226,13 +214,13 @@ public class ModBlocks {
     public static final DeferredBlock<Block> WILLOW_PLANKS = registerBlock("willow_planks",
             () -> new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
     public static final DeferredBlock<Block> WILLOW_STAIRS = registerBlock("willow_stairs",
-            () -> new StairBlock(ModBlocks.WILLOW_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON)));
+            () -> new StairBlock(ModBlocks.WILLOW_PLANKS.get().defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_STAIRS)));
     public static final DeferredBlock<Block> WILLOW_SLAB = registerBlock("willow_slab",
-            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+            () -> new SlabBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SLAB)));
     public static final DeferredBlock<Block> WILLOW_BUTTON = registerBlock("willow_button",
             () -> new ButtonBlock(BlockSetType.OAK, 10, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_BUTTON)));
     public static final DeferredBlock<Block> WILLOW_PRESSURE_PLATE = registerBlock("willow_pressure_plate",
-            () -> new PressurePlateBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+            () -> new PressurePlateBlock(BlockSetType.OAK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PRESSURE_PLATE)));
     public static final DeferredBlock<Block> WILLOW_FENCE = registerBlock("willow_fence",
             () -> new FenceBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_FENCE)));
     public static final DeferredBlock<Block> WILLOW_FENCE_GATE = registerBlock("willow_fence_gate",

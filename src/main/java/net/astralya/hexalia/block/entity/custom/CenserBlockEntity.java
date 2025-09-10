@@ -24,7 +24,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class CenserBlockEntity extends BlockEntity {
+public class CenserBlockEntity extends SyncBlockEntity {
 
     private static final int SIZE = 2;
     private final NonNullList<ItemStack> items = NonNullList.withSize(SIZE, ItemStack.EMPTY);
@@ -38,6 +38,11 @@ public class CenserBlockEntity extends BlockEntity {
     }
 
     public void tick(Level level, BlockPos pos, BlockState state) {
+        if (!level.isClientSide && activeCombination != null && burnTime > 0 && !effectActive) {
+            CenserEffectHandler.registerActiveEffect(level, pos, activeCombination, burnTime);
+            effectActive = true;
+        }
+
         if (!state.getValue(CenserBlock.LIT)) return;
 
         if (burnTime > 0) {
@@ -70,8 +75,7 @@ public class CenserBlockEntity extends BlockEntity {
 
         level.setBlockAndUpdate(pos, state.setValue(CenserBlock.LIT, false));
         level.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5f, 1.0f);
-        setChanged();
-        sendUpdate();
+        inventoryChanged();
     }
 
     public void reactivateEffect() {
@@ -126,7 +130,7 @@ public class CenserBlockEntity extends BlockEntity {
 
     public void setActiveCombination(HerbCombination combo) {
         this.activeCombination = combo;
-        setChanged();
+        inventoryChanged();
     }
 
     public HerbCombination getActiveCombination() {

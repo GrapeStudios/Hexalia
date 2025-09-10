@@ -1,7 +1,7 @@
-// 1.21.1	2025-08-04T16:53:03.8818439	Tags for minecraft:worldgen/biome mod id hexalia
+// 1.21.1	2025-09-15T12:56:49.585619	Tags for minecraft:worldgen/biome mod id hexalia
 27b5c61d0bd6297d6f29b5f49d7a3a7d52b5e029 data/hexalia/tags/worldgen/biome/has_decorative_flowers.json
-9e2c086bf6e660710d250d703414ef601114f323 data/hexalia/tags/worldgen/biome/has_dreamshrooms.json
-36ac1c69c455f4a5d127fc726d6d6ab9d316a066 data/hexalia/tags/worldgen/biome/has_ghost_ferns.json
+6b5b6188dc8d42fef0fbcbba6e03e9cd3a3a88d7 data/hexalia/tags/worldgen/biome/has_dreamshrooms.json
+5f176659fa27569cc678ddae4a306c2055a89a16 data/hexalia/tags/worldgen/biome/has_ghost_ferns.json
 9b6bd1672627b177d1420a042cfaba354104a8ef data/hexalia/tags/worldgen/biome/has_mandrakes.json
-42abf4c64978ac067575eafccabe7489f613e18f data/hexalia/tags/worldgen/biome/has_siren_kelp.json
-4ab1ed4e5864647cdc1997046468607dc2cd7710 data/hexalia/tags/worldgen/biome/has_spirit_blooms.json
+afd9da16b8e57511d3b12c69ccd4555d71ebb29f data/hexalia/tags/worldgen/biome/has_siren_kelp.json
+3e00d0ecf4c9744bbf1b1c80ff5270a55488fc87 data/hexalia/tags/worldgen/biome/has_swamp_vegetation.json

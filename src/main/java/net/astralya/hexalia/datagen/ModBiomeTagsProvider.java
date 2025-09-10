@@ -2,7 +2,6 @@ package net.astralya.hexalia.datagen;
 
 import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.util.ModTags;
-import net.astralya.hexalia.worldgen.biome.ModBiomes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;
@@ -25,20 +24,16 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider {
                 .add(Biomes.BIRCH_FOREST);
         this.tag(ModTags.Biomes.HAS_DREAMSHROOMS)
                 .add(Biomes.OLD_GROWTH_PINE_TAIGA)
-                .addOptional(ModBiomes.ENCHANTED_BAYOU.location())
                 .add(Biomes.MUSHROOM_FIELDS);
         this.tag(ModTags.Biomes.HAS_SIREN_KELP)
-                .addOptional(ModBiomes.ENCHANTED_BAYOU.location())
                 .addTag(BiomeTags.IS_OCEAN);
         this.tag(ModTags.Biomes.HAS_GHOST_FERNS)
-                .addOptional(ModBiomes.ENCHANTED_BAYOU.location())
                 .add(Biomes.DARK_FOREST);
         this.tag(ModTags.Biomes.HAS_DECORATIVE_FLOWERS)
                 .add(Biomes.SUNFLOWER_PLAINS)
                 .add(Biomes.PLAINS);
-        this.tag(ModTags.Biomes.HAS_SPIRIT_BLOOMS)
+        this.tag(ModTags.Biomes.HAS_SWAMP_VEGETATION)
                 .add(Biomes.MANGROVE_SWAMP)
-                .addOptional(ModBiomes.ENCHANTED_BAYOU.location())
                 .add(Biomes.SWAMP);
     }
 }

@@ -1,5 +1,6 @@
 package net.astralya.hexalia.block.custom;
 
+import net.astralya.hexalia.Configuration;
 import net.astralya.hexalia.particle.ModParticleType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
@@ -16,7 +17,7 @@ public class GhostFernBlock extends HerbBlock {
 
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        if (level.isClientSide()) {
+        if (level.isClientSide() && Configuration.GHOST_FERN_EMITS_PARTICLES.get()) {
             double centerX = pos.getX() + 0.5;
             double centerY = pos.getY() + 0.5;
             double centerZ = pos.getZ() + 0.5;

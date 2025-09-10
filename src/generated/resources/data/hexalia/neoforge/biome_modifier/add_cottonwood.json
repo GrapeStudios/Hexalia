@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "minecraft:swamp",
+  "features": "hexalia:cottonwood_placed",
+  "step": "vegetal_decoration"
+}

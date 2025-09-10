@@ -1,0 +1,7 @@
+{
+  "type": "hexalia:mutation",
+  "input": {
+    "item": "minecraft:granite"
+  },
+  "output": "minecraft:andesite"
+}

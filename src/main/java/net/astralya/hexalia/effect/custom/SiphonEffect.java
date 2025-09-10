@@ -1,5 +1,6 @@
 package net.astralya.hexalia.effect.custom;
 
+import net.astralya.hexalia.Configuration;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -27,7 +28,7 @@ public class SiphonEffect extends MobEffect {
         }
 
         Level world = player.level();
-        double radius = 5.0 + amplifier;
+        double radius = Configuration.SIPHON_RADIUS.get() + amplifier;
         AABB box = player.getBoundingBox().inflate(radius);
 
         List<ItemEntity> itemEntities = world.getEntitiesOfClass(ItemEntity.class, box, item -> true);
