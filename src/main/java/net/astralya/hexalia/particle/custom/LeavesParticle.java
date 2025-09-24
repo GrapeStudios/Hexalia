@@ -11,13 +11,27 @@ public class LeavesParticle extends SimpleAnimatedParticle {
 
     protected LeavesParticle(ClientLevel level, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteSet spriteSet) {
         super(level, x, y, z, spriteSet, 0.01F);
-        this.xd = velocityX;
-        this.yd = velocityY;
-        this.zd = velocityZ;
-        this.quadSize *= 0.6f + this.random.nextInt(1);
-        this.lifetime = 40 + this.random.nextInt(12);
+
+        this.hasPhysics = false;
+        this.friction   = 0.96F;
+        this.gravity    = 0.0F;
+
+        if (velocityX == 0 && velocityY == 0 && velocityZ == 0) {
+            this.xd = (random.nextDouble() - 0.5D) * 0.02D;
+            this.yd =  random.nextDouble()            * 0.02D;
+            this.zd = (random.nextDouble() - 0.5D) * 0.02D;
+        } else {
+            this.xd = velocityX;
+            this.yd = velocityY;
+            this.zd = velocityZ;
+        }
+
+        this.quadSize *= (0.2F + random.nextFloat() * 0.4F);
+        this.lifetime  = 14 + random.nextInt(6);
+
         this.setColor(15916745);
-        this.setSpriteFromAge(spriteSet);
+
+        this.setSpriteFromAge(sprites);
     }
 
     @Override
