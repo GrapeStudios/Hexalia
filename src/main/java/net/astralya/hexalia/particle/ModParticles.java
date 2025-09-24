@@ -11,14 +11,12 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModParticles {
 
     public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES =
-            DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, HexaliaMod.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, HexaliaMod.MODID);
 
     public static final RegistryObject<SimpleParticleType> SPORE_PARTICLE =
             PARTICLE_TYPES.register("spore_particle", () -> new SimpleParticleType(true));
     public static final RegistryObject<SimpleParticleType> GHOST_PARTICLE =
             PARTICLE_TYPES.register("ghost_particle", () -> new SimpleParticleType(true));
-    public static final RegistryObject<SimpleParticleType> MOTE_PARTICLE =
-            PARTICLE_TYPES.register("mote_particle", () -> new SimpleParticleType(true));
     public static final RegistryObject<SimpleParticleType> INFUSED_BUBBLE_PARTICLE =
             PARTICLE_TYPES.register("infused_bubble_particle", () -> new SimpleParticleType(true));
     public static final RegistryObject<SimpleParticleType> LEAVES_PARTICLE =

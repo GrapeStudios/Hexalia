@@ -22,13 +22,12 @@ import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = HexaliaMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = HexaliaMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ModEventClientBusEvents {
     @SubscribeEvent
     public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(ModParticles.SPORE_PARTICLE.get(), SporeParticle.Provider::new);
         event.registerSpriteSet(ModParticles.GHOST_PARTICLE.get(), GhostParticle.Provider::new);
-        event.registerSpriteSet(ModParticles.MOTE_PARTICLE.get(), MoteParticle.Provider::new);
         event.registerSpriteSet(ModParticles.INFUSED_BUBBLE_PARTICLE.get(), InfusedBubbleParticle.Provider::new);
         event.registerSpriteSet(ModParticles.LEAVES_PARTICLE.get(), LeavesParticle.Provider::new);
     }
