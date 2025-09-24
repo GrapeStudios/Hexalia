@@ -90,9 +90,6 @@ dependencies {
 
     minecraft "net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}"
 
-
-    implementation fg.deobf("com.github.glitchfiend:TerraBlender-forge:${minecraft_version}-${terrablender_version}")
-
     // compile against the JEI API but do not include it at runtime
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}"))
     compileOnly(fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}"))
@@ -116,7 +113,6 @@ tasks.named('processResources', ProcessResources).configure {
             loader_version_range: loader_version_range,
             mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
             mod_authors: mod_authors, mod_description: mod_description,
-            terrablender_version_range: terrablender_version_range,
             geckolib_version_range: geckolib_version_range,
             patchouli_version_range: patchouli_version_range
     ]

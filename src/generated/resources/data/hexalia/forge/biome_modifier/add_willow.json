@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
-  "biomes": "hexalia:enchanted_bayou",
+  "biomes": "minecraft:mangrove_swamp",
   "features": "hexalia:willow_placed",
   "step": "vegetal_decoration"
 }

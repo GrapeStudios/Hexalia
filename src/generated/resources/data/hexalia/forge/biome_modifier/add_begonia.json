@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
-  "biomes": "#forge:is_plains",
+  "biomes": "#hexalia:has_decorative_flowers",
   "features": "hexalia:begonia_placed",
   "step": "vegetal_decoration"
 }

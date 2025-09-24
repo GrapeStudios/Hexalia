@@ -17,8 +17,6 @@ import net.astralya.hexalia.screen.SmallCauldronScreen;
 import net.astralya.hexalia.sound.ModSounds;
 import net.astralya.hexalia.util.ModRegistries;
 import net.astralya.hexalia.util.ModWoodTypes;
-import net.astralya.hexalia.worldgen.biome.ModTerraBlenderAPI;
-import net.astralya.hexalia.worldgen.biome.surface.ModSurfaceRules;
 import net.astralya.hexalia.worldgen.gen.decorator.ModTreeDecorators;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.Sheets;
@@ -39,7 +37,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
-import terrablender.api.SurfaceRuleManager;
 
 @Mod(HexaliaMod.MOD_ID)
 public class HexaliaMod
@@ -89,10 +86,6 @@ public class HexaliaMod
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.WINDSONG.getId(), ModBlocks.POTTED_WINDSONG);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.ASTRYLIS.getId(), ModBlocks.POTTED_ASTRYLIS);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.DAHLIA.getId(), ModBlocks.POTTED_DAHLIA);
-
-            SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MOD_ID, ModSurfaceRules.makeRules());
-
-            ModTerraBlenderAPI.registerRegions();
         });
     }
 

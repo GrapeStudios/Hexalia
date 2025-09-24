@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
-  "biomes": "hexalia:enchanted_bayou",
+  "biomes": "minecraft:swamp",
   "features": "hexalia:cottonwood_placed",
   "step": "vegetal_decoration"
 }

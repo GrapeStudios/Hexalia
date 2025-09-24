@@ -11,6 +11,6 @@ public class CottonwoodTreeGrower extends AbstractTreeGrower {
     @Nullable
     @Override
     protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource pRandom, boolean pHasFlowers) {
-        return ModConfiguredFeatures.COTTONWOOD_KEY;
+        return ModConfiguredFeatures.COTTONWOOD;
     }
 }

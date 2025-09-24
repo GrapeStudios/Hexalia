@@ -11,6 +11,6 @@ public class WillowTreeGrower extends AbstractTreeGrower {
     @Nullable
     @Override
     protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource pRandom, boolean pHasFlowers) {
-        return ModConfiguredFeatures.WILLOW_KEY;
+        return ModConfiguredFeatures.WILLOW;
     }
 }

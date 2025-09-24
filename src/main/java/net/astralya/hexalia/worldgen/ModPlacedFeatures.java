@@ -2,139 +2,78 @@ package net.astralya.hexalia.worldgen;
 
 import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.block.ModBlocks;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
-import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
 
 public class ModPlacedFeatures {
-    public static final ResourceKey<PlacedFeature> SPIRIT_BLOOM_PLACED_KEY = registerKey("spirit_bloom_placed");
-    public static final ResourceKey<PlacedFeature> DREAMSHROOM_PLACED_KEY = registerKey("dreamshroom_placed");
-    public static final ResourceKey<PlacedFeature> SIREN_KELP_PLACED_KEY = registerKey("siren_kelp_placed");
-    public static final ResourceKey<PlacedFeature> CHILLBERRY_PLACED_KEY = registerKey("chillberry_placed");
-    public static final ResourceKey<PlacedFeature> WILD_SUNFIRE_TOMATO_PLACED_KEY = registerKey("wild_sunfire_tomato_placed");
-    public static final ResourceKey<PlacedFeature> WILD_MANDRAKE_PLACED_KEY = registerKey("wild_mandrake_placed");
-    public static final ResourceKey<PlacedFeature> HENBANE_PLACED_KEY = registerKey("henbane_placed");
-    public static final ResourceKey<PlacedFeature> BEGONIA_PLACED_KEY = registerKey("begonia_placed");
-    public static final ResourceKey<PlacedFeature> LAVENDER_PLACED_KEY = registerKey("lavender_placed");
-    public static final ResourceKey<PlacedFeature> DAHLIA_PLACED_KEY = registerKey("dahlia_placed");
-    public static final ResourceKey<PlacedFeature> CELESTIAL_BLOOM_PLACED_KEY = registerKey("celestial_bloom_placed");
 
-    public static final ResourceKey<PlacedFeature> COTTONWOOD_PLACED_KEY = registerKey("cottonwood_placed");
-    public static final ResourceKey<PlacedFeature> WILLOW_PLACED_KEY = registerKey("willow_placed");
-    public static final ResourceKey<PlacedFeature> COTTONWOOD_COCOON_PLACED_KEY = registerKey("cottonwood_cocoon_placed");
-    public static final ResourceKey<PlacedFeature> DARK_OAK_COCOON_PLACED_KEY = registerKey("dark_oak_cocoon_placed");
+    // Functional Plants
+    public static final ResourceKey<PlacedFeature> SPIRIT_BLOOM_PLACED = registerKey("spirit_bloom_placed");
+    public static final ResourceKey<PlacedFeature> DREAMSHROOM_PLACED = registerKey("dreamshroom_placed");
+    public static final ResourceKey<PlacedFeature> SIREN_KELP_PLACED = registerKey("siren_kelp_placed");
+    public static final ResourceKey<PlacedFeature> CHILLBERRY_PLACED = registerKey("chillberry_placed");
+    public static final ResourceKey<PlacedFeature> WILD_SUNFIRE_TOMATO_PLACED = registerKey("wild_sunfire_tomato_placed");
+    public static final ResourceKey<PlacedFeature> WILD_MANDRAKE_PLACED = registerKey("wild_mandrake_placed");
+    public static final ResourceKey<PlacedFeature> GHOST_FERN_PLACED = registerKey("ghost_fern_placed");
+    public static final ResourceKey<PlacedFeature> CELESTIAL_BLOOM_PLACED = registerKey("celestial_bloom_placed");
 
-    public static final ResourceKey<PlacedFeature> LOTUS_FLOWER_PLACED_KEY = registerKey("lotus_flower_placed");
-    public static final ResourceKey<PlacedFeature> PALE_MUSHROOM_PLACED_KEY = registerKey("pale_mushroom_placed");
-    public static final ResourceKey<PlacedFeature> WITCHWEED_PLACED_KEY = registerKey("witchweed_placed");
-    public static final ResourceKey<PlacedFeature> GHOST_FERN_PLACED_KEY = registerKey("ghost_fern_placed_key");
-    public static final ResourceKey<PlacedFeature> HEXED_BULRUSH_PLACED_KEY = registerKey("hexed_bulrush_placed_key");
-    public static final ResourceKey<PlacedFeature> NIGHTSHADE_BUSH_PLACED_KEY = registerKey("nightshade_bush_placed_key");
-    public static final ResourceKey<PlacedFeature> DUCKWEED_PLACED_KEY = registerKey("duckweed_placed_key");
+    // Decorative Plants
+    public static final ResourceKey<PlacedFeature> BEGONIA_PLACED = registerKey("begonia_placed");
+    public static final ResourceKey<PlacedFeature> LAVENDER_PLACED = registerKey("lavender_placed");
+    public static final ResourceKey<PlacedFeature> DAHLIA_PLACED = registerKey("dahlia_placed");
+    public static final ResourceKey<PlacedFeature> LOTUS_FLOWER_PLACED = registerKey("lotus_flower_placed");
+    public static final ResourceKey<PlacedFeature> PALE_MUSHROOM_PLACED = registerKey("pale_mushroom_placed");
+    public static final ResourceKey<PlacedFeature> WITCHWEED_PLACED = registerKey("witchweed_placed");
+    public static final ResourceKey<PlacedFeature> NIGHTSHADE_BUSH_PLACED = registerKey("nightshade_bush_placed");
+
+    // Trees & tree add-ons
+    public static final ResourceKey<PlacedFeature> COTTONWOOD_PLACED = registerKey("cottonwood_placed");
+    public static final ResourceKey<PlacedFeature> WILLOW_PLACED = registerKey("willow_placed");
+    public static final ResourceKey<PlacedFeature> DARK_OAK_COCOON_PLACED = registerKey("dark_oak_cocoon_placed");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
-        HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
+        HolderGetter<ConfiguredFeature<?, ?>> configured = context.lookup(Registries.CONFIGURED_FEATURE);
 
-        // Functional Plants
-        register(context, SPIRIT_BLOOM_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.SPIRIT_BLOOM_KEY),
-                List.of(CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,
-                        BiomeFilter.biome()));
+        register(context, SPIRIT_BLOOM_PLACED,        configured.getOrThrow(ModConfiguredFeatures.SPIRIT_BLOOM),        rarityPatch(10));
+        register(context, DREAMSHROOM_PLACED,         configured.getOrThrow(ModConfiguredFeatures.DREAMSHROOM),         rarityPatch(10));
+        register(context, SIREN_KELP_PLACED,          configured.getOrThrow(ModConfiguredFeatures.SIREN_KELP),          rarityPatch(10));
+        register(context, CHILLBERRY_PLACED,          configured.getOrThrow(ModConfiguredFeatures.CHILLBERRY),          rarityPatch(10));
+        register(context, WILD_SUNFIRE_TOMATO_PLACED, configured.getOrThrow(ModConfiguredFeatures.WILD_SUNFIRE_TOMATO), rarityPatch(10));
+        register(context, WILD_MANDRAKE_PLACED,       configured.getOrThrow(ModConfiguredFeatures.WILD_MANDRAKE),       rarityPatch(10));
+        register(context, GHOST_FERN_PLACED,          configured.getOrThrow(ModConfiguredFeatures.GHOST_FERN),          rarityPatch(10));
+        register(context, CELESTIAL_BLOOM_PLACED,     configured.getOrThrow(ModConfiguredFeatures.CELESTIAL_BLOOM),     rarityPatch(10));
 
-        register(context, DREAMSHROOM_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.DREAMSHROOM_KEY),
-                List.of(CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
-                        BiomeFilter.biome()));
+        register(context, BEGONIA_PLACED,             configured.getOrThrow(ModConfiguredFeatures.BEGONIA),             rarityPatch(10));
+        register(context, LAVENDER_PLACED,            configured.getOrThrow(ModConfiguredFeatures.LAVENDER),            rarityPatch(10));
+        register(context, DAHLIA_PLACED,              configured.getOrThrow(ModConfiguredFeatures.DAHLIA),              rarityPatch(10));
 
-        register(context, SIREN_KELP_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.SIREN_KELP_KEY),
-                List.of(CountPlacement.of(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
-                        BiomeFilter.biome()));
+        register(context, PALE_MUSHROOM_PLACED,       configured.getOrThrow(ModConfiguredFeatures.PALE_MUSHROOM),       rarityPatch(10));
+        register(context, WITCHWEED_PLACED,           configured.getOrThrow(ModConfiguredFeatures.WITCHWEED),           rarityPatch(10));
+        register(context, NIGHTSHADE_BUSH_PLACED,     configured.getOrThrow(ModConfiguredFeatures.NIGHTSHADE_BUSH),     rarityPatch(10));
+        register(context, LOTUS_FLOWER_PLACED,        configured.getOrThrow(ModConfiguredFeatures.LOTUS_FLOWER),        waterSurfacePatch(1));
 
-        register(context, CHILLBERRY_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.CHILLBERRY_KEY),
-                List.of(RarityFilter.onAverageOnceEvery(8), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,
-                        BiomeFilter.biome()));
+        register(context, COTTONWOOD_PLACED,
+                configured.getOrThrow(ModConfiguredFeatures.COTTONWOOD),
+                rareTreePlacement(ModBlocks.COTTONWOOD_SAPLING.get(), 25));
 
-        register(context, WILD_SUNFIRE_TOMATO_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.WILD_SUNFIRE_TOMATO_KEY),
-                List.of(RarityFilter.onAverageOnceEvery(10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,
-                        BiomeFilter.biome()));
+        register(context, WILLOW_PLACED,
+                configured.getOrThrow(ModConfiguredFeatures.WILLOW),
+                rareTreePlacement(ModBlocks.WILLOW_SAPLING.get(), 25));
 
-        register(context, WILD_MANDRAKE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.WILD_MANDRAKE_KEY),
-                List.of(RarityFilter.onAverageOnceEvery(10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,
-                        BiomeFilter.biome()));
-
-        register(context, GHOST_FERN_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.GHOST_FERN_KEY),
-                List.of(CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
-                        BiomeFilter.biome()));
-
-        register(context, CELESTIAL_BLOOM_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.CELESTIAL_BLOOM_KEY),
-                List.of(CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
-                        BiomeFilter.biome()));
-
-        // Decorative Plants
-        register(context, HENBANE_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.HENBANE_KEY),
-                List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,
-                        BiomeFilter.biome()));
-
-        register(context, BEGONIA_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.BEGONIA_KEY),
-                List.of(RarityFilter.onAverageOnceEvery(6), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,
-                        BiomeFilter.biome()));
-
-        register(context, LAVENDER_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.LAVENDER_KEY),
-                List.of(RarityFilter.onAverageOnceEvery(10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,
-                        BiomeFilter.biome()));
-
-        register(context, DAHLIA_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.DAHLIA_KEY),
-                List.of(RarityFilter.onAverageOnceEvery(10), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,
-                        BiomeFilter.biome()));
-
-        register(context, LOTUS_FLOWER_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.LOTUS_FLOWER_KEY),
-                List.of(CountPlacement.of(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
-                        BiomeFilter.biome()));
-
-        register(context, PALE_MUSHROOM_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.PALE_MUSHROOM_KEY),
-                List.of(CountPlacement.of(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
-                        BiomeFilter.biome()));
-
-        register(context, WITCHWEED_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.WITCHWEED_KEY),
-                List.of(RarityFilter.onAverageOnceEvery(1), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
-                        BiomeFilter.biome()));
-
-        register(context, HEXED_BULRUSH_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.HEXED_BULRUSH_KEY),
-                List.of(CountPlacement.of(6), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID,
-                        BiomeFilter.biome()));
-
-        register(context, NIGHTSHADE_BUSH_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.NIGHTSHADE_BUSH_KEY),
-                List.of(RarityFilter.onAverageOnceEvery(2), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP,
-                        BiomeFilter.biome()));
-
-        register(context, DUCKWEED_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.DUCKWEED_KEY),
-                List.of(CountPlacement.of(8), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
-                        BiomeFilter.biome()));
-
-        // Trees Generation
-        register(context, DARK_OAK_COCOON_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.DARK_OAK_COCOON_KEY),
-                VegetationPlacements.treePlacement(PlacementUtils.countExtra(1, 0.1f, 1),
-                        Blocks.DARK_OAK_SAPLING));
-
-        register(context, COTTONWOOD_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.COTTONWOOD_KEY),
-                VegetationPlacements.treePlacement(PlacementUtils.countExtra(2, 0.1f, 1),
-                        ModBlocks.COTTONWOOD_SAPLING.get()));
-
-        register(context, COTTONWOOD_COCOON_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.COTTONWOOD_COCOON_KEY),
-                VegetationPlacements.treePlacement(PlacementUtils.countExtra(5, 0.1f, 1),
-                        ModBlocks.COTTONWOOD_SAPLING.get()));
-
-        register(context, WILLOW_PLACED_KEY, configuredFeatures.getOrThrow(ModConfiguredFeatures.WILLOW_KEY),
-                VegetationPlacements.treePlacement(PlacementUtils.countExtra(10, 0.1f, 1),
-                        ModBlocks.WILLOW_SAPLING.get()));
+        register(context, DARK_OAK_COCOON_PLACED,
+                configured.getOrThrow(ModConfiguredFeatures.DARK_OAK_COCOON),
+                rareTreePlacement(net.minecraft.world.level.block.Blocks.DARK_OAK_SAPLING, 25));
     }
 
 
@@ -142,9 +81,40 @@ public class ModPlacedFeatures {
         return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(HexaliaMod.MOD_ID, name));
     }
 
-    private static void register(BootstapContext<PlacedFeature> context, ResourceKey<PlacedFeature> key, Holder<ConfiguredFeature<?, ?>> configuration,
+    private static void register(BootstapContext<PlacedFeature> context,
+                                 ResourceKey<PlacedFeature> key,
+                                 Holder<ConfiguredFeature<?, ?>> configuration,
                                  List<PlacementModifier> modifiers) {
         context.register(key, new PlacedFeature(configuration, List.copyOf(modifiers)));
+    }
+
+    private static List<PlacementModifier> rarityPatch(int rarity) {
+        return List.of(
+                RarityFilter.onAverageOnceEvery(rarity),
+                InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP,
+                BiomeFilter.biome()
+        );
+    }
+
+    private static List<PlacementModifier> waterSurfacePatch(int count) {
+        return List.of(
+                CountPlacement.of(count),
+                InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP_WORLD_SURFACE,
+                BiomeFilter.biome()
+        );
+    }
+
+    private static List<PlacementModifier> rareTreePlacement(net.minecraft.world.level.block.Block sapling, int rarity) {
+        return List.of(
+                RarityFilter.onAverageOnceEvery(rarity),
+                InSquarePlacement.spread(),
+                SurfaceWaterDepthFilter.forMaxDepth(0),
+                PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
+                BiomeFilter.biome(),
+                BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(sapling.defaultBlockState(), BlockPos.ZERO))
+        );
     }
 }
 

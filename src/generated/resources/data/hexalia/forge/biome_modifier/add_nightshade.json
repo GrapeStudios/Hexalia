@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
-  "biomes": "hexalia:enchanted_bayou",
-  "features": "hexalia:nightshade_bush_placed_key",
+  "biomes": "minecraft:dark_forest",
+  "features": "hexalia:nightshade_bush_placed",
   "step": "vegetal_decoration"
 }

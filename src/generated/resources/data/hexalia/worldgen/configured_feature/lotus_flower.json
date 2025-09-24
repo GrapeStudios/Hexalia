@@ -8,7 +8,7 @@
           "to_place": {
             "type": "minecraft:simple_state_provider",
             "state": {
-              "Name": "hexalia:duckweed",
+              "Name": "hexalia:lotus_flower",
               "Properties": {
                 "facing": "north"
               }
@@ -27,7 +27,7 @@
       ]
     },
     "tries": 5,
-    "xz_spread": 7,
-    "y_spread": 3
+    "xz_spread": 3,
+    "y_spread": 7
   }
 }

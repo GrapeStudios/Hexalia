@@ -1,9 +1,9 @@
 {
-  "feature": "hexalia:henbane",
+  "feature": "hexalia:ghost_fern",
   "placement": [
     {
       "type": "minecraft:rarity_filter",
-      "chance": 6
+      "chance": 10
     },
     {
       "type": "minecraft:in_square"

@@ -15,12 +15,8 @@ public class ForgeEventHandler {
     public static void onChunkLoad(ChunkEvent.Load event) {
         LevelAccessor world = event.getLevel();
         if (world.isClientSide()) return;
-
-        // Get the chunk that was loaded
         if (event.getChunk() instanceof LevelChunk chunk) {
-            // Get all block entities in the chunk
             for (BlockEntity blockEntity : chunk.getBlockEntities().values()) {
-                // If it's a censer, check if it needs to be reactivated
                 if (blockEntity instanceof CenserBlockEntity censer) {
                     censer.reactivateEffect();
                 }

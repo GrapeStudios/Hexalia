@@ -1,0 +1,10 @@
+{
+  "type": "forge:add_spawns",
+  "biomes": "minecraft:dark_forest",
+  "spawners": {
+    "type": "hexalia:silk_moth_entity",
+    "maxCount": 2,
+    "minCount": 1,
+    "weight": 20
+  }
+}

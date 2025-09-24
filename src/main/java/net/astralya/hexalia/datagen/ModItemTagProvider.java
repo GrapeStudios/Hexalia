@@ -10,6 +10,7 @@ import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.Nullable;
 
@@ -40,7 +41,6 @@ public class ModItemTagProvider extends ItemTagsProvider {
         // Plants
         tag(ItemTags.FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM.get().asItem())
-                .add(ModBlocks.HENBANE.get().asItem())
                 .add(ModBlocks.WITCHWEED.get().asItem())
                 .add(ModBlocks.GHOST_FERN.get().asItem())
                 .add(ModBlocks.CELESTIAL_BLOOM.get().asItem())
@@ -52,7 +52,6 @@ public class ModItemTagProvider extends ItemTagsProvider {
         // Small flowers
         tag(ItemTags.SMALL_FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM.get().asItem())
-                .add(ModBlocks.HENBANE.get().asItem())
                 .add(ModBlocks.WITCHWEED.get().asItem())
                 .add(ModBlocks.GHOST_FERN.get().asItem())
                 .add(ModBlocks.CELESTIAL_BLOOM.get().asItem())
@@ -74,13 +73,14 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModBlocks.SPIRIT_BLOOM.get().asItem())
                 .add(ModItems.SIREN_KELP.get())
                 .add(ModBlocks.DREAMSHROOM.get().asItem())
-                .add(ModBlocks.GHOST_FERN.get().asItem());
+                .add(ModBlocks.GHOST_FERN.get().asItem())
+                .add(ModBlocks.CELESTIAL_BLOOM.get().asItem());
 
         tag(ModTags.Items.CRUSHED_HERBS)
                 .add(ModItems.SPIRIT_POWDER.get().asItem())
-                .add(ModItems.SIREN_KELP.get())
-                .add(ModItems.DREAM_PASTE.get().asItem())
-                .add(ModItems.GHOST_POWDER.get().asItem());
+                .add(ModItems.SIREN_PASTE.get())
+                .add(ModItems.DREAM_PASTE.get())
+                .add(ModItems.GHOST_POWDER.get());
 
         // Brews
         tag(ModTags.Items.BREWS)
@@ -112,6 +112,13 @@ public class ModItemTagProvider extends ItemTagsProvider {
         tag(ModTags.Items.OFFHAND_EQUIPMENT)
                 .add(ModItems.HEX_FOCUS.get())
                 .addTag(ModTags.Items.SALT);
+
+        // Tulips
+        tag(ModTags.Items.TULIPS)
+                .add(Blocks.ORANGE_TULIP.asItem())
+                .add(Blocks.PINK_TULIP.asItem())
+                .add(Blocks.RED_TULIP.asItem())
+                .add(Blocks.WHITE_TULIP.asItem());
     }
 
     private void addTreeRelatedTags() {

@@ -43,6 +43,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.MINEABLE_WITH_AXE)
                 .add(ModBlocks.SHELF.get())
                 .add(ModBlocks.CENSER.get())
+                .add(ModBlocks.RITUAL_BRAZIER.get())
                 .add(ModBlocks.LOTUS_FLOWER.get());
 
         // Tool requirements
@@ -55,6 +56,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.LOTUS_FLOWER.get())
                 .add(ModBlocks.RITUAL_TABLE.get())
                 .add(ModBlocks.SALT_BLOCK.get())
+                .add(ModBlocks.RITUAL_BRAZIER.get())
                 .add(ModBlocks.CELESTIAL_CRYSTAL_BLOCK.get());
     }
 
@@ -62,7 +64,6 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         // Flower tags
         tag(BlockTags.FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM.get())
-                .add(ModBlocks.HENBANE.get())
                 .add(ModBlocks.WITCHWEED.get())
                 .add(ModBlocks.GHOST_FERN.get())
                 .add(ModBlocks.CELESTIAL_BLOOM.get())
@@ -74,7 +75,6 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         // Small flowers
         tag(BlockTags.SMALL_FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM.get())
-                .add(ModBlocks.HENBANE.get())
                 .add(ModBlocks.WITCHWEED.get())
                 .add(ModBlocks.GHOST_FERN.get())
                 .add(ModBlocks.CELESTIAL_BLOOM.get())
@@ -227,13 +227,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.FLOWER_POTS)
                 .add(ModBlocks.POTTED_SPIRIT_BLOOM.get())
                 .add(ModBlocks.POTTED_DREAMSHROOM.get())
-                .add(ModBlocks.POTTED_GHOST_FERN.get())
-                .add(ModBlocks.POTTED_CELESTIAL_BLOOM.get())
                 .add(ModBlocks.POTTED_LAVENDER.get())
                 .add(ModBlocks.POTTED_BEGONIA.get())
                 .add(ModBlocks.POTTED_NIGHTSHADE_BUSH.get())
-                .add(ModBlocks.POTTED_PALE_MUSHROOM.get())
-                .add(ModBlocks.POTTED_HENBANE.get())
                 .add(ModBlocks.POTTED_ASTRYLIS.get())
                 .add(ModBlocks.POTTED_GRIMSHADE.get())
                 .add(ModBlocks.POTTED_WINDSONG.get())
