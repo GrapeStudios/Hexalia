@@ -17,8 +17,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class RabbageEntity extends Item {
-    public RabbageEntity(Properties pProperties) {
+public class RabbageItem extends Item {
+    public RabbageItem(Properties pProperties) {
         super(pProperties);
     }
 
@@ -41,7 +41,7 @@ public class RabbageEntity extends Item {
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(Component.translatable("tooltip.hexalia.rabbage").withStyle(ChatFormatting.GRAY));
+    public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        tooltipComponents.add(Component.translatable("tooltip.hexalia.throwable").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.ITALIC));
     }
 }

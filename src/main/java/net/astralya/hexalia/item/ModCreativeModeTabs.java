@@ -156,7 +156,6 @@ public class ModCreativeModeTabs {
                         output.accept(ModBlocks.WILLOW_LEAVES.get());
                         output.accept(ModBlocks.WILLOW_LOG.get());
                         output.accept(ModBlocks.WILLOW_WOOD.get());
-                        output.accept(ModBlocks.WILLOW_MOSSY_WOOD.get());
                         output.accept(ModBlocks.STRIPPED_WILLOW_LOG.get());
                         output.accept(ModBlocks.STRIPPED_WILLOW_WOOD.get());
                         output.accept(ModBlocks.WILLOW_PLANKS.get());

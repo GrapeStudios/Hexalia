@@ -24,6 +24,7 @@ public class EnchantedPlantBlock extends BushBlock {
         super(pProperties);
     }
 
+
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
             Vec3 vec3 = pState.getOffset(pLevel, pPos);
@@ -31,7 +32,7 @@ public class EnchantedPlantBlock extends BushBlock {
     }
 
     @Override
-    public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
-        pTooltip.add(Component.translatable("tooltip.hexalia.enchanted_plant").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.ITALIC));
+    public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
+        tooltipComponents.add(Component.translatable("tooltip.hexalia.enchanted_plant").withStyle(ChatFormatting.GRAY));
     }
 }

@@ -133,8 +133,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModBlocks.WILLOW_LOG.get().asItem())
                 .add(ModBlocks.STRIPPED_WILLOW_LOG.get().asItem())
                 .add(ModBlocks.WILLOW_WOOD.get().asItem())
-                .add(ModBlocks.STRIPPED_WILLOW_WOOD.get().asItem())
-                .add(ModBlocks.WILLOW_MOSSY_WOOD.get().asItem());
+                .add(ModBlocks.STRIPPED_WILLOW_WOOD.get().asItem());
 
         // Vanilla wood categories
         tag(ItemTags.LOGS_THAT_BURN)

@@ -151,7 +151,7 @@ public class ModItems {
             () -> new KelpweaveBlade(ModToolTiers.ANCIENT, 3, -2f,
                     new Item.Properties().rarity(Rarity.RARE)));
     public static final RegistryObject<Item> RABBAGE = ITEMS.register("rabbage",
-            () -> new RabbageEntity(new Item.Properties()));
+            () -> new RabbageItem(new Item.Properties()));
     public static final RegistryObject<Item> GHOSTVEIL = ITEMS.register("ghostveil",
             () -> new GhostVeilItem(ModArmorMaterials.GHOST, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
     public static final RegistryObject<Item> EARPLUGS = ITEMS.register("earplugs",
