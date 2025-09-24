@@ -6,7 +6,6 @@
 	"refmap": "mixins.hexalia.refmap.json",
 	"mixins": [
 		"LivingEntityMixin",
-		"ExperienceMixin",
 		"SugarCanePlanting",
 		"CobwebMixin",
 		"ItemCombinerMenuAccessor",
