@@ -1,5 +1,6 @@
 package net.astralya.hexalia.effect.custom;
 
+import net.astralya.hexalia.Configuration;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -19,13 +20,6 @@ public class SiphonEffect extends MobEffect {
         super(mobEffectCategory, color);
         this.modifier = modifier;
     }
-
-    // Handles Haste-like bonuses while this effect is active.
-    public double adjustModifierAmount(int amplifier, AttributeModifier modifier) {
-        return this.modifier * (double)(amplifier + 1);
-    }
-
-    // Causes the player to attract nearby items if not sneaking.
     @Override
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
         if (!(pLivingEntity instanceof Player player) || player.isCrouching()) {
@@ -33,10 +27,9 @@ public class SiphonEffect extends MobEffect {
         }
 
         Level world = player.level();
-        double radius = 5.0 + pAmplifier;
+        double radius = Configuration.SIPHON_RADIUS.get() + pAmplifier;
         AABB box = player.getBoundingBox().inflate(radius);
 
-        // Fetch nearby item entities efficiently
         List<ItemEntity> itemEntities = world.getEntitiesOfClass(ItemEntity.class, box, item -> true);
 
         for (ItemEntity itemEntity : itemEntities) {
