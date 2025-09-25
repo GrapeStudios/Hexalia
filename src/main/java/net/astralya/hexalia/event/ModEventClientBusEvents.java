@@ -7,7 +7,7 @@ import net.astralya.hexalia.block.entity.renderer.CenserBlockRenderer;
 import net.astralya.hexalia.block.entity.renderer.RitualBrazierRenderer;
 import net.astralya.hexalia.block.entity.renderer.RitualTableBlockEntityRenderer;
 import net.astralya.hexalia.block.entity.renderer.ShelfBlockRenderer;
-import net.astralya.hexalia.particle.ModParticles;
+import net.astralya.hexalia.particle.ModParticleType;
 import net.astralya.hexalia.particle.custom.*;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
@@ -26,10 +26,10 @@ import net.minecraftforge.fml.common.Mod;
 public class ModEventClientBusEvents {
     @SubscribeEvent
     public static void registerParticleFactories(RegisterParticleProvidersEvent event) {
-        event.registerSpriteSet(ModParticles.SPORE_PARTICLE.get(), SporeParticle.Provider::new);
-        event.registerSpriteSet(ModParticles.GHOST_PARTICLE.get(), GhostParticle.Provider::new);
-        event.registerSpriteSet(ModParticles.INFUSED_BUBBLE_PARTICLE.get(), InfusedBubbleParticle.Provider::new);
-        event.registerSpriteSet(ModParticles.LEAVES_PARTICLE.get(), LeavesParticle.Provider::new);
+        event.registerSpriteSet(ModParticleType.SPORE.get(), SporeParticle.Provider::new);
+        event.registerSpriteSet(ModParticleType.GHOST.get(), GhostParticle.Provider::new);
+        event.registerSpriteSet(ModParticleType.INFUSED_BUBBLE.get(), InfusedBubbleParticle.Provider::new);
+        event.registerSpriteSet(ModParticleType.LEAVES.get(), LeavesParticle.Provider::new);
     }
 
     @SubscribeEvent

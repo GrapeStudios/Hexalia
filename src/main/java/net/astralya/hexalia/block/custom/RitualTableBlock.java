@@ -2,7 +2,7 @@ package net.astralya.hexalia.block.custom;
 
 import net.astralya.hexalia.block.entity.RitualTableBlockEntity;
 import net.astralya.hexalia.item.ModItems;
-import net.astralya.hexalia.particle.ModParticles;
+import net.astralya.hexalia.particle.ModParticleType;
 import net.astralya.hexalia.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -136,7 +136,7 @@ public class RitualTableBlock extends BaseEntityBlock {
 
     private void spawnSuccessEffects(Level pLevel, BlockPos pPos) {
         spawnParticleEffect(pLevel, pPos, ParticleTypes.ENCHANT, 10, 20);
-        spawnParticleEffect(pLevel, pPos, ModParticles.LEAVES_PARTICLE.get(), 10, 20);
+        spawnParticleEffect(pLevel, pPos, ModParticleType.LEAVES.get(), 10, 20);
         playRitualSound(pLevel, pPos);
     }
 

@@ -1,3 +1,6 @@
 {
-  "parent": "hexalia:block/cottonwood_fence_inventory"
+  "parent": "minecraft:block/fence_inventory",
+  "textures": {
+    "texture": "hexalia:block/cottonwood_planks"
+  }
 }

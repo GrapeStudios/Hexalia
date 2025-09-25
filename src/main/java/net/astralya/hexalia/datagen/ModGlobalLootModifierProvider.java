@@ -14,7 +14,7 @@ import net.minecraftforge.common.loot.LootTableIdCondition;
 
 public class ModGlobalLootModifierProvider extends GlobalLootModifierProvider {
     public ModGlobalLootModifierProvider(PackOutput output) {
-        super(output, HexaliaMod.MOD_ID);
+        super(output, HexaliaMod.MODID);
     }
 
     @Override

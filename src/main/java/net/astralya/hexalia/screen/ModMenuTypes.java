@@ -12,7 +12,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ModMenuTypes {
     public static final DeferredRegister<MenuType<?>> MENUS =
-            DeferredRegister.create(ForgeRegistries.MENU_TYPES, HexaliaMod.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.MENU_TYPES, HexaliaMod.MODID);
 
     public static final RegistryObject<MenuType<SmallCauldronMenu>> SMALL_CAULDRON_MENU =
             registerMenuType(SmallCauldronMenu::new, "small_cauldron_menu");

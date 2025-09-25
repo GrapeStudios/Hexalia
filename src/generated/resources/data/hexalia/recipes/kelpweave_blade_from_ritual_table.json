@@ -1,0 +1,23 @@
+{
+  "type": "hexalia:ritual_table",
+  "input": {
+    "item": "hexalia:ancient_seed"
+  },
+  "output": {
+    "item": "hexalia:kelpweave_blade"
+  },
+  "salt_items": [
+    {
+      "item": "hexalia:siren_paste"
+    },
+    {
+      "item": "hexalia:water_node"
+    },
+    {
+      "item": "minecraft:iron_nugget"
+    },
+    {
+      "item": "minecraft:kelp"
+    }
+  ]
+}

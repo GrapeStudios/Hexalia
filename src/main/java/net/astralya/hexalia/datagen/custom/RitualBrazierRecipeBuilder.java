@@ -87,8 +87,7 @@ public class RitualBrazierRecipeBuilder implements RecipeBuilder {
 
         @Override
         public ResourceLocation getId() {
-            return new ResourceLocation(HexaliaMod.MOD_ID,
-                    ForgeRegistries.ITEMS.getKey(this.result).getPath() + "_from_ritual");
+            return new ResourceLocation(HexaliaMod.MODID, ForgeRegistries.ITEMS.getKey(this.result).getPath() + "_from_ritual_brazier");
         }
 
         @Override

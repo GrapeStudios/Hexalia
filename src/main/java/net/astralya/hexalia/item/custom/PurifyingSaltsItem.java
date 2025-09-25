@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 public class PurifyingSaltsItem extends Item {
+
     public PurifyingSaltsItem(Properties pProperties) {
         super(pProperties);
     }
@@ -78,7 +79,7 @@ public class PurifyingSaltsItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(Component.translatable("tooltip.hexalia.purifying_salts").withStyle(ChatFormatting.GRAY));
+        pTooltipComponents.add(Component.translatable("tooltip.hexalia.purifying_sac").withStyle(ChatFormatting.GRAY));
     }
 
     @Override

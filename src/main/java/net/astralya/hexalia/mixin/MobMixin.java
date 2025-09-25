@@ -1,10 +1,7 @@
 package net.astralya.hexalia.mixin;
 
-import net.astralya.hexalia.Configuration;
 import net.astralya.hexalia.censer.CenserEffectHandler;
-import net.astralya.hexalia.item.custom.GhostVeilItem;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
@@ -50,57 +47,24 @@ public abstract class MobMixin extends LivingEntity {
 
     @Unique
     private boolean shouldIgnorePlayers() {
-        // Skip check entirely for non-monsters or bosses
-        if (!((Object) this instanceof Monster) || isExcludedBoss((Object) this)) {
-            return false;
-        }
-
-        // Only re-check every 10 ticks (0.5 seconds)
+        if (!((Object) this instanceof Monster) || isExcludedBoss((Object) this)) return false;
         int currentTick = this.tickCount;
-        if (currentTick - hexalia$lastCheckTick < 10) {
-            return hexalia$lastCheckResult;
-        }
-
+        if (currentTick - hexalia$lastCheckTick < 10) return hexalia$lastCheckResult;
         hexalia$lastCheckTick = currentTick;
-
-        // Only check for nearest player if we don't already know about UNDEAD_VEIL
-        if (!hexalia$lastCheckResult) {
-            Player nearestPlayer = this.level().getNearestPlayer(
-                    this.getX(),
-                    this.getY(),
-                    this.getZ(),
-                    Configuration.CENSER_EFFECT_RADIUS.get(),
-                    false
-            );
-
-            hexalia$lastCheckResult = CenserEffectHandler.isUndeadVeilActiveInArea(
-                    this.level(),
-                    this.blockPosition()
-            ) || (nearestPlayer != null && isGhostVeilSneaking(nearestPlayer));
-        }
-
+        hexalia$lastCheckResult = CenserEffectHandler.isUndeadVeilActiveInArea(this.level(), this.blockPosition());
         return hexalia$lastCheckResult;
     }
 
-    // Periodic reset to ensure mobs don't stay passive forever
     @Inject(method = "tick", at = @At("HEAD"))
     private void hexalia$resetCheck(CallbackInfo ci) {
-        if (this.tickCount % 100 == 0) { // Every 5 seconds
+        if (this.tickCount % 100 == 0) {
             hexalia$lastCheckTick = -100;
             hexalia$lastCheckResult = false;
         }
     }
 
     @Unique
-    private boolean isGhostVeilSneaking(Player player) {
-        return player.isCrouching() &&
-                player.getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof GhostVeilItem;
-    }
-
-    @Unique
     private boolean isExcludedBoss(Object entity) {
-        return entity instanceof EnderDragon ||
-                entity instanceof WitherBoss ||
-                entity instanceof Warden;
+        return entity instanceof EnderDragon || entity instanceof WitherBoss || entity instanceof Warden;
     }
 }

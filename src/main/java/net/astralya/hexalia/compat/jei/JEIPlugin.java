@@ -11,11 +11,11 @@ import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.compat.jei.category.RitualBrazierRecipeCategory;
 import net.astralya.hexalia.compat.jei.category.SmallCauldronRecipeCategory;
-import net.astralya.hexalia.compat.jei.category.TransmutationRecipeCategory;
+import net.astralya.hexalia.compat.jei.category.RitualTableRecipeCategory;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.recipe.RitualBrazierRecipe;
 import net.astralya.hexalia.recipe.SmallCauldronRecipe;
-import net.astralya.hexalia.recipe.TransmutationRecipe;
+import net.astralya.hexalia.recipe.RitualTableRecipe;
 import net.astralya.hexalia.screen.SmallCauldronScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
@@ -28,19 +28,19 @@ import java.util.List;
 @JeiPlugin
 public class JEIPlugin implements IModPlugin {
 
-    private static final ResourceLocation ID = new ResourceLocation(HexaliaMod.MOD_ID, "jei_plugin");
+    private static final ResourceLocation ID = new ResourceLocation(HexaliaMod.MODID, "jei_plugin");
 
     @Override
     public void registerCategories(IRecipeCategoryRegistration registration) {
         registration.addRecipeCategories(new SmallCauldronRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
-        registration.addRecipeCategories(new TransmutationRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new RitualTableRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new RitualBrazierRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.SMALL_CAULDRON.get()), SmallCauldronRecipeCategory.SMALL_CAULDRON_TYPE);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.RITUAL_TABLE.get()), TransmutationRecipeCategory.TRANSMUTATION_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.RITUAL_TABLE.get()), RitualTableRecipeCategory.RITUAL_TABLE_RECIPE_RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.RITUAL_BRAZIER.get()), RitualBrazierRecipeCategory.RITUAL_BRAZIER_TYPE);
     }
 
@@ -51,8 +51,8 @@ public class JEIPlugin implements IModPlugin {
         List<SmallCauldronRecipe> smallCauldronRecipes = recipeManager.getAllRecipesFor(SmallCauldronRecipe.Type.INSTANCE);
         registration.addRecipes(SmallCauldronRecipeCategory.SMALL_CAULDRON_TYPE, smallCauldronRecipes);
 
-        List<TransmutationRecipe> transmutationRecipes = recipeManager.getAllRecipesFor(TransmutationRecipe.Type.INSTANCE);
-        registration.addRecipes(TransmutationRecipeCategory.TRANSMUTATION_TYPE, transmutationRecipes);
+        List<RitualTableRecipe> transmutationRecipes = recipeManager.getAllRecipesFor(RitualTableRecipe.Type.INSTANCE);
+        registration.addRecipes(RitualTableRecipeCategory.RITUAL_TABLE_RECIPE_RECIPE_TYPE, transmutationRecipes);
 
         List<RitualBrazierRecipe> ritualBrazierRecipes = recipeManager.getAllRecipesFor(RitualBrazierRecipe.Type.INSTANCE);
         registration.addRecipes(RitualBrazierRecipeCategory.RITUAL_BRAZIER_TYPE, ritualBrazierRecipes);

@@ -11,7 +11,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ModBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
-            DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, HexaliaMod.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, HexaliaMod.MODID);
 
     // Custom Block Entities
     public static final RegistryObject<BlockEntityType<SmallCauldronBlockEntity>> SMALL_CAULDRON_BE =

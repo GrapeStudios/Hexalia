@@ -10,7 +10,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ModSounds {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
-            DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, HexaliaMod.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, HexaliaMod.MODID);
 
     public static final RegistryObject<SoundEvent> MANDRAKE_SCREAM = registerSoundEvent("mandrake_scream");
     public static final RegistryObject<SoundEvent> RITUAL_SUCCESS = registerSoundEvent("ritual_success");
@@ -19,7 +19,7 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> WIND_DEFLECT = registerSoundEvent("wind_deflect");
 
     private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
-        ResourceLocation id = new ResourceLocation(HexaliaMod.MOD_ID, name);
+        ResourceLocation id = new ResourceLocation(HexaliaMod.MODID, name);
         return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(id));
     }
 

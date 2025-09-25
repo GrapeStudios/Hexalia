@@ -22,8 +22,8 @@ import java.util.List;
 
 public class SmallCauldronRecipeCategory implements IRecipeCategory<SmallCauldronRecipe> {
 
-    public static final ResourceLocation UID = new ResourceLocation(HexaliaMod.MOD_ID, "small_cauldron");
-    public static final ResourceLocation TEXTURE = new ResourceLocation(HexaliaMod.MOD_ID,
+    public static final ResourceLocation UID = new ResourceLocation(HexaliaMod.MODID, "small_cauldron");
+    public static final ResourceLocation TEXTURE = new ResourceLocation(HexaliaMod.MODID,
             "textures/gui/small_cauldron_category_gui.png");
 
     public static final RecipeType<SmallCauldronRecipe> SMALL_CAULDRON_TYPE =

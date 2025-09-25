@@ -24,11 +24,12 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class SmallCauldronRecipeBuilder implements RecipeBuilder {
+
     private final List<Ingredient> ingredients = new ArrayList<>();
     private final Item result;
     private final Item bottleSlotItem;
-    private int brewTime = 175;
-    private float experience = 5.0f;
+    private int brewTime = 200;
+    private float experience = 0.0f;
     private final Advancement.Builder advancement = Advancement.Builder.advancement();
 
     public SmallCauldronRecipeBuilder(List<ItemLike> ingredients, ItemLike bottleSlotItem, ItemLike result) {
@@ -121,8 +122,7 @@ public class SmallCauldronRecipeBuilder implements RecipeBuilder {
 
         @Override
         public ResourceLocation getId() {
-            return new ResourceLocation(HexaliaMod.MOD_ID,
-                    ForgeRegistries.ITEMS.getKey(this.result).getPath() + "_from_small_cauldron");
+            return new ResourceLocation(HexaliaMod.MODID, ForgeRegistries.ITEMS.getKey(this.result).getPath() + "_from_small_cauldron");
         }
 
         @Override

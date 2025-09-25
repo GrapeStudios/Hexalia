@@ -22,8 +22,8 @@ import java.util.List;
 
 public class RitualBrazierRecipeCategory implements IRecipeCategory<RitualBrazierRecipe> {
 
-    public static final ResourceLocation UID = new ResourceLocation(HexaliaMod.MOD_ID, "ritual_brazier");
-    public static final ResourceLocation TEXTURE = new ResourceLocation(HexaliaMod.MOD_ID,
+    public static final ResourceLocation UID = new ResourceLocation(HexaliaMod.MODID, "ritual_brazier");
+    public static final ResourceLocation TEXTURE = new ResourceLocation(HexaliaMod.MODID,
             "textures/gui/ritual_brazier_gui.png");
 
     public static final RecipeType<RitualBrazierRecipe> RITUAL_BRAZIER_TYPE =

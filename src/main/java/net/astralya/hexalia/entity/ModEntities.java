@@ -15,7 +15,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ModEntities {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
-            DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, HexaliaMod.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, HexaliaMod.MODID);
 
     public static final RegistryObject<EntityType<ModBoatEntity>> MOD_BOAT =
             ENTITY_TYPES.register("mod_boat", () -> EntityType.Builder.<ModBoatEntity>of(ModBoatEntity::new, MobCategory.MISC)
@@ -31,8 +31,8 @@ public class ModEntities {
                     .build("thrown_rabbage_entity"));
 
     public static final RegistryObject<EntityType<SilkMothEntity>> SILK_MOTH_ENTITY  =
-            ENTITY_TYPES.register("silk_moth_entity", () -> EntityType.Builder.of(SilkMothEntity::new, MobCategory.CREATURE)
-                    .sized(0.6f, 0.06f).build(new ResourceLocation(HexaliaMod.MOD_ID, "silk_moth").toString()));
+            ENTITY_TYPES.register("silk_moth", () -> EntityType.Builder.of(SilkMothEntity::new, MobCategory.CREATURE)
+                    .sized(0.6f, 0.06f).build(new ResourceLocation(HexaliaMod.MODID, "silk_moth").toString()));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

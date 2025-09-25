@@ -1,6 +1,7 @@
 package net.astralya.hexalia.block.custom;
 
-import net.astralya.hexalia.particle.ModParticles;
+import net.astralya.hexalia.Configuration;
+import net.astralya.hexalia.particle.ModParticleType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffect;
@@ -16,30 +17,26 @@ import java.util.function.Supplier;
 
 public class GhostFernBlock extends HerbBlock {
 
-    public static final VoxelShape SHAPE = Shapes.or(
-            Shapes.box(0.125, 0, 0.0625, 0.9375, 0.4375, 0.9375)
-    );
-
     public GhostFernBlock(Supplier<MobEffect> effectSupplier, int pEffectDuration, Properties pProperties) {
         super(effectSupplier, pEffectDuration, pProperties);
     }
-
     @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return SHAPE;
-    }
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if (level.isClientSide() && Configuration.GHOST_FERN_EMITS_PARTICLES.get()) {
+            double centerX = pos.getX() + 0.5;
+            double centerY = pos.getY() + 0.5;
+            double centerZ = pos.getZ() + 0.5;
 
-    @Override
-    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
-        double d = (double)pPos.getX() + 0.5;
-        double e = (double)pPos.getY() + 0.2;
-        double f = (double)pPos.getZ() + 0.5;
-        pLevel.addParticle(ModParticles.GHOST_PARTICLE.get(),
-                d, e, f, 0.0, 1.0, 0.0);
-    }
+            double offsetX = (random.nextDouble() - 0.5) * 0.2;
+            double offsetZ = (random.nextDouble() - 0.5) * 0.2;
 
-    @Override
-    public RenderShape getRenderShape(BlockState pState) {
-        return RenderShape.MODEL;
+            level.addParticle(ModParticleType.GHOST.get(),
+                    centerX + offsetX,
+                    centerY,
+                    centerZ + offsetZ,
+                    (random.nextDouble() - 0.5) * 0.02,
+                    0.08,
+                    (random.nextDouble() - 0.5) * 0.02);
+        }
     }
 }

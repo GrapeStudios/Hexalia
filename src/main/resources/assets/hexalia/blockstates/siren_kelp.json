@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "hexalia:block/siren_kelp" }
+    "": {
+      "model": "hexalia:block/siren_kelp"
+    }
   }
 }

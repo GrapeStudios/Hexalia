@@ -10,7 +10,7 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModTreeDecorators {
 
     public static final DeferredRegister<TreeDecoratorType<?>> TREE_DECORATORS =
-            DeferredRegister.create(ForgeRegistries.TREE_DECORATOR_TYPES, HexaliaMod.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.TREE_DECORATOR_TYPES, HexaliaMod.MODID);
 
     public static final RegistryObject<TreeDecoratorType<CatkinTreeDecorator>> CATKIN =
             TREE_DECORATORS.register("catkin", () -> new TreeDecoratorType<>(CatkinTreeDecorator.CODEC));

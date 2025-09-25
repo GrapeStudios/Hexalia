@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "hexalia:silk_idol"
+    },
+    {
+      "item": "hexalia:water_node"
+    },
+    {
+      "item": "hexalia:lotus_flower"
+    },
+    {
+      "item": "hexalia:salt"
+    }
+  ],
+  "result": {
+    "item": "hexalia:purity_idol"
+  }
+}

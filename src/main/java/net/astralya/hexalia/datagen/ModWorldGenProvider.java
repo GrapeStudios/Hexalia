@@ -22,6 +22,6 @@ public class ModWorldGenProvider extends DatapackBuiltinEntriesProvider {
             .add(ForgeRegistries.Keys.BIOME_MODIFIERS, ModBiomeModifiers::bootstrap);
 
     public ModWorldGenProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, registries, BUILDER, Set.of(HexaliaMod.MOD_ID));
+        super(output, registries, BUILDER, Set.of(HexaliaMod.MODID));
     }
 }

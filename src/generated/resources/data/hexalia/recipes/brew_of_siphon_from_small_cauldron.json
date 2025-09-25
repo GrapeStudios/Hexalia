@@ -3,8 +3,8 @@
   "bottle_slot": {
     "item": "hexalia:rustic_bottle"
   },
-  "brew_time": 175,
-  "experience": 5.0,
+  "brew_time": 200,
+  "experience": 0.0,
   "ingredients": [
     {
       "item": "minecraft:flint"

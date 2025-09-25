@@ -15,7 +15,7 @@ public class SmallCauldronScreen extends AbstractContainerScreen<SmallCauldronMe
     public static final Rect2i PROGRESS = new Rect2i(89, 25, 0, 17);
     public static final Rect2i HEAT = new Rect2i(124, 52, 17, 15);
 
-    private static final ResourceLocation TEXTURE = new ResourceLocation(HexaliaMod.MOD_ID,
+    private static final ResourceLocation TEXTURE = new ResourceLocation(HexaliaMod.MODID,
             "textures/gui/small_cauldron_gui.png");
 
     public SmallCauldronScreen(SmallCauldronMenu pMenu, Inventory pPlayerInventory, Component pTitle) {

@@ -1,78 +1,103 @@
 package net.astralya.hexalia.block.custom;
 
-import net.astralya.hexalia.sound.ModSounds;
+import net.astralya.hexalia.Configuration;
+import net.astralya.hexalia.item.ModItems;
+import net.astralya.hexalia.particle.ModParticleType;
+import net.astralya.hexalia.recipe.MutationRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Optional;
 
 public class MorphoraBlock extends EnchantedPlantBlock {
 
-    private static final Map<Block, Block> CONVERSION_MAP = new HashMap<>();
-
-    static {
-        CONVERSION_MAP.put(Blocks.MAGMA_BLOCK, Blocks.LAVA);
-        CONVERSION_MAP.put(Blocks.SNOW_BLOCK, Blocks.PACKED_ICE);
-        CONVERSION_MAP.put(Blocks.SOUL_SAND, Blocks.SOUL_SOIL);
-        CONVERSION_MAP.put(Blocks.DIRT, Blocks.PODZOL);
-        CONVERSION_MAP.put(Blocks.SAND, Blocks.RED_SAND);
-        CONVERSION_MAP.put(Blocks.DIORITE, Blocks.GRANITE);
-        CONVERSION_MAP.put(Blocks.GRANITE, Blocks.ANDESITE);
-        CONVERSION_MAP.put(Blocks.ANDESITE, Blocks.DIORITE);
-        CONVERSION_MAP.put(Blocks.ICE, Blocks.BLUE_ICE);
-        CONVERSION_MAP.put(Blocks.BLACKSTONE, Blocks.CALCITE);
-    }
-
-    public MorphoraBlock(Properties pProperties) {
-        super(pProperties);
+    public MorphoraBlock(Properties properties) {
+        super(properties);
     }
 
     @Override
-    protected boolean mayPlaceOn(BlockState floor, BlockGetter world, BlockPos pos) {
-        return floor.is(Blocks.MAGMA_BLOCK) || floor.isSolid();
+    protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
+        return state.is(Blocks.MAGMA_BLOCK) || state.isSolidRender(level, pos);
     }
 
     @Override
-    public void onPlace(BlockState pState, Level pLevel, BlockPos pPos, BlockState pOldState, boolean pMovedByPiston) {
-        super.onPlace(pState, pLevel, pPos, pOldState, pMovedByPiston);
-        if (!pLevel.isClientSide) {
-            pLevel.scheduleTick(pPos, this, 80);
+    public InteractionResult use(BlockState state, Level level, BlockPos pos,
+                                 Player player, InteractionHand hand, BlockHitResult hit) {
+        ItemStack stack = player.getItemInHand(hand);
+        if (stack.isEmpty() || stack.getItem() != ModItems.MUTAVIS.get()) {
+            return InteractionResult.PASS;
         }
-    }
 
-    @Override
-    public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
-        BlockPos belowPos = pPos.below();
-        boolean converted = false;
+        if (level.isClientSide) {
+            return InteractionResult.SUCCESS;
+        }
 
-        for (int dx = -1; dx <= 1; dx++) {
-            for (int dz = -1; dz <= 1; dz++) {
-                BlockPos targetPos = belowPos.offset(dx, 0, dz);
-                BlockState targetState = pLevel.getBlockState(targetPos);
-                Block targetBlock = CONVERSION_MAP.get(targetState.getBlock());
+        ServerLevel server = (ServerLevel) level;
+        boolean anyConverted = false;
 
-                if (targetBlock != null) {
-                    converted = true;
-                    pLevel.setBlockAndUpdate(targetPos, pushEntitiesUp(targetState,
-                            targetBlock.defaultBlockState(), pLevel, targetPos));
-                    pLevel.levelEvent(2001, targetPos, Block.getId(targetState));
-                }
+        int radius = Configuration.MORPHORA_RADIUS.get();
+        for (int dx = -radius; dx <= radius; dx++) {
+            for (int dz = -radius; dz <= radius; dz++) {
+                BlockPos targetPos = pos.offset(dx, 0, dz);
+                if (targetPos.equals(pos)) continue;
 
-                if (converted) {
-                pLevel.playSound(null, pPos, ModSounds.CONVERSION.get(), SoundSource.BLOCKS, 0.02F, 1.0F);
-                pLevel.destroyBlock(pPos, false);
+                BlockState targetState = server.getBlockState(targetPos);
+                if (targetState.isAir()) continue;
+
+                ItemStack inputStack = targetState.getBlock().asItem().getDefaultInstance();
+                if (inputStack.isEmpty()) continue;
+
+                Optional<MutationRecipe> match = server.getRecipeManager()
+                        .getRecipeFor(MutationRecipe.Type.INSTANCE, new SimpleContainer(inputStack), server);
+
+                if (match.isPresent()) {
+                    ItemStack result = match.get().assemble(new SimpleContainer(inputStack), server.registryAccess());
+
+                    server.destroyBlock(targetPos, false);
+                    if (!result.isEmpty()) {
+                        server.addFreshEntity(new ItemEntity(
+                                server,
+                                targetPos.getX() + 0.5,
+                                targetPos.getY() + 0.25,
+                                targetPos.getZ() + 0.5,
+                                result.copy()
+                        ));
+                    }
+                    emitEffects(server, targetPos);
+                    anyConverted = true;
                 }
             }
         }
+
+        if (anyConverted) {
+            if (!player.getAbilities().instabuild) {
+                stack.shrink(1);
+            }
+            return InteractionResult.sidedSuccess(level.isClientSide);
+        }
+
+        return InteractionResult.PASS;
+    }
+
+    private void emitEffects(ServerLevel server, BlockPos pos) {
+        server.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 0.5F, 1.0F);
+        server.sendParticles(
+                ModParticleType.LEAVES.get(),
+                pos.getX() + 0.5, pos.getY() + 0.6, pos.getZ() + 0.5,
+                15, 0.2, 0.25, 0.2, 0.0
+        );
     }
 }
-
-

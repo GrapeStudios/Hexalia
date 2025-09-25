@@ -23,21 +23,22 @@ public class RabbageItem extends Item {
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
-        ItemStack itemStack = pPlayer.getItemInHand(pHand);
-        pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.SNOWBALL_THROW,
-                SoundSource.NEUTRAL, 0.5f, 0.4f / (pLevel.getRandom().nextFloat() * 0.4f + 0.8f));
-        if (!pLevel.isClientSide) {
-            ThrownRabbageEntity rabbageEntity = new ThrownRabbageEntity(pLevel, pPlayer);
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack itemStack = player.getItemInHand(hand);
+        level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, 0.5f, 0.4f / (level.getRandom().nextFloat() * 0.4f + 0.8f));
+        if (!level.isClientSide) {
+            ThrownRabbageEntity rabbageEntity = new ThrownRabbageEntity(level, player);
             rabbageEntity.setItem(itemStack);
-            rabbageEntity.shootFromRotation(pPlayer, pPlayer.getXRot(), pPlayer.getYRot(), 0.0f, 1.0f, 0f);
-            pLevel.addFreshEntity(rabbageEntity);
+            rabbageEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0f, 1.5f, 1.0f);
+            level.addFreshEntity(rabbageEntity);
         }
-        pPlayer.awardStat(Stats.ITEM_USED.get(this));
-        if (!pPlayer.getAbilities().instabuild) {
+
+        player.awardStat(Stats.ITEM_USED.get(this));
+        if (!player.getAbilities().instabuild) {
             itemStack.shrink(1);
         }
-        return InteractionResultHolder.sidedSuccess(itemStack, pLevel.isClientSide());
+
+        return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide());
     }
 
     @Override

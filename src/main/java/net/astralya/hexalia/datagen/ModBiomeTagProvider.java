@@ -14,7 +14,7 @@ import java.util.concurrent.CompletableFuture;
 
 public class ModBiomeTagProvider extends BiomeTagsProvider {
     public ModBiomeTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
-        super(output, lookupProvider, HexaliaMod.MOD_ID, existingFileHelper);
+        super(output, lookupProvider, HexaliaMod.MODID, existingFileHelper);
     }
 
     @Override

@@ -6,13 +6,13 @@ import net.minecraft.resources.ResourceLocation;
 
 public class ModModelLayers {
     public static final ModelLayerLocation COTTONWOOD_BOAT_LAYER = new ModelLayerLocation(
-            new ResourceLocation(HexaliaMod.MOD_ID, "boat/cottonwood"), "main");
+            new ResourceLocation(HexaliaMod.MODID, "boat/cottonwood"), "main");
     public static final ModelLayerLocation COTTONWOOD_CHEST_BOAT_LAYER = new ModelLayerLocation(
-            new ResourceLocation(HexaliaMod.MOD_ID, "chest_boat/cottonwood"), "main");
+            new ResourceLocation(HexaliaMod.MODID, "chest_boat/cottonwood"), "main");
 
     public static final ModelLayerLocation WILLOW_BOAT_LAYER = new ModelLayerLocation(
-            new ResourceLocation(HexaliaMod.MOD_ID, "boat/willow"), "main");
+            new ResourceLocation(HexaliaMod.MODID, "boat/willow"), "main");
     public static final ModelLayerLocation WILLOW_CHEST_BOAT_LAYER = new ModelLayerLocation(
-            new ResourceLocation(HexaliaMod.MOD_ID, "chest_boat/willow"), "main");
+            new ResourceLocation(HexaliaMod.MODID, "chest_boat/willow"), "main");
 
 }

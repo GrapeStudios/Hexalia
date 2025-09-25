@@ -18,6 +18,9 @@ import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
 
+
+    // TODO Check Values
+
     EARPLUGS("earplugs", 15, Util.make(new EnumMap<>(ArmorItem.Type.class), (enumMap) -> {
         enumMap.put(ArmorItem.Type.BOOTS, 1);
         enumMap.put(ArmorItem.Type.LEGGINGS, 1);
@@ -90,7 +93,7 @@ public enum ModArmorMaterials implements ArmorMaterial {
     }
 
     public String getName() {
-        return HexaliaMod.MOD_ID + ":" + this.name;
+        return HexaliaMod.MODID + ":" + this.name;
     }
 
     public float getToughness() {
@@ -102,6 +105,6 @@ public enum ModArmorMaterials implements ArmorMaterial {
     }
 
     public String getSerializedName() {
-        return HexaliaMod.MOD_ID + ":" + this.name;
+        return HexaliaMod.MODID + ":" + this.name;
     }
 }

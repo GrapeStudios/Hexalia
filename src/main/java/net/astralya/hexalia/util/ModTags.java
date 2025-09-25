@@ -43,7 +43,7 @@ public class ModTags {
         public static final TagKey<Item> GEMS_DIAMOND = forgeItemTag("gems/diamond");
 
         private static TagKey<Item> createItemTag(String name){
-            return ItemTags.create(new ResourceLocation(HexaliaMod.MOD_ID, name));
+            return ItemTags.create(new ResourceLocation(HexaliaMod.MODID, name));
         }
         private static TagKey<Item> forgeItemTag(String name){
             return ItemTags.create(new ResourceLocation("forge", name));
@@ -64,7 +64,7 @@ public class ModTags {
         public static final TagKey<Block> WILLOW_LOGS = tag("willow_logs");
 
         private static TagKey<Block> tag(String name){
-            return BlockTags.create(new ResourceLocation(HexaliaMod.MOD_ID, name));
+            return BlockTags.create(new ResourceLocation(HexaliaMod.MODID, name));
         }
         private static TagKey<Block> forgeTag(String name){
             return BlockTags.create(new ResourceLocation("forge", name));
@@ -98,16 +98,16 @@ public class ModTags {
     // World Gen Tags
     public static class Biomes {
         public static final TagKey<Biome> HAS_MANDRAKES = TagKey.create(Registries.BIOME,
-                (new ResourceLocation(HexaliaMod.MOD_ID, "has_mandrakes")));
+                (new ResourceLocation(HexaliaMod.MODID, "has_mandrakes")));
         public static final TagKey<Biome> HAS_DREAMSHROOMS = TagKey.create(Registries.BIOME,
-                (new ResourceLocation(HexaliaMod.MOD_ID, "has_dreamshrooms")));
+                (new ResourceLocation(HexaliaMod.MODID, "has_dreamshrooms")));
         public static final TagKey<Biome> HAS_SIREN_KELP = TagKey.create(Registries.BIOME,
-                (new ResourceLocation(HexaliaMod.MOD_ID, "has_siren_kelp")));
+                (new ResourceLocation(HexaliaMod.MODID, "has_siren_kelp")));
         public static final TagKey<Biome> HAS_GHOST_FERNS = TagKey.create(Registries.BIOME,
-                (new ResourceLocation(HexaliaMod.MOD_ID, "has_ghost_ferns")));
+                (new ResourceLocation(HexaliaMod.MODID, "has_ghost_ferns")));
         public static final TagKey<Biome> HAS_SWAMP_VEGETATION = TagKey.create(Registries.BIOME,
-                (new ResourceLocation(HexaliaMod.MOD_ID, "has_swamp_vegetation")));
+                (new ResourceLocation(HexaliaMod.MODID, "has_swamp_vegetation")));
         public static final TagKey<Biome> HAS_DECORATIVE_FLOWERS = TagKey.create(Registries.BIOME,
-                (new ResourceLocation(HexaliaMod.MOD_ID, "has_decorative_flowers")));
+                (new ResourceLocation(HexaliaMod.MODID, "has_decorative_flowers")));
     }
 }

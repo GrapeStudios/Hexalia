@@ -8,63 +8,43 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.util.FakePlayer;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class HomesteadBrewItem extends Item {
+public class HomesteadBrewItem extends AbstractConsumableItem {
+
     public HomesteadBrewItem(Properties pProperties) {
         super(pProperties);
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level world, Player player, InteractionHand hand) {
-        if (!world.isClientSide && TeleportUtil.canReturn(world, player, true)) {
-            return new InteractionResultHolder<>(net.minecraft.world.InteractionResult.FAIL, player.getItemInHand(hand));
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        if (!level.isClientSide && TeleportUtil.canReturn(level, player, true)) {
+            return InteractionResultHolder.fail(player.getItemInHand(hand));
         }
-        player.startUsingItem(hand);
-        return new InteractionResultHolder<>(net.minecraft.world.InteractionResult.SUCCESS, player.getItemInHand(hand));
+        return super.use(level, player, hand);
     }
 
     @Override
-    public ItemStack finishUsingItem(ItemStack stack, Level world, LivingEntity entity) {
-        Player player = entity instanceof Player ? (Player) entity : null;
-        if (player == null || !player.getAbilities().instabuild) {
-            stack.shrink(1);
-        }
-        if (player != null && !(player instanceof FakePlayer)) {
-            TeleportUtil.teleportPlayerToSpawn(world, player, true);
-        }
-        if (player == null || !player.getAbilities().instabuild) {
-            if (stack.isEmpty()) {
-                return new ItemStack(ModItems.RUSTIC_BOTTLE.get());
-            }
-
-            if (player != null) {
-                player.getInventory().add(new ItemStack(ModItems.RUSTIC_BOTTLE.get()));
-            }
-        }
-        return stack;
+    protected void handleEffects(Level level, LivingEntity user, ItemStack consumedStack) {
+        if (!(user instanceof Player player)) return;
+        if (player instanceof FakePlayer) return;
+        TeleportUtil.teleportPlayerToSpawn(level, player, true);
     }
 
     @Override
-    public UseAnim getUseAnimation(ItemStack pStack) {
-        return UseAnim.DRINK;
+    protected ItemStack getReturnContainer(ItemStack consumedStack) {
+        return new ItemStack(ModItems.RUSTIC_BOTTLE.get());
     }
 
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
-        pTooltipComponents.add(Component.translatable("tooltip.hexalia.homestead_brew").withStyle(ChatFormatting.DARK_BLUE));
+        pTooltipComponents.add(Component.translatable("tooltip.hexalia.homestead_brew").withStyle(ChatFormatting.BLUE));
     }
 
-    @Override
-    public int getUseDuration(ItemStack pStack) {
-        return 32;
-    }
 }

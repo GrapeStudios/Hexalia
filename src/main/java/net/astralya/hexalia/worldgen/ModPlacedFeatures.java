@@ -78,7 +78,7 @@ public class ModPlacedFeatures {
 
 
     private static ResourceKey<PlacedFeature> registerKey(String name) {
-        return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(HexaliaMod.MOD_ID, name));
+        return ResourceKey.create(Registries.PLACED_FEATURE, new ResourceLocation(HexaliaMod.MODID, name));
     }
 
     private static void register(BootstapContext<PlacedFeature> context,

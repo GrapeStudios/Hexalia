@@ -10,7 +10,7 @@ import net.astralya.hexalia.entity.client.SilkMothRenderer;
 import net.astralya.hexalia.item.ModCreativeModeTabs;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.loot.ModLootModifiers;
-import net.astralya.hexalia.particle.ModParticles;
+import net.astralya.hexalia.particle.ModParticleType;
 import net.astralya.hexalia.recipe.ModRecipes;
 import net.astralya.hexalia.screen.ModMenuTypes;
 import net.astralya.hexalia.screen.SmallCauldronScreen;
@@ -38,10 +38,10 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
 
-@Mod(HexaliaMod.MOD_ID)
+@Mod(HexaliaMod.MODID)
 public class HexaliaMod
 {
-    public static final String MOD_ID = "hexalia";
+    public static final String MODID = "hexalia";
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public HexaliaMod() {
@@ -55,7 +55,7 @@ public class HexaliaMod
         ModCreativeModeTabs.register(modEventBus);
         ModMobEffects.register(modEventBus);
         ModSounds.register(modEventBus);
-        ModParticles.register(modEventBus);
+        ModParticleType.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
         ModRecipes.register(modEventBus);
@@ -74,8 +74,6 @@ public class HexaliaMod
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.DREAMSHROOM.getId(), ModBlocks.POTTED_DREAMSHROOM);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.GHOST_FERN.getId(), ModBlocks.POTTED_GHOST_FERN);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.CELESTIAL_BLOOM.getId(), ModBlocks.POTTED_CELESTIAL_BLOOM);
-            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.HENBANE.getId(), ModBlocks.POTTED_HENBANE);
-            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.PALE_MUSHROOM.getId(), ModBlocks.POTTED_PALE_MUSHROOM);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.NIGHTSHADE_BUSH.getId(), ModBlocks.POTTED_NIGHTSHADE_BUSH);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.COTTONWOOD_SAPLING.getId(), ModBlocks.POTTED_COTTONWOOD_SAPLING);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.WILLOW_SAPLING.getId(), ModBlocks.POTTED_WILLOW_SAPLING);
@@ -91,10 +89,6 @@ public class HexaliaMod
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTab() == ModCreativeModeTabs.HEXALIA_TAB.get()) {
-            if (ModList.get().isLoaded("farmersdelight")) {
-                event.accept(ModItems.WITCH_SALAD);
-            }
-
             if (ModList.get().isLoaded("patchouli")) {
                 event.accept(ModItems.VERDANT_GRIMOIRE);
             }
@@ -107,7 +101,7 @@ public class HexaliaMod
 
     }
 
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents
     {
         @SubscribeEvent

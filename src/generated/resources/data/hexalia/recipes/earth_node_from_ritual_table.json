@@ -1,0 +1,23 @@
+{
+  "type": "hexalia:ritual_table",
+  "input": {
+    "item": "minecraft:amethyst_shard"
+  },
+  "output": {
+    "item": "hexalia:earth_node"
+  },
+  "salt_items": [
+    {
+      "item": "hexalia:tree_resin"
+    },
+    {
+      "item": "minecraft:clay_ball"
+    },
+    {
+      "item": "minecraft:flint"
+    },
+    {
+      "item": "hexalia:mandrake"
+    }
+  ]
+}

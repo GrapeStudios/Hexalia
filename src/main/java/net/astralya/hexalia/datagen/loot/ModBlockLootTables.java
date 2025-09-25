@@ -43,13 +43,11 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         // Simple drops
         this.dropSelf(ModBlocks.SPIRIT_BLOOM.get());
         this.dropSelf(ModBlocks.DREAMSHROOM.get());
-        this.dropSelf(ModBlocks.HENBANE.get());
         this.dropSelf(ModBlocks.LOTUS_FLOWER.get());
         this.dropSelf(ModBlocks.PALE_MUSHROOM.get());
         this.dropSelf(ModBlocks.WITCHWEED.get());
         this.dropSelf(ModBlocks.GHOST_FERN.get());
         this.dropSelf(ModBlocks.NIGHTSHADE_BUSH.get());
-        this.dropSelf(ModBlocks.DUCKWEED.get());
         this.dropSelf(ModBlocks.BEGONIA.get());
         this.dropSelf(ModBlocks.LAVENDER.get());
         this.dropSelf(ModBlocks.MORPHORA.get());
@@ -65,8 +63,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(ModBlocks.POTTED_DREAMSHROOM.get(), createPotFlowerItemTable(ModBlocks.DREAMSHROOM.get()));
         this.add(ModBlocks.POTTED_GHOST_FERN.get(), createPotFlowerItemTable(ModBlocks.DREAMSHROOM.get()));
         this.add(ModBlocks.POTTED_CELESTIAL_BLOOM.get(), createPotFlowerItemTable(ModBlocks.CELESTIAL_BLOOM.get()));
-        this.add(ModBlocks.POTTED_HENBANE.get(), createPotFlowerItemTable(ModBlocks.HENBANE.get()));
-        this.add(ModBlocks.POTTED_PALE_MUSHROOM.get(), createPotFlowerItemTable(ModBlocks.PALE_MUSHROOM.get()));
         this.add(ModBlocks.POTTED_NIGHTSHADE_BUSH.get(), createPotFlowerItemTable(ModBlocks.NIGHTSHADE_BUSH.get()));
         this.add(ModBlocks.POTTED_BEGONIA.get(), createPotFlowerItemTable(ModBlocks.BEGONIA.get()));
         this.add(ModBlocks.POTTED_LAVENDER.get(), createPotFlowerItemTable(ModBlocks.LAVENDER.get()));
@@ -78,7 +74,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         // Special plants
         this.add(ModBlocks.SIREN_KELP.get(), this.createSingleItemTable(ModItems.SIREN_KELP.get()));
-        this.add(ModBlocks.HEXED_BULRUSH.get(), createTallPlantBlock(ModBlocks.HEXED_BULRUSH.get()));
         this.add(ModBlocks.COTTONWOOD_CATKIN.get(), this.createSingleItemTable(Items.STRING));
         this.add(ModBlocks.GALEBERRIES_VINE.get(), vinesDrop(ModBlocks.GALEBERRIES_VINE.get()));
         this.add(ModBlocks.GALEBERRIES_VINE_PLANT.get(), vinesDrop(ModBlocks.GALEBERRIES_VINE_PLANT.get()));
@@ -100,7 +95,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         // Special drops
         this.add(ModBlocks.INFUSED_FARMLAND.get(), this.createSingleItemTable(ModBlocks.INFUSED_DIRT.get()));
-        this.add(ModBlocks.RITUAL_TABLE.get(), this.createSingleItemTable(ModItems.RITUAL_TABLE.get()));
+        this.add(ModBlocks.RITUAL_TABLE.get(), this.createSingleItemTable(ModBlocks.RITUAL_TABLE.get()));
         this.add(ModBlocks.SALT_BLOCK.get(), block -> createOreDrop(ModBlocks.SALT_BLOCK.get(), ModItems.SALT.get()));
         this.add(ModBlocks.SILKWORM_COCOON.get(), this.createSingleItemTable(ModItems.SILKWORM.get()));
     }

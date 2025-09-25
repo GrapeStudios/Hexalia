@@ -15,5 +15,5 @@ import java.util.List;
 public class ModToolTiers {
     public static final Tier ANCIENT = TierSortingRegistry.registerTier(new ForgeTier(2, 250,
             8.0f, 3.0f, 22, Tags.Blocks.NEEDS_WOOD_TOOL, () -> Ingredient.of(ModItems.ANCIENT_SEED.get())),
-            new ResourceLocation(HexaliaMod.MOD_ID, "ancient"), List.of(Tiers.IRON), List.of());
+            new ResourceLocation(HexaliaMod.MODID, "ancient"), List.of(Tiers.IRON), List.of());
 }

@@ -15,10 +15,10 @@ public class SilkMothRenderer extends GeoEntityRenderer<SilkMothEntity> {
 
     private static final Map<SilkMothVariant, ResourceLocation> LOCATION_BY_VARIANT =
             Util.make(Maps.newEnumMap(SilkMothVariant.class), map -> {
-                map.put(SilkMothVariant.DEFAULT, new ResourceLocation(HexaliaMod.MOD_ID, "textures/entity/silk_moth_default.png"));
-                map.put(SilkMothVariant.BLUE, new ResourceLocation(HexaliaMod.MOD_ID, "textures/entity/silk_moth_blue.png"));
-                map.put(SilkMothVariant.PINK, new ResourceLocation(HexaliaMod.MOD_ID, "textures/entity/silk_moth_pink.png"));
-                map.put(SilkMothVariant.BLACK, new ResourceLocation(HexaliaMod.MOD_ID, "textures/entity/silk_moth_black.png"));
+                map.put(SilkMothVariant.DEFAULT, new ResourceLocation(HexaliaMod.MODID, "textures/entity/silk_moth_default.png"));
+                map.put(SilkMothVariant.BLUE, new ResourceLocation(HexaliaMod.MODID, "textures/entity/silk_moth_blue.png"));
+                map.put(SilkMothVariant.PINK, new ResourceLocation(HexaliaMod.MODID, "textures/entity/silk_moth_pink.png"));
+                map.put(SilkMothVariant.BLACK, new ResourceLocation(HexaliaMod.MODID, "textures/entity/silk_moth_black.png"));
             });
 
     public SilkMothRenderer(EntityRendererProvider.Context renderManager) {

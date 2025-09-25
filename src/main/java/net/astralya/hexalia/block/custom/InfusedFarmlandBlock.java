@@ -1,7 +1,7 @@
 package net.astralya.hexalia.block.custom;
 
 import net.astralya.hexalia.block.ModBlocks;
-import net.astralya.hexalia.particle.ModParticles;
+import net.astralya.hexalia.particle.ModParticleType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
@@ -86,7 +86,7 @@ public class InfusedFarmlandBlock extends FarmBlock {
 
                 growable.performBonemeal(level, level.random, pos.above(), aboveState);
 
-                level.sendParticles(ModParticles.INFUSED_BUBBLE_PARTICLE.get(),
+                level.sendParticles(ModParticleType.INFUSED_BUBBLE.get(),
                         pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5,
                         8, 0.5, 0.0, 0.5, 0.05);
 
@@ -125,7 +125,7 @@ public class InfusedFarmlandBlock extends FarmBlock {
             double x = pPos.getX() + 0.5 + random.nextDouble(-0.5, 0.5);
             double y = pPos.getY() + 1.0;
             double z = pPos.getZ() + 0.5 + random.nextDouble(-0.5, 0.5);
-            pLevel.addParticle(ModParticles.INFUSED_BUBBLE_PARTICLE.get(), x, y, z, 0.0d,
+            pLevel.addParticle(ModParticleType.INFUSED_BUBBLE.get(), x, y, z, 0.0d,
                     0.05d, 0.0d);
         }
     }
