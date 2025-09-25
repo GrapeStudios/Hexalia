@@ -1,0 +1,51 @@
+{
+  "parent": "hexalia:small_beginnings",
+  "criteria": {
+    "obtain_any_brew": {
+      "conditions": {
+        "items": [
+          {
+            "items": "hexalia:brew_of_slimewalker"
+          },
+          {
+            "items": "hexalia:brew_of_bloodlust"
+          },
+          {
+            "items": "hexalia:brew_of_spikeskin"
+          },
+          {
+            "items": "hexalia:brew_of_homestead"
+          },
+          {
+            "items": "hexalia:brew_of_siphon"
+          },
+          {
+            "items": "hexalia:brew_of_daybloom"
+          },
+          {
+            "items": "hexalia:brew_of_arachnid_grace"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.hexalia.brewbie_award.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "hexalia:brew_of_slimewalker"
+    },
+    "title": {
+      "translate": "advancements.hexalia.brewbie_award.title"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_any_brew"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

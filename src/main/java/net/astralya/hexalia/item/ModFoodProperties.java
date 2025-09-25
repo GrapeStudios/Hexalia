@@ -29,10 +29,4 @@ public class ModFoodProperties {
 
     public static final FoodProperties SALTSPROUT = new FoodProperties.Builder().nutrition(2).saturationModifier(0.1f)
             .effect(() -> new MobEffectInstance(MobEffects.HUNGER, 600), 1.0f).build();
-
-    public static final FoodProperties WITCH_SALAD = new FoodProperties.Builder().nutrition(6).saturationModifier(0.6f)
-            .effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 600), 1.0f)
-            .effect(() -> new MobEffectInstance(ModMobEffects.OVERFED, 600), 1.0f)
-            .effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 600), 1.0f)
-            .build();
 }

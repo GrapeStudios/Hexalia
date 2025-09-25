@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-15T14:51:18.1529315	Recipes
+// 1.21.1	2025-09-25T15:19:52.7828534	Recipes
 c327f3ba4eafb4c21dbb4104a1bc4c1d661f542a data/hexalia/advancement/recipes/brewing/rustic_bottle.json
 a8312b0bfae801aa7103827a4307c5c829b7dbf1 data/hexalia/advancement/recipes/building_blocks/celestial_crystal_block.json
 e15994b53b3dfc7b695ca1c1c4e0cf392e20aaa3 data/hexalia/advancement/recipes/building_blocks/cottonwood_planks.json
@@ -70,6 +70,7 @@ f39558b06d066c3a9241357eca37cb95aacd25c0 data/hexalia/advancement/recipes/mutati
 ec1396537aae0c21684efccf99d08daf1dd1865e data/hexalia/advancement/recipes/mutation/podzol_from_mutation.json
 a6224fe0c1ae1307b607ae6ac9cead40fd28f215 data/hexalia/advancement/recipes/mutation/red_sand_from_mutation.json
 549cc9407f997caf112bca665f584182b3fb3682 data/hexalia/advancement/recipes/mutation/rooted_dirt_from_mutation.json
+882f5db9d89d0c6a98bda59d8fec4b6190e63d6d data/hexalia/advancement/recipes/mutation/saltsprout_from_mutation.json
 42419fe4ff9225726c8958a9acd761aa9a48d68f data/hexalia/advancement/recipes/mutation/siren_kelp_from_mutation.json
 58655fcbee05cbdd7d3a5174e9a7cf42c2a75ce7 data/hexalia/advancement/recipes/mutation/spirit_bloom_from_mutation.json
 40ecde45227d95aed018e6259e39fd8c9be56689 data/hexalia/advancement/recipes/mutation/tuff_from_mutation.json
@@ -187,6 +188,7 @@ d7f08ddabdc6dda0dc6ec3c67171acf12c8c8512 data/hexalia/recipe/rooted_dirt_from_mu
 f2562611dc33de8c22d1c8c88f92b4e074e54403 data/hexalia/recipe/rustic_oven.json
 35191cab7fd807ec1c5ef2090b4c484e2b8784b9 data/hexalia/recipe/sage_pendant_from_ritual_table.json
 de71529e2309b40bd10919d3e27723280d72f2ef data/hexalia/recipe/salt.json
+df718c7b759edf527dc93499945258e79bafbf37 data/hexalia/recipe/saltsprout_from_mutation.json
 4ad159c42122fd6554c9cea82adf9ef72ce451e9 data/hexalia/recipe/salt_block.json
 af802c2a3edc9881e800a3823b8bd4b4f7361c46 data/hexalia/recipe/salt_from_mortar_and_pestle.json
 122872d548f6f512ac100aea366605b1e9b510c8 data/hexalia/recipe/salt_lamp.json

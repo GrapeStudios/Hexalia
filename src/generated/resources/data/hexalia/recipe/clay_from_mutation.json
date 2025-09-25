@@ -1,7 +1,0 @@
-{
-  "type": "hexalia:mutation",
-  "input": {
-    "item": "minecraft:mud"
-  },
-  "output": "minecraft:clay"
-}

@@ -562,6 +562,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
                         "lotus_flower_from_mutation"));
 
+        MutationRecipeBuilder.mutation(
+                        Ingredient.of(Blocks.CACTUS),
+                        new ItemStack(ModItems.SALTSPROUT.get())
+                ).unlockedByItem("has_mutavis", ModItems.MUTAVIS.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        "saltsprout_from_mutation"));
+
         // Ritual Brazier Recipes
         RitualBrazierRecipeBuilder.ritualBrazierRecipe(
                         Ingredient.of(Items.AMETHYST_SHARD),

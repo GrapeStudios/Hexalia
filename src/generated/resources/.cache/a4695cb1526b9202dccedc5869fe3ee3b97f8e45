@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-15T08:13:18.6949626	Block States: hexalia
+// 1.21.1	2025-09-25T14:56:14.4948999	Block States: hexalia
 1008a016106b7c4af5a834ac32ca56468e0a6fa0 assets/hexalia/blockstates/astrylis.json
 2c754b7a35d1f42c348b41826d67f74cc29f6ff4 assets/hexalia/blockstates/begonia.json
 e5a52c1bc136da334b4487e20a60cb618cafe765 assets/hexalia/blockstates/celestial_bloom.json
@@ -56,7 +56,6 @@ bf68ab5c23aa4691f51bd1c1b7c6cfce622e8169 assets/hexalia/blockstates/willow_butto
 a4d3f06554460f60d1bae14182ffaec93fb8bb1d assets/hexalia/blockstates/willow_fence_gate.json
 3aecb87d0d7bdac67a0c031437011d1d9cdcfd91 assets/hexalia/blockstates/willow_leaves.json
 326b7a9c7ef4a98a5695a8c7ba2c84704a6e4346 assets/hexalia/blockstates/willow_log.json
-42e8f69bd5b2482c7e5299e078cec2b939805e76 assets/hexalia/blockstates/willow_mossy_wood.json
 0d7693b0b7275348b0f48a35fbf5e8ccc8d7f7ad assets/hexalia/blockstates/willow_planks.json
 336661dc281343096d0845a58ee85b9dad8a8ebb assets/hexalia/blockstates/willow_pressure_plate.json
 220edb33ee5df77f378b219385720dcf7f95228f assets/hexalia/blockstates/willow_sapling.json
@@ -163,8 +162,6 @@ f41eed4bdc39c6f654c8ea8f559c04e42bd53f5c assets/hexalia/models/block/willow_fenc
 ff54ed9e580dc9876d7a769392ca6bbb236d82af assets/hexalia/models/block/willow_leaves.json
 96864039eeb37ae1e43e14731997bdbcd77ecbbc assets/hexalia/models/block/willow_log.json
 5db30abec5798eca13cb5267a5147e62a867d616 assets/hexalia/models/block/willow_log_horizontal.json
-c2478176b748d059e4efdae3a7a032cc6cbaa430 assets/hexalia/models/block/willow_mossy_wood.json
-d37fa53faebe3aa70d5405ca2d39f3d59af7ae62 assets/hexalia/models/block/willow_mossy_wood_horizontal.json
 c02b99830efd06902a9d9778fb247242e1dc7b16 assets/hexalia/models/block/willow_planks.json
 cf64aae7509c89c4b5779cf1c45ac6d3e94819d6 assets/hexalia/models/block/willow_pressure_plate.json
 6f28fd28f92add9c9a294935c44954da26115435 assets/hexalia/models/block/willow_pressure_plate_down.json
@@ -210,7 +207,6 @@ a255087df51bbccc0f386ed25ea8e3d459bb661e assets/hexalia/models/item/stripped_cot
 e568104979b782c25405a91168befadaeb13f280 assets/hexalia/models/item/wild_sunfire_tomato.json
 f61d8d72039f140cd65fc34ad536222edae6f15f assets/hexalia/models/item/willow_leaves.json
 98233f052b79faae396c5f78b59c003ef9440ff4 assets/hexalia/models/item/willow_log.json
-a91b500c3fe6975504df7d2891a8a96ed3dcb6e7 assets/hexalia/models/item/willow_mossy_wood.json
 a0f09593fe777e4fd962bc46d48efff395a1e797 assets/hexalia/models/item/willow_planks.json
 194c86fda8f7eaa3623d42b3e292908eb57c703b assets/hexalia/models/item/willow_sapling.json
 9c690ba9100bec03a251397e0a87de0fe58d3a7e assets/hexalia/models/item/willow_wood.json

@@ -131,7 +131,6 @@ public class RitualTableBlock extends BaseEntityBlock {
         List<ItemStack> brazierItems = new ArrayList<>();
         List<RitualBrazierBlockEntity> brazierEntities = new ArrayList<>();
 
-        // Check salted braziers
         for (BlockPos bPos : offsets) {
             if (level.getBlockEntity(bPos) instanceof RitualBrazierBlockEntity brazier && !brazier.getStoredItem().isEmpty()) {
                 BlockState state = level.getBlockState(bPos);
@@ -144,26 +143,22 @@ public class RitualTableBlock extends BaseEntityBlock {
             }
         }
 
-        // Find matching recipe
         RitualTableRecipe matchedRecipe = findMatchingRecipe(level, tableItem, brazierItems, tableBE);
         if (matchedRecipe == null) {
             failWithMessage(level, pos, player, "message.hexalia.ritual.wrong_recipe");
             return true;
         }
 
-        // Check crops
         List<BlockPos> grownCrops = findFullyGrownCrops(level, pos, 8, 8);
         if (grownCrops.size() < 8) {
             failWithMessage(level, pos, player, "message.hexalia.ritual.invalid_crops");
             return true;
         }
 
-        // Start ritual
         tableBE.startTransformation(matchedRecipe.getResultItem(level.registryAccess()).copy(),
                 RitualTableBlockEntity.DURATION, brazierEntities);
         tableBE.setGrownCropPositions(grownCrops);
 
-        // Reset salted state
         for (RitualBrazierBlockEntity brazier : brazierEntities) {
             BlockPos bp = brazier.getBlockPos();
             BlockState state = level.getBlockState(bp);

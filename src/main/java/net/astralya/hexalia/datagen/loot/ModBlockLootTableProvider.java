@@ -154,7 +154,6 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         this.add(ModBlocks.WILLOW_LEAVES.get(), createLeavesDrops(ModBlocks.WILLOW_LEAVES.get(), ModBlocks.WILLOW_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
         this.dropSelf(ModBlocks.WILLOW_LOG.get());
         this.dropSelf(ModBlocks.WILLOW_WOOD.get());
-        this.dropSelf(ModBlocks.WILLOW_MOSSY_WOOD.get());
         this.dropSelf(ModBlocks.STRIPPED_WILLOW_LOG.get());
         this.dropSelf(ModBlocks.STRIPPED_WILLOW_WOOD.get());
         this.dropSelf(ModBlocks.WILLOW_PLANKS.get());

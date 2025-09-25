@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-15T08:13:18.6897441	Loot Tables
+// 1.21.1	2025-09-25T14:56:14.4894468	Loot Tables
 9a3df1e2ec6884b6a1d7d652b794a71a76999999 data/hexalia/loot_table/blocks/astrylis.json
 dad5439821b7d3507e19e2713ebd7503704e41ef data/hexalia/loot_table/blocks/begonia.json
 a145885a91e57a61da1dfe8e5d3756080c0e1c03 data/hexalia/loot_table/blocks/candle_skull.json
@@ -81,7 +81,6 @@ e2e264841d63afa81c791a3bdb0b105cc76817f4 data/hexalia/loot_table/blocks/sunfire_
 b102375d7c4b6d359600f55eb77b06a049ac7cb6 data/hexalia/loot_table/blocks/willow_hanging_wall_sign.json
 4cf77a34510ff7a29db4f7527d19dad398521ddc data/hexalia/loot_table/blocks/willow_leaves.json
 981e3711ee3c5997c303786da9447d6197e03e21 data/hexalia/loot_table/blocks/willow_log.json
-e90f94ba87162391d40b684540ef65c0106cb323 data/hexalia/loot_table/blocks/willow_mossy_wood.json
 c6527b19a65ff0cf9516ae16f492de46c7d2ea73 data/hexalia/loot_table/blocks/willow_planks.json
 8d8f1f35bb8ce7f21b4d0345e0f79274bde74399 data/hexalia/loot_table/blocks/willow_pressure_plate.json
 ec0c2bb557d762517d26275ab1987d57200dafa3 data/hexalia/loot_table/blocks/willow_sapling.json

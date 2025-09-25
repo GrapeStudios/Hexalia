@@ -139,8 +139,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.WILLOW_LOG.get())
                 .add(ModBlocks.STRIPPED_WILLOW_LOG.get())
                 .add(ModBlocks.WILLOW_WOOD.get())
-                .add(ModBlocks.STRIPPED_WILLOW_WOOD.get())
-                .add(ModBlocks.WILLOW_MOSSY_WOOD.get());
+                .add(ModBlocks.STRIPPED_WILLOW_WOOD.get());
 
         // Special log types
         tag(ModTags.Blocks.COCOON_LOGS)

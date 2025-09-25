@@ -20,16 +20,16 @@ public class FoulSacProjectile extends ThrowableItemProjectile {
     }
 
     public FoulSacProjectile(Level level) {
-        super(ModEntities.FROST_SAC.get(), level);
+        super(ModEntities.FOUL_SAC.get(), level);
     }
 
     public FoulSacProjectile(Level level, LivingEntity owner) {
-        super(ModEntities.FROST_SAC.get(), owner, level);
+        super(ModEntities.FOUL_SAC.get(), owner, level);
     }
 
     @Override
     protected Item getDefaultItem() {
-        return ModItems.FROST_SAC.get();
+        return ModItems.FOUL_SAC.get();
     }
 
     @Override
@@ -47,7 +47,7 @@ public class FoulSacProjectile extends ThrowableItemProjectile {
                     ModSoundEvents.SAC_IMPACT.get(), SoundSource.PLAYERS,
                     0.9F, 0.8F + this.level().getRandom().nextFloat() * 0.4F
             );
-            int durationSeconds = Math.max(1,Configuration.FROST_SAC_DURATION.get());
+            int durationSeconds = Math.max(1,Configuration.FOUL_SAC_DURATION.get());
             FoulCloud cloud = new FoulCloud(this.level(), this.getX(), this.getY(), this.getZ(), durationSeconds);
             if (this.getOwner() instanceof net.minecraft.world.entity.LivingEntity le) cloud.setCloudOwner(le);
             this.level().addFreshEntity(cloud);

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "hexalia:clay_from_mutation"
+        "recipe": "hexalia:saltsprout_from_mutation"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "hexalia:clay_from_mutation"
+      "hexalia:saltsprout_from_mutation"
     ]
   }
 }

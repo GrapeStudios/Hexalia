@@ -5,6 +5,7 @@ import net.astralya.hexalia.datagen.loot.GlobalLootModifier;
 import net.astralya.hexalia.datagen.loot.ModBlockLootTableProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.advancements.AdvancementProvider;
 import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -39,5 +40,6 @@ public class DataGenerator {
         generator.addProvider(event.includeServer(), new DataMapGenerator(packOutput, lookupProvider));
         generator.addProvider(event.includeServer(), new ModWorldGenProvider(packOutput, lookupProvider));
         event.getGenerator().addProvider(event.includeServer(), new ModBiomeTagsProvider(packOutput, lookupProvider, existingFileHelper));
+        generator.addProvider(event.includeServer(), new AdvancementProvider(packOutput, lookupProvider, java.util.List.of(new ModAdvancementsProvider())));
     }
 }

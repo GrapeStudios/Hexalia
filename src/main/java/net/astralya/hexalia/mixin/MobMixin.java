@@ -1,10 +1,7 @@
 package net.astralya.hexalia.mixin;
 
-import net.astralya.hexalia.Configuration;
 import net.astralya.hexalia.block.custom.censer.CenserEffectHandler;
-import net.astralya.hexalia.item.custom.GhostVeilItem;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
@@ -60,22 +57,7 @@ public abstract class MobMixin extends LivingEntity {
         }
 
         hexalia$lastCheckTick = currentTick;
-
-        if (!hexalia$lastCheckResult) {
-            Player nearestPlayer = this.level().getNearestPlayer(
-                    this.getX(),
-                    this.getY(),
-                    this.getZ(),
-                    Configuration.CENSER_EFFECT_RADIUS.get(),
-                    false
-            );
-
-            hexalia$lastCheckResult = CenserEffectHandler.isUndeadVeilActiveInArea(
-                    this.level(),
-                    this.blockPosition()
-            ) || (nearestPlayer != null && isGhostVeilSneaking(nearestPlayer));
-        }
-
+        hexalia$lastCheckResult = CenserEffectHandler.isUndeadVeilActiveInArea(this.level(), this.blockPosition());
         return hexalia$lastCheckResult;
     }
 
@@ -88,15 +70,9 @@ public abstract class MobMixin extends LivingEntity {
     }
 
     @Unique
-    private boolean isGhostVeilSneaking(Player player) {
-        return player.isCrouching() &&
-                player.getItemBySlot(EquipmentSlot.CHEST).getItem() instanceof GhostVeilItem;
-    }
-
-    @Unique
     private boolean isExcludedBoss(Object entity) {
-        return entity instanceof EnderDragon ||
-                entity instanceof WitherBoss ||
-                entity instanceof Warden;
+        return entity instanceof EnderDragon
+                || entity instanceof WitherBoss
+                || entity instanceof Warden;
     }
 }

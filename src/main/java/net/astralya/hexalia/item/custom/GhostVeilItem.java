@@ -72,34 +72,34 @@ public class GhostVeilItem extends ArmorItem implements GeoItem {
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, Level level, Entity entity, int slot, boolean selected) {
-        if (!(entity instanceof Player player)) return;
+    public void inventoryTick(ItemStack stack, Level world, net.minecraft.world.entity.Entity entity, int slot, boolean selected) {
+        if (!(entity instanceof Player player)) {
+            super.inventoryTick(stack, world, entity, slot, selected);
+            return;
+        }
 
-        if (!level.isClientSide && player.isCrouching() && player.getItemBySlot(EquipmentSlot.CHEST) == stack) {
+        boolean wearingThis = player.getItemBySlot(EquipmentSlot.CHEST).equals(stack);
 
-            var box = player.getBoundingBox().inflate(10.0D);
-            List<LivingEntity> nearby = level.getEntitiesOfClass(LivingEntity.class, box, e -> e instanceof Monster);
-
-            for (LivingEntity le : nearby) {
-                if (le instanceof Mob mob) {
-                    mob.setTarget(null);
-                }
-            }
-
-            if (stack.isDamageableItem() && level.getGameTime() % 20L == 0L) {
-                if (player instanceof ServerPlayer serverPlayer
-                        && level instanceof ServerLevel serverLevel) {
-                    stack.hurtAndBreak(1, serverLevel, serverPlayer,
-                            broken -> serverPlayer.onEquippedItemBroken(broken, EquipmentSlot.CHEST)
-                    );
+        if (!world.isClientSide && wearingThis) {
+            if (player.isCrouching()) {
+                var box = player.getBoundingBox().inflate(10.0D);
+                var nearby = world.getEntitiesOfClass(LivingEntity.class, box, e -> e instanceof Monster);
+                for (LivingEntity le : nearby) {
+                    if (le instanceof Mob mob) {
+                        mob.setTarget(null);
+                    }
                 }
 
-                if (stack.isEmpty()) {
-                    player.setItemSlot(EquipmentSlot.CHEST, ItemStack.EMPTY);
+                if (stack.isDamageableItem() && world.getGameTime() % 20L == 0L && !player.getAbilities().instabuild) {
+                    stack.hurtAndBreak(1, player, EquipmentSlot.CHEST);
+
+                    if (stack.isEmpty()) {
+                        player.setItemSlot(EquipmentSlot.CHEST, ItemStack.EMPTY);
+                    }
                 }
             }
         }
+
+        super.inventoryTick(stack, world, entity, slot, selected);
     }
-
-
 }

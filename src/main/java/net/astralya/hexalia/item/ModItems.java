@@ -120,7 +120,7 @@ public class ModItems {
     // Weapons & Armor
     public static final DeferredItem<Item> KELPWEAVE_BLADE = ITEMS.register("kelpweave_blade",
             () -> new KelpweaveBlade(ModToolTiers.ANCIENT,
-                    new Item.Properties().attributes(SwordItem.createAttributes(ModToolTiers.ANCIENT, 3, -2f))));
+                    new Item.Properties().attributes(SwordItem.createAttributes(ModToolTiers.ANCIENT, 3, -2f)).rarity(Rarity.RARE)));
     public static final DeferredItem<Item> GHOSTVEIL = ITEMS.register("ghostveil",
             () -> new GhostVeilItem(ModArmorMaterials.GHOST, ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(96)));
     public static final DeferredItem<Item> EARPLUGS = ITEMS.register("earplugs",

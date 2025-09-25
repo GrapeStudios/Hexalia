@@ -47,7 +47,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> POTTED_DREAMSHROOM = BLOCKS.register("potted_dreamshroom",
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), DREAMSHROOM, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY).lightLevel(state -> 4)));
     public static final DeferredBlock<Block> GHOST_FERN = registerBlock("ghost_fern",
-            () -> new GhostFernBlock(MobEffects.INVISIBILITY, 6, BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY)));
+            () -> new GhostFernBlock(MobEffects.INVISIBILITY, 6, BlockBehaviour.Properties.ofFullCopy(Blocks.FERN)));
     public static final DeferredBlock<Block> POTTED_GHOST_FERN = BLOCKS.register("potted_ghost_fern",
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), GHOST_FERN, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY)));
     public static final DeferredBlock<Block> CELESTIAL_BLOOM = registerBlock("celestial_bloom",
@@ -204,8 +204,6 @@ public class ModBlocks {
     public static final DeferredBlock<Block> WILLOW_LOG = registerBlock("willow_log",
             () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
     public static final DeferredBlock<Block> STRIPPED_WILLOW_LOG = registerBlock("stripped_willow_log",
-            () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
-    public static final DeferredBlock<Block> WILLOW_MOSSY_WOOD = registerBlock("willow_mossy_wood",
             () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
     public static final DeferredBlock<Block> WILLOW_WOOD = registerBlock("willow_wood",
             () -> new ModFlammableRotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));

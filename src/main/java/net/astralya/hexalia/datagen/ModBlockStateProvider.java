@@ -53,7 +53,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockItem(ModBlocks.STRIPPED_COTTONWOOD_WOOD);
         blockItem(ModBlocks.WILLOW_LOG);
         blockItem(ModBlocks.WILLOW_WOOD);
-        blockItem(ModBlocks.WILLOW_MOSSY_WOOD);
         blockItem(ModBlocks.STRIPPED_WILLOW_LOG);
         blockItem(ModBlocks.STRIPPED_WILLOW_WOOD);
 
@@ -84,7 +83,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         
         logBlock(((RotatedPillarBlock) ModBlocks.WILLOW_LOG.get()));
         axisBlock(((RotatedPillarBlock) ModBlocks.WILLOW_WOOD.get()), blockTexture(ModBlocks.WILLOW_LOG.get()), blockTexture(ModBlocks.WILLOW_LOG.get()));
-        axisBlock(((RotatedPillarBlock) ModBlocks.WILLOW_MOSSY_WOOD.get()), blockTexture(ModBlocks.WILLOW_MOSSY_WOOD.get()), blockTexture(ModBlocks.WILLOW_LOG.get()));
         logBlock(((RotatedPillarBlock) ModBlocks.STRIPPED_WILLOW_LOG.get()));
         axisBlock(((RotatedPillarBlock) ModBlocks.STRIPPED_WILLOW_WOOD.get()), blockTexture(ModBlocks.STRIPPED_WILLOW_LOG.get()), blockTexture(ModBlocks.STRIPPED_WILLOW_LOG.get()));
 

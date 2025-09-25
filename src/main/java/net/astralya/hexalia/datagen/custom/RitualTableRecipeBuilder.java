@@ -16,21 +16,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/**
- * Builder for Ritual Table recipes. Produces JSON like:
- *
- * {
- *   "type": "hexalia:ritual_table",
- *   "ingredients": [
- *     { "item": "minecraft:amethyst_shard" },
- *     { "item": "minecraft:coal" },
- *     { "item": "minecraft:charcoal" },
- *     { "item": "minecraft:blaze_powder" },
- *     { "item": "minecraft:poppy" }
- *   ],
- *   "output": "hexalia:fire_node"
- * }
- */
+
 public class RitualTableRecipeBuilder implements RecipeBuilder {
     private final NonNullList<Ingredient> ingredients = NonNullList.create();
     private final ItemStack output;
@@ -46,7 +32,6 @@ public class RitualTableRecipeBuilder implements RecipeBuilder {
         return new RitualTableRecipeBuilder(output);
     }
 
-    /** Add any ingredient (main table slot + up to 4 braziers) */
     public RitualTableRecipeBuilder addIngredient(Ingredient ingredient) {
         this.ingredients.add(ingredient);
         return this;
