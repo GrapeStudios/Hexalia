@@ -1,0 +1,69 @@
+{
+  "parent": "hexalia:small_beginnings",
+  "criteria": {
+    "obtain_any_brew": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "hexalia:brew_of_slimewalker"
+            ]
+          },
+          {
+            "items": [
+              "hexalia:brew_of_bloodlust"
+            ]
+          },
+          {
+            "items": [
+              "hexalia:brew_of_spikeskin"
+            ]
+          },
+          {
+            "items": [
+              "hexalia:brew_of_homestead"
+            ]
+          },
+          {
+            "items": [
+              "hexalia:brew_of_siphon"
+            ]
+          },
+          {
+            "items": [
+              "hexalia:brew_of_daybloom"
+            ]
+          },
+          {
+            "items": [
+              "hexalia:brew_of_arachnid_grace"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "hexalia:textures/block/willow_log.png",
+    "description": {
+      "translate": "advancements.hexalia.brewbie_award.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "hexalia:brew_of_slimewalker"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.hexalia.brewbie_award.title"
+    }
+  },
+  "requirements": [
+    [
+      "obtain_any_brew"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
