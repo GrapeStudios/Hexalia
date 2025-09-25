@@ -2,6 +2,7 @@ package net.astralya.hexalia.entity.custom;
 
 import net.astralya.hexalia.entity.ModEntities;
 import net.astralya.hexalia.entity.ai.silkmoth.AttractedToLightGoal;
+import net.astralya.hexalia.entity.ai.silkmoth.FlyWanderGoal;
 import net.astralya.hexalia.entity.variant.SilkMothVariant;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.item.custom.BottledMothItem;
@@ -65,11 +66,16 @@ public class SilkMothEntity extends Animal implements GeoEntity {
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new FleeSunGoal(this, 1.25D));
-        this.goalSelector.addGoal(1, new AttractedToLightGoal(this, 1.25D));
-        this.goalSelector.addGoal(2, new FloatGoal(this));
-        this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        this.goalSelector.addGoal(1, new FleeSunGoal(this, 1.0D));
+        this.goalSelector.addGoal(2, new AttractedToLightGoal(this, 1.5D));
+        this.goalSelector.addGoal(3, new WaterAvoidingRandomFlyingGoal(this, 1.0D));
+
+        this.goalSelector.addGoal(4, new FlyWanderGoal(this, 0.8D));
+
+        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));
+        this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 6.0F));
     }
+
 
     @Override
     protected float getStandingEyeHeight(Pose pPose, EntityDimensions pDimensions) {
