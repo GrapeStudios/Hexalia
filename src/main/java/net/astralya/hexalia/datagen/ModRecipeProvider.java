@@ -517,7 +517,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 Blocks.LILY_OF_THE_VALLEY, ModBlocks.ASTRYLIS.get())
                 .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEX_FOCUS.get()).build()))
                 .save(recipeConsumer);
-        new RitualTableRecipeBuilder(List.of(Items.COAL, ModItems.SUNFIRE_TOMATO.get(), Items.GUNPOWDER, Blocks.SUNFLOWER),
+        new RitualTableRecipeBuilder(List.of(ModItems.SUNFIRE_TOMATO.get(), Items.GUNPOWDER, Blocks.SUNFLOWER),
                 Items.AMETHYST_SHARD, ModItems.FIRE_NODE.get())
                 .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEX_FOCUS.get()).build()))
                 .save(recipeConsumer);
@@ -554,7 +554,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedByItem("has_mutavis", ModItems.MUTAVIS.get())
                 .save(recipeConsumer, new ResourceLocation(HexaliaMod.MODID, "siren_kelp_from_mutation"));
 
-        Ingredient anyTulip = Ingredient.of(Items.ORANGE_TULIP, Items.PINK_TULIP, Items.RED_TULIP, Items.WHITE_TULIP);
+        Ingredient anyTulip = Ingredient.of(ModTags.Items.TULIPS);
         MutationRecipeBuilder.mutation(anyTulip, new ItemStack(ModBlocks.CELESTIAL_BLOOM.get()))
                 .unlockedByItem("has_mutavis", ModItems.MUTAVIS.get())
                 .save(recipeConsumer, new ResourceLocation(HexaliaMod.MODID, "celestial_bloom_from_mutation"));

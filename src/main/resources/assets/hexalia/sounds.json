@@ -13,10 +13,10 @@
     ]
   },
 
-  "conversion": {
-    "subtitle": "sounds.hexalia.conversion",
+  "sac_impact": {
+    "subtitle": "sounds.hexalia.sac_impact",
     "sounds": [
-      "hexalia:conversion"
+      "hexalia:sac_impact"
     ]
   },
 

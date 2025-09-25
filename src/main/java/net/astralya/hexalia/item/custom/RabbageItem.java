@@ -1,6 +1,6 @@
 package net.astralya.hexalia.item.custom;
 
-import net.astralya.hexalia.entity.custom.ThrownRabbageEntity;
+import net.astralya.hexalia.entity.custom.projectile.RabbageProjectile;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -27,7 +27,7 @@ public class RabbageItem extends Item {
         ItemStack itemStack = player.getItemInHand(hand);
         level.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, 0.5f, 0.4f / (level.getRandom().nextFloat() * 0.4f + 0.8f));
         if (!level.isClientSide) {
-            ThrownRabbageEntity rabbageEntity = new ThrownRabbageEntity(level, player);
+            RabbageProjectile rabbageEntity = new RabbageProjectile(level, player);
             rabbageEntity.setItem(itemStack);
             rabbageEntity.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0f, 1.5f, 1.0f);
             level.addFreshEntity(rabbageEntity);

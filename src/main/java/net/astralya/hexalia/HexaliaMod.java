@@ -5,8 +5,8 @@ import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.block.entity.ModBlockEntities;
 import net.astralya.hexalia.effect.ModMobEffects;
 import net.astralya.hexalia.entity.ModEntities;
-import net.astralya.hexalia.entity.client.ModBoatRenderer;
-import net.astralya.hexalia.entity.client.SilkMothRenderer;
+import net.astralya.hexalia.entity.custom.client.ModBoatRenderer;
+import net.astralya.hexalia.entity.custom.client.SilkMothRenderer;
 import net.astralya.hexalia.item.ModCreativeModeTabs;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.loot.ModLootModifiers;
@@ -14,7 +14,7 @@ import net.astralya.hexalia.particle.ModParticleType;
 import net.astralya.hexalia.recipe.ModRecipes;
 import net.astralya.hexalia.screen.ModMenuTypes;
 import net.astralya.hexalia.screen.SmallCauldronScreen;
-import net.astralya.hexalia.sound.ModSounds;
+import net.astralya.hexalia.sound.ModSoundEvents;
 import net.astralya.hexalia.util.ModRegistries;
 import net.astralya.hexalia.util.ModWoodTypes;
 import net.astralya.hexalia.worldgen.gen.decorator.ModTreeDecorators;
@@ -54,7 +54,7 @@ public class HexaliaMod
         ModBlocks.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);
         ModMobEffects.register(modEventBus);
-        ModSounds.register(modEventBus);
+        ModSoundEvents.register(modEventBus);
         ModParticleType.register(modEventBus);
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
@@ -110,7 +110,11 @@ public class HexaliaMod
 
             EntityRenderers.register(ModEntities.MOD_BOAT.get(), pContext -> new ModBoatRenderer(pContext, false));
             EntityRenderers.register(ModEntities.MOD_CHEST_BOAT.get(), pContext -> new ModBoatRenderer(pContext, true));
-            EntityRenderers.register(ModEntities.THROWN_RABBAGE_ENTITY.get(), ThrownItemRenderer::new);
+
+            EntityRenderers.register(ModEntities.RABBAGE.get(), ThrownItemRenderer::new);
+            EntityRenderers.register(ModEntities.FOUL_SAC.get(), ThrownItemRenderer::new);
+            EntityRenderers.register(ModEntities.FROST_SAC.get(), ThrownItemRenderer::new);
+            EntityRenderers.register(ModEntities.PURIFYING_SAC.get(), ThrownItemRenderer::new);
 
             EntityRenderers.register(ModEntities.SILK_MOTH_ENTITY.get(), SilkMothRenderer::new);
 

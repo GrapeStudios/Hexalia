@@ -1,4 +1,4 @@
-package net.astralya.hexalia.entity.custom;
+package net.astralya.hexalia.entity.custom.projectile;
 
 import net.astralya.hexalia.effect.ModMobEffects;
 import net.astralya.hexalia.entity.ModEntities;
@@ -17,18 +17,18 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 
-public class ThrownRabbageEntity extends ThrowableItemProjectile {
+public class RabbageProjectile extends ThrowableItemProjectile {
 
-    public ThrownRabbageEntity(EntityType<? extends ThrowableItemProjectile> pEntityType, Level pLevel) {
+    public RabbageProjectile(EntityType<? extends ThrowableItemProjectile> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
-    public ThrownRabbageEntity(Level pLevel) {
-        super(ModEntities.THROWN_RABBAGE_ENTITY.get(), pLevel);
+    public RabbageProjectile(Level pLevel) {
+        super(ModEntities.RABBAGE.get(), pLevel);
     }
 
-    public ThrownRabbageEntity(Level pLevel, LivingEntity livingEntity) {
-        super(ModEntities.THROWN_RABBAGE_ENTITY.get(), livingEntity, pLevel);
+    public RabbageProjectile(Level pLevel, LivingEntity livingEntity) {
+        super(ModEntities.RABBAGE.get(), livingEntity, pLevel);
     }
 
     @Override

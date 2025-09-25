@@ -3,7 +3,7 @@ package net.astralya.hexalia.item.custom;
 import net.astralya.hexalia.Configuration;
 import net.astralya.hexalia.effect.ModMobEffects;
 import net.astralya.hexalia.item.ModItems;
-import net.astralya.hexalia.sound.ModSounds;
+import net.astralya.hexalia.sound.ModSoundEvents;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
@@ -40,7 +40,7 @@ public class MandrakeItem extends Item {
                 }
             }
 
-            level.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.MANDRAKE_SCREAM.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
+            level.playSound(null, player.getX(), player.getY(), player.getZ(), ModSoundEvents.MANDRAKE_SCREAM.get(), SoundSource.PLAYERS, 1.0f, 1.0f);
 
             if (!player.getAbilities().instabuild) {
                 stack.shrink(1);

@@ -2,7 +2,7 @@ package net.astralya.hexalia.block.entity;
 
 import net.astralya.hexalia.block.custom.RitualBrazierBlock;
 import net.astralya.hexalia.recipe.RitualTableRecipe;
-import net.astralya.hexalia.sound.ModSounds;
+import net.astralya.hexalia.sound.ModSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
@@ -71,7 +71,7 @@ public class RitualTableBlockEntity extends BlockEntity implements WorldlyContai
     private void performRitualEffect(ServerLevel level, BlockPos pos) {
         level.sendParticles(ParticleTypes.ENCHANT, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5,
                 20, 0.5, 0.5, 0.5, 0.1);
-        level.playSound(null, pos, ModSounds.RITUAL_SUCCESS.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+        level.playSound(null, pos, ModSoundEvents.RITUAL_SUCCESS.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
     }
 
     private void spawnParticleEffect(Level pLevel, BlockPos pPos, SimpleParticleType particleType, int minParticles, int maxParticles) {

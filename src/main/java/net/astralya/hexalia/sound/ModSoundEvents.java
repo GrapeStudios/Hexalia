@@ -8,13 +8,13 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ModSounds {
+public class ModSoundEvents {
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS =
             DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, HexaliaMod.MODID);
 
     public static final RegistryObject<SoundEvent> MANDRAKE_SCREAM = registerSoundEvent("mandrake_scream");
     public static final RegistryObject<SoundEvent> RITUAL_SUCCESS = registerSoundEvent("ritual_success");
-    public static final RegistryObject<SoundEvent> CONVERSION = registerSoundEvent("conversion");
+    public static final RegistryObject<SoundEvent> SAC_IMPACT = registerSoundEvent("sac_impact");
     public static final RegistryObject<SoundEvent> WIND_BURST = registerSoundEvent("wind_burst");
     public static final RegistryObject<SoundEvent> WIND_DEFLECT = registerSoundEvent("wind_deflect");
 

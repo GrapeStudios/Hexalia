@@ -2,7 +2,7 @@ package net.astralya.hexalia.block.custom;
 
 import net.astralya.hexalia.block.entity.WindsongBlockEntity;
 import net.astralya.hexalia.item.ModItems;
-import net.astralya.hexalia.sound.ModSounds;
+import net.astralya.hexalia.sound.ModSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
@@ -44,7 +44,7 @@ public class WindsongBlock extends EnchantedPlantBlock implements EntityBlock {
                 BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
                 if (blockEntity instanceof WindsongBlockEntity windsongBlockEntity && !windsongBlockEntity.isActive()) {
                     windsongBlockEntity.activate();
-                    pLevel.playSound(null, pPos, ModSounds.WIND_BURST.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+                    pLevel.playSound(null, pPos, ModSoundEvents.WIND_BURST.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
                 }
             }
             return InteractionResult.SUCCESS;

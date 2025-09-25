@@ -1,4 +1,4 @@
-package net.astralya.hexalia.entity.client;
+package net.astralya.hexalia.entity.custom.client;
 
 import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.util.Pair;

@@ -5,6 +5,8 @@ import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.effect.ModMobEffects;
 import net.astralya.hexalia.entity.ModEntities;
 import net.astralya.hexalia.entity.custom.ModBoatEntity;
+import net.astralya.hexalia.entity.custom.projectile.FoulSacProjectile;
+import net.astralya.hexalia.entity.custom.projectile.FrostSacProjectile;
 import net.astralya.hexalia.item.custom.*;
 import net.astralya.hexalia.util.ModToolTiers;
 import net.minecraft.ChatFormatting;
@@ -85,11 +87,11 @@ public class ModItems {
     public static final RegistryObject<Item> STONE_DAGGER = ITEMS.register("stone_dagger",
             () -> new StoneDaggerItem(new Item.Properties().durability(16)));
     public static final RegistryObject<Item> PURIFYING_SAC = ITEMS.register("purifying_sac",
-            () -> new PurifyingSaltsItem(new Item.Properties().durability(6))); // TODO
+            () -> new PurifyingSacItem(new Item.Properties().durability(6)));
     public static final RegistryObject<Item> FOUL_SAC = ITEMS.register("foul_sac",
-            () -> new StoneDaggerItem(new Item.Properties())); // TODO
+            () -> new ThrownSacItem(new Item.Properties(), FoulSacProjectile::new));
     public static final RegistryObject<Item> FROST_SAC = ITEMS.register("frost_sac",
-            () -> new StoneDaggerItem(new Item.Properties())); // TODO
+            () -> new ThrownSacItem(new Item.Properties(), FrostSacProjectile::new));
     public static final RegistryObject<Item> SAGE_PENDANT = ITEMS.register("sage_pendant",
             () -> new Item(new Item.Properties().durability(60).rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> SILK_IDOL = ITEMS.register("silk_idol",
@@ -101,7 +103,7 @@ public class ModItems {
     public static final RegistryObject<Item> TEMPEST_IDOL = ITEMS.register("tempest_idol",
             () -> new WeatherIdolItem(new Item.Properties()));
     public static final RegistryObject<Item> PURITY_IDOL = ITEMS.register("purity_idol",
-            () -> new PurityIdolItem(new Item.Properties())); // TODO
+            () -> new PurityIdolItem(new Item.Properties()));
     public static final RegistryObject<Item> MUTAVIS = ITEMS.register("mutavis",
             () -> new MutavisItem(new Item.Properties()));
 

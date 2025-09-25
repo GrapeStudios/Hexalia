@@ -1,7 +1,7 @@
 package net.astralya.hexalia.block.entity;
 
 import net.astralya.hexalia.Configuration;
-import net.astralya.hexalia.sound.ModSounds;
+import net.astralya.hexalia.sound.ModSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -78,7 +78,7 @@ public class WindsongBlockEntity extends BlockEntity {
             }
 
             if (this.activeTicks <= 0) {
-                pLevel.playSound(null, pPos, ModSounds.WIND_BURST.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+                pLevel.playSound(null, pPos, ModSoundEvents.WIND_BURST.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
                 pLevel.destroyBlock(pPos, false);
             }
         }
@@ -86,7 +86,7 @@ public class WindsongBlockEntity extends BlockEntity {
 
     private void discardProjectile(ServerLevel pLevel, Entity projectile) {
         pLevel.playSound(null, projectile.getX(), projectile.getY(), projectile.getZ(),
-                ModSounds.WIND_DEFLECT.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+                ModSoundEvents.WIND_DEFLECT.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
 
         Vec3 pos = projectile.position();
         for (int i = 0; i < 5; i++) {
