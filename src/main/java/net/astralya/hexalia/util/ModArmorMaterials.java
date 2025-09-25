@@ -1,7 +1,8 @@
-package net.astralya.hexalia.item;
+package net.astralya.hexalia.util;
 
 import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.block.ModBlocks;
+import net.astralya.hexalia.item.ModItems;
 import net.minecraft.Util;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -18,31 +19,26 @@ import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
 
+    EARPLUGS("earplugs", 15, Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
+        map.put(ArmorItem.Type.BOOTS, 1);
+        map.put(ArmorItem.Type.LEGGINGS, 1);
+        map.put(ArmorItem.Type.CHESTPLATE, 3);
+        map.put(ArmorItem.Type.HELMET, 1);
+    }), 5, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.of(Items.LEATHER)),
 
-    // TODO Check Values
+    GHOST("ghost", 15, Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
+        map.put(ArmorItem.Type.BOOTS, 1);
+        map.put(ArmorItem.Type.LEGGINGS, 1);
+        map.put(ArmorItem.Type.CHESTPLATE, 3);
+        map.put(ArmorItem.Type.HELMET, 1);
+    }), 10, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.of(ModBlocks.GHOST_FERN.get().asItem())),
 
-    EARPLUGS("earplugs", 15, Util.make(new EnumMap<>(ArmorItem.Type.class), (enumMap) -> {
-        enumMap.put(ArmorItem.Type.BOOTS, 1);
-        enumMap.put(ArmorItem.Type.LEGGINGS, 1);
-        enumMap.put(ArmorItem.Type.CHESTPLATE, 3);
-        enumMap.put(ArmorItem.Type.HELMET, 1);
-    }), 5, SoundEvents.ARMOR_EQUIP_LEATHER, 0, 0, () -> Ingredient.of(Tags.Items.LEATHER)),
-
-    GHOST("ghost", 15, Util.make(new EnumMap<>(ArmorItem.Type.class), (enumMap) -> {
-        enumMap.put(ArmorItem.Type.BOOTS, 1);
-        enumMap.put(ArmorItem.Type.LEGGINGS, 1);
-        enumMap.put(ArmorItem.Type.CHESTPLATE, 3);
-        enumMap.put(ArmorItem.Type.HELMET, 1);
-    }), 5, SoundEvents.ARMOR_EQUIP_LEATHER, 0, 0, () -> Ingredient.of(ModBlocks.GHOST_FERN.get().asItem())),
-
-    BOGGED("bogged", 15, Util.make(new EnumMap<>(ArmorItem.Type.class), (enumMap) -> {
-        enumMap.put(ArmorItem.Type.BOOTS, 2);
-        enumMap.put(ArmorItem.Type.LEGGINGS, 1);
-        enumMap.put(ArmorItem.Type.CHESTPLATE, 3);
-        enumMap.put(ArmorItem.Type.HELMET, 1);
-    }), 5, SoundEvents.ARMOR_EQUIP_LEATHER, 0, 0, () -> Ingredient.of(Items.DRIED_KELP)
-
-    );
+    BOGGED("bogged", 15, Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
+        map.put(ArmorItem.Type.BOOTS, 2);
+        map.put(ArmorItem.Type.LEGGINGS, 4);
+        map.put(ArmorItem.Type.CHESTPLATE, 5);
+        map.put(ArmorItem.Type.HELMET, 2);
+    }), 20, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.of(Items.DRIED_KELP));
 
     public static final StringRepresentable.EnumCodec<ArmorMaterials> CODEC = StringRepresentable.fromEnum(ArmorMaterials::values);
     private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266653_) -> {

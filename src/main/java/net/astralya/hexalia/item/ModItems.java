@@ -8,6 +8,7 @@ import net.astralya.hexalia.entity.custom.ModBoatEntity;
 import net.astralya.hexalia.entity.custom.projectile.FoulSacProjectile;
 import net.astralya.hexalia.entity.custom.projectile.FrostSacProjectile;
 import net.astralya.hexalia.item.custom.*;
+import net.astralya.hexalia.util.ModArmorMaterials;
 import net.astralya.hexalia.util.ModToolTiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
