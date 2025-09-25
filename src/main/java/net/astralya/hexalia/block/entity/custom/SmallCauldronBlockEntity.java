@@ -1,5 +1,6 @@
-package net.astralya.hexalia.block.entity;
+package net.astralya.hexalia.block.entity.custom;
 
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.recipe.SmallCauldronRecipe;
 import net.astralya.hexalia.screen.SmallCauldronMenu;
@@ -62,7 +63,7 @@ public class SmallCauldronBlockEntity extends BlockEntity implements MenuProvide
     @Nullable private Player lastInteractedPlayer;
 
     public SmallCauldronBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntities.SMALL_CAULDRON_BE.get(), pPos, pBlockState);
+        super(ModBlockEntityTypes.SMALL_CAULDRON_BE.get(), pPos, pBlockState);
         this.data = new ContainerData() {
             @Override
             public int get(int pIndex) {

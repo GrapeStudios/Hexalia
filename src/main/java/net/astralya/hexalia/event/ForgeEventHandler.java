@@ -1,6 +1,6 @@
 package net.astralya.hexalia.event;
 
-import net.astralya.hexalia.block.entity.CenserBlockEntity;
+import net.astralya.hexalia.block.entity.custom.CenserBlockEntity;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.chunk.LevelChunk;

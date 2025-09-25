@@ -1,7 +1,7 @@
 package net.astralya.hexalia.block.custom;
 
 import net.astralya.hexalia.Configuration;
-import net.astralya.hexalia.block.entity.CenserBlockEntity;
+import net.astralya.hexalia.block.entity.custom.CenserBlockEntity;
 import net.astralya.hexalia.censer.CenserEffectHandler;
 import net.astralya.hexalia.censer.HerbCombination;
 import net.astralya.hexalia.util.ModTags;

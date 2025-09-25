@@ -1,6 +1,6 @@
 package net.astralya.hexalia.block.custom;
 
-import net.astralya.hexalia.block.entity.AstrylisBlockEntity;
+import net.astralya.hexalia.block.entity.custom.AstrylisBlockEntity;
 import net.astralya.hexalia.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;

@@ -1,8 +1,8 @@
 package net.astralya.hexalia.block.custom;
 
-import net.astralya.hexalia.block.entity.HeatingBlockEntity;
-import net.astralya.hexalia.block.entity.ModBlockEntities;
-import net.astralya.hexalia.block.entity.SmallCauldronBlockEntity;
+import net.astralya.hexalia.block.entity.custom.HeatingBlockEntity;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
+import net.astralya.hexalia.block.entity.custom.SmallCauldronBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -144,7 +144,7 @@ public class SmallCauldronBlock extends BaseEntityBlock implements HeatingBlockE
         if (pLevel.isClientSide()) {
             return null;
         }
-        return createTickerHelper(pBlockEntityType, ModBlockEntities.SMALL_CAULDRON_BE.get(), (pLevel1, pPos, pState1, pBlockEntity)
+        return createTickerHelper(pBlockEntityType, ModBlockEntityTypes.SMALL_CAULDRON_BE.get(), (pLevel1, pPos, pState1, pBlockEntity)
                 -> pBlockEntity.tick(pLevel1, pPos, pState1));
     }
 }

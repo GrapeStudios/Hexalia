@@ -3,7 +3,7 @@ package net.astralya.hexalia.recipe;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import net.astralya.hexalia.block.entity.RitualTableBlockEntity;
+import net.astralya.hexalia.block.entity.custom.RitualTableBlockEntity;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;

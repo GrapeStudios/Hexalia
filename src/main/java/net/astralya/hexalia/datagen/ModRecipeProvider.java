@@ -517,19 +517,19 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 Blocks.LILY_OF_THE_VALLEY, ModBlocks.ASTRYLIS.get())
                 .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEX_FOCUS.get()).build()))
                 .save(recipeConsumer);
-        new RitualTableRecipeBuilder(List.of(ModItems.SUNFIRE_TOMATO.get(), Items.GUNPOWDER, Blocks.SUNFLOWER),
+        new RitualTableRecipeBuilder(List.of(Blocks.SUNFLOWER, Blocks.SUNFLOWER),
                 Items.AMETHYST_SHARD, ModItems.FIRE_NODE.get())
                 .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEX_FOCUS.get()).build()))
                 .save(recipeConsumer);
-        new RitualTableRecipeBuilder(List.of(Items.FEATHER, Items.GLASS_BOTTLE, Items.STRING, Blocks.DANDELION),
+        new RitualTableRecipeBuilder(List.of(Items.FEATHER, Blocks.DANDELION),
                 Items.AMETHYST_SHARD, ModItems.AIR_NODE.get())
                 .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEX_FOCUS.get()).build()))
                 .save(recipeConsumer);
-        new RitualTableRecipeBuilder(List.of(Blocks.LILY_PAD, ModItems.SIREN_PASTE.get(), Items.PRISMARINE_SHARD, Items.INK_SAC),
+        new RitualTableRecipeBuilder(List.of(Blocks.LILY_PAD, Items.INK_SAC),
                 Items.AMETHYST_SHARD, ModItems.WATER_NODE.get())
                 .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEX_FOCUS.get()).build()))
                 .save(recipeConsumer);
-        new RitualTableRecipeBuilder(List.of(ModItems.TREE_RESIN.get(), Items.CLAY_BALL, Items.FLINT, ModItems.MANDRAKE.get()),
+        new RitualTableRecipeBuilder(List.of(Blocks.BROWN_MUSHROOM, Items.CLAY_BALL),
                 Items.AMETHYST_SHARD, ModItems.EARTH_NODE.get())
                 .unlockedBy("has_hex_focus", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.HEX_FOCUS.get()).build()))
                 .save(recipeConsumer);

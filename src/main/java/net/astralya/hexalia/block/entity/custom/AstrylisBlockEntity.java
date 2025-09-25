@@ -1,6 +1,7 @@
-package net.astralya.hexalia.block.entity;
+package net.astralya.hexalia.block.entity.custom;
 
 import net.astralya.hexalia.Configuration;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -22,7 +23,7 @@ public class AstrylisBlockEntity extends BlockEntity {
     private long lastBonemealTime = -1;
 
     public AstrylisBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntities.ASTRYLIS_BE.get(), pPos, pBlockState);
+        super(ModBlockEntityTypes.ASTRYLIS_BE.get(), pPos, pBlockState);
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, AstrylisBlockEntity entity) {

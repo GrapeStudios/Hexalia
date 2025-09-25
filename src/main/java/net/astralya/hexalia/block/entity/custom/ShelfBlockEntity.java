@@ -1,5 +1,6 @@
-package net.astralya.hexalia.block.entity;
+package net.astralya.hexalia.block.entity.custom;
 
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.util.ModUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
@@ -19,7 +20,7 @@ public class ShelfBlockEntity extends BlockEntity {
     private final NonNullList<ItemStack> items = NonNullList.withSize(SIZE, ItemStack.EMPTY);
 
     public ShelfBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.SHELF_BE.get(), pos, state);
+        super(ModBlockEntityTypes.SHELF_BE.get(), pos, state);
     }
 
     public ItemStack getItem(int slot) {

@@ -1,6 +1,6 @@
 package net.astralya.hexalia.block.custom;
 
-import net.astralya.hexalia.block.entity.WindsongBlockEntity;
+import net.astralya.hexalia.block.entity.custom.WindsongBlockEntity;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.sound.ModSoundEvents;
 import net.minecraft.core.BlockPos;

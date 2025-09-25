@@ -2,7 +2,7 @@ package net.astralya.hexalia.block.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.astralya.hexalia.block.entity.RitualTableBlockEntity;
+import net.astralya.hexalia.block.entity.custom.RitualTableBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;

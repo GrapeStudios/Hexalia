@@ -2,7 +2,7 @@ package net.astralya.hexalia;
 
 import com.mojang.logging.LogUtils;
 import net.astralya.hexalia.block.ModBlocks;
-import net.astralya.hexalia.block.entity.ModBlockEntities;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.effect.ModMobEffects;
 import net.astralya.hexalia.entity.ModEntities;
 import net.astralya.hexalia.entity.custom.client.ModBoatRenderer;
@@ -56,7 +56,7 @@ public class HexaliaMod
         ModMobEffects.register(modEventBus);
         ModSoundEvents.register(modEventBus);
         ModParticleType.register(modEventBus);
-        ModBlockEntities.register(modEventBus);
+        ModBlockEntityTypes.register(modEventBus);
         ModMenuTypes.register(modEventBus);
         ModRecipes.register(modEventBus);
         ModTreeDecorators.register(modEventBus);

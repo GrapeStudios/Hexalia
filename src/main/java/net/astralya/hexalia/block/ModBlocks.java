@@ -6,7 +6,7 @@ import net.astralya.hexalia.block.custom.signs.ModHangingSignBlock;
 import net.astralya.hexalia.block.custom.signs.ModStandingSignBlock;
 import net.astralya.hexalia.block.custom.signs.ModWallHangingSignBlock;
 import net.astralya.hexalia.block.custom.signs.ModWallSignBlock;
-import net.astralya.hexalia.block.entity.ModFlammableRotatedPillarBlock;
+import net.astralya.hexalia.block.entity.custom.ModFlammableRotatedPillarBlock;
 import net.astralya.hexalia.effect.ModMobEffects;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.util.ModWoodTypes;

@@ -8,16 +8,10 @@
   },
   "salt_items": [
     {
-      "item": "hexalia:tree_resin"
+      "item": "minecraft:brown_mushroom"
     },
     {
       "item": "minecraft:clay_ball"
-    },
-    {
-      "item": "minecraft:flint"
-    },
-    {
-      "item": "hexalia:mandrake"
     }
   ]
 }

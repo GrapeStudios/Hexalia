@@ -1,6 +1,7 @@
-package net.astralya.hexalia.block.entity;
+package net.astralya.hexalia.block.entity.custom;
 
 import net.astralya.hexalia.block.custom.RitualBrazierBlock;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.recipe.RitualTableRecipe;
 import net.astralya.hexalia.sound.ModSoundEvents;
 import net.minecraft.core.BlockPos;
@@ -38,7 +39,7 @@ public class RitualTableBlockEntity extends BlockEntity implements WorldlyContai
     NonNullList<ItemStack> inventory = NonNullList.withSize(1, ItemStack.EMPTY);
 
     public RitualTableBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntities.RITUAL_TABLE_BE.get(), pPos, pBlockState);
+        super(ModBlockEntityTypes.RITUAL_TABLE_BE.get(), pPos, pBlockState);
     }
 
     public boolean startRitual() {

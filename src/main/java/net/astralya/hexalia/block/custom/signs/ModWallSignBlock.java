@@ -1,6 +1,6 @@
 package net.astralya.hexalia.block.custom.signs;
 
-import net.astralya.hexalia.block.entity.ModSignBlockEntity;
+import net.astralya.hexalia.block.entity.custom.ModSignBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.WallSignBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;

@@ -2,7 +2,7 @@ package net.astralya.hexalia.event;
 
 import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.block.ModBlocks;
-import net.astralya.hexalia.block.entity.ModBlockEntities;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.block.entity.renderer.CenserBlockRenderer;
 import net.astralya.hexalia.block.entity.renderer.RitualBrazierRenderer;
 import net.astralya.hexalia.block.entity.renderer.RitualTableBlockEntityRenderer;
@@ -34,12 +34,12 @@ public class ModEventClientBusEvents {
 
     @SubscribeEvent
     public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
-        event.registerBlockEntityRenderer(ModBlockEntities.RITUAL_TABLE_BE.get(), RitualTableBlockEntityRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntities.MOD_SIGN.get(), SignRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntities.MOD_HANGING_SIGN.get(), HangingSignRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntities.RITUAL_BRAZIER_BE.get(), RitualBrazierRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntities.SHELF_BE.get(), ShelfBlockRenderer::new);
-        event.registerBlockEntityRenderer(ModBlockEntities.CENSER_BE.get(), CenserBlockRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntityTypes.RITUAL_TABLE_BE.get(), RitualTableBlockEntityRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntityTypes.MOD_SIGN.get(), SignRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntityTypes.MOD_HANGING_SIGN.get(), HangingSignRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntityTypes.RITUAL_BRAZIER_BE.get(), RitualBrazierRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntityTypes.SHELF_BE.get(), ShelfBlockRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntityTypes.CENSER_BE.get(), CenserBlockRenderer::new);
     }
 
     @SubscribeEvent

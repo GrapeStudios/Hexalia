@@ -1,6 +1,7 @@
-package net.astralya.hexalia.block.entity;
+package net.astralya.hexalia.block.entity.custom;
 
 import net.astralya.hexalia.Configuration;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -32,7 +33,7 @@ public class NautiliteBlockEntity extends BlockEntity {
     private long activationTime = -1;
 
     public NautiliteBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntities.NAUTILITE_BE.get(), pPos, pBlockState);
+        super(ModBlockEntityTypes.NAUTILITE_BE.get(), pPos, pBlockState);
     }
 
     public void activate() {

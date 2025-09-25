@@ -1,8 +1,9 @@
-package net.astralya.hexalia.block.entity;
+package net.astralya.hexalia.block.entity.custom;
 
 import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.block.custom.RitualBrazierBlock;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.recipe.RitualBrazierRecipe;
 import net.astralya.hexalia.util.ModUtil;
 import net.minecraft.core.BlockPos;
@@ -44,7 +45,7 @@ public class RitualBrazierBlockEntity extends SyncBlockEntity {
     private float rotation;
 
     public RitualBrazierBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.RITUAL_BRAZIER_BE.get(), pos, state);
+        super(ModBlockEntityTypes.RITUAL_BRAZIER_BE.get(), pos, state);
         this.inventory = createHandler();
         this.inventoryOptional = LazyOptional.of(() -> inventory);
         this.isRitualFocusItem = false;

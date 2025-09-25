@@ -1,7 +1,7 @@
 package net.astralya.hexalia.screen;
 
 import net.astralya.hexalia.block.ModBlocks;
-import net.astralya.hexalia.block.entity.SmallCauldronBlockEntity;
+import net.astralya.hexalia.block.entity.custom.SmallCauldronBlockEntity;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;

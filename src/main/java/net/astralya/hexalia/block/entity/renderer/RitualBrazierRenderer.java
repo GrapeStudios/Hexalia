@@ -2,7 +2,7 @@ package net.astralya.hexalia.block.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.astralya.hexalia.block.entity.RitualBrazierBlockEntity;
+import net.astralya.hexalia.block.entity.custom.RitualBrazierBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;

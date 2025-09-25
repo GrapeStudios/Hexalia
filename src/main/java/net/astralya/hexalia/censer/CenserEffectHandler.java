@@ -3,7 +3,7 @@ package net.astralya.hexalia.censer;
 import net.astralya.hexalia.Configuration;
 import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.block.custom.CenserBlock;
-import net.astralya.hexalia.block.entity.CenserBlockEntity;
+import net.astralya.hexalia.block.entity.custom.CenserBlockEntity;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.sound.ModSoundEvents;
 import net.minecraft.core.BlockPos;

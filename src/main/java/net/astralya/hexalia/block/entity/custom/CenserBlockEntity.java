@@ -1,6 +1,7 @@
-package net.astralya.hexalia.block.entity;
+package net.astralya.hexalia.block.entity.custom;
 
 import net.astralya.hexalia.block.custom.CenserBlock;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.censer.CenserEffectHandler;
 import net.astralya.hexalia.censer.HerbCombination;
 import net.astralya.hexalia.util.ModUtil;
@@ -31,7 +32,7 @@ public class CenserBlockEntity extends BlockEntity {
     private boolean effectActive = false;
 
     public CenserBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.CENSER_BE.get(), pos, state);
+        super(ModBlockEntityTypes.CENSER_BE.get(), pos, state);
     }
 
 

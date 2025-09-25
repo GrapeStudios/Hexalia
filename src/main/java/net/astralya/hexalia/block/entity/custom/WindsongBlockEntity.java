@@ -1,6 +1,7 @@
-package net.astralya.hexalia.block.entity;
+package net.astralya.hexalia.block.entity.custom;
 
 import net.astralya.hexalia.Configuration;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.sound.ModSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -28,7 +29,7 @@ public class WindsongBlockEntity extends BlockEntity {
     private int particleCooldown = 0;
 
     public WindsongBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntities.WINDSONG_BE.get(), pPos, pBlockState);
+        super(ModBlockEntityTypes.WINDSONG_BE.get(), pPos, pBlockState);
     }
 
     public void activate() {
