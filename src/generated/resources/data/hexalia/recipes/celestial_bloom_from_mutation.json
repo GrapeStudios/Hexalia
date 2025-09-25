@@ -1,0 +1,20 @@
+{
+  "type": "hexalia:mutation",
+  "input": [
+    {
+      "item": "minecraft:orange_tulip"
+    },
+    {
+      "item": "minecraft:pink_tulip"
+    },
+    {
+      "item": "minecraft:red_tulip"
+    },
+    {
+      "item": "minecraft:white_tulip"
+    }
+  ],
+  "output": {
+    "item": "hexalia:celestial_bloom"
+  }
+}

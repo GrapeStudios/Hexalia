@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "hexalia:item/clear_idol"
+    "layer0": "hexalia:item/mutavis"
   }
 }
