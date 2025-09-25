@@ -94,12 +94,14 @@ public class ShelfBlock extends BaseEntityBlock {
 
     @Nullable
     @Override
-    public BlockState getStateForPlacement(BlockPlaceContext context) {
-        Direction clickedFace = context.getClickedFace();
-        if (clickedFace.getAxis() == Direction.Axis.Y) {
-            return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+    public BlockState getStateForPlacement(BlockPlaceContext ctx) {
+        Direction face = ctx.getClickedFace();
+
+        if (face.getAxis().isHorizontal()) {
+            return this.defaultBlockState().setValue(FACING, face.getOpposite());
         }
-        return this.defaultBlockState().setValue(FACING, clickedFace);
+
+        return this.defaultBlockState().setValue(FACING, ctx.getHorizontalDirection().getOpposite());
     }
 
     @Override

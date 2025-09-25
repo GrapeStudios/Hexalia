@@ -86,10 +86,6 @@ public class CenserBlockEntity extends BlockEntity {
         setChanged();
     }
 
-    /**
-     * @return Remaining burn time in ticks
-     * TODO: Currently unused - reserved for future features
-     */
     public int getBurnTime() {
         return burnTime;
     }
