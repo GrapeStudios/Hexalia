@@ -1,12 +1,9 @@
 {
   "type": "hexalia:ritual_table",
-  "input": {
-    "item": "minecraft:poppy"
-  },
-  "output": {
-    "item": "hexalia:morphora"
-  },
-  "salt_items": [
+  "ingredients": [
+    {
+      "item": "minecraft:poppy"
+    },
     {
       "item": "hexalia:dream_paste"
     },
@@ -19,5 +16,8 @@
     {
       "item": "hexalia:tree_resin"
     }
-  ]
+  ],
+  "output": {
+    "item": "hexalia:morphora"
+  }
 }

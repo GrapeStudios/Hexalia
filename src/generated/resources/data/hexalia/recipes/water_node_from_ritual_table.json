@@ -1,17 +1,17 @@
 {
   "type": "hexalia:ritual_table",
-  "input": {
-    "item": "minecraft:amethyst_shard"
-  },
-  "output": {
-    "item": "hexalia:water_node"
-  },
-  "salt_items": [
+  "ingredients": [
+    {
+      "item": "minecraft:amethyst_shard"
+    },
     {
       "item": "minecraft:lily_pad"
     },
     {
       "item": "minecraft:ink_sac"
     }
-  ]
+  ],
+  "output": {
+    "item": "hexalia:water_node"
+  }
 }

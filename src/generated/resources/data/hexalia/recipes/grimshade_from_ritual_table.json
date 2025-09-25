@@ -1,12 +1,9 @@
 {
   "type": "hexalia:ritual_table",
-  "input": {
-    "item": "minecraft:azure_bluet"
-  },
-  "output": {
-    "item": "hexalia:grimshade"
-  },
-  "salt_items": [
+  "ingredients": [
+    {
+      "item": "minecraft:azure_bluet"
+    },
     {
       "item": "hexalia:ghost_powder"
     },
@@ -19,5 +16,8 @@
     {
       "item": "minecraft:black_dye"
     }
-  ]
+  ],
+  "output": {
+    "item": "hexalia:grimshade"
+  }
 }

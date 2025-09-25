@@ -16,6 +16,7 @@ import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -62,12 +63,23 @@ public class RitualTableRecipeCategory implements IRecipeCategory<RitualTableRec
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, RitualTableRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 28, 31).addItemStack(recipe.getInput());
-        builder.addSlot(RecipeIngredientRole.INPUT, 28, 7).addItemStack(recipe.getSaltItems().get(0));
-        builder.addSlot(RecipeIngredientRole.INPUT, 28, 55).addItemStack(recipe.getSaltItems().get(1));
-        builder.addSlot(RecipeIngredientRole.INPUT, 52, 31).addItemStack(recipe.getSaltItems().get(2));
-        builder.addSlot(RecipeIngredientRole.INPUT, 4, 31).addItemStack(recipe.getSaltItems().get(3));
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 89, 31).addItemStack(recipe.getResultItem(null));
+        List<Ingredient> ingredients = recipe.getIngredients();
+
+        if (!ingredients.isEmpty()) {
+            builder.addSlot(RecipeIngredientRole.INPUT, 28, 31)
+                    .addIngredients(ingredients.get(0));
+        }
+
+        int[] xPositions = {28, 28, 52, 4};
+        int[] yPositions = {7, 55, 31, 31};
+
+        for (int i = 1; i < ingredients.size() && i <= 4; i++) {
+            builder.addSlot(RecipeIngredientRole.INPUT, xPositions[i - 1], yPositions[i - 1])
+                    .addIngredients(ingredients.get(i));
+        }
+
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 89, 31)
+                .addItemStack(recipe.getResultItem(null));
     }
 
     @Override

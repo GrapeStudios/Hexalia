@@ -1,12 +1,9 @@
 {
   "type": "hexalia:ritual_table",
-  "input": {
-    "item": "hexalia:celestial_crystal"
-  },
-  "output": {
-    "item": "hexalia:sage_pendant"
-  },
-  "salt_items": [
+  "ingredients": [
+    {
+      "item": "hexalia:celestial_crystal"
+    },
     {
       "item": "hexalia:spirit_powder"
     },
@@ -19,5 +16,8 @@
     {
       "item": "minecraft:experience_bottle"
     }
-  ]
+  ],
+  "output": {
+    "item": "hexalia:sage_pendant"
+  }
 }

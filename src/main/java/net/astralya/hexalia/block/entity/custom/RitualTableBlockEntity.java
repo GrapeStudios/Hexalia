@@ -2,383 +2,344 @@ package net.astralya.hexalia.block.entity.custom;
 
 import net.astralya.hexalia.block.custom.RitualBrazierBlock;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
-import net.astralya.hexalia.recipe.RitualTableRecipe;
+import net.astralya.hexalia.particle.ModParticleType;
 import net.astralya.hexalia.sound.ModSoundEvents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.NonNullList;
+import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.WorldlyContainer;
+import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Iterator;
-import java.util.Optional;
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-public class RitualTableBlockEntity extends BlockEntity implements WorldlyContainer {
+public class RitualTableBlockEntity extends BlockEntity implements Container {
 
-    private int progress = 0;
-    private static final int MAX_PROGRESS = 120;
-    private boolean ritualInProgress = false;
+    public static final int DURATION = 8 * 20;
 
-    NonNullList<ItemStack> inventory = NonNullList.withSize(1, ItemStack.EMPTY);
-
-    public RitualTableBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntityTypes.RITUAL_TABLE_BE.get(), pPos, pBlockState);
-    }
-
-    public boolean startRitual() {
-        return performTransmutation(level, worldPosition);
-    }
-
-    public void cancelRitual() {
-        ritualInProgress = false;
-        progress = 0;
-        setChanged();
-    }
-
-    public static void tick(ServerLevel pLevel, BlockPos pPos, BlockState pState, RitualTableBlockEntity ritualTableBlockEntity) {
-        if (ritualTableBlockEntity.ritualInProgress) {
-            ritualTableBlockEntity.progress++;
-
-            if (ritualTableBlockEntity.progress >= MAX_PROGRESS) {
-                ritualTableBlockEntity.completeRitual(pLevel, pPos);
-            }
-
-            ritualTableBlockEntity.setChanged();
-        }
-    }
-
-    private void completeRitual(ServerLevel level, BlockPos pos) {
-        performRitualEffect(level, pos);
-        cancelRitual();
-    }
-
-    private void performRitualEffect(ServerLevel level, BlockPos pos) {
-        level.sendParticles(ParticleTypes.ENCHANT, pos.getX() + 0.5, pos.getY() + 1, pos.getZ() + 0.5,
-                20, 0.5, 0.5, 0.5, 0.1);
-        level.playSound(null, pos, ModSoundEvents.RITUAL_SUCCESS.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
-    }
-
-    private void spawnParticleEffect(Level pLevel, BlockPos pPos, SimpleParticleType particleType, int minParticles, int maxParticles) {
-        int particleCount = ThreadLocalRandom.current().nextInt(minParticles, maxParticles);
-        for (int i = 0; i < particleCount; i++) {
-            double offsetX = ThreadLocalRandom.current().nextDouble(-0.5, 0.5);
-            double offsetY = ThreadLocalRandom.current().nextDouble(0, 0.5);
-            double offsetZ = ThreadLocalRandom.current().nextDouble(-0.5, 0.5);
-            pLevel.addParticle(particleType, pPos.getX() + 0.5 + offsetX, pPos.getY() + 1.0 + offsetY, pPos.getZ() + 0.5 + offsetZ, 0, 0, 0);
-        }
-    }
-
-    public boolean canStartRitual(Level world, BlockPos tablePos) {
-        if (!isRitualReady(world, tablePos)) {
-            return false;
-        }
-
-        ItemStack inputStack = getItem(0);
-        if (inputStack.isEmpty()) {
-            sendMessageToPlayer(world, tablePos, "message.hexalia.ritual.missing_ingredients");
-            spawnParticleEffect(world, tablePos, ParticleTypes.SMOKE, 10, 20);
-            return false;
-        }
-
-        Optional<RitualTableRecipe> recipeOptional = world.getRecipeManager().getRecipeFor(
-                RitualTableRecipe.Type.INSTANCE, this, world);
-
-        if (recipeOptional.isEmpty()) {
-            sendMessageToPlayer(world, tablePos, "message.hexalia.ritual.missing_ingredients");
-            spawnParticleEffect(world, tablePos, ParticleTypes.SMOKE, 10, 20);
-            return false;
-        }
-
-        RitualTableRecipe recipe = recipeOptional.get();
-        boolean hasRequiredSalt = processSaltBlocks(world, tablePos, recipe, false);
-
-        if (!hasRequiredSalt) {
-            sendMessageToPlayer(world, tablePos, "message.hexalia.ritual.missing_ingredients");
-            spawnParticleEffect(world, tablePos, ParticleTypes.SMOKE, 10, 20);
-            return false;
-        }
-
-        return true;
-    }
-
-    private boolean isRitualReady(Level world, BlockPos tablePos) {
-        BlockPos[] brazierPositions = {
-                tablePos.offset(-2, 0, 0),
-                tablePos.offset(2, 0, 0),
-                tablePos.offset(0, 0, -2),
-                tablePos.offset(0, 0, 2)
-        };
-
-        for (BlockPos pos : brazierPositions) {
-            BlockState blockState = world.getBlockState(pos);
-            if (!(blockState.getBlock() instanceof RitualBrazierBlock)) {
-                sendMessageToPlayer(world, tablePos, "message.hexalia.ritual.missing_brazier");
-                return false;
-            }
-
-            if (!blockState.getValue(RitualBrazierBlock.SALTED)) {
-                sendMessageToPlayer(world, tablePos, "message.hexalia.ritual.missing_salt");
-                return false;
+    private final ItemStackHandler inventory = new ItemStackHandler(1) {
+        @Override
+        protected void onContentsChanged(int slot) {
+            setChanged();
+            if (level != null && !level.isClientSide) {
+                level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
             }
         }
+    };
 
-        boolean cropsValid = validateAndResetCrops(world, tablePos, false);
-        if (!cropsValid) {
-            sendMessageToPlayer(world, tablePos, "message.hexalia.ritual.invalid_crops");
-        }
+    private LazyOptional<ItemStackHandler> itemCap = LazyOptional.of(() -> inventory);
 
-        return cropsValid;
+    private ItemStack cachedParticleItem = ItemStack.EMPTY;
+    private List<RitualBrazierBlockEntity> activeBraziers = Collections.emptyList();
+    private List<BlockPos> grownCrops = Collections.emptyList();
+    private ItemStack pendingOutput = ItemStack.EMPTY;
+
+    private int transformTicksRemaining = 0;
+    private int nextBrazierIndex = 0;
+    private float rotation = 0.0f;
+
+    public RitualTableBlockEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntityTypes.RITUAL_TABLE_BE.get(), pos, state);
     }
 
-    private boolean validateAndResetCrops(Level world, BlockPos tablePos, boolean resetCrops) {
-        BlockPos[] cropPositions = {
-                tablePos.offset(-2, 0, -2), tablePos.offset(-1, 0, -2), tablePos.offset(1, 0, -2), tablePos.offset(2, 0, -2),
-                tablePos.offset(-2, 0, -1), tablePos.offset(-1, 0, -1), tablePos.offset(1, 0, -1), tablePos.offset(2, 0, -1),
-                tablePos.offset(-2, 0,  1), tablePos.offset(-1, 0,  1), tablePos.offset(1, 0,  1), tablePos.offset(2, 0,  1),
-                tablePos.offset(-2, 0,  2), tablePos.offset(-1, 0,  2), tablePos.offset(1, 0,  2), tablePos.offset(2, 0,  2)
-        };
-
-        boolean allCropsValid = true;
-
-        for (BlockPos pos : cropPositions) {
-            BlockState state = world.getBlockState(pos);
-
-            if (state.getBlock() instanceof CropBlock crop) {
-                if (crop.getAge(state) < crop.getMaxAge()) {
-                    allCropsValid = false;
-
-                } else if (resetCrops) {
-                    BlockState resetState = crop.getStateForAge(0);
-                    world.setBlockAndUpdate(pos, resetState);
-                }
-            } else {
-                allCropsValid = false;
-            }
+    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
+        if (cap == ForgeCapabilities.ITEM_HANDLER) {
+            return itemCap.cast();
         }
-        return allCropsValid;
+        return super.getCapability(cap, side);
     }
 
-    public boolean processSaltBlocks(Level pLevel, BlockPos tablePos, RitualTableRecipe pRecipe, boolean consume) {
-        NonNullList<ItemStack> requiredSaltItems = NonNullList.create();
-        requiredSaltItems.addAll(pRecipe.getSaltItems());
-
-        BlockPos[] brazierPositions = {
-                tablePos.offset(-2, 0, 0),
-                tablePos.offset(2, 0, 0),
-                tablePos.offset(0, 0, -2),
-                tablePos.offset(0, 0, 2)
-        };
-
-        for (BlockPos pos : brazierPositions) {
-            BlockEntity blockEntity = pLevel.getBlockEntity(pos);
-            if (blockEntity instanceof RitualBrazierBlockEntity brazier) {
-                Iterator<ItemStack> iterator = requiredSaltItems.iterator();
-                while (iterator.hasNext()) {
-                    ItemStack item = iterator.next();
-                    if (ItemStack.isSameItemSameTags(brazier.getStoredItem(), item)) {
-                        iterator.remove();
-                        if (consume) {
-                            brazier.removeItem();
-                            brazier.setChanged();
-
-                            BlockState brazierState = pLevel.getBlockState(pos);
-                            if (brazierState.getValue(RitualBrazierBlock.SALTED)) {
-                                pLevel.setBlock(pos, brazierState.setValue(RitualBrazierBlock.SALTED, false), Block.UPDATE_ALL);
-                            }
-
-                            pLevel.sendBlockUpdated(pos, pLevel.getBlockState(pos), pLevel.getBlockState(pos), Block.UPDATE_ALL);
-                        }
-                        break;
-                    }
-                }
-            }
-        }
-        return requiredSaltItems.isEmpty();
+    public void invalidateCaps() {
+        super.invalidateCaps();
+        itemCap.invalidate();
     }
 
-    private void sendMessageToPlayer(Level world, BlockPos pos, String messageKey) {
-        if (!world.isClientSide) {
-            Player nearestPlayer = world.getNearestPlayer(pos.getX(), pos.getY(), pos.getZ(), 5, false);
-            if (nearestPlayer != null) {
-                nearestPlayer.displayClientMessage(Component.translatable(messageKey), true);
-            }
-        }
+    public void reviveCaps() {
+        super.reviveCaps();
+        itemCap = LazyOptional.of(() -> inventory);
     }
 
-    public boolean performTransmutation(Level world, BlockPos pos) {
-        SimpleContainer inventory = new SimpleContainer(this.getContainerSize());
-        ItemStack inputStack = this.getItem(0);
-
-        if (!isRitualReady(world, pos)) {
-            return false;
-        }
-
-        if (inputStack.isEmpty()) {
-            sendMessageToPlayer(world, pos, "message.hexalia.ritual.missing_ingredients");
-            return false;
-        }
-
-        inventory.setItem(0, inputStack);
-
-        Optional<RitualTableRecipe> recipeOptional = world.getRecipeManager().getRecipeFor(
-                RitualTableRecipe.Type.INSTANCE, this, world
-        );
-
-        if (recipeOptional.isEmpty()) {
-            sendMessageToPlayer(world, pos, "message.hexalia.ritual.missing_ingredients");
-            return false;
-        }
-
-        RitualTableRecipe recipe = recipeOptional.get();
-
-        boolean hasRequiredSalt = processSaltBlocks(world, pos, recipe, false);
-        if (!hasRequiredSalt) {
-            sendMessageToPlayer(world, pos, "message.hexalia.ritual.missing_ingredients");
-            return false;
-        }
-
-        processSaltBlocks(world, pos, recipe, true);
-        this.removeItem(0, 1);
-        this.setItem(0, recipe.getResultItem(world.registryAccess()).copy());
-        this.setChanged();
-
-        world.sendBlockUpdated(pos, world.getBlockState(pos), world.getBlockState(pos), Block.UPDATE_ALL);
-        validateAndResetCrops(world, pos, true);
-
-        return true;
+    public ItemStackHandler getItemHandler() {
+        return inventory;
     }
 
-    @Override
-    public int[] getSlotsForFace(Direction pSide) {
-        return new int[0];
-    }
-
-    @Override
-    public boolean canPlaceItemThroughFace(int pIndex, ItemStack pItemStack, @Nullable Direction pDirection) {
-        return true;
-    }
-
-    @Override
-    public boolean canTakeItemThroughFace(int pIndex, ItemStack pStack, Direction pDirection) {
-        return true;
-    }
-
-    @Override
     public int getContainerSize() {
         return 1;
     }
 
-    @Override
     public boolean isEmpty() {
-        return inventory.get(0).isEmpty();
+        return inventory.getStackInSlot(0).isEmpty();
     }
 
-    @Override
-    public ItemStack getItem(int slot) {
-        if (slot < 0 || slot >= this.inventory.size()) {
-            return ItemStack.EMPTY;
+    public ItemStack getItem(int i) {
+        return inventory.getStackInSlot(i);
+    }
+
+    public ItemStack removeItem(int index, int count) {
+        ItemStack extracted = inventory.extractItem(index, count, false);
+        setChanged();
+        return extracted;
+    }
+
+    public ItemStack removeItemNoUpdate(int index) {
+        ItemStack current = inventory.getStackInSlot(index);
+        if (!current.isEmpty()) {
+            inventory.setStackInSlot(index, ItemStack.EMPTY);
+            setChanged();
         }
-        return this.inventory.get(slot);
+        return current;
     }
 
-    @Override
-    public ItemStack removeItem(int pSlot, int pAmount) {
-        return ContainerHelper.removeItem(inventory, pSlot, pAmount);
+    public void setItem(int index, ItemStack stack) {
+        if (!stack.isEmpty()) stack = stack.copyWithCount(1);
+        inventory.setStackInSlot(index, stack);
+        setChanged();
     }
 
-    @Override
-    public ItemStack removeItemNoUpdate(int pSlot) {
-        return ContainerHelper.takeItem(inventory, pSlot);
+    public boolean stillValid(Player player) {
+        if (level == null || level.getBlockEntity(worldPosition) != this) return false;
+        double dx = player.getX() - (worldPosition.getX() + 0.5);
+        double dy = player.getY() - (worldPosition.getY() + 0.5);
+        double dz = player.getZ() - (worldPosition.getZ() + 0.5);
+        return dx * dx + dy * dy + dz * dz <= 64.0;
     }
 
-    @Override
-    public void setItem(int pSlot, ItemStack pStack) {
-        inventory.set(pSlot, pStack);
-    }
-
-    @Override
-    public boolean stillValid(Player pPlayer) {
-        return worldPosition.distSqr(pPlayer.blockPosition()) <= 16;
-    }
-
-    @Override
     public void clearContent() {
-        inventory.clear();
+        inventory.setStackInSlot(0, ItemStack.EMPTY);
     }
 
-    @Override
     public int getMaxStackSize() {
         return 1;
     }
 
-    @Override
-    public void load(CompoundTag pTag) {
-        super.load(pTag);
-        this.inventory = NonNullList.withSize(1, ItemStack.EMPTY);
-        ContainerHelper.loadAllItems(pTag, inventory);
-        this.progress = pTag.getInt("Progress");
-        this.ritualInProgress = pTag.getBoolean("RitualInProgress");
+    public float getRenderingRotation() {
+        rotation = (rotation + 0.5f) % 360f;
+        return rotation;
     }
 
-    @Override
-    protected void saveAdditional(CompoundTag pTag) {
-        super.saveAdditional(pTag);
-        ContainerHelper.saveAllItems(pTag, inventory);
-        pTag.putInt("Progress", this.progress);
-        pTag.putBoolean("RitualInProgress", this.ritualInProgress);
+    public void startTransformation(ItemStack output, int durationTicks, List<RitualBrazierBlockEntity> braziers, List<BlockPos> grownCropPositions) {
+        if (transformTicksRemaining > 0) return;
+        this.transformTicksRemaining = Math.max(1, durationTicks);
+        this.pendingOutput = output.copy();
+        this.activeBraziers = new ArrayList<>(braziers);
+        this.grownCrops = new ArrayList<>(grownCropPositions);
+        this.nextBrazierIndex = 0;
+        this.cachedParticleItem = ItemStack.EMPTY;
+        setChanged();
     }
 
-    @Override
-    public CompoundTag getUpdateTag() {
-        return saveWithoutMetadata();
+    public static void serverTick(Level level, BlockPos pos, BlockState st, RitualTableBlockEntity be) {
+        if (be.transformTicksRemaining <= 0) return;
+        if (be.isEmpty() || hasMissingBrazierItems(be)) {
+            cancelRitual(level, pos, be);
+            return;
+        }
+        int elapsed = DURATION - be.transformTicksRemaining;
+        handleActiveBraziers(level, pos, be, elapsed);
+        be.transformTicksRemaining--;
+        if (be.transformTicksRemaining == 0) {
+            completeRitual(level, pos, be);
+        }
     }
 
-    public boolean addStack(ItemStack itemStack) {
-        if (isEmpty() && !itemStack.isEmpty()) {
-            setItem(0, itemStack.split(1));
-            setChanged();
-            return true;
+    private static boolean hasMissingBrazierItems(RitualTableBlockEntity be) {
+        for (int i = be.nextBrazierIndex; i < be.activeBraziers.size(); i++) {
+            RitualBrazierBlockEntity brazier = be.activeBraziers.get(i);
+            if (i == be.nextBrazierIndex && !be.cachedParticleItem.isEmpty()) continue;
+            if (brazier == null || brazier.isRemoved() || brazier.isEmpty()) return true;
         }
         return false;
     }
 
-    public ItemStack removeStack() {
-        if (!isEmpty()) {
-            ItemStack itemStack = getItem(0).split(1);
-            setChanged();
-            return itemStack;
+    private static void handleActiveBraziers(Level level, BlockPos pos, RitualTableBlockEntity be, int elapsed) {
+        if (be.activeBraziers.isEmpty() || be.nextBrazierIndex >= be.activeBraziers.size()) return;
+        int ticksPerBrazier = 40;
+        int currentTime = elapsed - (be.nextBrazierIndex * ticksPerBrazier);
+        RitualBrazierBlockEntity brazier = be.activeBraziers.get(be.nextBrazierIndex);
+        if (brazier == null) return;
+
+        if (currentTime == 0) {
+            be.cachedParticleItem = brazier.getStoredItem().copy();
+            brazier.removeItem();
+            BlockState bs = level.getBlockState(brazier.getBlockPos());
+            if (bs.getBlock() instanceof RitualBrazierBlock && bs.hasProperty(RitualBrazierBlock.SALTED) && bs.getValue(RitualBrazierBlock.SALTED)) {
+                level.setBlock(brazier.getBlockPos(), bs.setValue(RitualBrazierBlock.SALTED, false), 3);
+            }
         }
-        return ItemStack.EMPTY;
+
+        if (currentTime >= 0 && currentTime < ticksPerBrazier && level instanceof ServerLevel server) {
+            spawnItemParticles(server, be.cachedParticleItem, brazier.getBlockPos(), pos, currentTime, ticksPerBrazier);
+        }
+
+        if (currentTime == ticksPerBrazier - 1) {
+            if (level instanceof ServerLevel server) {
+                spawnAbsorbBurst(server, pos, be.cachedParticleItem);
+            }
+            be.nextBrazierIndex++;
+            be.cachedParticleItem = ItemStack.EMPTY;
+        }
     }
 
-    public ItemStack getRenderStack() {
-        ItemStack stack = inventory.get(0);
-        if (stack.isEmpty()) {
-            stack = inventory.get(0);
+    private static void spawnItemParticles(ServerLevel server, ItemStack item, BlockPos from, BlockPos to, int time, int totalTime) {
+        if (item.isEmpty()) return;
+        ItemParticleOption particle = new ItemParticleOption(ParticleTypes.ITEM, item);
+
+        double startX = from.getX() + 0.5, startY = from.getY() + 0.4, startZ = from.getZ() + 0.5;
+        double endX = to.getX() + 0.5, endY = to.getY() + 1.15, endZ = to.getZ() + 0.5;
+        double progress = time / (double) totalTime;
+
+        double px = startX + (endX - startX) * progress;
+        double py = startY + (endY - startY) * progress;
+        double pz = startZ + (endZ - startZ) * progress;
+
+        for (int i = 0; i < 3; i++) {
+            double offsetX = (server.random.nextDouble() - 0.5) * 0.05;
+            double offsetY = (server.random.nextDouble() - 0.5) * 0.05;
+            double offsetZ = (server.random.nextDouble() - 0.5) * 0.05;
+            double speed = 0.008 + server.random.nextDouble() * 0.004;
+
+            double velX = (endX - startX) * speed;
+            double velY = (endY - startY) * speed + 0.003;
+            double velZ = (endZ - startZ) * speed;
+
+            server.sendParticles(particle, px + offsetX, py + offsetY, pz + offsetZ, 1, velX, velY, velZ, 0.0);
         }
-        return stack;
     }
 
-    @Nullable
-    @Override
-    public ClientboundBlockEntityDataPacket getUpdatePacket() {
+    private static void spawnAbsorbBurst(ServerLevel server, BlockPos pos, ItemStack item) {
+        double cx = pos.getX() + 0.5, cy = pos.getY() + 1.1, cz = pos.getZ() + 0.5;
+
+        for (int i = 0; i < 12; i++) {
+            double ox = (server.random.nextDouble() - 0.5) * 0.5;
+            double oy = server.random.nextDouble() * 0.3;
+            double oz = (server.random.nextDouble() - 0.5) * 0.5;
+            double vx = (server.random.nextDouble() - 0.5) * 0.02;
+            double vy = 0.04 + server.random.nextDouble() * 0.02;
+            double vz = (server.random.nextDouble() - 0.5) * 0.02;
+
+            server.sendParticles(ParticleTypes.WITCH, cx + ox, cy + oy, cz + oz, 1, vx, vy, vz, 0.0);
+        }
+
+        if (!item.isEmpty()) {
+            for (int i = 0; i < 8; i++) {
+                double ox = (server.random.nextDouble() - 0.5) * 0.2;
+                double oy = server.random.nextDouble() * 0.2;
+                double oz = (server.random.nextDouble() - 0.5) * 0.2;
+                double vx = (server.random.nextDouble() - 0.5) * 0.005;
+                double vy = 0.015 + server.random.nextDouble() * 0.005;
+                double vz = (server.random.nextDouble() - 0.5) * 0.005;
+
+                server.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, item), cx + ox, cy + oy, cz + oz, 1, vx, vy, vz, 0.0);
+            }
+        }
+
+        server.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 0.4f, 1.2f + server.random.nextFloat() * 0.2f);
+    }
+
+    private static void completeRitual(Level level, BlockPos pos, RitualTableBlockEntity be) {
+        be.setItem(0, be.pendingOutput);
+        be.pendingOutput = ItemStack.EMPTY;
+
+        for (BlockPos cropPos : be.grownCrops) {
+            BlockState state = level.getBlockState(cropPos);
+            if (state.getBlock() instanceof CropBlock crop && state.hasProperty(CropBlock.AGE)) {
+                level.setBlock(cropPos, state.setValue(CropBlock.AGE, 0), 3);
+            }
+        }
+        be.activeBraziers = Collections.emptyList();
+        be.nextBrazierIndex = 0;
+        be.cachedParticleItem = ItemStack.EMPTY;
+        be.grownCrops = Collections.emptyList();
+
+        level.playSound(null, pos, ModSoundEvents.RITUAL_SUCCESS.get(), SoundSource.BLOCKS, 0.8f, 1.0f);
+        if (level instanceof ServerLevel server) {
+            server.sendParticles(ModParticleType.LEAVES.get(), pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5, 15, 0.3, 0.3, 0.3, 0.0);
+        }
+        be.setChanged();
+    }
+
+    private static void cancelRitual(Level level, BlockPos pos, RitualTableBlockEntity be) {
+        be.transformTicksRemaining = 0;
+        be.pendingOutput = ItemStack.EMPTY;
+        be.activeBraziers = Collections.emptyList();
+        be.nextBrazierIndex = 0;
+        be.cachedParticleItem = ItemStack.EMPTY;
+        be.grownCrops = Collections.emptyList();
+
+        if (level instanceof ServerLevel server) {
+            server.sendParticles(ParticleTypes.SMOKE, pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5, 12, 0.4, 0.4, 0.4, 0.02);
+            Player nearest = server.getNearestPlayer(pos.getX(), pos.getY(), pos.getZ(), 5, false);
+            if (nearest != null) {
+                nearest.displayClientMessage(Component.translatable("message.hexalia.ritual.stopped_ritual"), true);
+            }
+        }
+        level.playSound(null, pos, SoundEvents.CANDLE_EXTINGUISH, SoundSource.BLOCKS, 0.4f, 0.6f);
+        be.setChanged();
+    }
+
+    protected void saveAdditional(CompoundTag tag) {
+        super.saveAdditional(tag);
+        tag.put("Inv", inventory.serializeNBT());
+        tag.putInt("TicksLeft", this.transformTicksRemaining);
+        if (!this.pendingOutput.isEmpty()) {
+            CompoundTag out = new CompoundTag();
+            this.pendingOutput.save(out);
+            tag.put("PendingOut", out);
+        }
+    }
+
+    public void load(CompoundTag tag) {
+        super.load(tag);
+        inventory.deserializeNBT(tag.getCompound("Inv"));
+        this.transformTicksRemaining = tag.getInt("TicksLeft");
+        this.pendingOutput = tag.contains("PendingOut") ? ItemStack.of(tag.getCompound("PendingOut")) : ItemStack.EMPTY;
+    }
+
+    public CompoundTag getUpdateTag() {
+        return saveWithoutMetadata();
+    }
+
+    public @Nullable ClientboundBlockEntityDataPacket getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    public void setGrownCropPositions(List<BlockPos> crops) {
+        this.grownCrops = new ArrayList<>(crops);
+    }
+
+    public static List<BlockPos> collectGrownCrops(Level level, BlockPos tablePos) {
+        List<BlockPos> list = new ArrayList<>(16);
+        BlockPos[] positions = {
+                tablePos.offset(-2, 0, -2), tablePos.offset(-1, 0, -2), tablePos.offset(1, 0, -2), tablePos.offset(2, 0, -2),
+                tablePos.offset(-2, 0, -1), tablePos.offset(-1, 0, -1), tablePos.offset(1, 0, -1), tablePos.offset(2, 0, -1),
+                tablePos.offset(-2, 0, 1), tablePos.offset(-1, 0, 1), tablePos.offset(1, 0, 1), tablePos.offset(2, 0, 1),
+                tablePos.offset(-2, 0, 2), tablePos.offset(-1, 0, 2), tablePos.offset(1, 0, 2), tablePos.offset(2, 0, 2)
+        };
+        for (BlockPos p : positions) {
+            BlockState st = level.getBlockState(p);
+            if (st.getBlock() instanceof CropBlock crop && crop.getAge(st) >= crop.getMaxAge()) {
+                list.add(p.immutable());
+            }
+        }
+        return list;
     }
 }

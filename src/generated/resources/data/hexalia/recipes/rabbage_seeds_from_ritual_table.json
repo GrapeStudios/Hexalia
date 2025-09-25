@@ -1,12 +1,9 @@
 {
   "type": "hexalia:ritual_table",
-  "input": {
-    "item": "minecraft:beetroot_seeds"
-  },
-  "output": {
-    "item": "hexalia:rabbage_seeds"
-  },
-  "salt_items": [
+  "ingredients": [
+    {
+      "item": "minecraft:beetroot_seeds"
+    },
     {
       "item": "hexalia:dream_paste"
     },
@@ -19,5 +16,8 @@
     {
       "item": "minecraft:poppy"
     }
-  ]
+  ],
+  "output": {
+    "item": "hexalia:rabbage_seeds"
+  }
 }

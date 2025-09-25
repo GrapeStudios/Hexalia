@@ -1,12 +1,9 @@
 {
   "type": "hexalia:ritual_table",
-  "input": {
-    "item": "minecraft:kelp"
-  },
-  "output": {
-    "item": "hexalia:nautilite"
-  },
-  "salt_items": [
+  "ingredients": [
+    {
+      "item": "minecraft:kelp"
+    },
     {
       "item": "hexalia:siren_paste"
     },
@@ -19,5 +16,8 @@
     {
       "item": "minecraft:prismarine_crystals"
     }
-  ]
+  ],
+  "output": {
+    "item": "hexalia:nautilite"
+  }
 }

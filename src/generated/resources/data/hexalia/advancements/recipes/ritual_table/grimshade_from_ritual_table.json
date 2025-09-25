@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "hexalia:air_node"
+        "recipe": "hexalia:grimshade_from_ritual_table"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "hexalia:air_node"
+      "hexalia:grimshade_from_ritual_table"
     ]
   },
   "sends_telemetry_event": true

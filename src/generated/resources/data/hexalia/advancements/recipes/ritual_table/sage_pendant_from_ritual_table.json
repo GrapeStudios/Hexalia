@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "hexalia:sage_pendant"
+        "recipe": "hexalia:sage_pendant_from_ritual_table"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "hexalia:sage_pendant"
+      "hexalia:sage_pendant_from_ritual_table"
     ]
   },
   "sends_telemetry_event": true

@@ -25,12 +25,12 @@ public class RitualTableBlockEntityRenderer implements BlockEntityRenderer<Ritua
     @Override
     public void render(RitualTableBlockEntity pBlockEntity, float pPartialTick, PoseStack pPoseStack, MultiBufferSource pBuffer, int pPackedLight, int pPackedOverlay) {
         ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
-        ItemStack itemStack = pBlockEntity.getRenderStack();
+        ItemStack itemStack = pBlockEntity.getItem(0);
 
         pPoseStack.pushPose();
-        pPoseStack.translate(0.5f, 1.1f, 0.5f);
+        pPoseStack.translate(0.5f, 1.15f, 0.5f);
         pPoseStack.scale(1f, 1f, 1f);
-        pPoseStack.mulPose(Axis.YP.rotationDegrees((float)(System.currentTimeMillis() / 30 % 360)));
+        pPoseStack.mulPose(Axis.YP.rotationDegrees(pBlockEntity.getRenderingRotation()));
 
         itemRenderer.renderStatic(itemStack, ItemDisplayContext.GROUND, getLightLevel(pBlockEntity.getLevel(),
                 pBlockEntity.getBlockPos()), OverlayTexture.NO_OVERLAY, pPoseStack, pBuffer, pBlockEntity.getLevel(), 1);

@@ -1,12 +1,9 @@
 {
   "type": "hexalia:ritual_table",
-  "input": {
-    "item": "minecraft:oxeye_daisy"
-  },
-  "output": {
-    "item": "hexalia:windsong"
-  },
-  "salt_items": [
+  "ingredients": [
+    {
+      "item": "minecraft:oxeye_daisy"
+    },
     {
       "item": "hexalia:air_node"
     },
@@ -19,5 +16,8 @@
     {
       "item": "minecraft:phantom_membrane"
     }
-  ]
+  ],
+  "output": {
+    "item": "hexalia:windsong"
+  }
 }

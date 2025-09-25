@@ -1,12 +1,9 @@
 {
   "type": "hexalia:ritual_table",
-  "input": {
-    "item": "minecraft:lily_of_the_valley"
-  },
-  "output": {
-    "item": "hexalia:astrylis"
-  },
-  "salt_items": [
+  "ingredients": [
+    {
+      "item": "minecraft:lily_of_the_valley"
+    },
     {
       "item": "hexalia:celestial_crystal"
     },
@@ -19,5 +16,8 @@
     {
       "item": "minecraft:glowstone_dust"
     }
-  ]
+  ],
+  "output": {
+    "item": "hexalia:astrylis"
+  }
 }

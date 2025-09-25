@@ -15,7 +15,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "hexalia:earth_node"
+        "recipe": "hexalia:earth_node_from_ritual_table"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -28,7 +28,7 @@
   ],
   "rewards": {
     "recipes": [
-      "hexalia:earth_node"
+      "hexalia:earth_node_from_ritual_table"
     ]
   },
   "sends_telemetry_event": true

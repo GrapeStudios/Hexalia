@@ -2,110 +2,146 @@ package net.astralya.hexalia.datagen.custom;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import net.astralya.hexalia.HexaliaMod;
+import net.astralya.hexalia.HexaliaMod; // if you prefer using your modid in getId()
 import net.astralya.hexalia.recipe.RitualTableRecipe;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.RequirementsStrategy;
+import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
+import net.minecraft.core.NonNullList;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.function.Consumer;
 
 public class RitualTableRecipeBuilder implements RecipeBuilder {
 
-    private final List<Ingredient> ingredients = new ArrayList<>();
-    private final Item output;
-    private final Item input;
+    private final NonNullList<Ingredient> ingredients = NonNullList.create();
+    private final ItemStack outputStack;
+    private final Item resultItem;
+
     private final Advancement.Builder advancement = Advancement.Builder.advancement();
+    private final Map<String, CriterionTriggerInstance> criteria = new LinkedHashMap<>();
 
-    public RitualTableRecipeBuilder(List<ItemLike> ingredients, ItemLike input, ItemLike output) {
-        for (ItemLike ingredient : ingredients) {
-            this.ingredients.add(Ingredient.of(ingredient));
+    public RitualTableRecipeBuilder(ItemStack output) {
+        this.outputStack = output.copy();
+        this.resultItem = this.outputStack.getItem();
+    }
+
+    public static RitualTableRecipeBuilder ritualTable(ItemStack output) {
+        return new RitualTableRecipeBuilder(output);
+    }
+
+    public RitualTableRecipeBuilder tableInput(Ingredient ingredient) {
+        if (!ingredients.isEmpty()) {
+            throw new IllegalStateException("Table input must be added first.");
         }
-        this.input = input.asItem();
-        this.output = output.asItem();
+        this.ingredients.add(ingredient);
+        return this;
     }
+    public RitualTableRecipeBuilder tableInput(Item item)     { return tableInput(Ingredient.of(item)); }
+    public RitualTableRecipeBuilder tableInput(ItemStack stack){ return tableInput(Ingredient.of(stack)); }
+
+    public RitualTableRecipeBuilder brazier(Ingredient ingredient) {
+        this.ingredients.add(ingredient);
+        return this;
+    }
+    public RitualTableRecipeBuilder brazier(Item item)     { return brazier(Ingredient.of(item)); }
+    public RitualTableRecipeBuilder brazier(ItemStack stack){ return brazier(Ingredient.of(stack)); }
 
     @Override
-    public RecipeBuilder unlockedBy(String pCriterionName, CriterionTriggerInstance pCriterionTrigger) {
-        this.advancement.addCriterion(pCriterionName, pCriterionTrigger);
+    public RitualTableRecipeBuilder unlockedBy(String name, CriterionTriggerInstance criterion) {
+        this.criteria.put(name, criterion);
+        this.advancement.addCriterion(name, criterion);
         return this;
     }
 
-    @Override
-    public RecipeBuilder group(@Nullable String pGroupName) {
-        return this;
+    public RitualTableRecipeBuilder unlockedByItem(String name, Item item) {
+        return this.unlockedBy(name, InventoryChangeTrigger.TriggerInstance.hasItems(item));
     }
 
     @Override
-    public Item getResult() {
-        return output;
-    }
+    public RecipeBuilder group(@Nullable String group) { return this; }
 
     @Override
-    public void save(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ResourceLocation pRecipeId) {
+    public Item getResult() { return this.resultItem; }
+
+    @Override
+    public void save(Consumer<FinishedRecipe> out, ResourceLocation id) {
+        if (this.ingredients.isEmpty()) {
+            throw new IllegalStateException("Ritual Table recipe requires at least 1 ingredient (the table input).");
+        }
+        if (this.ingredients.size() > RitualTableRecipe.INPUT_SLOTS + 1) { // 1 table + up to 4 braziers
+            throw new IllegalStateException("Too many ingredients for Ritual Table (max " + (RitualTableRecipe.INPUT_SLOTS + 1) + ").");
+        }
+
         this.advancement.parent(new ResourceLocation("recipes/root"))
-                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(pRecipeId))
-                .rewards(AdvancementRewards.Builder.recipe(pRecipeId)).requirements(RequirementsStrategy.OR);
+                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
+                .rewards(AdvancementRewards.Builder.recipe(id))
+                .requirements(RequirementsStrategy.OR);
 
-        pFinishedRecipeConsumer.accept(new Result(pRecipeId, this.output, this.ingredients, this.input,
-                this.advancement, new ResourceLocation(pRecipeId.getNamespace(), "recipes/"
-                + pRecipeId.getPath())));
+        ResourceLocation advId = id.withPrefix("recipes/ritual_table/");
 
+        out.accept(new Result(
+                id,
+                this.ingredients,
+                this.outputStack,
+                this.advancement,
+                advId
+        ));
     }
 
     public static class Result implements FinishedRecipe {
         private final ResourceLocation id;
-        private final Item output;
-        private final List<Ingredient> saltItems;
-        private final Item input;
+        private final NonNullList<Ingredient> ingredients;
+        private final ItemStack output;
         private final Advancement.Builder advancement;
         private final ResourceLocation advancementId;
 
-        public Result(ResourceLocation id, Item output, List<Ingredient> saltItems, Item input,
-                      Advancement.Builder advancement, ResourceLocation advancementId) {
+        public Result(ResourceLocation id,
+                      NonNullList<Ingredient> ingredients,
+                      ItemStack output,
+                      Advancement.Builder advancement,
+                      ResourceLocation advancementId) {
             this.id = id;
-            this.output = output;
-            this.saltItems = saltItems;
-            this.input = input;
+            this.ingredients = ingredients;
+            this.output = output.copy();
             this.advancement = advancement;
             this.advancementId = advancementId;
         }
 
         @Override
-        public void serializeRecipeData(JsonObject pJson) {
-            pJson.addProperty("type", "hexalia:ritual_table");
+        public void serializeRecipeData(JsonObject json) {
+            json.addProperty("type", "hexalia:ritual_table");
 
-            JsonObject jsonInput = new JsonObject();
-            jsonInput.addProperty("item", ForgeRegistries.ITEMS.getKey(this.input).toString());
-            pJson.add("input", jsonInput);
-
-            JsonArray jsonSaltItems = new JsonArray();
-            for (Ingredient saltItems : saltItems) {
-                jsonSaltItems.add(saltItems.toJson());
+            JsonArray arr = new JsonArray();
+            for (Ingredient ing : ingredients) {
+                arr.add(ing.toJson());
             }
-            pJson.add("salt_items", jsonSaltItems);
+            json.add("ingredients", arr);
 
-            JsonObject jsonOutput = new JsonObject();
-            jsonOutput.addProperty("item", ForgeRegistries.ITEMS.getKey(this.output).toString());
-            pJson.add("output", jsonOutput);
+            JsonObject out = new JsonObject();
+            out.addProperty("item", ForgeRegistries.ITEMS.getKey(this.output.getItem()).toString());
+            if (this.output.getCount() > 1) {
+                out.addProperty("count", this.output.getCount());
+            }
+            json.add("output", out);
         }
 
         @Override
         public ResourceLocation getId() {
-            return new ResourceLocation(HexaliaMod.MODID, ForgeRegistries.ITEMS.getKey(this.output).getPath() + "_from_ritual_table");
+            return this.id;
         }
 
         @Override
