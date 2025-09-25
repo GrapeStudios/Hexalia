@@ -1,4 +1,4 @@
-package net.astralya.hexalia.censer;
+package net.astralya.hexalia.block.custom.censer;
 
 import net.minecraft.server.level.ServerLevel;
 import net.minecraftforge.event.TickEvent;

@@ -2,8 +2,8 @@ package net.astralya.hexalia.block.entity.custom;
 
 import net.astralya.hexalia.block.custom.CenserBlock;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
-import net.astralya.hexalia.censer.CenserEffectHandler;
-import net.astralya.hexalia.censer.HerbCombination;
+import net.astralya.hexalia.block.custom.censer.CenserEffectHandler;
+import net.astralya.hexalia.block.custom.censer.HerbCombination;
 import net.astralya.hexalia.util.ModUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
