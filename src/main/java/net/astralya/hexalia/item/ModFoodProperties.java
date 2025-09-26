@@ -4,6 +4,7 @@ import net.astralya.hexalia.effect.ModMobEffects;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Items;
 
 public class ModFoodProperties {
 
@@ -14,8 +15,8 @@ public class ModFoodProperties {
     public static final FoodProperties CHILLBERRY_PIE = new FoodProperties.Builder().nutrition(6).saturationModifier(0.8f)
             .effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 900), 1.0f).build();
 
-    public static final FoodProperties MANDRAKE_STEW = new FoodProperties.Builder().nutrition(6).saturationModifier(0.7f)
-            .effect(() -> new MobEffectInstance(ModMobEffects.OVERFED, 900), 1.0f).build();
+    public static final FoodProperties MANDRAKE_STEW = new FoodProperties.Builder().nutrition(6).usingConvertsTo(Items.BOWL)
+            .saturationModifier(0.7f).effect(() -> new MobEffectInstance(ModMobEffects.OVERFED, 900), 1.0f).build();
 
     public static final FoodProperties SUNFIRE_TOMATO = new FoodProperties.Builder().nutrition(1).saturationModifier(0.3f).build();
     public static final FoodProperties SPICY_SANDWICH = new FoodProperties.Builder().nutrition(6).saturationModifier(0.6f)

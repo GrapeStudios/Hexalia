@@ -76,7 +76,7 @@ public class ModItems {
     public static final DeferredItem<Item> CHILLBERRY_PIE = ITEMS.registerItem("chillberry_pie",
             Item::new, new Item.Properties().food(ModFoodProperties.CHILLBERRY_PIE));
     public static final DeferredItem<Item> MANDRAKE_STEW = ITEMS.registerItem("mandrake_stew",
-            Item::new, new Item.Properties().food(ModFoodProperties.MANDRAKE_STEW));
+            Item::new, new Item.Properties().food(ModFoodProperties.MANDRAKE_STEW).stacksTo(1));
     public static final DeferredItem<Item> GALEBERRIES_COOKIE = ITEMS.registerItem("galeberries_cookie",
             Item::new, new Item.Properties().food(ModFoodProperties.GALEBERRIES_COOKIE));
 
