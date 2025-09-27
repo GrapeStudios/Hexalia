@@ -1,5 +1,6 @@
 package net.astralya.hexalia.item.custom;
 
+import net.astralya.hexalia.block.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -41,7 +42,7 @@ public class HexFocusItem extends Item {
             if (VALID_BLOCKS.contains(block)) {
                 world.syncWorldEvent(BLOCK_BREAK_EVENT_ID, pos, Block.getRawIdFromState(state));
                 world.playSound(null, pos, SoundEvents.BLOCK_AMETHYST_BLOCK_HIT, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                world.setBlockState(pos, Blocks.ENCHANTING_TABLE.getDefaultState());
+                world.setBlockState(pos, ModBlocks.RITUAL_TABLE.getDefaultState());
                 player.getItemCooldownManager().set(this, 60);
                 return ActionResult.SUCCESS;
             }

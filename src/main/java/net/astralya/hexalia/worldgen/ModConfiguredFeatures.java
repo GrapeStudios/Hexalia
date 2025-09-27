@@ -8,187 +8,181 @@ import net.astralya.hexalia.worldgen.gen.decorator.CocoonTreeDecorator;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.registry.Registerable;
-import net.minecraft.registry.RegistryEntryLookup;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
-import net.minecraft.registry.entry.RegistryEntryList;
-import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.intprovider.ConstantIntProvider;
-import net.minecraft.util.math.intprovider.UniformIntProvider;
-import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.Feature;
+import net.minecraft.world.gen.feature.FeatureConfig;
+import net.minecraft.world.gen.feature.PlacedFeatures;
+import net.minecraft.world.gen.feature.RandomPatchFeatureConfig;
+import net.minecraft.world.gen.feature.SimpleBlockFeatureConfig;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
-import net.minecraft.world.gen.foliage.*;
-import net.minecraft.world.gen.root.AboveRootPlacement;
-import net.minecraft.world.gen.root.MangroveRootPlacement;
-import net.minecraft.world.gen.root.MangroveRootPlacer;
+import net.minecraft.world.gen.foliage.CherryFoliagePlacer;
+import net.minecraft.world.gen.foliage.DarkOakFoliagePlacer;
+import net.minecraft.world.gen.foliage.LargeOakFoliagePlacer;
 import net.minecraft.world.gen.stateprovider.BlockStateProvider;
-import net.minecraft.world.gen.treedecorator.LeavesVineTreeDecorator;
 import net.minecraft.world.gen.trunk.DarkOakTrunkPlacer;
 import net.minecraft.world.gen.trunk.StraightTrunkPlacer;
-import net.minecraft.world.gen.trunk.UpwardsBranchingTrunkPlacer;
 
 import java.util.List;
-import java.util.Optional;
 
-public class ModConfiguredFeatures {
+public final class ModConfiguredFeatures {
 
-    public static final RegistryKey<ConfiguredFeature<?, ?>> SPIRIT_BLOOM_KEY = registerKey("spirit_bloom");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> CHILLBERRY_KEY = registerKey("chillberry");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> DREAMSHROOM_KEY = registerKey("dreamshroom");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> SIREN_KELP_KEY = registerKey("siren_kelp");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> CELESTIAL_BLOOM_KEY = registerKey("celestial_bloom");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SPIRIT_BLOOM = registerKey("spirit_bloom");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> DREAMSHROOM = registerKey("dreamshroom");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> SIREN_KELP = registerKey("siren_kelp");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> CHILLBERRY = registerKey("chillberry");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> WILD_SUNFIRE_TOMATO = registerKey("wild_sunfire_tomato");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> WILD_MANDRAKE = registerKey("wild_mandrake");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> CELESTIAL_BLOOM = registerKey("celestial_bloom");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> GHOST_FERN = registerKey("ghost_fern");
 
-    public static final RegistryKey<ConfiguredFeature<?, ?>> WILD_SUNFIRE_TOMATO_KEY = registerKey("wild_sunfire_tomato");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> WILD_MANDRAKE_KEY = registerKey("wild_mandrake");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> BEGONIA = registerKey("begonia");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> LAVENDER = registerKey("lavender");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> DAHLIA = registerKey("dahlia");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> LOTUS_FLOWER = registerKey("lotus_flower");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> PALE_MUSHROOM = registerKey("pale_mushroom");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> WITCHWEED = registerKey("witchweed");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> NIGHTSHADE_BUSH = registerKey("nightshade_bush");
 
-    public static final RegistryKey<ConfiguredFeature<?, ?>> HENBANE_KEY = registerKey("henbane");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> BEGONIA_KEY = registerKey("begonia");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> LAVENDER_KEY = registerKey("lavender");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> DAHLIA_KEY = registerKey("dahlia");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> DARK_OAK_COCOON = registerKey("dark_oak_cocoon");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> COTTONWOOD = registerKey("cottonwood");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> COTTONWOOD_COCOON = registerKey("cottonwood_cocoon");
+    public static final RegistryKey<ConfiguredFeature<?, ?>> WILLOW = registerKey("willow");
 
-    public static final RegistryKey<ConfiguredFeature<?, ?>> DARK_OAK_COCOON_KEY = registerKey("dark_oak_cocoon_tree");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> COTTONWOOD_KEY = registerKey("cottonwood");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> COTTONWOOD_COCOON_KEY = registerKey("cottonwood_cocoon");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> WILLOW_KEY = registerKey("willow_key");
+    private ModConfiguredFeatures() {}
 
-    public static final RegistryKey<ConfiguredFeature<?, ?>> LOTUS_FLOWER_KEY = registerKey("lotus_flower_key");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> PALE_MUSHROOM_KEY = registerKey("pale_mushroom_key");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> WITCHWEED_KEY = registerKey("witchweed_key");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> GHOST_FERN_KEY = registerKey("ghost_fern_key");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> HEXED_BULRUSH_KEY = registerKey("hexed_bulrush_key");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> NIGHTSHADE_BUSH_KEY = registerKey("nightshade_bush_key");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> DUCKWEED_KEY = registerKey("duckweed_key");
+    public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> ctx) {
+        registerFunctionalPlants(ctx);
+        registerDecorativePlants(ctx);
+        registerTrees(ctx);
+    }
 
-    public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
-        RegistryEntryLookup<Block> registryEntryLookup = context.getRegistryLookup(RegistryKeys.BLOCK);
+    private static void registerFunctionalPlants(Registerable<ConfiguredFeature<?, ?>> ctx) {
+        register(ctx, SPIRIT_BLOOM, Feature.FLOWER,
+                randomPatch(ModBlocks.SPIRIT_BLOOM, 2, 3, 1));
+        register(ctx, DREAMSHROOM, Feature.RANDOM_PATCH,
+                randomPatch(ModBlocks.DREAMSHROOM, 2, 3, 1));
+        register(ctx, SIREN_KELP, Feature.RANDOM_PATCH,
+                randomPatch(ModBlocks.SIREN_KELP, 2, 3, 1));
+        register(ctx, CHILLBERRY, Feature.RANDOM_PATCH,
+                new RandomPatchFeatureConfig(
+                        30, 8, 4,
+                        PlacedFeatures.createEntry(
+                                Feature.SIMPLE_BLOCK,
+                                new SimpleBlockFeatureConfig(
+                                        BlockStateProvider.of(ModBlocks.CHILLBERRY_BUSH.getDefaultState()
+                                                .with(ChillberryBushBlock.AGE, 3)))
+                        )
+                )
+        );
+        register(ctx, WILD_SUNFIRE_TOMATO, Feature.FLOWER,
+                randomPatch(ModBlocks.WILD_SUNFIRE_TOMATO, 3, 7, 3));
+        register(ctx, WILD_MANDRAKE, Feature.FLOWER,
+                randomPatch(ModBlocks.WILD_MANDRAKE, 3, 7, 3));
+        register(ctx, CELESTIAL_BLOOM, Feature.RANDOM_PATCH,
+                randomPatch(ModBlocks.CELESTIAL_BLOOM, 1, 7, 3));
+        register(ctx, GHOST_FERN, Feature.RANDOM_PATCH,
+                randomPatch(ModBlocks.GHOST_FERN, 1, 7, 3));
+    }
 
-        // Functional Plants
-        register(context, SPIRIT_BLOOM_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
-                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.SPIRIT_BLOOM)))));
+    private static void registerDecorativePlants(Registerable<ConfiguredFeature<?, ?>> ctx) {
+        register(ctx, BEGONIA, Feature.FLOWER,
+                randomPatch(ModBlocks.BEGONIA, 3, 7, 3));
+        register(ctx, LAVENDER, Feature.FLOWER,
+                randomPatch(ModBlocks.LAVENDER, 15, 7, 5));
+        register(ctx, DAHLIA, Feature.FLOWER,
+                randomPatch(ModBlocks.DAHLIA, 15, 7, 5));
+        register(ctx, LOTUS_FLOWER, Feature.RANDOM_PATCH,
+                randomPatch(ModBlocks.LOTUS_FLOWER, 5, 3, 7));
+        register(ctx, PALE_MUSHROOM, Feature.RANDOM_PATCH,
+                randomPatch(ModBlocks.PALE_MUSHROOM, 2, 2, 3));
+        register(ctx, WITCHWEED, Feature.RANDOM_PATCH,
+                randomPatch(ModBlocks.WITCHWEED, 20, 10, 5));
+        register(ctx, NIGHTSHADE_BUSH, Feature.RANDOM_PATCH,
+                randomPatch(ModBlocks.NIGHTSHADE_BUSH, 3, 7, 3));
+    }
 
-        register(context, CHILLBERRY_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(10,
-                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.CHILLBERRY_BUSH.getDefaultState().with(ChillberryBushBlock.AGE, 3))))));
-
-        register(context, DREAMSHROOM_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(10,
-                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.DREAMSHROOM)))));
-
-        register(context, WILD_SUNFIRE_TOMATO_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
-                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.WILD_SUNFIRE_TOMATO)))));
-
-        register(context, SIREN_KELP_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(12,
-                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.SIREN_KELP)))));
-
-        register(context, WILD_MANDRAKE_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
-                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.WILD_MANDRAKE)))));
-
-        register(context, GHOST_FERN_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(1,
-                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.GHOST_FERN)))));
-
-        register(context, CELESTIAL_BLOOM_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(1,
-                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.CELESTIAL_BLOOM)))));
-
-        // Decorative Plants
-        register(context, HENBANE_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
-                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.HENBANE)))));
-
-        register(context, BEGONIA_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
-                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.BEGONIA)))));
-
-        register(context, LAVENDER_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
-                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.LAVENDER)))));
-
-        register(context, DAHLIA_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
-                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.DAHLIA)))));
-
-        register(context, LOTUS_FLOWER_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(5,
-                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.LOTUS_FLOWER)))));
-
-        register(context, PALE_MUSHROOM_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(5,
-                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.PALE_MUSHROOM)))));
-
-        register(context, WITCHWEED_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(5,
-                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.WITCHWEED)))));
-
-        register(context, HEXED_BULRUSH_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(5,
-                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.HEXED_BULRUSH)))));
-
-        register(context, NIGHTSHADE_BUSH_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
-                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.NIGHTSHADE_BUSH)))));
-
-        register(context, DUCKWEED_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(5,
-                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.DUCKWEED)))));
-
-        // Trees
-        register(context, DARK_OAK_COCOON_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
-                BlockStateProvider.of(Blocks.DARK_OAK_LOG),
-                new DarkOakTrunkPlacer(5, 2, 1),
-                BlockStateProvider.of(Blocks.DARK_OAK_LEAVES),
-                new DarkOakFoliagePlacer(ConstantIntProvider.create(1), ConstantIntProvider.create(0)),
-                new TwoLayersFeatureSize(1, 0, 1))
-                .decorators(List.of(new CocoonTreeDecorator(0.2f)))
-                .build());
-
-        register(context, COTTONWOOD_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
-                BlockStateProvider.of(ModBlocks.COTTONWOOD_LOG),
-                new StraightTrunkPlacer(6, 2, 1),
-                BlockStateProvider.of(ModBlocks.COTTONWOOD_LEAVES),
-                new LargeOakFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(1), 3) {},
-                new TwoLayersFeatureSize(1, 0, 2))
-                .decorators(List.of(new CatkinTreeDecorator()))
-                .build());
-
-        register(context, COTTONWOOD_COCOON_KEY, Feature.TREE, new TreeFeatureConfig.Builder(
-                BlockStateProvider.of(ModBlocks.COTTONWOOD_LOG),
-                new StraightTrunkPlacer(6, 2, 1),
-                BlockStateProvider.of(ModBlocks.COTTONWOOD_LEAVES),
-                new LargeOakFoliagePlacer(ConstantIntProvider.create(3), ConstantIntProvider.create(1), 3) {},
-                new TwoLayersFeatureSize(1, 0, 2))
-                .decorators(List.of(new CatkinTreeDecorator(), new CocoonTreeDecorator(0.2f)))
-                .build());
-
-        register(context, WILLOW_KEY, net.minecraft.world.gen.feature.Feature.TREE,
+    private static void registerTrees(Registerable<ConfiguredFeature<?, ?>> ctx) {
+        register(ctx, DARK_OAK_COCOON, Feature.TREE,
                 new net.minecraft.world.gen.feature.TreeFeatureConfig.Builder(
-                        net.minecraft.world.gen.stateprovider.BlockStateProvider.of(net.astralya.hexalia.block.ModBlocks.WILLOW_LOG),
-                        new net.minecraft.world.gen.trunk.StraightTrunkPlacer(4, 2, 1),
-                        net.minecraft.world.gen.stateprovider.BlockStateProvider.of(net.astralya.hexalia.block.ModBlocks.WILLOW_LEAVES),
-                        new net.minecraft.world.gen.foliage.CherryFoliagePlacer(
+                        BlockStateProvider.of(Blocks.DARK_OAK_LOG),
+                        new DarkOakTrunkPlacer(5, 2, 1),
+                        BlockStateProvider.of(Blocks.DARK_OAK_LEAVES),
+                        new DarkOakFoliagePlacer(
+                                ConstantIntProvider.create(1),
+                                ConstantIntProvider.create(0)
+                        ),
+                        new TwoLayersFeatureSize(1, 0, 1)
+                ).decorators(List.of(new CocoonTreeDecorator(0.2f))).build()
+        );
+
+        register(ctx, COTTONWOOD, Feature.TREE,
+                new net.minecraft.world.gen.feature.TreeFeatureConfig.Builder(
+                        BlockStateProvider.of(ModBlocks.COTTONWOOD_LOG),
+                        new StraightTrunkPlacer(6, 2, 1),
+                        BlockStateProvider.of(ModBlocks.COTTONWOOD_LEAVES),
+                        new LargeOakFoliagePlacer(
+                                ConstantIntProvider.create(3),
+                                ConstantIntProvider.create(1),
+                                3
+                        ),
+                        new TwoLayersFeatureSize(1, 0, 2)
+                ).decorators(List.of(new CatkinTreeDecorator())).build()
+        );
+
+        register(ctx, COTTONWOOD_COCOON, Feature.TREE,
+                new net.minecraft.world.gen.feature.TreeFeatureConfig.Builder(
+                        BlockStateProvider.of(ModBlocks.COTTONWOOD_LOG),
+                        new StraightTrunkPlacer(6, 2, 1),
+                        BlockStateProvider.of(ModBlocks.COTTONWOOD_LEAVES),
+                        new LargeOakFoliagePlacer(
+                                ConstantIntProvider.create(3),
+                                ConstantIntProvider.create(1),
+                                3
+                        ),
+                        new TwoLayersFeatureSize(1, 0, 2)
+                ).decorators(List.of(new CatkinTreeDecorator(), new CocoonTreeDecorator(0.2f))).build()
+        );
+
+        register(ctx, WILLOW, Feature.TREE,
+                new net.minecraft.world.gen.feature.TreeFeatureConfig.Builder(
+                        BlockStateProvider.of(ModBlocks.WILLOW_LOG),
+                        new StraightTrunkPlacer(4, 2, 1),
+                        BlockStateProvider.of(ModBlocks.WILLOW_LEAVES),
+                        new CherryFoliagePlacer(
                                 ConstantIntProvider.create(4),
                                 ConstantIntProvider.create(0),
                                 ConstantIntProvider.create(5),
                                 0.3F, 0.7F, 0.25F, 0.5F
                         ),
-                        new net.minecraft.world.gen.feature.size.TwoLayersFeatureSize(1, 0, 2)
-                )
-                        .ignoreVines()
-                        .build()
+                        new TwoLayersFeatureSize(1, 0, 2)
+                ).ignoreVines().build()
         );
     }
 
-    public static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name) {
-        return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Identifier.of(HexaliaMod.MODID, name));
-
+    private static RandomPatchFeatureConfig randomPatch(Block block, int tries, int xzSpread, int ySpread) {
+        return new RandomPatchFeatureConfig(
+                tries, xzSpread, ySpread,
+                PlacedFeatures.createEntry(
+                        Feature.SIMPLE_BLOCK,
+                        new SimpleBlockFeatureConfig(BlockStateProvider.of(block))
+                )
+        );
     }
-    private static <FC extends FeatureConfig, F extends Feature<FC>> void register(Registerable<ConfiguredFeature<?, ?>> context,
-                                                                                   RegistryKey<ConfiguredFeature<?, ?>> key, F feature, FC configuration) {
-        context.register(key, new ConfiguredFeature<>(feature, configuration));
+
+    private static <FC extends FeatureConfig, F extends Feature<FC>> void register(
+            Registerable<ConfiguredFeature<?, ?>> ctx,
+            RegistryKey<ConfiguredFeature<?, ?>> key,
+            F feature,
+            FC config
+    ) {
+        ctx.register(key, new ConfiguredFeature<>(feature, config));
+    }
+
+    private static RegistryKey<ConfiguredFeature<?, ?>> registerKey(String name) {
+        return RegistryKey.of(RegistryKeys.CONFIGURED_FEATURE, Identifier.of(HexaliaMod.MODID, name));
     }
 }

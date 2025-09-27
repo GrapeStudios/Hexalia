@@ -50,14 +50,12 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         // Simple drops
         addDrop(ModBlocks.SPIRIT_BLOOM);
         addDrop(ModBlocks.DREAMSHROOM);
-        addDrop(ModBlocks.HENBANE);
         addDrop(ModBlocks.LOTUS_FLOWER);
         addDrop(ModBlocks.PALE_MUSHROOM);
         addDrop(ModBlocks.WITCHWEED);
         addDrop(ModBlocks.GHOST_FERN);
         addDrop(ModBlocks.CELESTIAL_BLOOM);
         addDrop(ModBlocks.NIGHTSHADE_BUSH);
-        addDrop(ModBlocks.DUCKWEED);
         addDrop(ModBlocks.BEGONIA);
         addDrop(ModBlocks.LAVENDER);
         addDrop(ModBlocks.MORPHORA);
@@ -72,8 +70,6 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addPottedPlantDrops(ModBlocks.POTTED_DREAMSHROOM);
         addPottedPlantDrops(ModBlocks.POTTED_GHOST_FERN);
         addPottedPlantDrops(ModBlocks.POTTED_CELESTIAL_BLOOM);
-        addPottedPlantDrops(ModBlocks.POTTED_HENBANE);
-        addPottedPlantDrops(ModBlocks.POTTED_PALE_MUSHROOM);
         addPottedPlantDrops(ModBlocks.POTTED_NIGHTSHADE_BUSH);
         addPottedPlantDrops(ModBlocks.POTTED_BEGONIA);
         addPottedPlantDrops(ModBlocks.POTTED_LAVENDER);
@@ -85,7 +81,6 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
 
         // Special Plants
         addDrop(ModBlocks.SIREN_KELP, drops(ModItems.SIREN_KELP));
-        this.addDrop(ModBlocks.HEXED_BULRUSH, createTallPlantBlock(ModBlocks.HEXED_BULRUSH));
         this.addDrop(ModBlocks.COTTONWOOD_CATKIN, Items.STRING);
         this.addDrop(ModBlocks.GALEBERRIES_VINE, galeberriesDrop(ModBlocks.GALEBERRIES_VINE));
         this.addDrop(ModBlocks.GALEBERRIES_VINE_PLANT, galeberriesDrop(ModBlocks.GALEBERRIES_VINE_PLANT));
@@ -174,7 +169,6 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
                 leavesDrops(ModBlocks.WILLOW_LEAVES, ModBlocks.WILLOW_SAPLING, SAPLING_DROP_CHANCE));
         addDrop(ModBlocks.WILLOW_LOG);
         addDrop(ModBlocks.WILLOW_WOOD);
-        addDrop(ModBlocks.WILLOW_MOSSY_WOOD);
         addDrop(ModBlocks.STRIPPED_WILLOW_LOG);
         addDrop(ModBlocks.STRIPPED_WILLOW_WOOD);
         addDrop(ModBlocks.WILLOW_PLANKS);
@@ -193,15 +187,6 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
          addDrop(ModBlocks.WILLOW_WALL_SIGN, ModBlocks.WILLOW_SIGN.asItem());
          addDrop(ModBlocks.WILLOW_HANGING_SIGN, ModBlocks.WILLOW_HANGING_SIGN.asItem());
          addDrop(ModBlocks.WILLOW_HANGING_WALL_SIGN, ModBlocks.WILLOW_HANGING_SIGN.asItem());
-    }
-    protected LootTable.Builder createTallPlantBlock(Block bulrushBlock) {
-        LootCondition.Builder lower = BlockStatePropertyLootCondition.builder(bulrushBlock)
-                .properties(StatePredicate.Builder.create().exactMatch(HexedBulrushBlock.HALF, DoubleBlockHalf.LOWER));
-
-        return LootTable.builder()
-                .pool(LootPool.builder()
-                        .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(bulrushBlock).conditionally(lower)));
     }
 
     protected LootTable.Builder galeberriesDrop(Block drop) {

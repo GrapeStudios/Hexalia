@@ -34,7 +34,6 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         // Plants
         getOrCreateTagBuilder(ItemTags.FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM.asItem())
-                .add(ModBlocks.HENBANE.asItem())
                 .add(ModBlocks.WITCHWEED.asItem())
                 .add(ModBlocks.GHOST_FERN.asItem())
                 .add(ModBlocks.CELESTIAL_BLOOM.asItem())
@@ -46,7 +45,6 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         // Copy to small flowers if appropriate
         getOrCreateTagBuilder(ItemTags.SMALL_FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM.asItem())
-                .add(ModBlocks.HENBANE.asItem())
                 .add(ModBlocks.WITCHWEED.asItem())
                 .add(ModBlocks.GHOST_FERN.asItem())
                 .add(ModBlocks.CELESTIAL_BLOOM.asItem())

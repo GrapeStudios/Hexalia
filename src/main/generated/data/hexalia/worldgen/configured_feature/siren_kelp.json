@@ -18,13 +18,13 @@
           "type": "minecraft:block_predicate_filter",
           "predicate": {
             "type": "minecraft:matching_blocks",
-            "blocks": "minecraft:water"
+            "blocks": "minecraft:air"
           }
         }
       ]
     },
-    "tries": 12,
-    "xz_spread": 7,
-    "y_spread": 3
+    "tries": 2,
+    "xz_spread": 3,
+    "y_spread": 1
   }
 }

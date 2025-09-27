@@ -38,14 +38,14 @@ public class NautiliteBlockEntity extends BlockEntity {
     }
 
     private static int duration() {
-        return Math.max(1, Configuration.get().nautiliteDuration);
+        return Math.max(1, Configuration.common().plants.nautiliteDuration);
     }
     private static int effectRadius() {
-        return Math.max(1, Configuration.get().nautiliteEffectRadius);
+        return Math.max(1, Configuration.common().plants.nautiliteEffectRadius);
     }
 
     public void activate() {
-        this.activeTicks = Configuration.get().nautiliteDuration;
+        this.activeTicks = duration();
         if (this.world != null) {
             this.activationTime = this.world.getTime();
         }

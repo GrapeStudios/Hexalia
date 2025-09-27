@@ -13,7 +13,11 @@ import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.stat.Stats;
 import net.minecraft.text.Text;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Formatting;
+import net.minecraft.util.Hand;
+import net.minecraft.util.TypedActionResult;
+import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
 import java.util.List;
@@ -22,7 +26,6 @@ public class HomesteadBrewItem extends Item {
     public HomesteadBrewItem(Settings settings) {
         super(settings);
     }
-
 
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
@@ -55,10 +58,8 @@ public class HomesteadBrewItem extends Item {
         if (player == null || !player.getAbilities().creativeMode) {
             if (stack.isEmpty()) {
                 return bottle;
-            } else {
-                if (player != null && !player.getInventory().insertStack(bottle)) {
-                    player.dropItem(bottle, false);
-                }
+            } else if (!player.getInventory().insertStack(bottle)) {
+                player.dropItem(bottle, false);
             }
         }
 

@@ -28,10 +28,10 @@ public class AstrylisBlockEntity extends BlockEntity {
     }
 
     private static int cfgDuration() {
-        return Math.max(1, Configuration.get().astrylisDuration);
+        return Math.max(1, Configuration.common().plants.astrylisDuration);
     }
     private static int cfgInterval() {
-        return Math.max(1, Configuration.get().astrylisBonemealInterval);
+        return Math.max(1, Configuration.common().plants.astrylisBonemealInterval);
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, AstrylisBlockEntity be) {

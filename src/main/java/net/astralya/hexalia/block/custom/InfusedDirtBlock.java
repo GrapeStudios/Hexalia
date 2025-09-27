@@ -1,8 +1,10 @@
 package net.astralya.hexalia.block.custom;
 
 import net.astralya.hexalia.block.ModBlocks;
+import net.astralya.hexalia.particle.ModParticleType;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.HoeItem;
@@ -15,6 +17,8 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 public class InfusedDirtBlock extends Block {
 
@@ -38,5 +42,20 @@ public class InfusedDirtBlock extends Block {
             return ItemActionResult.SUCCESS;
         }
         return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+
+    @Override
+    public void onLandedUpon(World world, BlockState state, BlockPos pos, Entity entity, float fallDistance) {
+        spawnBubblesParticles(world, pos);
+    }
+
+    private void spawnBubblesParticles(World world, BlockPos pos) {
+        ThreadLocalRandom rng = ThreadLocalRandom.current();
+        for (int i = 0; i < 8; i++) {
+            double x = pos.getX() + 0.5 + rng.nextDouble(-0.5, 0.5);
+            double y = pos.getY() + 1.0;
+            double z = pos.getZ() + 0.5 + rng.nextDouble(-0.5, 0.5);
+            world.addParticle(ModParticleType.INFUSED_BUBBLE, x, y, z, 0.0, 0.05, 0.0);
+        }
     }
 }

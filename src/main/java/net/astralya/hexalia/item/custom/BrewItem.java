@@ -1,97 +1,55 @@
 package net.astralya.hexalia.item.custom;
 
-import net.astralya.hexalia.Configuration;
 import net.astralya.hexalia.item.ModItems;
-import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUsage;
-import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.registry.entry.RegistryEntry;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.stat.Stats;
 import net.minecraft.text.Text;
-import net.minecraft.util.Hand;
-import net.minecraft.util.TypedActionResult;
-import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
 import java.util.List;
 import java.util.function.Supplier;
 
-public class BrewItem extends Item {
+public class BrewItem extends AbstractConsumableItem {
 
+    private final int durationTicks;
     private final int baseAmplifier;
-    private final Text tooltip;
+    private final Text baseTooltip;
     private final Supplier<RegistryEntry<StatusEffect>> effectSupplier;
 
-    public BrewItem(Settings settings, Supplier<RegistryEntry<StatusEffect>> effectSupplier, int baseAmplifier, Text tooltip) {
+    public BrewItem(Settings settings,
+                    Supplier<RegistryEntry<StatusEffect>> effectSupplier,
+                    int durationTicks,
+                    int amplifier,
+                    Text tooltip) {
         super(settings);
         this.effectSupplier = effectSupplier;
-        this.baseAmplifier = baseAmplifier;
-        this.tooltip = tooltip;
+        this.durationTicks = Math.max(0, durationTicks);
+        this.baseAmplifier = Math.max(0, amplifier);
+        this.baseTooltip = tooltip;
     }
 
     @Override
-    public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        super.finishUsing(stack, world, user);
-
-        if (user instanceof ServerPlayerEntity serverPlayer) {
-            serverPlayer.incrementStat(Stats.USED.getOrCreateStat(this));
-            Criteria.CONSUME_ITEM.trigger(serverPlayer, stack);
-        }
-
+    protected void handleEffects(World world, LivingEntity user, ItemStack consumedStack) {
         if (!world.isClient) {
-            int fixedDuration = Configuration.get().brewEffectDuration;
-            int adjustedAmplifier = Configuration.get().brewAmplifierBonus;
-            user.addStatusEffect(new StatusEffectInstance(
-                    effectSupplier.get(),
-                    fixedDuration,
-                    Math.max(baseAmplifier, adjustedAmplifier)
-            ));
+            user.addStatusEffect(new StatusEffectInstance(effectSupplier.get(), durationTicks, baseAmplifier));
         }
-
-        if (user instanceof PlayerEntity player) {
-            if (player.getAbilities().creativeMode) {
-                return stack;
-            }
-
-            stack.decrement(1);
-            ItemStack bottle = new ItemStack(ModItems.RUSTIC_BOTTLE);
-            if (stack.isEmpty()) {
-                return bottle;
-            } else {
-                if (!player.getInventory().insertStack(bottle)) {
-                    player.dropItem(bottle, false);
-                }
-            }
-        }
-
-        return stack;
-    }
-
-
-    @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        return ItemUsage.consumeHeldItem(world, user, hand);
     }
 
     @Override
-    public int getMaxUseTime(ItemStack stack, LivingEntity user) {
-        return 32;
+    protected ItemStack getReturnContainer(ItemStack consumedStack) {
+        return new ItemStack(ModItems.RUSTIC_BOTTLE);
     }
 
     @Override
-    public UseAction getUseAction(ItemStack stack) {
-        return UseAction.DRINK;
+    protected Text getTooltip(ItemStack stack) {
+        return baseTooltip;
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-        tooltip.add(this.tooltip);
+    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, net.minecraft.item.tooltip.TooltipType type) {
+        tooltip.add(baseTooltip);
     }
 }

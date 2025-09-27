@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "minecraft:stick"
+    },
+    "S": {
+      "item": "minecraft:cobbled_deepslate"
+    }
+  },
+  "pattern": [
+    " S",
+    "P "
+  ],
+  "result": {
+    "count": 1,
+    "id": "hexalia:athame"
+  }
+}

@@ -15,18 +15,14 @@ import net.astralya.hexalia.recipe.ModRecipes;
 import net.astralya.hexalia.screen.ModScreenHandlers;
 import net.astralya.hexalia.sound.ModSoundEvents;
 import net.astralya.hexalia.util.ModRegistries;
-import net.astralya.hexalia.worldgen.biome.ModBiomes;
-import net.astralya.hexalia.worldgen.biome.ModMaterialRules;
 import net.astralya.hexalia.worldgen.gen.ModWorldGeneration;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import terrablender.api.SurfaceRuleManager;
-import terrablender.api.TerraBlenderApi;
 
-public class HexaliaMod implements ModInitializer, TerraBlenderApi {
+public class HexaliaMod implements ModInitializer {
 
 	public static final String MODID = "hexalia";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MODID);
@@ -52,11 +48,5 @@ public class HexaliaMod implements ModInitializer, TerraBlenderApi {
         CenserServerTickHandler.register();
 
 		FabricDefaultAttributeRegistry.register(ModEntities.SILK_MOTH_ENTITY, SilkMothEntity.setAttributes());
-	}
-
-	@Override
-	public void onTerraBlenderInitialized() {
-		ModBiomes.registerBiomes();
-		SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, MODID, ModMaterialRules.makeRules());
 	}
 }

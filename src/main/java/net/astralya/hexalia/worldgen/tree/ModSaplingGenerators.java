@@ -9,8 +9,8 @@ import java.util.Optional;
 public class ModSaplingGenerators {
 
     public static final SaplingGenerator WILLOW = new SaplingGenerator(HexaliaMod.MODID + ":willow",
-            Optional.empty(), Optional.of(ModConfiguredFeatures.WILLOW_KEY), Optional.empty());
+            Optional.empty(), Optional.of(ModConfiguredFeatures.WILLOW), Optional.empty());
 
     public static final SaplingGenerator COTTONWOOD = new SaplingGenerator(HexaliaMod.MODID + ":cottonwood",
-            Optional.empty(), Optional.of(ModConfiguredFeatures.COTTONWOOD_KEY), Optional.empty());
+            Optional.empty(), Optional.of(ModConfiguredFeatures.COTTONWOOD), Optional.empty());
 }

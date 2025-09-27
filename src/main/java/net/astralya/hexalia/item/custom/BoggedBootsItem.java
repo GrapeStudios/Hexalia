@@ -28,8 +28,7 @@ public class BoggedBootsItem extends ArmorItem implements GeoItem {
 
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
-    private static final Identifier SWIM_SPEED_MODIFIER_ID =
-            Identifier.of(HexaliaMod.MODID, "bogged_boots_swim_boost");
+    private static final Identifier SWIM_SPEED_MODIFIER_ID = Identifier.of(HexaliaMod.MODID, "bogged_boots_swim_boost");
 
     public BoggedBootsItem(RegistryEntry<ArmorMaterial> material, Type type, Settings settings) {
         super(material, type, settings);
@@ -56,7 +55,6 @@ public class BoggedBootsItem extends ArmorItem implements GeoItem {
             }
         });
     }
-
 
     @Override
     public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
@@ -85,7 +83,6 @@ public class BoggedBootsItem extends ArmorItem implements GeoItem {
         }
         super.inventoryTick(stack, world, entity, slot, selected);
     }
-
 
     private void handleSwimSpeed(PlayerEntity player, boolean add) {
         var inst = player.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED);

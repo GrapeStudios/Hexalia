@@ -61,7 +61,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         // Flower tags
         getOrCreateTagBuilder(BlockTags.FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM)
-                .add(ModBlocks.HENBANE)
                 .add(ModBlocks.WITCHWEED)
                 .add(ModBlocks.GHOST_FERN)
                 .add(ModBlocks.CELESTIAL_BLOOM)
@@ -70,10 +69,9 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.LAVENDER)
                 .add(ModBlocks.DAHLIA);
 
-        // Small flowers if appropriate
+        // Small flowers
         getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM)
-                .add(ModBlocks.HENBANE)
                 .add(ModBlocks.WITCHWEED)
                 .add(ModBlocks.GHOST_FERN)
                 .add(ModBlocks.CELESTIAL_BLOOM)
@@ -227,8 +225,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.POTTED_LAVENDER)
                 .add(ModBlocks.POTTED_BEGONIA)
                 .add(ModBlocks.POTTED_NIGHTSHADE_BUSH)
-                .add(ModBlocks.POTTED_PALE_MUSHROOM)
-                .add(ModBlocks.POTTED_HENBANE)
                 .add(ModBlocks.POTTED_ASTRYLIS)
                 .add(ModBlocks.POTTED_GRIMSHADE)
                 .add(ModBlocks.POTTED_WINDSONG)

@@ -78,13 +78,13 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.SIREN_KELP), conditionsFromItem(ModItems.SIREN_KELP))
                 .offerTo(exporter, Identifier.of(getRecipeName(ModBlocks.INFUSED_DIRT)));
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.STONE_DAGGER)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.ATHAME)
                 .pattern(" S")
                 .pattern("P ")
-                .input('S', Blocks.COBBLESTONE)
+                .input('S', Blocks.COBBLED_DEEPSLATE)
                 .input('P', Items.STICK)
                 .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
-                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.STONE_DAGGER)));
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.ATHAME)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.RUSTIC_OVEN)
                 .pattern("TTT")
@@ -240,17 +240,12 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.MANDRAKE), conditionsFromItem(ModItems.MANDRAKE))
                 .offerTo(exporter);
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.PURIFYING_SALTS)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.PURIFYING_SAC)
                 .input(ModTags.Items.SALT_DUSTS)
                 .input(Items.LEATHER)
                 .input(ModTags.Items.CRUSHED_HERBS)
                 .input(ModTags.Items.CRUSHED_HERBS)
                 .criterion(hasItem(ModItems.SALT), conditionsFromItem(ModItems.SALT))
-                .offerTo(exporter);
-
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.YELLOW_DYE)
-                .input(ModBlocks.HENBANE)
-                .criterion(hasItem(ModBlocks.HENBANE), conditionsFromItem(ModBlocks.HENBANE))
                 .offerTo(exporter);
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.BLACK_DYE)
@@ -265,7 +260,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.ORANGE_DYE)
                 .input(ModBlocks.DAHLIA)
-                .criterion(hasItem(ModBlocks.DAHLIA), conditionsFromItem(ModBlocks.HENBANE))
+                .criterion(hasItem(ModBlocks.DAHLIA), conditionsFromItem(ModBlocks.DAHLIA))
                 .offerTo(exporter);
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.PINK_DYE)
@@ -287,7 +282,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.GALEBERRIES), conditionsFromItem(ModItems.GALEBERRIES))
                 .offerTo(exporter);
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.RAIN_IDOL)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.RAINFALL_IDOL)
                 .input(ModItems.SILK_IDOL)
                 .input(Items.STRING)
                 .input(ModItems.CELESTIAL_CRYSTAL)
@@ -295,7 +290,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.SILK_IDOL), conditionsFromItem(ModItems.SILK_IDOL))
                 .offerTo(exporter);
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CLEAR_IDOL)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.CLARITY_IDOL)
                 .input(ModItems.SILK_IDOL)
                 .input(Items.STRING)
                 .input(ModItems.CELESTIAL_CRYSTAL)
@@ -303,7 +298,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.SILK_IDOL), conditionsFromItem(ModItems.SILK_IDOL))
                 .offerTo(exporter);
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.STORM_IDOL)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.TEMPEST_IDOL)
                 .input(ModItems.SILK_IDOL)
                 .input(Items.STRING)
                 .input(ModItems.WATER_NODE)

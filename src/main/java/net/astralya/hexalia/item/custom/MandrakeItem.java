@@ -31,11 +31,11 @@ public class MandrakeItem extends Item {
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         if (!world.isClient && user instanceof PlayerEntity player) {
-            List<Entity> entities = world.getOtherEntities(player, player.getBoundingBox().expand(Configuration.get().mandrakeScreamRadius));
+            List<Entity> entities = world.getOtherEntities(player, player.getBoundingBox().expand(Configuration.common().tools.mandrakeScreamRadius));
             for (Entity entity : entities) {
                 if (entity instanceof LivingEntity livingEntity &&
                         !(player.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.EARPLUGS) && !(player.isCreative()))) {
-                    livingEntity.addStatusEffect(new StatusEffectInstance(ModEffects.STUNNED, Configuration.get().mandrakeStunDuration, 0));
+                    livingEntity.addStatusEffect(new StatusEffectInstance(ModEffects.STUNNED, Configuration.common().tools.mandrakeStunDuration, 0));
                 }
             }
             world.playSound(null, player.getX(), player.getY(), player.getZ(), ModSoundEvents.MANDRAKE_SCREAM,
@@ -59,7 +59,7 @@ public class MandrakeItem extends Item {
 
     @Override
     public int getMaxUseTime(ItemStack stack, LivingEntity user) {
-        return 16;
+        return 32;
     }
 
     @Override

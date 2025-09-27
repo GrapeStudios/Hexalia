@@ -33,93 +33,81 @@ public class ModBlocks {
     
     // Herbs
     public static final Block SPIRIT_BLOOM = registerBlock("spirit_bloom",
-            new HerbBlock(StatusEffects.POISON, 6, AbstractBlock.Settings.copy(Blocks.ALLIUM)));
+            new HerbBlock(StatusEffects.POISON, 6, AbstractBlock.Settings.copy(Blocks.POPPY)));
     public static final Block POTTED_SPIRIT_BLOOM = registerBlockWithoutBlockItem("potted_spirit_bloom",
-            new FlowerPotBlock(SPIRIT_BLOOM, AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM)));
+            new FlowerPotBlock(SPIRIT_BLOOM, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY)));
     public static final Block DREAMSHROOM = registerBlock("dreamshroom",
             new DreamshroomBlock(AbstractBlock.Settings.copy(Blocks.BROWN_MUSHROOM).luminance(state -> 4)));
     public static final Block POTTED_DREAMSHROOM = registerBlockWithoutBlockItem("potted_dreamshroom",
-            new FlowerPotBlock(DREAMSHROOM, AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM).luminance(state -> 6)));
-    public static final Block GHOST_FERN = registerBlock("ghost_fern",
-            new GhostFernBlock(StatusEffects.INVISIBILITY, 6, AbstractBlock.Settings.copy(Blocks.ALLIUM)));
-    public static final Block POTTED_GHOST_FERN = registerBlockWithoutBlockItem("potted_ghost_fern",
-            new FlowerPotBlock(GHOST_FERN, AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM)));
-    public static final Block CELESTIAL_BLOOM = registerBlock("celestial_bloom",
-            new CelestialBloomBlock(StatusEffects.NIGHT_VISION, 6, AbstractBlock.Settings.copy(Blocks.ALLIUM).luminance(state -> 6)));
-    public static final Block POTTED_CELESTIAL_BLOOM = registerBlockWithoutBlockItem("potted_celestial_bloom",
-            new FlowerPotBlock(CELESTIAL_BLOOM, AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM).luminance(state -> 6)));
+            new FlowerPotBlock(DREAMSHROOM, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY).luminance(state -> 6)));
     public static final Block SIREN_KELP = registerBlockWithoutBlockItem("siren_kelp",
             new SirenKelpBlock(AbstractBlock.Settings.copy(Blocks.SEAGRASS)));
-
-    // Enchanted Flora
+    public static final Block GHOST_FERN = registerBlock("ghost_fern",
+            new GhostFernBlock(StatusEffects.INVISIBILITY, 6, AbstractBlock.Settings.copy(Blocks.POPPY)));
+    public static final Block POTTED_GHOST_FERN = registerBlockWithoutBlockItem("potted_ghost_fern",
+            new FlowerPotBlock(GHOST_FERN, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY)));
+    public static final Block CELESTIAL_BLOOM = registerBlock("celestial_bloom",
+            new CelestialBloomBlock(StatusEffects.NIGHT_VISION, 6, AbstractBlock.Settings.copy(Blocks.POPPY).luminance(state -> 6)));
+    public static final Block POTTED_CELESTIAL_BLOOM = registerBlockWithoutBlockItem("potted_celestial_bloom",
+            new FlowerPotBlock(CELESTIAL_BLOOM, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY).luminance(state -> 6)));
+    public static final Block LOTUS_FLOWER = registerBlockWithoutBlockItem("lotus_flower",
+            new LotusFlowerBlock(AbstractBlock.Settings.copy(Blocks.LILY_PAD).luminance(state -> 6)));
+    public static final Block WITCHWEED = registerBlock("witchweed",
+            new WitchweedBlock(StatusEffects.POISON, 6, AbstractBlock.Settings.copy(Blocks.POPPY).noCollision()));
+    
+    // Enchanted Plants
     public static final Block MORPHORA = registerBlock("morphora",
             new MorphoraBlock(AbstractBlock.Settings.copy(Blocks.AZALEA).noCollision()));
     public static final Block POTTED_MORPHORA = registerBlockWithoutBlockItem("potted_morphora",
-            new FlowerPotBlock(MORPHORA, AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM)));
+            new FlowerPotBlock(MORPHORA, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY)));
     public static final Block GRIMSHADE = registerBlock("grimshade",
             new GrimshadeBlock(AbstractBlock.Settings.copy(Blocks.AZALEA).noCollision()));
     public static final Block POTTED_GRIMSHADE = registerBlockWithoutBlockItem("potted_grimshade",
-            new FlowerPotBlock(GRIMSHADE, AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM)));
-    public static final Block NAUTILITE = registerBlock("nautilite",
-            new NautiliteBlock(AbstractBlock.Settings.copy(Blocks.AZALEA).noCollision()));
+            new FlowerPotBlock(GRIMSHADE, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY)));
+    public static final Block NAUTILITE = registerBlockWithoutBlockItem("nautilite",
+            new NautiliteBlock(AbstractBlock.Settings.copy(Blocks.SEAGRASS)));
     public static final Block WINDSONG = registerBlock("windsong",
             new WindsongBlock(AbstractBlock.Settings.copy(Blocks.AZALEA).noCollision()));
     public static final Block POTTED_WINDSONG = registerBlockWithoutBlockItem("potted_windsong",
-            new FlowerPotBlock(WINDSONG, AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM)));
+            new FlowerPotBlock(WINDSONG, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY)));
     public static final Block ASTRYLIS = registerBlock("astrylis",
             new AstrylisBlock(AbstractBlock.Settings.copy(Blocks.AZALEA).noCollision()));
     public static final Block POTTED_ASTRYLIS = registerBlockWithoutBlockItem("potted_astrylis",
-            new FlowerPotBlock(ASTRYLIS, AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM)));
+            new FlowerPotBlock(ASTRYLIS, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY)));
 
     // Decorative Flora
-    public static final Block HENBANE = registerBlock("henbane",
-            new FlowerBlock(StatusEffects.ABSORPTION, 6, AbstractBlock.Settings.copy(Blocks.ALLIUM)));
-    public static final Block POTTED_HENBANE = registerBlockWithoutBlockItem("potted_henbane",
-            new FlowerPotBlock(HENBANE, AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM)));
     public static final Block BEGONIA = registerBlock("begonia",
-            new FlowerBlock(StatusEffects.REGENERATION, 6, AbstractBlock.Settings.copy(Blocks.ALLIUM)));
+            new FlowerBlock(StatusEffects.REGENERATION, 6, AbstractBlock.Settings.copy(Blocks.POPPY)));
     public static final Block POTTED_BEGONIA = registerBlockWithoutBlockItem("potted_begonia",
-            new FlowerPotBlock(BEGONIA, AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM)));
+            new FlowerPotBlock(BEGONIA, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY)));
     public static final Block LAVENDER = registerBlock("lavender",
-            new FlowerBlock(StatusEffects.LUCK, 6, AbstractBlock.Settings.copy(Blocks.ALLIUM)));
+            new FlowerBlock(StatusEffects.LUCK, 6, AbstractBlock.Settings.copy(Blocks.POPPY)));
     public static final Block POTTED_LAVENDER = registerBlockWithoutBlockItem("potted_lavender",
-            new FlowerPotBlock(LAVENDER, AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM)));
+            new FlowerPotBlock(LAVENDER, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY)));
     public static final Block DAHLIA = registerBlock("dahlia",
-            new FlowerBlock(StatusEffects.STRENGTH, 6, AbstractBlock.Settings.copy(Blocks.ALLIUM)));
+            new FlowerBlock(StatusEffects.STRENGTH, 6, AbstractBlock.Settings.copy(Blocks.POPPY)));
     public static final Block POTTED_DAHLIA = registerBlockWithoutBlockItem("potted_dahlia",
-            new FlowerPotBlock(DAHLIA, AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM)));
-
-    // Enchanted Bayou Flora
-    public static final Block LOTUS_FLOWER = registerBlockWithoutBlockItem("lotus_flower",
-            new WaterPlantBlock(AbstractBlock.Settings.copy(Blocks.LILY_PAD).luminance(state -> 6)));
+            new FlowerPotBlock(DAHLIA, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY)));
     public static final Block PALE_MUSHROOM = registerBlock("pale_mushroom",
-            new ShroomBlock(AbstractBlock.Settings.copy(Blocks.BROWN_MUSHROOM).noCollision().nonOpaque().luminance(state -> 4)));
-    public static final Block POTTED_PALE_MUSHROOM = registerBlockWithoutBlockItem("potted_pale_mushroom",
-            new FlowerPotBlock(PALE_MUSHROOM, AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM).luminance(state -> 4)));
-    public static final Block WITCHWEED = registerBlock("witchweed",
-            new WitchweedBlock(StatusEffects.POISON, 6, AbstractBlock.Settings.copy(Blocks.ALLIUM).noCollision()));
-    public static final Block HEXED_BULRUSH = registerBlock("hexed_bulrush",
-            new HexedBulrushBlock(AbstractBlock.Settings.copy(Blocks.AZALEA).noCollision().luminance(state -> 4)));
+            new PaleMushroomBlock(AbstractBlock.Settings.copy(Blocks.BROWN_MUSHROOM).noCollision().nonOpaque().luminance(state -> 4)));
     public static final Block NIGHTSHADE_BUSH = registerBlock("nightshade_bush",
-            new FlowerBlock(StatusEffects.POISON, 6, AbstractBlock.Settings.copy(Blocks.ALLIUM)));
+            new FlowerBlock(StatusEffects.POISON, 6, AbstractBlock.Settings.copy(Blocks.POPPY)));
     public static final Block POTTED_NIGHTSHADE_BUSH = registerBlockWithoutBlockItem("potted_nightshade_bush",
-            new FlowerPotBlock(NIGHTSHADE_BUSH, AbstractBlock.Settings.copy(Blocks.POTTED_ALLIUM)));
-    public static final Block DUCKWEED = registerBlockWithoutBlockItem("duckweed",
-            new WaterPlantBlock(AbstractBlock.Settings.copy(Blocks.LILY_PAD).noCollision()));
+            new FlowerPotBlock(NIGHTSHADE_BUSH, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY)));
 
     // Crops
     public static final Block MANDRAKE_CROP = registerBlockWithoutBlockItem("mandrake_crop",
             new MandrakeCropBlock(AbstractBlock.Settings.copy(Blocks.POTATOES)));
-    public static final Block WILD_MANDRAKE = registerBlock("wild_mandrake",
-            new FlowerBlock(StatusEffects.LEVITATION, 6, AbstractBlock.Settings.copy(Blocks.ALLIUM).nonOpaque().noCollision()));
     public static final Block SUNFIRE_TOMATO_CROP = registerBlockWithoutBlockItem("sunfire_tomato_crop",
             new SunfireTomatoCropBlock(AbstractBlock.Settings.copy(Blocks.POTATOES)));
+    public static final Block RABBAGE_CROP = registerBlockWithoutBlockItem("rabbage_crop",
+            new RabbageCropBlock(AbstractBlock.Settings.copy(Blocks.POTATOES)));
+    public static final Block WILD_MANDRAKE = registerBlock("wild_mandrake",
+            new FlowerBlock(StatusEffects.LEVITATION, 6, AbstractBlock.Settings.copy(Blocks.POPPY).nonOpaque().noCollision()));
     public static final Block WILD_SUNFIRE_TOMATO = registerBlock("wild_sunfire_tomato",
             new WildSunfireTomatoBlock(AbstractBlock.Settings.copy(Blocks.CORNFLOWER).luminance(state -> 4).nonOpaque()));
     public static final Block CHILLBERRY_BUSH = registerBlockWithoutBlockItem("chillberry_bush",
             new ChillberryBushBlock(AbstractBlock.Settings.copy(Blocks.POTATOES)));
-    public static final Block RABBAGE_CROP = registerBlockWithoutBlockItem("rabbage_crop",
-            new RabbageCropBlock(AbstractBlock.Settings.copy(Blocks.POTATOES)));
     public static final Block SALTSPROUT = registerBlockWithoutBlockItem("saltsprout",
             new SaltsproutBlock(AbstractBlock.Settings.copy(Blocks.POTATOES)));
     public static final Block GALEBERRIES_VINE = registerBlockWithoutBlockItem("galeberries_vine",
@@ -156,7 +144,6 @@ public class ModBlocks {
             new CandleSkullBlock(AbstractBlock.Settings.copy(Blocks.BONE_BLOCK).luminance(state -> state.get(CandleSkullBlock.LIT) ? 12 : 0)));
     public static final Block WITHER_CANDLE_SKULL = registerBlockWithoutBlockItem("wither_candle_skull",
             new CandleSkullBlock(AbstractBlock.Settings.copy(Blocks.BONE_BLOCK).luminance(state -> state.get(CandleSkullBlock.LIT) ? 12 : 0)));
-
 
     // Tree-Related Blocks
     public static final Block COTTONWOOD_LEAVES = registerBlock("cottonwood_leaves",
@@ -213,8 +200,6 @@ public class ModBlocks {
             new PillarBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_LOG)));
     public static final Block WILLOW_WOOD = registerBlock("willow_wood",
             new PillarBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_LOG)));
-    public static final Block WILLOW_MOSSY_WOOD = registerBlock("willow_mossy_wood",
-            new PillarBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_LOG)));
     public static final Block STRIPPED_WILLOW_LOG = registerBlock("stripped_willow_log",
             new PillarBlock(AbstractBlock.Settings.copy(Blocks.MANGROVE_LOG)));
     public static final Block STRIPPED_WILLOW_WOOD = registerBlock("stripped_willow_wood",
@@ -255,14 +240,12 @@ public class ModBlocks {
 
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.SPIRIT_BLOOM, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.DREAMSHROOM, 0.5F);
-        CompostingChanceRegistry.INSTANCE.add(ModBlocks.HENBANE, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.BEGONIA, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.LAVENDER, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.DAHLIA, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.PALE_MUSHROOM, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.WITCHWEED, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.GHOST_FERN, 0.5F);
-        CompostingChanceRegistry.INSTANCE.add(ModBlocks.HEXED_BULRUSH, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.NIGHTSHADE_BUSH, 0.5F);
         CompostingChanceRegistry.INSTANCE.add(ModBlocks.CELESTIAL_BLOOM, 0.5F);
 
@@ -275,13 +258,11 @@ public class ModBlocks {
         StrippableBlockRegistry.register(ModBlocks.COTTONWOOD_WOOD, ModBlocks.STRIPPED_COTTONWOOD_WOOD);
         StrippableBlockRegistry.register(ModBlocks.WILLOW_LOG, ModBlocks.STRIPPED_WILLOW_LOG);
         StrippableBlockRegistry.register(ModBlocks.WILLOW_WOOD, ModBlocks.STRIPPED_WILLOW_WOOD);
-        StrippableBlockRegistry.register(ModBlocks.WILLOW_MOSSY_WOOD, ModBlocks.STRIPPED_WILLOW_WOOD);
 
         FlammableBlockRegistry instance = FlammableBlockRegistry.getDefaultInstance();
         instance.add(ModBlocks.SPIRIT_BLOOM, 60, 100);
         instance.add(ModBlocks.CHILLBERRY_BUSH, 60, 100);
         instance.add(ModBlocks.WILD_MANDRAKE, 60, 100);
-        instance.add(ModBlocks.HENBANE, 60, 100);
         instance.add(ModBlocks.DREAMCATCHER, 5, 20);
         instance.add(ModBlocks.SILKWORM_COCOON, 6, 100);
         instance.add(ModBlocks.COTTONWOOD_LOG, 5, 20);

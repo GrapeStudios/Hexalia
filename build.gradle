@@ -19,10 +19,6 @@ repositories {
 	}
 
 	maven {
-		url = 'https://maven.minecraftforge.net/'
-	}
-
-	maven {
 		name = 'GeckoLib'
 		url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
 		content {
@@ -59,8 +55,6 @@ dependencies {
 
 	modImplementation "com.terraformersmc.terraform-api:terraform-wood-api-v1:11.0.0"
 	include "com.terraformersmc.terraform-api:terraform-wood-api-v1:11.0.0"
-
-	modImplementation 'com.github.glitchfiend:TerraBlender-fabric:' + minecraft_version + '-' + terrablender_version
 
 	modImplementation "software.bernie.geckolib:geckolib-fabric-${minecraft_version}:${geckolib_version}"
 

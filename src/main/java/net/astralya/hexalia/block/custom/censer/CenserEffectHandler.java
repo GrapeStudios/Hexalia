@@ -101,7 +101,7 @@ public class CenserEffectHandler {
 
     public static void startEffect(World world, BlockPos pos, HerbCombination combo) {
         if (world.isClient()) return;
-        int duration = Configuration.get().censerEffectDuration;
+        int duration = Configuration.common().functional_blocks.censerEffectDuration;
         ACTIVE_EFFECTS.put(pos, new ActiveCenserEffect(null, duration, combo));
         applyEffects(world, pos, combo);
         BlockEntity be = world.getBlockEntity(pos);
@@ -158,7 +158,7 @@ public class CenserEffectHandler {
     }
 
     public static void clearPlayerEffectsInRange(World world, BlockPos pos) {
-        int radius = Configuration.get().censerEffectRadius;
+        int radius = Configuration.common().functional_blocks.censerEffectRadius;
         Box area = new Box(pos).expand(radius);
         for (PlayerEntity player : world.getEntitiesByClass(PlayerEntity.class, area, p -> true)) {
             player.removeCommandTag("hexalia:anvil_harmony");
@@ -167,7 +167,7 @@ public class CenserEffectHandler {
     }
 
     public static boolean isUndeadVeilActiveInArea(World world, BlockPos pos) {
-        int radius = Configuration.get().censerEffectRadius;
+        int radius = Configuration.common().functional_blocks.censerEffectRadius;
         if (world.isClient()) return false;
         Set<BlockPos> veilPositions = UNDEAD_VEIL_CACHE.get(world);
         if (veilPositions == null || veilPositions.isEmpty()) return false;
@@ -179,7 +179,7 @@ public class CenserEffectHandler {
     }
 
     public static boolean isEffectActiveInArea(World world, BlockPos pos, EffectType effectType) {
-        int radius = Configuration.get().censerEffectRadius;
+        int radius = Configuration.common().functional_blocks.censerEffectRadius;
         if (effectType == EffectType.UNDEAD_VEIL) {
             return isUndeadVeilActiveInArea(world, pos);
         }
@@ -223,7 +223,7 @@ public class CenserEffectHandler {
     }
 
     private static void clearEffect(World world, BlockPos pos, HerbCombination combo) {
-        int radius = Configuration.get().censerEffectRadius;
+        int radius = Configuration.common().functional_blocks.censerEffectRadius;
         Box area = new Box(pos).expand(radius);
         for (PlayerEntity player : world.getEntitiesByClass(PlayerEntity.class, area, p -> true)) {
             player.removeCommandTag("hexalia:anvil_harmony");
@@ -232,7 +232,7 @@ public class CenserEffectHandler {
     }
 
     private static void applyFireproofPresence(World world, BlockPos pos) {
-        int radius = Configuration.get().censerEffectRadius;
+        int radius = Configuration.common().functional_blocks.censerEffectRadius;
         Box area = new Box(pos).expand(radius);
         for (LivingEntity entity : world.getEntitiesByClass(LivingEntity.class, area, e -> true)) {
             entity.setOnFire(false);
@@ -249,7 +249,7 @@ public class CenserEffectHandler {
     }
 
     private static void applyUndeadVeil(World world, BlockPos pos) {
-        int radius = Configuration.get().censerEffectRadius;
+        int radius = Configuration.common().functional_blocks.censerEffectRadius;
         Box area = new Box(pos).expand(radius);
         for (HostileEntity mob : world.getEntitiesByClass(HostileEntity.class, area, e -> true)) {
             mob.setTarget(null);
@@ -271,7 +271,7 @@ public class CenserEffectHandler {
     }
 
     private static void applyLivestockComfort(World world, BlockPos pos) {
-        int radius = Configuration.get().censerEffectRadius;
+        int radius = Configuration.common().functional_blocks.censerEffectRadius;
         Box area = new Box(pos).expand(radius);
         for (AnimalEntity animal : world.getEntitiesByClass(AnimalEntity.class, area, a -> true)) {
             if (animal.getBreedingAge() < 0) {
@@ -282,7 +282,7 @@ public class CenserEffectHandler {
     }
 
     private static void applyAnvilHarmony(World world, BlockPos pos) {
-        int radius = Configuration.get().censerEffectRadius;
+        int radius = Configuration.common().functional_blocks.censerEffectRadius;
         Box area = new Box(pos).expand(radius);
         for (PlayerEntity player : world.getEntitiesByClass(PlayerEntity.class, area, p -> true)) {
             player.addCommandTag("hexalia:anvil_harmony");
@@ -290,7 +290,7 @@ public class CenserEffectHandler {
     }
 
     private static void applyFishersBoon(World world, BlockPos pos) {
-        int radius = Configuration.get().censerEffectRadius;
+        int radius = Configuration.common().functional_blocks.censerEffectRadius;
         Box area = new Box(pos).expand(radius);
         for (PlayerEntity player : world.getEntitiesByClass(PlayerEntity.class, area, p -> true)) {
             player.addCommandTag("hexalia:fishers_boon");
@@ -298,7 +298,7 @@ public class CenserEffectHandler {
     }
 
     private static void applySuctionZone(World world, BlockPos pos) {
-        int radius = Configuration.get().censerEffectRadius;
+        int radius = Configuration.common().functional_blocks.censerEffectRadius;
         if (!(world instanceof ServerWorld serverWorld)) return;
 
         Box area = new Box(pos).expand(radius);

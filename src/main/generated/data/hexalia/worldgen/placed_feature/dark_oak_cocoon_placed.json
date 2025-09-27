@@ -1,5 +1,5 @@
 {
-  "feature": "hexalia:dark_oak_cocoon_tree",
+  "feature": "hexalia:dark_oak_cocoon",
   "placement": [
     {
       "type": "minecraft:count",
@@ -7,11 +7,11 @@
         "type": "minecraft:weighted_list",
         "distribution": [
           {
-            "data": 1,
-            "weight": 9
+            "data": 0,
+            "weight": 24
           },
           {
-            "data": 2,
+            "data": 1,
             "weight": 1
           }
         ]

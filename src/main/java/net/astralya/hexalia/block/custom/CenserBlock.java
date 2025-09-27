@@ -102,7 +102,7 @@ public class CenserBlock extends BlockWithEntity {
                 censer.clearItems();
                 world.setBlockState(pos, state.with(LIT, true), 3);
                 censer.setActiveCombination(combo);
-                censer.setBurnTime(Configuration.get().censerEffectDuration);
+                censer.setBurnTime(Configuration.common().functional_blocks.censerEffectDuration);
                 CenserEffectHandler.startEffect(world, pos, combo);
             } else {
                 censer.clearItems();
@@ -163,7 +163,7 @@ public class CenserBlock extends BlockWithEntity {
 
     private void sendEffectActivationMessage(World world, BlockPos pos, HerbCombination combo, PlayerEntity activatingPlayer) {
         String key = CenserEffectHandler.getMessageKeyForCombination(combo);
-        int radius = Configuration.get().censerEffectRadius;
+        int radius = Configuration.common().functional_blocks.censerEffectRadius;
         Box area = new Box(pos).expand(radius);
 
         for (PlayerEntity player : world.getEntitiesByClass(PlayerEntity.class, area, p -> true)) {

@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class DreamcatcherBlock extends WallBlock {
+public class DreamcatcherBlock extends WallMountedBlock {
 
     public DreamcatcherBlock(Settings settings) {
         super(settings);
@@ -20,14 +20,13 @@ public class DreamcatcherBlock extends WallBlock {
 
     @Override
     protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        int range = Configuration.get().phantomRadius;
-        int igniteTicks = Configuration.get().phantomIgniteDuration;
+        int rangeBlocks = Configuration.common().functional_blocks.radius;
+        int igniteTicks = Configuration.common().functional_blocks.phantomIgniteDuration;
 
         Vec3d center = Vec3d.ofCenter(pos);
-        Box checkArea = new Box(
-                center.x - range, center.y - range, center.z - range,
-                center.x + range, center.y + range, center.z + range
-        );
+        double r = rangeBlocks;
+        Box checkArea = new Box(center.x - r, center.y - r, center.z - r,
+                center.x + r, center.y + r, center.z + r);
 
         List<PhantomEntity> phantoms = world.getEntitiesByClass(PhantomEntity.class, checkArea, e -> true);
 
@@ -40,6 +39,7 @@ public class DreamcatcherBlock extends WallBlock {
 
         world.scheduleBlockTick(pos, this, 20);
     }
+
 
     @Override
     protected void onBlockAdded(BlockState state, World world, BlockPos pos, BlockState oldState, boolean notify) {

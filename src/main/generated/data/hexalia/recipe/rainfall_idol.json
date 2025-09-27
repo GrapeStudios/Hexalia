@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hexalia:silk_idol"
+    },
+    {
+      "item": "minecraft:string"
+    },
+    {
+      "item": "hexalia:celestial_crystal"
+    },
+    {
+      "item": "hexalia:water_node"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "hexalia:rainfall_idol"
+  }
+}

@@ -1,5 +1,6 @@
 package net.astralya.hexalia.block.custom;
 
+import net.astralya.hexalia.Configuration;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.particle.ParticleTypes;
@@ -23,6 +24,7 @@ public class CelestialBloomBlock extends HerbBlock {
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         super.randomDisplayTick(state, world, pos, random);
+        if (!Configuration.client().plants.celestialBloomEmitsParticles) return;
         if (random.nextFloat() < 0.2f) {
             double centerX = pos.getX() + 0.5;
             double centerZ = pos.getZ() + 0.5;

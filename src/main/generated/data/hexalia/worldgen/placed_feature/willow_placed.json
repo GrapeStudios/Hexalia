@@ -1,5 +1,5 @@
 {
-  "feature": "hexalia:willow_key",
+  "feature": "hexalia:willow",
   "placement": [
     {
       "type": "minecraft:count",
@@ -7,11 +7,11 @@
         "type": "minecraft:weighted_list",
         "distribution": [
           {
-            "data": 10,
-            "weight": 9
+            "data": 0,
+            "weight": 24
           },
           {
-            "data": 11,
+            "data": 1,
             "weight": 1
           }
         ]

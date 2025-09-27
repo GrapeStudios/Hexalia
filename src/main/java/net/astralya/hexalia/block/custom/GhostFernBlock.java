@@ -1,5 +1,6 @@
 package net.astralya.hexalia.block.custom;
 
+import net.astralya.hexalia.Configuration;
 import net.astralya.hexalia.particle.ModParticleType;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.effect.StatusEffect;
@@ -16,18 +17,18 @@ public class GhostFernBlock extends HerbBlock {
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        double centerX = pos.getX() + 0.5;
-        double centerY = pos.getY() + 0.5;
-        double centerZ = pos.getZ() + 0.5;
+        if (!Configuration.client().plants.ghostFernEmitsParticles) return;
 
-        double offsetX = (random.nextDouble() - 0.5) * 0.2;
-        double offsetZ = (random.nextDouble() - 0.5) * 0.2;
+        double cx = pos.getX() + 0.5;
+        double cy = pos.getY() + 0.5;
+        double cz = pos.getZ() + 0.5;
+
+        double ox = (random.nextDouble() - 0.5) * 0.2;
+        double oz = (random.nextDouble() - 0.5) * 0.2;
 
         world.addParticle(
                 ModParticleType.GHOST,
-                centerX + offsetX,
-                centerY,
-                centerZ + offsetZ,
+                cx + ox, cy, cz + oz,
                 (random.nextDouble() - 0.5) * 0.02,
                 0.08,
                 (random.nextDouble() - 0.5) * 0.02
