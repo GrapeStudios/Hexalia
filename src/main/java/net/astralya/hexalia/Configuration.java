@@ -41,6 +41,7 @@ public class Configuration {
     public static ModConfigSpec.IntValue MORPHORA_RADIUS;
 
     public static ModConfigSpec.BooleanValue GHOST_FERN_EMITS_PARTICLES;
+    public static ModConfigSpec.BooleanValue CELESTIAL_BLOOM_EMITS_PARTICLES;
 
     static {
         ModConfigSpec.Builder COMMON_BUILDER = new ModConfigSpec.Builder();
@@ -126,6 +127,11 @@ public class Configuration {
         GHOST_FERN_EMITS_PARTICLES = CLIENT_BUILDER
                 .comment("If true, Ghost Fern blocks emit ambient particles client-side. Default: true")
                 .define("ghostFernEmitsParticles", true);
+
+        CLIENT_BUILDER.comment("Client-side Visual Settings").push(CATEGORY_PLANTS);
+        CELESTIAL_BLOOM_EMITS_PARTICLES = CLIENT_BUILDER
+                .comment("If true, Celestial Blooms blocks emit ambient particles client-side. Default: true")
+                .define("celestialBloomEmitsParticles", true);
         CLIENT_BUILDER.pop();
 
         CLIENT_CONFIG = CLIENT_BUILDER.build();
