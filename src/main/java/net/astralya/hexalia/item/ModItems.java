@@ -63,6 +63,7 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.NAUTILITE.get(), new Item.Properties()));
     public static final DeferredItem<BlockItem> LOTUS_FLOWER = ITEMS.register("lotus_flower",
             () -> new PlaceOnWaterBlockItem(ModBlocks.LOTUS_FLOWER.get(), new Item.Properties()));
+    public static final DeferredItem<Item> LOTUS_BLOSSOM = ITEMS.registerSimpleItem("lotus_blossom");
 
     // Refined Resources
     public static final DeferredItem<Item> SPIRIT_POWDER = ITEMS.registerSimpleItem("spirit_powder");
@@ -85,8 +86,8 @@ public class ModItems {
             HexFocusItem::new, new Item.Properties().stacksTo(1));
     public static final DeferredItem<Item> MORTAR_AND_PESTLE = ITEMS.registerItem("mortar_and_pestle",
             MortarAndPestleItem::new, new Item.Properties().durability(64));
-    public static final DeferredItem<Item> STONE_DAGGER = ITEMS.registerItem("stone_dagger",
-            StoneDaggerItem::new, new Item.Properties().durability(16));
+    public static final DeferredItem<Item> ATHAME = ITEMS.registerItem("athame",
+            AthameItem::new, new Item.Properties().durability(64));
     public static final DeferredItem<Item> PURIFYING_SAC = ITEMS.registerItem("purifying_sac",
             PurifyingSacItem::new, new Item.Properties().durability(6));
     public static final DeferredItem<Item> FOUL_SAC = ITEMS.register("foul_sac",

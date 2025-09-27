@@ -25,7 +25,7 @@ import java.util.Objects;
 import java.util.Set;
 
 
-public class StoneDaggerItem extends Item {
+public class AthameItem extends Item {
 
     private static final Set<Block> STRIPPABLE_LOGS = Set.of(Blocks.DARK_OAK_LOG, ModBlocks.COTTONWOOD_LOG.get());
     private static final Map<Block, Block> STRIPPED_BLOCKS = Map.of(
@@ -33,7 +33,7 @@ public class StoneDaggerItem extends Item {
             ModBlocks.COTTONWOOD_LOG.get(), ModBlocks.STRIPPED_COTTONWOOD_LOG.get()
     );
 
-    public StoneDaggerItem(Properties properties) {
+    public AthameItem(Properties properties) {
         super(properties);
     }
 

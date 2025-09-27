@@ -43,6 +43,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.SIREN_KELP.get());
         basicItem(ModItems.NAUTILITE.get());
         basicItem(ModItems.LOTUS_FLOWER.get());
+        basicItem(ModItems.LOTUS_BLOSSOM.get());
 
         basicItem(ModItems.SPIRIT_POWDER.get());
         basicItem(ModItems.SIREN_PASTE.get());
@@ -56,7 +57,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         handheldItem(ModItems.HEX_FOCUS.get());
         basicItem(ModItems.MORTAR_AND_PESTLE.get());
-        handheldItem(ModItems.STONE_DAGGER.get());
+        handheldItem(ModItems.ATHAME.get());
         basicItem(ModItems.PURIFYING_SAC.get());
         basicItem(ModItems.SAGE_PENDANT.get());
         basicItem(ModItems.SILK_IDOL.get());

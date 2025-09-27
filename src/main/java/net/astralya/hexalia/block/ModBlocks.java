@@ -55,7 +55,7 @@ public class ModBlocks {
     public static final DeferredBlock<Block> POTTED_CELESTIAL_BLOOM = BLOCKS.register("potted_celestial_bloom",
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), CELESTIAL_BLOOM, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY).lightLevel(state -> 6)));
     public static final DeferredBlock<Block> LOTUS_FLOWER = BLOCKS.register("lotus_flower",
-            () -> new WaterPlantBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LILY_PAD).lightLevel(state -> 6)));
+            () -> new LotusFlowerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LILY_PAD).lightLevel(state -> 6)));
     public static final DeferredBlock<Block> WITCHWEED = registerBlock("witchweed",
             () -> new WitchweedBlock(MobEffects.POISON, 6, BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY).dynamicShape().noCollission()));
 

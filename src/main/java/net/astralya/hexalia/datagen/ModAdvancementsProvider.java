@@ -64,13 +64,13 @@ public class ModAdvancementsProvider implements AdvancementSubProvider {
 
         AdvancementHolder knifeToTreeYou = Advancement.Builder.advancement()
                 .display(new DisplayInfo(
-                        new ItemStack(ModItems.STONE_DAGGER.get()),
+                        new ItemStack(ModItems.ATHAME.get()),
                         Component.translatable("advancements.hexalia.knife_to_tree_you.title"),
                         Component.translatable("advancements.hexalia.knife_to_tree_you.description"),
                         Optional.empty(), AdvancementType.TASK, true, true, false
                 ))
                 .parent(root)
-                .addCriterion("has_stone_dagger", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.STONE_DAGGER.get()))
+                .addCriterion("has_athame", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ATHAME.get()))
                 .save(writer, String.valueOf(ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "knife_to_tree_you")));
 
         AdvancementHolder tableManners = Advancement.Builder.advancement()

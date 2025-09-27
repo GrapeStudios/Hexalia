@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-25T15:19:52.7876053	Advancements
+// 1.21.1	2025-09-27T07:12:10.7716932	Advancements
 4eb7c823c317ad22aeb5dcfa75b742d0994259c1 data/hexalia/advancement/brewbie_award.json
 e81dad7564fa9e4526f056c95ca395957a633de9 data/hexalia/advancement/brewed_awakening.json
 332411c5178281be92ea1fe1a44f978a6ede8b55 data/hexalia/advancement/change_of_plans.json
@@ -6,7 +6,7 @@ e81dad7564fa9e4526f056c95ca395957a633de9 data/hexalia/advancement/brewed_awakeni
 fbd8f4e3ecb65042cf9aa5084f0db9287991d564 data/hexalia/advancement/essence_collector.json
 d3bffc6bc61b76b2ed1467e9e8a2f4824edffcb0 data/hexalia/advancement/herb_nerd.json
 1167ef9fe50d886306e1ff2bed76d9c3e466d8e8 data/hexalia/advancement/kelp_yourself.json
-79244bf1a0847d176263a8050dc1991ae6ab4fd1 data/hexalia/advancement/knife_to_tree_you.json
+e7f59e94611af8bf70a94736c1f8991a22335521 data/hexalia/advancement/knife_to_tree_you.json
 5825af6e6d3d0b6bef91b48a45fcbf0e76c39249 data/hexalia/advancement/master_or_not.json
 96ddf8f41e1afd694888d5465fccbc08ab6174bd data/hexalia/advancement/powder_and_pouch.json
 5552225bbc8ee2751d9727c5cefc79d8d4425210 data/hexalia/advancement/pure_intentions.json

@@ -1,11 +1,11 @@
 {
   "parent": "hexalia:root",
   "criteria": {
-    "has_stone_dagger": {
+    "has_athame": {
       "conditions": {
         "items": [
           {
-            "items": "hexalia:stone_dagger"
+            "items": "hexalia:athame"
           }
         ]
       },
@@ -18,7 +18,7 @@
     },
     "icon": {
       "count": 1,
-      "id": "hexalia:stone_dagger"
+      "id": "hexalia:athame"
     },
     "title": {
       "translate": "advancements.hexalia.knife_to_tree_you.title"
@@ -26,7 +26,7 @@
   },
   "requirements": [
     [
-      "has_stone_dagger"
+      "has_athame"
     ]
   ],
   "sends_telemetry_event": true

@@ -75,7 +75,7 @@ public class ModCreativeModeTabs {
 
                 // Tools
                 output.accept(ModItems.MORTAR_AND_PESTLE.get());
-                output.accept(ModItems.STONE_DAGGER.get());
+                output.accept(ModItems.ATHAME.get());
                 output.accept(ModItems.HEX_FOCUS.get());
                 output.accept(ModItems.SILK_IDOL.get());
                 output.accept(ModItems.RAINFALL_IDOL.get());

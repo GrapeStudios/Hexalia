@@ -1,6 +1,7 @@
-// 1.21.1	2025-09-15T19:21:34.8537546	Item Models: hexalia
+// 1.21.1	2025-09-27T07:12:10.7716932	Item Models: hexalia
 e5a7da2fe51e60bdf425b0c5e11675c33540c1ee assets/hexalia/models/item/air_node.json
 15249bcc7b4d170a3f881d5072d7c1103423d8ed assets/hexalia/models/item/ancient_seed.json
+c0e8c094850b55846bff6046e34890e2ac29b293 assets/hexalia/models/item/athame.json
 5de9112b974a79b8d4daac10d489cae64dc39ad2 assets/hexalia/models/item/bogged_boots.json
 989d2285c3a48186605f9eccd3f991ff97848cea assets/hexalia/models/item/brew_of_arachnid_grace.json
 5f190667260649fb452039ff32fee6026c126257 assets/hexalia/models/item/brew_of_bloodlust.json
@@ -31,6 +32,7 @@ f404d4aedc070166f4a88d264fb53350909208b0 assets/hexalia/models/item/galeberries_
 632f5acfbcf2341303db31663b3f104e1b3df7f1 assets/hexalia/models/item/ghost_powder.json
 7a6fc76876f085935b42624638c791434ff71630 assets/hexalia/models/item/hex_focus.json
 c64f66b868bd2f0e2e94e3104a16b91a10f3e896 assets/hexalia/models/item/kelpweave_blade.json
+ad92646d00b574b78e00ed513ea18c4d26e0d84c assets/hexalia/models/item/lotus_blossom.json
 c2058b49f67c794d3a6c5774caa1db490c83ad94 assets/hexalia/models/item/lotus_flower.json
 9dafdb3fd87336955ab251b2d4a313c2b0fda78c assets/hexalia/models/item/mandrake.json
 8fc7a0aa405443f2456962cbb7753edf873e3e3c assets/hexalia/models/item/mandrake_seeds.json
@@ -56,7 +58,6 @@ bc49373d64572172e6f4ec5003ed75c8f22b3774 assets/hexalia/models/item/saltsprout.j
 86059798ec79814a119279d7fbb36a2c2fb77e35 assets/hexalia/models/item/siren_paste.json
 821a2ac4b14a011097350a83d29566e06bc8ebb1 assets/hexalia/models/item/spicy_sandwich.json
 e7f7503d997487614b6477b7ca4abd2aea600188 assets/hexalia/models/item/spirit_powder.json
-0adbe5fbd3409a7ad35ed1d68df64b85ceaaa60b assets/hexalia/models/item/stone_dagger.json
 3b221041e13e0fad85eb5fad104ca0b9fc190f8a assets/hexalia/models/item/sunfire_tomato.json
 f78eebd5e0ccffa74122a1686696dfe32e6070b1 assets/hexalia/models/item/sunfire_tomato_seeds.json
 6b3723bd9bd6f3ad6527ad8030f747eb20538902 assets/hexalia/models/item/tempest_idol.json
