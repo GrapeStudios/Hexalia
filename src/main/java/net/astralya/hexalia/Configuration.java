@@ -43,6 +43,7 @@ public class Configuration {
     public static ForgeConfigSpec.IntValue MORPHORA_RADIUS;
 
     public static ForgeConfigSpec.BooleanValue GHOST_FERN_EMITS_PARTICLES;
+    public static ForgeConfigSpec.BooleanValue CELESTIAL_BLOOM_EMITS_PARTICLES;
 
     static {
         // COMMON
@@ -125,9 +126,15 @@ public class Configuration {
         ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
 
         CLIENT_BUILDER.comment("Client-side Visual Settings").push(CATEGORY_PLANTS);
+
         GHOST_FERN_EMITS_PARTICLES = CLIENT_BUILDER
                 .comment("If true, Ghost Fern blocks emit ambient particles client-side. Default: true")
                 .define("ghostFernEmitsParticles", true);
+        CLIENT_BUILDER.pop();
+
+        CELESTIAL_BLOOM_EMITS_PARTICLES = CLIENT_BUILDER
+                .comment("If true, Celestial Blooms blocks emit ambient particles client-side. Default: true")
+                .define("celestialBloomEmitsParticles", true);
         CLIENT_BUILDER.pop();
 
         CLIENT_CONFIG = CLIENT_BUILDER.build();
