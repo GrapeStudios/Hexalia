@@ -130,13 +130,11 @@ public class Configuration {
         GHOST_FERN_EMITS_PARTICLES = CLIENT_BUILDER
                 .comment("If true, Ghost Fern blocks emit ambient particles client-side. Default: true")
                 .define("ghostFernEmitsParticles", true);
-        CLIENT_BUILDER.pop();
 
         CELESTIAL_BLOOM_EMITS_PARTICLES = CLIENT_BUILDER
                 .comment("If true, Celestial Blooms blocks emit ambient particles client-side. Default: true")
                 .define("celestialBloomEmitsParticles", true);
         CLIENT_BUILDER.pop();
-
         CLIENT_CONFIG = CLIENT_BUILDER.build();
     }
 

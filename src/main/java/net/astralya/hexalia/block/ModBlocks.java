@@ -61,7 +61,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> POTTED_CELESTIAL_BLOOM = BLOCKS.register("potted_celestial_bloom",
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), CELESTIAL_BLOOM, BlockBehaviour.Properties.copy(Blocks.POTTED_POPPY)));
     public static final RegistryObject<Block> LOTUS_FLOWER = BLOCKS.register("lotus_flower",
-            () -> new WaterPlantBlock(BlockBehaviour.Properties.copy(Blocks.LILY_PAD).lightLevel(state -> 6)));
+            () -> new LotusFlowerBlock(BlockBehaviour.Properties.copy(Blocks.LILY_PAD).lightLevel(state -> 6)));
     public static final RegistryObject<Block> WITCHWEED = registerBlock("witchweed",
             () -> new WitchweedBlock(() -> MobEffects.POISON, 6, BlockBehaviour.Properties.copy(Blocks.POPPY)));
     

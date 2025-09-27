@@ -84,7 +84,8 @@
   "item.hexalia.purifying_sac": "Purifying Sac",
   "item.hexalia.foul_sac": "Foul Sac",
   "item.hexalia.frost_sac": "Frost Sac",
-  "item.hexalia.stone_dagger": "Stone Dagger",
+  "item.hexalia.athame": "Athame",
+  "item.hexalia.lotus_blossom": "Lotus Blossom",
   "item.hexalia.tree_resin": "Tree Resin",
   "item.hexalia.silk_fiber": "Silk Fiber",
   "item.hexalia.silkworm": "Silkworm",
@@ -175,7 +176,7 @@
   "advancements.hexalia.crush_course.description": "Refine a Magical Herb with a Mortar & Pestle.",
 
   "advancements.hexalia.knife_to_tree_you.title": "Knife to Tree You",
-  "advancements.hexalia.knife_to_tree_you.description": "Use a Stone Dagger to collect Resin.",
+  "advancements.hexalia.knife_to_tree_you.description": "Use an Athame to collect Resin.",
 
   "advancements.hexalia.table_manners.title": "Table Manners",
   "advancements.hexalia.table_manners.description": "Craft a Ritual Table to begin your rites.",

@@ -49,12 +49,12 @@ public class ModAdvancementsProvider implements ForgeAdvancementProvider.Advance
                 .save(saver, new ResourceLocation(HexaliaMod.MODID, "crush_course"), existingFileHelper);
 
         Advancement knifeToTreeYou = Advancement.Builder.advancement()
-                .display(new DisplayInfo(new ItemStack(ModItems.STONE_DAGGER.get()),
+                .display(new DisplayInfo(new ItemStack(ModItems.ATHAME.get()),
                         Component.translatable("advancements.hexalia.knife_to_tree_you.title"),
                         Component.translatable("advancements.hexalia.knife_to_tree_you.description"),
                         BG, FrameType.TASK, true, true, false))
                 .parent(root)
-                .addCriterion("has_stone_dagger", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.STONE_DAGGER.get()))
+                .addCriterion("has_athame", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.ATHAME.get()))
                 .save(saver, new ResourceLocation(HexaliaMod.MODID, "knife_to_tree_you"), existingFileHelper);
 
         Advancement tableManners = Advancement.Builder.advancement()

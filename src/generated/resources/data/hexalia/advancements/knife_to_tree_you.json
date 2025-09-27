@@ -1,12 +1,12 @@
 {
   "parent": "hexalia:root",
   "criteria": {
-    "has_stone_dagger": {
+    "has_athame": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:stone_dagger"
+              "hexalia:athame"
             ]
           }
         ]
@@ -23,7 +23,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "hexalia:stone_dagger",
+      "item": "hexalia:athame",
       "nbt": "{Damage:0}"
     },
     "show_toast": true,
@@ -33,7 +33,7 @@
   },
   "requirements": [
     [
-      "has_stone_dagger"
+      "has_athame"
     ]
   ],
   "sends_telemetry_event": true

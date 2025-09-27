@@ -82,10 +82,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SIREN_KELP.get()).build()))
                 .save(recipeConsumer);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.STONE_DAGGER.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.ATHAME.get())
                 .pattern(" S")
                 .pattern("P ")
-                .define('S', Blocks.COBBLESTONE)
+                .define('S', Items.FLINT)
                 .define('P', Items.STICK)
                 .unlockedBy("has_cobblestone",
                         inventoryTrigger(ItemPredicate.Builder.item().of(Blocks.COBBLESTONE).build()))
@@ -253,7 +253,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("PAP")
                 .pattern(" P ")
                 .define('S', ModTags.Items.SALT)
-                .define('A', ModBlocks.LOTUS_FLOWER.get())
+                .define('A', ModItems.LOTUS_BLOSSOM.get())
                 .define('P', Items.LEATHER)
                 .unlockedBy("has_salt", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SALT.get()).build()))
                 .save(recipeConsumer);
@@ -364,7 +364,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.PURITY_IDOL.get(), 1)
                 .requires(ModItems.SILK_IDOL.get())
                 .requires(ModItems.WATER_NODE.get())
-                .requires(ModItems.LOTUS_FLOWER.get())
+                .requires(ModItems.LOTUS_BLOSSOM.get())
                 .requires(ModItems.SALT.get())
                 .unlockedBy("has_silk_idol",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SILK_IDOL.get()).build()))

@@ -20,14 +20,14 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.Map;
 import java.util.Set;
 
-public class StoneDaggerItem extends Item {
+public class AthameItem extends Item {
     private static final Set<Block> STRIPPABLE_LOGS = Set.of(Blocks.DARK_OAK_LOG, ModBlocks.COTTONWOOD_LOG.get());
     private static final Map<Block, Block> STRIPPED_BLOCKS = Map.of(
             Blocks.DARK_OAK_LOG, Blocks.STRIPPED_DARK_OAK_LOG,
             ModBlocks.COTTONWOOD_LOG.get(), ModBlocks.STRIPPED_COTTONWOOD_LOG.get()
     );
 
-    public StoneDaggerItem(Properties pProperties) {
+    public AthameItem(Properties pProperties) {
         super(pProperties);
     }
 

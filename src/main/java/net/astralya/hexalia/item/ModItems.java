@@ -63,7 +63,8 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.NAUTILITE.get(), new Item.Properties()));
     public static final RegistryObject<Item> LOTUS_FLOWER = ITEMS.register("lotus_flower",
             () -> new PlaceOnWaterBlockItem(ModBlocks.LOTUS_FLOWER.get(), new Item.Properties()));
-    
+    public static final RegistryObject<Item> LOTUS_BLOSSOM = ITEMS.register("lotus_blossom", () -> new Item(new Item.Properties()));
+
     // Refined Resources
     public static final RegistryObject<Item> SIREN_PASTE = ITEMS.register("siren_paste", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SPIRIT_POWDER = ITEMS.register("spirit_powder", () -> new Item(new Item.Properties()));
@@ -85,8 +86,8 @@ public class ModItems {
             () -> new HexFocusItem(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> MORTAR_AND_PESTLE = ITEMS.register("mortar_and_pestle",
             () -> new MortarAndPestleItem(new Item.Properties().durability(64)));
-    public static final RegistryObject<Item> STONE_DAGGER = ITEMS.register("stone_dagger",
-            () -> new StoneDaggerItem(new Item.Properties().durability(16)));
+    public static final RegistryObject<Item> ATHAME = ITEMS.register("athame",
+            () -> new AthameItem(new Item.Properties().durability(64)));
     public static final RegistryObject<Item> PURIFYING_SAC = ITEMS.register("purifying_sac",
             () -> new PurifyingSacItem(new Item.Properties().durability(6)));
     public static final RegistryObject<Item> FOUL_SAC = ITEMS.register("foul_sac",
