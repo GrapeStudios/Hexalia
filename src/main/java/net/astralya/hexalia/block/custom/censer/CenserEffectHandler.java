@@ -5,6 +5,9 @@ import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.block.custom.CenserBlock;
 import net.astralya.hexalia.block.entity.custom.CenserBlockEntity;
 import net.astralya.hexalia.item.ModItems;
+import net.minecraft.block.AnvilBlock;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.HopperBlockEntity;
 import net.minecraft.entity.Entity;
@@ -25,6 +28,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
@@ -41,11 +45,13 @@ public class CenserEffectHandler {
 
     private static final Map<World, Set<BlockPos>> UNDEAD_VEIL_CACHE = new WeakHashMap<>();
 
+    private static final int MINERS_RESPITE_EFFECT_REFRESH_TICKS = 300;
+
     public static final Map<HerbCombination, BiConsumer<World, BlockPos>> EFFECTS = Map.of(
             new HerbCombination(ModItems.SIREN_KELP, ModBlocks.SPIRIT_BLOOM.asItem()), CenserEffectHandler::applyFireproofPresence,
             new HerbCombination(ModBlocks.GHOST_FERN.asItem(), ModBlocks.SPIRIT_BLOOM.asItem()), CenserEffectHandler::applyUndeadVeil,
             new HerbCombination(ModBlocks.GHOST_FERN.asItem(), ModItems.SIREN_KELP), CenserEffectHandler::applyLivestockComfort,
-            new HerbCombination(ModBlocks.DREAMSHROOM.asItem(), ModBlocks.SPIRIT_BLOOM.asItem()), CenserEffectHandler::applyAnvilHarmony,
+            new HerbCombination(ModBlocks.DREAMSHROOM.asItem(), ModBlocks.SPIRIT_BLOOM.asItem()), CenserEffectHandler::applyMinersRespite,
             new HerbCombination(ModBlocks.DREAMSHROOM.asItem(), ModItems.SIREN_KELP), CenserEffectHandler::applyFishersBoon,
             new HerbCombination(ModBlocks.DREAMSHROOM.asItem(), ModBlocks.GHOST_FERN.asItem()), CenserEffectHandler::applySuctionZone
     );
@@ -54,7 +60,7 @@ public class CenserEffectHandler {
             new HerbCombination(ModItems.SIREN_KELP, ModBlocks.SPIRIT_BLOOM.asItem()), EffectType.FIREPROOF_PRESENCE,
             new HerbCombination(ModBlocks.GHOST_FERN.asItem(), ModBlocks.SPIRIT_BLOOM.asItem()), EffectType.UNDEAD_VEIL,
             new HerbCombination(ModBlocks.GHOST_FERN.asItem(), ModItems.SIREN_KELP), EffectType.LIVESTOCK_COMFORT,
-            new HerbCombination(ModBlocks.DREAMSHROOM.asItem(), ModBlocks.SPIRIT_BLOOM.asItem()), EffectType.ANVIL_HARMONY,
+            new HerbCombination(ModBlocks.DREAMSHROOM.asItem(), ModBlocks.SPIRIT_BLOOM.asItem()), EffectType.MINERS_RESPITE,
             new HerbCombination(ModBlocks.DREAMSHROOM.asItem(), ModItems.SIREN_KELP), EffectType.FISHERS_BOON,
             new HerbCombination(ModBlocks.DREAMSHROOM.asItem(), ModBlocks.GHOST_FERN.asItem()), EffectType.SUCTION_ZONE
     );
@@ -109,6 +115,10 @@ public class CenserEffectHandler {
             censer.setActiveCombination(combo);
             censer.setBurnTime(duration);
         }
+
+        if (getEffectTypeForCombination(combo) == EffectType.MINERS_RESPITE && world instanceof net.minecraft.server.world.ServerWorld sw) {
+            repairAnvilsInArea(sw, pos, Configuration.common().functional_blocks.censerEffectRadius);
+        }
     }
 
     public static void updateEffects(World world) {
@@ -142,7 +152,7 @@ public class CenserEffectHandler {
         FIREPROOF_PRESENCE,
         UNDEAD_VEIL,
         LIVESTOCK_COMFORT,
-        ANVIL_HARMONY,
+        MINERS_RESPITE,
         FISHERS_BOON,
         SUCTION_ZONE
     }
@@ -161,7 +171,6 @@ public class CenserEffectHandler {
         int radius = Configuration.common().functional_blocks.censerEffectRadius;
         Box area = new Box(pos).expand(radius);
         for (PlayerEntity player : world.getEntitiesByClass(PlayerEntity.class, area, p -> true)) {
-            player.removeCommandTag("hexalia:anvil_harmony");
             player.removeCommandTag("hexalia:fishers_boon");
         }
     }
@@ -211,7 +220,7 @@ public class CenserEffectHandler {
             return "message.hexalia.censer.livestock_comfort";
         }
         if (combo.equals(new HerbCombination(ModBlocks.DREAMSHROOM.asItem(), ModBlocks.SPIRIT_BLOOM.asItem()))) {
-            return "message.hexalia.censer.anvil_harmony";
+            return "message.hexalia.censer.miners_respite";
         }
         if (combo.equals(new HerbCombination(ModBlocks.DREAMSHROOM.asItem(), ModItems.SIREN_KELP))) {
             return "message.hexalia.censer.fishers_boon";
@@ -226,7 +235,6 @@ public class CenserEffectHandler {
         int radius = Configuration.common().functional_blocks.censerEffectRadius;
         Box area = new Box(pos).expand(radius);
         for (PlayerEntity player : world.getEntitiesByClass(PlayerEntity.class, area, p -> true)) {
-            player.removeCommandTag("hexalia:anvil_harmony");
             player.removeCommandTag("hexalia:fishers_boon");
         }
     }
@@ -281,11 +289,76 @@ public class CenserEffectHandler {
         }
     }
 
-    private static void applyAnvilHarmony(World world, BlockPos pos) {
+    private static void applyMinersRespite(World world, BlockPos pos) {
+        if (!(world instanceof ServerWorld serverWorld)) return;
+
         int radius = Configuration.common().functional_blocks.censerEffectRadius;
         Box area = new Box(pos).expand(radius);
-        for (PlayerEntity player : world.getEntitiesByClass(PlayerEntity.class, area, p -> true)) {
-            player.addCommandTag("hexalia:anvil_harmony");
+
+        for (PlayerEntity player : serverWorld.getEntitiesByClass(PlayerEntity.class, area, p -> true)) {
+            player.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.NIGHT_VISION,
+                    MINERS_RESPITE_EFFECT_REFRESH_TICKS,
+                    0,
+                    false,
+                    false,
+                    true
+            ));
+
+            player.addStatusEffect(new StatusEffectInstance(
+                    StatusEffects.HASTE,
+                    MINERS_RESPITE_EFFECT_REFRESH_TICKS,
+                    1,
+                    false,
+                    false,
+                    true
+            ));
+        }
+    }
+
+    private static void repairAnvilsInArea(ServerWorld world, BlockPos center, int radius) {
+        Box area = new Box(center).expand(radius);
+
+        BlockPos min = BlockPos.ofFloored(area.minX, area.minY, area.minZ);
+        BlockPos max = BlockPos.ofFloored(area.maxX, area.maxY, area.maxZ);
+
+        for (BlockPos bp : BlockPos.iterate(min, max)) {
+            BlockState state = world.getBlockState(bp);
+            if (!(state.getBlock() instanceof AnvilBlock)) continue;
+
+            Direction facing = state.contains(AnvilBlock.FACING)
+                    ? state.get(AnvilBlock.FACING)
+                    : Direction.NORTH;
+
+            BlockState repaired = null;
+
+            if (state.isOf(Blocks.DAMAGED_ANVIL)) {
+                repaired = Blocks.CHIPPED_ANVIL.getDefaultState();
+            } else if (state.isOf(Blocks.CHIPPED_ANVIL)) {
+                repaired = Blocks.ANVIL.getDefaultState();
+            }
+
+            if (repaired != null) {
+                if (repaired.contains(AnvilBlock.FACING)) {
+                    repaired = repaired.with(AnvilBlock.FACING, facing);
+                }
+
+                world.setBlockState(bp, repaired, 3);
+                world.playSound(
+                        null, bp,
+                        SoundEvents.BLOCK_ANVIL_USE,
+                        SoundCategory.BLOCKS,
+                        0.35f, 1.2f
+                );
+
+                world.spawnParticles(
+                        ParticleTypes.HAPPY_VILLAGER,
+                        bp.getX() + 0.5, bp.getY() + 1.0, bp.getZ() + 0.5,
+                        3,
+                        0.25, 0.15, 0.25,
+                        0.0
+                );
+            }
         }
     }
 
