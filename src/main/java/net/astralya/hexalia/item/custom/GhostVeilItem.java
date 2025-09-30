@@ -2,10 +2,10 @@ package net.astralya.hexalia.item.custom;
 
 import net.astralya.hexalia.item.custom.client.GhostVeilRenderer;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
@@ -75,24 +75,51 @@ public class GhostVeilItem extends ArmorItem implements GeoItem {
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
-        if (entity instanceof PlayerEntity player) {
-            if (!world.isClient && player.isSneaking() && player.getEquippedStack(EquipmentSlot.CHEST).equals(stack)) {
-                List<LivingEntity> nearbyEntities = world.getEntitiesByClass(LivingEntity.class, player.getBoundingBox().expand(10), mob -> mob instanceof HostileEntity);
+    public void inventoryTick(ItemStack stack, World world, net.minecraft.entity.Entity entity, int slot, boolean selected) {
+        if (!(entity instanceof PlayerEntity player)) {
+            super.inventoryTick(stack, world, entity, slot, selected);
+            return;
+        }
 
-                for (LivingEntity mob : nearbyEntities) {
-                    if (mob instanceof HostileEntity hostileMob) {
-                        hostileMob.setTarget(null);
-                    }
+        boolean wearingThis = player.getEquippedStack(EquipmentSlot.CHEST).equals(stack);
+
+        if (!world.isClient && wearingThis) {
+            if (player.isSneaking()) {
+                var cur = player.getStatusEffect(StatusEffects.INVISIBILITY);
+                if (cur == null || cur.getDuration() <= 10) {
+                    player.addStatusEffect(new StatusEffectInstance(StatusEffects.INVISIBILITY, 20, 0, false, false, false));
                 }
 
-                if (stack.isDamageable() && world.getTime() % 20 == 0) {
+                var data = stack.get(net.minecraft.component.DataComponentTypes.CUSTOM_DATA);
+                net.minecraft.nbt.NbtCompound tag = data != null ? data.copyNbt() : new net.minecraft.nbt.NbtCompound();
+                tag.putBoolean("HexaliaInvisFromItem", true);
+                stack.set(net.minecraft.component.DataComponentTypes.CUSTOM_DATA, net.minecraft.component.type.NbtComponent.of(tag));
+
+                if (stack.isDamageable() && world.getTime() % 20L == 0L && !player.getAbilities().creativeMode) {
                     stack.damage(1, player, EquipmentSlot.CHEST);
                     if (stack.isEmpty()) {
                         player.getInventory().setStack(EquipmentSlot.CHEST.getEntitySlotId(), ItemStack.EMPTY);
                     }
                 }
+            } else {
+                var data = stack.get(net.minecraft.component.DataComponentTypes.CUSTOM_DATA);
+                boolean fromItem = false;
+                if (data != null) {
+                    var tag = data.copyNbt();
+                    fromItem = tag.getBoolean("HexaliaInvisFromItem");
+                    tag.remove("HexaliaInvisFromItem");
+                    if (tag.isEmpty()) {
+                        stack.remove(net.minecraft.component.DataComponentTypes.CUSTOM_DATA);
+                    } else {
+                        stack.set(net.minecraft.component.DataComponentTypes.CUSTOM_DATA, net.minecraft.component.type.NbtComponent.of(tag));
+                    }
+                }
+                if (fromItem && player.hasStatusEffect(StatusEffects.INVISIBILITY)) {
+                    player.removeStatusEffect(StatusEffects.INVISIBILITY);
+                }
             }
         }
+
+        super.inventoryTick(stack, world, entity, slot, selected);
     }
 }

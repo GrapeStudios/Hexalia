@@ -1,5 +1,6 @@
 package net.astralya.hexalia.effect.custom;
 
+import net.astralya.hexalia.Configuration;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
@@ -27,7 +28,7 @@ public class SiphonEffect extends StatusEffect {
         }
 
         World world = player.getWorld();
-        double radius = 5.0 + amplifier;
+        double radius = Configuration.common().tools.siphonRadius;
         Box box = player.getBoundingBox().expand(radius);
 
         List<ItemEntity> itemEntities = world.getEntitiesByClass(ItemEntity.class, box, item -> true);

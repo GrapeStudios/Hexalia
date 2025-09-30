@@ -20,6 +20,7 @@ public class HexaliaModDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModRecipeGenerator::new);
 		pack.addProvider(ModWorldGenerator::new);
 		pack.addProvider(ModBiomeTagsProvider::new);
+        pack.addProvider(ModAdvancementsProvider::new);
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package net.astralya.hexalia;
 
 import net.astralya.hexalia.block.ModBlocks;
+import net.astralya.hexalia.block.ModFlammables;
 import net.astralya.hexalia.block.custom.censer.CenserServerTickHandler;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.component.ModComponents;
@@ -35,6 +36,7 @@ public class HexaliaMod implements ModInitializer {
 		ModEffects.registerEffects();
 		ModBlocks.registerModBlocks();
 		ModBlocks.registerBlockProperties();
+        ModFlammables.registerFlammables();
 		ModParticleType.registerParticles();
 		ModSoundEvents.registerSounds();
 		ModBlockEntityTypes.registerBlockEntities();

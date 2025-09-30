@@ -20,7 +20,7 @@ public class DreamcatcherBlock extends WallMountedBlock {
 
     @Override
     protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        int rangeBlocks = Configuration.common().functional_blocks.radius;
+        int rangeBlocks = Configuration.common().functional_blocks.dreamcatcherRadius;
         int igniteTicks = Configuration.common().functional_blocks.phantomIgniteDuration;
 
         Vec3d center = Vec3d.ofCenter(pos);

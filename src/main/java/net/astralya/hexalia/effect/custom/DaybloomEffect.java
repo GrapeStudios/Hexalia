@@ -1,6 +1,7 @@
 package net.astralya.hexalia.effect.custom;
 
 import net.astralya.hexalia.HexaliaMod;
+import net.astralya.hexalia.util.SunlightCheck;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -22,36 +23,26 @@ public class DaybloomEffect extends StatusEffect {
     public boolean applyUpdateEffect(LivingEntity entity, int amplifier) {
         if (entity instanceof PlayerEntity player) {
             World world = player.getWorld();
+            SunlightCheck sc = new SunlightCheck(world, player.getBlockPos());
+            sc.recheckCanSeeSun();
+            float gen = sc.getGenerationMultiplier();
 
-            if (isNight(world)) {
+            if (gen <= 0.0F) {
                 player.damage(player.getDamageSources().magic(), 1.5F);
                 removeSpeedModifier(player);
-            } else if (isDay(world)) {
+            } else {
                 player.heal(2.0F);
                 applySpeedModifier(player, amplifier);
-            } else {
-                removeSpeedModifier(player);
             }
             return true;
         }
         return super.applyUpdateEffect(entity, amplifier);
     }
 
-    private boolean isNight(World world) {
-        long time = world.getTimeOfDay() % 24000L;
-        return time >= 13000L && time <= 23000L;
-    }
-
-    private boolean isDay(World world) {
-        long time = world.getTimeOfDay() % 24000L;
-        return time >= 0L && time < 13000L;
-    }
-
     private void applySpeedModifier(PlayerEntity player, int amplifier) {
         var inst = player.getAttributeInstance(EntityAttributes.GENERIC_MOVEMENT_SPEED);
         if (inst != null) {
             inst.removeModifier(SPEED_MODIFIER_ID);
-
             double speedBoost = 0.05 * (amplifier + 1);
             inst.addTemporaryModifier(new EntityAttributeModifier(
                     SPEED_MODIFIER_ID,

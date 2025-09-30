@@ -6,6 +6,8 @@ import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.effect.ModEffects;
 import net.astralya.hexalia.entity.ModEntities;
 import net.astralya.hexalia.entity.boat.ModBoats;
+import net.astralya.hexalia.entity.custom.projectile.FoulSacProjectile;
+import net.astralya.hexalia.entity.custom.projectile.FrostSacProjectile;
 import net.astralya.hexalia.item.custom.*;
 import net.astralya.hexalia.util.ModArmorMaterials;
 import net.astralya.hexalia.util.ModToolMaterials;
@@ -84,13 +86,12 @@ public class ModItems {
             new MortarAndPestleItem(new Item.Settings().maxDamage(64)));
     public static final Item ATHAME = registerItem("athame",
             new AthameItem(new Item.Settings().maxDamage(64)));
-    //TODO Projectiles
     public static final Item PURIFYING_SAC = registerItem("purifying_sac",
-            new PurifyingSaltsItem(new Item.Settings().maxDamage(6)));
+            new PurifyingSacItem(new Item.Settings().maxDamage(6)));
     public static final Item FOUL_SAC = registerItem("foul_sac",
-            new Item(new Item.Settings()));
+            new ThrownSacItem(new Item.Settings(), FoulSacProjectile::new));
     public static final Item FROST_SAC = registerItem("frost_sac",
-            new Item(new Item.Settings()));
+            new ThrownSacItem(new Item.Settings(), FrostSacProjectile::new));
     public static final Item SAGE_PENDANT = registerItem("sage_pendant",
             new Item(new Item.Settings().maxCount(1).maxDamage(64).rarity(Rarity.UNCOMMON)));
     public static final Item SILK_IDOL = registerItem("silk_idol",
@@ -104,7 +105,7 @@ public class ModItems {
     public static final Item PURITY_IDOL = registerItem("purity_idol",
             new PurityIdolItem(new Item.Settings()));
     public static final Item MUTAVIS = registerItem("mutavis",
-            new Item(new Item.Settings()));
+            new MutavisItem(new Item.Settings()));
 
     // Block Items
     public static final Item CANDLE_SKULL = registerItem("candle_skull",
@@ -133,25 +134,25 @@ public class ModItems {
     public static final Item RUSTIC_BOTTLE = registerItem("rustic_bottle",
             new Item(new Item.Settings()));
     public static final Item BREW_OF_SPIKESKIN = registerItem("brew_of_spikeskin",
-            new BrewItem(new Item.Settings().maxCount(16), () -> ModEffects.SPIKESKIN, 20 * 240, 0,
+            new BrewItem(new Item.Settings().maxCount(4), () -> ModEffects.SPIKESKIN, 20 * 240, 0,
                     Text.translatable("tooltip.hexalia.spikeskin_brew").formatted(Formatting.BLUE)));
     public static final Item BREW_OF_BLOODLUST = registerItem("brew_of_bloodlust",
-            new BrewItem(new Item.Settings().maxCount(16), () -> ModEffects.BLOODLUST, 20 * 240, 0,
+            new BrewItem(new Item.Settings().maxCount(4), () -> ModEffects.BLOODLUST, 20 * 240, 0,
                     Text.translatable("tooltip.hexalia.bloodlust_brew").formatted(Formatting.BLUE)));
     public static final Item BREW_OF_SLIMEWALKER = registerItem("brew_of_slimewalker",
-            new BrewItem(new Item.Settings().maxCount(16), () -> ModEffects.SLIMEWALKER, 20 * 240, 0,
+            new BrewItem(new Item.Settings().maxCount(4), () -> ModEffects.SLIMEWALKER, 20 * 240, 0,
                     Text.translatable("tooltip.hexalia.spikeskin_brew").formatted(Formatting.BLUE)));
     public static final Item BREW_OF_SIPHON = registerItem("brew_of_siphon",
-            new BrewItem(new Item.Settings().maxCount(16), () -> ModEffects.SIPHON, 20 * 240, 0,
+            new BrewItem(new Item.Settings().maxCount(4), () -> ModEffects.SIPHON, 20 * 240, 0,
                     Text.translatable("tooltip.hexalia.siphon_brew").formatted(Formatting.BLUE)));
     public static final Item BREW_OF_DAYBLOOM = registerItem("brew_of_daybloom",
-            new BrewItem(new Item.Settings().maxCount(16), () -> ModEffects.DAYBLOOM, 20 * 240, 0,
+            new BrewItem(new Item.Settings().maxCount(4), () -> ModEffects.DAYBLOOM, 20 * 240, 0,
                     Text.translatable("tooltip.hexalia.daybloom").formatted(Formatting.BLUE)));
     public static final Item BREW_OF_ARACHNID_GRACE = registerItem("brew_of_arachnid_grace",
-            new BrewItem(new Item.Settings().maxCount(16), () -> ModEffects.ARACHNID_GRACE, 20 * 240, 0,
+            new BrewItem(new Item.Settings().maxCount(4), () -> ModEffects.ARACHNID_GRACE, 20 * 240, 0,
                     Text.translatable("tooltip.hexalia.arachnid_grace").formatted(Formatting.BLUE)));
     public static final Item BREW_OF_HOMESTEAD = registerItem("brew_of_homestead",
-            new HomesteadBrewItem(new Item.Settings().maxCount(16)));
+            new HomesteadBrewItem(new Item.Settings().maxCount(4)));
 
     // Entity Related Items
     public static final Item BOTTLED_MOTH = registerItem("bottled_moth",

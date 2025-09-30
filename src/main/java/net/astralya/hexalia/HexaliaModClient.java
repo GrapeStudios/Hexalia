@@ -113,6 +113,9 @@ public class HexaliaModClient implements ClientModInitializer {
         );
 
         EntityRendererRegistry.register(ModEntities.RABBAGE, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.PURIFYING_SAC, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.FOUL_SAC, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.FROST_SAC, FlyingItemEntityRenderer::new);
     }
 
     private void registerScreens() {

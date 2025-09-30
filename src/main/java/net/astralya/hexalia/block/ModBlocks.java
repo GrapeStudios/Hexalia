@@ -9,7 +9,6 @@ import net.astralya.hexalia.block.custom.wood.ModWallSignBlock;
 import net.astralya.hexalia.util.ModWoodTypes;
 import net.astralya.hexalia.worldgen.tree.ModSaplingGenerators;
 import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
-import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.minecraft.block.*;
 import net.minecraft.entity.effect.StatusEffects;
@@ -43,7 +42,7 @@ public class ModBlocks {
     public static final Block SIREN_KELP = registerBlockWithoutBlockItem("siren_kelp",
             new SirenKelpBlock(AbstractBlock.Settings.copy(Blocks.SEAGRASS)));
     public static final Block GHOST_FERN = registerBlock("ghost_fern",
-            new GhostFernBlock(StatusEffects.INVISIBILITY, 6, AbstractBlock.Settings.copy(Blocks.POPPY)));
+            new GhostFernBlock(StatusEffects.INVISIBILITY, 6, AbstractBlock.Settings.copy(Blocks.FERN)));
     public static final Block POTTED_GHOST_FERN = registerBlockWithoutBlockItem("potted_ghost_fern",
             new FlowerPotBlock(GHOST_FERN, AbstractBlock.Settings.copy(Blocks.POTTED_POPPY)));
     public static final Block CELESTIAL_BLOOM = registerBlock("celestial_bloom",
@@ -258,31 +257,6 @@ public class ModBlocks {
         StrippableBlockRegistry.register(ModBlocks.COTTONWOOD_WOOD, ModBlocks.STRIPPED_COTTONWOOD_WOOD);
         StrippableBlockRegistry.register(ModBlocks.WILLOW_LOG, ModBlocks.STRIPPED_WILLOW_LOG);
         StrippableBlockRegistry.register(ModBlocks.WILLOW_WOOD, ModBlocks.STRIPPED_WILLOW_WOOD);
-
-        FlammableBlockRegistry instance = FlammableBlockRegistry.getDefaultInstance();
-        instance.add(ModBlocks.SPIRIT_BLOOM, 60, 100);
-        instance.add(ModBlocks.CHILLBERRY_BUSH, 60, 100);
-        instance.add(ModBlocks.WILD_MANDRAKE, 60, 100);
-        instance.add(ModBlocks.DREAMCATCHER, 5, 20);
-        instance.add(ModBlocks.SILKWORM_COCOON, 6, 100);
-        instance.add(ModBlocks.COTTONWOOD_LOG, 5, 20);
-        instance.add(ModBlocks.COTTONWOOD_WOOD, 5, 20);
-        instance.add(ModBlocks.STRIPPED_COTTONWOOD_LOG, 5, 20);
-        instance.add(ModBlocks.STRIPPED_COTTONWOOD_WOOD, 5, 20);
-        instance.add(ModBlocks.COTTONWOOD_PLANKS, 5, 20);
-        instance.add(ModBlocks.WILLOW_LOG, 5, 20);
-        instance.add(ModBlocks.WILLOW_WOOD, 5, 20);
-        instance.add(ModBlocks.STRIPPED_WILLOW_LOG, 5, 20);
-        instance.add(ModBlocks.STRIPPED_WILLOW_WOOD, 5, 20);
-        instance.add(ModBlocks.WILLOW_PLANKS, 5, 20);
-        instance.add(ModBlocks.WITCHWEED, 60, 100);
-        instance.add(ModBlocks.NIGHTSHADE_BUSH, 60, 100);
-        instance.add(ModBlocks.LAVENDER, 60, 100);
-        instance.add(ModBlocks.BEGONIA, 60, 100);
-        instance.add(ModBlocks.DAHLIA, 60, 100);
-        instance.add(ModBlocks.GALEBERRIES_VINE, 60, 100);
-        instance.add(ModBlocks.GALEBERRIES_VINE_PLANT, 60, 100);
-        instance.add(ModBlocks.RITUAL_BRAZIER, 5, 20);
     }
 
     private static Block registerBlockWithoutBlockItem(String name, Block block) {

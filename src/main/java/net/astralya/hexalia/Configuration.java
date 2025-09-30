@@ -109,13 +109,13 @@ public final class Configuration {
         public static final class FunctionalBlocks {
             public int censerEffectRadius = 16;
             public int censerEffectDuration = 7200;
-            public int radius = 16;
+            public int dreamcatcherRadius = 16;
             public int phantomIgniteDuration = 100;
 
             void validate() {
                 censerEffectRadius = clamp(censerEffectRadius, 1, 64);
                 censerEffectDuration = clamp(censerEffectDuration, 20, 24000);
-                radius = clamp(radius, 1, 64);
+                dreamcatcherRadius = clamp(dreamcatcherRadius, 1, 64);
                 phantomIgniteDuration = clamp(phantomIgniteDuration, 0, 600);
             }
         }

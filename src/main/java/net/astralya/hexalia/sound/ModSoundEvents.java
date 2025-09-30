@@ -10,7 +10,7 @@ public class ModSoundEvents {
 
     public static final SoundEvent MANDRAKE_SCREAM = registerSoundEvent("mandrake_scream");
     public static final SoundEvent RITUAL_SUCCESS = registerSoundEvent("ritual_success");
-    public static final SoundEvent CONVERSION = registerSoundEvent("conversion");
+    public static final SoundEvent SAC_IMPACT = registerSoundEvent("sac_impact");
 
     private static SoundEvent registerSoundEvent(String name) {
         Identifier identifier = Identifier.of(HexaliaMod.MODID, name);
