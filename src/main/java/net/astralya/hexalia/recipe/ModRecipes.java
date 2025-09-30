@@ -39,6 +39,16 @@ public class ModRecipes {
                 }
             });
 
+    public static final RecipeSerializer<MutationRecipe> MUTATION_SERIALIZER = Registry.register(
+            Registries.RECIPE_SERIALIZER, Identifier.of(HexaliaMod.MODID, "mutation"), new MutationRecipe.Serializer());
+    public static final RecipeType<MutationRecipe> MUTATION_TYPE = Registry.register(
+            Registries.RECIPE_TYPE, Identifier.of(HexaliaMod.MODID, "mutation"), new RecipeType<>() {
+                @Override
+                public String toString() {
+                    return "mutation";
+                }
+            });
+
     public static void registerRecipes() {
         HexaliaMod.LOGGER.info("Registering Custom Recipes for " + HexaliaMod.MODID);
     }

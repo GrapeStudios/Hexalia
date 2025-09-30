@@ -1,13 +1,11 @@
 package net.astralya.hexalia.datagen.custom;
 
-import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.recipe.MutationRecipe;
 import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementEntry;
 import net.minecraft.advancement.AdvancementRequirements;
 import net.minecraft.advancement.AdvancementRewards;
 import net.minecraft.advancement.AdvancementCriterion;
-import net.minecraft.advancement.criterion.InventoryChangedCriterion;
 import net.minecraft.advancement.criterion.RecipeUnlockedCriterion;
 import net.minecraft.data.server.recipe.CraftingRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.RecipeExporter;

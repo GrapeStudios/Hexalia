@@ -3,13 +3,13 @@
   "category": "misc",
   "key": {
     "A": {
-      "item": "minecraft:torch"
+      "item": "minecraft:copper_ingot"
     },
     "P": {
-      "tag": "c:salt_blocks"
+      "tag": "c:salt_dusts"
     },
     "S": {
-      "item": "minecraft:copper_ingot"
+      "item": "minecraft:torch"
     }
   },
   "pattern": [
