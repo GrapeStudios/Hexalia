@@ -1,6 +1,6 @@
 package net.astralya.hexalia.item.custom;
 
-import net.astralya.hexalia.entity.custom.RabbageProjectile;
+import net.astralya.hexalia.entity.custom.projectile.RabbageProjectile;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -52,6 +52,6 @@ public class RabbageItem extends Item {
 
     @Override
     public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-        tooltip.add(Text.translatable("tooltip.hexalia.throwable").formatted(Formatting.GRAY));
+        tooltip.add(Text.translatable("tooltip.hexalia.throwable").formatted(Formatting.GRAY).formatted(Formatting.ITALIC));
     }
 }

@@ -1,4 +1,4 @@
-package net.astralya.hexalia.entity.custom;
+package net.astralya.hexalia.entity.custom.projectile;
 
 import net.astralya.hexalia.effect.ModEffects;
 import net.astralya.hexalia.entity.ModEntities;
