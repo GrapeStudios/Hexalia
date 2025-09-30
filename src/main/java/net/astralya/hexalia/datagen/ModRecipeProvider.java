@@ -451,7 +451,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         ModBlocks.SPIRIT_BLOOM.getId().getPath() + "_from_mutation"));
 
         MutationRecipeBuilder.mutation(
-                        Ingredient.of(Items.KELP),
+                        Ingredient.of(Blocks.KELP),
                         new ItemStack(ModItems.SIREN_KELP.get())
                 ).unlockedByItem("has_mutavis", ModItems.MUTAVIS.get())
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",

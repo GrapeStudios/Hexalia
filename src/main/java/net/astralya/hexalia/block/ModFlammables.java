@@ -18,7 +18,7 @@ public final class ModFlammables {
         fire.setFlammable(ModBlocks.COTTONWOOD_SAPLING.get(), 60, 100);
         fire.setFlammable(ModBlocks.WILLOW_SAPLING.get(), 60, 100);
 
-        // Planks
+        // Wood
         fire.setFlammable(ModBlocks.COTTONWOOD_PLANKS.get(), 5, 20);
         fire.setFlammable(ModBlocks.COTTONWOOD_STAIRS.get(), 5, 20);
         fire.setFlammable(ModBlocks.COTTONWOOD_SLAB.get(), 5, 20);
@@ -50,6 +50,8 @@ public final class ModFlammables {
         fire.setFlammable(ModBlocks.SPIRIT_BLOOM.get(), 60, 100);
         fire.setFlammable(ModBlocks.GHOST_FERN.get(), 60, 100);
         fire.setFlammable(ModBlocks.CELESTIAL_BLOOM.get(), 60, 100);
+        fire.setFlammable(ModBlocks.WILD_MANDRAKE.get(), 60, 100);
+        fire.setFlammable(ModBlocks.CHILLBERRY_BUSH.get(), 60, 100);
 
         // Enchanted Plants
         fire.setFlammable(ModBlocks.MORPHORA.get(), 60, 100);
@@ -63,5 +65,12 @@ public final class ModFlammables {
         fire.setFlammable(ModBlocks.DAHLIA.get(), 60, 100);
         fire.setFlammable(ModBlocks.WITCHWEED.get(), 60, 100);
         fire.setFlammable(ModBlocks.NIGHTSHADE_BUSH.get(), 60, 100);
+
+        // Decorative Flowers
+        fire.setFlammable(ModBlocks.GALEBERRIES_VINE.get(), 60, 100);
+        fire.setFlammable(ModBlocks.GALEBERRIES_VINE_PLANT.get(), 60, 100);
+        fire.setFlammable(ModBlocks.DREAMCATCHER.get(), 5, 20);
+        fire.setFlammable(ModBlocks.SILKWORM_COCOON.get(), 60, 100);
+        fire.setFlammable(ModBlocks.RITUAL_BRAZIER.get(), 5, 20);
     }
 }
