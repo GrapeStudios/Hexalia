@@ -670,6 +670,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedByItem("has_mutavis", ModItems.MUTAVIS.get())
                 .save(recipeConsumer, new ResourceLocation(HexaliaMod.MODID, ModItems.SALTSPROUT.getId().getPath() + "_from_mutation"));
 
+        woodenBoat(recipeConsumer, ModItems.WILLOW_BOAT.get(), ModBlocks.WILLOW_PLANKS.get());
+        chestBoat(recipeConsumer, ModItems.WILLOW_CHEST_BOAT.get(), ModItems.WILLOW_BOAT.get());
+
+        woodenBoat(recipeConsumer, ModItems.COTTONWOOD_BOAT.get(), ModBlocks.COTTONWOOD_PLANKS.get());
+        chestBoat(recipeConsumer, ModItems.COTTONWOOD_CHEST_BOAT.get(),ModItems.COTTONWOOD_BOAT.get());
+
         // Recipes for Wood-related Blocks
         planksFromLog(recipeConsumer, ModBlocks.COTTONWOOD_PLANKS.get(), ModTags.Items.COTTONWOOD_LOGS, 4);
 
