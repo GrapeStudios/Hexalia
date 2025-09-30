@@ -1,0 +1,10 @@
+{
+  "type": "hexalia:mutation",
+  "input": {
+    "item": "minecraft:kelp"
+  },
+  "output": {
+    "count": 1,
+    "id": "hexalia:siren_kelp"
+  }
+}

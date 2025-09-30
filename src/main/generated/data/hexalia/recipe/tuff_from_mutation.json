@@ -1,0 +1,10 @@
+{
+  "type": "hexalia:mutation",
+  "input": {
+    "item": "minecraft:dripstone_block"
+  },
+  "output": {
+    "count": 1,
+    "id": "minecraft:tuff"
+  }
+}

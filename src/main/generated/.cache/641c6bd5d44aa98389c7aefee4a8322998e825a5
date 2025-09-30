@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-27T07:06:46.82142	Hexalia/Tags for minecraft:block
+// 1.21.1	2025-09-30T14:47:15.3726847	Hexalia/Tags for minecraft:block
 3472226bcb3a644e6dd5b72c47203afd80ebddf8 data\minecraft\tags\block\climbable.json
 6a3dba50ba907f2a5bb0eeb287889880a8747210 data\minecraft\tags\block\mineable\axe.json
 4d9d32d611d6acdb68f03806301ddfc34f1f6e69 data\minecraft\tags\block\saplings.json
@@ -21,8 +21,8 @@ a50f5e6376faeee04e90fc02eaa2c519a0550e40 data\sereneseasons\tags\block\spring_cr
 b2ac93b5e91295fc810ffbae3327970632ffe14a data\hexalia\tags\block\willow_logs.json
 52ca27f06c2fd8da7d626efb5281c0af60e4ef3e data\minecraft\tags\block\inside_step_sound_blocks.json
 52ca27f06c2fd8da7d626efb5281c0af60e4ef3e data\minecraft\tags\block\sword_efficient.json
-4617cc58d6dd0ffcebd6b4b9f98537ce7f64d7c7 data\minecraft\tags\block\all_hanging_signs.json
 5dfae965330d059cacdd7206c4dfc016b31d85a6 data\minecraft\tags\block\signs.json
+4617cc58d6dd0ffcebd6b4b9f98537ce7f64d7c7 data\minecraft\tags\block\all_hanging_signs.json
 ce6a685a96fa5af521d735fb07c5079d1e5dc5c7 data\sereneseasons\tags\block\autumn_crops.json
 3e128e04a97d798cf6c18f189a9a396800854b1f data\sereneseasons\tags\block\winter_crops.json
 6bd47b8abb74332ea4af03509a67b7d3f5bd8634 data\minecraft\tags\block\small_flowers.json
@@ -32,8 +32,8 @@ e96141f97c40cc3068df2fc925fb0cd87fddb6c8 data\minecraft\tags\block\logs_that_bur
 4898c402efcbf3ddc9d460aab239b79b10801fd4 data\minecraft\tags\block\mineable\pickaxe.json
 2905aeb24da6878995a73f1d3793eff1a136bde6 data\minecraft\tags\block\wooden_buttons.json
 14835ee05f2eb66cecd359de9208e4332b57c085 data\c\tags\block\salt_blocks.json
-04c0e07d84d58d99b11955eb3d34ed34630e541e data\hexalia\tags\block\heating_block.json
 0a9e24febf41067c0d25e9952dd0c726cba969b9 data\hexalia\tags\block\cottonwood_logs.json
+04c0e07d84d58d99b11955eb3d34ed34630e541e data\hexalia\tags\block\heating_block.json
 d13705e4e223106a2908c0349ca698c84760c4b2 data\hexalia\tags\block\attracts_moth.json
 18eab07457911106c06f7faf32620615f7098dc1 data\minecraft\tags\block\wooden_trapdoors.json
 f134380f62b34107c4f630aa282ff1e39dc6ae44 data\minecraft\tags\block\leaves.json

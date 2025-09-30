@@ -1,0 +1,10 @@
+{
+  "type": "hexalia:mutation",
+  "input": {
+    "item": "minecraft:cactus"
+  },
+  "output": {
+    "count": 1,
+    "id": "hexalia:saltsprout"
+  }
+}

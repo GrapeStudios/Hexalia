@@ -1,0 +1,10 @@
+{
+  "type": "hexalia:mutation",
+  "input": {
+    "item": "minecraft:blue_orchid"
+  },
+  "output": {
+    "count": 1,
+    "id": "hexalia:spirit_bloom"
+  }
+}

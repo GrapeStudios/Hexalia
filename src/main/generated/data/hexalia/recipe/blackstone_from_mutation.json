@@ -1,0 +1,10 @@
+{
+  "type": "hexalia:mutation",
+  "input": {
+    "item": "minecraft:netherrack"
+  },
+  "output": {
+    "count": 1,
+    "id": "minecraft:blackstone"
+  }
+}

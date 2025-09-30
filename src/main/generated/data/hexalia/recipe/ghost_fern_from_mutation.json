@@ -1,0 +1,10 @@
+{
+  "type": "hexalia:mutation",
+  "input": {
+    "item": "minecraft:fern"
+  },
+  "output": {
+    "count": 1,
+    "id": "hexalia:ghost_fern"
+  }
+}

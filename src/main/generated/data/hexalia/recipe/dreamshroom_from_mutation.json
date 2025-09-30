@@ -1,0 +1,10 @@
+{
+  "type": "hexalia:mutation",
+  "input": {
+    "item": "minecraft:brown_mushroom"
+  },
+  "output": {
+    "count": 1,
+    "id": "hexalia:dreamshroom"
+  }
+}

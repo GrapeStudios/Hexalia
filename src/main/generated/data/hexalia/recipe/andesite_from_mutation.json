@@ -1,0 +1,10 @@
+{
+  "type": "hexalia:mutation",
+  "input": {
+    "item": "minecraft:granite"
+  },
+  "output": {
+    "count": 1,
+    "id": "minecraft:andesite"
+  }
+}
