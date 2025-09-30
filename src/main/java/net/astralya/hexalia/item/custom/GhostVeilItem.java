@@ -3,13 +3,10 @@ package net.astralya.hexalia.item.custom;
 import net.astralya.hexalia.item.custom.client.GhostVeilRenderer;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.core.Holder;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
@@ -22,8 +19,11 @@ import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.animation.*;
 import software.bernie.geckolib.renderer.GeoArmorRenderer;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.item.component.CustomData;
 
-import java.util.List;
 import java.util.function.Consumer;
 
 public class GhostVeilItem extends ArmorItem implements GeoItem {
@@ -72,7 +72,7 @@ public class GhostVeilItem extends ArmorItem implements GeoItem {
     }
 
     @Override
-    public void inventoryTick(ItemStack stack, Level world, net.minecraft.world.entity.Entity entity, int slot, boolean selected) {
+    public void inventoryTick(ItemStack stack, Level world, Entity entity, int slot, boolean selected) {
         if (!(entity instanceof Player player)) {
             super.inventoryTick(stack, world, entity, slot, selected);
             return;
@@ -82,20 +82,37 @@ public class GhostVeilItem extends ArmorItem implements GeoItem {
 
         if (!world.isClientSide && wearingThis) {
             if (player.isCrouching()) {
-                var box = player.getBoundingBox().inflate(10.0D);
-                var nearby = world.getEntitiesOfClass(LivingEntity.class, box, e -> e instanceof Monster);
-                for (LivingEntity le : nearby) {
-                    if (le instanceof Mob mob) {
-                        mob.setTarget(null);
-                    }
+                MobEffectInstance cur = player.getEffect(MobEffects.INVISIBILITY);
+                if (cur == null || cur.getDuration() <= 10) {
+                    player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 20, 0, false, false, false));
                 }
+
+                CustomData data = stack.get(DataComponents.CUSTOM_DATA);
+                CompoundTag tag = data != null ? data.copyTag() : new CompoundTag();
+                tag.putBoolean("HexaliaInvisFromItem", true);
+                stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
 
                 if (stack.isDamageableItem() && world.getGameTime() % 20L == 0L && !player.getAbilities().instabuild) {
                     stack.hurtAndBreak(1, player, EquipmentSlot.CHEST);
-
                     if (stack.isEmpty()) {
                         player.setItemSlot(EquipmentSlot.CHEST, ItemStack.EMPTY);
                     }
+                }
+            } else {
+                boolean fromItem = false;
+                CustomData data = stack.get(DataComponents.CUSTOM_DATA);
+                if (data != null) {
+                    CompoundTag tag = data.copyTag();
+                    fromItem = tag.getBoolean("HexaliaInvisFromItem");
+                    tag.remove("HexaliaInvisFromItem");
+                    if (tag.isEmpty()) {
+                        stack.remove(DataComponents.CUSTOM_DATA);
+                    } else {
+                        stack.set(DataComponents.CUSTOM_DATA, CustomData.of(tag));
+                    }
+                }
+                if (fromItem && player.hasEffect(MobEffects.INVISIBILITY)) {
+                    player.removeEffect(MobEffects.INVISIBILITY);
                 }
             }
         }
