@@ -26,7 +26,7 @@ public final class SunlightCheck {
         this.needsRainCheck = biome.getPrecipitationAt(this.pos) != Precipitation.NONE;
 
         float tempEff = 0.3F * (0.8F - biome.getBaseTemperature());
-        float humidity = resolveDownfall(biome); // handles getDownfall()/downfall() across mappings
+        float humidity = resolveDownfall(biome);
         float humidityEff = this.needsRainCheck ? -0.3F * humidity : 0.0F;
         this.peakMultiplier = 1.0F + tempEff + humidityEff;
     }
