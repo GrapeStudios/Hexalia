@@ -6,6 +6,7 @@
 		"CobwebMixin",
 		"LivingEntityMixin",
 		"CropBlockMixin",
+		"StemBlockMixin",
 		"SugarCaneBlockMixin",
         "ExperienceMixin"
 	],

@@ -7,7 +7,6 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.minecraft.block.Block;
 import net.minecraft.block.CaveVines;
-import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
@@ -51,7 +50,6 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.SPIRIT_BLOOM);
         addDrop(ModBlocks.DREAMSHROOM);
         addDrop(ModBlocks.LOTUS_FLOWER);
-        addDrop(ModBlocks.PALE_MUSHROOM);
         addDrop(ModBlocks.WITCHWEED);
         addDrop(ModBlocks.GHOST_FERN);
         addDrop(ModBlocks.CELESTIAL_BLOOM);
@@ -105,6 +103,7 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.RITUAL_TABLE, drops(ModItems.RITUAL_TABLE));
         this.addDrop(ModBlocks.SALT_BLOCK, block -> oreDrops(ModBlocks.SALT_BLOCK, ModItems.SALT));
         this.addDrop(ModBlocks.SILKWORM_COCOON, ModItems.SILKWORM);
+        this.addDrop(ModBlocks.PALE_MUSHROOM, flowerbedDrops(ModBlocks.PALE_MUSHROOM));
     }
 
     private void generateCrops() {

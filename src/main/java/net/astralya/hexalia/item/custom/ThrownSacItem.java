@@ -50,7 +50,6 @@ public class ThrownSacItem extends Item {
             if (!world.isClient) {
                 ThrownItemEntity proj = projectileFactory.apply(world, player);
                 proj.setItem(stack.copyWithCount(1));
-                // pitch = getPitch(), yaw = getYaw(); roll = -20.0F; speed = 0.5F; divergence = 1.0F
                 proj.setVelocity(player, player.getPitch(), player.getYaw(), -20.0F, 0.5F, 1.0F);
                 world.spawnEntity(proj);
 

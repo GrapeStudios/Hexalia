@@ -49,6 +49,6 @@ public class HexaliaMod implements ModInitializer {
 
         CenserServerTickHandler.register();
 
-		FabricDefaultAttributeRegistry.register(ModEntities.SILK_MOTH_ENTITY, SilkMothEntity.setAttributes());
+		FabricDefaultAttributeRegistry.register(ModEntities.SILK_MOTH, SilkMothEntity.setAttributes());
 	}
 }

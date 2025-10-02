@@ -1,23 +1,23 @@
 package net.astralya.hexalia.block.custom;
 
 import net.astralya.hexalia.block.ModBlocks;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
+import net.astralya.hexalia.block.entity.custom.GrimshadeBlockEntity;
 import net.astralya.hexalia.item.ModItems;
-import net.minecraft.block.Block;
+import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.SkullBlock;
-import net.minecraft.block.WallSkullBlock;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.SkullBlock;
+import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.SkeletonEntity;
 import net.minecraft.entity.mob.WitherSkeletonEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
@@ -27,29 +27,75 @@ import net.minecraft.util.ItemActionResult;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Box;
-import net.minecraft.util.math.Direction;
-import net.minecraft.util.math.random.Random;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
-public class GrimshadeBlock extends EnchantedPlantBlock {
+public class GrimshadeBlock extends EnchantedPlantBlock implements BlockEntityProvider {
 
     public GrimshadeBlock(Settings settings) {
         super(settings);
     }
 
     @Override
-    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        for (int i = 0; i < 3; i++) {
-            double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.5;
-            double y = pos.getY() + 0.5 + (random.nextDouble() - 0.5) * 0.5;
-            double z = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 0.5;
-            world.addParticle(ParticleTypes.SMOKE, x, y, z, 0, 0, 0);
+    protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (player.getStackInHand(hand).getItem() != ModItems.HEX_FOCUS) {
+            return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         }
+        if (!world.isClient) {
+            BlockEntity be = world.getBlockEntity(pos);
+            if (be instanceof GrimshadeBlockEntity grim && !grim.isActive()) {
+                playActivationEffects((ServerWorld) world, pos);
+                doOneShotConversions((ServerWorld) world, pos);
+                grim.activate();
+            }
+        }
+        return ItemActionResult.SUCCESS;
+    }
+
+    private void playActivationEffects(ServerWorld world, BlockPos pos) {
+        world.playSound(null, pos, SoundEvents.ENTITY_WITHER_AMBIENT, SoundCategory.BLOCKS, 1.0f, 1.0f);
+        world.spawnParticles(ParticleTypes.SOUL, pos.getX() + 0.5, pos.getY() + 0.7, pos.getZ() + 0.5, 24, 0.35, 0.35, 0.35, 0.02);
+        world.spawnParticles(ParticleTypes.SMOKE, pos.getX() + 0.5, pos.getY() + 0.6, pos.getZ() + 0.5, 16, 0.35, 0.35, 0.35, 0.01);
+    }
+
+    private void doOneShotConversions(ServerWorld world, BlockPos pos) {
+        Box area = new Box(pos).expand(2.5);
+
+        for (Entity e : world.getEntitiesByClass(SkeletonEntity.class, area, x -> true)) {
+            WitherSkeletonEntity wither = EntityType.WITHER_SKELETON.create(world);
+            if (wither != null) {
+                wither.refreshPositionAndAngles(e.getX(), e.getY(), e.getZ(), e.getYaw(), e.getPitch());
+                e.discard();
+                world.spawnEntity(wither);
+            }
+        }
+
+        final int[] skulls = {0};
+        for (ItemEntity item : world.getEntitiesByClass(ItemEntity.class, area, it -> it.getStack().isOf(net.minecraft.item.Items.SKELETON_SKULL) && skulls[0] < 3)) {
+            item.setStack(new net.minecraft.item.ItemStack(net.minecraft.item.Items.WITHER_SKELETON_SKULL, item.getStack().getCount()));
+            skulls[0]++;
+        }
+
+        BlockPos.iterate((int) area.minX, (int) area.minY, (int) area.minZ, (int) area.maxX, (int) area.maxY, (int) area.maxZ).forEach(p -> {
+            if (skulls[0] >= 3) return;
+            BlockState s = world.getBlockState(p);
+            if (s.isOf(Blocks.SKELETON_SKULL)) {
+                world.setBlockState(p, Blocks.WITHER_SKELETON_SKULL.getDefaultState().with(SkullBlock.ROTATION, s.get(SkullBlock.ROTATION)), 3);
+                skulls[0]++;
+            } else if (s.isOf(Blocks.SKELETON_WALL_SKULL)) {
+                world.setBlockState(p, Blocks.WITHER_SKELETON_WALL_SKULL.getDefaultState().with(SkullBlock.ROTATION, s.get(SkullBlock.ROTATION)), 3);
+                skulls[0]++;
+            } else if (s.isOf(ModBlocks.CANDLE_SKULL)) {
+                world.setBlockState(p, ModBlocks.WITHER_CANDLE_SKULL.getDefaultState().with(SkullBlock.ROTATION, s.get(SkullBlock.ROTATION)), 3);
+                skulls[0]++;
+            }
+        });
     }
 
     @Override
-    protected boolean canPlantOnTop(BlockState floor, net.minecraft.world.BlockView world, BlockPos pos) {
+    protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
         return super.canPlantOnTop(floor, world, pos)
                 || floor.isOf(Blocks.NETHERRACK)
                 || floor.isOf(Blocks.SOUL_SAND)
@@ -57,134 +103,27 @@ public class GrimshadeBlock extends EnchantedPlantBlock {
     }
 
     @Override
-    protected void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-        if (!world.isClient && world.getDifficulty() != Difficulty.PEACEFUL) {
-            if (entity instanceof LivingEntity living) {
-                if (!living.isInvulnerableTo(world.getDamageSources().wither())) {
-                    living.addStatusEffect(new StatusEffectInstance(StatusEffects.WITHER, 40));
-                }
-            }
-        }
+    public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new GrimshadeBlockEntity(pos, state);
     }
 
     @Override
-    protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos,
-                                             PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (player.getStackInHand(hand).isOf(ModItems.HEX_FOCUS)) {
-            if (!world.isClient) {
-                spawnActivationEffects(world, pos);
-                transformSkulls((ServerWorld) world, pos);
-                transformSkeletons((ServerWorld) world, pos);
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        if (world.isClient) return null;
+        return type == ModBlockEntityTypes.GRIMSHADE ? (w, p, s, be) -> {
+            if (be instanceof GrimshadeBlockEntity grim) {
+                GrimshadeBlockEntity.tick(w, p, s, grim);
             }
-            return ItemActionResult.SUCCESS;
-        }
-        return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        } : null;
     }
 
-    private void spawnActivationEffects(World world, BlockPos pos) {
-        spawnParticles((ServerWorld) world, pos);
-        playDecayingSounds(world, pos);
-    }
-
-    private void spawnParticles(ServerWorld world, BlockPos pos) {
-        Box area = new Box(pos).expand(2.5);
-        Random r = world.getRandom();
-
-        for (int i = 0; i < 50; i++) {
-            double x = area.minX + r.nextDouble() * (area.maxX - area.minX);
-            double y = area.minY + r.nextDouble() * (area.maxY - area.minY);
-            double z = area.minZ + r.nextDouble() * (area.maxZ - area.minZ);
-            world.spawnParticles(ParticleTypes.SMOKE, x, y, z, 2, 0, 0, 0, 0);
-        }
-    }
-
-    private void playDecayingSounds(World world, BlockPos pos) {
-        world.playSound(null, pos, SoundEvents.ENTITY_WITHER_SKELETON_AMBIENT, SoundCategory.BLOCKS, 1.0f, 1.0f);
-        world.playSound(null, pos, SoundEvents.ENTITY_GHAST_AMBIENT, SoundCategory.BLOCKS, 1.0f, 1.0f);
-    }
-
-    private void transformSkeletons(ServerWorld world, BlockPos pos) {
-        Box area = new Box(pos).expand(2.5);
-        boolean anyTransformed = false;
-
-        for (SkeletonEntity sk : world.getEntitiesByClass(SkeletonEntity.class, area, e -> true)) {
-            WitherSkeletonEntity wither = EntityType.WITHER_SKELETON.create(world);
-            if (wither != null) {
-                wither.refreshPositionAndAngles(sk.getX(), sk.getY(), sk.getZ(), sk.getYaw(), sk.getPitch());
-                sk.discard();
-                world.spawnEntity(wither);
-                anyTransformed = true;
-            }
-        }
-
-        if (anyTransformed) {
-            Random random = world.getRandom();
-            double chance = random.nextDouble();
-            if (chance < 0.75) {
-                spawnWitherRose(world, pos, random);
-                if (chance < 0.50) {
-                    spawnWitherRose(world, pos, random);
-                }
-            }
-            world.breakBlock(pos, false);
-        }
-    }
-
-    private void transformSkulls(ServerWorld world, BlockPos pos) {
-        Box area = new Box(pos).expand(2.5);
-        int transformed = 0;
-
-        for (ItemEntity item : world.getEntitiesByClass(ItemEntity.class, area, e -> true)) {
-            if (transformed >= 3) break;
-            ItemStack stack = item.getStack();
-            if (stack.isOf(Items.SKELETON_SKULL)) {
-                item.setStack(new ItemStack(Items.WITHER_SKELETON_SKULL, stack.getCount()));
-                transformed++;
-            }
-        }
-
-        if (transformed < 3) {
-            BlockPos min = new BlockPos((int) Math.floor(area.minX), (int) Math.floor(area.minY), (int) Math.floor(area.minZ));
-            BlockPos max = new BlockPos((int) Math.floor(area.maxX), (int) Math.floor(area.maxY), (int) Math.floor(area.maxZ));
-
-            for (BlockPos bp : BlockPos.iterate(min, max)) {
-                if (transformed >= 3) break;
-
-                BlockState state = world.getBlockState(bp);
-
-                if (state.isOf(Blocks.SKELETON_SKULL)) {
-                    int rot = state.get(SkullBlock.ROTATION);
-                    world.setBlockState(bp, Blocks.WITHER_SKELETON_SKULL.getDefaultState().with(SkullBlock.ROTATION, rot), Block.NOTIFY_ALL);
-                    transformed++;
-                    continue;
-                }
-
-                if (state.isOf(Blocks.SKELETON_WALL_SKULL)) {
-                    Direction facing = state.get(WallSkullBlock.FACING);
-                    world.setBlockState(bp, Blocks.WITHER_SKELETON_WALL_SKULL.getDefaultState().with(WallSkullBlock.FACING, facing), Block.NOTIFY_ALL);
-                    transformed++;
-                    continue;
-                }
-
-                if (state.isOf(ModBlocks.CANDLE_SKULL)) {
-                    world.setBlockState(bp, ModBlocks.WITHER_CANDLE_SKULL.getDefaultState(), Block.NOTIFY_ALL);
-                    transformed++;
-                }
-            }
-        }
-
-        if (transformed > 0) {
-            world.breakBlock(pos, false);
-        }
-    }
-
-    private void spawnWitherRose(ServerWorld world, BlockPos pos, Random random) {
-        int x = pos.getX() + random.nextInt(5) - 2;
-        int z = pos.getZ() + random.nextInt(5) - 2;
-        BlockPos rosePos = new BlockPos(x, pos.getY(), z);
-
-        if (world.isAir(rosePos) && world.getBlockState(rosePos.down()).isOpaqueFullCube(world, rosePos.down())) {
-            world.setBlockState(rosePos, Blocks.WITHER_ROSE.getDefaultState(), Block.NOTIFY_ALL);
+    @Override
+    public void onEntityCollision(BlockState state, World world, BlockPos pos, net.minecraft.entity.Entity entity) {
+        if (world.isClient || world.getDifficulty() == Difficulty.PEACEFUL) return;
+        if (!(entity instanceof net.minecraft.entity.LivingEntity) || entity instanceof PlayerEntity) return;
+        BlockEntity be = world.getBlockEntity(pos);
+        if (be instanceof GrimshadeBlockEntity grim && grim.isActive()) {
+            grim.applyCollisionPing((net.minecraft.entity.LivingEntity) entity);
         }
     }
 }

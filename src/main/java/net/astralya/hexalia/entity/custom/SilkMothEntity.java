@@ -127,7 +127,7 @@ public class SilkMothEntity extends AnimalEntity implements GeoEntity, Flutterer
 
     @Override
     public @Nullable PassiveEntity createChild(ServerWorld world, PassiveEntity entity) {
-        return ModEntities.SILK_MOTH_ENTITY.create(world);
+        return ModEntities.SILK_MOTH.create(world);
     }
 
     @Override

@@ -85,7 +85,6 @@ public class HexaliaModClient implements ClientModInitializer {
     private void registerParticles() {
         ParticleFactoryRegistry.getInstance().register(ModParticleType.SPORE, SporeParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticleType.INFUSED_BUBBLE, InfusedBubbleParticle.Factory::new);
-        ParticleFactoryRegistry.getInstance().register(ModParticleType.MOTE, MoteParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticleType.GHOST, GhostParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticleType.LEAVES, LeavesParticle.Factory::new);
     }
@@ -100,7 +99,7 @@ public class HexaliaModClient implements ClientModInitializer {
     }
 
     private void registerEntityRenderers() {
-        EntityRendererRegistry.register(ModEntities.SILK_MOTH_ENTITY, SilkMothRenderer::new);
+        EntityRendererRegistry.register(ModEntities.SILK_MOTH, SilkMothRenderer::new);
 
         ModelPredicateProviderRegistry.register(
                 ModItems.BOTTLED_MOTH,

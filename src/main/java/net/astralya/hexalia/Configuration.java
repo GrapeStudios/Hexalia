@@ -148,6 +148,8 @@ public final class Configuration {
             public int astrylisDuration = 1200;
             public int astrylisBonemealInterval = 240;
             public int morphoraEffectRadius = 6;
+            public int grimshadeDuration = 2400;
+            public int grimshadeEffectRadius = 16;
 
             void validate() {
                 nautiliteDuration = clamp(nautiliteDuration, 100, 24000);
@@ -157,6 +159,8 @@ public final class Configuration {
                 astrylisDuration = clamp(astrylisDuration, 100, 24000);
                 astrylisBonemealInterval = clamp(astrylisBonemealInterval, 20, 1200);
                 morphoraEffectRadius = clamp(morphoraEffectRadius, 1, 32);
+                grimshadeDuration = clamp(grimshadeDuration, 100, 24000);
+                grimshadeEffectRadius = clamp(grimshadeEffectRadius, 1, 64);
             }
         }
     }

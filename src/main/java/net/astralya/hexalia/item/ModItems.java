@@ -124,9 +124,9 @@ public class ModItems {
             new KelpweaveBladeItem(ModToolMaterials.ANCIENT, new Item.Settings().rarity(Rarity.RARE)
                     .attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.ANCIENT, 3, -2.0f))));
     public static final Item GHOSTVEIL = registerItem("ghostveil",
-            new GhostVeilItem(ModArmorMaterials.BOGGED, ArmorItem.Type.CHESTPLATE, new Item.Settings().maxDamage(96)));
+            new GhostVeilItem(ModArmorMaterials.GHOST, ArmorItem.Type.CHESTPLATE, new Item.Settings().maxDamage(96)));
     public static final Item EARPLUGS = registerItem("earplugs",
-            new ArmorItem(ModArmorMaterials.EARPLUGS, ArmorItem.Type.HELMET, new Item.Settings().maxDamage(96)));
+            new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new Item.Settings().maxDamage(96)));
     public static final Item BOGGED_BOOTS = registerItem("bogged_boots",
             new BoggedBootsItem(ModArmorMaterials.BOGGED, ArmorItem.Type.BOOTS, new Item.Settings().maxDamage(96)));
 
@@ -158,7 +158,7 @@ public class ModItems {
     public static final Item BOTTLED_MOTH = registerItem("bottled_moth",
             new BottledMothItem(new Item.Settings().maxCount(1)));
     public static final Item SILK_MOTH_SPAWN_EGG = registerItem("silk_moth_spawn_egg",
-            new CustomModelSpawnEggItem(ModEntities.SILK_MOTH_ENTITY, new Item.Settings()));
+            new CustomModelSpawnEggItem(ModEntities.SILK_MOTH, new Item.Settings()));
 
     // Wooden-related Items
     public static final Item COTTONWOOD_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.COTTONWOOD_BOAT_ID,

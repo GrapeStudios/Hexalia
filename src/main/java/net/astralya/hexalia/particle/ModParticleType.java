@@ -11,7 +11,6 @@ public class ModParticleType {
 
     public static final SimpleParticleType SPORE = registerParticle("spore", FabricParticleTypes.simple());
     public static final SimpleParticleType GHOST = registerParticle("ghost", FabricParticleTypes.simple());
-    public static final SimpleParticleType MOTE = registerParticle("mote", FabricParticleTypes.simple());
     public static final SimpleParticleType LEAVES = registerParticle("leaves", FabricParticleTypes.simple());
     public static final SimpleParticleType INFUSED_BUBBLE = registerParticle("infused_bubbles", FabricParticleTypes.simple());
 

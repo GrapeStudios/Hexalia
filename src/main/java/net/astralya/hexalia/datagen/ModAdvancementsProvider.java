@@ -148,30 +148,27 @@ public class ModAdvancementsProvider extends FabricAdvancementProvider {
 
         AdvancementEntry brewbieAward = Advancement.Builder.create()
                 .display(
-                        new ItemStack(ModItems.BREW_OF_SLIMEWALKER),
+                        new ItemStack(ModItems.RUSTIC_BOTTLE),
                         Text.translatable("advancements.hexalia.brewbie_award.title"),
                         Text.translatable("advancements.hexalia.brewbie_award.description"),
                         null, AdvancementFrame.TASK, true, true, false
                 )
                 .parent(smallBeginnings)
-                .criterion("obtain_any_brew", InventoryChangedCriterion.Conditions.items(
-                        ModItems.BREW_OF_SLIMEWALKER, ModItems.BREW_OF_BLOODLUST,
-                        ModItems.BREW_OF_SPIKESKIN, ModItems.BREW_OF_HOMESTEAD,
-                        ModItems.BREW_OF_SIPHON, ModItems.BREW_OF_DAYBLOOM,
-                        ModItems.BREW_OF_ARACHNID_GRACE
+                .criterion("has_rustic_bottle", InventoryChangedCriterion.Conditions.items(
+                        ModItems.RUSTIC_BOTTLE
                 ))
                 .build(writer, HexaliaMod.MODID + "/brewbie_award");
 
         AdvancementEntry powderAndPouch = Advancement.Builder.create()
                 .display(
-                        new ItemStack(ModItems.FROST_SAC),
+                        new ItemStack(ModItems.FOUL_SAC),
                         Text.translatable("advancements.hexalia.powder_and_pouch.title"),
                         Text.translatable("advancements.hexalia.powder_and_pouch.description"),
                         null, AdvancementFrame.TASK, true, true, false
                 )
                 .parent(brewbieAward)
-                .criterion("has_any_sac", InventoryChangedCriterion.Conditions.items(
-                        ModItems.FROST_SAC, ModItems.FOUL_SAC
+                .criterion("has_foul_sac", InventoryChangedCriterion.Conditions.items(
+                        ModItems.FOUL_SAC
                 ))
                 .build(writer, HexaliaMod.MODID + "/powder_and_pouch");
 

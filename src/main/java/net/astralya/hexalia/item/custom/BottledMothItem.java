@@ -38,7 +38,7 @@ public class BottledMothItem extends Item {
         BlockPos pos = ctx.getBlockPos().offset(ctx.getSide());
 
         if (!world.isClient()) {
-            SilkMothEntity moth = new SilkMothEntity(ModEntities.SILK_MOTH_ENTITY, world);
+            SilkMothEntity moth = new SilkMothEntity(ModEntities.SILK_MOTH, world);
 
             MothData data = stack.get(ModComponents.MOTH);
             CustomModelDataComponent modelData = stack.get(DataComponentTypes.CUSTOM_MODEL_DATA);

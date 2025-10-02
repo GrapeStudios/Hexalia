@@ -30,6 +30,8 @@ public class ModBlockEntityTypes {
             Identifier.of(HexaliaMod.MODID, "astrylis"), BlockEntityType.Builder.create(AstrylisBlockEntity::new, ModBlocks.ASTRYLIS).build(null));
     public static final BlockEntityType<WindsongBlockEntity> WINDSONG = Registry.register(Registries.BLOCK_ENTITY_TYPE,
             Identifier.of(HexaliaMod.MODID, "windsong"), BlockEntityType.Builder.create(WindsongBlockEntity::new, ModBlocks.WINDSONG).build(null));
+    public static final BlockEntityType<GrimshadeBlockEntity> GRIMSHADE = Registry.register(Registries.BLOCK_ENTITY_TYPE,
+            Identifier.of(HexaliaMod.MODID, "grimshade"), BlockEntityType.Builder.create(GrimshadeBlockEntity::new, ModBlocks.GRIMSHADE).build(null));
 
     // Signs
     public static final BlockEntityType<ModSignBlockEntity> MOD_SIGN = Registry.register(Registries.BLOCK_ENTITY_TYPE,

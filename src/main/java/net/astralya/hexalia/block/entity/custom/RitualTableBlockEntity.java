@@ -42,6 +42,7 @@ public class RitualTableBlockEntity extends SyncBlockEntity implements Inventory
     private ItemStack pendingOutput = ItemStack.EMPTY;
 
     private int transformTicksRemaining = 0;
+    private int totalTransformTicks = 0;
     private int nextBrazierIndex = 0;
     private float rotation = 0.0f;
 
@@ -112,6 +113,7 @@ public class RitualTableBlockEntity extends SyncBlockEntity implements Inventory
     public void startTransformation(ItemStack output, int durationTicks, List<RitualBrazierBlockEntity> braziers) {
         if (transformTicksRemaining > 0) return;
         transformTicksRemaining = durationTicks;
+        totalTransformTicks = durationTicks;
         pendingOutput = output.copy();
         activeBraziers = new ArrayList<>(braziers);
         nextBrazierIndex = 0;
@@ -129,7 +131,8 @@ public class RitualTableBlockEntity extends SyncBlockEntity implements Inventory
             return;
         }
 
-        int elapsed = DURATION - be.transformTicksRemaining;
+        int base = be.totalTransformTicks > 0 ? be.totalTransformTicks : DURATION;
+        int elapsed = base - be.transformTicksRemaining;
         handleActiveBraziers(world, pos, be, elapsed);
         be.transformTicksRemaining--;
 
@@ -142,6 +145,7 @@ public class RitualTableBlockEntity extends SyncBlockEntity implements Inventory
     protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup lookup) {
         super.writeNbt(nbt, lookup);
         nbt.putInt("TicksLeft", transformTicksRemaining);
+        nbt.putInt("TotalTicks", totalTransformTicks);
 
         if (!pendingOutput.isEmpty()) {
             NbtCompound out = new NbtCompound();
@@ -156,6 +160,7 @@ public class RitualTableBlockEntity extends SyncBlockEntity implements Inventory
     protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup lookup) {
         super.readNbt(nbt, lookup);
         transformTicksRemaining = nbt.getInt("TicksLeft");
+        totalTransformTicks = nbt.getInt("TotalTicks");
 
         if (nbt.contains("PendingOut", NbtElement.COMPOUND_TYPE)) {
             pendingOutput = ItemStack.fromNbt(lookup, nbt.getCompound("PendingOut")).orElse(ItemStack.EMPTY);
@@ -325,6 +330,7 @@ public class RitualTableBlockEntity extends SyncBlockEntity implements Inventory
 
     private static void cancelRitual(World world, BlockPos pos, RitualTableBlockEntity be) {
         be.transformTicksRemaining = 0;
+        be.totalTransformTicks = 0;
         be.pendingOutput = ItemStack.EMPTY;
         be.activeBraziers = Collections.emptyList();
         be.nextBrazierIndex = 0;

@@ -134,7 +134,7 @@ public class ModBlocks {
     public static final Block RITUAL_BRAZIER = registerBlock("ritual_brazier",
             new RitualBrazierBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
     public static final Block CENSER = registerBlock("censer",
-            new CenserBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS).nonOpaque().luminance(state -> state.get(CandleSkullBlock.LIT) ? 12 : 0)));
+            new CenserBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS).nonOpaque().luminance(state -> state.get(CenserBlock.LIT) ? 12 : 0)));
     public static final Block DREAMCATCHER = registerBlock("dreamcatcher",
             new DreamcatcherBlock(AbstractBlock.Settings.copy(Blocks.OAK_PLANKS)));
 

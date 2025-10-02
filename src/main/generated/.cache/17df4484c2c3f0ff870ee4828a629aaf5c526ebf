@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-30T14:47:15.3660855	Hexalia/Block Loot Tables
+// 1.21.1	2025-10-03T11:28:49.6732833	Hexalia/Block Loot Tables
 13dc3d70a1526cc763144136d45e2e64a49125f5 data\hexalia\loot_table\blocks\stripped_willow_log.json
 4c7859faca78d8516621ca823a2e83812cedf10e data\hexalia\loot_table\blocks\potted_dreamshroom.json
 605903abed556cb4668fb386b2ffc85d82b47ab6 data\hexalia\loot_table\blocks\celestial_bloom.json
@@ -83,7 +83,7 @@ cf4ca757e27a948295b632e8772b55f13c7c023c data\hexalia\loot_table\blocks\ghost_fe
 c470a312b7d7c5c8a61faf780efbf43030522161 data\hexalia\loot_table\blocks\celestial_crystal_block.json
 47d838bae506d8fc001d9ad44309bd786231e697 data\hexalia\loot_table\blocks\ritual_brazier.json
 c6d979c05da4265587469e06ae8ebc3ee88c6388 data\hexalia\loot_table\blocks\potted_dahlia.json
-5ae70081c194a702b213852567cb06c886c16117 data\hexalia\loot_table\blocks\pale_mushroom.json
+dfa017d70f197e9b32cda046f0134bb9762b0cfe data\hexalia\loot_table\blocks\pale_mushroom.json
 ae24eb4d93b06cacaf71623f037959bc4f7b7403 data\hexalia\loot_table\blocks\wild_sunfire_tomato.json
 20dae09b5b8a261b8d81b6e4359b2a0b241009c0 data\hexalia\loot_table\blocks\stripped_cottonwood_wood.json
 7cd7195a2cab967d638c752a00e5e523739fffa3 data\hexalia\loot_table\blocks\cottonwood_sapling.json

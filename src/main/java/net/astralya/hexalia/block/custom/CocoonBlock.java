@@ -60,7 +60,7 @@ public class CocoonBlock extends Block {
     @Override
     protected void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         world.removeBlock(pos, false);
-        SilkMothEntity silkMoth = ModEntities.SILK_MOTH_ENTITY.create(world);
+        SilkMothEntity silkMoth = ModEntities.SILK_MOTH.create(world);
         if (silkMoth != null) {
             silkMoth.refreshPositionAndAngles(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 0.0F, 0.0F);
 

@@ -59,6 +59,15 @@ public class RitualTableBlock extends BlockWithEntity {
     );
     public static final MapCodec<RitualTableBlock> CODEC = createCodec(RitualTableBlock::new);
 
+    private static final class MatchResult {
+        final RitualTableRecipe recipe;
+        final List<RitualBrazierBlockEntity> usedBraziers;
+        MatchResult(RitualTableRecipe recipe, List<RitualBrazierBlockEntity> usedBraziers) {
+            this.recipe = recipe;
+            this.usedBraziers = usedBraziers;
+        }
+    }
+
     public RitualTableBlock(Settings settings) {
         super(settings);
         setDefaultState(getStateManager().getDefaultState().with(FACING, Direction.NORTH));
@@ -143,26 +152,27 @@ public class RitualTableBlock extends BlockWithEntity {
         ItemStack tableItem = tableBE.getStack(0);
 
         BlockPos[] offsets = { pos.north(2), pos.south(2), pos.east(2), pos.west(2) };
-        List<ItemStack> brazierItems = new ArrayList<>();
-        List<RitualBrazierBlockEntity> brazierEntities = new ArrayList<>();
+        List<RitualBrazierBlockEntity> filledBraziers = new ArrayList<>();
 
         for (BlockPos bp : offsets) {
             BlockEntity be = world.getBlockEntity(bp);
             if (be instanceof RitualBrazierBlockEntity brazier && !brazier.isEmpty()) {
-                BlockState bs = world.getBlockState(bp);
-                if (bs.contains(RitualBrazierBlock.SALTED) && !bs.get(RitualBrazierBlock.SALTED)) {
-                    failWithMessage(world, pos, player, "message.hexalia.ritual.missing_salt");
-                    return true;
-                }
-                brazierItems.add(brazier.getStoredItem());
-                brazierEntities.add(brazier);
+                filledBraziers.add(brazier);
             }
         }
 
-        RitualTableRecipe matched = findMatchingRecipe(world, tableItem, brazierItems, tableBE);
-        if (matched == null) {
+        MatchResult match = findMatchingRecipe(world, tableItem, filledBraziers);
+        if (match == null) {
             failWithMessage(world, pos, player, "message.hexalia.ritual.wrong_recipe");
             return true;
+        }
+
+        for (RitualBrazierBlockEntity brazier : match.usedBraziers) {
+            BlockState bs = world.getBlockState(brazier.getPos());
+            if (bs.contains(RitualBrazierBlock.SALTED) && !bs.get(RitualBrazierBlock.SALTED)) {
+                failWithMessage(world, pos, player, "message.hexalia.ritual.missing_salt");
+                return true;
+            }
         }
 
         List<BlockPos> grownCrops = findFullyGrownCrops(world, pos, 8, 8);
@@ -171,11 +181,12 @@ public class RitualTableBlock extends BlockWithEntity {
             return true;
         }
 
-        tableBE.startTransformation(matched.getResult(world.getRegistryManager()).copy(),
-                RitualTableBlockEntity.DURATION, brazierEntities);
+        int duration = match.usedBraziers.size() * 40;
+        tableBE.startTransformation(match.recipe.getResult(world.getRegistryManager()).copy(),
+                duration, match.usedBraziers);
         tableBE.setGrownCropPositions(grownCrops);
 
-        for (RitualBrazierBlockEntity brazier : brazierEntities) {
+        for (RitualBrazierBlockEntity brazier : match.usedBraziers) {
             BlockPos bp = brazier.getPos();
             BlockState bs = world.getBlockState(bp);
             if (bs.contains(RitualBrazierBlock.SALTED) && bs.get(RitualBrazierBlock.SALTED)) {
@@ -188,25 +199,37 @@ public class RitualTableBlock extends BlockWithEntity {
         return true;
     }
 
-    private RitualTableRecipe findMatchingRecipe(World world, ItemStack tableItem,
-                                                 List<ItemStack> brazierItems, RitualTableBlockEntity tableBE) {
+    private @Nullable MatchResult findMatchingRecipe(World world, ItemStack tableItem,
+                                                     List<RitualBrazierBlockEntity> availableBraziers) {
         RitualTableRecipeInput input = new RitualTableRecipeInput(tableItem);
         List<RecipeEntry<RitualTableRecipe>> candidates =
                 world.getRecipeManager().getAllMatches(ModRecipes.RITUAL_TABLE_TYPE, input, world);
 
         for (RecipeEntry<RitualTableRecipe> entry : candidates) {
             RitualTableRecipe recipe = entry.value();
-            if (recipe.getIngredients().isEmpty() || !recipe.getIngredients().get(0).test(tableItem)) continue;
+            var ings = recipe.getIngredients();
+            if (ings.isEmpty() || !ings.get(0).test(tableItem)) continue;
 
-            List<ItemStack> remaining = new ArrayList<>(brazierItems);
-            boolean allMatch = true;
+            List<Ingredient> needed = ings.subList(1, ings.size());
+            List<RitualBrazierBlockEntity> pool = new ArrayList<>(availableBraziers);
+            List<RitualBrazierBlockEntity> used = new ArrayList<>();
 
-            for (Ingredient ing : recipe.getIngredients().subList(1, recipe.getIngredients().size())) {
-                boolean found = remaining.removeIf(ing::test);
-                if (!found) { allMatch = false; break; }
+            boolean ok = true;
+            for (Ingredient ing : needed) {
+                int idx = -1;
+                for (int i = 0; i < pool.size(); i++) {
+                    if (ing.test(pool.get(i).getStoredItem())) {
+                        idx = i;
+                        break;
+                    }
+                }
+                if (idx == -1) { ok = false; break; }
+                used.add(pool.remove(idx));
             }
 
-            if (allMatch && remaining.isEmpty()) return recipe;
+            if (ok) {
+                return new MatchResult(recipe, used);
+            }
         }
         return null;
     }

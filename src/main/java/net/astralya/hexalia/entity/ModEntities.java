@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier;
 
 public class ModEntities {
 
-    public static final EntityType<SilkMothEntity> SILK_MOTH_ENTITY = Registry.register(Registries.ENTITY_TYPE,
+    public static final EntityType<SilkMothEntity> SILK_MOTH = Registry.register(Registries.ENTITY_TYPE,
             Identifier.of(HexaliaMod.MODID, "silk_moth"),
             EntityType.Builder.create(SilkMothEntity::new, SpawnGroup.CREATURE).dimensions(0.6f, 0.06f).build());
 
@@ -22,7 +22,7 @@ public class ModEntities {
     public static final EntityType<RabbageProjectile> RABBAGE = Registry.register(Registries.ENTITY_TYPE,
             Identifier.of(HexaliaMod.MODID, "rabbage"),
             EntityType.Builder.<RabbageProjectile>create(RabbageProjectile::new, SpawnGroup.MISC)
-                    .dimensions(1.375f, 0.5625f).build());
+                    .dimensions(0.5f, 0.5f).build());
 
     public static final EntityType<PurifyingSacProjectile> PURIFYING_SAC = Registry.register(Registries.ENTITY_TYPE,
             Identifier.of(HexaliaMod.MODID, "purifying_sac"),
