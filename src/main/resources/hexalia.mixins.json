@@ -6,6 +6,8 @@
     "AnvilMixin",
     "CobwebMixin",
     "ExperienceMixin",
+    "CropBlockMixin",
+    "StemBlockMixin",
     "ItemCombinerMenuAccessor",
     "LivingEntityMixin",
     "MobMixin",
