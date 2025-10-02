@@ -3,7 +3,7 @@ package net.astralya.hexalia.block.custom.censer;
 import net.astralya.hexalia.Configuration;
 import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.block.custom.WindsongBlock;
-import net.astralya.hexalia.block.entity.CenserBlockEntity;
+import net.astralya.hexalia.block.entity.custom.CenserBlockEntity;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.sound.ModSounds;
 import net.minecraft.block.entity.HopperBlockEntity;
@@ -94,10 +94,10 @@ public class CenserEffectHandler {
     }
 
     private static int areaRadius() {
-        return Math.max(1, Configuration.get().censerEffectRadius);
+        return Math.max(1, Configuration.common().functional_blocks.censerEffectDuration);
     }
     private static int effectDuration() {
-        return Math.max(1, Configuration.get().censerEffectDuration);
+        return Math.max(1, Configuration.common().functional_blocks.censerEffectDuration);
     }
 
     public static void registerActiveEffect(World world, BlockPos pos, HerbCombination combo, int remainingTime) {

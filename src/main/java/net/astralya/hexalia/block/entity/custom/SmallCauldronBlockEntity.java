@@ -1,5 +1,6 @@
-package net.astralya.hexalia.block.entity;
+package net.astralya.hexalia.block.entity.custom;
 
+import net.astralya.hexalia.block.entity.ModBlockEntities;
 import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.recipe.SmallCauldronRecipe;

@@ -7,7 +7,6 @@ import net.astralya.hexalia.block.custom.*;
 import net.astralya.hexalia.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.CaveVines;
-import net.minecraft.block.enums.DoubleBlockHalf;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;

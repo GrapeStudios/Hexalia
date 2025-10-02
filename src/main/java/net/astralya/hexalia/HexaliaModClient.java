@@ -16,7 +16,7 @@ import net.astralya.hexalia.entity.ModBoats;
 import net.astralya.hexalia.entity.ModEntities;
 import net.astralya.hexalia.entity.client.SilkMothRenderer;
 import net.astralya.hexalia.networking.ModMessages;
-import net.astralya.hexalia.particle.ModParticles;
+import net.astralya.hexalia.particle.ModParticleType;
 import net.astralya.hexalia.particle.custom.*;
 import net.astralya.hexalia.screen.ModScreenHandler;
 import net.astralya.hexalia.screen.SmallCauldronScreen;
@@ -88,10 +88,10 @@ public class HexaliaModClient implements ClientModInitializer {
     }
 
     private void registerParticles() {
-        ParticleFactoryRegistry.getInstance().register(ModParticles.SPORE_PARTICLE, SporeParticle.Factory::new);
-        ParticleFactoryRegistry.getInstance().register(ModParticles.INFUSED_BUBBLE_PARTICLE, InfusedBubbleParticle.Factory::new);
-        ParticleFactoryRegistry.getInstance().register(ModParticles.GHOST_PARTICLE, GhostParticle.Factory::new);
-        ParticleFactoryRegistry.getInstance().register(ModParticles.LEAVES_PARTICLE, LeavesParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticleType.SPORE, SporeParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticleType.INFUSED_BUBBLE, InfusedBubbleParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticleType.GHOST, GhostParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(ModParticleType.LEAVES, LeavesParticle.Factory::new);
     }
 
     private void registerScreens() {

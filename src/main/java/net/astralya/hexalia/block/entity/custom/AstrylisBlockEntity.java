@@ -1,6 +1,7 @@
-package net.astralya.hexalia.block.entity;
+package net.astralya.hexalia.block.entity.custom;
 
 import net.astralya.hexalia.Configuration;
+import net.astralya.hexalia.block.entity.ModBlockEntities;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Fertilizable;
 import net.minecraft.block.entity.BlockEntity;
@@ -26,10 +27,10 @@ public class AstrylisBlockEntity extends BlockEntity {
     }
 
     private static int cfgDuration() {
-        return Math.max(1, Configuration.get().astrylisDuration);
+        return Math.max(1, Configuration.common().plants.astrylisDuration);
     }
     private static int cfgInterval() {
-        return Math.max(1, Configuration.get().astrylisBonemealInterval);
+        return Math.max(1, Configuration.common().plants.astrylisBonemealInterval);
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, AstrylisBlockEntity be) {

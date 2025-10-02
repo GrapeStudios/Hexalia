@@ -1,6 +1,6 @@
 package net.astralya.hexalia.block.custom;
 
-import net.astralya.hexalia.block.entity.RitualBrazierBlockEntity;
+import net.astralya.hexalia.block.entity.custom.RitualBrazierBlockEntity;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.util.ModTags;
 import net.minecraft.block.*;

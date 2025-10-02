@@ -1,6 +1,6 @@
 package net.astralya.hexalia.block.custom;
 
-import net.astralya.hexalia.block.entity.ShelfBlockEntity;
+import net.astralya.hexalia.block.entity.custom.ShelfBlockEntity;
 import net.astralya.hexalia.util.ModTags;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;

@@ -24,8 +24,8 @@ public class DreamcatcherBlock extends WallMountedBlock {
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         super.scheduledTick(state, world, pos, random);
 
-        int range = Configuration.get().phantomRadius;
-        int igniteTicks = Configuration.get().phantomIgniteDuration;
+        int range = Configuration.common().functional_blocks.dreamcatcherRadius;
+        int igniteTicks = Configuration.common().functional_blocks.phantomIgniteDuration;
 
         List<PhantomEntity> phantoms = world.getEntitiesByClass(
                 PhantomEntity.class,

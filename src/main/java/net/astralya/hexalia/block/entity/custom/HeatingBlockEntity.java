@@ -1,4 +1,4 @@
-package net.astralya.hexalia.block.entity;
+package net.astralya.hexalia.block.entity.custom;
 
 import net.astralya.hexalia.util.ModTags;
 import net.minecraft.block.BlockState;

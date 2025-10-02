@@ -1,7 +1,9 @@
 package net.astralya.hexalia.networking.packet;
 
+import net.astralya.hexalia.block.entity.custom.RitualBrazierBlockEntity;
+import net.astralya.hexalia.block.entity.custom.RitualTableBlockEntity;
+import net.astralya.hexalia.block.entity.custom.ShelfBlockEntity;
 import net.fabricmc.fabric.api.networking.v1.PacketSender;
-import net.astralya.hexalia.block.entity.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayNetworkHandler;

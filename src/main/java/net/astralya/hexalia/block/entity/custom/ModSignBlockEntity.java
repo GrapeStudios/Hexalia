@@ -1,5 +1,6 @@
-package net.astralya.hexalia.block.entity;
+package net.astralya.hexalia.block.entity.custom;
 
+import net.astralya.hexalia.block.entity.ModBlockEntities;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.SignBlockEntity;

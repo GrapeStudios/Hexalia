@@ -1,5 +1,6 @@
 package net.astralya.hexalia.effect.custom;
 
+import net.astralya.hexalia.Configuration;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
@@ -15,7 +16,7 @@ public class BleedingEffect extends StatusEffect {
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         if (!entity.getEntityWorld().isClient && entity.getHealth() > 0f) {
-            float damage = BASE_DAMAGE + amplifier * 0.2f;
+            float damage = (float) Configuration.common().tools.bleedingDamage;
             entity.damage(entity.getDamageSources().generic(), damage);
         }
     }

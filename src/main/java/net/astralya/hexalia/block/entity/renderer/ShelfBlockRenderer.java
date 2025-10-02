@@ -1,7 +1,7 @@
 package net.astralya.hexalia.block.entity.renderer;
 
 import net.astralya.hexalia.block.custom.ShelfBlock;
-import net.astralya.hexalia.block.entity.ShelfBlockEntity;
+import net.astralya.hexalia.block.entity.custom.ShelfBlockEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;

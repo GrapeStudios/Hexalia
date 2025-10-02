@@ -9,7 +9,7 @@ import net.astralya.hexalia.entity.ModBoats;
 import net.astralya.hexalia.entity.ModEntities;
 import net.astralya.hexalia.item.ModItemGroup;
 import net.astralya.hexalia.item.ModItems;
-import net.astralya.hexalia.particle.ModParticles;
+import net.astralya.hexalia.particle.ModParticleType;
 import net.astralya.hexalia.recipe.ModRecipes;
 import net.astralya.hexalia.screen.ModScreenHandler;
 import net.astralya.hexalia.sound.ModSounds;
@@ -31,7 +31,7 @@ public class HexaliaMod implements ModInitializer {
 		ModBlocks.registerBlockProperties();
 		ModRegistries.registerModStuff();
 		ModWorldGeneration.generateModWorldGeneration();
-		ModParticles.registerParticles();
+		ModParticleType.registerParticles();
 		ModEffects.registerEffects();
 		ModSounds.registerSounds();
 		ModBlockEntities.registerBlockEntities();

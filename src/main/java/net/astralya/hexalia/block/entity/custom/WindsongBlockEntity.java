@@ -1,6 +1,7 @@
-package net.astralya.hexalia.block.entity;
+package net.astralya.hexalia.block.entity.custom;
 
 import net.astralya.hexalia.Configuration;
+import net.astralya.hexalia.block.entity.ModBlockEntities;
 import net.astralya.hexalia.sound.ModSounds;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -33,10 +34,10 @@ public class WindsongBlockEntity extends BlockEntity {
     }
 
     private static int cfgDuration() {
-        return Math.max(1, Configuration.get().windsongDuration);
+        return Math.max(1, Configuration.common().plants.windsongDuration);
     }
     private static int cfgRadius() {
-        return Math.max(1, Configuration.get().windsongEffectRadius);
+        return Math.max(1, Configuration.common().plants.windsongEffectRadius);
     }
 
     public void activate() {

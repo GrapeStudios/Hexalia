@@ -1,6 +1,6 @@
 package net.astralya.hexalia.block.entity.renderer;
 
-import net.astralya.hexalia.block.entity.RitualTableBlockEntity;
+import net.astralya.hexalia.block.entity.custom.RitualTableBlockEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;

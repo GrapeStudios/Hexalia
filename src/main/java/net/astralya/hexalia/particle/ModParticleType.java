@@ -7,12 +7,12 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
-public class ModParticles {
+public class ModParticleType {
 
-    public static final DefaultParticleType SPORE_PARTICLE = registerParticle("spore_particle", FabricParticleTypes.simple());
-    public static final DefaultParticleType GHOST_PARTICLE = registerParticle("ghost_particle", FabricParticleTypes.simple());
-    public static final DefaultParticleType LEAVES_PARTICLE = registerParticle("leaves_particle", FabricParticleTypes.simple());
-    public static final DefaultParticleType INFUSED_BUBBLE_PARTICLE = registerParticle("infused_bubble_particle", FabricParticleTypes.simple());
+    public static final DefaultParticleType SPORE = registerParticle("spore", FabricParticleTypes.simple());
+    public static final DefaultParticleType GHOST = registerParticle("ghost", FabricParticleTypes.simple());
+    public static final DefaultParticleType LEAVES = registerParticle("leaves", FabricParticleTypes.simple());
+    public static final DefaultParticleType INFUSED_BUBBLE = registerParticle("infused_bubble", FabricParticleTypes.simple());
 
     private static DefaultParticleType registerParticle(String name, DefaultParticleType particleType) {
         return Registry.register(Registries.PARTICLE_TYPE, new Identifier(HexaliaMod.MODID, name), particleType);

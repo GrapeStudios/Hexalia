@@ -1,8 +1,8 @@
 package net.astralya.hexalia.block.custom;
 
-import net.astralya.hexalia.block.entity.RitualTableBlockEntity;
+import net.astralya.hexalia.block.entity.custom.RitualTableBlockEntity;
 import net.astralya.hexalia.item.ModItems;
-import net.astralya.hexalia.particle.ModParticles;
+import net.astralya.hexalia.particle.ModParticleType;
 import net.astralya.hexalia.sound.ModSounds;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -136,7 +136,7 @@ public class RitualTableBlock extends BlockWithEntity implements BlockEntityProv
 
     private void spawnSuccessEffect(World world, BlockPos pos) {
         spawnParticleEffect(world, pos, ParticleTypes.ENCHANT, 10, 20);
-        spawnParticleEffect(world, pos, ModParticles.LEAVES_PARTICLE, 10, 20);
+        spawnParticleEffect(world, pos, ModParticleType.LEAVES, 10, 20);
         playRitualSound(world, pos);
     }
 

@@ -1,5 +1,6 @@
 package net.astralya.hexalia.effect.custom;
 
+import net.astralya.hexalia.Configuration;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
@@ -20,12 +21,10 @@ public class SiphonEffect extends StatusEffect {
         this.modifier = modifier;
     }
 
-    // Handles Haste-like bonuses while this effect is active.
     public double adjustModifierAmount(int amplifier, EntityAttributeModifier modifier) {
         return this.modifier * (double)(amplifier + 1);
     }
 
-    // Causes the player to attract nearby items if not sneaking.
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         if (!(entity instanceof PlayerEntity player) || player.isSneaking()) {
@@ -33,10 +32,9 @@ public class SiphonEffect extends StatusEffect {
         }
 
         World world = player.getWorld();
-        double radius = 5.0 + amplifier;
+        double radius = Configuration.common().tools.siphonRadius;
         Box box = player.getBoundingBox().expand(radius);
 
-        // Fetch nearby item entities efficiently
         List<ItemEntity> itemEntities = world.getEntitiesByClass(ItemEntity.class, box, item -> true);
 
         for (ItemEntity itemEntity : itemEntities) {

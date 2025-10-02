@@ -2,7 +2,7 @@ package net.astralya.hexalia.screen;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.astralya.hexalia.block.entity.SmallCauldronBlockEntity;
+import net.astralya.hexalia.block.entity.custom.SmallCauldronBlockEntity;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

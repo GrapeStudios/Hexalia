@@ -1,7 +1,7 @@
 package net.astralya.hexalia.block.entity.renderer;
 
 import net.astralya.hexalia.block.custom.CenserBlock;
-import net.astralya.hexalia.block.entity.CenserBlockEntity;
+import net.astralya.hexalia.block.entity.custom.CenserBlockEntity;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;

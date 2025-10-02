@@ -1,7 +1,7 @@
 package net.astralya.hexalia.block.custom;
 
 import net.astralya.hexalia.block.ModBlocks;
-import net.astralya.hexalia.particle.ModParticles;
+import net.astralya.hexalia.particle.ModParticleType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.player.PlayerEntity;
@@ -52,7 +52,7 @@ public class DreamshroomBlock extends ShroomBlock {
                 double z = centerZ + random.nextDouble() * 2 * MAX_HORIZONTAL_OFFSET - MAX_HORIZONTAL_OFFSET;
                 double motionX = random.nextGaussian() * PARTICLE_MOTION_VARIANCE;
                 double motionZ = random.nextGaussian() * PARTICLE_MOTION_VARIANCE;
-                world.addParticle(ModParticles.SPORE_PARTICLE, x, y, z, motionX, PARTICLE_FALL_SPEED, motionZ);
+                world.addParticle(ModParticleType.SPORE, x, y, z, motionX, PARTICLE_FALL_SPEED, motionZ);
             }
         }
     }

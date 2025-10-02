@@ -1,7 +1,7 @@
 package net.astralya.hexalia.block.custom;
 
 import net.astralya.hexalia.block.entity.ModBlockEntities;
-import net.astralya.hexalia.block.entity.NautiliteBlockEntity;
+import net.astralya.hexalia.block.entity.custom.NautiliteBlockEntity;
 import net.astralya.hexalia.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;

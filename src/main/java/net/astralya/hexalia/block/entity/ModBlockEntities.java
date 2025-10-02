@@ -1,5 +1,6 @@
 package net.astralya.hexalia.block.entity;
 
+import net.astralya.hexalia.block.entity.custom.*;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.block.ModBlocks;

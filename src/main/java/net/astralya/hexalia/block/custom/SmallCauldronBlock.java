@@ -1,8 +1,8 @@
 package net.astralya.hexalia.block.custom;
 
-import net.astralya.hexalia.block.entity.HeatingBlockEntity;
+import net.astralya.hexalia.block.entity.custom.HeatingBlockEntity;
 import net.astralya.hexalia.block.entity.ModBlockEntities;
-import net.astralya.hexalia.block.entity.SmallCauldronBlockEntity;
+import net.astralya.hexalia.block.entity.custom.SmallCauldronBlockEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;

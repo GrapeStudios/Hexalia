@@ -1,6 +1,7 @@
-package net.astralya.hexalia.block.entity;
+package net.astralya.hexalia.block.entity.custom;
 
 import net.astralya.hexalia.Configuration;
+import net.astralya.hexalia.block.entity.ModBlockEntities;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
@@ -36,10 +37,10 @@ public class NautiliteBlockEntity extends BlockEntity {
     }
 
     private static int duration() {
-        return Math.max(1, Configuration.get().nautiliteDuration);
+        return Math.max(1, Configuration.common().plants.nautiliteDuration);
     }
     private static int effectRadius() {
-        return Math.max(1, Configuration.get().nautiliteEffectRadius);
+        return Math.max(1, Configuration.common().plants.nautiliteEffectRadius);
     }
 
 

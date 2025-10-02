@@ -1,7 +1,7 @@
 package net.astralya.hexalia.block.custom;
 
 import net.astralya.hexalia.block.ModBlocks;
-import net.astralya.hexalia.particle.ModParticles;
+import net.astralya.hexalia.particle.ModParticleType;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -61,7 +61,7 @@ public class InfusedFarmlandBlock extends FarmlandBlock {
                     world.getPlayers().forEach(player -> {
                         if (player.squaredDistanceTo(pos.getX(), pos.getY(), pos.getZ()) < 64 * 64) {
                             world.spawnParticles(player,
-                                    ModParticles.INFUSED_BUBBLE_PARTICLE,
+                                    ModParticleType.INFUSED_BUBBLE,
                                     true,
                                     pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5,
                                     8,
@@ -119,7 +119,7 @@ public class InfusedFarmlandBlock extends FarmlandBlock {
                 double x = pos.getX() + 0.5 + random.nextDouble(-0.5, 0.5);
                 double y = pos.getY() + 1.0;
                 double z = pos.getZ() + 0.5 + random.nextDouble(-0.5, 0.5);
-                world.addParticle(ModParticles.INFUSED_BUBBLE_PARTICLE, x, y, z, 0.0D, 0.05D, 0.0D);
+                world.addParticle(ModParticleType.INFUSED_BUBBLE, x, y, z, 0.0D, 0.05D, 0.0D);
             }
         }
     }

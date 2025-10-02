@@ -38,8 +38,8 @@ public class MandrakeItem extends Item {
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         if (!world.isClient && user instanceof PlayerEntity player) {
-            double radius = Math.max(0.0, Configuration.get().mandrakeScreamRadius);
-            int stunDuration = Math.max(1, Configuration.get().mandrakeStunDuration);
+            double radius = Math.max(0.0, Configuration.common().tools.mandrakeScreamRadius);
+            int stunDuration = Math.max(1, Configuration.common().tools.mandrakeStunDuration);
 
             List<Entity> entities = world.getOtherEntities(player, player.getBoundingBox().expand(radius));
             for (Entity e : entities) {

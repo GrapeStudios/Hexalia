@@ -1,7 +1,7 @@
 package net.astralya.hexalia.block.custom;
 
 import net.astralya.hexalia.Configuration;
-import net.astralya.hexalia.block.entity.CenserBlockEntity;
+import net.astralya.hexalia.block.entity.custom.CenserBlockEntity;
 import net.astralya.hexalia.block.entity.ModBlockEntities;
 import net.astralya.hexalia.block.custom.censer.CenserEffectHandler;
 import net.astralya.hexalia.block.custom.censer.HerbCombination;
@@ -140,8 +140,8 @@ public class CenserBlock extends BlockWithEntity {
 
                 world.setBlockState(pos, state.with(LIT, true));
 
-                int burn = Math.max(1, Configuration.get().censerEffectDuration);
-                censer.setBurnTime(burn);                 // burn time from config
+                int burn = Math.max(1, Configuration.common().functional_blocks.censerEffectDuration);
+                censer.setBurnTime(burn);
                 CenserEffectHandler.startEffect(world, pos, combo);
             }
 
@@ -201,7 +201,7 @@ public class CenserBlock extends BlockWithEntity {
 
     private void sendEffectActivationMessage(World world, BlockPos pos, HerbCombination combo, PlayerEntity activatingPlayer) {
         String key = CenserEffectHandler.getMessageKeyForCombination(combo);
-        int radius = Math.max(1, Configuration.get().censerEffectRadius);
+        int radius = Math.max(1, Configuration.common().functional_blocks.censerEffectRadius);
         Box area = new Box(pos).expand(radius);
 
         for (PlayerEntity p : world.getEntitiesByType(EntityType.PLAYER, area, EntityPredicates.VALID_ENTITY)) {
