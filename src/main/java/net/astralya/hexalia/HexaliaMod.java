@@ -1,5 +1,6 @@
 package net.astralya.hexalia;
 
+import net.astralya.hexalia.block.ModFlammables;
 import net.fabricmc.api.ModInitializer;
 import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.block.custom.InfusedDirtBlock;
@@ -29,6 +30,7 @@ public class HexaliaMod implements ModInitializer {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
 		ModBlocks.registerBlockProperties();
+        ModFlammables.registerFlammables();
 		ModRegistries.registerModStuff();
 		ModWorldGeneration.generateModWorldGeneration();
 		ModParticleType.registerParticles();

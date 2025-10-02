@@ -265,31 +265,6 @@ public class ModBlocks {
         StrippableBlockRegistry.register(ModBlocks.COTTONWOOD_WOOD, ModBlocks.STRIPPED_COTTONWOOD_WOOD);
         StrippableBlockRegistry.register(ModBlocks.WILLOW_LOG, ModBlocks.STRIPPED_WILLOW_LOG);
         StrippableBlockRegistry.register(ModBlocks.WILLOW_WOOD, ModBlocks.STRIPPED_WILLOW_WOOD);
-
-        FlammableBlockRegistry instance = FlammableBlockRegistry.getDefaultInstance();
-        instance.add(ModBlocks.SPIRIT_BLOOM, 60, 100);
-        instance.add(ModBlocks.CHILLBERRY_BUSH, 60, 100);
-        instance.add(ModBlocks.WILD_MANDRAKE, 60, 100);
-        instance.add(ModBlocks.DREAMCATCHER, 5, 20);
-        instance.add(ModBlocks.SILKWORM_COCOON, 6, 100);
-        instance.add(ModBlocks.COTTONWOOD_LOG, 5, 20);
-        instance.add(ModBlocks.COTTONWOOD_WOOD, 5, 20);
-        instance.add(ModBlocks.STRIPPED_COTTONWOOD_LOG, 5, 20);
-        instance.add(ModBlocks.STRIPPED_COTTONWOOD_WOOD, 5, 20);
-        instance.add(ModBlocks.COTTONWOOD_PLANKS, 5, 20);
-        instance.add(ModBlocks.WILLOW_LOG, 5, 20);
-        instance.add(ModBlocks.WILLOW_WOOD, 5, 20);
-        instance.add(ModBlocks.STRIPPED_WILLOW_LOG, 5, 20);
-        instance.add(ModBlocks.STRIPPED_WILLOW_WOOD, 5, 20);
-        instance.add(ModBlocks.WILLOW_PLANKS, 5, 20);
-        instance.add(ModBlocks.WITCHWEED, 60, 100);
-        instance.add(ModBlocks.NIGHTSHADE_BUSH, 60, 100);
-        instance.add(ModBlocks.LAVENDER, 60, 100);
-        instance.add(ModBlocks.BEGONIA, 60, 100);
-        instance.add(ModBlocks.DAHLIA, 60, 100);
-        instance.add(ModBlocks.GALEBERRIES_VINE, 60, 100);
-        instance.add(ModBlocks.GALEBERRIES_VINE_PLANT, 60, 100);
-        instance.add(ModBlocks.RITUAL_BRAZIER, 5, 20);
     }
 
     // Methods
