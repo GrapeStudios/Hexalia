@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "c:salt_dusts"
+    },
+    {
+      "item": "minecraft:leather"
+    },
+    {
+      "tag": "hexalia:crushed_herbs"
+    },
+    {
+      "tag": "hexalia:crushed_herbs"
+    }
+  ],
+  "result": {
+    "item": "hexalia:purifying_sac"
+  }
+}

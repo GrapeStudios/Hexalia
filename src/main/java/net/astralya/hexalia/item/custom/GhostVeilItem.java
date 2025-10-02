@@ -1,6 +1,6 @@
 package net.astralya.hexalia.item.custom;
 
-import net.astralya.hexalia.item.client.BoggedBootsRenderer;
+import net.astralya.hexalia.item.custom.client.BoggedBootsRenderer;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.Entity;

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hexalia:silk_idol"
+    },
+    {
+      "item": "minecraft:string"
+    },
+    {
+      "item": "hexalia:celestial_crystal"
+    },
+    {
+      "item": "hexalia:fire_node"
+    }
+  ],
+  "result": {
+    "item": "hexalia:clarity_idol"
+  }
+}

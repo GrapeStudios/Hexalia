@@ -30,13 +30,13 @@ public class WeatherIdol extends Item {
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         if (!world.isClient && user instanceof PlayerEntity player) {
             if (world instanceof ServerWorld serverWorld) {
-                if (stack.getItem() == ModItems.RAIN_IDOL) {
+                if (stack.getItem() == ModItems.RAINFALL_IDOL) {
                     serverWorld.setWeather(0, 6000, true, false);
                     player.sendMessage(Text.translatable("message.hexalia.rain_idol"), true);
-                } else if (stack.getItem() == ModItems.CLEAR_IDOL) {
+                } else if (stack.getItem() == ModItems.CLARITY_IDOL) {
                     serverWorld.setWeather(6000, 0, false, false);
                     player.sendMessage(Text.translatable("message.hexalia.clear_idol"), true);
-                } else if (stack.getItem() == ModItems.STORM_IDOL) {
+                } else if (stack.getItem() == ModItems.TEMPEST_IDOL) {
                     serverWorld.setWeather(0, 6000, true, true);
                     player.sendMessage(Text.translatable("message.hexalia.storm_idol"), true);
                 }

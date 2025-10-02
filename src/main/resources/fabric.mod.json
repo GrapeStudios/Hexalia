@@ -5,30 +5,30 @@
 	"name": "Hexalia",
 	"description": "A magical mod focused on herbology and potion brewing.",
 	"authors": [
-		"Grapes Studios"
+		"astralya Studios"
 	],
 	"contact": {
-		"homepage": "https://github.com/GrapeStudios/",
-		"sources": "https://github.com/GrapeStudios/Hexalia"
+		"homepage": "https://github.com/AstralyaStudios/",
+		"sources": "https://github.com/AstralyaStudios/Hexalia"
 	},
 	"license": "MIT",
 	"icon": "assets/hexalia/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.grapes.hexalia.HexaliaMod"
+			"net.astralya.hexalia.HexaliaMod"
 		],
 		"fabric-datagen": [
-			"net.grapes.hexalia.HexaliaModDataGenerator"
+			"net.astralya.hexalia.HexaliaModDataGenerator"
 		],
 		"client": [
-			"net.grapes.hexalia.HexaliaModClient"
+			"net.astralya.hexalia.HexaliaModClient"
 		],
 		"rei_client": [
-			"net.grapes.hexalia.compat.rei.HexaliaREIClientPlugin"
+			"net.astralya.hexalia.compat.rei.HexaliaREIClientPlugin"
 		],
 		"terrablender": [
-			"net.grapes.hexalia.world.biome.ModTerraBlenderAPI"
+			"net.astralya.hexalia.world.biome.ModTerraBlenderAPI"
 		]
 	},
 	"mixins": [

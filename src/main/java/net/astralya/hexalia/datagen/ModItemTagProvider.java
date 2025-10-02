@@ -33,7 +33,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         // Plants
         getOrCreateTagBuilder(ItemTags.FLOWERS)
-                .add(ModBlocks.SPIRIT_BLOOM.asItem()).add(ModBlocks.HENBANE.asItem())
+                .add(ModBlocks.SPIRIT_BLOOM.asItem())
                 .add(ModBlocks.WITCHWEED.asItem()).add(ModBlocks.GHOST_FERN.asItem())
                 .add(ModBlocks.NIGHTSHADE_BUSH.asItem()).add(ModBlocks.BEGONIA.asItem())
                 .add(ModBlocks.LAVENDER.asItem()).add(ModBlocks.DAHLIA.asItem())
@@ -41,7 +41,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
 
         // Copy to small flowers if appropriate
         getOrCreateTagBuilder(ItemTags.SMALL_FLOWERS)
-                .add(ModBlocks.SPIRIT_BLOOM.asItem()).add(ModBlocks.HENBANE.asItem())
+                .add(ModBlocks.SPIRIT_BLOOM.asItem())
                 .add(ModBlocks.WITCHWEED.asItem()).add(ModBlocks.GHOST_FERN.asItem())
                 .add(ModBlocks.NIGHTSHADE_BUSH.asItem()).add(ModBlocks.BEGONIA.asItem())
                 .add(ModBlocks.LAVENDER.asItem()).add(ModBlocks.DAHLIA.asItem())

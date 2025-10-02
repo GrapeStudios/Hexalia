@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "end": "hexalia:block/willow_mossy_wood",
-    "side": "hexalia:block/willow_mossy_wood"
-  }
-}

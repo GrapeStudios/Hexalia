@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "hexalia:silk_idol"
+    },
+    {
+      "item": "minecraft:string"
+    },
+    {
+      "item": "hexalia:water_node"
+    },
+    {
+      "item": "hexalia:air_node"
+    },
+    {
+      "item": "hexalia:fire_node"
+    }
+  ],
+  "result": {
+    "item": "hexalia:tempest_idol"
+  }
+}

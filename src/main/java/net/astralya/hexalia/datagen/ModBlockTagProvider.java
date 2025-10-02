@@ -49,7 +49,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     private void addPlantTags() {
         // Flower tags
         getOrCreateTagBuilder(BlockTags.FLOWERS)
-                .add(ModBlocks.SPIRIT_BLOOM).add(ModBlocks.HENBANE)
+                .add(ModBlocks.SPIRIT_BLOOM)
                 .add(ModBlocks.WITCHWEED).add(ModBlocks.GHOST_FERN)
                 .add(ModBlocks.NIGHTSHADE_BUSH).add(ModBlocks.BEGONIA)
                 .add(ModBlocks.LAVENDER).add(ModBlocks.DAHLIA)
@@ -57,7 +57,7 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
 
         // Small flowers if appropriate
         getOrCreateTagBuilder(BlockTags.SMALL_FLOWERS)
-                .add(ModBlocks.SPIRIT_BLOOM).add(ModBlocks.HENBANE)
+                .add(ModBlocks.SPIRIT_BLOOM)
                 .add(ModBlocks.WITCHWEED).add(ModBlocks.GHOST_FERN)
                 .add(ModBlocks.NIGHTSHADE_BUSH).add(ModBlocks.BEGONIA)
                 .add(ModBlocks.LAVENDER).add(ModBlocks.DAHLIA)
@@ -205,8 +205,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
         getOrCreateTagBuilder(BlockTags.FLOWER_POTS)
                 .add(ModBlocks.POTTED_SPIRIT_BLOOM).add(ModBlocks.POTTED_DREAMSHROOM)
                 .add(ModBlocks.POTTED_LAVENDER).add(ModBlocks.POTTED_BEGONIA)
-                .add(ModBlocks.POTTED_NIGHTSHADE_BUSH).add(ModBlocks.POTTED_PALE_MUSHROOM)
-                .add(ModBlocks.POTTED_HENBANE).add(ModBlocks.POTTED_ASTRYLIS)
+                .add(ModBlocks.POTTED_NIGHTSHADE_BUSH)
+                .add(ModBlocks.POTTED_ASTRYLIS)
                 .add(ModBlocks.POTTED_GRIMSHADE).add(ModBlocks.POTTED_WINDSONG)
                 .add(ModBlocks.POTTED_MORPHORA).add(ModBlocks.POTTED_COTTONWOOD_SAPLING)
                 .add(ModBlocks.POTTED_WILLOW_SAPLING).add(ModBlocks.POTTED_DAHLIA)

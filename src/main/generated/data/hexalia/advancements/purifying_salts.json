@@ -6,7 +6,7 @@
         "items": [
           {
             "items": [
-              "hexalia:purifying_salts"
+              "hexalia:purifying_sac"
             ]
           }
         ]
@@ -23,7 +23,7 @@
     "frame": "goal",
     "hidden": false,
     "icon": {
-      "item": "hexalia:purifying_salts"
+      "item": "hexalia:purifying_sac"
     },
     "show_toast": true,
     "title": {

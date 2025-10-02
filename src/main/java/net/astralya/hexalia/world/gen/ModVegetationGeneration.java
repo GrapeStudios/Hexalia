@@ -32,8 +32,6 @@ public class ModVegetationGeneration {
 
         // Decorative Plants
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.PLAINS),
-                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.HENBANE_PLACED_KEY);
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.PLAINS),
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.BEGONIA_PLACED_KEY);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(BiomeKeys.TAIGA),
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.LAVENDER_PLACED_KEY);
@@ -47,10 +45,6 @@ public class ModVegetationGeneration {
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.ENCHANTED_BAYOU),
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.WITCHWEED_PLACED_KEY);
         BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.ENCHANTED_BAYOU),
-                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.HEXED_BULRUSH_PLACED_KEY);
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.ENCHANTED_BAYOU),
                 GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.NIGHTSHADE_BUSH_PLACED_KEY);
-        BiomeModifications.addFeature(BiomeSelectors.includeByKey(ModBiomes.ENCHANTED_BAYOU),
-                GenerationStep.Feature.VEGETAL_DECORATION, ModPlacedFeatures.DUCKWEED_PLACED_KEY);
     }
 }

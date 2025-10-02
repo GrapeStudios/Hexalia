@@ -33,7 +33,6 @@ import java.util.Optional;
 
 public class ModConfiguredFeatures {
 
-    // public static final RegistryKey<ConfiguredFeature<?, ?>> SALT_ORE_KEY = registerKey("salt_ore");
     public static final RegistryKey<ConfiguredFeature<?, ?>> SPIRIT_BLOOM_KEY = registerKey("spirit_bloom");
     public static final RegistryKey<ConfiguredFeature<?, ?>> CHILLBERRY_KEY = registerKey("chillberry");
     public static final RegistryKey<ConfiguredFeature<?, ?>> DREAMSHROOM_KEY = registerKey("dreamshroom");
@@ -43,7 +42,6 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> WILD_SUNFIRE_TOMATO_KEY = registerKey("wild_sunfire_tomato");
     public static final RegistryKey<ConfiguredFeature<?, ?>> WILD_MANDRAKE_KEY = registerKey("wild_mandrake");
     
-    public static final RegistryKey<ConfiguredFeature<?, ?>> HENBANE_KEY = registerKey("henbane");
     public static final RegistryKey<ConfiguredFeature<?, ?>> BEGONIA_KEY = registerKey("begonia");
     public static final RegistryKey<ConfiguredFeature<?, ?>> LAVENDER_KEY = registerKey("lavender");
     public static final RegistryKey<ConfiguredFeature<?, ?>> DAHLIA_KEY = registerKey("dahlia");
@@ -57,9 +55,7 @@ public class ModConfiguredFeatures {
     public static final RegistryKey<ConfiguredFeature<?, ?>> PALE_MUSHROOM_KEY = registerKey("pale_mushroom_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> WITCHWEED_KEY = registerKey("witchweed_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> GHOST_FERN_KEY = registerKey("ghost_fern_key");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> HEXED_BULRUSH_KEY = registerKey("hexed_bulrush_key");
     public static final RegistryKey<ConfiguredFeature<?, ?>> NIGHTSHADE_BUSH_KEY = registerKey("nightshade_bush_key");
-    public static final RegistryKey<ConfiguredFeature<?, ?>> DUCKWEED_KEY = registerKey("duckweed_key");
 
 
     public static void bootstrap(Registerable<ConfiguredFeature<?, ?>> context) {
@@ -99,10 +95,6 @@ public class ModConfiguredFeatures {
                         new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.CELESTIAL_BLOOM)))));
 
         // Decorative Plants
-        register(context, HENBANE_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
-                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.HENBANE)))));
-
         register(context, BEGONIA_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
                 PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
                         new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.BEGONIA)))));
@@ -127,17 +119,9 @@ public class ModConfiguredFeatures {
                 PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
                         new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.WITCHWEED)))));
 
-        register(context, HEXED_BULRUSH_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(5,
-                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.HEXED_BULRUSH)))));
-
         register(context, NIGHTSHADE_BUSH_KEY, Feature.FLOWER, ConfiguredFeatures.createRandomPatchFeatureConfig(3,
                 PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
                         new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.NIGHTSHADE_BUSH)))));
-
-        register(context, DUCKWEED_KEY, Feature.RANDOM_PATCH, ConfiguredFeatures.createRandomPatchFeatureConfig(5,
-                PlacedFeatures.createEntry(Feature.SIMPLE_BLOCK,
-                        new SimpleBlockFeatureConfig(BlockStateProvider.of(ModBlocks.DUCKWEED)))));
 
         // Trees
         register(context, DARK_OAK_COCOON_KEY, Feature.TREE, new TreeFeatureConfig.Builder(

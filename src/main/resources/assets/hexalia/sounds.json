@@ -13,24 +13,10 @@
     ]
   },
 
-  "conversion": {
-    "subtitle": "sounds.hexalia.conversion",
+  "sac_impact": {
+    "subtitle": "sounds.hexalia.sac_impact",
     "sounds": [
-      "hexalia:conversion"
-    ]
-  },
-
-  "wind_burst": {
-    "subtitle": "sounds.hexalia.wind_burst",
-    "sounds": [
-      "hexalia:wind_burst"
-    ]
-  },
-
-  "wind_deflect": {
-    "subtitle": "sounds.hexalia.wind_deflect",
-    "sounds": [
-      "hexalia:wind_deflect"
+      "hexalia:sac_impact"
     ]
   }
 }

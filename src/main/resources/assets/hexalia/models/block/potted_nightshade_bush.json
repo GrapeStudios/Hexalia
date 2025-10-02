@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/flower_pot_cross",
-  "render_type": "cutout",
+  "render_type": "minecraft:cutout",
   "textures": {
     "plant": "hexalia:block/nightshade_bush"
   }

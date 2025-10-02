@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "hexalia:block/pale_mushroom"
+    "layer0": "hexalia:item/pale_mushroom"
   }
 }

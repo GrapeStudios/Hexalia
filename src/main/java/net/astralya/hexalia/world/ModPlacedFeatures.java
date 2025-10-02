@@ -24,7 +24,6 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> WILD_SUNFIRE_TOMATO_PLACED_KEY = registerKey("wild_sunfire_tomato_placed");
     public static final RegistryKey<PlacedFeature> WILD_MANDRAKE_PLACED_KEY = registerKey("wild_mandrake_placed");
     
-    public static final RegistryKey<PlacedFeature> HENBANE_PLACED_KEY = registerKey("henbane_placed");
     public static final RegistryKey<PlacedFeature> BEGONIA_PLACED_KEY = registerKey("begonia_placed");
     public static final RegistryKey<PlacedFeature> LAVENDER_PLACED_KEY = registerKey("lavender_placed");
     public static final RegistryKey<PlacedFeature> DAHLIA_PLACED_KEY = registerKey("dahlia_placed");
@@ -38,9 +37,7 @@ public class ModPlacedFeatures {
     public static final RegistryKey<PlacedFeature> PALE_MUSHROOM_PLACED_KEY = registerKey("pale_mushroom_placed");
     public static final RegistryKey<PlacedFeature> WITCHWEED_PLACED_KEY = registerKey("witchweed_placed");
     public static final RegistryKey<PlacedFeature> GHOST_FERN_PLACED_KEY = registerKey("ghost_fern_placed_key");
-    public static final RegistryKey<PlacedFeature> HEXED_BULRUSH_PLACED_KEY = registerKey("hexed_bulrush_placed_key");
     public static final RegistryKey<PlacedFeature> NIGHTSHADE_BUSH_PLACED_KEY = registerKey("nightshade_bush_placed_key");
-    public static final RegistryKey<PlacedFeature> DUCKWEED_PLACED_KEY = registerKey("duckweed_placed_key");
 
     public static void bootstrap(Registerable<PlacedFeature> context) {
         var configuredFeatureRegistryEntryLookup = context.getRegistryLookup(RegistryKeys.CONFIGURED_FEATURE);
@@ -71,8 +68,6 @@ public class ModPlacedFeatures {
                 CountPlacementModifier.of(1), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
 
         // Decorative Plants
-        register(context, HENBANE_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.HENBANE_KEY),
-                RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
         
         register(context, BEGONIA_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.BEGONIA_KEY),
                 RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
@@ -92,14 +87,8 @@ public class ModPlacedFeatures {
         register(context, WITCHWEED_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.WITCHWEED_KEY),
                 RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
 
-        register(context, HEXED_BULRUSH_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.HEXED_BULRUSH_KEY),
-                CountPlacementModifier.of(6), SquarePlacementModifier.of(), PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP, BiomePlacementModifier.of());
-
         register(context, NIGHTSHADE_BUSH_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.NIGHTSHADE_BUSH_KEY),
                 RarityFilterPlacementModifier.of(2), SquarePlacementModifier.of(), PlacedFeatures.MOTION_BLOCKING_HEIGHTMAP, BiomePlacementModifier.of());
-
-        register(context, DUCKWEED_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.DUCKWEED_KEY),
-                CountPlacementModifier.of(8), SquarePlacementModifier.of(), PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP, BiomePlacementModifier.of());
 
         // Trees
         register(context, DARK_OAK_COCOON_PLACED_KEY, configuredFeatureRegistryEntryLookup.getOrThrow(ModConfiguredFeatures.DARK_OAK_COCOON_KEY),

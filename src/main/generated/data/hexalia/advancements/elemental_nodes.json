@@ -5,7 +5,7 @@
       "conditions": {
         "item": {
           "items": [
-            "hexalia:clear_idol"
+            "hexalia:clarity_idol"
           ]
         }
       },
@@ -15,7 +15,7 @@
       "conditions": {
         "item": {
           "items": [
-            "hexalia:storm_idol"
+            "hexalia:tempest_idol"
           ]
         }
       },
@@ -25,7 +25,7 @@
       "conditions": {
         "item": {
           "items": [
-            "hexalia:rain_idol"
+            "hexalia:rainfall_idol"
           ]
         }
       },
@@ -41,7 +41,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "hexalia:storm_idol"
+      "item": "hexalia:tempest_idol"
     },
     "show_toast": true,
     "title": {

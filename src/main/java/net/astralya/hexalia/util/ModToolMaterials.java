@@ -8,7 +8,7 @@ import net.minecraft.util.Lazy;
 import java.util.function.Supplier;
 
 public enum ModToolMaterials implements ToolMaterial {
-    ANCIENT_SEED(2, 250, 8.0f, 3.0f, 22, () -> Ingredient.ofItems(ModItems.ANCIENT_SEED));
+    ANCIENT(2, 250, 8.0f, 3.0f, 22, () -> Ingredient.ofItems(ModItems.ANCIENT_SEED));
 
     private final int miningLevel;
     private final int itemDurability;

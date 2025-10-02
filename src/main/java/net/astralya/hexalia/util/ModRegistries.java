@@ -24,7 +24,6 @@ public class ModRegistries {
         registerCompostable(ModItems.RABBAGE_SEEDS, SMALL);
         registerCompostable(ModItems.CHILLBERRIES, SMALL);
         registerCompostable(ModItems.LOTUS_FLOWER, SMALL);
-        registerCompostable(ModItems.DUCKWEED, SMALL);
         registerCompostable(ModItems.GALEBERRIES, SMALL);
 
         // Medium-value items (50% chance)

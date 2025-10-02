@@ -43,17 +43,13 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.DREAMSHROOM);
         addPottedPlantDrops(ModBlocks.POTTED_DREAMSHROOM);
         addDrop(ModBlocks.SIREN_KELP, drops(ModItems.SIREN_KELP));
-        addDrop(ModBlocks.HENBANE);
-        addPottedPlantDrops(ModBlocks.POTTED_HENBANE);
         addDrop(ModBlocks.LOTUS_FLOWER);
         addDrop(ModBlocks.PALE_MUSHROOM);
-        addPottedPlantDrops(ModBlocks.POTTED_PALE_MUSHROOM);
         addDrop(ModBlocks.WITCHWEED);
         addDrop(ModBlocks.GHOST_FERN);
         addPottedPlantDrops(ModBlocks.POTTED_GHOST_FERN);
         addDrop(ModBlocks.NIGHTSHADE_BUSH);
         addPottedPlantDrops(ModBlocks.POTTED_NIGHTSHADE_BUSH);
-        this.addDrop(ModBlocks.HEXED_BULRUSH, createTallPlantBlock(ModBlocks.HEXED_BULRUSH));
         this.addDrop(ModBlocks.COTTONWOOD_CATKIN, Items.STRING);
         addDrop(ModBlocks.BEGONIA);
         addPottedPlantDrops(ModBlocks.POTTED_BEGONIA);
@@ -85,7 +81,6 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.SALT_LAMP);
         addDrop(ModBlocks.CANDLE_SKULL);
         addDrop(ModBlocks.DREAMCATCHER);
-        addDrop(ModBlocks.PARCHMENT);
         addDrop(ModBlocks.RUSTIC_OVEN);
         addDrop(ModBlocks.SMALL_CAULDRON);
         addDrop(ModBlocks.SILKWORM_COCOON);
