@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.util.ModTags;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
@@ -94,6 +95,13 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
         getOrCreateTagBuilder(ModTags.Items.OFFHAND_EQUIPMENT)
                 .add(ModItems.HEX_FOCUS.asItem())
                 .add(ModItems.SALT.asItem());
+
+        // Tulips
+        getOrCreateTagBuilder(ModTags.Items.TULIPS)
+                .add(Blocks.ORANGE_TULIP.asItem())
+                .add(Blocks.PINK_TULIP.asItem())
+                .add(Blocks.RED_TULIP.asItem())
+                .add(Blocks.WHITE_TULIP.asItem());
     }
 
     private void addTreeRelatedTags() {

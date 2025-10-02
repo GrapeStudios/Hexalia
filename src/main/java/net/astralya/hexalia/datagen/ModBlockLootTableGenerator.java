@@ -164,18 +164,6 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.WILLOW_DOOR, doorDrops(ModBlocks.WILLOW_DOOR));
     }
 
-    protected LootTable.Builder createTallPlantBlock(Block bulrushBlock) {
-        LootCondition.Builder lowerHalfCondition = BlockStatePropertyLootCondition.builder(bulrushBlock)
-                .properties(StatePredicate.Builder.create()
-                        .exactMatch(HexedBulrushBlock.HALF, DoubleBlockHalf.LOWER));
-
-        return LootTable.builder()
-                .pool(LootPool.builder()
-                        .rolls(ConstantLootNumberProvider.create(1))
-                        .with(ItemEntry.builder(bulrushBlock)
-                                .conditionally(lowerHalfCondition)));
-    }
-
     protected LootTable.Builder galeberriesDrop(Block drop) {
         return LootTable.builder().pool(LootPool.builder().with(ItemEntry.builder(ModItems.GALEBERRIES))
                 .conditionally(BlockStatePropertyLootCondition.builder(drop).properties(StatePredicate.Builder.create()

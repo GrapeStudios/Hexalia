@@ -6,7 +6,8 @@
         "type": "hexalia:catkin"
       },
       {
-        "type": "hexalia:cocoon_tree"
+        "type": "hexalia:cocoon_tree",
+        "chance": 0.2
       }
     ],
     "dirt_provider": {

@@ -6,6 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.biome.Biome;
 
 public class ModTags {
     public static class Items {
@@ -16,6 +17,7 @@ public class ModTags {
         public static final TagKey<Item> COTTONWOOD_LOGS = createItemTag("cottonwood_logs");
         public static final TagKey<Item> WILLOW_LOGS = createItemTag("willow_logs");
         public static final TagKey<Item> OFFHAND_EQUIPMENT = createItemTag("offhand_equipment");
+        public static final TagKey<Item> TULIPS = createItemTag("tulips");
 
         // Conventional Item Tags
         public static final TagKey<Item> FOODS = createCommonItemTag("foods");
@@ -84,6 +86,20 @@ public class ModTags {
 
         private static TagKey<Block> externalBlockTag(String modId, String path) {
             return TagKey.of(RegistryKeys.BLOCK, new Identifier(modId, path));
+        }
+    }
+
+    public static class Biomes {
+
+        public static final TagKey<Biome> HAS_MANDRAKES = createBiomeTag("has_mandrakes");
+        public static final TagKey<Biome> HAS_DREAMSHROOMS = createBiomeTag("has_dreamshrooms");
+        public static final TagKey<Biome> HAS_SIREN_KELP = createBiomeTag("has_siren_kelp");
+        public static final TagKey<Biome> HAS_GHOST_FERNS = createBiomeTag("has_ghost_ferns");
+        public static final TagKey<Biome> HAS_SWAMP_VEGETATION = createBiomeTag("has_swamp_vegetation");
+        public static final TagKey<Biome> HAS_DECORATIVE_FLOWERS = createBiomeTag("has_decorative_flowers");
+
+        private static TagKey<Biome> createBiomeTag(String name) {
+            return TagKey.of(RegistryKeys.BIOME, Identifier.of(HexaliaMod.MODID, name));
         }
     }
 }

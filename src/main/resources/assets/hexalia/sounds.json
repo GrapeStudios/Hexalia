@@ -18,5 +18,19 @@
     "sounds": [
       "hexalia:sac_impact"
     ]
+  },
+
+  "wind_burst": {
+    "subtitle": "sounds.hexalia.wind_burst",
+    "sounds": [
+      "hexalia:wind_burst"
+    ]
+  },
+
+  "wind_deflect": {
+    "subtitle": "sounds.hexalia.wind_deflect",
+    "sounds": [
+      "hexalia:wind_deflect"
+    ]
   }
 }

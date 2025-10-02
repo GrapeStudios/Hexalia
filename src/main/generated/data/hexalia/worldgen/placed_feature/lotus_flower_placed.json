@@ -1,9 +1,9 @@
 {
-  "feature": "hexalia:lotus_flower_key",
+  "feature": "hexalia:lotus_flower",
   "placement": [
     {
       "type": "minecraft:count",
-      "count": 2
+      "count": 1
     },
     {
       "type": "minecraft:in_square"

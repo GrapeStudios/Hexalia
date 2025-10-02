@@ -26,7 +26,6 @@ repositories {
         }
     }
 
-    maven { url "https://maven.minecraftforge.net" }
     maven { url "https://repo.spongepowered.org/maven" }
     maven { url "https://maven.terraformersmc.com" }
     maven { url "https://mvn.devos.one/releases/" }
@@ -67,7 +66,6 @@ dependencies {
     implementation("com.eliotlash.mclib:mclib:20")
 
     modImplementation "vazkii.patchouli:Patchouli:${patchouli_version}"
-    modImplementation "com.github.glitchfiend:TerraBlender-fabric:${terrablender_version}"
 }
 
 processResources {

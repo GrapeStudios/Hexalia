@@ -90,7 +90,6 @@ public class HexaliaModClient implements ClientModInitializer {
     private void registerParticles() {
         ParticleFactoryRegistry.getInstance().register(ModParticles.SPORE_PARTICLE, SporeParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.INFUSED_BUBBLE_PARTICLE, InfusedBubbleParticle.Factory::new);
-        ParticleFactoryRegistry.getInstance().register(ModParticles.MOTE_PARTICLE, MoteParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.GHOST_PARTICLE, GhostParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(ModParticles.LEAVES_PARTICLE, LeavesParticle.Factory::new);
     }

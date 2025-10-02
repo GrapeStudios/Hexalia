@@ -15,7 +15,7 @@ import net.astralya.hexalia.screen.ModScreenHandler;
 import net.astralya.hexalia.sound.ModSounds;
 import net.astralya.hexalia.util.ModLootTableModifiers;
 import net.astralya.hexalia.util.ModRegistries;
-import net.astralya.hexalia.world.gen.ModWorldGeneration;
+import net.astralya.hexalia.worldgen.gen.ModWorldGeneration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

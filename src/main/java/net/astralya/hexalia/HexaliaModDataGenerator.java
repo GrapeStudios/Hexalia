@@ -3,9 +3,8 @@ package net.astralya.hexalia;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.astralya.hexalia.datagen.*;
-import net.astralya.hexalia.world.ModConfiguredFeatures;
-import net.astralya.hexalia.world.ModPlacedFeatures;
-import net.astralya.hexalia.world.biome.ModBiomes;
+import net.astralya.hexalia.worldgen.ModConfiguredFeatures;
+import net.astralya.hexalia.worldgen.ModPlacedFeatures;
 import net.minecraft.registry.RegistryBuilder;
 import net.minecraft.registry.RegistryKeys;
 
@@ -21,12 +20,12 @@ public class HexaliaModDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModRecipeGenerator::new);
 		pack.addProvider(ModWorldGenerator::new);
 		pack.addProvider(ModAdvancementProvider::new);
+        pack.addProvider(ModBiomeTagsProvider::new);
 	}
 
 	@Override
 	public void buildRegistry(RegistryBuilder registryBuilder) {
 		registryBuilder.addRegistry(RegistryKeys.CONFIGURED_FEATURE, ModConfiguredFeatures::bootstrap);
 		registryBuilder.addRegistry(RegistryKeys.PLACED_FEATURE, ModPlacedFeatures::bootstrap);
-		registryBuilder.addRegistry(RegistryKeys.BIOME, ModBiomes::bootstrap);
 	}
 }
