@@ -54,7 +54,7 @@ public class ModBlocks {
     public static final Block POTTED_CELESTIAL_BLOOM = registerBlockWithoutBlockItem("potted_celestial_bloom",
             new FlowerPotBlock(CELESTIAL_BLOOM, FabricBlockSettings.copyOf(Blocks.POTTED_POPPY).lightLevel(state -> 6)));
     public static final Block LOTUS_FLOWER = registerBlockWithoutBlockItem("lotus_flower",
-            new WaterPlantBlock(FabricBlockSettings.copyOf(Blocks.LILY_PAD).luminance(state -> 6)));
+            new LotusFlowerBlock(FabricBlockSettings.copyOf(Blocks.LILY_PAD).luminance(state -> 6)));
     public static final Block WITCHWEED = registerBlock("witchweed",
             new WitchweedBlock(StatusEffects.POISON, 6, FabricBlockSettings.copyOf(Blocks.POPPY).noCollision()));
 
@@ -92,7 +92,7 @@ public class ModBlocks {
     public static final Block POTTED_DAHLIA = registerBlockWithoutBlockItem("potted_dahlia",
             new FlowerPotBlock(DAHLIA, FabricBlockSettings.copyOf(Blocks.POTTED_POPPY)));
     public static final Block PALE_MUSHROOM = registerBlock("pale_mushroom",
-            new ShroomBlock(FabricBlockSettings.copyOf(Blocks.BROWN_MUSHROOM).noCollision().nonOpaque().luminance(state -> 4)));
+            new PaleMushroomBlock(FabricBlockSettings.copyOf(Blocks.BROWN_MUSHROOM).noCollision().nonOpaque().luminance(state -> 4)));
     public static final Block NIGHTSHADE_BUSH = registerBlock("nightshade_bush",
             new FlowerBlock(StatusEffects.WITHER, 6, FabricBlockSettings.copyOf(Blocks.POPPY)));
     public static final Block POTTED_NIGHTSHADE_BUSH = registerBlockWithoutBlockItem("potted_nightshade_bush",

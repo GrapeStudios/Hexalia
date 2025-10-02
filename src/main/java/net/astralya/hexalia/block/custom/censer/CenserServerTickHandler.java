@@ -1,4 +1,4 @@
-package net.astralya.hexalia.censer;
+package net.astralya.hexalia.block.custom.censer;
 
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 

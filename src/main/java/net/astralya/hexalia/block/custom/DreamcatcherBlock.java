@@ -14,7 +14,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class DreamcatcherBlock extends HexaliaWallBlock {
+public class DreamcatcherBlock extends WallMountedBlock {
 
     public DreamcatcherBlock(Settings settings) {
         super(settings);

@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier;
 public class ModItemGroup {
     public static final ItemGroup HEXALIA = Registry.register(Registries.ITEM_GROUP,
             new Identifier(HexaliaMod.MOD_ID, "hexalia"),
-            FabricItemGroup.builder().displayName(Text.translatable("itemgroup.hexalia"))
+            FabricItemGroup.builder().displayName(Text.translatable("itemGroup.hexalia"))
                     .icon(() -> new ItemStack(ModItems.HEX_FOCUS)).entries((displayContext, entries) -> {
                         // Herbs
                         entries.add(ModBlocks.SPIRIT_BLOOM);

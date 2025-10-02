@@ -39,6 +39,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ShelfBlock extends BlockWithEntity {
+
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     private static final Map<Direction, VoxelShape> SHAPES = createShapes();
 

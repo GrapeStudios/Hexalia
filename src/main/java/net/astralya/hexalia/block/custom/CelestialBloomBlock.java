@@ -22,6 +22,7 @@ public class CelestialBloomBlock extends HerbBlock {
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
         super.randomDisplayTick(state, world, pos, random);
+        // TODO Configuration
         if (random.nextFloat() < 0.2f) {
             double centerX = pos.getX() + 0.5;
             double centerZ = pos.getZ() + 0.5;

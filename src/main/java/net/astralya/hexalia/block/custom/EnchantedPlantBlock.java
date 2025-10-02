@@ -32,6 +32,6 @@ public class EnchantedPlantBlock extends PlantBlock {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable BlockView world, List<Text> tooltip, TooltipContext options) {
-        tooltip.add(Text.translatable("tooltip.hexalia.enchanted_plant").formatted(Formatting.GRAY).formatted(Formatting.ITALIC));
+        tooltip.add(Text.translatable("tooltip.hexalia.enchanted_plant").formatted(Formatting.GRAY));
     }
 }

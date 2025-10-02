@@ -11,6 +11,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 
 public class ShroomBlock extends PlantBlock {
+
     public static final VoxelShape SHAPE = Block.createCuboidShape(5.0, 0.0, 5.0, 11.0, 6.0, 11.0);
 
     public ShroomBlock(Settings settings) {

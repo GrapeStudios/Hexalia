@@ -1,6 +1,6 @@
 package net.astralya.hexalia.mixin;
 
-import net.astralya.hexalia.censer.CenserEffectHandler;
+import net.astralya.hexalia.block.custom.censer.CenserEffectHandler;
 import net.astralya.hexalia.mixin.accessors.AnvilScreenHandlerAccessor;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.screen.AnvilScreenHandler;

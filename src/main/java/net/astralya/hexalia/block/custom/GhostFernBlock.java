@@ -26,6 +26,7 @@ public class GhostFernBlock extends HerbBlock {
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+        //TODO Configuration
             double d = (double)pos.getX() + 0.5;
             double e = (double)pos.getY() + 0.2;
             double f = (double)pos.getZ() + 0.5;

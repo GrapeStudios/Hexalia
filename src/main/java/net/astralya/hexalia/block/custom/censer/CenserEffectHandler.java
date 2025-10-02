@@ -1,4 +1,4 @@
-package net.astralya.hexalia.censer;
+package net.astralya.hexalia.block.custom.censer;
 
 import net.astralya.hexalia.Configuration;
 import net.astralya.hexalia.block.ModBlocks;

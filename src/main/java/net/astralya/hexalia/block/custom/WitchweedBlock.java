@@ -7,19 +7,19 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.passive.BeeEntity;
 import net.minecraft.entity.passive.FrogEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
-import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.World;
 
 public class WitchweedBlock extends FlowerBlock {
-    protected static final VoxelShape SHAPE = VoxelShapes.union(
-            VoxelShapes.cuboid(0.125, 0, 0.0625, 0.9375, 0.4375, 0.9375)
-    );
+
+    protected static final VoxelShape SHAPE = Block.createCuboidShape(2, 0, 1, 15, 7, 15);
 
     public WitchweedBlock(StatusEffect suspiciousStewEffect, int effectDuration, Settings settings) {
         super(suspiciousStewEffect, effectDuration, settings);
@@ -37,16 +37,14 @@ public class WitchweedBlock extends FlowerBlock {
 
     @Override
     public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
+        if (!(entity instanceof LivingEntity living)) return;
+        if (living instanceof PlayerEntity p && p.getAbilities().creativeMode) return;
+        if (living.isSneaking() || living instanceof FrogEntity || living instanceof SilkMothEntity || living instanceof BeeEntity) return;
+
+        entity.slowMovement(state, new Vec3d(0.8F, 0.75D, 0.8F));
+
         if (!world.isClient && world.getDifficulty() != Difficulty.PEACEFUL) {
-            if (entity instanceof LivingEntity livingEntity) {
-                if (!livingEntity.bypassesSteppingEffects() && !(livingEntity instanceof FrogEntity)
-                        && !(livingEntity instanceof SilkMothEntity)) {
-                    if (livingEntity instanceof PlayerEntity player && player.isCreative()) {
-                        return;
-                    }
-                    livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 100));
-                }
-            }
+            living.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 100));
         }
     }
 }

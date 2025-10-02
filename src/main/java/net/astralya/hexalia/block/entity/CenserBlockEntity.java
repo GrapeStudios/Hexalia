@@ -1,8 +1,8 @@
 package net.astralya.hexalia.block.entity;
 
 import net.astralya.hexalia.block.custom.CenserBlock;
-import net.astralya.hexalia.censer.CenserEffectHandler;
-import net.astralya.hexalia.censer.HerbCombination;
+import net.astralya.hexalia.block.custom.censer.CenserEffectHandler;
+import net.astralya.hexalia.block.custom.censer.HerbCombination;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.inventory.Inventories;

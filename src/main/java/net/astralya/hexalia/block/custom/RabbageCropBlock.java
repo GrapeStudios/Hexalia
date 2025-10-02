@@ -14,6 +14,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class RabbageCropBlock extends CropBlock {
+
     public static final int MAX_AGE = 3;
     public static final IntProperty AGE = IntProperty.of("age", 0, 3);
 

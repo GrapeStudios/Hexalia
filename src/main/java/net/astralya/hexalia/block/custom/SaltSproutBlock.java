@@ -31,6 +31,7 @@ import net.minecraft.world.event.GameEvent;
 import java.util.Iterator;
 
 public class SaltSproutBlock extends PlantBlock implements Fertilizable {
+
     protected static final VoxelShape SHAPE = Block.createCuboidShape(5.0, 0.0, 5.0, 11.0, 10.0, 11.0);
     public static final int MAX_AGE = 2;
     public static final IntProperty AGE = IntProperty.of("age", 0, 2);
