@@ -107,7 +107,7 @@ public class ModPlacedFeatures {
     }
 
     public static RegistryKey<PlacedFeature> registerKey(String name) {
-        return RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(HexaliaMod.MOD_ID, name));
+        return RegistryKey.of(RegistryKeys.PLACED_FEATURE, new Identifier(HexaliaMod.MODID, name));
     }
 
     private static void register(Registerable<PlacedFeature> context, RegistryKey<PlacedFeature> key, RegistryEntry<ConfiguredFeature<?, ?>> configuration,

@@ -1,6 +1,7 @@
-package net.astralya.hexalia.item;
+package net.astralya.hexalia.util;
 
 import net.astralya.hexalia.HexaliaMod;
+import net.astralya.hexalia.item.ModItems;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Items;
@@ -89,7 +90,7 @@ public enum ModArmorMaterials implements ArmorMaterial {
 
     @Override
     public String getName() {
-        return HexaliaMod.MOD_ID + ":" + this.name;
+        return HexaliaMod.MODID + ":" + this.name;
     }
 
     @Override

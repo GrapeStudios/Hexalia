@@ -41,10 +41,10 @@ public class ModEffects {
             new BleedingEffect(StatusEffectCategory.HARMFUL, 0x8B0000));
 
     private static StatusEffect registerStatusEffect(String name, StatusEffect statusEffect) {
-        return Registry.register(Registries.STATUS_EFFECT, new Identifier(HexaliaMod.MOD_ID, name), statusEffect);
+        return Registry.register(Registries.STATUS_EFFECT, new Identifier(HexaliaMod.MODID, name), statusEffect);
     }
     public static void registerEffects() {
-        HexaliaMod.LOGGER.info("Registering Potion Effects for " + HexaliaMod.MOD_ID);
+        HexaliaMod.LOGGER.info("Registering Potion Effects for " + HexaliaMod.MODID);
     }
 }
 

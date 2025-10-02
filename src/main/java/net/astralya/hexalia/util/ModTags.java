@@ -37,7 +37,7 @@ public class ModTags {
         public static final TagKey<Item> SALT_BLOCKS = createCommonItemTag("salt_blocks");
         
         private static TagKey<Item> createItemTag(String name) {
-            return TagKey.of(RegistryKeys.ITEM, new Identifier(HexaliaMod.MOD_ID, name));
+            return TagKey.of(RegistryKeys.ITEM, new Identifier(HexaliaMod.MODID, name));
         }
 
         private static TagKey<Item> createCommonItemTag(String name) {
@@ -57,7 +57,7 @@ public class ModTags {
         public static final TagKey<Block> SALT_BLOCKS = createCommonBlockTag("salt_blocks");
 
         private static TagKey<Block> createBlockTag(String name) {
-            return TagKey.of(RegistryKeys.BLOCK, new Identifier(HexaliaMod.MOD_ID, name));
+            return TagKey.of(RegistryKeys.BLOCK, new Identifier(HexaliaMod.MODID, name));
         }
 
         private static TagKey<Block> createCommonBlockTag(String name) {

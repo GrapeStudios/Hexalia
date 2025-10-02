@@ -101,7 +101,7 @@ public class TransmutationRecipeBuilder implements CraftingRecipeJsonBuilder {
 
         @Override
         public Identifier getRecipeId() {
-            return new Identifier(HexaliaMod.MOD_ID,
+            return new Identifier(HexaliaMod.MODID,
                     Registries.ITEM.getId(this.output).getPath() + "_transmutation");
         }
 

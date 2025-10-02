@@ -21,9 +21,9 @@ import java.util.List;
 public class RitualBrazierCategory implements DisplayCategory<RitualBrazierDisplay> {
 
     public static final Identifier TEXTURE =
-            new Identifier(HexaliaMod.MOD_ID, "textures/gui/ritual_brazier_gui.png");
+            new Identifier(HexaliaMod.MODID, "textures/gui/ritual_brazier_gui.png");
     public static final CategoryIdentifier<RitualBrazierDisplay> RITUAL_BRAZIER =
-            CategoryIdentifier.of(HexaliaMod.MOD_ID, "ritual_brazier");
+            CategoryIdentifier.of(HexaliaMod.MODID, "ritual_brazier");
 
     @Override
     public CategoryIdentifier<? extends RitualBrazierDisplay> getCategoryIdentifier() {

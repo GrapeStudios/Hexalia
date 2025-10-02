@@ -7,6 +7,6 @@ import net.minecraft.block.WoodType;
 import net.minecraft.util.Identifier;
 
 public class ModWoodTypes {
-    public static final WoodType COTTONWOOD = WoodTypeRegistry.register(new Identifier(HexaliaMod.MOD_ID, "cottonwood"), BlockSetType.OAK);
-    public static final WoodType WILLOW = WoodTypeRegistry.register(new Identifier(HexaliaMod.MOD_ID, "willow"), BlockSetType.OAK);
+    public static final WoodType COTTONWOOD = WoodTypeRegistry.register(new Identifier(HexaliaMod.MODID, "cottonwood"), BlockSetType.OAK);
+    public static final WoodType WILLOW = WoodTypeRegistry.register(new Identifier(HexaliaMod.MODID, "willow"), BlockSetType.OAK);
 }

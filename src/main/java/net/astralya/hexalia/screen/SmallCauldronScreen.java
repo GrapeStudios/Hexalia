@@ -15,7 +15,7 @@ public class SmallCauldronScreen extends HandledScreen<SmallCauldronScreenHandle
     public static final Rect2i PROGRESS = new Rect2i(89, 25, 0, 17);
     public static final Rect2i HEAT = new Rect2i(124, 52, 17, 15);
 
-    public static final Identifier TEXTURE = new Identifier(HexaliaMod.MOD_ID,
+    public static final Identifier TEXTURE = new Identifier(HexaliaMod.MODID,
             "textures/gui/small_cauldron_gui.png");
 
     public SmallCauldronScreen(SmallCauldronScreenHandler handler, PlayerInventory inventory, Text title) {

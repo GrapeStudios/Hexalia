@@ -20,8 +20,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class HexaliaMod implements ModInitializer {
-	public static final String MOD_ID = "hexalia";
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+	public static final String MODID = "hexalia";
+	public static final Logger LOGGER = LoggerFactory.getLogger(MODID);
 
 	@Override
 	public void onInitialize() {

@@ -294,20 +294,20 @@ public class ModBlocks {
 
     // Methods
     private static Block registerBlockWithoutBlockItem(String name, Block block) {
-        return Registry.register(Registries.BLOCK, new Identifier(HexaliaMod.MOD_ID, name), block);
+        return Registry.register(Registries.BLOCK, new Identifier(HexaliaMod.MODID, name), block);
     }
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
-        return Registry.register(Registries.BLOCK, new Identifier(HexaliaMod.MOD_ID, name), block);
+        return Registry.register(Registries.BLOCK, new Identifier(HexaliaMod.MODID, name), block);
     }
 
     private static void registerBlockItem(String name, Block block) {
-        Registry.register(Registries.ITEM, new Identifier(HexaliaMod.MOD_ID, name),
+        Registry.register(Registries.ITEM, new Identifier(HexaliaMod.MODID, name),
                 new BlockItem(block, new FabricItemSettings()));
     }
 
     public static void registerModBlocks() {
-        HexaliaMod.LOGGER.info("Registering Blocks for " + HexaliaMod.MOD_ID);
+        HexaliaMod.LOGGER.info("Registering Blocks for " + HexaliaMod.MODID);
     }
 }

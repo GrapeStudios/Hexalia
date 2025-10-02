@@ -4,8 +4,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class MortarAndPestleItem extends Item {
+
     public MortarAndPestleItem(Settings settings) {
-        super(settings.maxDamage(64));
+        super(settings);
     }
 
     @Override

@@ -10,10 +10,10 @@ import net.minecraft.util.Identifier;
 public class ModScreenHandler {
 
     public static final ScreenHandlerType<SmallCauldronScreenHandler> SMALL_CAULDRON_SCREEN_HANDLER =
-            Registry.register(Registries.SCREEN_HANDLER, new Identifier(HexaliaMod.MOD_ID, "small_cauldron_screen_handler"),
+            Registry.register(Registries.SCREEN_HANDLER, new Identifier(HexaliaMod.MODID, "small_cauldron_screen_handler"),
                     new ExtendedScreenHandlerType<>(SmallCauldronScreenHandler::new));
 
     public static void registerScreenHandlers() {
-        HexaliaMod.LOGGER.info("Registering Screen Handlers for " + HexaliaMod.MOD_ID);
+        HexaliaMod.LOGGER.info("Registering Screen Handlers for " + HexaliaMod.MODID);
     }
 }

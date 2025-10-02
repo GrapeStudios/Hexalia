@@ -15,11 +15,11 @@ public class ModSounds {
     public static final SoundEvent WIND_DEFLECT = registerSoundEvent("wind_deflect");
 
     private static SoundEvent registerSoundEvent(String name) {
-        Identifier identifier = new Identifier(HexaliaMod.MOD_ID, name);
+        Identifier identifier = new Identifier(HexaliaMod.MODID, name);
         return Registry.register(Registries.SOUND_EVENT, identifier, SoundEvent.of(identifier));
     }
 
     public static void registerSounds() {
-        HexaliaMod.LOGGER.info("Registering Sounds for " + HexaliaMod.MOD_ID);
+        HexaliaMod.LOGGER.info("Registering Sounds for " + HexaliaMod.MODID);
     }
 }

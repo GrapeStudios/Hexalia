@@ -8,7 +8,11 @@
           "to_place": {
             "type": "minecraft:simple_state_provider",
             "state": {
-              "Name": "hexalia:pale_mushroom"
+              "Name": "hexalia:pale_mushroom",
+              "Properties": {
+                "facing": "north",
+                "flower_amount": "1"
+              }
             }
           }
         }

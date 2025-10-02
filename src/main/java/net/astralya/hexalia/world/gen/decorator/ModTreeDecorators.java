@@ -9,12 +9,12 @@ import net.astralya.hexalia.HexaliaMod;
 public class ModTreeDecorators {
     public static final TreeDecoratorType<CocoonTreeDecorator> COCOON_TREE =
             Registry.register(Registries.TREE_DECORATOR_TYPE,
-                    new Identifier(HexaliaMod.MOD_ID, "cocoon_tree"),
+                    new Identifier(HexaliaMod.MODID, "cocoon_tree"),
                     new TreeDecoratorType<>(CocoonTreeDecorator.CODEC));
 
     public static final TreeDecoratorType<CatkinTreeDecorator> CATKIN =
             Registry.register(Registries.TREE_DECORATOR_TYPE,
-                    new Identifier(HexaliaMod.MOD_ID, "catkin"),
+                    new Identifier(HexaliaMod.MODID, "catkin"),
                     new TreeDecoratorType<>(CatkinTreeDecorator.CODEC));
 
     public static void registerTreeDecorators() {

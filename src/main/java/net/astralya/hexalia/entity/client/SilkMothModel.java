@@ -8,16 +8,16 @@ import software.bernie.geckolib.model.GeoModel;
 public class SilkMothModel extends GeoModel<SilkMothEntity> {
     @Override
     public Identifier getModelResource(SilkMothEntity animatable) {
-        return new Identifier(HexaliaMod.MOD_ID, "geo/silk_moth.geo.json");
+        return new Identifier(HexaliaMod.MODID, "geo/silk_moth.geo.json");
     }
 
     @Override
     public Identifier getTextureResource(SilkMothEntity animatable) {
-        return new Identifier(HexaliaMod.MOD_ID, "textures/entity/silk_moth_default.png");
+        return new Identifier(HexaliaMod.MODID, "textures/entity/silk_moth_default.png");
     }
 
     @Override
     public Identifier getAnimationResource(SilkMothEntity animatable) {
-        return new Identifier(HexaliaMod.MOD_ID, "animations/silk_moth.animation.json");
+        return new Identifier(HexaliaMod.MODID, "animations/silk_moth.animation.json");
     }
 }

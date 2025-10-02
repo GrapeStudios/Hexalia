@@ -12,9 +12,7 @@ import net.minecraft.world.World;
 
 public class KelpweaveBladeItem extends SwordItem {
 
-    private static final int SLOWNESS_DURATION = 100; // Duration in ticks (5 seconds)
-    private static final int SLOWNESS_AMPLIFIER = 0; // Level 1 slowness
-    private static final float REPAIR_CHANCE = 0.05F; // 5% chance to repair
+    private static final float REPAIR_CHANCE = 0.05f;
 
     public KelpweaveBladeItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
         super(toolMaterial, attackDamage, attackSpeed, settings);
@@ -22,7 +20,7 @@ public class KelpweaveBladeItem extends SwordItem {
 
     @Override
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
-        target.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, SLOWNESS_DURATION, SLOWNESS_AMPLIFIER), attacker);
+        target.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 100, 0), attacker);
         return super.postHit(stack, target, attacker);
     }
 

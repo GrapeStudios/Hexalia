@@ -453,13 +453,13 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
         // Celestial Ritual
         new RitualBrazierRecipeBuilder(Items.AMETHYST_SHARD, ModItems.CELESTIAL_CRYSTAL)
                 .criterion("has_amethyst_shard", conditionsFromItem(Items.AMETHYST_SHARD))
-                .offerTo(exporter, new Identifier(HexaliaMod.MOD_ID, "celestial_crystal_from_infusion"));
+                .offerTo(exporter, new Identifier(HexaliaMod.MODID, "celestial_crystal_from_infusion"));
         new RitualBrazierRecipeBuilder(Items.GLOW_BERRIES, ModItems.GALEBERRIES)
                 .criterion("has_glow_berries", conditionsFromItem(Items.AMETHYST_SHARD))
-                .offerTo(exporter, new Identifier(HexaliaMod.MOD_ID, "galeberries_from_infusion"));
+                .offerTo(exporter, new Identifier(HexaliaMod.MODID, "galeberries_from_infusion"));
         new RitualBrazierRecipeBuilder(Blocks.AMETHYST_BLOCK, ModBlocks.CELESTIAL_CRYSTAL_BLOCK)
                 .criterion("has_amethyst_block", conditionsFromItem(Items.AMETHYST_SHARD))
-                .offerTo(exporter, new Identifier(HexaliaMod.MOD_ID, "celestial_crystal_block_from_infusion"));
+                .offerTo(exporter, new Identifier(HexaliaMod.MODID, "celestial_crystal_block_from_infusion"));
 
         // Recipes for Wooden Blocks
         offerPlanksRecipe(exporter, ModBlocks.COTTONWOOD_PLANKS, ModTags.Items.COTTONWOOD_LOGS, 4);

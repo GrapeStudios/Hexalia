@@ -10,7 +10,7 @@ import terrablender.api.TerraBlenderApi;
 public class ModTerraBlenderAPI implements TerraBlenderApi {
     @Override
     public void onTerraBlenderInitialized() {
-        Regions.register(new ModOverworldRegion(new Identifier(HexaliaMod.MOD_ID, "overworld"), 4));
-        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, HexaliaMod.MOD_ID, ModMaterialRules.makeRules());
+        Regions.register(new ModOverworldRegion(new Identifier(HexaliaMod.MODID, "overworld"), 4));
+        SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, HexaliaMod.MODID, ModMaterialRules.makeRules());
     }
 }

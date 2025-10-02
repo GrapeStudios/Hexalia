@@ -36,16 +36,6 @@ public class MandrakeItem extends Item {
     }
 
     @Override
-    public UseAction getUseAction(ItemStack stack) {
-        return UseAction.BOW;
-    }
-
-    @Override
-    public int getMaxUseTime(ItemStack stack) {
-        return 16;
-    }
-
-    @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         if (!world.isClient && user instanceof PlayerEntity player) {
             double radius = Math.max(0.0, Configuration.get().mandrakeScreamRadius);
@@ -72,6 +62,16 @@ public class MandrakeItem extends Item {
             }
         }
         return stack.isEmpty() ? ItemStack.EMPTY : stack;
+    }
+
+    @Override
+    public UseAction getUseAction(ItemStack stack) {
+        return UseAction.BOW;
+    }
+
+    @Override
+    public int getMaxUseTime(ItemStack stack) {
+        return 32;
     }
 
     @Override

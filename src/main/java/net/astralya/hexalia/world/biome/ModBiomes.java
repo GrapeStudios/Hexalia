@@ -22,7 +22,7 @@ public class ModBiomes {
     public static final RegistryKey<Biome> ENCHANTED_BAYOU = register("enchanted_bayou");
 
     public static RegistryKey<Biome> register(String name) {
-        return RegistryKey.of(RegistryKeys.BIOME, new Identifier(HexaliaMod.MOD_ID, name));
+        return RegistryKey.of(RegistryKeys.BIOME, new Identifier(HexaliaMod.MODID, name));
     }
 
     public static void bootstrap(Registerable<Biome> context) {

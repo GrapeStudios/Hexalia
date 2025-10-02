@@ -17,10 +17,10 @@ public class ModParticles {
     public static final DefaultParticleType INFUSED_BUBBLE_PARTICLE = registerParticle("infused_bubble_particle", FabricParticleTypes.simple());
 
     private static DefaultParticleType registerParticle(String name, DefaultParticleType particleType) {
-        return Registry.register(Registries.PARTICLE_TYPE, new Identifier(HexaliaMod.MOD_ID, name), particleType);
+        return Registry.register(Registries.PARTICLE_TYPE, new Identifier(HexaliaMod.MODID, name), particleType);
     }
 
     public static void registerParticles() {
-        HexaliaMod.LOGGER.info("Registering Particles for " + HexaliaMod.MOD_ID);
+        HexaliaMod.LOGGER.info("Registering Particles for " + HexaliaMod.MODID);
     }
 }

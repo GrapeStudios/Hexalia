@@ -22,9 +22,9 @@ import java.util.List;
 public class SmallCauldronCategory implements DisplayCategory<BasicDisplay> {
 
     public static final Identifier TEXTURE =
-            new Identifier(HexaliaMod.MOD_ID, "textures/gui/small_cauldron_category_gui.png");
+            new Identifier(HexaliaMod.MODID, "textures/gui/small_cauldron_category_gui.png");
     public static final CategoryIdentifier<SmallCauldronDisplay> SMALL_CAULDRON =
-            CategoryIdentifier.of(HexaliaMod.MOD_ID, "small_cauldron");
+            CategoryIdentifier.of(HexaliaMod.MODID, "small_cauldron");
 
     @Override
     public CategoryIdentifier<? extends BasicDisplay> getCategoryIdentifier() {

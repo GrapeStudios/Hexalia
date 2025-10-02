@@ -17,10 +17,10 @@ public class SilkMothRenderer extends GeoEntityRenderer<SilkMothEntity> {
         SilkMothVariant variant = entity.getVariant();
 
         return switch (variant) {
-            case BLUE -> new Identifier(HexaliaMod.MOD_ID, "textures/entity/silk_moth_blue.png");
-            case BLACK -> new Identifier(HexaliaMod.MOD_ID, "textures/entity/silk_moth_black.png");
-            case PINK -> new Identifier(HexaliaMod.MOD_ID, "textures/entity/silk_moth_pink.png");
-            default -> new Identifier(HexaliaMod.MOD_ID, "textures/entity/silk_moth_default.png");
+            case BLUE -> new Identifier(HexaliaMod.MODID, "textures/entity/silk_moth_blue.png");
+            case BLACK -> new Identifier(HexaliaMod.MODID, "textures/entity/silk_moth_black.png");
+            case PINK -> new Identifier(HexaliaMod.MODID, "textures/entity/silk_moth_pink.png");
+            default -> new Identifier(HexaliaMod.MODID, "textures/entity/silk_moth_default.png");
         };
     }
 }

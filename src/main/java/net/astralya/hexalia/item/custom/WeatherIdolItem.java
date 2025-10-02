@@ -16,8 +16,9 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 
-public class WeatherIdol extends Item {
-    public WeatherIdol(Settings settings) {
+public class WeatherIdolItem extends Item {
+
+    public WeatherIdolItem(Settings settings) {
         super(settings);
     }
 
@@ -32,13 +33,13 @@ public class WeatherIdol extends Item {
             if (world instanceof ServerWorld serverWorld) {
                 if (stack.getItem() == ModItems.RAINFALL_IDOL) {
                     serverWorld.setWeather(0, 6000, true, false);
-                    player.sendMessage(Text.translatable("message.hexalia.rain_idol"), true);
+                    player.sendMessage(Text.translatable("message.hexalia.rainfall_idol"), true);
                 } else if (stack.getItem() == ModItems.CLARITY_IDOL) {
                     serverWorld.setWeather(6000, 0, false, false);
-                    player.sendMessage(Text.translatable("message.hexalia.clear_idol"), true);
+                    player.sendMessage(Text.translatable("message.hexalia.clarity_idol"), true);
                 } else if (stack.getItem() == ModItems.TEMPEST_IDOL) {
                     serverWorld.setWeather(0, 6000, true, true);
-                    player.sendMessage(Text.translatable("message.hexalia.storm_idol"), true);
+                    player.sendMessage(Text.translatable("message.hexalia.tempest_idol"), true);
                 }
             }
 

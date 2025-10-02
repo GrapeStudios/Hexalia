@@ -1,6 +1,7 @@
 package net.astralya.hexalia.item;
 
 import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
+import net.astralya.hexalia.util.ModArmorMaterials;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.block.ModBlocks;
@@ -96,13 +97,13 @@ public class ModItems {
     public static final Item SILK_IDOL = registerItem("silk_idol",
             new Item(new FabricItemSettings()));
     public static final Item RAINFALL_IDOL = registerItem("rainfall_idol",
-            new WeatherIdol(new FabricItemSettings()));
+            new WeatherIdolItem(new FabricItemSettings()));
     public static final Item CLARITY_IDOL = registerItem("clarity_idol",
-            new WeatherIdol(new FabricItemSettings()));
+            new WeatherIdolItem(new FabricItemSettings()));
     public static final Item TEMPEST_IDOL = registerItem("tempest_idol",
-            new WeatherIdol(new FabricItemSettings()));
+            new WeatherIdolItem(new FabricItemSettings()));
     public static final Item PURITY_IDOL = registerItem("purity_idol",
-            new Item(new FabricItemSettings()));
+            new PurityIdolItem(new FabricItemSettings()));
     public static final Item MUTAVIS = registerItem("mutavis",
             new Item(new FabricItemSettings()));
     
@@ -133,25 +134,25 @@ public class ModItems {
     public static final Item RUSTIC_BOTTLE = registerItem("rustic_bottle",
             new Item(new FabricItemSettings()));
     public static final Item BREW_OF_SPIKESKIN = registerItem("brew_of_spikeskin",
-            new BrewItem(new FabricItemSettings().maxCount(4), ()-> ModEffects.SPIKESKIN, 0,
-                    Text.translatable("tooltip.hexalia.slimewalker_brew").formatted(Formatting.BLUE)));
+            new BrewItem(new FabricItemSettings().maxCount(4), () -> ModEffects.SPIKESKIN, 20 * 240, 0,
+                    Text.translatable("tooltip.hexalia.spikeskin_brew").formatted(Formatting.BLUE)));
     public static final Item BREW_OF_BLOODLUST = registerItem("brew_of_bloodlust",
-            new BrewItem(new FabricItemSettings().maxCount(4), ()-> ModEffects.BLOODLUST, 0,
-                    Text.translatable("tooltip.hexalia.slimewalker_brew").formatted(Formatting.BLUE)));
+            new BrewItem(new FabricItemSettings().maxCount(4), () -> ModEffects.BLOODLUST, 20 * 240, 0,
+                    Text.translatable("tooltip.hexalia.bloodlust_brew").formatted(Formatting.BLUE)));
     public static final Item BREW_OF_SLIMEWALKER = registerItem("brew_of_slimewalker",
-            new BrewItem(new FabricItemSettings().maxCount(4), ()-> ModEffects.SLIMEWALKER, 0,
+            new BrewItem(new FabricItemSettings().maxCount(4), () -> ModEffects.SLIMEWALKER, 20 * 240, 0,
                     Text.translatable("tooltip.hexalia.slimewalker_brew").formatted(Formatting.BLUE)));
     public static final Item BREW_OF_SIPHON = registerItem("brew_of_siphon",
-            new BrewItem(new FabricItemSettings().maxCount(4), ()-> ModEffects.SIPHON, 0,
-                    Text.translatable("tooltip.hexalia.slimewalker_brew").formatted(Formatting.BLUE)));
+            new BrewItem(new FabricItemSettings().maxCount(4).maxCount(4), () -> ModEffects.SIPHON, 20 * 240, 0,
+                    Text.translatable("tooltip.hexalia.siphon_brew").formatted(Formatting.BLUE)));
     public static final Item BREW_OF_DAYBLOOM = registerItem("brew_of_daybloom",
-            new BrewItem(new FabricItemSettings().maxCount(4), ()-> ModEffects.DAYBLOOM, 0,
-                    Text.translatable("tooltip.hexalia.slimewalker_brew").formatted(Formatting.BLUE)));
+            new BrewItem(new FabricItemSettings().maxCount(4).maxCount(4), () -> ModEffects.DAYBLOOM, 20 * 240, 0,
+                    Text.translatable("tooltip.hexalia.daybloom").formatted(Formatting.BLUE)));
     public static final Item BREW_OF_HOMESTEAD = registerItem("brew_of_homestead",
             new HomesteadBrewItem(new FabricItemSettings().recipeRemainder(ModItems.RUSTIC_BOTTLE).maxCount(4)));
     public static final Item BREW_OF_ARACHNID_GRACE = registerItem("brew_of_arachnid_grace",
-            new BrewItem(new FabricItemSettings().maxCount(4), ()-> ModEffects.ARACHNID_GRACE, 0,
-                    Text.translatable("tooltip.hexalia.slimewalker_brew").formatted(Formatting.BLUE)));
+            new BrewItem(new FabricItemSettings().maxCount(4), () -> ModEffects.ARACHNID_GRACE, 20 * 240, 0,
+                    Text.translatable("tooltip.hexalia.arachnid_grace").formatted(Formatting.BLUE)));
 
     // Entity-related Items
     public static final Item BOTTLED_MOTH = registerItem("bottled_moth",
@@ -188,10 +189,10 @@ public class ModItems {
     }
 
     private static Item registerItem(String name, Item item) {
-        return Registry.register(Registries.ITEM, new Identifier(HexaliaMod.MOD_ID, name), item);
+        return Registry.register(Registries.ITEM, new Identifier(HexaliaMod.MODID, name), item);
     }
 
     public static void registerModItems() {
-        HexaliaMod.LOGGER.info("Registering Items for " + HexaliaMod.MOD_ID);
+        HexaliaMod.LOGGER.info("Registering Items for " + HexaliaMod.MODID);
     }
 }

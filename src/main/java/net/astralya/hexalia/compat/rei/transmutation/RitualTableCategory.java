@@ -22,9 +22,9 @@ import java.util.List;
 public class RitualTableCategory implements DisplayCategory<BasicDisplay> {
 
     public static final Identifier TEXTURE =
-            new Identifier(HexaliaMod.MOD_ID, "textures/gui/ritual_table_gui.png");
+            new Identifier(HexaliaMod.MODID, "textures/gui/ritual_table_gui.png");
     public static final CategoryIdentifier<RitualTableDisplay> RITUAL_TABLE =
-            CategoryIdentifier.of(HexaliaMod.MOD_ID, "ritual_table");
+            CategoryIdentifier.of(HexaliaMod.MODID, "ritual_table");
 
     @Override
     public CategoryIdentifier<? extends BasicDisplay> getCategoryIdentifier() {

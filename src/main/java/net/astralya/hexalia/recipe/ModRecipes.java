@@ -30,20 +30,20 @@ public class ModRecipes {
     private static void registerRecipeType(String id,
                                            RecipeSerializer<?> serializer,
                                            RecipeType<?> type) {
-        Identifier typeId = new Identifier(HexaliaMod.MOD_ID, id);
+        Identifier typeId = new Identifier(HexaliaMod.MODID, id);
         Registry.register(Registries.RECIPE_SERIALIZER, typeId, serializer);
         Registry.register(Registries.RECIPE_TYPE, typeId, type);
     }
 
     public static Identifier getSmallCauldronId() {
-        return new Identifier(HexaliaMod.MOD_ID, SMALL_CAULDRON_ID);
+        return new Identifier(HexaliaMod.MODID, SMALL_CAULDRON_ID);
     }
 
     public static Identifier getTransmutationId() {
-        return new Identifier(HexaliaMod.MOD_ID, TRANSMUTATION_ID);
+        return new Identifier(HexaliaMod.MODID, TRANSMUTATION_ID);
     }
 
     public static Identifier getRitualBrazierId() {
-        return new Identifier(HexaliaMod.MOD_ID, RITUAL_BRAZIER_ID);
+        return new Identifier(HexaliaMod.MODID, RITUAL_BRAZIER_ID);
     }
 }

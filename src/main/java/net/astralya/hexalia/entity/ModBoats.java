@@ -10,11 +10,11 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.util.Identifier;
 
 public class ModBoats {
-    public static final Identifier COTTONWOOD_BOAT_ID = new Identifier(HexaliaMod.MOD_ID, "cottonwood_boat");
-    public static final Identifier COTTONWOOD_CHEST_BOAT_ID = new Identifier(HexaliaMod.MOD_ID, "cottonwood_chest_boat");
+    public static final Identifier COTTONWOOD_BOAT_ID = new Identifier(HexaliaMod.MODID, "cottonwood_boat");
+    public static final Identifier COTTONWOOD_CHEST_BOAT_ID = new Identifier(HexaliaMod.MODID, "cottonwood_chest_boat");
 
-    public static final Identifier WILLOW_BOAT_ID = new Identifier(HexaliaMod.MOD_ID, "willow_boat");
-    public static final Identifier WILLOW_CHEST_BOAT_ID = new Identifier(HexaliaMod.MOD_ID, "willow_chest_boat");
+    public static final Identifier WILLOW_BOAT_ID = new Identifier(HexaliaMod.MODID, "willow_boat");
+    public static final Identifier WILLOW_CHEST_BOAT_ID = new Identifier(HexaliaMod.MODID, "willow_chest_boat");
 
     public static final RegistryKey<TerraformBoatType> COTTONWOOD_BOAT_KEY = TerraformBoatTypeRegistry.createKey(COTTONWOOD_BOAT_ID);
     public static final RegistryKey<TerraformBoatType> WILLOW_BOAT_KEY = TerraformBoatTypeRegistry.createKey(WILLOW_BOAT_ID);

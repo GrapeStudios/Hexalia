@@ -84,7 +84,7 @@ public class RitualBrazierRecipeBuilder implements CraftingRecipeJsonBuilder {
 
         @Override
         public Identifier getRecipeId() {
-            return new Identifier(HexaliaMod.MOD_ID,
+            return new Identifier(HexaliaMod.MODID,
                     Registries.ITEM.getId(this.result).getPath() + "_from_ritual");
         }
 
