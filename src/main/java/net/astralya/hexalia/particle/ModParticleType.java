@@ -12,7 +12,7 @@ public class ModParticleType {
     public static final DefaultParticleType SPORE = registerParticle("spore", FabricParticleTypes.simple());
     public static final DefaultParticleType GHOST = registerParticle("ghost", FabricParticleTypes.simple());
     public static final DefaultParticleType LEAVES = registerParticle("leaves", FabricParticleTypes.simple());
-    public static final DefaultParticleType INFUSED_BUBBLE = registerParticle("infused_bubble", FabricParticleTypes.simple());
+    public static final DefaultParticleType INFUSED_BUBBLES = registerParticle("infused_bubbles", FabricParticleTypes.simple());
 
     private static DefaultParticleType registerParticle(String name, DefaultParticleType particleType) {
         return Registry.register(Registries.PARTICLE_TYPE, new Identifier(HexaliaMod.MODID, name), particleType);

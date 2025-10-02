@@ -61,7 +61,7 @@ public class InfusedFarmlandBlock extends FarmlandBlock {
                     world.getPlayers().forEach(player -> {
                         if (player.squaredDistanceTo(pos.getX(), pos.getY(), pos.getZ()) < 64 * 64) {
                             world.spawnParticles(player,
-                                    ModParticleType.INFUSED_BUBBLE,
+                                    ModParticleType.INFUSED_BUBBLES,
                                     true,
                                     pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5,
                                     8,
@@ -119,7 +119,7 @@ public class InfusedFarmlandBlock extends FarmlandBlock {
                 double x = pos.getX() + 0.5 + random.nextDouble(-0.5, 0.5);
                 double y = pos.getY() + 1.0;
                 double z = pos.getZ() + 0.5 + random.nextDouble(-0.5, 0.5);
-                world.addParticle(ModParticleType.INFUSED_BUBBLE, x, y, z, 0.0D, 0.05D, 0.0D);
+                world.addParticle(ModParticleType.INFUSED_BUBBLES, x, y, z, 0.0D, 0.05D, 0.0D);
             }
         }
     }

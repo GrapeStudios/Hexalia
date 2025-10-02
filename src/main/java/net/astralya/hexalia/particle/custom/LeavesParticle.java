@@ -10,15 +10,41 @@ import net.minecraft.client.world.ClientWorld;
 import net.minecraft.particle.DefaultParticleType;
 
 public class LeavesParticle extends AnimatedParticle {
-    public LeavesParticle(ClientWorld world, double x, double y, double z, double velocityX, double velocityY, double velocityZ, SpriteProvider spriteProvider) {
-        super(world, x, y, z, spriteProvider, 0.01F);
-        this.velocityX = velocityX;
-        this.velocityY = velocityY;
-        this.velocityZ = velocityZ;
-        this.scale *= 0.6f + this.random.nextInt(1);;
-        this.maxAge = 40 + this.random.nextInt(12);
-        this.setTargetColor(15916745);
-        this.setSpriteForAge(spriteProvider);
+
+    public LeavesParticle(ClientWorld world,
+                          double x, double y, double z,
+                          double velocityX, double velocityY, double velocityZ,
+                          SpriteProvider sprites) {
+        super(world, x, y, z, sprites, 0.01F);
+
+        this.collidesWithWorld = false;
+
+        this.velocityMultiplier = 0.96F;
+
+        this.gravityStrength = 0.0F;
+
+        if (velocityX == 0 && velocityY == 0 && velocityZ == 0) {
+            this.velocityX = (this.random.nextDouble() - 0.5D) * 0.02D;
+            this.velocityY =  this.random.nextDouble()            * 0.02D;
+            this.velocityZ = (this.random.nextDouble() - 0.5D) * 0.02D;
+        } else {
+            this.velocityX = velocityX;
+            this.velocityY = velocityY;
+            this.velocityZ = velocityZ;
+        }
+
+        this.scale *= (0.2F + this.random.nextFloat() * 0.4F);
+
+        this.maxAge = 14 + this.random.nextInt(6);
+
+        int c = 15916745;
+        this.setColor(
+                ((c >> 16) & 255) / 255f,
+                ((c >>  8) & 255) / 255f,
+                ( c        & 255) / 255f
+        );
+
+        this.setSpriteForAge(sprites);
     }
 
     public void move(double dx, double dy, double dz) {
@@ -28,14 +54,18 @@ public class LeavesParticle extends AnimatedParticle {
 
     @Environment(EnvType.CLIENT)
     public static class Factory implements ParticleFactory<DefaultParticleType> {
-        private final SpriteProvider spriteProvider;
+        private final SpriteProvider sprites;
 
-        public Factory(SpriteProvider spriteProvider) {
-            this.spriteProvider = spriteProvider;
+        public Factory(SpriteProvider sprites) {
+            this.sprites = sprites;
         }
 
-        public Particle createParticle(DefaultParticleType defaultParticleType, ClientWorld clientWorld, double d, double e, double f, double g, double h, double i) {
-            return new LeavesParticle(clientWorld, d, e, f, g, h, i, this.spriteProvider);
+        @Override
+        public Particle createParticle(DefaultParticleType type,
+                                       ClientWorld world,
+                                       double x, double y, double z,
+                                       double velocityX, double velocityY, double velocityZ) {
+            return new LeavesParticle(world, x, y, z, velocityX, velocityY, velocityZ, this.sprites);
         }
     }
 }
