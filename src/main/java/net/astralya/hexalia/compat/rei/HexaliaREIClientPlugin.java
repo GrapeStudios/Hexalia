@@ -17,7 +17,7 @@ import net.astralya.hexalia.compat.rei.transmutation.RitualTableDisplay;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.recipe.RitualBrazierRecipe;
 import net.astralya.hexalia.recipe.SmallCauldronRecipe;
-import net.astralya.hexalia.recipe.TransmutationRecipe;
+import net.astralya.hexalia.recipe.RitualTableRecipe;
 import net.astralya.hexalia.screen.SmallCauldronScreen;
 
 public class HexaliaREIClientPlugin implements REIClientPlugin {
@@ -40,7 +40,7 @@ public class HexaliaREIClientPlugin implements REIClientPlugin {
     public void registerDisplays(DisplayRegistry registry) {
         registry.registerRecipeFiller(SmallCauldronRecipe.class, SmallCauldronRecipe.Type.INSTANCE,
                 SmallCauldronDisplay::new);
-        registry.registerRecipeFiller(TransmutationRecipe.class, TransmutationRecipe.Type.INSTANCE,
+        registry.registerRecipeFiller(RitualTableRecipe.class, RitualTableRecipe.Type.INSTANCE,
                 RitualTableDisplay::new);
         registry.registerRecipeFiller(RitualBrazierRecipe.class, RitualBrazierRecipe.Type.INSTANCE,
                 RitualBrazierDisplay::new);

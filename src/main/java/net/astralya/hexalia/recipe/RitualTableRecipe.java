@@ -17,14 +17,14 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TransmutationRecipe implements Recipe<RitualTableBlockEntity> {
+public class RitualTableRecipe implements Recipe<RitualTableBlockEntity> {
 
     private final Identifier id;
     private final ItemStack input;
     private final ItemStack output;
     private final List<ItemStack> saltItems;
 
-    public TransmutationRecipe(Identifier id, ItemStack input, ItemStack output, List<ItemStack> saltItems) {
+    public RitualTableRecipe(Identifier id, ItemStack input, ItemStack output, List<ItemStack> saltItems) {
         this.id = id;
         this.input = input;
         this.output = output;
@@ -81,19 +81,19 @@ public class TransmutationRecipe implements Recipe<RitualTableBlockEntity> {
         return saltItems;
     }
 
-    public static class Type implements RecipeType<TransmutationRecipe> {
+    public static class Type implements RecipeType<RitualTableRecipe> {
         public static final Type INSTANCE = new Type();
         public static final String ID = "transmutation";
 
         private Type() {}
     }
 
-    public static class Serializer implements RecipeSerializer<TransmutationRecipe> {
+    public static class Serializer implements RecipeSerializer<RitualTableRecipe> {
         public static final Serializer INSTANCE = new Serializer();
         public static final String ID = "transmutation";
 
         @Override
-        public TransmutationRecipe read(Identifier id, JsonObject json) {
+        public RitualTableRecipe read(Identifier id, JsonObject json) {
             ItemStack input = new ItemStack(JsonHelper.getItem(json.get("input").getAsJsonObject(), "item"));
             ItemStack output = new ItemStack(JsonHelper.getItem(json.get("output").getAsJsonObject(), "item"));
             JsonArray saltItemsJson = JsonHelper.getArray(json, "salt_items");
@@ -102,11 +102,11 @@ public class TransmutationRecipe implements Recipe<RitualTableBlockEntity> {
                 ItemStack saltItem = new ItemStack(JsonHelper.getItem(element.getAsJsonObject(), "item"));
                 saltItems.add(saltItem);
             }
-            return new TransmutationRecipe(id, input, output, saltItems);
+            return new RitualTableRecipe(id, input, output, saltItems);
         }
 
         @Override
-        public TransmutationRecipe read(Identifier id, PacketByteBuf buf) {
+        public RitualTableRecipe read(Identifier id, PacketByteBuf buf) {
             ItemStack input = buf.readItemStack();
             ItemStack output = buf.readItemStack();
             int size = buf.readInt();
@@ -114,11 +114,11 @@ public class TransmutationRecipe implements Recipe<RitualTableBlockEntity> {
             for (int i = 0; i < size; i++) {
                 saltItems.add(buf.readItemStack());
             }
-            return new TransmutationRecipe(id, input, output, saltItems);
+            return new RitualTableRecipe(id, input, output, saltItems);
         }
 
         @Override
-        public void write(PacketByteBuf buf, TransmutationRecipe recipe) {
+        public void write(PacketByteBuf buf, RitualTableRecipe recipe) {
             buf.writeItemStack(recipe.input);
             buf.writeItemStack(recipe.output);
             buf.writeInt(recipe.saltItems.size());

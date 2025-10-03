@@ -6,7 +6,7 @@ import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.astralya.hexalia.block.custom.RitualBrazierBlock;
 import net.astralya.hexalia.networking.ModMessages;
-import net.astralya.hexalia.recipe.TransmutationRecipe;
+import net.astralya.hexalia.recipe.RitualTableRecipe;
 import net.astralya.hexalia.sound.ModSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -104,8 +104,8 @@ public class RitualTableBlockEntity extends BlockEntity implements ImplementedIn
             return false;
         }
 
-        Optional<TransmutationRecipe> recipeOptional = world.getRecipeManager().getFirstMatch(
-                TransmutationRecipe.Type.INSTANCE, this, world
+        Optional<RitualTableRecipe> recipeOptional = world.getRecipeManager().getFirstMatch(
+                RitualTableRecipe.Type.INSTANCE, this, world
         );
 
         if (recipeOptional.isEmpty()) {
@@ -114,7 +114,7 @@ public class RitualTableBlockEntity extends BlockEntity implements ImplementedIn
             return false;
         }
 
-        TransmutationRecipe recipe = recipeOptional.get();
+        RitualTableRecipe recipe = recipeOptional.get();
         boolean hasRequiredSalt = processSaltBlocks(world, tablePos, recipe, false);
 
         if (!hasRequiredSalt) {
@@ -185,7 +185,7 @@ public class RitualTableBlockEntity extends BlockEntity implements ImplementedIn
         return allCropsValid;
     }
 
-    public boolean processSaltBlocks(World world, BlockPos tablePos, TransmutationRecipe recipe, boolean consume) {
+    public boolean processSaltBlocks(World world, BlockPos tablePos, RitualTableRecipe recipe, boolean consume) {
         DefaultedList<ItemStack> requiredSaltItems = DefaultedList.of();
         requiredSaltItems.addAll(recipe.getSaltItems());
 
@@ -248,8 +248,8 @@ public class RitualTableBlockEntity extends BlockEntity implements ImplementedIn
 
         inventory.setStack(0, inputStack);
 
-        Optional<TransmutationRecipe> recipeOptional = world.getRecipeManager().getFirstMatch(
-                TransmutationRecipe.Type.INSTANCE, this, world
+        Optional<RitualTableRecipe> recipeOptional = world.getRecipeManager().getFirstMatch(
+                RitualTableRecipe.Type.INSTANCE, this, world
         );
 
         if (recipeOptional.isEmpty()) {
@@ -257,7 +257,7 @@ public class RitualTableBlockEntity extends BlockEntity implements ImplementedIn
             return false;
         }
 
-        TransmutationRecipe recipe = recipeOptional.get();
+        RitualTableRecipe recipe = recipeOptional.get();
 
         boolean hasRequiredSalt = processSaltBlocks(world, pos, recipe, false);
         if (!hasRequiredSalt) {
