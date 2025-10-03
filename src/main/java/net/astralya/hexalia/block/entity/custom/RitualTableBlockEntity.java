@@ -1,5 +1,6 @@
 package net.astralya.hexalia.block.entity.custom;
 
+import net.astralya.hexalia.block.custom.RitualBrazierBlock;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.particle.ModParticleType;
@@ -39,7 +40,6 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
         public boolean isItemValid(int slot, ItemStack stack) {
             return !stack.is(ModItems.HEX_FOCUS);
         }
-
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -56,6 +56,7 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
     private ItemStack pendingOutput = ItemStack.EMPTY;
 
     private int transformTicksRemaining = 0;
+    private int totalTransformTicks = 0;
     private int nextBrazierIndex = 0;
     private float rotation = 0.0f;
 
@@ -63,18 +64,16 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
         super(ModBlockEntityTypes.RITUAL_TABLE.get(), pos, state);
     }
 
-    public ItemStackHandler getItemHandler() {
-        return inventory;
-    }
+    public ItemStackHandler getItemHandler() { return inventory; }
 
-    @Override public int getContainerSize()           { return 1; }
-    @Override public boolean isEmpty()                { return inventory.getStackInSlot(0).isEmpty(); }
-    @Override public ItemStack getItem(int i)         { return inventory.getStackInSlot(i); }
+    @Override public int getContainerSize() { return 1; }
+    @Override public boolean isEmpty() { return inventory.getStackInSlot(0).isEmpty(); }
+    @Override public ItemStack getItem(int i) { return inventory.getStackInSlot(i); }
     @Override public ItemStack removeItem(int i,int c){ return inventory.extractItem(i, c, false); }
     @Override public ItemStack removeItemNoUpdate(int i){ return inventory.extractItem(i, 1, false); }
     @Override public void setItem(int i, ItemStack s) { inventory.setStackInSlot(i, s.copyWithCount(1)); }
-    @Override public boolean stillValid(Player p)     { return Container.stillValidBlockEntity(this, p); }
-    @Override public void clearContent()              { inventory.setStackInSlot(0, ItemStack.EMPTY); }
+    @Override public boolean stillValid(Player p) { return Container.stillValidBlockEntity(this, p); }
+    @Override public void clearContent() { inventory.setStackInSlot(0, ItemStack.EMPTY); }
 
     public float getRenderingRotation() {
         rotation = (rotation + 0.5f) % 360f;
@@ -83,7 +82,8 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
 
     public void startTransformation(ItemStack output, int durationTicks, List<RitualBrazierBlockEntity> braziers) {
         if (transformTicksRemaining > 0) return;
-        this.transformTicksRemaining = durationTicks;
+        this.transformTicksRemaining = Math.max(1, durationTicks);
+        this.totalTransformTicks = this.transformTicksRemaining;
         this.pendingOutput = output.copy();
         this.activeBraziers = new ArrayList<>(braziers);
         this.nextBrazierIndex = 0;
@@ -102,7 +102,9 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
             return;
         }
 
-        int elapsed = DURATION - be.transformTicksRemaining;
+        int base = be.totalTransformTicks > 0 ? be.totalTransformTicks : DURATION;
+        int elapsed = base - be.transformTicksRemaining;
+
         handleActiveBraziers(level, pos, be, elapsed);
         be.transformTicksRemaining--;
 
@@ -115,7 +117,7 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
         for (int i = be.nextBrazierIndex; i < be.activeBraziers.size(); i++) {
             RitualBrazierBlockEntity brazier = be.activeBraziers.get(i);
             if (i == be.nextBrazierIndex && !be.cachedParticleItem.isEmpty()) continue;
-            if (brazier.isEmpty()) return true;
+            if (brazier == null || brazier.isRemoved() || brazier.isEmpty()) return true;
         }
         return false;
     }
@@ -126,10 +128,18 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
         int ticksPerBrazier = 40;
         int currentTime = elapsed - (be.nextBrazierIndex * ticksPerBrazier);
         RitualBrazierBlockEntity brazier = be.activeBraziers.get(be.nextBrazierIndex);
+        if (brazier == null) return;
 
         if (currentTime == 0) {
             be.cachedParticleItem = brazier.getStoredItem().copy();
             brazier.removeItem();
+
+            BlockState bs = level.getBlockState(brazier.getBlockPos());
+            if (bs.getBlock() instanceof RitualBrazierBlock
+                    && bs.hasProperty(RitualBrazierBlock.SALTED)
+                    && bs.getValue(RitualBrazierBlock.SALTED)) {
+                level.setBlock(brazier.getBlockPos(), bs.setValue(RitualBrazierBlock.SALTED, false), 3);
+            }
         }
 
         if (currentTime >= 0 && currentTime < ticksPerBrazier && level instanceof ServerLevel server) {
@@ -184,12 +194,7 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
             double velX = (server.random.nextDouble() - 0.5) * 0.02;
             double velY = 0.04 + server.random.nextDouble() * 0.02;
             double velZ = (server.random.nextDouble() - 0.5) * 0.02;
-
-            server.sendParticles(
-                    ParticleTypes.WITCH,
-                    centerX + offsetX, centerY + offsetY, centerZ + offsetZ,
-                    1, velX, velY, velZ, 0.0
-            );
+            server.sendParticles(ParticleTypes.WITCH, centerX + offsetX, centerY + offsetY, centerZ + offsetZ, 1, velX, velY, velZ, 0.0);
         }
 
         if (!item.isEmpty()) {
@@ -200,21 +205,11 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
                 double velX = (server.random.nextDouble() - 0.5) * 0.005;
                 double velY = 0.015 + server.random.nextDouble() * 0.005;
                 double velZ = (server.random.nextDouble() - 0.5) * 0.005;
-
-                server.sendParticles(
-                        new ItemParticleOption(ParticleTypes.ITEM, item),
-                        centerX + offsetX, centerY + offsetY, centerZ + offsetZ,
-                        1, velX, velY, velZ, 0.0
-                );
+                server.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, item), centerX + offsetX, centerY + offsetY, centerZ + offsetZ, 1, velX, velY, velZ, 0.0);
             }
         }
 
-        server.playSound(
-                null, pos,
-                SoundEvents.ENCHANTMENT_TABLE_USE,
-                SoundSource.BLOCKS,
-                0.4f, 1.2f + server.random.nextFloat() * 0.2f
-        );
+        server.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 0.4f, 1.2f + server.random.nextFloat() * 0.2f);
     }
 
     private static void completeRitual(Level level, BlockPos pos, RitualTableBlockEntity be) {
@@ -233,26 +228,23 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
 
         level.playSound(null, pos, ModSoundEvents.RITUAL_SUCCESS.get(), SoundSource.BLOCKS, 0.8f, 1.0f);
         if (level instanceof ServerLevel server) {
-            server.sendParticles(ModParticleType.LEAVES.get(), pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5,
-                    15, 0.3, 0.3, 0.3, 0.0);
+            server.sendParticles(ModParticleType.LEAVES.get(), pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5, 15, 0.3, 0.3, 0.3, 0.0);
         }
         be.setChanged();
     }
 
     private static void cancelRitual(Level level, BlockPos pos, RitualTableBlockEntity be) {
         be.transformTicksRemaining = 0;
+        be.totalTransformTicks = 0;
         be.pendingOutput = ItemStack.EMPTY;
         be.activeBraziers = Collections.emptyList();
         be.nextBrazierIndex = 0;
         be.cachedParticleItem = ItemStack.EMPTY;
 
         if (level instanceof ServerLevel server) {
-            server.sendParticles(ParticleTypes.SMOKE, pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5,
-                    12, 0.4, 0.4, 0.4, 0.02);
+            server.sendParticles(ParticleTypes.SMOKE, pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5, 12, 0.4, 0.4, 0.4, 0.02);
             Player nearest = server.getNearestPlayer(pos.getX(), pos.getY(), pos.getZ(), 5, false);
-            if (nearest != null) {
-                nearest.displayClientMessage(Component.translatable("message.hexalia.ritual.stopped_ritual"), true);
-            }
+            if (nearest != null) nearest.displayClientMessage(Component.translatable("message.hexalia.ritual.stopped_ritual"), true);
         }
         level.playSound(null, pos, SoundEvents.CANDLE_EXTINGUISH, SoundSource.BLOCKS, 0.4f, 0.6f);
         be.setChanged();
@@ -263,6 +255,7 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
         super.saveAdditional(tag, regs);
         tag.put("Inv", inventory.serializeNBT(regs));
         tag.putInt("TicksLeft", this.transformTicksRemaining);
+        tag.putInt("TotalTicks", this.totalTransformTicks);
         if (!this.pendingOutput.isEmpty()) {
             tag.put("PendingOut", this.pendingOutput.save(regs));
         }
@@ -273,6 +266,7 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
         super.loadAdditional(tag, regs);
         inventory.deserializeNBT(regs, tag.getCompound("Inv"));
         this.transformTicksRemaining = tag.getInt("TicksLeft");
+        this.totalTransformTicks = tag.getInt("TotalTicks");
         this.pendingOutput = tag.contains("PendingOut")
                 ? ItemStack.parseOptional(regs, tag.getCompound("PendingOut"))
                 : ItemStack.EMPTY;

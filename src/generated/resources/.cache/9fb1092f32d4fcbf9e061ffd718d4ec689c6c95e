@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-27T07:12:10.7716932	Recipes
+// 1.21.1	2025-10-03T11:20:54.9512671	Recipes
 c327f3ba4eafb4c21dbb4104a1bc4c1d661f542a data/hexalia/advancement/recipes/brewing/rustic_bottle.json
 a8312b0bfae801aa7103827a4307c5c829b7dbf1 data/hexalia/advancement/recipes/building_blocks/celestial_crystal_block.json
 e15994b53b3dfc7b695ca1c1c4e0cf392e20aaa3 data/hexalia/advancement/recipes/building_blocks/cottonwood_planks.json
@@ -113,7 +113,7 @@ f017ed15d3e83fdf003e1f57af01bd0a29bf40c2 data/hexalia/advancement/recipes/tools/
 ad5b50623ecd6d4b098597849072f2464b21fc08 data/hexalia/recipe/air_node_from_ritual_table.json
 5ca0c5404ddd220c623968b302a889b769536dcd data/hexalia/recipe/andesite_from_mutation.json
 8f9946c6af0caccb8070ed70cade238c5a3d5c1b data/hexalia/recipe/astrylis_from_ritual_table.json
-b15c1ad9c43386d968b09070d4e0c0bc420af400 data/hexalia/recipe/athame.json
+616255d4f83975586d73800bf5187de3505e2c73 data/hexalia/recipe/athame.json
 29b25054551dbd80c7885900d2c05cc46326de68 data/hexalia/recipe/blackstone_from_mutation.json
 e0b6dce9aafb862c7cd861a9f703fcb8dbca9830 data/hexalia/recipe/black_dye_from_nightshade.json
 9926c2573a58acaa0ce50cb10a04580797ed1ae0 data/hexalia/recipe/blue_ice_from_mutation.json

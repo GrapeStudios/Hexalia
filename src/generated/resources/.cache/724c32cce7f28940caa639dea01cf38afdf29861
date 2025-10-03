@@ -1,4 +1,3 @@
-// 1.21.1	2025-07-01T21:07:50.4220222	Global Loot Modifiers : hexalia
+// 1.21.1	2025-10-03T11:20:54.9502631	Global Loot Modifiers : hexalia
 e00ba7720ff44ff44a56c04ed4e991c66b87a0b5 data/hexalia/loot_modifiers/ancient_seed_from_jungle_temple.json
-fb8ee933314fee40b769799c44e9ed8649754079 data/hexalia/loot_modifiers/ancient_seed_from_sniffer_dig.json
-4ca55bbe8e2a51e2c8cc8f0d6aa290b821e54e88 data/neoforge/loot_modifiers/global_loot_modifiers.json
+7af88c2cf8889805e6d41fc320a14ff2efe4a960 data/neoforge/loot_modifiers/global_loot_modifiers.json

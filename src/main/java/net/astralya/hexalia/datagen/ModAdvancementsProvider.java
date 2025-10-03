@@ -143,29 +143,26 @@ public class ModAdvancementsProvider implements AdvancementSubProvider {
 
         AdvancementHolder brewbieAward = Advancement.Builder.advancement()
                 .display(new DisplayInfo(
-                        new ItemStack(ModItems.BREW_OF_SLIMEWALKER.get()),
+                        new ItemStack(ModItems.RUSTIC_BOTTLE.get()),
                         Component.translatable("advancements.hexalia.brewbie_award.title"),
                         Component.translatable("advancements.hexalia.brewbie_award.description"),
                         Optional.empty(), AdvancementType.TASK, true, true, false
                 ))
                 .parent(smallBeginnings)
-                .addCriterion("obtain_any_brew", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ModItems.BREW_OF_SLIMEWALKER.get(), ModItems.BREW_OF_BLOODLUST.get(),
-                        ModItems.BREW_OF_SPIKESKIN.get(), ModItems.BREW_OF_HOMESTEAD.get(),
-                        ModItems.BREW_OF_SIPHON.get(), ModItems.BREW_OF_DAYBLOOM.get(),
-                        ModItems.BREW_OF_ARACHNID_GRACE.get()))
+                .addCriterion("has_rustic_bottle", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.RUSTIC_BOTTLE.get()))
                 .save(writer, String.valueOf(ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "brewbie_award")));
 
         AdvancementHolder powderAndPouch = Advancement.Builder.advancement()
                 .display(new DisplayInfo(
-                        new ItemStack(ModItems.FROST_SAC.get()),
+                        new ItemStack(ModItems.FOUL_SAC.get()),
                         Component.translatable("advancements.hexalia.powder_and_pouch.title"),
                         Component.translatable("advancements.hexalia.powder_and_pouch.description"),
                         Optional.empty(), AdvancementType.TASK, true, true, false
                 ))
                 .parent(brewbieAward)
-                .addCriterion("has_any_sac", InventoryChangeTrigger.TriggerInstance.hasItems(
-                        ModItems.FROST_SAC.get(), ModItems.FOUL_SAC.get()))
+                .addCriterion("has_foul_sac", InventoryChangeTrigger.TriggerInstance.hasItems(
+                        ModItems.FOUL_SAC.get()))
                 .save(writer, String.valueOf(ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "powder_and_pouch")));
 
         AdvancementHolder silkenBeginnings = Advancement.Builder.advancement()

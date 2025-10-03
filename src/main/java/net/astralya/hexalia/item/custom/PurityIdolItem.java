@@ -1,8 +1,11 @@
 package net.astralya.hexalia.item.custom;
 
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.stats.Stats;
 import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -31,6 +34,11 @@ public class PurityIdolItem extends WeatherIdolItem {
                     stack.shrink(1);
                 }
             }
+        }
+
+        if (user instanceof ServerPlayer serverPlayer) {
+            serverPlayer.awardStat(Stats.ITEM_USED.get(this));
+            CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
         }
 
         return stack;

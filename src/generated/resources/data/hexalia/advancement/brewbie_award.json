@@ -1,29 +1,11 @@
 {
   "parent": "hexalia:small_beginnings",
   "criteria": {
-    "obtain_any_brew": {
+    "has_rustic_bottle": {
       "conditions": {
         "items": [
           {
-            "items": "hexalia:brew_of_slimewalker"
-          },
-          {
-            "items": "hexalia:brew_of_bloodlust"
-          },
-          {
-            "items": "hexalia:brew_of_spikeskin"
-          },
-          {
-            "items": "hexalia:brew_of_homestead"
-          },
-          {
-            "items": "hexalia:brew_of_siphon"
-          },
-          {
-            "items": "hexalia:brew_of_daybloom"
-          },
-          {
-            "items": "hexalia:brew_of_arachnid_grace"
+            "items": "hexalia:rustic_bottle"
           }
         ]
       },
@@ -36,7 +18,7 @@
     },
     "icon": {
       "count": 1,
-      "id": "hexalia:brew_of_slimewalker"
+      "id": "hexalia:rustic_bottle"
     },
     "title": {
       "translate": "advancements.hexalia.brewbie_award.title"
@@ -44,7 +26,7 @@
   },
   "requirements": [
     [
-      "obtain_any_brew"
+      "has_rustic_bottle"
     ]
   ],
   "sends_telemetry_event": true

@@ -19,9 +19,6 @@ public class GlobalLootModifier extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
-        add("ancient_seed_from_sniffer_dig", new AddItemModifier(new LootItemCondition[]{
-                new LootTableIdCondition.Builder(BuiltInLootTables.SNIFFER_DIGGING.location()).build()}, ModItems.ANCIENT_SEED.get()));
-
         add("ancient_seed_from_jungle_temple", new AddItemModifier(new LootItemCondition[]{
                 new LootTableIdCondition.Builder(BuiltInLootTables.JUNGLE_TEMPLE.location()).build()}, ModItems.ANCIENT_SEED.get()));
     }
