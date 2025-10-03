@@ -3,11 +3,18 @@ package net.astralya.hexalia.util;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffect;
+import net.minecraft.entity.effect.StatusEffectCategory;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModUtil {
 
@@ -29,5 +36,20 @@ public class ModUtil {
 
     public static boolean isModLoaded(String modId) {
         return FabricLoader.getInstance().isModLoaded(modId);
+    }
+
+    public static void removeHarmfulEffects(LivingEntity entity) {
+        List<StatusEffect> toRemove = new ArrayList<>();
+
+        for (StatusEffectInstance inst : entity.getStatusEffects()) {
+            StatusEffect effect = inst.getEffectType();
+            if (effect.getCategory() == StatusEffectCategory.HARMFUL) {
+                toRemove.add(effect);
+            }
+        }
+
+        for (StatusEffect effect : toRemove) {
+            entity.removeStatusEffect(effect);
+        }
     }
 }

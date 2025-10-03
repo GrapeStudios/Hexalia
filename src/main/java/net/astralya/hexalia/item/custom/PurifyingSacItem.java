@@ -1,14 +1,14 @@
 package net.astralya.hexalia.item.custom;
 
+import net.astralya.hexalia.entity.custom.projectile.PurifyingSacProjectile;
+import net.astralya.hexalia.util.ModUtil;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.client.item.TooltipContext;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUsage;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -21,9 +21,7 @@ import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class PurifyingSacItem extends Item {
 
@@ -32,40 +30,56 @@ public class PurifyingSacItem extends Item {
     }
 
     @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        return ItemUsage.consumeHeldItem(world, user, hand);
+    public TypedActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+        ItemStack stack = player.getStackInHand(hand);
+
+        if (player.isSneaking()) {
+            if (!world.isClient) {
+                PurifyingSacProjectile proj = new PurifyingSacProjectile(world, player);
+                proj.setItem(stack.copyWithCount(1));
+                proj.setVelocity(player, player.getPitch(), player.getYaw(), -20.0F, 0.5F, 1.0F);
+                world.spawnEntity(proj);
+
+                world.playSound(null, player.getX(), player.getY(), player.getZ(),
+                        SoundEvents.ENTITY_SPLASH_POTION_THROW, SoundCategory.PLAYERS,
+                        0.5F, 0.8F + world.random.nextFloat() * 0.4F);
+
+                if (!player.getAbilities().creativeMode) {
+                    stack.decrement(1);
+                }
+                player.incrementStat(Stats.USED.getOrCreateStat(this));
+            }
+            return TypedActionResult.success(stack, world.isClient);
+        }
+
+        player.setCurrentHand(hand);
+        return TypedActionResult.consume(stack);
     }
 
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
-        if (user instanceof ServerPlayerEntity serverPlayer) {
-            Criteria.CONSUME_ITEM.trigger(serverPlayer, stack);
-            serverPlayer.incrementStat(Stats.USED.getOrCreateStat(this));
+        if (user instanceof ServerPlayerEntity sp) {
+            sp.incrementStat(Stats.USED.getOrCreateStat(this));
+            Criteria.CONSUME_ITEM.trigger(sp, stack);
         }
 
-        if (user instanceof PlayerEntity player && !player.getAbilities().creativeMode) {
-            stack.decrement(1);
-        }
-
-        world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ITEM_BONE_MEAL_USE,
-                SoundCategory.PLAYERS, 0.5f, 1.0f);
+        world.playSound(null, user.getX(), user.getY(), user.getZ(),
+                SoundEvents.ITEM_BONE_MEAL_USE, SoundCategory.PLAYERS, 0.5F, 1.0F);
 
         if (!world.isClient) {
-            List<net.minecraft.entity.effect.StatusEffect> effectsToRemove = new ArrayList<>();
+            ModUtil.removeHarmfulEffects(user);
+        }
 
-            for (Map.Entry<net.minecraft.entity.effect.StatusEffect, StatusEffectInstance> entry : user.getActiveStatusEffects().entrySet()) {
-                StatusEffectInstance effect = entry.getValue();
-                if (effect.getEffectType().getCategory() == StatusEffectCategory.HARMFUL) {
-                    effectsToRemove.add(effect.getEffectType());
-                }
-            }
+        if (user instanceof PlayerEntity player && !player.getAbilities().creativeMode && stack.isDamageable()) {
+            EquipmentSlot slot = (stack == player.getOffHandStack()) ? EquipmentSlot.OFFHAND : EquipmentSlot.MAINHAND;
+            stack.damage(1, player, p -> p.sendEquipmentBreakStatus(slot));
 
-            for (net.minecraft.entity.effect.StatusEffect effect : effectsToRemove) {
-                user.removeStatusEffect(effect);
+            if (stack.isEmpty()) {
+                player.setStackInHand((slot == EquipmentSlot.OFFHAND) ? Hand.OFF_HAND : Hand.MAIN_HAND, ItemStack.EMPTY);
             }
         }
 
-        return stack.isEmpty() ? ItemStack.EMPTY : stack;
+        return stack;
     }
 
     @Override
@@ -74,12 +88,13 @@ public class PurifyingSacItem extends Item {
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(Text.translatable("tooltip.hexalia.purifying_salts").formatted(Formatting.GRAY));
+    public int getMaxUseTime(ItemStack stack) {
+        return 32;
     }
 
     @Override
-    public int getMaxUseTime(ItemStack stack) {
-        return 32;
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        tooltip.add(Text.translatable("tooltip.hexalia.purifying_sac").formatted(Formatting.GRAY));
+        tooltip.add(Text.translatable("tooltip.hexalia.throwable").formatted(Formatting.GRAY, Formatting.ITALIC));
     }
 }

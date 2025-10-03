@@ -1,6 +1,8 @@
 package net.astralya.hexalia.item;
 
 import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
+import net.astralya.hexalia.entity.custom.projectile.FoulSacProjectile;
+import net.astralya.hexalia.entity.custom.projectile.FrostSacProjectile;
 import net.astralya.hexalia.util.ModArmorMaterials;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.astralya.hexalia.HexaliaMod;
@@ -89,9 +91,9 @@ public class ModItems {
     public static final Item PURIFYING_SAC = registerItem("purifying_sac",
             new PurifyingSacItem(new FabricItemSettings().maxCount(16)));
     public static final Item FOUL_SAC = registerItem("foul_sac",
-            new Item(new FabricItemSettings().maxCount(16)));
+            new ThrownSacItem(new FabricItemSettings().maxCount(16), FoulSacProjectile::new));
     public static final Item FROST_SAC = registerItem("frost_sac",
-            new Item(new FabricItemSettings().maxCount(16)));
+            new ThrownSacItem(new FabricItemSettings().maxCount(16), FrostSacProjectile::new));
     public static final Item SAGE_PENDANT = registerItem("sage_pendant",
             new Item(new FabricItemSettings().maxCount(1).maxDamage(64).rarity(Rarity.UNCOMMON)));
     public static final Item SILK_IDOL = registerItem("silk_idol",

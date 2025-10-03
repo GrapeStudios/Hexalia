@@ -3,7 +3,6 @@ package net.astralya.hexalia.item;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.block.ModBlocks;
-import net.astralya.hexalia.util.ModUtil;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;

@@ -14,7 +14,7 @@ import net.astralya.hexalia.block.entity.renderer.RitualTableBlockEntityRenderer
 import net.astralya.hexalia.block.entity.renderer.ShelfBlockRenderer;
 import net.astralya.hexalia.entity.ModBoats;
 import net.astralya.hexalia.entity.ModEntities;
-import net.astralya.hexalia.entity.client.SilkMothRenderer;
+import net.astralya.hexalia.entity.custom.client.SilkMothRenderer;
 import net.astralya.hexalia.networking.ModMessages;
 import net.astralya.hexalia.particle.ModParticleType;
 import net.astralya.hexalia.particle.custom.*;
@@ -99,7 +99,10 @@ public class HexaliaModClient implements ClientModInitializer {
     }
 
     private void registerEntityRenderers() {
-        EntityRendererRegistry.register(ModEntities.THROWN_RABBAGE_ENTITY, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.RABBAGE, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.PURIFYING_SAC, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.FOUL_SAC, FlyingItemEntityRenderer::new);
+        EntityRendererRegistry.register(ModEntities.FROST_SAC, FlyingItemEntityRenderer::new);
         EntityRendererRegistry.register(ModEntities.SILK_MOTH, SilkMothRenderer::new);
     }
 
