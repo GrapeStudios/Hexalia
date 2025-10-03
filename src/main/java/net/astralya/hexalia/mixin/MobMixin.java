@@ -1,15 +1,16 @@
 package net.astralya.hexalia.mixin;
 
 import net.astralya.hexalia.block.custom.censer.CenserEffectHandler;
-import net.astralya.hexalia.item.custom.GhostVeilItem;
-import net.minecraft.entity.*;
-import net.minecraft.entity.ai.TargetPredicate;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.boss.WitherEntity;
 import net.minecraft.entity.boss.dragon.EnderDragonEntity;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.mob.*;
+import net.minecraft.entity.mob.Monster;
+import net.minecraft.entity.mob.MobEntity;
+import net.minecraft.entity.mob.WardenEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
@@ -24,6 +25,7 @@ public abstract class MobMixin extends LivingEntity {
 
     @Unique
     private int hexalia$lastCheckTick = -100;
+
     @Unique
     private boolean hexalia$lastCheckResult = false;
 
@@ -62,27 +64,13 @@ public abstract class MobMixin extends LivingEntity {
         }
 
         int currentTick = this.age;
-        if (currentTick - hexalia$lastCheckTick < 10) {
-            return hexalia$lastCheckResult;
-        }
-
-        hexalia$lastCheckTick = currentTick;
-
-        if (!hexalia$lastCheckResult) {
-            PlayerEntity nearestPlayer = this.getWorld().getClosestPlayer(
-                    TargetPredicate.createAttackable(),
-                    (MobEntity)(Object)this,
-                    this.getX(),
-                    this.getEyeY(),
-                    this.getZ()
-            );
-
+        if (currentTick - hexalia$lastCheckTick >= 10) {
+            hexalia$lastCheckTick = currentTick;
             hexalia$lastCheckResult = CenserEffectHandler.isUndeadVeilActiveInArea(
                     this.getWorld(),
                     this.getBlockPos()
-            ) || (nearestPlayer != null && isGhostVeilSneaking(nearestPlayer));
+            );
         }
-
         return hexalia$lastCheckResult;
     }
 
@@ -100,12 +88,6 @@ public abstract class MobMixin extends LivingEntity {
     @Inject(method = "initDataTracker", at = @At("TAIL"))
     private void injectDataTracker(CallbackInfo ci) {
         this.getDataTracker().startTracking(IGNORE_PLAYERS_CACHE, false);
-    }
-
-    @Unique
-    private boolean isGhostVeilSneaking(PlayerEntity player) {
-        return player.isSneaking()
-                && player.getEquippedStack(EquipmentSlot.CHEST).getItem() instanceof GhostVeilItem;
     }
 
     @Unique
