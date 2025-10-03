@@ -176,9 +176,9 @@ public class ModItemGroup {
                         entries.add(ModItems.SILK_MOTH_SPAWN_EGG);
 
                         // Compat Items
-                        if (ModUtil.isModLoaded("patchouli")) {
+                        /*if (ModUtil.isModLoaded("patchouli")) {
                             entries.add(ModItems.VERDANT_GRIMOIRE);
-                        }
+                        }*/
 
 
                     }).build());

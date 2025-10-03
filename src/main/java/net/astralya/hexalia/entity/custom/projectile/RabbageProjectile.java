@@ -1,4 +1,4 @@
-package net.astralya.hexalia.entity.custom;
+package net.astralya.hexalia.entity.custom.projectile;
 
 import net.astralya.hexalia.effect.ModEffects;
 import net.astralya.hexalia.entity.ModEntities;
@@ -21,13 +21,13 @@ import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.hit.HitResult;
 import net.minecraft.world.World;
 
-public class ThrownRabbageEntity extends ThrownItemEntity {
-    public ThrownRabbageEntity(EntityType<? extends ThrownItemEntity> entityType, World world) {
+public class RabbageProjectile extends ThrownItemEntity {
+    public RabbageProjectile(EntityType<? extends ThrownItemEntity> entityType, World world) {
         super(entityType, world);
     }
 
-    public ThrownRabbageEntity(LivingEntity livingEntity, World world) {
-        super(ModEntities.THROWN_RABBAGE_ENTITY, livingEntity, world);
+    public RabbageProjectile(LivingEntity livingEntity, World world) {
+        super(ModEntities.RABBAGE, livingEntity, world);
     }
 
     @Override

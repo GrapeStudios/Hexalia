@@ -1,6 +1,6 @@
 package net.astralya.hexalia.item.custom;
 
-import net.astralya.hexalia.entity.custom.ThrownRabbageEntity;
+import net.astralya.hexalia.entity.custom.projectile.RabbageProjectile;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -27,7 +27,7 @@ public class RabbageItem extends Item {
         ItemStack itemStack = user.getStackInHand(hand);
         world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ENTITY_SNOWBALL_THROW, SoundCategory.NEUTRAL, 0.5f, 0.4f / (world.getRandom().nextFloat() * 0.4f + 0.8f));
         if (!world.isClient) {
-            ThrownRabbageEntity rabbageEntity = new ThrownRabbageEntity(user, world);
+            RabbageProjectile rabbageEntity = new RabbageProjectile(user, world);
             rabbageEntity.setItem(itemStack);
             rabbageEntity.setVelocity(user, user.getPitch(), user.getYaw(), 0.0f, 1.0f, 0f);
             world.spawnEntity(rabbageEntity);
@@ -41,6 +41,6 @@ public class RabbageItem extends Item {
 
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(Text.translatable("tooltip.hexalia.rabbage").formatted(Formatting.GRAY));
+        tooltip.add(Text.translatable("tooltip.hexalia.throwable").formatted(Formatting.GRAY));
     }
 }

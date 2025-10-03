@@ -2,7 +2,7 @@ package net.astralya.hexalia.entity.custom;
 
 import net.astralya.hexalia.entity.ModEntities;
 import net.astralya.hexalia.entity.ai.silkmoth.AttractedToLightGoal;
-import net.astralya.hexalia.entity.variant.SilkMothVariant;
+import net.astralya.hexalia.entity.custom.variant.SilkMothVariant;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.item.custom.BottledMothItem;
 import net.minecraft.block.BlockState;

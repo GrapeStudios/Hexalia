@@ -1,4 +1,4 @@
-package net.astralya.hexalia.entity.client;
+package net.astralya.hexalia.entity.custom.client;
 
 import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.entity.custom.SilkMothEntity;

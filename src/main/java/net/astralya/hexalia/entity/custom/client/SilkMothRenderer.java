@@ -1,8 +1,8 @@
-package net.astralya.hexalia.entity.client;
+package net.astralya.hexalia.entity.custom.client;
 
 import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.entity.custom.SilkMothEntity;
-import net.astralya.hexalia.entity.variant.SilkMothVariant;
+import net.astralya.hexalia.entity.custom.variant.SilkMothVariant;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.util.Identifier;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;

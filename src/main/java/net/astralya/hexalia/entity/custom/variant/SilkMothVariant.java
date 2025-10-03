@@ -1,4 +1,4 @@
-package net.astralya.hexalia.entity.variant;
+package net.astralya.hexalia.entity.custom.variant;
 
 import java.util.Arrays;
 import java.util.Comparator;
