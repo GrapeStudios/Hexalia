@@ -43,7 +43,6 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addPottedPlantDrops(ModBlocks.POTTED_DREAMSHROOM);
         addDrop(ModBlocks.SIREN_KELP, drops(ModItems.SIREN_KELP));
         addDrop(ModBlocks.LOTUS_FLOWER);
-        addDrop(ModBlocks.PALE_MUSHROOM);
         addDrop(ModBlocks.WITCHWEED);
         addDrop(ModBlocks.GHOST_FERN);
         addPottedPlantDrops(ModBlocks.POTTED_GHOST_FERN);
@@ -69,6 +68,7 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addPottedPlantDrops(ModBlocks.POTTED_DAHLIA);
         addDrop(ModBlocks.CELESTIAL_BLOOM);
         addPottedPlantDrops(ModBlocks.POTTED_CELESTIAL_BLOOM);
+        this.addDrop(ModBlocks.PALE_MUSHROOM, flowerbedDrops(ModBlocks.PALE_MUSHROOM));
     }
 
     private void generateFunctionalBlocks() {

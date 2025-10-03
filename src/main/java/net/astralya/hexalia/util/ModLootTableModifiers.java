@@ -3,7 +3,6 @@ package net.astralya.hexalia.util;
 import net.fabricmc.fabric.api.loot.v2.LootTableEvents;
 import net.astralya.hexalia.item.ModItems;
 import net.minecraft.loot.LootPool;
-import net.minecraft.loot.LootTables;
 import net.minecraft.loot.condition.RandomChanceLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.SetCountLootFunction;
@@ -25,12 +24,6 @@ public class ModLootTableModifiers {
                         .with(ItemEntry.builder(ModItems.ANCIENT_SEED))
                         .apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1.0f, 1.0f)));
                 table.pool(poolBuilder);
-            }
-        });
-
-        LootTableEvents.MODIFY.register((resourceManager, lootManager, id, tableBuilder, source) -> {
-            if (source.isBuiltin() && LootTables.SNIFFER_DIGGING_GAMEPLAY.equals(id)) {
-                tableBuilder.modifyPools(builder -> builder.with(ItemEntry.builder(ModItems.ANCIENT_SEED)));
             }
         });
     }

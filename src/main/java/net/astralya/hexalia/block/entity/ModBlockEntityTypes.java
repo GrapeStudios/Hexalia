@@ -41,6 +41,11 @@ public class ModBlockEntityTypes {
                     FabricBlockEntityTypeBuilder.create(AstrylisBlockEntity::new,
                             ModBlocks.ASTRYLIS).build(null));
 
+    public static final BlockEntityType<GrimshadeBlockEntity> GRIMSHADE =
+            Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(HexaliaMod.MODID, "grimshade_block_entity"),
+                    FabricBlockEntityTypeBuilder.create(GrimshadeBlockEntity::new,
+                            ModBlocks.GRIMSHADE).build(null));
+
     public static final BlockEntityType<ShelfBlockEntity> SHELF =
             Registry.register(Registries.BLOCK_ENTITY_TYPE, new Identifier(HexaliaMod.MODID, "shelf_block_entity"),
                     FabricBlockEntityTypeBuilder.create(ShelfBlockEntity::new,
