@@ -126,9 +126,9 @@ public class ModItems {
             new KelpweaveBladeItem(ModToolMaterials.ANCIENT, 3, -2f,
                     new FabricItemSettings().rarity(Rarity.RARE)));
     public static final Item GHOSTVEIL = registerItem("ghostveil",
-            new GhostVeilItem(ModArmorMaterials.BOGGED, ArmorItem.Type.CHESTPLATE, new FabricItemSettings().maxDamage(96)));
+            new GhostVeilItem(ModArmorMaterials.GHOST, ArmorItem.Type.CHESTPLATE, new FabricItemSettings().maxDamage(96)));
     public static final Item EARPLUGS = registerItem("earplugs",
-            new ArmorItem(ModArmorMaterials.EARPLUGS, ArmorItem.Type.HELMET, new FabricItemSettings().maxDamage(96)));
+            new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new FabricItemSettings().maxDamage(96)));
     public static final Item BOGGED_BOOTS = registerItem("bogged_boots",
             new BoggedBootsItem(ModArmorMaterials.BOGGED, ArmorItem.Type.BOOTS, new FabricItemSettings().maxDamage(96)));
     

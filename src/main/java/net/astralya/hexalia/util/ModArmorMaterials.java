@@ -1,10 +1,9 @@
 package net.astralya.hexalia.util;
 
 import net.astralya.hexalia.HexaliaMod;
-import net.astralya.hexalia.item.ModItems;
-import net.minecraft.item.ArmorMaterial;
+import net.astralya.hexalia.block.ModBlocks;
 import net.minecraft.item.ArmorItem;
-import net.minecraft.item.Items;
+import net.minecraft.item.ArmorMaterial;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -16,10 +15,13 @@ import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
 
-    BOGGED("bogged", 15, createProtectionMap(2, 4, 5, 2), 20,
-            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.ofItems(ModItems.SILK_FIBER)),
-    EARPLUGS("earplugs", 15, createProtectionMap(1, 1, 3, 1), 5,
-            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.ofItems(Items.LEATHER));
+    BOGGED("bogged", 15, createProtectionMap(1, 4, 5, 2), 12,
+            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F, 0.0F,
+            () -> Ingredient.ofItems(net.minecraft.item.Items.DRIED_KELP)),
+
+    GHOST("ghost", 15, createProtectionMap(1, 1, 3, 1), 10,
+            SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, 0.0F, 0.0F,
+            () -> Ingredient.ofItems(ModBlocks.GHOST_FERN.asItem()));
 
     private static final EnumMap<ArmorItem.Type, Integer> BASE_DURABILITY = createDurabilityMap();
 
