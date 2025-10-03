@@ -1,14 +1,9 @@
 {
   "parent": "hexalia:brewbie_award",
   "criteria": {
-    "has_any_sac": {
+    "has_foul_sac": {
       "conditions": {
         "items": [
-          {
-            "items": [
-              "hexalia:frost_sac"
-            ]
-          },
           {
             "items": [
               "hexalia:foul_sac"
@@ -28,7 +23,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "hexalia:frost_sac"
+      "item": "hexalia:foul_sac"
     },
     "show_toast": true,
     "title": {
@@ -37,7 +32,7 @@
   },
   "requirements": [
     [
-      "has_any_sac"
+      "has_foul_sac"
     ]
   ],
   "sends_telemetry_event": true

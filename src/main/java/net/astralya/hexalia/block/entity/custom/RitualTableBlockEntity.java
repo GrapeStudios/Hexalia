@@ -54,6 +54,7 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
     private ItemStack pendingOutput = ItemStack.EMPTY;
 
     private int transformTicksRemaining = 0;
+    private int totalTransformTicks = 0;
     private int nextBrazierIndex = 0;
     private float rotation = 0.0f;
 
@@ -139,6 +140,7 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
     public void startTransformation(ItemStack output, int durationTicks, List<RitualBrazierBlockEntity> braziers, List<BlockPos> grownCropPositions) {
         if (transformTicksRemaining > 0) return;
         this.transformTicksRemaining = Math.max(1, durationTicks);
+        this.totalTransformTicks = this.transformTicksRemaining;
         this.pendingOutput = output.copy();
         this.activeBraziers = new ArrayList<>(braziers);
         this.grownCrops = new ArrayList<>(grownCropPositions);
@@ -153,7 +155,8 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
             cancelRitual(level, pos, be);
             return;
         }
-        int elapsed = DURATION - be.transformTicksRemaining;
+        int base = be.totalTransformTicks > 0 ? be.totalTransformTicks : DURATION;
+        int elapsed = base - be.transformTicksRemaining;
         handleActiveBraziers(level, pos, be, elapsed);
         be.transformTicksRemaining--;
         if (be.transformTicksRemaining == 0) {
@@ -279,6 +282,7 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
 
     private static void cancelRitual(Level level, BlockPos pos, RitualTableBlockEntity be) {
         be.transformTicksRemaining = 0;
+        be.totalTransformTicks = 0;
         be.pendingOutput = ItemStack.EMPTY;
         be.activeBraziers = Collections.emptyList();
         be.nextBrazierIndex = 0;
@@ -300,6 +304,7 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
         super.saveAdditional(tag);
         tag.put("Inv", inventory.serializeNBT());
         tag.putInt("TicksLeft", this.transformTicksRemaining);
+        tag.putInt("TotalTicks", this.totalTransformTicks);
         if (!this.pendingOutput.isEmpty()) {
             CompoundTag out = new CompoundTag();
             this.pendingOutput.save(out);
@@ -311,6 +316,7 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
         super.load(tag);
         inventory.deserializeNBT(tag.getCompound("Inv"));
         this.transformTicksRemaining = tag.getInt("TicksLeft");
+        this.totalTransformTicks = tag.getInt("TotalTicks");
         this.pendingOutput = tag.contains("PendingOut") ? ItemStack.of(tag.getCompound("PendingOut")) : ItemStack.EMPTY;
     }
 

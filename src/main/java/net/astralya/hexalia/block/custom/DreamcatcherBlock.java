@@ -11,7 +11,7 @@ import net.minecraft.world.phys.AABB;
 
 import java.util.List;
 
-public class DreamcatcherBlock extends HexaliaWallBlock {
+public class DreamcatcherBlock extends WallMountedBlock {
 
     public DreamcatcherBlock(Properties properties) {
         super(properties);

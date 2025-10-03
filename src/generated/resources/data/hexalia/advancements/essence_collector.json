@@ -1,7 +1,7 @@
 {
   "parent": "hexalia:table_manners",
   "criteria": {
-    "has_any_node": {
+    "has_all_nodes": {
       "conditions": {
         "items": [
           {
@@ -47,7 +47,7 @@
   },
   "requirements": [
     [
-      "has_any_node"
+      "has_all_nodes"
     ]
   ],
   "sends_telemetry_event": true

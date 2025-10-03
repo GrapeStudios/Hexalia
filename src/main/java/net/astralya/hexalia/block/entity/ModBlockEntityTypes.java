@@ -35,6 +35,10 @@ public class ModBlockEntityTypes {
             BLOCK_ENTITIES.register("astrylis_block_entity", () -> BlockEntityType.Builder.of(AstrylisBlockEntity::new,
                     ModBlocks.ASTRYLIS.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<GrimshadeBlockEntity>> GRIMSHADE_BE =
+            BLOCK_ENTITIES.register("grimshade_block_entity", () -> BlockEntityType.Builder.of(GrimshadeBlockEntity::new,
+                    ModBlocks.GRIMSHADE.get()).build(null));
+
     public static final RegistryObject<BlockEntityType<RitualBrazierBlockEntity>> RITUAL_BRAZIER_BE =
             BLOCK_ENTITIES.register("ritual_brazier_block_entity", () -> BlockEntityType.Builder.of(RitualBrazierBlockEntity::new,
                     ModBlocks.RITUAL_BRAZIER.get()).build(null));

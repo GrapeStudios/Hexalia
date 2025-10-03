@@ -194,7 +194,6 @@ public class ModBlocks {
             () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR).noOcclusion(), BlockSetType.OAK));
     public static final RegistryObject<Block> COTTONWOOD_DOOR = registerBlock("cottonwood_door",
             () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR).noOcclusion(), BlockSetType.OAK));
-
     public static final RegistryObject<Block> COTTONWOOD_SIGN = BLOCKS.register("cottonwood_sign",
             () -> new ModStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).noCollission(), ModWoodTypes.COTTONWOOD));
     public static final RegistryObject<Block> COTTONWOOD_WALL_SIGN  = BLOCKS.register("cottonwood_wall_sign",
@@ -238,7 +237,6 @@ public class ModBlocks {
             () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_TRAPDOOR).noOcclusion(), BlockSetType.OAK));
     public static final RegistryObject<Block> WILLOW_DOOR = registerBlock("willow_door",
             () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.OAK_DOOR).noOcclusion(), BlockSetType.OAK));
-
     public static final RegistryObject<Block> WILLOW_SIGN = BLOCKS.register("willow_sign",
             () -> new ModStandingSignBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SIGN).noCollission(), ModWoodTypes.WILLOW));
     public static final RegistryObject<Block> WILLOW_WALL_SIGN  = BLOCKS.register("willow_wall_sign",

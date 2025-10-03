@@ -42,7 +42,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.SPIRIT_BLOOM.get());
         this.dropSelf(ModBlocks.DREAMSHROOM.get());
         this.dropSelf(ModBlocks.LOTUS_FLOWER.get());
-        this.dropSelf(ModBlocks.PALE_MUSHROOM.get());
         this.dropSelf(ModBlocks.WITCHWEED.get());
         this.dropSelf(ModBlocks.GHOST_FERN.get());
         this.dropSelf(ModBlocks.NIGHTSHADE_BUSH.get());
@@ -75,6 +74,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(ModBlocks.COTTONWOOD_CATKIN.get(), this.createSingleItemTable(Items.STRING));
         this.add(ModBlocks.GALEBERRIES_VINE.get(), vinesDrop(ModBlocks.GALEBERRIES_VINE.get()));
         this.add(ModBlocks.GALEBERRIES_VINE_PLANT.get(), vinesDrop(ModBlocks.GALEBERRIES_VINE_PLANT.get()));
+        this.add(ModBlocks.PALE_MUSHROOM.get(), createPetalsDrops(ModBlocks.PALE_MUSHROOM.get()));
     }
 
     private void generateFunctionalBlocks() {

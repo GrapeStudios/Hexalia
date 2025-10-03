@@ -2,7 +2,6 @@ package net.astralya.hexalia.util;
 
 import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.block.ModBlocks;
-import net.astralya.hexalia.item.ModItems;
 import net.minecraft.Util;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -12,19 +11,11 @@ import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.ArmorMaterials;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraftforge.common.Tags;
 
 import java.util.EnumMap;
 import java.util.function.Supplier;
 
 public enum ModArmorMaterials implements ArmorMaterial {
-
-    EARPLUGS("earplugs", 15, Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-        map.put(ArmorItem.Type.BOOTS, 1);
-        map.put(ArmorItem.Type.LEGGINGS, 1);
-        map.put(ArmorItem.Type.CHESTPLATE, 3);
-        map.put(ArmorItem.Type.HELMET, 1);
-    }), 5, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.of(Items.LEATHER)),
 
     GHOST("ghost", 15, Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
         map.put(ArmorItem.Type.BOOTS, 1);

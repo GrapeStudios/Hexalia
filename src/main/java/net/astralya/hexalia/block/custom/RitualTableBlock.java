@@ -53,6 +53,15 @@ public class RitualTableBlock extends BaseEntityBlock {
             Shapes.box(0.125, 0.6875, 0.125, 0.875, 0.8125, 0.875)
     );
 
+    private static final class MatchResult {
+        final RitualTableRecipe recipe;
+        final List<RitualBrazierBlockEntity> usedBraziers;
+        MatchResult(RitualTableRecipe recipe, List<RitualBrazierBlockEntity> usedBraziers) {
+            this.recipe = recipe;
+            this.usedBraziers = usedBraziers;
+        }
+    }
+
     public RitualTableBlock(Properties props) {
         super(props);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
@@ -153,27 +162,28 @@ public class RitualTableBlock extends BaseEntityBlock {
         }
 
         BlockPos[] offsets = {pos.north(2), pos.south(2), pos.east(2), pos.west(2)};
-        List<ItemStack> brazierItems = new ArrayList<>();
-        List<RitualBrazierBlockEntity> brazierEntities = new ArrayList<>();
-
+        List<RitualBrazierBlockEntity> filledBraziers = new ArrayList<>();
         for (BlockPos bPos : offsets) {
             if (level.getBlockEntity(bPos) instanceof RitualBrazierBlockEntity brazier) {
                 ItemStack stored = brazier.getStoredItem();
-                if (stored.isEmpty()) continue;
-                BlockState bs = level.getBlockState(bPos);
-                if (!bs.hasProperty(RitualBrazierBlock.SALTED) || !bs.getValue(RitualBrazierBlock.SALTED)) {
-                    failWithMessage(level, pos, player, "message.hexalia.ritual.missing_salt");
-                    return true;
+                if (!stored.isEmpty()) {
+                    filledBraziers.add(brazier);
                 }
-                brazierItems.add(stored);
-                brazierEntities.add(brazier);
             }
         }
 
-        RitualTableRecipe matched = findMatchingRecipe(level, tableItem, brazierItems);
-        if (matched == null) {
+        MatchResult match = findMatching(level, tableItem, filledBraziers);
+        if (match == null) {
             failWithMessage(level, pos, player, "message.hexalia.ritual.wrong_recipe");
             return true;
+        }
+
+        for (RitualBrazierBlockEntity brazier : match.usedBraziers) {
+            BlockState bs = level.getBlockState(brazier.getBlockPos());
+            if (!bs.hasProperty(RitualBrazierBlock.SALTED) || !bs.getValue(RitualBrazierBlock.SALTED)) {
+                failWithMessage(level, pos, player, "message.hexalia.ritual.missing_salt");
+                return true;
+            }
         }
 
         List<BlockPos> grownCrops = findFullyGrownCrops(level, pos, 8, 8);
@@ -182,22 +192,14 @@ public class RitualTableBlock extends BaseEntityBlock {
             return true;
         }
 
+        int duration = match.usedBraziers.size() * 40;
         tableBE.startTransformation(
-                matched.getResultItem(level.registryAccess()).copy(),
-                RitualTableBlockEntity.DURATION,
-                brazierEntities,
+                match.recipe.getResultItem(level.registryAccess()).copy(),
+                duration,
+                match.usedBraziers,
                 grownCrops
         );
-
         tableBE.setGrownCropPositions(grownCrops);
-
-        for (RitualBrazierBlockEntity brazier : brazierEntities) {
-            BlockPos bp = brazier.getBlockPos();
-            BlockState s = level.getBlockState(bp);
-            if (s.hasProperty(RitualBrazierBlock.SALTED) && s.getValue(RitualBrazierBlock.SALTED)) {
-                level.setBlock(bp, s.setValue(RitualBrazierBlock.SALTED, false), Block.UPDATE_ALL);
-            }
-        }
 
         playPickupPlaceSounds(level, pos);
         spawnParticles(level, pos, ParticleTypes.POOF, 5, 10);
@@ -205,33 +207,34 @@ public class RitualTableBlock extends BaseEntityBlock {
     }
 
     @Nullable
-    private RitualTableRecipe findMatchingRecipe(Level level, ItemStack tableItem, List<ItemStack> brazierItems) {
+    private MatchResult findMatching(Level level, ItemStack tableItem, List<RitualBrazierBlockEntity> availableBraziers) {
         List<RitualTableRecipe> candidates = level.getRecipeManager().getAllRecipesFor(RitualTableRecipe.Type.INSTANCE);
         for (RitualTableRecipe recipe : candidates) {
             var ings = recipe.getIngredients();
-            if (ings.isEmpty()) continue;
-            if (!ings.get(0).test(tableItem)) continue;
-            List<Ingredient> required = ings.subList(1, ings.size());
-            if (containsAll(required, brazierItems)) return recipe;
+            if (ings.isEmpty() || !ings.get(0).test(tableItem)) continue;
+
+            List<Ingredient> needed = ings.subList(1, ings.size());
+            List<RitualBrazierBlockEntity> pool = new ArrayList<>(availableBraziers);
+            List<RitualBrazierBlockEntity> used = new ArrayList<>();
+
+            boolean ok = true;
+            for (Ingredient ing : needed) {
+                int idx = -1;
+                for (int i = 0; i < pool.size(); i++) {
+                    if (ing.test(pool.get(i).getStoredItem())) {
+                        idx = i;
+                        break;
+                    }
+                }
+                if (idx == -1) { ok = false; break; }
+                used.add(pool.remove(idx));
+            }
+
+            if (ok) {
+                return new MatchResult(recipe, used);
+            }
         }
         return null;
-    }
-
-    private boolean containsAll(List<Ingredient> required, List<ItemStack> provided) {
-        List<ItemStack> pool = new ArrayList<>(provided);
-        for (Ingredient need : required) {
-            int idx = indexOfMatch(pool, need);
-            if (idx < 0) return false;
-            pool.remove(idx);
-        }
-        return true;
-    }
-
-    private int indexOfMatch(List<ItemStack> stacks, Ingredient ing) {
-        for (int i = 0; i < stacks.size(); i++) {
-            if (ing.test(stacks.get(i))) return i;
-        }
-        return -1;
     }
 
     private List<BlockPos> findFullyGrownCrops(Level level, BlockPos center, int requiredCount, int radius) {

@@ -45,6 +45,9 @@ public class Configuration {
     public static ForgeConfigSpec.BooleanValue GHOST_FERN_EMITS_PARTICLES;
     public static ForgeConfigSpec.BooleanValue CELESTIAL_BLOOM_EMITS_PARTICLES;
 
+    public static ForgeConfigSpec.IntValue GRIMSHADE_DURATION;
+    public static ForgeConfigSpec.IntValue GRIMSHADE_EFFECT_RADIUS;
+
     static {
         // COMMON
         ForgeConfigSpec.Builder COMMON_BUILDER = new ForgeConfigSpec.Builder();
@@ -116,9 +119,18 @@ public class Configuration {
         ASTRYLIS_BONEMEAL_INTERVAL = COMMON_BUILDER
                 .comment("Interval in ticks between bonemeal pulses while Astrylis is active. Default: 240 ticks = 12 seconds")
                 .defineInRange("astrylisBonemealInterval", 240, 20, 1200);
+        
         MORPHORA_RADIUS = COMMON_BUILDER
                 .comment("Radius in blocks around the Morphora mutates blocks into others. Default: 6")
                 .defineInRange("morphoraEffectRadius", 6, 1, 32);
+        
+        GRIMSHADE_DURATION = COMMON_BUILDER
+                .comment("How long (in ticks) the Grimshade stays active before disappearing. 20 ticks = 1 second. Default: 2400 (2 minutes)")
+                .defineInRange("grimshadeDuration", 2400, 100, 24000);
+        GRIMSHADE_EFFECT_RADIUS = COMMON_BUILDER
+                .comment("Radius in blocks around the Grimshade in which players and mobs are affected.")
+                .defineInRange("grimshadeEffectRadius", 16, 1, 64);
+        
         COMMON_BUILDER.pop();
 
         COMMON_CONFIG = COMMON_BUILDER.build();

@@ -81,7 +81,7 @@ public class ModAdvancementsProvider implements ForgeAdvancementProvider.Advance
                         Component.translatable("advancements.hexalia.essence_collector.description"),
                         BG, FrameType.TASK, true, true, false))
                 .parent(tableManners)
-                .addCriterion("has_any_node",
+                .addCriterion("has_all_nodes",
                         InventoryChangeTrigger.TriggerInstance.hasItems(
                                 ModItems.WATER_NODE.get(), ModItems.AIR_NODE.get(),
                                 ModItems.EARTH_NODE.get(), ModItems.FIRE_NODE.get()))
@@ -115,28 +115,25 @@ public class ModAdvancementsProvider implements ForgeAdvancementProvider.Advance
                 .save(saver, new ResourceLocation(HexaliaMod.MODID, "small_beginnings"), existingFileHelper);
 
         Advancement brewbieAward = Advancement.Builder.advancement()
-                .display(new DisplayInfo(new ItemStack(ModItems.BREW_OF_SLIMEWALKER.get()),
+                .display(new DisplayInfo(new ItemStack(ModItems.RUSTIC_BOTTLE.get()),
                         Component.translatable("advancements.hexalia.brewbie_award.title"),
                         Component.translatable("advancements.hexalia.brewbie_award.description"),
                         BG, FrameType.TASK, true, true, false))
                 .parent(smallBeginnings)
-                .addCriterion("obtain_any_brew",
+                .addCriterion("has_rustic_bottle",
                         InventoryChangeTrigger.TriggerInstance.hasItems(
-                                ModItems.BREW_OF_SLIMEWALKER.get(), ModItems.BREW_OF_BLOODLUST.get(),
-                                ModItems.BREW_OF_SPIKESKIN.get(), ModItems.BREW_OF_HOMESTEAD.get(),
-                                ModItems.BREW_OF_SIPHON.get(), ModItems.BREW_OF_DAYBLOOM.get(),
-                                ModItems.BREW_OF_ARACHNID_GRACE.get()))
+                                ModItems.RUSTIC_BOTTLE.get()))
                 .save(saver, new ResourceLocation(HexaliaMod.MODID, "brewbie_award"), existingFileHelper);
 
         Advancement powderAndPouch = Advancement.Builder.advancement()
-                .display(new DisplayInfo(new ItemStack(ModItems.FROST_SAC.get()),
+                .display(new DisplayInfo(new ItemStack(ModItems.FOUL_SAC.get()),
                         Component.translatable("advancements.hexalia.powder_and_pouch.title"),
                         Component.translatable("advancements.hexalia.powder_and_pouch.description"),
                         BG, FrameType.TASK, true, true, false))
                 .parent(brewbieAward)
-                .addCriterion("has_any_sac",
+                .addCriterion("has_foul_sac",
                         InventoryChangeTrigger.TriggerInstance.hasItems(
-                                ModItems.FROST_SAC.get(), ModItems.FOUL_SAC.get()))
+                                ModItems.FOUL_SAC.get()))
                 .save(saver, new ResourceLocation(HexaliaMod.MODID, "powder_and_pouch"), existingFileHelper);
 
         Advancement silkenBeginnings = Advancement.Builder.advancement()

@@ -18,7 +18,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.Nullable;
 
-public class HexaliaWallBlock extends Block {
+public class WallMountedBlock extends Block {
+
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
     private static final VoxelShape NORTH_SHAPE = Shapes.box(0.125, 0.0625, 0.9375, 0.875, 0.875, 1);
@@ -26,7 +27,7 @@ public class HexaliaWallBlock extends Block {
     private static final VoxelShape WEST_SHAPE = Shapes.box(0.9375, 0.0625, 0.125, 1, 0.875, 0.875);
     private static final VoxelShape EAST_SHAPE = Shapes.box(0, 0.0625, 0.125, 0.0625, 0.875, 0.875);
 
-    public HexaliaWallBlock(Properties properties) {
+    public WallMountedBlock(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
     }

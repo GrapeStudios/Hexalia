@@ -30,7 +30,6 @@ import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -88,11 +87,11 @@ public class HexaliaMod
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTab() == ModCreativeModeTabs.HEXALIA_TAB.get()) {
+        /*if (event.getTab() == ModCreativeModeTabs.HEXALIA_TAB.get()) {
             if (ModList.get().isLoaded("patchouli")) {
                 event.accept(ModItems.VERDANT_GRIMOIRE);
             }
-        }
+        }*/
     }
 
 
