@@ -4,8 +4,8 @@ import net.astralya.hexalia.block.custom.CenserBlock;
 import net.astralya.hexalia.block.custom.censer.CenserEffectHandler;
 import net.astralya.hexalia.block.custom.censer.HerbCombination;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.inventory.Inventories;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -13,14 +13,13 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.listener.ClientPlayPacketListener;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class CenserBlockEntity extends BlockEntity {
+public class CenserBlockEntity extends SyncBlockEntity {
 
     private static final int SIZE = 2;
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(SIZE, ItemStack.EMPTY);
@@ -33,26 +32,26 @@ public class CenserBlockEntity extends BlockEntity {
         super(ModBlockEntityTypes.CENSER, pos, state);
     }
 
-    public static void tick(World world, BlockPos pos, BlockState state, CenserBlockEntity blockEntity) {
+    public static void tick(World world, BlockPos pos, BlockState state, CenserBlockEntity be) {
         if (!state.get(CenserBlock.LIT)) return;
 
-        if (blockEntity.burnTime > 0) {
-            blockEntity.burnTime--;
+        if (be.burnTime > 0) {
+            be.burnTime--;
 
-            if (blockEntity.burnTime % EFFECT_INTERVAL == 0 && blockEntity.activeCombination != null) {
-                CenserEffectHandler.applyEffects(world, pos, blockEntity.activeCombination);
+            if (be.burnTime % EFFECT_INTERVAL == 0 && be.activeCombination != null) {
+                CenserEffectHandler.applyEffects(world, pos, be.activeCombination);
 
-                if (!blockEntity.effectActive) {
-                    CenserEffectHandler.registerActiveEffect(world, pos, blockEntity.activeCombination, blockEntity.burnTime);
-                    blockEntity.effectActive = true;
+                if (!be.effectActive) {
+                    CenserEffectHandler.registerActiveEffect(world, pos, be.activeCombination, be.burnTime);
+                    be.effectActive = true;
                 }
             }
 
-            if (blockEntity.burnTime <= 0) {
-                blockEntity.extinguish(world, pos, state);
+            if (be.burnTime <= 0) {
+                be.extinguish(world, pos, state);
             }
 
-            blockEntity.markDirty();
+            be.inventoryChanged();
         }
     }
 
@@ -64,16 +63,10 @@ public class CenserBlockEntity extends BlockEntity {
             effectActive = false;
         }
 
-        world.setBlockState(pos, state.with(CenserBlock.LIT, false));
+        world.setBlockState(pos, state.with(CenserBlock.LIT, false), Block.NOTIFY_ALL);
         world.playSound(null, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 0.5f, 1.0f);
-        markDirty();
-        sync();
+        inventoryChanged();
     }
-
-    /**
-     * @return Remaining burn time in ticks
-     * TODO: Currently unused - reserved for future features
-     */
 
     public int getBurnTime() {
         return burnTime;
@@ -87,16 +80,14 @@ public class CenserBlockEntity extends BlockEntity {
     public void setStack(int slot, ItemStack stack) {
         if (slot < 0 || slot >= SIZE) return;
         items.set(slot, stack);
-        markDirty();
-        sync();
+        inventoryChanged();
     }
 
     public void clearInventory() {
         for (int i = 0; i < SIZE; i++) {
             items.set(i, ItemStack.EMPTY);
         }
-        markDirty();
-        sync();
+        inventoryChanged();
     }
 
     public DefaultedList<ItemStack> getItems() {
@@ -105,7 +96,7 @@ public class CenserBlockEntity extends BlockEntity {
 
     public void setActiveCombination(HerbCombination combo) {
         this.activeCombination = combo;
-        markDirty();
+        inventoryChanged();
     }
 
     public HerbCombination getActiveCombination() {
@@ -114,13 +105,7 @@ public class CenserBlockEntity extends BlockEntity {
 
     public void setBurnTime(int time) {
         this.burnTime = time;
-        markDirty();
-    }
-
-    private void sync() {
-        if (world instanceof ServerWorld serverWorld) {
-            serverWorld.getChunkManager().markForUpdate(pos);
-        }
+        inventoryChanged();
     }
 
     @Override
@@ -184,8 +169,7 @@ public class CenserBlockEntity extends BlockEntity {
         if (slot < 0 || slot >= SIZE) return ItemStack.EMPTY;
         ItemStack stack = items.get(slot).copy();
         items.set(slot, ItemStack.EMPTY);
-        markDirty();
-        sync();
+        inventoryChanged();
         return stack;
     }
 }

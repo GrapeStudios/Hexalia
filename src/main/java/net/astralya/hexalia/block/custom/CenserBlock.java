@@ -114,7 +114,6 @@ public class CenserBlock extends BlockWithEntity {
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
         ItemStack held = player.getStackInHand(hand);
         BlockEntity be = world.getBlockEntity(pos);
-
         if (!(be instanceof CenserBlockEntity censer)) return ActionResult.PASS;
 
         if (held.getItem() instanceof FlintAndSteelItem && !state.get(LIT)) {
@@ -138,11 +137,13 @@ public class CenserBlock extends BlockWithEntity {
                 censer.setActiveCombination(combo);
                 censer.clearInventory();
 
-                world.setBlockState(pos, state.with(LIT, true));
+                world.setBlockState(pos, state.with(LIT, true), Block.NOTIFY_ALL);
 
                 int burn = Math.max(1, Configuration.common().functional_blocks.censerEffectDuration);
                 censer.setBurnTime(burn);
                 CenserEffectHandler.startEffect(world, pos, combo);
+            } else {
+                censer.clearInventory();
             }
 
             held.damage(1, player, p -> p.sendToolBreakStatus(hand));
@@ -152,10 +153,12 @@ public class CenserBlock extends BlockWithEntity {
 
         if (held.getItem() instanceof ShovelItem && state.get(LIT)) {
             if (!world.isClient()) {
-                world.setBlockState(pos, state.with(LIT, false));
+                world.setBlockState(pos, state.with(LIT, false), Block.NOTIFY_ALL);
                 censer.setBurnTime(0);
                 CenserEffectHandler.removeActiveEffect(pos);
                 CenserEffectHandler.clearPlayerEffectsInRange(world, pos);
+            } else {
+                censer.clearInventory();
             }
             return ActionResult.SUCCESS;
         }

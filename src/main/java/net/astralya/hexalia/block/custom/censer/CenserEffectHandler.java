@@ -19,7 +19,6 @@ import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.Inventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -102,7 +101,7 @@ public class CenserEffectHandler {
     }
 
     private static int areaRadius() {
-        return Math.max(1, Configuration.common().functional_blocks.censerEffectDuration);
+        return Math.max(1, Configuration.common().functional_blocks.censerEffectRadius);
     }
     private static int effectDuration() {
         return Math.max(1, Configuration.common().functional_blocks.censerEffectDuration);
@@ -274,7 +273,6 @@ public class CenserEffectHandler {
                 });
     }
 
-    /** NEW: Miners' Respite — refresh Night Vision + Haste for nearby players */
     private static void applyMinersRespite(World world, BlockPos pos) {
         if (!(world instanceof ServerWorld serverWorld)) return;
 
@@ -299,7 +297,6 @@ public class CenserEffectHandler {
         }
     }
 
-    /** Ported from 1.21.1: incremental anvil repair burst when Miners' Respite starts */
     private static void repairAnvilsInArea(ServerWorld world, BlockPos center, int radius) {
         Box area = new Box(center).expand(radius);
 
