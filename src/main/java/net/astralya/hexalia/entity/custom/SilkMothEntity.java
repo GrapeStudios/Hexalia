@@ -2,6 +2,7 @@ package net.astralya.hexalia.entity.custom;
 
 import net.astralya.hexalia.entity.ModEntities;
 import net.astralya.hexalia.entity.ai.silkmoth.AttractedToLightGoal;
+import net.astralya.hexalia.entity.ai.silkmoth.FlyWanderGoal;
 import net.astralya.hexalia.entity.custom.variant.SilkMothVariant;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.item.custom.BottledMothItem;
@@ -67,11 +68,14 @@ public class SilkMothEntity extends AnimalEntity implements GeoEntity {
     protected void initGoals() {
         this.goalSelector.add(1, new AvoidSunlightGoal(this));
         this.goalSelector.add(2, new EscapeSunlightGoal(this, 1.0));
-        this.goalSelector.add(2, new AttractedToLightGoal(this, 1.5d));
+        this.goalSelector.add(3, new AttractedToLightGoal(this, 1.5d));
         this.goalSelector.add(4, new SwimGoal(this));
-        this.goalSelector.add(5, new WanderAroundFarGoal(this, 0.75f, 1));
-    }
 
+        this.goalSelector.add(5, new FlyWanderGoal(this, 0.8D));
+
+        this.goalSelector.add(6, new LookAroundGoal(this));
+        this.goalSelector.add(7, new LookAtEntityGoal(this, net.minecraft.entity.player.PlayerEntity.class, 6.0F));
+    }
 
     @Nullable
     @Override
