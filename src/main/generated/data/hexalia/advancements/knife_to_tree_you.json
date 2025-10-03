@@ -1,12 +1,12 @@
 {
   "parent": "hexalia:root",
   "criteria": {
-    "has_salt": {
+    "has_athame": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:salt"
+              "hexalia:athame"
             ]
           }
         ]
@@ -16,23 +16,23 @@
   },
   "display": {
     "announce_to_chat": true,
-    "background": "hexalia:textures/block/willow_log.png",
     "description": {
-      "translate": "advancements.hexalia.salt_item.description"
+      "translate": "advancements.hexalia.knife_to_tree_you.description"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "hexalia:salt"
+      "item": "hexalia:athame",
+      "nbt": "{Damage:0}"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.hexalia.salt_item.title"
+      "translate": "advancements.hexalia.knife_to_tree_you.title"
     }
   },
   "requirements": [
     [
-      "has_salt"
+      "has_athame"
     ]
   ],
   "sends_telemetry_event": true

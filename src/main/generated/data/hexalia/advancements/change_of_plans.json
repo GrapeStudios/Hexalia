@@ -1,12 +1,12 @@
 {
-  "parent": "hexalia:root",
+  "parent": "hexalia:crush_course",
   "criteria": {
-    "has_mortar_and_pestle": {
+    "has_mutavis": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:mortar_and_pestle"
+              "hexalia:mutavis"
             ]
           }
         ]
@@ -16,24 +16,22 @@
   },
   "display": {
     "announce_to_chat": true,
-    "background": "hexalia:textures/block/willow_log.png",
     "description": {
-      "translate": "advancements.hexalia.mortar_and_pestle.description"
+      "translate": "advancements.hexalia.change_of_plans.description"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "hexalia:mortar_and_pestle",
-      "nbt": "{Damage:0}"
+      "item": "hexalia:mutavis"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.hexalia.mortar_and_pestle.title"
+      "translate": "advancements.hexalia.change_of_plans.title"
     }
   },
   "requirements": [
     [
-      "has_mortar_and_pestle"
+      "has_mutavis"
     ]
   ],
   "sends_telemetry_event": true

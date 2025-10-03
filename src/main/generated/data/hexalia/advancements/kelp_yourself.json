@@ -1,12 +1,12 @@
 {
-  "parent": "hexalia:salt",
+  "parent": "hexalia:table_manners",
   "criteria": {
-    "has_purifying_salts": {
+    "has_kelpweave_blade": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:purifying_sac"
+              "hexalia:kelpweave_blade"
             ]
           }
         ]
@@ -16,23 +16,23 @@
   },
   "display": {
     "announce_to_chat": true,
-    "background": "hexalia:textures/block/willow_log.png",
     "description": {
-      "translate": "advancements.hexalia.purifying_salts.description"
+      "translate": "advancements.hexalia.kelp_yourself.description"
     },
-    "frame": "goal",
+    "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "hexalia:purifying_sac"
+      "item": "hexalia:kelpweave_blade",
+      "nbt": "{Damage:0}"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.hexalia.purifying_salts.title"
+      "translate": "advancements.hexalia.kelp_yourself.title"
     }
   },
   "requirements": [
     [
-      "has_purifying_salts"
+      "has_kelpweave_blade"
     ]
   ],
   "sends_telemetry_event": true

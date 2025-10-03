@@ -1,12 +1,17 @@
 {
-  "parent": "hexalia:ritual_brazier",
+  "parent": "hexalia:brewbie_award",
   "criteria": {
-    "has_celestial_crystal": {
+    "has_any_sac": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:celestial_crystal"
+              "hexalia:frost_sac"
+            ]
+          },
+          {
+            "items": [
+              "hexalia:foul_sac"
             ]
           }
         ]
@@ -16,23 +21,22 @@
   },
   "display": {
     "announce_to_chat": true,
-    "background": "hexalia:textures/block/willow_log.png",
     "description": {
-      "translate": "advancements.hexalia.celestial_crystal.description"
+      "translate": "advancements.hexalia.powder_and_pouch.description"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "hexalia:celestial_crystal"
+      "item": "hexalia:frost_sac"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.hexalia.celestial_crystal.title"
+      "translate": "advancements.hexalia.powder_and_pouch.title"
     }
   },
   "requirements": [
     [
-      "has_celestial_crystal"
+      "has_any_sac"
     ]
   ],
   "sends_telemetry_event": true

@@ -1,12 +1,12 @@
 {
-  "parent": "hexalia:ritual_table",
+  "parent": "hexalia:root",
   "criteria": {
-    "has_rabbage": {
+    "has_small_cauldron": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:rabbage"
+              "hexalia:small_cauldron"
             ]
           }
         ]
@@ -16,23 +16,22 @@
   },
   "display": {
     "announce_to_chat": true,
-    "background": "hexalia:textures/block/willow_log.png",
     "description": {
-      "translate": "advancements.hexalia.rabbage.description"
+      "translate": "advancements.hexalia.small_beginnings.description"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "hexalia:rabbage"
+      "item": "hexalia:small_cauldron"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.hexalia.rabbage.title"
+      "translate": "advancements.hexalia.small_beginnings.title"
     }
   },
   "requirements": [
     [
-      "has_rabbage"
+      "has_small_cauldron"
     ]
   ],
   "sends_telemetry_event": true

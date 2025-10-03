@@ -1,12 +1,12 @@
 {
-  "parent": "hexalia:ritual_table",
+  "parent": "hexalia:root",
   "criteria": {
-    "has_ritual_brazier": {
+    "has_mortar": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:ritual_brazier"
+              "hexalia:mortar_and_pestle"
             ]
           }
         ]
@@ -16,23 +16,23 @@
   },
   "display": {
     "announce_to_chat": true,
-    "background": "hexalia:textures/block/willow_log.png",
     "description": {
-      "translate": "advancements.hexalia.ritual_brazier.description"
+      "translate": "advancements.hexalia.crush_course.description"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "hexalia:ritual_brazier"
+      "item": "hexalia:mortar_and_pestle",
+      "nbt": "{Damage:0}"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.hexalia.ritual_brazier.title"
+      "translate": "advancements.hexalia.crush_course.title"
     }
   },
   "requirements": [
     [
-      "has_ritual_brazier"
+      "has_mortar"
     ]
   ],
   "sends_telemetry_event": true

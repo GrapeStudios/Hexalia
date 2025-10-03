@@ -1,11 +1,11 @@
 {
-  "parent": "hexalia:small_cauldron",
+  "parent": "hexalia:silken_beginnings",
   "criteria": {
-    "use_daybloom": {
+    "use_purity_idol": {
       "conditions": {
         "item": {
           "items": [
-            "hexalia:brew_of_daybloom"
+            "hexalia:purity_idol"
           ]
         }
       },
@@ -14,23 +14,22 @@
   },
   "display": {
     "announce_to_chat": true,
-    "background": "hexalia:textures/block/willow_log.png",
     "description": {
-      "translate": "advancements.hexalia.daybloom_brew.description"
+      "translate": "advancements.hexalia.pure_intentions.description"
     },
-    "frame": "task",
+    "frame": "goal",
     "hidden": false,
     "icon": {
-      "item": "hexalia:brew_of_daybloom"
+      "item": "hexalia:purity_idol"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.hexalia.daybloom_brew.title"
+      "translate": "advancements.hexalia.pure_intentions.title"
     }
   },
   "requirements": [
     [
-      "use_daybloom"
+      "use_purity_idol"
     ]
   ],
   "sends_telemetry_event": true

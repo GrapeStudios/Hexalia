@@ -1,12 +1,12 @@
 {
-  "parent": "hexalia:root",
+  "parent": "hexalia:table_manners",
   "criteria": {
-    "has_small_cauldron": {
+    "has_sage_pendant": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:small_cauldron"
+              "hexalia:sage_pendant"
             ]
           }
         ]
@@ -16,23 +16,23 @@
   },
   "display": {
     "announce_to_chat": true,
-    "background": "hexalia:textures/block/willow_log.png",
     "description": {
-      "translate": "advancements.hexalia.small_cauldron.description"
+      "translate": "advancements.hexalia.wise_investment.description"
     },
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "hexalia:small_cauldron"
+      "item": "hexalia:sage_pendant",
+      "nbt": "{Damage:0}"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.hexalia.small_cauldron.title"
+      "translate": "advancements.hexalia.wise_investment.title"
     }
   },
   "requirements": [
     [
-      "has_small_cauldron"
+      "has_sage_pendant"
     ]
   ],
   "sends_telemetry_event": true

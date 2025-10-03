@@ -1,7 +1,7 @@
 {
-  "parent": "hexalia:root",
+  "parent": "hexalia:silken_beginnings",
   "criteria": {
-    "has_clear_idol": {
+    "use_clear": {
       "conditions": {
         "item": {
           "items": [
@@ -11,17 +11,7 @@
       },
       "trigger": "minecraft:consume_item"
     },
-    "has_storm_idol": {
-      "conditions": {
-        "item": {
-          "items": [
-            "hexalia:tempest_idol"
-          ]
-        }
-      },
-      "trigger": "minecraft:consume_item"
-    },
-    "use_rain_idol": {
+    "use_rain": {
       "conditions": {
         "item": {
           "items": [
@@ -30,33 +20,42 @@
         }
       },
       "trigger": "minecraft:consume_item"
+    },
+    "use_storm": {
+      "conditions": {
+        "item": {
+          "items": [
+            "hexalia:tempest_idol"
+          ]
+        }
+      },
+      "trigger": "minecraft:consume_item"
     }
   },
   "display": {
     "announce_to_chat": true,
-    "background": "hexalia:textures/block/willow_log.png",
     "description": {
-      "translate": "advancements.hexalia.weather_idol.description"
+      "translate": "advancements.hexalia.master_or_not.description"
     },
-    "frame": "task",
+    "frame": "goal",
     "hidden": false,
     "icon": {
       "item": "hexalia:tempest_idol"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.hexalia.weather_idol.title"
+      "translate": "advancements.hexalia.master_or_not.title"
     }
   },
   "requirements": [
     [
-      "use_rain_idol"
+      "use_rain"
     ],
     [
-      "has_clear_idol"
+      "use_clear"
     ],
     [
-      "has_storm_idol"
+      "use_storm"
     ]
   ],
   "sends_telemetry_event": true

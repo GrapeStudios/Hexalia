@@ -1,12 +1,12 @@
 {
-  "parent": "hexalia:root",
+  "parent": "hexalia:change_of_plans",
   "criteria": {
-    "has_stone_dagger": {
+    "has_morphora": {
       "conditions": {
         "items": [
           {
             "items": [
-              "hexalia:athame"
+              "hexalia:morphora"
             ]
           }
         ]
@@ -16,24 +16,22 @@
   },
   "display": {
     "announce_to_chat": true,
-    "background": "hexalia:textures/block/willow_log.png",
     "description": {
-      "translate": "advancements.hexalia.stone_dagger.description"
+      "translate": "advancements.hexalia.ring_of_change.description"
     },
-    "frame": "task",
+    "frame": "goal",
     "hidden": false,
     "icon": {
-      "item": "hexalia:athame",
-      "nbt": "{Damage:0}"
+      "item": "hexalia:morphora"
     },
     "show_toast": true,
     "title": {
-      "translate": "advancements.hexalia.stone_dagger.title"
+      "translate": "advancements.hexalia.ring_of_change.title"
     }
   },
   "requirements": [
     [
-      "has_stone_dagger"
+      "has_morphora"
     ]
   ],
   "sends_telemetry_event": true
