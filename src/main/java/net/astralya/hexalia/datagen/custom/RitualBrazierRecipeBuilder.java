@@ -2,7 +2,7 @@ package net.astralya.hexalia.datagen.custom;
 
 import com.google.gson.JsonObject;
 import net.astralya.hexalia.HexaliaMod;
-import net.astralya.hexalia.recipe.RitualBrazierRecipe;
+import net.astralya.hexalia.recipe.ModRecipes;
 import net.minecraft.advancement.Advancement;
 import net.minecraft.advancement.AdvancementRewards;
 import net.minecraft.advancement.criterion.CriterionConditions;
@@ -90,7 +90,7 @@ public class RitualBrazierRecipeBuilder implements CraftingRecipeJsonBuilder {
 
         @Override
         public RecipeSerializer<?> getSerializer() {
-            return RitualBrazierRecipe.Serializer.INSTANCE;
+            return ModRecipes.RITUAL_BRAZIER_SERIALIZER;
         }
 
         @Nullable

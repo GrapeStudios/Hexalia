@@ -2,7 +2,7 @@ package net.astralya.hexalia.block.custom;
 
 import net.astralya.hexalia.Configuration;
 import net.astralya.hexalia.block.entity.custom.CenserBlockEntity;
-import net.astralya.hexalia.block.entity.ModBlockEntities;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.block.custom.censer.CenserEffectHandler;
 import net.astralya.hexalia.block.custom.censer.HerbCombination;
 import net.astralya.hexalia.util.ModTags;
@@ -222,7 +222,7 @@ public class CenserBlock extends BlockWithEntity {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.CENSER_BE, CenserBlockEntity::tick);
+        return checkType(type, ModBlockEntityTypes.CENSER, CenserBlockEntity::tick);
     }
 
     @Override

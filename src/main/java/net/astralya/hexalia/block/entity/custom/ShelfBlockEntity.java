@@ -1,6 +1,6 @@
 package net.astralya.hexalia.block.entity.custom;
 
-import net.astralya.hexalia.block.entity.ModBlockEntities;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -24,7 +24,7 @@ public class ShelfBlockEntity extends BlockEntity {
     private final DefaultedList<ItemStack> items = DefaultedList.ofSize(SIZE, ItemStack.EMPTY);
 
     public ShelfBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.SHELF_BE, pos, state);
+        super(ModBlockEntityTypes.SHELF, pos, state);
     }
 
     public ItemStack getStack(int slot) {

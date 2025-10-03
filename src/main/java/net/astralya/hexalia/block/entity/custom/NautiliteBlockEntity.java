@@ -1,7 +1,7 @@
 package net.astralya.hexalia.block.entity.custom;
 
 import net.astralya.hexalia.Configuration;
-import net.astralya.hexalia.block.entity.ModBlockEntities;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
@@ -33,7 +33,7 @@ public class NautiliteBlockEntity extends BlockEntity {
     private long activationTime   = -1;
 
     public NautiliteBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.NAUTILITE_BE, pos, state);
+        super(ModBlockEntityTypes.NAUTILITE, pos, state);
     }
 
     private static int duration() {

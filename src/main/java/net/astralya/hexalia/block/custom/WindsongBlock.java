@@ -1,9 +1,9 @@
 package net.astralya.hexalia.block.custom;
 
-import net.astralya.hexalia.block.entity.ModBlockEntities;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.block.entity.custom.WindsongBlockEntity;
 import net.astralya.hexalia.item.ModItems;
-import net.astralya.hexalia.sound.ModSounds;
+import net.astralya.hexalia.sound.ModSoundEvents;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
@@ -45,7 +45,7 @@ public class WindsongBlock extends EnchantedPlantBlock implements BlockEntityPro
                 BlockEntity blockEntity = world.getBlockEntity(pos);
                 if (blockEntity instanceof WindsongBlockEntity windsongBlockEntity && !windsongBlockEntity.isActive()) {
                     windsongBlockEntity.activate();
-                    world.playSound(null, pos, ModSounds.WIND_BURST, SoundCategory.BLOCKS, 1.0f, 1.0f);
+                    world.playSound(null, pos, ModSoundEvents.WIND_BURST, SoundCategory.BLOCKS, 1.0f, 1.0f);
                 }
             }
             return ActionResult.SUCCESS;
@@ -70,7 +70,7 @@ public class WindsongBlock extends EnchantedPlantBlock implements BlockEntityPro
         if (world.isClient) {
             return null;
         }
-        return type == ModBlockEntities.WINDSONG_BE ? (world1, pos, state1, blockEntity) -> {
+        return type == ModBlockEntityTypes.WINDSONG ? (world1, pos, state1, blockEntity) -> {
             if (blockEntity instanceof WindsongBlockEntity windsong) {
                 windsong.tick(world1, pos, state1);
             }

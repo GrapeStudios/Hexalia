@@ -9,41 +9,47 @@ import net.minecraft.util.Identifier;
 
 public class ModRecipes {
 
-    private static final String SMALL_CAULDRON_ID = "small_cauldron";
-    private static final String TRANSMUTATION_ID = "transmutation";
-    private static final String RITUAL_BRAZIER_ID = "ritual_brazier";
+    public static final RecipeSerializer<RitualBrazierRecipe> RITUAL_BRAZIER_SERIALIZER = Registry.register(
+            Registries.RECIPE_SERIALIZER, new Identifier(HexaliaMod.MODID, "ritual_brazier"), new RitualBrazierRecipe.Serializer());
+    public static final RecipeType<RitualBrazierRecipe> RITUAL_BRAZIER_TYPE = Registry.register(
+            Registries.RECIPE_TYPE, new Identifier(HexaliaMod.MODID, "ritual_brazier"), new RecipeType<RitualBrazierRecipe>() {
+                @Override
+                public String toString() {
+                    return "ritual_brazier";
+                }
+            });
+
+    public static final RecipeSerializer<SmallCauldronRecipe> SMALL_CAULDRON_SERIALIZER = Registry.register(
+            Registries.RECIPE_SERIALIZER, new Identifier(HexaliaMod.MODID, "small_cauldron"), new SmallCauldronRecipe.Serializer());
+    public static final RecipeType<SmallCauldronRecipe> SMALL_CAULDRON_TYPE = Registry.register(
+            Registries.RECIPE_TYPE, new Identifier(HexaliaMod.MODID, "small_cauldron"), new RecipeType<SmallCauldronRecipe>() {
+                @Override
+                public String toString() {
+                    return "small_cauldron";
+                }
+            });
+
+    public static final RecipeSerializer<RitualTableRecipe> RITUAL_TABLE_SERIALIZER = Registry.register(
+            Registries.RECIPE_SERIALIZER, new Identifier(HexaliaMod.MODID, "ritual_table"), new RitualTableRecipe.Serializer());
+    public static final RecipeType<RitualTableRecipe> RITUAL_TABLE_TYPE = Registry.register(
+            Registries.RECIPE_TYPE, new Identifier(HexaliaMod.MODID, "ritual_table"), new RecipeType<RitualTableRecipe>() {
+                @Override
+                public String toString() {
+                    return "ritual_table";
+                }
+            });
+
+    public static final RecipeSerializer<MutationRecipe> MUTATION_SERIALIZER = Registry.register(
+            Registries.RECIPE_SERIALIZER, new Identifier(HexaliaMod.MODID, "mutation"), new MutationRecipe.Serializer());
+    public static final RecipeType<MutationRecipe> MUTATION_TYPE = Registry.register(
+            Registries.RECIPE_TYPE, new Identifier(HexaliaMod.MODID, "mutation"), new RecipeType<MutationRecipe>() {
+                @Override
+                public String toString() {
+                    return "mutation";
+                }
+            });
 
     public static void registerRecipes() {
-        registerRecipeType(SMALL_CAULDRON_ID,
-                SmallCauldronRecipe.Serializer.INSTANCE,
-                SmallCauldronRecipe.Type.INSTANCE);
-
-        registerRecipeType(TRANSMUTATION_ID,
-                TransmutationRecipe.Serializer.INSTANCE,
-                TransmutationRecipe.Type.INSTANCE);
-
-        registerRecipeType(RITUAL_BRAZIER_ID,
-                RitualBrazierRecipe.Serializer.INSTANCE,
-                RitualBrazierRecipe.Type.INSTANCE);
-    }
-
-    private static void registerRecipeType(String id,
-                                           RecipeSerializer<?> serializer,
-                                           RecipeType<?> type) {
-        Identifier typeId = new Identifier(HexaliaMod.MODID, id);
-        Registry.register(Registries.RECIPE_SERIALIZER, typeId, serializer);
-        Registry.register(Registries.RECIPE_TYPE, typeId, type);
-    }
-
-    public static Identifier getSmallCauldronId() {
-        return new Identifier(HexaliaMod.MODID, SMALL_CAULDRON_ID);
-    }
-
-    public static Identifier getTransmutationId() {
-        return new Identifier(HexaliaMod.MODID, TRANSMUTATION_ID);
-    }
-
-    public static Identifier getRitualBrazierId() {
-        return new Identifier(HexaliaMod.MODID, RITUAL_BRAZIER_ID);
+        HexaliaMod.LOGGER.info("Registering Custom Recipes for " + HexaliaMod.MODID);
     }
 }

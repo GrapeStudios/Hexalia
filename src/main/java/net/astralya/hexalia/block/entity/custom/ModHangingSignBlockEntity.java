@@ -1,6 +1,6 @@
 package net.astralya.hexalia.block.entity.custom;
 
-import net.astralya.hexalia.block.entity.ModBlockEntities;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.block.entity.HangingSignBlockEntity;
@@ -13,6 +13,6 @@ public class ModHangingSignBlockEntity extends HangingSignBlockEntity {
 
     @Override
     public BlockEntityType<?> getType() {
-        return ModBlockEntities.MOD_HANGING_SIGN_BLOCK_ENTITY;
+        return ModBlockEntityTypes.MOD_HANGING_SIGN_BLOCK_ENTITY;
     }
 }

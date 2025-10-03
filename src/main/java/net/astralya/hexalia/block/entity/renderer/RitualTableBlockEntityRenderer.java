@@ -18,7 +18,7 @@ public class RitualTableBlockEntityRenderer implements BlockEntityRenderer<Ritua
     @Override
     public void render(RitualTableBlockEntity entity, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
         ItemRenderer itemRenderer = MinecraftClient.getInstance().getItemRenderer();
-        ItemStack stack = entity.getRenderStack();
+        ItemStack stack = entity.getStoredItem();
         matrices.push();
         matrices.translate(0.5f, 1.1f, 0.5f);
         matrices.scale(1f, 1f, 1f);

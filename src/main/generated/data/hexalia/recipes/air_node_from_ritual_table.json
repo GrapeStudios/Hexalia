@@ -1,0 +1,17 @@
+{
+  "type": "hexalia:ritual_table",
+  "ingredients": [
+    {
+      "item": "minecraft:amethyst_shard"
+    },
+    {
+      "item": "minecraft:feather"
+    },
+    {
+      "item": "minecraft:dandelion"
+    }
+  ],
+  "output": {
+    "item": "hexalia:air_node"
+  }
+}

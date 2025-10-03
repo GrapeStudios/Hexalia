@@ -38,7 +38,7 @@ public class ItemStackSyncS2CPacket {
         if (blockEntity == null) return;
 
         if (blockEntity instanceof RitualTableBlockEntity table) {
-            table.setInventory(stacks);
+            table.setStack(0, stacks.get(0));
         } else if (blockEntity instanceof RitualBrazierBlockEntity brazier) {
             for (int i = 0; i < stacks.size(); i++) {
                 brazier.setStack(i, stacks.get(i));

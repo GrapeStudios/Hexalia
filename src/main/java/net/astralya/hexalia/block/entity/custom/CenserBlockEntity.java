@@ -3,7 +3,7 @@ package net.astralya.hexalia.block.entity.custom;
 import net.astralya.hexalia.block.custom.CenserBlock;
 import net.astralya.hexalia.block.custom.censer.CenserEffectHandler;
 import net.astralya.hexalia.block.custom.censer.HerbCombination;
-import net.astralya.hexalia.block.entity.ModBlockEntities;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.inventory.Inventories;
@@ -30,7 +30,7 @@ public class CenserBlockEntity extends BlockEntity {
     private boolean effectActive = false;
 
     public CenserBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.CENSER_BE, pos, state);
+        super(ModBlockEntityTypes.CENSER, pos, state);
     }
 
     public static void tick(World world, BlockPos pos, BlockState state, CenserBlockEntity blockEntity) {

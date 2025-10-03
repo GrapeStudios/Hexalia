@@ -1,8 +1,8 @@
 package net.astralya.hexalia.block.entity.custom;
 
 import net.astralya.hexalia.Configuration;
-import net.astralya.hexalia.block.entity.ModBlockEntities;
-import net.astralya.hexalia.sound.ModSounds;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
+import net.astralya.hexalia.sound.ModSoundEvents;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
@@ -30,7 +30,7 @@ public class WindsongBlockEntity extends BlockEntity {
     private int  particleCooldown = 0;
 
     public WindsongBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.WINDSONG_BE, pos, state);
+        super(ModBlockEntityTypes.WINDSONG, pos, state);
     }
 
     private static int cfgDuration() {
@@ -91,7 +91,7 @@ public class WindsongBlockEntity extends BlockEntity {
         }
 
         if (this.activeTicks <= 0) {
-            world.playSound(null, pos, ModSounds.WIND_BURST, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            world.playSound(null, pos, ModSoundEvents.WIND_BURST, SoundCategory.BLOCKS, 1.0f, 1.0f);
             world.breakBlock(pos, false);
         } else {
             markDirty();
@@ -100,7 +100,7 @@ public class WindsongBlockEntity extends BlockEntity {
 
     private void discardProjectile(ServerWorld world, Entity projectile) {
         world.playSound(null, projectile.getX(), projectile.getY(), projectile.getZ(),
-                ModSounds.WIND_DEFLECT, SoundCategory.BLOCKS, 1.0f, 1.0f);
+                ModSoundEvents.WIND_DEFLECT, SoundCategory.BLOCKS, 1.0f, 1.0f);
 
         Vec3d p = projectile.getPos();
         for (int i = 0; i < 5; i++) {

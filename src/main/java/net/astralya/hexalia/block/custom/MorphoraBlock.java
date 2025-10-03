@@ -1,38 +1,29 @@
 package net.astralya.hexalia.block.custom;
 
-import net.astralya.hexalia.sound.ModSounds;
-import net.minecraft.block.Block;
+import net.astralya.hexalia.Configuration;
+import net.astralya.hexalia.item.ModItems;
+import net.astralya.hexalia.particle.ModParticleType;
+import net.astralya.hexalia.recipe.ModRecipes;
+import net.astralya.hexalia.recipe.MutationRecipe;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.ItemEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.util.ActionResult;
+import net.minecraft.util.Hand;
+import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Optional;
 
-public class MorphoraBlock extends EnchantedPlantBlock{
-
-    private static final Map<Block, Block> CONVERSION_MAP = new HashMap<>();
-
-    static {
-        CONVERSION_MAP.put(Blocks.MAGMA_BLOCK, Blocks.LAVA);
-        CONVERSION_MAP.put(Blocks.SNOW_BLOCK, Blocks.PACKED_ICE);
-        CONVERSION_MAP.put(Blocks.SOUL_SAND, Blocks.SOUL_SOIL);
-        CONVERSION_MAP.put(Blocks.DIRT, Blocks.PODZOL);
-        CONVERSION_MAP.put(Blocks.SAND, Blocks.RED_SAND);
-        CONVERSION_MAP.put(Blocks.DIORITE, Blocks.GRANITE);
-        CONVERSION_MAP.put(Blocks.GRANITE, Blocks.ANDESITE);
-        CONVERSION_MAP.put(Blocks.ANDESITE, Blocks.DIORITE);
-        CONVERSION_MAP.put(Blocks.ICE, Blocks.BLUE_ICE);
-        CONVERSION_MAP.put(Blocks.BLACKSTONE, Blocks.CALCITE);
-    }
+public class MorphoraBlock extends EnchantedPlantBlock {
 
     public MorphoraBlock(Settings settings) {
         super(settings);
@@ -40,42 +31,73 @@ public class MorphoraBlock extends EnchantedPlantBlock{
 
     @Override
     protected boolean canPlantOnTop(BlockState floor, BlockView world, BlockPos pos) {
-        return floor.isOf(Blocks.MAGMA_BLOCK) || floor.isSolid();
+        return floor.isOf(Blocks.MAGMA_BLOCK) || floor.isSolidBlock(world, pos);
     }
 
     @Override
-    public void onPlaced(World world, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack itemStack) {
-        super.onPlaced(world, pos, state, placer, itemStack);
-        if (!world.isClient) {
-            world.scheduleBlockTick(pos, this, 80);
+    public ActionResult onUse(BlockState state, World world, BlockPos pos,
+                              PlayerEntity player, Hand hand, BlockHitResult hit) {
+        ItemStack stack = player.getStackInHand(hand);
+        if (stack.isEmpty() || stack.getItem() != ModItems.MUTAVIS) {
+            return ActionResult.PASS;
         }
-    }
+        if (world.isClient) {
+            return ActionResult.CONSUME;
+        }
 
-    @Override
-    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        BlockPos belowPos = pos.down();
-        boolean converted = false;
+        ServerWorld server = (ServerWorld) world;
+        boolean anyConverted = false;
 
-        for (int dx = -1; dx <= 1; dx++) {
-            for (int dz = -1; dz <= 1; dz++) {
-                BlockPos targetPos = belowPos.add(dx, 0, dz);
-                BlockState targetState = world.getBlockState(targetPos);
-                Block targetBlock = CONVERSION_MAP.get(targetState.getBlock());
+        int radius = Configuration.common().plants.morphoraEffectRadius;
+        for (int dx = -radius; dx <= radius; dx++) {
+            for (int dz = -radius; dz <= radius; dz++) {
+                BlockPos targetPos = pos.add(dx, 0, dz);
+                if (targetPos.equals(pos)) continue;
 
-                if (targetBlock != null) {
-                    converted = true;
-                    world.setBlockState(targetPos, pushEntitiesUpBeforeBlockChange(targetState, targetBlock.getDefaultState(), world, targetPos));
-                    world.syncWorldEvent(2001, targetPos, Block.getRawIdFromState(targetState));
+                BlockState targetState = server.getBlockState(targetPos);
+                if (targetState.isAir()) continue;
+
+                ItemStack inputStack = new ItemStack(targetState.getBlock().asItem());
+                if (inputStack.isEmpty()) continue;
+
+                SimpleInventory inv = new SimpleInventory(inputStack);
+                Optional<MutationRecipe> match = world.getRecipeManager()
+                        .getFirstMatch(ModRecipes.MUTATION_TYPE, inv, world);
+
+                if (match.isPresent()) {
+                    ItemStack result = match.get().craft(inv, server.getRegistryManager());
+                    server.breakBlock(targetPos, false);
+                    if (!result.isEmpty()) {
+                        server.spawnEntity(new ItemEntity(
+                                server,
+                                targetPos.getX() + 0.5,
+                                targetPos.getY() + 0.25,
+                                targetPos.getZ() + 0.5,
+                                result
+                        ));
+                    }
+                    emitEffects(server, targetPos);
+                    anyConverted = true;
                 }
             }
         }
 
-        if (converted) {
-            world.playSound(null, pos, ModSounds.CONVERSION, SoundCategory.BLOCKS, 0.02F, 1.0F);
-            world.breakBlock(pos, false);
+        if (anyConverted) {
+            if (!player.getAbilities().creativeMode) {
+                stack.decrement(1);
+            }
+            return ActionResult.CONSUME;
         }
 
+        return ActionResult.PASS;
     }
 
-
+    private void emitEffects(ServerWorld server, BlockPos pos) {
+        server.playSound(null, pos, SoundEvents.BLOCK_ENCHANTMENT_TABLE_USE, SoundCategory.BLOCKS, 0.5F, 1.0F);
+        server.spawnParticles(
+                ModParticleType.LEAVES,
+                pos.getX() + 0.5, pos.getY() + 0.6, pos.getZ() + 0.5,
+                15, 0.2, 0.25, 0.2, 0.0
+        );
+    }
 }

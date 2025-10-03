@@ -1,7 +1,7 @@
 package net.astralya.hexalia.block.custom;
 
-import net.astralya.hexalia.block.entity.custom.HeatingBlockEntity;
-import net.astralya.hexalia.block.entity.ModBlockEntities;
+import net.astralya.hexalia.block.entity.custom.HeatingBlock;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.block.entity.custom.SmallCauldronBlockEntity;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
@@ -29,7 +29,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class SmallCauldronBlock extends BlockWithEntity implements BlockEntityProvider, HeatingBlockEntity {
+public class SmallCauldronBlock extends BlockWithEntity implements BlockEntityProvider, HeatingBlock {
 
     public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
     public static final BooleanProperty WATERLOGGED = Properties.WATERLOGGED;
@@ -131,6 +131,6 @@ public class SmallCauldronBlock extends BlockWithEntity implements BlockEntityPr
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return checkType(type, ModBlockEntities.SMALL_CAULDRON_BE, ((world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1)));
+        return checkType(type, ModBlockEntityTypes.SMALL_CAULDRON, ((world1, pos, state1, blockEntity) -> blockEntity.tick(world1, pos, state1)));
     }
 }

@@ -4,35 +4,50 @@ import com.google.gson.JsonObject;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.recipe.*;
+import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.Recipe;
+import net.minecraft.recipe.RecipeSerializer;
+import net.minecraft.recipe.RecipeType;
+import net.minecraft.recipe.ShapedRecipe;
 import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.JsonHelper;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 
-public class RitualBrazierRecipe implements Recipe<SimpleInventory> {
+public final class RitualBrazierRecipe implements Recipe<SimpleInventory> {
 
     private final Identifier id;
+    private final Ingredient inputItem;
     private final ItemStack output;
-    private final Ingredient input;
 
-    public RitualBrazierRecipe(Identifier id, ItemStack output, Ingredient input) {
+    public RitualBrazierRecipe(Identifier id, Ingredient inputItem, ItemStack output) {
         this.id = id;
-        this.output = output;
-        this.input = input;
+        this.inputItem = inputItem;
+        this.output = output.copy();
+    }
+
+    public Ingredient inputItem() {
+        return this.inputItem;
+    }
+
+    public ItemStack output() {
+        return this.output;
     }
 
     @Override
-    public boolean matches(SimpleInventory inventory, World world) {
-        if (world.isClient()) {
-            return false;
-        }
-        return input.test(inventory.getStack(0));
+    public Identifier getId() {
+        return this.id;
     }
 
     @Override
-    public ItemStack craft(SimpleInventory inventory, DynamicRegistryManager registryManager) {
-        return output.copy();
+    public boolean matches(SimpleInventory inv, World world) {
+        if (world.isClient) return false;
+        return this.inputItem.test(inv.getStack(0));
+    }
+
+    @Override
+    public ItemStack craft(SimpleInventory inv, DynamicRegistryManager registries) {
+        return this.output.copy();
     }
 
     @Override
@@ -41,58 +56,46 @@ public class RitualBrazierRecipe implements Recipe<SimpleInventory> {
     }
 
     @Override
-    public ItemStack getOutput(DynamicRegistryManager manager) {
-        return output.copy();
-    }
-
-    public Ingredient getInput() {
-        return input;
+    public ItemStack getOutput(DynamicRegistryManager registries) {
+        return this.output.copy();
     }
 
     @Override
-    public Identifier getId() {
-        return id;
+    public DefaultedList<Ingredient> getIngredients() {
+        DefaultedList<Ingredient> list = DefaultedList.of();
+        list.add(this.inputItem);
+        return list;
     }
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return Serializer.INSTANCE;
+        return ModRecipes.RITUAL_BRAZIER_SERIALIZER;
     }
 
     @Override
     public RecipeType<?> getType() {
-        return Type.INSTANCE;
+        return ModRecipes.RITUAL_BRAZIER_TYPE;
     }
 
-    public static class Type implements RecipeType<RitualBrazierRecipe> {
-        private Type() { }
-        public static final Type INSTANCE = new Type();
-        public static final String ID = "ritual_brazier";
-    }
-
-    public static class Serializer implements RecipeSerializer<RitualBrazierRecipe> {
-        public static final Serializer INSTANCE = new Serializer();
-        public static final String ID = "ritual_brazier";
-
+    public static final class Serializer implements RecipeSerializer<RitualBrazierRecipe> {
         @Override
         public RitualBrazierRecipe read(Identifier id, JsonObject json) {
-            ItemStack output = ShapedRecipe.outputFromJson(JsonHelper.getObject(json, "output"));
-            Ingredient input = Ingredient.fromJson(JsonHelper.getObject(json, "input"));
-            return new RitualBrazierRecipe(id, output, input);
+            Ingredient input = Ingredient.fromJson(json.get("input"));
+            ItemStack out = ShapedRecipe.outputFromJson(json.getAsJsonObject("output"));
+            return new RitualBrazierRecipe(id, input, out);
         }
 
         @Override
         public RitualBrazierRecipe read(Identifier id, PacketByteBuf buf) {
             Ingredient input = Ingredient.fromPacket(buf);
-            ItemStack output = buf.readItemStack();
-            return new RitualBrazierRecipe(id, output, input);
+            ItemStack out = buf.readItemStack();
+            return new RitualBrazierRecipe(id, input, out);
         }
 
         @Override
         public void write(PacketByteBuf buf, RitualBrazierRecipe recipe) {
-            recipe.input.write(buf);
-            buf.writeItemStack(recipe.output);
+            recipe.inputItem.write(buf);
+            buf.writeItemStack(recipe.output.copy());
         }
     }
 }
-

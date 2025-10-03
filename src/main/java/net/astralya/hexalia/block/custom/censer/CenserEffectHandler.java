@@ -5,7 +5,7 @@ import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.block.custom.WindsongBlock;
 import net.astralya.hexalia.block.entity.custom.CenserBlockEntity;
 import net.astralya.hexalia.item.ModItems;
-import net.astralya.hexalia.sound.ModSounds;
+import net.astralya.hexalia.sound.ModSoundEvents;
 import net.minecraft.block.entity.HopperBlockEntity;
 import net.minecraft.entity.*;
 import net.minecraft.entity.ai.brain.MemoryModuleType;
@@ -341,7 +341,7 @@ public class CenserEffectHandler {
 
     private static void playSuctionEffects(ServerWorld world, Vec3d pos) {
         world.playSound(null, pos.x, pos.y, pos.z,
-                ModSounds.WIND_BURST, SoundCategory.BLOCKS,
+                ModSoundEvents.WIND_BURST, SoundCategory.BLOCKS,
                 0.7f, 0.9f + world.random.nextFloat() * 0.2f);
 
         for (int i = 0; i < 8; i++) {

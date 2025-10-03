@@ -105,7 +105,7 @@ public class ModItems {
     public static final Item PURITY_IDOL = registerItem("purity_idol",
             new PurityIdolItem(new FabricItemSettings()));
     public static final Item MUTAVIS = registerItem("mutavis",
-            new Item(new FabricItemSettings()));
+            new MutavisItem(new FabricItemSettings()));
     
     // Block Items
     public static final Item CANDLE_SKULL = registerItem("candle_skull",

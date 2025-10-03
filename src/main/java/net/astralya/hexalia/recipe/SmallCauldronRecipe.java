@@ -5,7 +5,11 @@ import com.google.gson.JsonObject;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
-import net.minecraft.recipe.*;
+import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.Recipe;
+import net.minecraft.recipe.RecipeSerializer;
+import net.minecraft.recipe.RecipeType;
+import net.minecraft.recipe.ShapedRecipe;
 import net.minecraft.registry.DynamicRegistryManager;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
@@ -33,26 +37,20 @@ public class SmallCauldronRecipe implements Recipe<SimpleInventory> {
 
     @Override
     public boolean matches(SimpleInventory inventory, World world) {
-        if (world.isClient()) {
-            return false;
-        }
+        if (world.isClient) return false;
 
         boolean[] slotsMatched = new boolean[inventory.size()];
         for (Ingredient ingredient : recipeItems) {
-            boolean foundIngredient = false;
+            boolean found = false;
             for (int i = 0; i < inventory.size(); i++) {
-                if (slotsMatched[i]) {
-                    continue;
-                }
+                if (slotsMatched[i]) continue;
                 if (ingredient.test(inventory.getStack(i))) {
                     slotsMatched[i] = true;
-                    foundIngredient = true;
+                    found = true;
                     break;
                 }
             }
-            if (!foundIngredient) {
-                return false;
-            }
+            if (!found) return false;
         }
 
         return bottleSlot.test(inventory.getStack(inventory.size() - 1));
@@ -97,39 +95,26 @@ public class SmallCauldronRecipe implements Recipe<SimpleInventory> {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return Serializer.INSTANCE;
+        return ModRecipes.SMALL_CAULDRON_SERIALIZER;
     }
 
     @Override
     public RecipeType<?> getType() {
-        return Type.INSTANCE;
-    }
-
-    public static class Type implements RecipeType<SmallCauldronRecipe> {
-        private Type() { }
-        public static final Type INSTANCE = new Type();
-        public static final String ID = "small_cauldron";
+        return ModRecipes.SMALL_CAULDRON_TYPE;
     }
 
     public static class Serializer implements RecipeSerializer<SmallCauldronRecipe> {
-        public static final Serializer INSTANCE = new Serializer();
-        public static final String ID = "small_cauldron";
-
         @Override
         public SmallCauldronRecipe read(Identifier id, JsonObject json) {
             ItemStack output = ShapedRecipe.outputFromJson(JsonHelper.getObject(json, "output"));
             JsonArray ingredients = JsonHelper.getArray(json, "ingredients");
             DefaultedList<Ingredient> inputs = DefaultedList.ofSize(ingredients.size(), Ingredient.EMPTY);
-
             for (int i = 0; i < inputs.size(); i++) {
                 inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
             }
-
             Ingredient bottleSlot = Ingredient.fromJson(JsonHelper.getObject(json, "bottle_slot"));
-
             int brewTime = JsonHelper.getInt(json, "brew_time", 175);
             float experience = JsonHelper.getFloat(json, "experience", 5.0f);
-
             return new SmallCauldronRecipe(id, output, inputs, bottleSlot, brewTime, experience);
         }
 
@@ -139,12 +124,10 @@ public class SmallCauldronRecipe implements Recipe<SimpleInventory> {
             for (int i = 0; i < inputs.size(); i++) {
                 inputs.set(i, Ingredient.fromPacket(buf));
             }
-
             ItemStack output = buf.readItemStack();
             Ingredient bottleSlot = Ingredient.fromPacket(buf);
             int brewTime = buf.readInt();
             float experience = buf.readFloat();
-
             return new SmallCauldronRecipe(id, output, inputs, bottleSlot, brewTime, experience);
         }
 
@@ -154,7 +137,7 @@ public class SmallCauldronRecipe implements Recipe<SimpleInventory> {
             for (Ingredient ing : recipe.getIngredients()) {
                 ing.write(buf);
             }
-            buf.writeItemStack(recipe.getOutput(null));
+            buf.writeItemStack(recipe.output.copy());
             recipe.getBottleSlot().write(buf);
             buf.writeInt(recipe.brewTime);
             buf.writeFloat(recipe.experience);

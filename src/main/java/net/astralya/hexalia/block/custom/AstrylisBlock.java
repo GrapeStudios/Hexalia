@@ -1,7 +1,7 @@
 package net.astralya.hexalia.block.custom;
 
 import net.astralya.hexalia.block.entity.custom.AstrylisBlockEntity;
-import net.astralya.hexalia.block.entity.ModBlockEntities;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.item.ModItems;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
@@ -90,7 +90,7 @@ public class AstrylisBlock extends EnchantedPlantBlock implements BlockEntityPro
         if (world.isClient) {
             return null;
         }
-        return type == ModBlockEntities.ASTRYLIS_BE ? (world1, pos, state1, blockEntity) -> {
+        return type == ModBlockEntityTypes.ASTRYLIS ? (world1, pos, state1, blockEntity) -> {
             if (blockEntity instanceof AstrylisBlockEntity astrylisBlockEntity) {
                 AstrylisBlockEntity.tick(world1, pos, state1, astrylisBlockEntity);
             }

@@ -1,6 +1,6 @@
 package net.astralya.hexalia.block.custom;
 
-import net.astralya.hexalia.block.entity.ModBlockEntities;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.block.entity.custom.NautiliteBlockEntity;
 import net.astralya.hexalia.item.ModItems;
 import net.minecraft.block.Block;
@@ -95,7 +95,7 @@ public class NautiliteBlock extends EnchantedPlantBlock implements BlockEntityPr
         if (world.isClient) {
             return null;
         }
-        return type == ModBlockEntities.NAUTILITE_BE ? (world1, pos, state1, blockEntity) -> {
+        return type == ModBlockEntityTypes.NAUTILITE ? (world1, pos, state1, blockEntity) -> {
             if (blockEntity instanceof NautiliteBlockEntity nautilite) {
                 NautiliteBlockEntity.tick(world1, pos, state1, nautilite);
             }

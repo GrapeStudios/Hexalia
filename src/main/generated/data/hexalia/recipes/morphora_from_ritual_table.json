@@ -1,0 +1,23 @@
+{
+  "type": "hexalia:ritual_table",
+  "ingredients": [
+    {
+      "item": "minecraft:poppy"
+    },
+    {
+      "item": "hexalia:dream_paste"
+    },
+    {
+      "item": "hexalia:spirit_powder"
+    },
+    {
+      "item": "hexalia:earth_node"
+    },
+    {
+      "item": "hexalia:tree_resin"
+    }
+  ],
+  "output": {
+    "item": "hexalia:morphora"
+  }
+}

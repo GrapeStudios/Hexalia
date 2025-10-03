@@ -1,0 +1,17 @@
+{
+  "type": "hexalia:ritual_table",
+  "ingredients": [
+    {
+      "item": "minecraft:amethyst_shard"
+    },
+    {
+      "item": "minecraft:clay_ball"
+    },
+    {
+      "item": "minecraft:brown_mushroom"
+    }
+  ],
+  "output": {
+    "item": "hexalia:earth_node"
+  }
+}

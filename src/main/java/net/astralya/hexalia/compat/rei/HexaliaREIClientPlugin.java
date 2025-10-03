@@ -8,17 +8,18 @@ import me.shedaniel.rei.api.client.registry.display.DisplayRegistry;
 import me.shedaniel.rei.api.client.registry.screen.ScreenRegistry;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.astralya.hexalia.block.ModBlocks;
-import net.astralya.hexalia.compat.rei.brewing.SmallCauldronCategory;
-import net.astralya.hexalia.compat.rei.brewing.SmallCauldronDisplay;
-import net.astralya.hexalia.compat.rei.brazier.RitualBrazierCategory;
-import net.astralya.hexalia.compat.rei.brazier.RitualBrazierDisplay;
-import net.astralya.hexalia.compat.rei.transmutation.RitualTableCategory;
-import net.astralya.hexalia.compat.rei.transmutation.RitualTableDisplay;
+import net.astralya.hexalia.compat.rei.small_cauldron.SmallCauldronCategory;
+import net.astralya.hexalia.compat.rei.small_cauldron.SmallCauldronDisplay;
+import net.astralya.hexalia.compat.rei.ritual_brazier.RitualBrazierCategory;
+import net.astralya.hexalia.compat.rei.ritual_brazier.RitualBrazierDisplay;
+import net.astralya.hexalia.compat.rei.ritual_table.RitualTableCategory;
+import net.astralya.hexalia.compat.rei.ritual_table.RitualTableDisplay;
 import net.astralya.hexalia.item.ModItems;
+import net.astralya.hexalia.recipe.ModRecipes;
 import net.astralya.hexalia.recipe.RitualBrazierRecipe;
 import net.astralya.hexalia.recipe.SmallCauldronRecipe;
 import net.astralya.hexalia.recipe.RitualTableRecipe;
-import net.astralya.hexalia.screen.SmallCauldronScreen;
+import net.astralya.hexalia.screen.custom.SmallCauldronScreen;
 
 public class HexaliaREIClientPlugin implements REIClientPlugin {
 
@@ -38,11 +39,11 @@ public class HexaliaREIClientPlugin implements REIClientPlugin {
 
     @Override
     public void registerDisplays(DisplayRegistry registry) {
-        registry.registerRecipeFiller(SmallCauldronRecipe.class, SmallCauldronRecipe.Type.INSTANCE,
+        registry.registerRecipeFiller(SmallCauldronRecipe.class, ModRecipes.SMALL_CAULDRON_TYPE,
                 SmallCauldronDisplay::new);
-        registry.registerRecipeFiller(RitualTableRecipe.class, RitualTableRecipe.Type.INSTANCE,
+        registry.registerRecipeFiller(RitualTableRecipe.class, ModRecipes.RITUAL_TABLE_TYPE,
                 RitualTableDisplay::new);
-        registry.registerRecipeFiller(RitualBrazierRecipe.class, RitualBrazierRecipe.Type.INSTANCE,
+        registry.registerRecipeFiller(RitualBrazierRecipe.class, ModRecipes.RITUAL_BRAZIER_TYPE,
                 RitualBrazierDisplay::new);
     }
 

@@ -7,7 +7,7 @@ import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.astralya.hexalia.block.ModBlocks;
-import net.astralya.hexalia.block.entity.ModBlockEntities;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.block.entity.renderer.CenserBlockRenderer;
 import net.astralya.hexalia.block.entity.renderer.RitualBrazierBlockEntityRenderer;
 import net.astralya.hexalia.block.entity.renderer.RitualTableBlockEntityRenderer;
@@ -18,8 +18,8 @@ import net.astralya.hexalia.entity.client.SilkMothRenderer;
 import net.astralya.hexalia.networking.ModMessages;
 import net.astralya.hexalia.particle.ModParticleType;
 import net.astralya.hexalia.particle.custom.*;
-import net.astralya.hexalia.screen.ModScreenHandler;
-import net.astralya.hexalia.screen.SmallCauldronScreen;
+import net.astralya.hexalia.screen.ModScreenHandlers;
+import net.astralya.hexalia.screen.custom.SmallCauldronScreen;
 import net.astralya.hexalia.util.ModWoodTypes;
 import net.minecraft.client.color.world.BiomeColors;
 import net.minecraft.client.color.world.FoliageColors;
@@ -79,12 +79,12 @@ public class HexaliaModClient implements ClientModInitializer {
     }
 
     private void registerBlockEntityRenderers() {
-        BlockEntityRendererFactories.register(ModBlockEntities.RITUAL_TABLE_BE, RitualTableBlockEntityRenderer::new);
-        BlockEntityRendererFactories.register(ModBlockEntities.RITUAL_BRAZIER_BE, RitualBrazierBlockEntityRenderer::new);
-        BlockEntityRendererFactories.register(ModBlockEntities.MOD_SIGN_BLOCK_ENTITY, SignBlockEntityRenderer::new);
-        BlockEntityRendererFactories.register(ModBlockEntities.MOD_HANGING_SIGN_BLOCK_ENTITY, HangingSignBlockEntityRenderer::new);
-        BlockEntityRendererFactories.register(ModBlockEntities.SHELF_BE, ShelfBlockRenderer::new);
-        BlockEntityRendererFactories.register(ModBlockEntities.CENSER_BE, CenserBlockRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntityTypes.RITUAL_TABLE, RitualTableBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntityTypes.RITUAL_BRAZIER, RitualBrazierBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntityTypes.MOD_SIGN_BLOCK_ENTITY, SignBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntityTypes.MOD_HANGING_SIGN_BLOCK_ENTITY, HangingSignBlockEntityRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntityTypes.SHELF, ShelfBlockRenderer::new);
+        BlockEntityRendererFactories.register(ModBlockEntityTypes.CENSER, CenserBlockRenderer::new);
     }
 
     private void registerParticles() {
@@ -95,7 +95,7 @@ public class HexaliaModClient implements ClientModInitializer {
     }
 
     private void registerScreens() {
-        HandledScreens.register(ModScreenHandler.SMALL_CAULDRON_SCREEN_HANDLER, SmallCauldronScreen::new);
+        HandledScreens.register(ModScreenHandlers.SMALL_CAULDRON_SCREEN, SmallCauldronScreen::new);
     }
 
     private void registerEntityRenderers() {

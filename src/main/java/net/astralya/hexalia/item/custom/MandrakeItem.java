@@ -3,7 +3,7 @@ package net.astralya.hexalia.item.custom;
 import net.astralya.hexalia.Configuration;
 import net.astralya.hexalia.effect.ModEffects;
 import net.astralya.hexalia.item.ModItems;
-import net.astralya.hexalia.sound.ModSounds;
+import net.astralya.hexalia.sound.ModSoundEvents;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
@@ -55,7 +55,7 @@ public class MandrakeItem extends Item {
             }
 
             world.playSound(null, player.getX(), player.getY(), player.getZ(),
-                    ModSounds.MANDRAKE_SCREAM, SoundCategory.PLAYERS, 1.0f, 1.0f);
+                    ModSoundEvents.MANDRAKE_SCREAM, SoundCategory.PLAYERS, 1.0f, 1.0f);
 
             if (!player.getAbilities().creativeMode) {
                 stack.decrement(1);

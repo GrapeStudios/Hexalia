@@ -1,7 +1,7 @@
 package net.astralya.hexalia.block.entity.custom;
 
 import net.astralya.hexalia.Configuration;
-import net.astralya.hexalia.block.entity.ModBlockEntities;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Fertilizable;
 import net.minecraft.block.entity.BlockEntity;
@@ -23,7 +23,7 @@ public class AstrylisBlockEntity extends BlockEntity {
     private long lastBonemealTime = -1;
 
     public AstrylisBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntities.ASTRYLIS_BE, pos, state);
+        super(ModBlockEntityTypes.ASTRYLIS, pos, state);
     }
 
     private static int cfgDuration() {
@@ -40,20 +40,18 @@ public class AstrylisBlockEntity extends BlockEntity {
         final long elapsed   = now - be.activationTime;
         final int interval   = cfgInterval();
 
-        // End when duration hits
         if (elapsed >= be.duration) {
             be.deactivate();
             return;
         }
 
-        // How many intervals should have fired vs. how many we actually fired
         long expectedApplications = elapsed / interval;
         long actualApplications   = (be.lastBonemealTime == -1)
                 ? 0
                 : ((be.lastBonemealTime - be.activationTime) / interval) + 1;
 
         if (expectedApplications > actualApplications) {
-            long missed = Math.min(expectedApplications - actualApplications, 5); // cap burst
+            long missed = Math.min(expectedApplications - actualApplications, 5);
             for (long i = 0; i < missed; i++) {
                 applyBonemealToCropsAndSaplings(server, pos);
             }
