@@ -3,9 +3,11 @@ package net.astralya.hexalia.block.entity.custom;
 import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.block.custom.RitualBrazierBlock;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
+import net.astralya.hexalia.particle.ModParticleType;
 import net.astralya.hexalia.recipe.ModRecipes;
 import net.astralya.hexalia.util.ModUtil;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.Inventories;
@@ -13,6 +15,7 @@ import net.minecraft.inventory.Inventory;
 import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.collection.DefaultedList;
@@ -99,7 +102,9 @@ public class RitualBrazierBlockEntity extends SyncBlockEntity implements Invento
 
     public RitualResult tryCelestialRitual() {
         if (world == null || isRitualFocusItem) return RitualResult.INVALID_ITEM;
-        if (!hasEnoughNearbyCelestialBlooms()) return RitualResult.NO_CELESTIAL_BLOOMS;
+
+        BlockPos bloomPos = findNearbyCelestialBloom();
+        if (bloomPos == null) return RitualResult.NO_CELESTIAL_BLOOMS;
 
         ItemStack input = getStoredItem();
         if (input.isEmpty()) return RitualResult.INVALID_ITEM;
@@ -132,26 +137,42 @@ public class RitualBrazierBlockEntity extends SyncBlockEntity implements Invento
         }
 
         removeItem();
+
+        if (!world.isClient) {
+            world.setBlockState(bloomPos, Blocks.DEAD_BUSH.getDefaultState(), 3);
+
+            if (world instanceof ServerWorld server) {
+                emitEffects(server, bloomPos);
+            }
+        }
+
         return RitualResult.SUCCESS;
     }
 
-    public boolean hasEnoughNearbyCelestialBlooms() {
-        if (world == null) return false;
-        int count = 0;
+    private BlockPos findNearbyCelestialBloom() {
+        if (world == null) return null;
         for (int dx = -3; dx <= 3; dx++) {
             for (int dz = -3; dz <= 3; dz++) {
                 if (dx == 0 && dz == 0) continue;
                 BlockPos check = pos.add(dx, 0, dz);
-                if (world.getBlockState(check).isOf(ModBlocks.CELESTIAL_BLOOM) && ++count >= 2) {
-                    return true;
+                if (world.getBlockState(check).isOf(ModBlocks.CELESTIAL_BLOOM)) {
+                    return check;
                 }
             }
         }
-        return false;
+        return null;
     }
 
     public void playSound(SoundEvent sound, float volume, float pitch) {
         if (world != null) world.playSound(null, pos, sound, SoundCategory.BLOCKS, volume, pitch);
+    }
+
+    private void emitEffects(ServerWorld server, BlockPos pos) {
+        server.spawnParticles(
+                ModParticleType.LEAVES,
+                pos.getX() + 0.5, pos.getY() + 0.6, pos.getZ() + 0.5,
+                15, 0.2, 0.25, 0.2, 0.0
+        );
     }
 
     @Override
