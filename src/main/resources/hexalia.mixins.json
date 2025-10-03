@@ -3,16 +3,13 @@
   "package": "net.astralya.hexalia.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "AnvilMixin",
     "CobwebMixin",
     "ExperienceMixin",
     "CropBlockMixin",
     "StemBlockMixin",
-    "ItemCombinerMenuAccessor",
     "LivingEntityMixin",
     "MobMixin",
     "SugarCanePlantingMixin",
-    "accessors.AnvilScreenHandlerAccessor",
     "accessors.ExhaustionAccessorMixin"
   ],
   "injectors": {
