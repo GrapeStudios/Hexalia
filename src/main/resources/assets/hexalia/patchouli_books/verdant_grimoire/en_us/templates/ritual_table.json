@@ -1,0 +1,60 @@
+{
+  "processor": "net.astralya.hexalia.compat.patchouli.RitualTableProcessor",
+  "components": [
+    {
+      "type": "patchouli:image",
+      "image": "hexalia:textures/gui/patchouli/ritual_table.png",
+      "x": 20,
+      "y": 16,
+      "u": 0,
+      "v": 0,
+      "texture_width": 256,
+      "texture_height": 256,
+      "width": 80,
+      "height": 120,
+      "scale": 1
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#input_main",
+      "x": 50,
+      "y": 79
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#input_brazier1",
+      "x": 50,
+      "y": 54
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#input_brazier2",
+      "x": 74,
+      "y": 79
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#input_brazier3",
+      "x": 50,
+      "y": 103
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#input_brazier4",
+      "x": 25,
+      "y": 79
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#output",
+      "x": 50,
+      "y": 20
+    },
+    {
+      "type": "patchouli:header",
+      "text": "#header",
+      "x": -1,
+      "y": 0
+    }
+  ]
+}

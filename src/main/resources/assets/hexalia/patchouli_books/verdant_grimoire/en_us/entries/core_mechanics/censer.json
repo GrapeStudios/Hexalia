@@ -1,0 +1,76 @@
+{
+  "name": "Censer",
+  "icon": "hexalia:censer",
+  "category": "hexalia:core_mechanics",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Censer",
+      "text": "Burns pairs of magical herbs to create area auras. Insert two different $(l:hexalia:resources/herbs)Core Herbs$(/l), ignite with Flint & Steel, and the effect radiates for several minutes."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:censer",
+      "title": "Block Overview",
+      "anchor": "censer",
+      "text": "$(li)Insert two different Core Herbs (order doesn't matter).$(br)$(li)Ignite with Flint & Steel; only lights on valid combos.$(br)$(li)Extinguish early with a Shovel.$(br)$(li)Herbs are consumed on light."
+    },
+    {
+      "type": "text",
+      "title": "How to Use",
+      "text": "$(li)Place the Censer.$(br)$(li)Right-click with two different Core Herbs.$(br)$(li)Light with Flint & Steel to begin the aura.$(br)$(li)Applies the effect to all entities in range."
+    },
+    {
+      "type": "text",
+      "title": "Herb Combinations (1/2)",
+      "text": "$(li)$(thing)Fireproof Presence$(): Siren Kelp + Spirit Bloom$(br)$(li)$(thing)Undead Veil$(): Ghost Fern + Spirit Bloom$(br)$(li)$(thing)Livestock Comfort$(): Ghost Fern + Siren Kelp"
+    },
+    {
+      "type": "text",
+      "title": "Herb Combinations (2/2)",
+      "text": "$(li)$(thing)Miner's Respite$(): Dreamshroom + Spirit Bloom$(br)$(li)$(thing)Fisher's Boon$(): Dreamshroom + Siren Kelp$(br)$(li)$(thing)Suction Zone$(): Dreamshroom + Ghost Fern"
+    },
+    {
+      "type": "text",
+      "title": "Fireproof Presence",
+      "anchor": "fireproof_presence",
+      "text": "Extinguishes flames and grants Fire Resistance in the area—great for Nether excursions or wooden bases."
+    },
+    {
+      "type": "text",
+      "title": "Undead Veil",
+      "anchor": "undead_veil",
+      "text": "Pacifies undead mobs (Zombies, Skeletons, etc.), causing them to lose targets and stop attacking. Brief glow highlights affected mobs."
+    },
+    {
+      "type": "text",
+      "title": "Livestock Comfort",
+      "anchor": "livestock_comfort",
+      "text": "Accelerates baby animal growth significantly—ideal for automated or semi-automated farms."
+    },
+    {
+      "type": "text",
+      "title": "Miner's Respite",
+      "anchor": "miners_respite",
+      "text": "Grants Night Vision and Haste II to miners; also slowly repairs damaged Anvils nearby."
+    },
+    {
+      "type": "text",
+      "title": "Fisher's Boon",
+      "anchor": "fishers_boon",
+      "text": "Subtly improves fishing rewards while within the aura."
+    },
+    {
+      "type": "text",
+      "title": "Suction Zone",
+      "anchor": "suction_zone",
+      "text": "Pulls items toward Hoppers; if none exist, items are drawn to the nearest player—easy cleanup."
+    },
+    {
+      "type": "text",
+      "title": "Unlocking",
+      "text": "All Censer effects are available once you craft or obtain a $(thing)Censer$()."
+    }
+  ]
+}

@@ -183,7 +183,7 @@ public class ModItems {
     static {
         if (ModList.get().isLoaded("patchouli")) {
             VERDANT_GRIMOIRE = ITEMS.register("verdant_grimoire",
-                    () -> new GrimoireItem(new Item.Properties()));
+                    () -> new GuideBookItem(new Item.Properties()));
         }
     }
 

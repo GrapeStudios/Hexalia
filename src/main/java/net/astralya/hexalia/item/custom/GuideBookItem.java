@@ -12,8 +12,9 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import vazkii.patchouli.api.PatchouliAPI;
 
-public class GrimoireItem extends Item {
-    public GrimoireItem(Properties properties) {
+public class GuideBookItem extends Item {
+
+    public GuideBookItem(Properties properties) {
         super(properties);
     }
 

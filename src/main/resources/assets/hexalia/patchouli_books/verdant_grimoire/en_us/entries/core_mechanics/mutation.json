@@ -1,0 +1,57 @@
+{
+  "name": "Mutation",
+  "icon": "hexalia:mutavis",
+  "category": "hexalia:core_mechanics",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Mutation",
+      "text": "Mutation transforms ordinary materials into magical variants using a catalyst. Use it on a block for a single change, or channel it through a Morphora flower to affect an area."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:mutavis",
+      "title": "Mutavis",
+      "anchor": "mutavis",
+      "text": "$(bold)Direct$(): use on a compatible block to mutate it.$(br)$(bold)Area$(): apply to a Morphora flower to mutate blocks in a radius.$(br)Consumed on use."
+    },
+    {
+      "type": "patchouli:crafting",
+      "title": "Mutavis Recipe",
+      "recipe": "hexalia:mutavis",
+      "text": "The catalyst consumed by Mutation. Use on blocks, or feed to a Morphora for an area effect."
+    },
+    {
+      "type": "text",
+      "title": "How It Works",
+      "text": "$(li)Direct: target block converts to its mutated form.$(br)$(li)Area: Morphora spreads mutation nearby.$(br)$(li)Some groups cycle (e.g., stones)."
+    },
+    {
+      "type": "text",
+      "title": "Flora Mutations (1/2)",
+      "text": "$(li)Blue Orchid → Spirit Bloom$(br)$(li)Kelp → Siren Kelp$(br)$(li)Tulips (any) → Celestial Bloom$(br)$(li)Brown Mushroom → Dreamshroom"
+    },
+    {
+      "type": "text",
+      "title": "Flora Mutations (2/2)",
+      "text": "$(li)Fern → Ghost Fern$(br)$(li)Lily Pad → Lotus Flower$(br)$(li)Cactus → Saltsprout"
+    },
+    {
+      "type": "text",
+      "title": "Stone/Block Cycle",
+      "text": "$(li)Diorite → Granite$(br)$(li)Granite → Andesite$(br)$(li)Andesite → Diorite"
+    },
+    {
+      "type": "text",
+      "title": "Other Mutations",
+      "text": "$(li)Dripstone Block → Tuff$(br)$(li)Ice → Blue Ice$(br)$(li)Sand → Red Sand$(br)$(li)Clay → Mud$(br)$(li)Snow Block → Packed Ice$(br)$(li)Netherrack → Blackstone$(br)$(li)Dirt → Rooted Dirt → Podzol"
+    },
+    {
+      "type": "patchouli:crafting",
+      "title": "Mutavis Recipe",
+      "recipe": "hexalia:mutavis",
+      "text": "The catalyst consumed by Mutation. Use on blocks, or feed to a Morphora for an area effect."
+    }
+  ]
+}

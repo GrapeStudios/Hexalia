@@ -43,7 +43,6 @@ public class SmallCauldronProcessor implements IComponentProcessor {
                 return IVariable.from(recipe.getResultItem(level.registryAccess()).getHoverName(), level.registryAccess());
         }
 
-        // Handle ingredient slots dynamically
         for (int i = 0; i < recipe.getIngredients().size(); i++) {
             if (key.equals("ingredients" + i)) {
                 ItemStack[] stacks = recipe.getIngredients().get(i).getItems();

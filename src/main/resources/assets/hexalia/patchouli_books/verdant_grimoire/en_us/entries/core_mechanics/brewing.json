@@ -1,0 +1,40 @@
+{
+  "name": "Brewing",
+  "icon": "hexalia:small_cauldron",
+  "category": "hexalia:core_mechanics",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Small Cauldron",
+      "text": "A focused brewing station for magical concoctions. Load ingredients, ensure heat, insert a Rustic Bottle, and let it simmer into a brew. See $(l:hexalia:content/brews)Brews$(/l) for recipes."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:small_cauldron",
+      "title": "Block Overview",
+      "anchor": "small_cauldron",
+      "text": "$(bold)Slots$(): 3 input, 1 bottle, 1 output.$(br)$(bold)Brew Time$(): default 175t.$(br)$(bold)XP$(): awards XP to the last interacting player.$(br)Inputs can be placed in any order."
+    },
+    {
+      "type": "text",
+      "title": "Requirements",
+      "text": "$(li)$(bold)Heat source$(): place above a $(l:hexalia:content/functional_blocks#rustic_oven)Rustic Oven$(/l) or another valid heat.$(br)$(li)$(bold)Valid recipe$(): must match a Small Cauldron recipe.$(br)$(li)$(bold)Bottle$(): a $(thing)Rustic Bottle$() in the bottle slot.$(br)$(li)$(bold)Output space$(): the output slot must be free."
+    },
+    {
+      "type": "text",
+      "title": "Brewing Sequence",
+      "text": "$(li)All inputs and the bottle are consumed.$(br)$(li)The result is placed in the output slot.$(br)$(li)XP is granted to the last interacting player."
+    },
+    {
+      "type": "text",
+      "title": "Failure Conditions",
+      "text": "$(li)Heat removed: brewing pauses.$(br)$(li)Inputs removed: progress resets.$(br)$(li)Output blocked: process halts until cleared."
+    },
+    {
+      "type": "text",
+      "title": "Learn the Recipes",
+      "text": "For exact ingredients, XP, and effects, see $(l:hexalia:content/brews)Brews$(/l). You can also store finished brews on the $(l:hexalia:content/functional_blocks#shelf)Shelf$(/l) for quick access."
+    }
+  ]
+}

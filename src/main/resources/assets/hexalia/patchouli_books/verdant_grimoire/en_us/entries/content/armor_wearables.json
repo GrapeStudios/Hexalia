@@ -1,0 +1,34 @@
+{
+  "name": "Armor & Wearables",
+  "icon": "hexalia:ghostveil",
+  "category": "hexalia:content",
+  "sortnum": 10,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Armor & Wearables",
+      "text": "Hexalia grants subtle, situational power through garments and trinkets—tools of survival as much as style."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:ghostveil",
+      "title": "Ghost Veil",
+      "anchor": "ghostveil",
+      "text": "A spectral chestpiece that shrouds the wearer. While crouching, you turn invisible as durability slowly drains—perfect for escapes and stealth."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:bogged_boots",
+      "title": "Bogged Boots",
+      "anchor": "bogged_boots",
+      "text": "Footwear woven for wetlands. Grants a strong boost to swimming speed, aiding underwater travel and exploration."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:earplugs",
+      "title": "Earplugs",
+      "anchor": "earplugs",
+      "text": "Fits the helmet slot to block harmful cries from nearby $(l:hexalia:resources/crops)Mandrakes$(/l). Keep a pair handy for garden work."
+    }
+  ]
+}
