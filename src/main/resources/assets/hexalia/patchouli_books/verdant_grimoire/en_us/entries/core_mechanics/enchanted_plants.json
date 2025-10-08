@@ -1,0 +1,55 @@
+{
+  "name": "Enchanted Plants",
+  "icon": "hexalia:morphora",
+  "category": "hexalia:core_mechanics",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Enchanted Plants",
+      "text": "Mystical flora obtained via $(l:hexalia:core_mechanics/natures_ritual)Nature’s Ritual$(/l). Unlike ordinary plants, these can be activated to create powerful area effects."
+    },
+
+    {
+      "type": "spotlight",
+      "item": "hexalia:morphora",
+      "title": "Morphora",
+      "anchor": "morphora",
+      "text": "Mutates nearby blocks using $(l:hexalia:core_mechanics/mutation)Mutation$(/l).$(br)$(bold)Activate$(): right-click with $(l:hexalia:core_mechanics/mutation#mutavis)Mutavis$(/l)."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:grimshade",
+      "title": "Grimshade",
+      "anchor": "grimshade",
+      "text": "$(bold)Activate$(): right-click with a $(l:hexalia:content/tools#hex_focus)Hex Focus$(/l).$(br)$(li)On activation: Skeletons → Wither Skeletons; up to 3 nearby skulls (incl. Candle/Wall) → Wither variants.$(br)$(li)Aura: Wither + Weakness to non-player mobs within ~8 blocks for ~120s (2400t).$(br)Re-activatable; disabled on Peaceful."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:nautilite",
+      "title": "Nautilite",
+      "anchor": "nautilite",
+      "text": "$(bold)Activate$(): $(l:hexalia:content/tools#hex_focus)Hex Focus$(/l).$(br)$(li)Conduit Power to players in ~16 blocks for ~2 min.$(br)$(li)Damages Guardians/Drowned.$(br)$(li)Removes Mining Fatigue."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:windsong",
+      "title": "Windsong",
+      "anchor": "windsong",
+      "text": "$(bold)Activate$(): $(l:hexalia:content/tools#hex_focus)Hex Focus$(/l).$(br)Creates a 5×5 wind barrier that nullifies incoming projectiles."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:astrylis",
+      "title": "Astrylis",
+      "anchor": "astrylis",
+      "text": "$(bold)Activate$(): right-click with a $(thing)Celestial Crystal$().$(br)Periodically applies bonemeal to nearby crops and saplings for ~2 minutes."
+    },
+
+    {
+      "type": "text",
+      "title": "Notes",
+      "text": "$(li)Most plants require a $(l:hexalia:content/tools#hex_focus)Hex Focus$(/l) to activate.$(br)$(li)Effects are temporary—plan placement for best coverage.$(br)$(li)Plants are intended for direct use rather than crafting."
+    }
+  ]
+}

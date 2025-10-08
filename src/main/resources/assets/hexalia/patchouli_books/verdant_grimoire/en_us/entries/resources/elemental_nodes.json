@@ -1,0 +1,38 @@
+{
+  "name": "Elemental Nodes",
+  "icon": "hexalia:water_node",
+  "category": "hexalia:resources",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Elemental Nodes",
+      "text": "Elemental Nodes are condensed manifestations of the four classical elements — Water, Air, Fire, and Earth. Created through a $(l:hexalia:core_mechanics/natures_ritual)Nature’s Ritual$(/l), each Node embodies raw elemental essence used in crafting."
+    },
+    {
+      "type": "text",
+      "title": "Creation",
+      "text": "Each Node is crafted by transmuting an $(thing)Amethyst Shard$() together with one natural plant and one element-related item at the Ritual Table. These Nodes serve as versatile components across Hexalia’s mechanics."
+    },
+    {
+      "type": "hexalia:ritual_table",
+      "recipe": "hexalia:water_node_from_ritual_table",
+      "title": "Water Node"
+    },
+    {
+      "type": "hexalia:ritual_table",
+      "recipe": "hexalia:air_node_from_ritual_table",
+      "title": "Air Node"
+    },
+    {
+      "type": "hexalia:ritual_table",
+      "recipe": "hexalia:fire_node_from_ritual_table",
+      "title": "Fire Node"
+    },
+    {
+      "type": "hexalia:ritual_table",
+      "recipe": "hexalia:earth_node_from_ritual_table",
+      "title": "Earth Node"
+    }
+  ]
+}

@@ -13,8 +13,9 @@ import vazkii.patchouli.common.base.PatchouliSounds;
 import vazkii.patchouli.common.book.Book;
 import vazkii.patchouli.common.book.BookRegistry;
 
-public class GrimoireItem extends Item {
-    public GrimoireItem(Settings settings) {
+public class GuideBookItem extends Item {
+
+    public GuideBookItem(Settings settings) {
         super(settings);
     }
 

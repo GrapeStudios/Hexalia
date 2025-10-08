@@ -1,0 +1,47 @@
+{
+  "name": "Celestial Infusion",
+  "icon": "hexalia:celestial_bloom",
+  "category": "hexalia:core_mechanics",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Celestial Infusion",
+      "text": "A simple, single-brazier transmutation. Place a Ritual Brazier with a nearby Celestial Bloom, insert the ingredient, then activate with a $(l:hexalia:content/tools#hex_focus)Hex Focus$(/l)."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:ritual_brazier",
+      "title": "Ritual Brazier",
+      "anchor": "brazier",
+      "text": "Core station for infusions. Insert one item, then use a $(l:hexalia:content/tools#hex_focus)Hex Focus$(/l) to start. The brazier is not consumed. You can create one by sneaking with an $(l:hexalia:content/tools#athame)Athame$(/l) on planks."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:celestial_bloom",
+      "title": "Celestial Bloom",
+      "anchor": "bloom",
+      "text": "Must be planted within 3 blocks of the brazier. Consumed during infusion (turns into a Dead Bush). For acquisition, see $(l:hexalia:resources/herbs#celestial_bloom)Celestial Bloom$(/l)."
+    },
+    {
+      "type": "text",
+      "title": "Setup",
+      "text": "$(li)1 $(l:hexalia:core_mechanics/celestial_infusion#brazier)Ritual Brazier$(/l).$(br)$(li)≥1 $(l:hexalia:core_mechanics/celestial_infusion#bloom)Celestial Bloom$(/l) planted within 3 blocks.$(br)$(li)A valid infusion ingredient."
+    },
+    {
+      "type": "text",
+      "title": "How To",
+      "text": "$(li)Place the brazier.$(br)$(li)Plant a Celestial Bloom within 3 blocks.$(br)$(li)Right-click the brazier with the ingredient to load it.$(br)$(li)Right-click the brazier with a $(l:hexalia:content/tools#hex_focus)Hex Focus$(/l) to infuse."
+    },
+    {
+      "type": "text",
+      "title": "What Happens",
+      "text": "$(li)Nearby blooms are checked automatically.$(br)$(li)The input item is consumed; the result appears near the brazier and nudges outward.$(br)$(li)The Celestial Bloom is consumed and becomes a Dead Bush."
+    },
+    {
+      "type": "text",
+      "title": "Tips",
+      "text": "$(li)Bring spare blooms—each infusion consumes one. Duplicate them faster by planting on $(l:hexalia:content/functional_blocks#infused_dirt)Infused Dirt$(/l).$(br)$(li)Braziers are reusable—set up a permanent infusion corner."
+    }
+  ]
+}

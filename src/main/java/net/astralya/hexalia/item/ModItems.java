@@ -186,7 +186,7 @@ public class ModItems {
     static {
         if (ModUtil.isModLoaded("patchouli")) {
             VERDANT_GRIMOIRE = registerItem("verdant_grimoire",
-                    new GrimoireItem(new FabricItemSettings()));
+                    new GuideBookItem(new FabricItemSettings()));
         }
     }
 
