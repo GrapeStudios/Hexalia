@@ -1,0 +1,41 @@
+{
+  "name": "Tools",
+  "icon": "hexalia:hex_focus",
+  "category": "hexalia:content",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Tools",
+      "text": "Hexalia introduces specialized tools essential for gathering resources, performing rituals, and advancing your craft."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:hex_focus",
+      "title": "Hex Focus",
+      "anchor": "hex_focus",
+      "text": "A conduit of will used to activate $(l:hexalia:core_mechanics/celestial_infusion)Celestial Infusion$(/l) and $(l:hexalia:core_mechanics/natures_ritual)Nature’s Rituals$(/l), empower enchanted plants, and transmute deepslate into a Ritual Table."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:mortar_and_pestle",
+      "title": "Mortar and Pestle",
+      "anchor": "mortar",
+      "text": "Crushes plants and minerals to extract their properties (64 uses). Refines Core Herbs into powders/pastes and can grind Silk Fiber to String or Saltsprout to Salt."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:athame",
+      "title": "Athame",
+      "anchor": "athame",
+      "text": "A precise harvesting blade (64 uses). Extracts $(l:hexalia:resources/natural_resources#tree_resin)Tree Resin$(/l) from Dark Oak/Cottonwood, harvests $(l:hexalia:resources/herbs#lotus)Lotus Blossom$(/l) from Lotus Flower, and can craft a Ritual Brazier by sneaking and using on planks."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:sage_pendant",
+      "title": "Sage Pendant",
+      "anchor": "sage_pendant",
+      "text": "Created via a $(l:hexalia:core_mechanics/natures_ritual)Nature’s Ritual$(/l) on a Celestial Crystal. Worn in the off-hand to boost experience gain; consuming XP slowly drains the pendant’s durability."
+    }
+  ]
+}

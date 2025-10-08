@@ -12,8 +12,9 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.registries.ForgeRegistries;
 import vazkii.patchouli.api.PatchouliAPI;
 
-public class GrimoireItem extends Item {
-    public GrimoireItem(Properties pProperties) {
+public class GuideBookItem extends Item {
+
+    public GuideBookItem(Properties pProperties) {
         super(pProperties);
     }
 
