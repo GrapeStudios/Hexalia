@@ -1,4 +1,4 @@
-// 1.21.1	2025-10-03T11:28:49.6778735	Hexalia/Recipes
+// 1.21.1	2025-10-08T19:06:00.5919717	Hexalia/Recipes
 977d7a987ce2238d4ca0ae2932ae26c723d14a3d data\hexalia\advancement\recipes\misc\pink_dye.json
 8c1d9a6ffbde9426e179bc43c0d301ab36a33ffd data\hexalia\recipe\cottonwood_stairs.json
 d0cd4c8dcd81c0c91a1cc910d9026bbd0b1f6d2a data\hexalia\advancement\recipes\decorations\cottonwood_fence.json
@@ -12,6 +12,7 @@ ff1aecfe7929b4518af8bd618d43caca6855b657 data\hexalia\advancement\recipes\ritual
 7c20559ef8aad3cb698bf019928c7cfad6785603 data\hexalia\advancement\recipes\misc\mutavis.json
 c327f3ba4eafb4c21dbb4104a1bc4c1d661f542a data\hexalia\advancement\recipes\misc\rustic_bottle.json
 2f3da7506a69821690f8e802f835f98ff4be403e data\hexalia\recipe\siren_paste.json
+3c9d97eec1f3f815bc732ac33b3bacc589023485 data\hexalia\advancement\recipes\misc\verdant_grimoire.json
 c2b9e9082ff84b5689338318b0287c3c4c513107 data\hexalia\advancement\recipes\misc\mandrake_seeds.json
 631c18dc46b80a9c97d77fcf97b1608eaf0fb8bf data\hexalia\advancement\recipes\transportation\cottonwood_boat.json
 1870f5f26a7ab4faf65b5a10fdb1411009b0b152 data\hexalia\recipe\celestial_crystal_block.json
@@ -54,8 +55,8 @@ c14fd2393e3935103fc6cba108238438634b25a9 data\hexalia\recipe\granite_from_mutati
 6e0dc965652018f42117ec5828271defe10bca1a data\hexalia\recipe\sunfire_tomato_seeds.json
 089c36be5989793d67e02c8b367de95d21034c2e data\hexalia\recipe\brew_of_slimewalker_from_small_cauldron.json
 5b89a5091b5b1bc8b6978c2a16d80ce2a035f1ca data\hexalia\recipe\brew_of_daybloom_from_small_cauldron.json
-31a61cf5fcb447f21079f93ccc078bca53b63ea3 data\hexalia\recipe\cottonwood_door.json
 d7c9bd7eb891c0e605f3cbc9eb34394b50701149 data\hexalia\recipe\purifying_sac.json
+31a61cf5fcb447f21079f93ccc078bca53b63ea3 data\hexalia\recipe\cottonwood_door.json
 fc207a07f8244dd3f569b2a7092a187062432d11 data\hexalia\advancement\recipes\mutation\saltsprout_from_mutation.json
 5af199b33eb8b9ac02c4d7f66bfcdf66cbda8cce data\hexalia\advancement\recipes\small_cauldron\brew_of_slimewalker_from_small_cauldron.json
 e6fc7d47c0af3cec24e3c06db19d82cbff3b57f2 data\hexalia\advancement\recipes\misc\sunfire_tomato_seeds.json
@@ -167,6 +168,7 @@ dfe309ee1d274b6a9eb14e9548ccf7bbd105c73f data\hexalia\advancement\recipes\misc\o
 8da2d8b2c48e761a72ed1d67b7de367c62aab976 data\hexalia\recipe\saltsprout_from_mutation.json
 9b16f2d56b6dfdf7527a118035f899a14f73d47f data\hexalia\recipe\grimshade_from_ritual_table.json
 091671bfae561aaf399824ab83ae997a5b203928 data\hexalia\advancement\recipes\misc\celestial_crystal.json
+479158d46681f0504fc55764f2b295a005879e46 data\hexalia\recipe\verdant_grimoire.json
 5c1633abbebe9e143b8c3149631861e5767170c6 data\hexalia\recipe\spirit_bloom_from_mutation.json
 48fe9549afeab610aa84d6d55cd0f9149cb090b3 data\hexalia\advancement\recipes\food\chillberry_pie.json
 ba8d807a012d50fa65c1a14cdb643d87a52dd1eb data\hexalia\recipe\packed_ice_from_mutation.json

@@ -1,0 +1,26 @@
+{
+  "name": "Natural Resources",
+  "icon": "hexalia:tree_resin",
+  "category": "hexalia:resources",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Natural Resources",
+      "text": "Found deep within the world’s forests and ruins, these resources carry the essence of life and age. Though humble in appearance, they are vital to Hexalia’s craftwork and rituals."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:tree_resin",
+      "title": "Tree Resin",
+      "anchor": "tree_resin",
+      "text": "A sticky, aromatic substance harvested from $(bold)Dark Oak$() and $(bold)Cottonwood Logs$(). Extract it using an $(l:hexalia:content/tools#athame)Athame$(/l), stripping the bark in the process.$(br2)Used in crafting adhesives and preservation formulas."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:ancient_seed",
+      "title": "Ancient Seed",
+      "text": "A rare artifact pulsing with primordial life energy. Found in $(bold)Jungle Pyramid$() chests.$(br2)Can be transformed through a $(l:hexalia:core_mechanics/natures_ritual)Nature’s Ritual$(/l) into the $(l:hexalia:content/weapons_combat_tools#kelpweave_blade)Kelpweave Blade$(/l)."
+    }
+  ]
+}

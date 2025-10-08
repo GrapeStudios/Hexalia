@@ -181,7 +181,7 @@ public class ModItems {
 
     // Compat Items
     public static final Item VERDANT_GRIMOIRE = registerItem("verdant_grimoire",
-            new GrimoireItem(new Item.Settings()));
+            new GuideBookItem(new Item.Settings()));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(HexaliaMod.MODID, name), item);

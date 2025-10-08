@@ -1,0 +1,47 @@
+{
+  "name": "Idols",
+  "icon": "hexalia:purity_idol",
+  "category": "hexalia:content",
+  "sortnum": 21,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Idols",
+      "text": "Idols are compact magical artifacts used to influence weather or cleanse items. All specialized idols are crafted from a base $(thing)Silk Idol$()."
+    },
+    {
+      "type": "patchouli:crafting",
+      "title": "Silk Idol (Base)",
+      "recipe": "hexalia:silk_idol",
+      "text": "Crafted from Silk and $(l:hexalia:resources/herbs)Crushed Herbs$(/l). Serves as the conduit for all specialized idols."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:rainfall_idol",
+      "title": "Rainfall Idol",
+      "anchor": "rainfall",
+      "text": "Hold right-click to activate. $(bold)Effect$(): Summons rain for $(bold)5 minutes$()."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:clarity_idol",
+      "title": "Clarity Idol",
+      "anchor": "clarity",
+      "text": "Hold right-click to activate. $(bold)Effect$(): Clears rain and thunderstorms immediately."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:tempest_idol",
+      "title": "Tempest Idol",
+      "anchor": "tempest",
+      "text": "Hold right-click to activate. $(bold)Effect$(): Summons a thunderstorm for $(bold)5 minutes$()."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:purity_idol",
+      "title": "Purity Idol",
+      "anchor": "purity",
+      "text": "$(bold)Function$(): Removes curses from enchanted items.$(br)$(bold)Use$(): Hold the Purity Idol in one hand and the cursed item in the other—curses like Binding or Vanishing are safely removed."
+    }
+  ]
+}

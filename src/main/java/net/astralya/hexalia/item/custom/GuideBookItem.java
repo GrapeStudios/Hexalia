@@ -12,9 +12,9 @@ import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import vazkii.patchouli.api.PatchouliAPI;
 
-public class GrimoireItem extends Item {
+public class GuideBookItem extends Item {
 
-    public GrimoireItem(Settings settings) {
+    public GuideBookItem(Settings settings) {
         super(settings);
     }
 

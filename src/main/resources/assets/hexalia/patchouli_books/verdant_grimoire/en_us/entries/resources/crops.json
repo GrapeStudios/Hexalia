@@ -1,0 +1,50 @@
+{
+  "name": "Crops",
+  "icon": "hexalia:mandrake",
+  "category": "hexalia:resources",
+  "sortnum": 1,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Cultivation",
+      "text": "Most crops can be planted on farmland like traditional plants, though some can be planted similarly to vines or bushes. They are often used in Hexalia’s brews, foods, and rituals."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:mandrake",
+      "title": "Mandrake",
+      "text": "A twisted root that writhes faintly when pulled from the ground. Found in $(bold)Forests$(). Harvesting without $(l:hexalia:content/armor_wearables#earplugs)Earplugs$(/l) briefly stuns the player with its scream. Used to cook Mandrake Stew, which grants $(thing)Stuffed (45s)$()."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:sunfire_tomato",
+      "title": "Sunfire Tomato",
+      "text": "A bright, golden tomato radiating warmth even in the dark. Found in $(bold)Savannas$(). Used in Spicy Sandwiches to grant $(thing)Speed II (45s)$()."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:chillberries",
+      "title": "Chillberries",
+      "text": "Icy blue berries that cool the air around them. Found in $(bold)Taigas$(); plant berries to grow more. Used in Chillberry Pie, granting $(thing)Fire Protection II (45s)$()."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:saltsprout",
+      "title": "Saltsprout",
+      "anchor": "saltsprout",
+      "text": "A pale herb with crystal-tipped leaves that sparkle faintly. Found through $(l:hexalia:core_mechanics/mutation)Mutation$(/l) or in Herbalist Huts. Crushed into $(l:hexalia:resources/salt#salt)Salt$(/l) for rituals, and eating it causes $(thing)Hunger (30s)$()."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:galeberries",
+      "title": "Galeberries",
+      "text": "Soft violet berries that hum gently when touched. Created through $(thing)Celestial Infusion$() of Glow Berries. Used in Galeberry Cookies for $(thing)Night Vision (30s)$()."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:rabbage",
+      "title": "Rabbage",
+      "text": "A leafy crop with a strange vitality—it almost hops when touched. Created by transmuting Wheat Seeds via $(thing)Nature’s Ritual$(). Can be thrown as a weapon that inflicts $(thing)Bleeding (5s)$()."
+    }
+  ]
+}

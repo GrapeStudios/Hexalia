@@ -330,6 +330,11 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModBlocks.CELESTIAL_CRYSTAL_BLOCK), conditionsFromItem(ModBlocks.CELESTIAL_CRYSTAL_BLOCK))
                 .offerTo(exporter);
 
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.VERDANT_GRIMOIRE)
+                .input(Items.BOOK)
+                .input(ModTags.Items.HERBS)
+                .criterion(hasItem(Items.BOOK), conditionsFromItem(Items.BOOK))
+                .offerTo(exporter);
 
         // Shapeless Recipe for Mortar & Pestle, and Mortar & Pestle Resources
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MORTAR_AND_PESTLE)

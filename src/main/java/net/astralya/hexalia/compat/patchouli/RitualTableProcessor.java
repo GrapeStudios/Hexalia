@@ -2,6 +2,7 @@ package net.astralya.hexalia.compat.patchouli;
 
 import net.astralya.hexalia.recipe.ModRecipes;
 import net.astralya.hexalia.recipe.RitualTableRecipe;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeEntry;
@@ -15,57 +16,59 @@ import java.util.List;
 
 public class RitualTableProcessor implements IComponentProcessor {
 
-    private RitualTableRecipe recipe;
+    protected RitualTableRecipe recipe;
+
+    private static World ctx(World world) {
+        World w = world != null ? world : MinecraftClient.getInstance().world;
+        if (w == null) throw new IllegalStateException("No world available for RitualTableProcessor");
+        return w;
+    }
 
     @Override
     public void setup(World level, IVariableProvider variables) {
-        String recipeIdStr = variables.get("recipe", level.getRegistryManager()).asString();
-        Identifier recipeId = Identifier.of(recipeIdStr);
-
-        List<RecipeEntry<RitualTableRecipe>> all =
-                level.getRecipeManager().listAllOfType(ModRecipes.RITUAL_TABLE_TYPE);
-
+        World w = ctx(level);
+        Identifier id = Identifier.of(variables.get("recipe", level.getRegistryManager()).asString());
+        List<RecipeEntry<RitualTableRecipe>> all = w.getRecipeManager().listAllOfType(ModRecipes.RITUAL_TABLE_TYPE);
         this.recipe = all.stream()
-                .filter(entry -> entry.id().equals(recipeId))
+                .filter(e -> e.id().equals(id))
                 .findFirst()
                 .map(RecipeEntry::value)
-                .orElseThrow(() -> new IllegalArgumentException("Ritual Table recipe not found: " + recipeId));
+                .orElseThrow(() -> new IllegalArgumentException("Ritual Table recipe not found: " + id));
     }
 
     @Override
     public IVariable process(World level, String key) {
         if (recipe == null) return null;
+        World w = ctx(level);
 
         if ("output".equals(key)) {
-            return IVariable.from(recipe.output().copy(), level.getRegistryManager());
-        }
-        if ("header".equals(key)) {
-            return IVariable.from(recipe.output().getName(), level.getRegistryManager());
+            return IVariable.from(recipe.output().copy(), w.getRegistryManager());
+        } else if ("header".equals(key)) {
+            return IVariable.wrap(recipe.output().getName().getString());
         }
 
-        List<Ingredient> ings = recipe.ingredients();
-        if ("input".equals(key)) {
-            if (!ings.isEmpty()) {
-                ItemStack[] stacks = ings.get(0).getMatchingStacks();
-                return stacks.length > 0
-                        ? IVariable.from(stacks[0].copy(), level.getRegistryManager())
-                        : null;
+        if ("input_main".equals(key)) {
+            if (!recipe.ingredients().isEmpty()) {
+                Ingredient main = recipe.ingredients().get(0);
+                ItemStack[] stacks = main.getMatchingStacks();
+                return stacks.length > 0 ? IVariable.from(stacks[0].copy(), w.getRegistryManager()) : null;
             }
             return null;
         }
 
-        if (key.startsWith("salt_items")) {
+        if (key.startsWith("input_brazier")) {
             try {
-                int n = Integer.parseInt(key.substring("salt_items".length()));
-                int idx = 1 + n;
-                if (idx >= 1 && idx < ings.size()) {
-                    ItemStack[] stacks = ings.get(idx).getMatchingStacks();
-                    return stacks.length > 0
-                            ? IVariable.from(stacks[0].copy(), level.getRegistryManager())
-                            : null;
+                int idx = Integer.parseInt(key.substring("input_brazier".length()));
+                int ingIndex = idx;
+                if (ingIndex >= 1 && ingIndex < recipe.ingredients().size()) {
+                    Ingredient ing = recipe.ingredients().get(ingIndex);
+                    ItemStack[] stacks = ing.getMatchingStacks();
+                    return stacks.length > 0 ? IVariable.from(stacks[0].copy(), w.getRegistryManager()) : null;
                 }
             } catch (NumberFormatException ignored) {}
+            return null;
         }
+
         return null;
     }
 }

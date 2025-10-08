@@ -1,0 +1,53 @@
+{
+  "name": "Silk Moth",
+  "icon": "hexalia:silk_moth_spawn_egg",
+  "category": "hexalia:entities",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Silk Moth",
+      "anchor": "silk_moth",
+      "text": "Delicate, light-seeking insects found in $(bold)Dark Forest$() biomes. Key source of silk for early magical crafts. Fragile (≈2 hearts)."
+    },
+    {
+      "type": "spotlight",
+      "item": "minecraft:lantern,hexalia:salt_lamp,minecraft:sea_lantern",
+      "title": "Light Attraction",
+      "text": "Silk Moths are drawn to light sources (blocks tagged $(thing)attracts_moth$()), such as Lanterns, Salt Lamps, and Sea Lanterns. When no lights are nearby, they wander or perch."
+    },
+    {
+      "type": "text",
+      "title": "Behavior & Variants",
+      "text": "$(li)Seeks tagged lights; idles when none nearby.$(br)$(li)Spawns in four colors: Brown, Black, Blue, Pink.$(br)$(li)Low health—avoid incidental damage when collecting."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:silk_fiber",
+      "title": "Silk Fiber",
+      "text": "Drops $(bold)1–2$() on kill. Used across magical crafts, e.g. $(l:hexalia:content/idols)Idols$(/l) and utility items like Cobwebs."
+    },
+    {
+      "type": "text",
+      "title": "Capturing Moths",
+      "text": "Right-click a Silk Moth with a $(thing)Rustic Bottle$() to bottle it humanely. The bottle preserves the moth’s data (including custom names) for collection or transport."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:silkworm_cocoon",
+      "title": "Silkworm Cocoons",
+      "anchor": "cocoons",
+      "text": "Naturally generate on $(bold)Dark Oak$() trunks in Dark Forests, or on $(bold)Cottonwood$() in Swamps. Useful for renewable silk production."
+    },
+    {
+      "type": "text",
+      "title": "Cocoon Interactions",
+      "text": "$(li)$(bold)Moth Emergence$(): Right-click a cocoon with a light-emitting block (e.g., Lantern) to coax out a Silk Moth after a short delay.$(br)$(li)$(bold)Silkworm Harvest$(): Break the cocoon to release a Silkworm; combine with Leaves to obtain $(thing)Silk Fiber$()."
+    },
+    {
+      "type": "text",
+      "title": "Tips",
+      "text": "$(li)Place safe lights (Lanterns/Salt Lamps) to attract moths without burning them.$(br)$(li)Bring Rustic Bottles to collect variants.$(br)$(li)Set up farm trees (Dark Oak or Cottonwood) to spawn cocoons passively."
+    }
+  ]
+}
