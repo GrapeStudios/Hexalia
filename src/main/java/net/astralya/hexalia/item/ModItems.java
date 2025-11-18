@@ -125,7 +125,7 @@ public class ModItems {
     public static final DeferredItem<Item> GHOSTVEIL = ITEMS.register("ghostveil",
             () -> new GhostVeilItem(ModArmorMaterials.GHOST, ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(96)));
     public static final DeferredItem<Item> EARPLUGS = ITEMS.register("earplugs",
-            () -> new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new Item.Properties()));
+            () -> new EarplugsItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new Item.Properties()));
     public static final DeferredItem<Item> BOGGED_BOOTS = ITEMS.register("bogged_boots",
             () -> new BoggedBootsItem(ModArmorMaterials.BOGGED, ArmorItem.Type.BOOTS, new Item.Properties().durability(96)));
 
