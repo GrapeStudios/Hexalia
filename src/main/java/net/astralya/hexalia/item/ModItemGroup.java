@@ -180,7 +180,6 @@ public class ModItemGroup {
                             entries.add(ModItems.VERDANT_GRIMOIRE);
                         }
 
-
                     }).build());
     public static void registerItemGroups(){
     }

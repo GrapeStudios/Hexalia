@@ -364,6 +364,12 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
                 .offerTo(exporter, new Identifier(getRecipeName(ModItems.SALT) + "_from_mortar_and_pestle"));
 
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.VERDANT_GRIMOIRE)
+                .input(Items.BOOK)
+                .input(ModTags.Items.HERBS)
+                .criterion(hasItem(Items.BOOK), conditionsFromItem(Items.BOOK))
+                .offerTo(exporter);
+
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MUTAVIS)
                 .input(Items.BONE_MEAL)
                 .input(ModItems.TREE_RESIN)
