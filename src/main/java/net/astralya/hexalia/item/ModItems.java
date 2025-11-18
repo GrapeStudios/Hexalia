@@ -126,7 +126,7 @@ public class ModItems {
     public static final Item GHOSTVEIL = registerItem("ghostveil",
             new GhostVeilItem(ModArmorMaterials.GHOST, ArmorItem.Type.CHESTPLATE, new Item.Settings().maxDamage(96)));
     public static final Item EARPLUGS = registerItem("earplugs",
-            new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new Item.Settings().maxDamage(96)));
+            new EarplugsItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new Item.Settings().maxDamage(96)));
     public static final Item BOGGED_BOOTS = registerItem("bogged_boots",
             new BoggedBootsItem(ModArmorMaterials.BOGGED, ArmorItem.Type.BOOTS, new Item.Settings().maxDamage(96)));
 
