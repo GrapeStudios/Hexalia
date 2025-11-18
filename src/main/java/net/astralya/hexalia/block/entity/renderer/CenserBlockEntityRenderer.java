@@ -32,15 +32,12 @@ public class CenserBlockEntityRenderer implements BlockEntityRenderer<CenserBloc
 
         BlockState state = censer.getBlockState();
 
-        // RULE: Never render items if the block is lit
         if (state.hasProperty(CenserBlock.LIT) && state.getValue(CenserBlock.LIT)) {
             return;
         }
 
-        // Get items from the block entity
         NonNullList<ItemStack> items = censer.getItems();
 
-        // Check if we have any non-empty items to render
         boolean hasItems = false;
         for (ItemStack stack : items) {
             if (!stack.isEmpty()) {
@@ -49,10 +46,8 @@ public class CenserBlockEntityRenderer implements BlockEntityRenderer<CenserBloc
             }
         }
 
-        // If no items, don't render anything
         if (!hasItems) return;
 
-        // Additional check: if burn time > 0, don't render (should be consumed)
         if (censer.getBurnTime() > 0) {
             return;
         }
