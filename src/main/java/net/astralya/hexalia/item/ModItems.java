@@ -125,13 +125,11 @@ public class ModItems {
     public static final RegistryObject<Item> GHOSTVEIL = ITEMS.register("ghostveil",
             () -> new GhostVeilItem(ModArmorMaterials.GHOST, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
     public static final RegistryObject<Item> EARPLUGS = ITEMS.register("earplugs",
-            () -> new ArmorItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new Item.Properties()));
+            () -> new EarplugsItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new Item.Properties()));
     public static final RegistryObject<Item> BOGGED_BOOTS = ITEMS.register("bogged_boots",
             () -> new BoggedBootsItem(ModArmorMaterials.BOGGED, ArmorItem.Type.BOOTS, new Item.Properties()));
 
-
     // Brews
-
     public static final RegistryObject<Item> RUSTIC_BOTTLE = ITEMS.register("rustic_bottle",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BREW_OF_SPIKESKIN = ITEMS.register("brew_of_spikeskin",
@@ -160,8 +158,6 @@ public class ModItems {
             () -> new BottledMothItem(new Item.Properties()));
     public static final RegistryObject<Item> SILK_MOTH_SPAWN_EGG = ITEMS.register("silk_moth_spawn_egg",
             () -> new CustomModelSpawnEggItem(ModEntities.SILK_MOTH_ENTITY, new Item.Properties()));
-
-
 
     // Wood-related Items
     public static final RegistryObject<Item> COTTONWOOD_SIGN = ITEMS.register("cottonwood_sign",
