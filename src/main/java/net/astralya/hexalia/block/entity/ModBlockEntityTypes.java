@@ -44,7 +44,7 @@ public class ModBlockEntityTypes {
             ).build(null));
 
     public static final BlockEntityType<ModHangingSignBlockEntity> MOD_HANGING_SIGN = Registry.register(Registries.BLOCK_ENTITY_TYPE,
-            Identifier.of(HexaliaMod.MODID, "mod_sign"), BlockEntityType.Builder.create(
+            Identifier.of(HexaliaMod.MODID, "mod_hanging_sign"), BlockEntityType.Builder.create(
                     ModHangingSignBlockEntity::new,
                     ModBlocks.WILLOW_HANGING_SIGN,
                     ModBlocks.WILLOW_HANGING_WALL_SIGN,
