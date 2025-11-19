@@ -24,7 +24,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.function.Supplier;
 
-public class WitchweedBlock extends FlowerBlock {
+public class WitchweedBlock extends HerbBlock {
 
     protected static final VoxelShape SHAPE = Shapes.or(Block.box(2, 0, 1, 15, 7, 15));
 
