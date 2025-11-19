@@ -18,7 +18,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.World;
 
-public class WitchweedBlock extends FlowerBlock {
+public class WitchweedBlock extends HerbBlock {
 
     protected static final VoxelShape SHAPE = Block.createCuboidShape(2, 0, 1, 15, 7, 15);
 
