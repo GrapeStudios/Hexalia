@@ -6,11 +6,6 @@
         "items": [
           {
             "items": [
-              "hexalia:frost_sac"
-            ]
-          },
-          {
-            "items": [
               "hexalia:foul_sac"
             ]
           }
@@ -27,7 +22,7 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "item": "hexalia:frost_sac"
+      "item": "hexalia:foul_sac"
     },
     "show_toast": true,
     "title": {
