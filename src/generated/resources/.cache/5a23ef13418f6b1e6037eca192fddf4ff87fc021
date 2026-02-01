@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-27T07:12:10.7716932	Item Models: hexalia
+// 1.21.1	2026-01-31T21:07:56.6773683	Item Models: hexalia
 e5a7da2fe51e60bdf425b0c5e11675c33540c1ee assets/hexalia/models/item/air_node.json
 15249bcc7b4d170a3f881d5072d7c1103423d8ed assets/hexalia/models/item/ancient_seed.json
 c0e8c094850b55846bff6046e34890e2ac29b293 assets/hexalia/models/item/athame.json
@@ -25,6 +25,7 @@ de75ec168c080890098ef81645329309a37d16b4 assets/hexalia/models/item/earplugs.jso
 276009958a33b1e956c17f75d5ef7467739c65f4 assets/hexalia/models/item/earth_node.json
 d6781f718efec34cbd59ee6d07dcfd85a95d40b3 assets/hexalia/models/item/fire_node.json
 9e1b9711479d253b0a73ad379e32362255521073 assets/hexalia/models/item/foul_sac.json
+5ef966edce0535354a40706487ad5c8b7aa33f2e assets/hexalia/models/item/fragrant_nectar.json
 1490cfc048883bd696fef9f135e8ff375caabb07 assets/hexalia/models/item/frost_sac.json
 34b951148227342bbab5f0eb6adde1aeeab02c0e assets/hexalia/models/item/galeberries.json
 f404d4aedc070166f4a88d264fb53350909208b0 assets/hexalia/models/item/galeberries_cookie.json

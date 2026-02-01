@@ -53,6 +53,16 @@ public class ModRecipes {
                     return "mutation";
                 }
             });
+    
+    public static final DeferredHolder<RecipeSerializer<?>, RecipeSerializer<MortarAndPestleRecipe>> MORTAR_AND_PESTLE_SERIALIZER =
+            SERIALIZERS.register("mortar_and_pestle", MortarAndPestleRecipe.Serializer::new);
+    public static final DeferredHolder<RecipeType<?>, RecipeType<MortarAndPestleRecipe>> MORTAR_AND_PESTLE_TYPE =
+            TYPES.register("mortar_and_pestle", () -> new RecipeType<MortarAndPestleRecipe>() {
+                @Override
+                public String toString() {
+                    return "mortar_and_pestle";
+                }
+            });
 
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);

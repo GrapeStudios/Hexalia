@@ -55,6 +55,9 @@
   "block.hexalia.potted_windsong": "Potted Windsong",
   "block.hexalia.potted_astrylis": "Potted Astrylis Lily",
   "block.hexalia.celestial_crystal_block": "Celestial Crystal Block",
+  "block.hexalia.mortar_and_pestle": "Mortar And Pestle",
+  "block.hexalia.egg_cluster": "Egg Cluster",
+  "block.hexalia.nesting_block": "Nesting Block",
 
   "item.hexalia.mortar_and_pestle": "Mortar and Pestle",
   "item.hexalia.spirit_powder": "Spirit Powder",
@@ -116,8 +119,11 @@
   "item.hexalia.tempest_idol": "Tempest Idol",
   "item.hexalia.purity_idol": "Purity Idol",
   "item.hexalia.mutavis": "Mutavis",
+  "item.hexalia.fragrant_nectar": "Fragrant Nectar",
 
   "entity.hexalia.silk_moth": "Silk Moth",
+
+  "container.hexalia.nesting_block": "Nesting Block",
 
   "tooltip.hexalia.heat": "A heat source is required",
   "tooltip.hexalia.hex_focus_gui": "Right-click with a Hex Focus",
@@ -275,8 +281,10 @@
   "item.hexalia.verdant_grimoire": "Verdant Grimoire",
   "item.hexalia.verdant_grimoire.landing_text": "A detailed book is your trusted tool in matters of witchcraft and plant care.",
 
-  "jei.info.wild_sunfire_tomatoes": "Found in savannas or Barren Huts.",
-  "jei.info.wild_mandrakes": "Found in forests.",
-  "jei.info.saltsprout": "Found in Barren Huts.",
-  "jei.info.chillberry_bushes": "Found in taigas."
+  "jei.info.wild_sunfire_tomatoes": "Wild Sunfire Tomatoes can be found in savannas.",
+  "jei.info.wild_mandrakes": "Wild Mandrakes can be found in forests.",
+  "jei.info.saltsprout": "Saltsprouts can be found in Herbalist Huts, a structure found in swamps.",
+  "jei.info.chillberry_bushes": "Chillberries can be found in taigas.",
+  "jei.info.ritual_brazier": "Can be obtained after right-clicking any planks block with an Athame while crouching.",
+  "jei.info.ritual_table": "Can be obtained after right-clicking Deepslate or Cobbled Deepslate with a Hex Focus."
 }

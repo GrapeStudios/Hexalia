@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "hexalia:siren_paste"
+        "recipe": "hexalia:dream_paste_from_mortar"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "hexalia:siren_paste"
+      "hexalia:dream_paste_from_mortar"
     ]
   }
 }

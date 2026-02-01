@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-25T14:56:14.4894468	Loot Tables
+// 1.21.1	2026-02-01T08:49:28.771969	Loot Tables
 9a3df1e2ec6884b6a1d7d652b794a71a76999999 data/hexalia/loot_table/blocks/astrylis.json
 dad5439821b7d3507e19e2713ebd7503704e41ef data/hexalia/loot_table/blocks/begonia.json
 a145885a91e57a61da1dfe8e5d3756080c0e1c03 data/hexalia/loot_table/blocks/candle_skull.json
@@ -37,6 +37,7 @@ c19b540e7b19c169a86fbea5efc0b187b94390b6 data/hexalia/loot_table/blocks/infused_
 9d05805377af2443b59e5e7dcfc52a6a37907fce data/hexalia/loot_table/blocks/lotus_flower.json
 45d054bcdcd5ae70e9eec79f6a8117d835a7897b data/hexalia/loot_table/blocks/mandrake_crop.json
 152c7b08861eb34b1e99e3f3917469a7e441fdbb data/hexalia/loot_table/blocks/morphora.json
+a044b942e88d38e09b9302dafa88f92bf79ae1b0 data/hexalia/loot_table/blocks/mortar_and_pestle.json
 4fd7cdc715f59b4c570b476647ad239d5b2a7390 data/hexalia/loot_table/blocks/nautilite.json
 7d59d61605a12e519485f1e65e8d1280008399fa data/hexalia/loot_table/blocks/nightshade_bush.json
 a60c7e71b097311c11739956563d49c1ed24984f data/hexalia/loot_table/blocks/pale_mushroom.json

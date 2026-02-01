@@ -3,10 +3,7 @@ package net.astralya.hexalia;
 import net.astralya.hexalia.block.ModFlammables;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.block.ModBlocks;
-import net.astralya.hexalia.block.entity.renderer.CenserBlockEntityRenderer;
-import net.astralya.hexalia.block.entity.renderer.RitualBrazierBlockEntityRenderer;
-import net.astralya.hexalia.block.entity.renderer.RitualTableBlockEntityRenderer;
-import net.astralya.hexalia.block.entity.renderer.ShelfBlockEntityRenderer;
+import net.astralya.hexalia.block.entity.renderer.*;
 import net.astralya.hexalia.component.ModComponents;
 import net.astralya.hexalia.component.item.MothData;
 import net.astralya.hexalia.effect.ModMobEffects;
@@ -20,6 +17,7 @@ import net.astralya.hexalia.loot.ModLootModifiers;
 import net.astralya.hexalia.particle.ModParticleType;
 import net.astralya.hexalia.recipe.ModRecipes;
 import net.astralya.hexalia.screen.ModMenuTypes;
+import net.astralya.hexalia.screen.custom.NestingBlockScreen;
 import net.astralya.hexalia.screen.custom.SmallCauldronScreen;
 import net.astralya.hexalia.sound.ModSoundEvents;
 import net.astralya.hexalia.util.ModArmorMaterials;
@@ -31,11 +29,13 @@ import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.ModelEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import org.slf4j.Logger;
 
@@ -149,14 +149,24 @@ public class HexaliaMod {
             event.registerBlockEntityRenderer(ModBlockEntityTypes.RITUAL_BRAZIER.get(), RitualBrazierBlockEntityRenderer::new);
             event.registerBlockEntityRenderer(ModBlockEntityTypes.SHELF.get(), ShelfBlockEntityRenderer::new);
             event.registerBlockEntityRenderer(ModBlockEntityTypes.CENSER.get(), CenserBlockEntityRenderer::new);
+            event.registerBlockEntityRenderer(ModBlockEntityTypes.MORTAR_AND_PESTLE.get(), MortarAndPestleBlockEntityRenderer::new);
 
             event.registerBlockEntityRenderer(ModBlockEntityTypes.MOD_SIGN.get(), SignRenderer::new);
             event.registerBlockEntityRenderer(ModBlockEntityTypes.MOD_HANGING_SIGN.get(), HangingSignRenderer::new);
         }
 
         @SubscribeEvent
+        public static void registerAdditionalModels(ModelEvent.RegisterAdditional event) {
+            ModelResourceLocation pestle = ModelResourceLocation.standalone(
+                    ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "block/pestle")
+            );
+            event.register(pestle);
+        }
+
+        @SubscribeEvent
         public static void registerScreens(RegisterMenuScreensEvent event) {
             event.register(ModMenuTypes.SMALL_CAULDRON_MENU.get(), SmallCauldronScreen::new);
+            event.register(ModMenuTypes.NESTING_BLOCK_MENU.get(), NestingBlockScreen::new);
         }
     }
 }

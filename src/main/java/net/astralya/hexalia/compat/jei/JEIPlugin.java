@@ -9,10 +9,7 @@ import mezz.jei.api.registration.IRecipeCategoryRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.block.ModBlocks;
-import net.astralya.hexalia.compat.jei.category.MutationRecipeCategory;
-import net.astralya.hexalia.compat.jei.category.RitualBrazierRecipeCategory;
-import net.astralya.hexalia.compat.jei.category.RitualTableRecipeCategory;
-import net.astralya.hexalia.compat.jei.category.SmallCauldronRecipeCategory;
+import net.astralya.hexalia.compat.jei.category.*;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.recipe.*;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -40,6 +37,7 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipeCategories(new RitualBrazierRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new RitualTableRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
         registration.addRecipeCategories(new MutationRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
+        registration.addRecipeCategories(new MortarAndPestleRecipeCategory(registration.getJeiHelpers().getGuiHelper()));
     }
 
     @Override
@@ -48,6 +46,7 @@ public class JEIPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.RITUAL_BRAZIER.get()), RitualBrazierRecipeCategory.RITUAL_BRAZIER_RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.RITUAL_TABLE.get()), RitualTableRecipeCategory.RITUAL_TABLE_RECIPE_TYPE);
         registration.addRecipeCatalyst(new ItemStack(ModItems.MUTAVIS.get()), MutationRecipeCategory.MUTATION_RECIPE_RECIPE_TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModItems.MORTAR_AND_PESTLE.get()), MutationRecipeCategory.MUTATION_RECIPE_RECIPE_TYPE);
     }
 
     @Override
@@ -70,15 +69,52 @@ public class JEIPlugin implements IModPlugin {
                 .getAllRecipesFor(ModRecipes.MUTATION_TYPE.get()).stream().map(RecipeHolder::value).toList();
         registration.addRecipes(MutationRecipeCategory.MUTATION_RECIPE_RECIPE_TYPE, mutationRecipes);
 
-        registration.addIngredientInfo(List.of(new ItemStack(ModBlocks.WILD_SUNFIRE_TOMATO.get()), new ItemStack(ModItems.SUNFIRE_TOMATO.get()),
-                new ItemStack(ModItems.SUNFIRE_TOMATO_SEEDS.get())), VanillaTypes.ITEM_STACK, Component.translatable("jei.info.wild_sunfire_tomatoes"));
-        registration.addIngredientInfo(List.of(new ItemStack(ModBlocks.WILD_MANDRAKE.get()), new ItemStack(ModItems.MANDRAKE.get()), new ItemStack(ModItems.MANDRAKE_SEEDS.get())),
-                VanillaTypes.ITEM_STACK, Component.translatable("jei.info.wild_mandrakes"));
-        registration.addIngredientInfo(List.of(new ItemStack(ModBlocks.CHILLBERRY_BUSH.get()), new ItemStack(ModItems.CHILLBERRIES.get())),
-                VanillaTypes.ITEM_STACK, Component.translatable("jei.info.chillberry_bushes"));
+        List<MortarAndPestleRecipe> mortarAndPestleRecipes = recipeManager
+                .getAllRecipesFor(ModRecipes.MORTAR_AND_PESTLE_TYPE.get()).stream().map(RecipeHolder::value).toList();
+        registration.addRecipes(MortarAndPestleRecipeCategory.MORTAR_AND_PESTLE_RECIPE_TYPE, mortarAndPestleRecipes);
+
+        registration.addIngredientInfo(List.of(
+                        new ItemStack(ModBlocks.WILD_SUNFIRE_TOMATO.get()),
+                        new ItemStack(ModItems.SUNFIRE_TOMATO.get()),
+                        new ItemStack(ModItems.SUNFIRE_TOMATO_SEEDS.get())
+                ),
+                VanillaTypes.ITEM_STACK,
+                Component.translatable("jei.info.wild_sunfire_tomatoes")
+        );
+
+        registration.addIngredientInfo(List.of(
+                        new ItemStack(ModBlocks.WILD_MANDRAKE.get()),
+                        new ItemStack(ModItems.MANDRAKE.get()),
+                        new ItemStack(ModItems.MANDRAKE_SEEDS.get())
+                ),
+                VanillaTypes.ITEM_STACK,
+                Component.translatable("jei.info.wild_mandrakes")
+        );
+
+        registration.addIngredientInfo(List.of(
+                        new ItemStack(ModBlocks.CHILLBERRY_BUSH.get()),
+                        new ItemStack(ModItems.CHILLBERRIES.get())
+                ),
+                VanillaTypes.ITEM_STACK,
+                Component.translatable("jei.info.chillberry_bushes")
+        );
+
         registration.addIngredientInfo(List.of(new ItemStack(ModItems.SALTSPROUT.get())),
-                VanillaTypes.ITEM_STACK, Component.translatable("jei.info.saltsprout"));
+                VanillaTypes.ITEM_STACK,
+                Component.translatable("jei.info.saltsprout")
+        );
+
+        registration.addIngredientInfo(List.of(new ItemStack(ModBlocks.RITUAL_BRAZIER.get())),
+                VanillaTypes.ITEM_STACK,
+                Component.translatable("jei.info.ritual_brazier")
+        );
+
+        registration.addIngredientInfo(List.of(new ItemStack(ModBlocks.RITUAL_TABLE.get())),
+                VanillaTypes.ITEM_STACK,
+                Component.translatable("jei.info.ritual_table")
+        );
     }
+
 
     @Override
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {

@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_bone_meal": {
+    "has_mortar_and_pestle": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:bone_meal"
+            "items": "hexalia:mortar_and_pestle"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "hexalia:mutavis"
+        "recipe": "hexalia:ghost_powder_from_mortar"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_bone_meal"
+      "has_mortar_and_pestle"
     ]
   ],
   "rewards": {
     "recipes": [
-      "hexalia:mutavis"
+      "hexalia:ghost_powder_from_mortar"
     ]
   }
 }

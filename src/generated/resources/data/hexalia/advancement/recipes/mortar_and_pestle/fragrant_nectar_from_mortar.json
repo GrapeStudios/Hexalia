@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "hexalia:ghost_powder"
+        "recipe": "hexalia:fragrant_nectar_from_mortar"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "hexalia:ghost_powder"
+      "hexalia:fragrant_nectar_from_mortar"
     ]
   }
 }

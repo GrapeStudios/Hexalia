@@ -1,10 +1,7 @@
 package net.astralya.hexalia.datagen;
 
 import net.astralya.hexalia.block.ModBlocks;
-import net.astralya.hexalia.datagen.custom.MutationRecipeBuilder;
-import net.astralya.hexalia.datagen.custom.RitualBrazierRecipeBuilder;
-import net.astralya.hexalia.datagen.custom.RitualTableRecipeBuilder;
-import net.astralya.hexalia.datagen.custom.SmallCauldronRecipeBuilder;
+import net.astralya.hexalia.datagen.custom.*;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.util.ModTags;
 import net.minecraft.advancements.critereon.ItemPredicate;
@@ -12,6 +9,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -375,19 +373,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModBlocks.CELESTIAL_CRYSTAL_BLOCK.get()).build()))
                 .save(recipeOutput);
 
-        // Shapeless Recipes for Mortar & Pestle and Refined Resources
+        // Shapeless Recipes
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MORTAR_AND_PESTLE.get())
                 .requires(Items.BOWL)
                 .requires(Items.STONE)
                 .unlockedBy("has_bowl",
                         inventoryTrigger(ItemPredicate.Builder.item().of(Items.BOWL).build()))
-                .save(recipeOutput);
-
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SPIRIT_POWDER.get())
-                .requires(ModBlocks.SPIRIT_BLOOM.get())
-                .requires(ModItems.MORTAR_AND_PESTLE.get())
-                .unlockedBy("has_mortar_and_pestle",
-                        inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.MORTAR_AND_PESTLE.get()).build()))
                 .save(recipeOutput);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.VERDANT_GRIMOIRE.get())
@@ -397,50 +388,59 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         inventoryTrigger(ItemPredicate.Builder.item().of(Items.BOOK).build()))
                 .save(recipeOutput);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SIREN_PASTE.get())
-                .requires(ModItems.SIREN_KELP.get())
-                .requires(ModItems.MORTAR_AND_PESTLE.get())
-                .unlockedBy("has_mortar_and_pestle",
-                        inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.MORTAR_AND_PESTLE.get()).build()))
-                .save(recipeOutput);
+        // Mortar and Pestle Recipes
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.of(ModBlocks.SPIRIT_BLOOM.get()),
+                        new ItemStack(ModItems.SPIRIT_POWDER.get())
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        ModItems.SPIRIT_POWDER.getId().getPath() + "_from_mortar"));
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.DREAM_PASTE.get())
-                .requires(ModBlocks.DREAMSHROOM.get())
-                .requires(ModItems.MORTAR_AND_PESTLE.get())
-                .unlockedBy("has_mortar_and_pestle",
-                        inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.MORTAR_AND_PESTLE.get()).build()))
-                .save(recipeOutput);
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.of(ModItems.SIREN_KELP.get()),
+                        new ItemStack(ModItems.SIREN_PASTE.get())
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        ModItems.SIREN_PASTE.getId().getPath() + "_from_mortar"));
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.GHOST_POWDER.get())
-                .requires(ModBlocks.GHOST_FERN.get())
-                .requires(ModItems.MORTAR_AND_PESTLE.get())
-                .unlockedBy("has_mortar_and_pestle",
-                        inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.MORTAR_AND_PESTLE.get()).build()))
-                .save(recipeOutput);
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.of(ModBlocks.DREAMSHROOM.get()),
+                        new ItemStack(ModItems.DREAM_PASTE.get())
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        ModItems.DREAM_PASTE.getId().getPath() + "_from_mortar"));
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.STRING, 3)
-                .requires(ModItems.SILK_FIBER.get())
-                .requires(ModItems.MORTAR_AND_PESTLE.get())
-                .unlockedBy("has_mortar_and_pestle",
-                        inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.MORTAR_AND_PESTLE.get()).build()))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia", "string_from_mortar_and_pestle"));
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.of(ModBlocks.GHOST_FERN.get()),
+                        new ItemStack(ModItems.GHOST_POWDER.get())
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        ModItems.GHOST_POWDER.getId().getPath() + "_from_mortar"));
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SALT.get())
-                .requires(ModItems.SALTSPROUT.get())
-                .requires(ModItems.MORTAR_AND_PESTLE.get())
-                .unlockedBy("has_mortar_and_pestle",
-                        inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.MORTAR_AND_PESTLE.get()).build()))
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia", "salt_from_mortar_and_pestle"));
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.of(ModItems.SALTSPROUT.get()),
+                        new ItemStack(ModItems.SALT.get())
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        ModItems.SALT.getId().getPath() + "_from_mortar"));
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MUTAVIS.get())
-                .requires(Items.BONE_MEAL)
-                .requires(ModItems.TREE_RESIN)
-                .requires(ModTags.Items.CRUSHED_HERBS)
-                .requires(ModTags.Items.CRUSHED_HERBS)
-                .unlockedBy("has_bone_meal",
-                        inventoryTrigger(ItemPredicate.Builder.item().of(Items.BONE_MEAL).build()))
-                .save(recipeOutput);
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.of(ModItems.TREE_RESIN.get()),
+                        Ingredient.of(Items.BONE_MEAL),
+                        Ingredient.of(ModTags.Items.CRUSHED_HERBS),
+                        new ItemStack(ModItems.MUTAVIS.get())
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        ModItems.MUTAVIS.getId().getPath() + "_from_mortar"));
 
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.of(ItemTags.SMALL_FLOWERS),
+                        Ingredient.of(Items.HONEYCOMB),
+                        Ingredient.of(ModTags.Items.CRUSHED_HERBS),
+                        new ItemStack(ModItems.FRAGRANT_NECTAR.get())
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        ModItems.FRAGRANT_NECTAR.getId().getPath() + "_from_mortar"));
 
         // Mutation Recipes
         MutationRecipeBuilder.mutation(
