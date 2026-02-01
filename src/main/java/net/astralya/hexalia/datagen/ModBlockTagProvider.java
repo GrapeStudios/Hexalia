@@ -44,6 +44,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHELF.get())
                 .add(ModBlocks.CENSER.get())
                 .add(ModBlocks.RITUAL_BRAZIER.get())
+                .add(ModBlocks.NESTING_BLOCK.get())
+                .add(ModBlocks.MORTAR_AND_PESTLE.get())
                 .add(ModBlocks.LOTUS_FLOWER.get());
 
         // Tool requirements
@@ -57,6 +59,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.RITUAL_TABLE.get())
                 .add(ModBlocks.SALT_BLOCK.get())
                 .add(ModBlocks.RITUAL_BRAZIER.get())
+                .add(ModBlocks.NESTING_BLOCK.get())
+                .add(ModBlocks.MORTAR_AND_PESTLE.get())
                 .add(ModBlocks.CELESTIAL_CRYSTAL_BLOCK.get());
     }
 
@@ -140,11 +144,6 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.STRIPPED_WILLOW_LOG.get())
                 .add(ModBlocks.WILLOW_WOOD.get())
                 .add(ModBlocks.STRIPPED_WILLOW_WOOD.get());
-
-        // Special log types
-        tag(ModTags.Blocks.COCOON_LOGS)
-                .add(Blocks.DARK_OAK_LOG)
-                .add(ModBlocks.COTTONWOOD_LOG.get());
 
         // Vanilla wood categories
         tag(BlockTags.LOGS_THAT_BURN)

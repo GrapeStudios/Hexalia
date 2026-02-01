@@ -28,11 +28,12 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.LOTUS_FLOWER.get());
                 output.accept(ModBlocks.WITCHWEED.get());
 
-                // Crushed Herbs
+                // Crushed Items
                 output.accept(ModItems.SPIRIT_POWDER.get());
                 output.accept(ModItems.DREAM_PASTE.get());
                 output.accept(ModItems.SIREN_PASTE.get());
                 output.accept(ModItems.GHOST_POWDER.get());
+                output.accept(ModItems.FRAGRANT_NECTAR.get());
 
                 // Nodes
                 output.accept(ModItems.FIRE_NODE.get());
@@ -94,6 +95,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.RITUAL_BRAZIER.get());
                 output.accept(ModBlocks.CENSER.get());
                 output.accept(ModBlocks.DREAMCATCHER.get());
+                output.accept(ModBlocks.NESTING_BLOCK.get());
 
                 // Salt
                 output.accept(ModItems.SALT.get());

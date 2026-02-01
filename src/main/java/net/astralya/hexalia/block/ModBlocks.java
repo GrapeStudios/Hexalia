@@ -34,6 +34,8 @@ public class ModBlocks {
                     .randomTicks().sound(SoundType.MUD).noOcclusion()));
     public static final DeferredBlock<Block> SILKWORM_COCOON = registerBlock("silkworm_cocoon",
             () -> new CocoonBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_WOOL)));
+    public static final DeferredBlock<Block> EGG_CLUSTER = registerBlock("egg_cluster",
+            () -> new EggClusterBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_BLOCK).noOcclusion()));
 
     // Herbs
     public static final DeferredBlock<Block> SPIRIT_BLOOM = registerBlock("spirit_bloom",
@@ -142,6 +144,10 @@ public class ModBlocks {
             () -> new CenserBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAMPFIRE).noOcclusion().lightLevel(state -> state.getValue(LIT) ? 12 : 0)));
     public static final DeferredBlock<Block> DREAMCATCHER = registerBlock("dreamcatcher",
             () -> new DreamcatcherBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS)));
+    public static final DeferredBlock<Block> MORTAR_AND_PESTLE = BLOCKS.register("mortar_and_pestle",
+            () -> new MortarAndPestleBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.MANGROVE_WOOD).noOcclusion()));
+    public static final DeferredBlock<Block> NESTING_BLOCK = registerBlock("nesting_block",
+            () -> new NestingBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LOOM).noOcclusion()));
     
     // Decorative Blocks
     public static final DeferredBlock<Block> CANDLE_SKULL = BLOCKS.register("candle_skull",

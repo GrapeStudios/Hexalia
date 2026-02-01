@@ -27,7 +27,8 @@ public class ModItems {
     public static final DeferredItem<Item> SALT = ITEMS.registerSimpleItem("salt");
     public static final DeferredItem<Item> TREE_RESIN = ITEMS.registerSimpleItem("tree_resin");
     public static final DeferredItem<Item> SILK_FIBER = ITEMS.registerSimpleItem("silk_fiber");
-    public static final DeferredItem<Item> SILKWORM = ITEMS.registerSimpleItem("silkworm");
+    public static final DeferredItem<Item> SILKWORM = ITEMS.registerItem("silkworm",
+            SilkwormItem::new, new Item.Properties());
     public static final DeferredItem<Item> CELESTIAL_CRYSTAL = ITEMS.registerSimpleItem("celestial_crystal");
     public static final DeferredItem<Item> FIRE_NODE = ITEMS.registerSimpleItem("fire_node");
     public static final DeferredItem<Item> WATER_NODE = ITEMS.registerSimpleItem("water_node");
@@ -70,7 +71,8 @@ public class ModItems {
     public static final DeferredItem<Item> SIREN_PASTE = ITEMS.registerSimpleItem("siren_paste");
     public static final DeferredItem<Item> DREAM_PASTE = ITEMS.registerSimpleItem("dream_paste");
     public static final DeferredItem<Item> GHOST_POWDER = ITEMS.registerSimpleItem("ghost_powder");
-    
+    public static final DeferredItem<Item> FRAGRANT_NECTAR = ITEMS.registerSimpleItem("fragrant_nectar");
+
     // Food Items
     public static final DeferredItem<Item> SPICY_SANDWICH = ITEMS.registerItem("spicy_sandwich",
             Item::new, new Item.Properties().food(ModFoodProperties.SPICY_SANDWICH));
@@ -84,8 +86,6 @@ public class ModItems {
     // Tools
     public static final DeferredItem<Item> HEX_FOCUS = ITEMS.registerItem("hex_focus",
             HexFocusItem::new, new Item.Properties().stacksTo(1));
-    public static final DeferredItem<Item> MORTAR_AND_PESTLE = ITEMS.registerItem("mortar_and_pestle",
-            MortarAndPestleItem::new, new Item.Properties().durability(64));
     public static final DeferredItem<Item> ATHAME = ITEMS.registerItem("athame",
             AthameItem::new, new Item.Properties().durability(64));
     public static final DeferredItem<Item> PURIFYING_SAC = ITEMS.registerItem("purifying_sac",
@@ -117,6 +117,8 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.SALT_LAMP.get(), new Item.Properties()));
     public static final DeferredItem<Item> SMALL_CAULDRON = ITEMS.register("small_cauldron",
             () -> new BlockItem(ModBlocks.SMALL_CAULDRON.get(), new Item.Properties()));
+    public static final DeferredItem<Item> MORTAR_AND_PESTLE = ITEMS.register("mortar_and_pestle",
+            () -> new BlockItem(ModBlocks.MORTAR_AND_PESTLE.get(), new Item.Properties()));
 
     // Weapons & Armor
     public static final DeferredItem<Item> KELPWEAVE_BLADE = ITEMS.register("kelpweave_blade",

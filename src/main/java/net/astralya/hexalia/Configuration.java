@@ -14,6 +14,8 @@ public class Configuration {
     public static final ModConfigSpec.IntValue CENSER_EFFECT_RADIUS;
     public static final ModConfigSpec.IntValue CENSER_EFFECT_DURATION;
 
+    public static final ModConfigSpec.IntValue EGG_CLUSTER_HATCH_DURATION;
+
     public static final String CATEGORY_TOOLS = "tools";
 
     public static ModConfigSpec.DoubleValue MANDRAKE_SCREAM_RADIUS;
@@ -65,6 +67,11 @@ public class Configuration {
         PHANTOM_IGNITE_DURATION = COMMON_BUILDER
                 .comment("Duration (in ticks) phantoms are set on fire. 20 ticks = 1 second.")
                 .defineInRange("phantomIgniteDuration", 100, 0, 600);
+
+        EGG_CLUSTER_HATCH_DURATION = COMMON_BUILDER
+                .comment("Duration (in ticks) before an Egg Cluster hatches into Silkworms. 20 ticks = 1 second.")
+                .defineInRange("eggClusterHatchDuration", 9600, 20, 24000);
+
         COMMON_BUILDER.pop();
 
         // --- CATEGORY: Tools / Items

@@ -92,12 +92,15 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.CELESTIAL_CRYSTAL_BLOCK.get());
         this.dropSelf(ModBlocks.SHELF.get());
         this.dropSelf(ModBlocks.CENSER.get());
+        this.dropSelf(ModBlocks.MORTAR_AND_PESTLE.get());
+        this.dropSelf(ModBlocks.NESTING_BLOCK.get());
 
         // Special drops
         this.add(ModBlocks.INFUSED_FARMLAND.get(), this.createSingleItemTable(ModBlocks.INFUSED_DIRT.get()));
         this.add(ModBlocks.RITUAL_TABLE.get(), this.createSingleItemTable(ModBlocks.RITUAL_TABLE.get()));
         this.add(ModBlocks.SALT_BLOCK.get(), block -> createOreDrop(ModBlocks.SALT_BLOCK.get(), ModItems.SALT.get()));
         this.add(ModBlocks.SILKWORM_COCOON.get(), this.createSingleItemTable(ModItems.SILKWORM.get()));
+        this.add(ModBlocks.EGG_CLUSTER.get(), this.createSingleItemTable(Items.STRING));
     }
 
     private void generateCrops() {

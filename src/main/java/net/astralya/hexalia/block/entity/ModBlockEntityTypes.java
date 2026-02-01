@@ -27,6 +27,12 @@ public class ModBlockEntityTypes {
             () -> BlockEntityType.Builder.of(ShelfBlockEntity::new, ModBlocks.SHELF.get()).build(null));
     public static final Supplier<BlockEntityType<CenserBlockEntity>> CENSER = BLOCK_ENTITY_TYPE.register("censer",
             () -> BlockEntityType.Builder.of(CenserBlockEntity::new, ModBlocks.CENSER.get()).build(null));
+    public static final Supplier<BlockEntityType<MortarAndPestleBlockEntity>> MORTAR_AND_PESTLE = BLOCK_ENTITY_TYPE.register("mortar_and_pestle",
+            () -> BlockEntityType.Builder.of(MortarAndPestleBlockEntity::new, ModBlocks.MORTAR_AND_PESTLE.get()).build(null));
+    public static final Supplier<BlockEntityType<EggClusterBlockEntity>> EGG_CLUSTER = BLOCK_ENTITY_TYPE.register("egg_cluster",
+            () -> BlockEntityType.Builder.of(EggClusterBlockEntity::new, ModBlocks.EGG_CLUSTER.get()).build(null));
+    public static final Supplier<BlockEntityType<NestingBlockEntity>> NESTING_BLOCK = BLOCK_ENTITY_TYPE.register("nesting_block",
+            () -> BlockEntityType.Builder.of(NestingBlockEntity::new, ModBlocks.NESTING_BLOCK.get()).build(null));
 
     // Enchanted Plants
     public static final Supplier<BlockEntityType<NautiliteBlockEntity>> NAUTILITE = BLOCK_ENTITY_TYPE.register("nautilite",

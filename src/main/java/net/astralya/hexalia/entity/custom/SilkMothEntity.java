@@ -1,9 +1,11 @@
 package net.astralya.hexalia.entity.custom;
 
+import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.component.ModComponents;
 import net.astralya.hexalia.component.item.MothData;
 import net.astralya.hexalia.entity.ModEntities;
 import net.astralya.hexalia.entity.ai.silkmoth.AttractedToLightGoal;
+import net.astralya.hexalia.entity.ai.silkmoth.LayEggOnLeavesGoal;
 import net.astralya.hexalia.entity.custom.variant.SilkMothVariant;
 import net.astralya.hexalia.item.ModItems;
 import net.minecraft.Util;
@@ -16,6 +18,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -27,14 +30,17 @@ import net.minecraft.world.entity.SpawnGroupData;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.control.FlyingMoveControl;
+import net.minecraft.world.entity.ai.goal.BreedGoal;
 import net.minecraft.world.entity.ai.goal.FleeSunGoal;
 import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.TemptGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.navigation.FlyingPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
@@ -49,10 +55,22 @@ import software.bernie.geckolib.animation.*;
 
 public class SilkMothEntity extends Animal implements GeoEntity {
 
-    private final AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
+    private static final String TAG_VARIANT = "SilkMothVariant";
+    private static final String TAG_NAME = "MothName";
+    private static final String TAG_EGG_READY = "EggReady";
+    private static final String TAG_EGG_COOLDOWN = "EggCooldownTicks";
+    private static final String TAG_EGG_POS = "EggLayPos";
+
+    private static final int DEFAULT_EGG_COOLDOWN_TICKS = 20 * 20;
 
     private static final EntityDataAccessor<Integer> DATA_ID_TYPE_VARIANT =
             SynchedEntityData.defineId(SilkMothEntity.class, EntityDataSerializers.INT);
+
+    private final AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
+
+    private boolean eggReady;
+    private int eggCooldownTicks;
+    private BlockPos eggLayPos;
 
     public SilkMothEntity(EntityType<? extends Animal> type, Level level) {
         super(type, level);
@@ -75,14 +93,12 @@ public class SilkMothEntity extends Animal implements GeoEntity {
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FleeSunGoal(this, 1.25D));
-        this.goalSelector.addGoal(1, new AttractedToLightGoal(this, 1.25D));
-        this.goalSelector.addGoal(2, new FloatGoal(this));
-        this.goalSelector.addGoal(3, new WaterAvoidingRandomStrollGoal(this, 1.0D));
-    }
-
-    @Override
-    public Vec3 getLeashOffset() {
-        return new Vec3(0.0, 0.5F * this.getEyeHeight(), this.getBbWidth() * 0.2F);
+        this.goalSelector.addGoal(1, new FloatGoal(this));
+        this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
+        this.goalSelector.addGoal(3, new LayEggOnLeavesGoal(this, 1.0D));
+        this.goalSelector.addGoal(4, new TemptGoal(this, 1.1D, Ingredient.of(ModItems.FRAGRANT_NECTAR.get()), false));
+        this.goalSelector.addGoal(5, new AttractedToLightGoal(this, 1.25D));
+        this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
     }
 
     @Override
@@ -100,6 +116,11 @@ public class SilkMothEntity extends Animal implements GeoEntity {
     }
 
     @Override
+    public Vec3 getLeashOffset() {
+        return new Vec3(0.0, 0.5F * this.getEyeHeight(), this.getBbWidth() * 0.2F);
+    }
+
+    @Override
     public boolean isPushable() {
         return false;
     }
@@ -111,7 +132,6 @@ public class SilkMothEntity extends Animal implements GeoEntity {
 
     @Override
     protected void checkFallDamage(double y, boolean onGround, BlockState state, BlockPos pos) {
-
     }
 
     @Override
@@ -121,14 +141,19 @@ public class SilkMothEntity extends Animal implements GeoEntity {
 
     @Override
     public boolean isFood(ItemStack stack) {
-        return false;
+        return stack.is(ModItems.FRAGRANT_NECTAR.get());
     }
 
     @Override
     public void aiStep() {
         super.aiStep();
+
         if (!this.onGround() && this.getDeltaMovement().y < 0) {
             this.setDeltaMovement(this.getDeltaMovement().multiply(1, 0.6, 1));
+        }
+
+        if (!this.level().isClientSide && this.eggCooldownTicks > 0) {
+            this.eggCooldownTicks--;
         }
     }
 
@@ -138,50 +163,187 @@ public class SilkMothEntity extends Animal implements GeoEntity {
     }
 
     @Override
-    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
-        controllers.add(new AnimationController<>(this, "controller", 0, this::predicate));
-    }
+    public void spawnChildFromBreeding(ServerLevel level, Animal partner) {
+        this.setAge(6000);
+        partner.setAge(6000);
+        this.resetLove();
+        partner.resetLove();
 
-    private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> state) {
-        if (!this.onGround()) {
-            state.getController().setAnimation(RawAnimation.begin()
-                    .then("animation.silkmoth.flying", Animation.LoopType.LOOP));
-        } else {
-            state.getController().setAnimation(RawAnimation.begin()
-                    .then("animation.silkmoth.idle", Animation.LoopType.LOOP));
+        if (this.eggCooldownTicks > 0) {
+            level.broadcastEntityEvent(this, (byte) 18);
+            return;
         }
-        return PlayState.CONTINUE;
+
+        SilkMothEntity eggLayer = this.pickEggLayer(partner);
+        if (eggLayer == null) {
+            level.broadcastEntityEvent(this, (byte) 18);
+            return;
+        }
+
+        BlockPos target = eggLayer.findEggLayPos(level);
+        if (target != null) {
+            eggLayer.eggReady = true;
+            eggLayer.eggCooldownTicks = DEFAULT_EGG_COOLDOWN_TICKS;
+            eggLayer.eggLayPos = target;
+
+            level.playSound(null, eggLayer.blockPosition(), SoundEvents.TURTLE_LAY_EGG, SoundSource.NEUTRAL, 1.0F, 1.0F);
+        }
+
+        level.broadcastEntityEvent(this, (byte) 18);
+        level.broadcastEntityEvent(partner, (byte) 18);
     }
 
-    @Override
-    public AnimatableInstanceCache getAnimatableInstanceCache() {
-        return cache;
+    @Nullable
+    private SilkMothEntity pickEggLayer(Animal partner) {
+        if (!(partner instanceof SilkMothEntity other)) {
+            return null;
+        }
+        return this.random.nextBoolean() ? this : other;
+    }
+
+    @Nullable
+    private BlockPos findEggLayPos(ServerLevel level) {
+        BlockPos base = this.blockPosition();
+
+        int radius = 6;
+        int down = 10;
+        int up = 6;
+
+        BlockPos preferred = this.findEggLayPosAboveNesting(level, base, radius, down, up);
+        if (preferred != null) {
+            return preferred;
+        }
+
+        return this.findEggLayPosAboveLeaves(level, base, radius, down, up);
+    }
+
+    @Nullable
+    private BlockPos findEggLayPosAboveNesting(ServerLevel level, BlockPos base, int radius, int down, int up) {
+        int validCount = 0;
+        BlockPos chosen = null;
+
+        for (int dy = -down; dy <= up; dy++) {
+            for (int dx = -radius; dx <= radius; dx++) {
+                for (int dz = -radius; dz <= radius; dz++) {
+                    BlockPos belowPos = base.offset(dx, dy, dz);
+                    if (!level.getBlockState(belowPos).is(ModBlocks.NESTING_BLOCK.get())) {
+                        continue;
+                    }
+
+                    BlockPos placePos = belowPos.above();
+                    if (!level.getBlockState(placePos).isAir()) {
+                        continue;
+                    }
+
+                    validCount++;
+                    if (chosen == null || this.random.nextInt(validCount) == 0) {
+                        chosen = placePos;
+                    }
+                }
+            }
+        }
+
+        return chosen;
+    }
+
+    @Nullable
+    private BlockPos findEggLayPosAboveLeaves(ServerLevel level, BlockPos base, int radius, int down, int up) {
+        int validCount = 0;
+        BlockPos chosen = null;
+
+        for (int dy = -down; dy <= up; dy++) {
+            for (int dx = -radius; dx <= radius; dx++) {
+                for (int dz = -radius; dz <= radius; dz++) {
+                    BlockPos belowPos = base.offset(dx, dy, dz);
+                    if (!level.getBlockState(belowPos).is(BlockTags.LEAVES)) {
+                        continue;
+                    }
+
+                    BlockPos placePos = belowPos.above();
+                    if (!level.getBlockState(placePos).isAir()) {
+                        continue;
+                    }
+
+                    validCount++;
+                    if (chosen == null || this.random.nextInt(validCount) == 0) {
+                        chosen = placePos;
+                    }
+                }
+            }
+        }
+
+        return chosen;
+    }
+
+    public boolean isValidEggTarget(ServerLevel level, BlockPos pos) {
+        if (!level.getBlockState(pos).isAir()) {
+            return false;
+        }
+        BlockState below = level.getBlockState(pos.below());
+        return below.is(BlockTags.LEAVES) || below.is(ModBlocks.NESTING_BLOCK.get());
+    }
+
+
+    public boolean isEggReady() {
+        return this.eggReady;
+    }
+
+    @Nullable
+    public BlockPos getEggLayPos() {
+        return this.eggLayPos;
+    }
+
+    public void clearEggTarget() {
+        this.eggReady = false;
+        this.eggLayPos = null;
+    }
+
+    public void finishEggLaying() {
+        this.eggReady = false;
+        this.eggLayPos = null;
     }
 
     @Override
     public InteractionResult mobInteract(Player player, InteractionHand hand) {
         ItemStack heldItem = player.getItemInHand(hand);
 
-        if (heldItem.is(ModItems.RUSTIC_BOTTLE.get()) && !this.level().isClientSide) {
-            ItemStack bottledMoth = new ItemStack(ModItems.BOTTLED_MOTH.get());
-            String name = this.hasCustomName() ? this.getCustomName().getString() : "";
-            int variantId = this.getVariant().getId();
-
-            bottledMoth.set(ModComponents.MOTH.get(), new MothData(name, variantId));
-
-            this.remove(RemovalReason.DISCARDED);
-
-            if (!player.getInventory().add(bottledMoth)) {
-                this.spawnAtLocation(bottledMoth);
-            }
-
-            this.level().playSound(null, this.getX(), this.getY(), this.getZ(),
-                    SoundEvents.ITEM_FRAME_REMOVE_ITEM, SoundSource.PLAYERS, 1.0F, 1.0F);
-            heldItem.shrink(1);
-            return InteractionResult.SUCCESS;
+        InteractionResult bottleResult = this.tryBottle(player, heldItem);
+        if (bottleResult.consumesAction()) {
+            return bottleResult;
         }
 
         return super.mobInteract(player, hand);
+    }
+
+    private InteractionResult tryBottle(Player player, ItemStack heldItem) {
+        if (!heldItem.is(ModItems.RUSTIC_BOTTLE.get())) {
+            return InteractionResult.PASS;
+        }
+
+        if (this.level().isClientSide) {
+            return InteractionResult.SUCCESS;
+        }
+
+        ItemStack bottledMoth = new ItemStack(ModItems.BOTTLED_MOTH.get());
+        String name = this.hasCustomName() ? this.getCustomName().getString() : "";
+        int variantId = this.getVariant().getId();
+
+        bottledMoth.set(ModComponents.MOTH.get(), new MothData(name, variantId));
+
+        this.remove(RemovalReason.DISCARDED);
+
+        if (!player.getInventory().add(bottledMoth)) {
+            this.spawnAtLocation(bottledMoth);
+        }
+
+        this.level().playSound(null, this.getX(), this.getY(), this.getZ(),
+                SoundEvents.ITEM_FRAME_REMOVE_ITEM, SoundSource.PLAYERS, 1.0F, 1.0F);
+
+        if (!player.getAbilities().instabuild) {
+            heldItem.shrink(1);
+        }
+
+        return InteractionResult.SUCCESS;
     }
 
     @Override
@@ -199,8 +361,8 @@ public class SilkMothEntity extends Animal implements GeoEntity {
     }
 
     @Override
-    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty,
-                                        MobSpawnType reason, @Nullable SpawnGroupData spawnGroupData) {
+    public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType reason,
+                                        @Nullable SpawnGroupData spawnGroupData) {
         this.setVariant(Util.getRandom(SilkMothVariant.values(), this.random));
         return super.finalizeSpawn(level, difficulty, reason, spawnGroupData);
     }
@@ -208,21 +370,62 @@ public class SilkMothEntity extends Animal implements GeoEntity {
     @Override
     public void addAdditionalSaveData(CompoundTag tag) {
         super.addAdditionalSaveData(tag);
-        tag.putInt("SilkMothVariant", this.getVariant().getId());
+        tag.putInt(TAG_VARIANT, this.getVariant().getId());
+        tag.putBoolean(TAG_EGG_READY, this.eggReady);
+        tag.putInt(TAG_EGG_COOLDOWN, this.eggCooldownTicks);
+
+        if (this.eggLayPos != null) {
+            tag.putLong(TAG_EGG_POS, this.eggLayPos.asLong());
+        }
+
         if (this.hasCustomName()) {
-            tag.putString("MothName", this.getCustomName().getString());
+            tag.putString(TAG_NAME, this.getCustomName().getString());
         }
     }
 
     @Override
     public void readAdditionalSaveData(CompoundTag tag) {
         super.readAdditionalSaveData(tag);
-        if (tag.contains("SilkMothVariant")) {
-            this.setVariant(SilkMothVariant.byId(tag.getInt("SilkMothVariant")));
+
+        if (tag.contains(TAG_VARIANT)) {
+            this.setVariant(SilkMothVariant.byId(tag.getInt(TAG_VARIANT)));
         }
-        if (tag.contains("MothName")) {
-            this.setCustomName(Component.literal(tag.getString("MothName")));
+
+        if (tag.contains(TAG_EGG_READY)) {
+            this.eggReady = tag.getBoolean(TAG_EGG_READY);
+        }
+
+        if (tag.contains(TAG_EGG_COOLDOWN)) {
+            this.eggCooldownTicks = tag.getInt(TAG_EGG_COOLDOWN);
+        }
+
+        if (tag.contains(TAG_EGG_POS)) {
+            this.eggLayPos = BlockPos.of(tag.getLong(TAG_EGG_POS));
+        } else {
+            this.eggLayPos = null;
+        }
+
+        if (tag.contains(TAG_NAME)) {
+            this.setCustomName(Component.literal(tag.getString(TAG_NAME)));
         }
     }
 
+    @Override
+    public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+        controllers.add(new AnimationController<>(this, "controller", 0, this::predicate));
+    }
+
+    private <T extends GeoAnimatable> PlayState predicate(AnimationState<T> state) {
+        if (!this.onGround()) {
+            state.getController().setAnimation(RawAnimation.begin().then("animation.silkmoth.flying", Animation.LoopType.LOOP));
+        } else {
+            state.getController().setAnimation(RawAnimation.begin().then("animation.silkmoth.idle", Animation.LoopType.LOOP));
+        }
+        return PlayState.CONTINUE;
+    }
+
+    @Override
+    public AnimatableInstanceCache getAnimatableInstanceCache() {
+        return cache;
+    }
 }

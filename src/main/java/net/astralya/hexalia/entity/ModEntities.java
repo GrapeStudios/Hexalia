@@ -21,7 +21,7 @@ public class ModEntities {
             DeferredRegister.create(BuiltInRegistries.ENTITY_TYPE, HexaliaMod.MODID);
 
     public static final Supplier<EntityType<SilkMothEntity>> SILK_MOTH_ENTITY  = ENTITY_TYPE.register("silk_moth",
-            () -> EntityType.Builder.of(SilkMothEntity::new, MobCategory.CREATURE).sized(0.6f, 0.06f).build("silk_moth"));
+            () -> EntityType.Builder.of(SilkMothEntity::new, MobCategory.CREATURE).sized(0.6f, 0.45f).build("silk_moth"));
 
     // Projectiles
 

@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-01T08:49:28.771969	Loot Tables
+// 1.21.1	2026-02-01T14:47:54.7975411	Loot Tables
 9a3df1e2ec6884b6a1d7d652b794a71a76999999 data/hexalia/loot_table/blocks/astrylis.json
 dad5439821b7d3507e19e2713ebd7503704e41ef data/hexalia/loot_table/blocks/begonia.json
 a145885a91e57a61da1dfe8e5d3756080c0e1c03 data/hexalia/loot_table/blocks/candle_skull.json
@@ -27,6 +27,7 @@ d7b7ee7b487af310878a6ff54dde4ea9acd97ddf data/hexalia/loot_table/blocks/cottonwo
 a66aa89047b35650cdd91fba5b97d41a0f9f60dc data/hexalia/loot_table/blocks/dahlia.json
 f3d3fca576ecd83de493f1be17fdf082f5a00da9 data/hexalia/loot_table/blocks/dreamcatcher.json
 49a7ceeb28a3f3337cb7c7a63f96cad98c95d315 data/hexalia/loot_table/blocks/dreamshroom.json
+3e0520583d5219c84e29ebb9e19f055311d7e1b8 data/hexalia/loot_table/blocks/egg_cluster.json
 5af219d57d6f9327c16bf858c63d014f066bea4d data/hexalia/loot_table/blocks/galeberries_vine.json
 953135d23c70011be2d37b2731ff19fa0740bdfa data/hexalia/loot_table/blocks/galeberries_vine_plant.json
 9709db5fa6bb485bce03b928f3719ada92a1a2e7 data/hexalia/loot_table/blocks/ghost_fern.json
@@ -39,6 +40,7 @@ c19b540e7b19c169a86fbea5efc0b187b94390b6 data/hexalia/loot_table/blocks/infused_
 152c7b08861eb34b1e99e3f3917469a7e441fdbb data/hexalia/loot_table/blocks/morphora.json
 a044b942e88d38e09b9302dafa88f92bf79ae1b0 data/hexalia/loot_table/blocks/mortar_and_pestle.json
 4fd7cdc715f59b4c570b476647ad239d5b2a7390 data/hexalia/loot_table/blocks/nautilite.json
+ead0806c9eeb8e2ddd6c75d28840ec637d76c74e data/hexalia/loot_table/blocks/nesting_block.json
 7d59d61605a12e519485f1e65e8d1280008399fa data/hexalia/loot_table/blocks/nightshade_bush.json
 a60c7e71b097311c11739956563d49c1ed24984f data/hexalia/loot_table/blocks/pale_mushroom.json
 3188b6eb0aaad7708cb104ff9cbe56c4d2cc73eb data/hexalia/loot_table/blocks/potted_astrylis.json

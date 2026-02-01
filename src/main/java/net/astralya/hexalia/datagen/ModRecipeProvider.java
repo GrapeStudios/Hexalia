@@ -9,7 +9,6 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -156,6 +155,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('P', ModTags.Items.CRUSHED_HERBS)
                 .unlockedBy("has_silk_fiber",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SILK_FIBER.get()).build()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.NESTING_BLOCK.get())
+                .pattern("SSS")
+                .pattern("PNP")
+                .pattern("PPP")
+                .define('P', ItemTags.PLANKS)
+                .define('N', ItemTags.LEAVES)
+                .define('S', Items.STRING)
+                .unlockedBy("has_string",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(Items.STRING).build()))
                 .save(recipeOutput);
 
         // Recipes for Vanilla Items & Blocks

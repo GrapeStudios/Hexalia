@@ -1,7 +1,6 @@
-// 1.21.1	2025-09-25T14:56:14.4928908	Tags for minecraft:block mod id hexalia
+// 1.21.1	2026-02-01T14:47:54.8025406	Tags for minecraft:block mod id hexalia
 14835ee05f2eb66cecd359de9208e4332b57c085 data/c/tags/block/salt_blocks.json
 d13705e4e223106a2908c0349ca698c84760c4b2 data/hexalia/tags/block/attracts_moth.json
-0d97dbca91edb8ab198d9509547971f6e43a9334 data/hexalia/tags/block/cocoon_logs.json
 0a9e24febf41067c0d25e9952dd0c726cba969b9 data/hexalia/tags/block/cottonwood_logs.json
 04c0e07d84d58d99b11955eb3d34ed34630e541e data/hexalia/tags/block/heating_block.json
 b2ac93b5e91295fc810ffbae3327970632ffe14a data/hexalia/tags/block/willow_logs.json
@@ -17,10 +16,10 @@ eb7cdee2df2520e26dfd858452f9d4e10c73afb1 data/minecraft/tags/block/flower_pots.j
 52ca27f06c2fd8da7d626efb5281c0af60e4ef3e data/minecraft/tags/block/inside_step_sound_blocks.json
 f134380f62b34107c4f630aa282ff1e39dc6ae44 data/minecraft/tags/block/leaves.json
 e96141f97c40cc3068df2fc925fb0cd87fddb6c8 data/minecraft/tags/block/logs_that_burn.json
-6a3dba50ba907f2a5bb0eeb287889880a8747210 data/minecraft/tags/block/mineable/axe.json
+fc5a91547b6217bbcbe407b29427f90ced64a75d data/minecraft/tags/block/mineable/axe.json
 4898c402efcbf3ddc9d460aab239b79b10801fd4 data/minecraft/tags/block/mineable/pickaxe.json
 fac8397cd09019db8b269d649dc5cf853a84a0e1 data/minecraft/tags/block/mushroom_grow_block.json
-080de1eb8f93f41de549ad20ae93e22db93c77d1 data/minecraft/tags/block/needs_stone_tool.json
+415d3f0d6d5949d5f6070ff7ab2a841fd1b4fa46 data/minecraft/tags/block/needs_stone_tool.json
 1f77a399f423b315344121cfc2e387008e06be66 data/minecraft/tags/block/planks.json
 4d9d32d611d6acdb68f03806301ddfc34f1f6e69 data/minecraft/tags/block/saplings.json
 5dfae965330d059cacdd7206c4dfc016b31d85a6 data/minecraft/tags/block/signs.json
