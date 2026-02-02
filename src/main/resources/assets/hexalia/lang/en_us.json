@@ -120,6 +120,7 @@
   "item.hexalia.purity_idol": "Purity Idol",
   "item.hexalia.mutavis": "Mutavis",
   "item.hexalia.fragrant_nectar": "Fragrant Nectar",
+  "item.hexalia.thornbow": "Thornbow",
 
   "entity.hexalia.silk_moth": "Silk Moth",
 
@@ -145,6 +146,8 @@
   "tooltip.hexalia.bottled_moth": "Contains: %s",
   "tooltip.hexalia.enchanted_plant": "Enchanted Plant",
   "tooltip.hexalia.shelf": "Can store up to 6 brews or potions",
+  "tooltip.hexalia.thornbow.no_arrows": "Consumes no arrows.",
+  "tooltip.hexalia.thornbow.bleeding": "Thorn shots inflict bleeding.",
 
   "sounds.hexalia.mandrake_scream": "Mandrake screamed",
   "sounds.hexalia.ritual_success": "Ritual completed",

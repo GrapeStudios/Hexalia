@@ -10,6 +10,7 @@ import net.astralya.hexalia.effect.ModMobEffects;
 import net.astralya.hexalia.entity.ModEntities;
 import net.astralya.hexalia.entity.boat.ModBoatRenderer;
 import net.astralya.hexalia.entity.custom.client.SilkMothRenderer;
+import net.astralya.hexalia.entity.custom.client.ThornArrowRenderer;
 import net.astralya.hexalia.item.ModCreativeModeTabs;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.effect.ModEffectCure;
@@ -130,20 +131,47 @@ public class HexaliaMod {
             EntityRenderers.register(ModEntities.MOD_BOAT.get(), context -> new ModBoatRenderer(context, false));
             EntityRenderers.register(ModEntities.MOD_CHEST_BOAT.get(), context -> new ModBoatRenderer(context, true));
 
+            EntityRenderers.register(ModEntities.THORN_ARROW.get(), ThornArrowRenderer::new);
+
             EntityRenderers.register(ModEntities.SILK_MOTH_ENTITY.get(), SilkMothRenderer::new);
 
             Sheets.addWoodType(ModWoodTypes.COTTONWOOD);
             Sheets.addWoodType(ModWoodTypes.WILLOW);
 
-            ItemProperties.register(ModItems.BOTTLED_MOTH.get(),
+            ItemProperties.register(
+                    ModItems.BOTTLED_MOTH.get(),
                     ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "variant"),
                     (stack, level, entity, seed) -> {
                         MothData data = stack.get(ModComponents.MOTH.get());
                         return data != null ? (float) data.variantId() : 0f;
-                    });
+                    }
+            );
+
+            event.enqueueWork(() -> {
+                ItemProperties.register(
+                        ModItems.THORNBOW.get(),
+                        ResourceLocation.withDefaultNamespace("pull"),
+                        (stack, level, entity, seed) -> {
+                            if (entity == null) {
+                                return 0.0F;
+                            }
+                            if (entity.getUseItem() != stack) {
+                                return 0.0F;
+                            }
+                            return (stack.getUseDuration(entity) - entity.getUseItemRemainingTicks()) / 20.0F;
+                        }
+                );
+
+                ItemProperties.register(
+                        ModItems.THORNBOW.get(),
+                        ResourceLocation.withDefaultNamespace("pulling"),
+                        (stack, level, entity, seed) ->
+                                entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F
+                );
+            });
         }
 
-        @SubscribeEvent
+    @SubscribeEvent
         public static void registerBER(EntityRenderersEvent.RegisterRenderers event) {
             event.registerBlockEntityRenderer(ModBlockEntityTypes.RITUAL_TABLE.get(), RitualTableBlockEntityRenderer::new);
             event.registerBlockEntityRenderer(ModBlockEntityTypes.RITUAL_BRAZIER.get(), RitualBrazierBlockEntityRenderer::new);

@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-25T14:56:14.4938957	Tags for minecraft:item mod id hexalia
+// 1.21.1	2026-02-01T22:09:19.1761244	Tags for minecraft:item mod id hexalia
 c2e7f2f3472c1200322aaafc9a3ccad9b5e2ab8f data/c/tags/item/crops.json
 2cd7b115cf8b4f8d7041a66dc115d81b5f01e549 data/c/tags/item/foods.json
 2dd44f7e98626d3ba68fc97c88b6456b306cf2ca data/c/tags/item/foods/berry.json
@@ -21,6 +21,7 @@ cf908acc2e525a3d3eb097c4741d6d357682c2a7 data/c/tags/item/salt.json
 b2ac93b5e91295fc810ffbae3327970632ffe14a data/hexalia/tags/item/willow_logs.json
 f3cc2dd5ecf1532bbb967f1c90716ff45b38c136 data/minecraft/tags/item/boats.json
 075b893ec4b335ad1b86e750d584a3e91b2e7131 data/minecraft/tags/item/chest_boats.json
+a0f37c79468375b1d559715974a57615f1f9a8fa data/minecraft/tags/item/enchantable/bow.json
 b7d830f27d76289cfc894827fa4c09c515ab8ef1 data/minecraft/tags/item/fence_gates.json
 6bd47b8abb74332ea4af03509a67b7d3f5bd8634 data/minecraft/tags/item/flowers.json
 2dd44f7e98626d3ba68fc97c88b6456b306cf2ca data/minecraft/tags/item/fox_food.json

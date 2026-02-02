@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "E": {
+      "item": "hexalia:earth_node"
+    },
+    "F": {
+      "item": "minecraft:string"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "T": {
+      "item": "hexalia:tree_resin"
+    }
+  },
+  "pattern": [
+    " ST",
+    "SEF",
+    " ST"
+  ],
+  "result": {
+    "count": 1,
+    "id": "hexalia:thornbow"
+  }
+}

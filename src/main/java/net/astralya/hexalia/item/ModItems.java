@@ -130,6 +130,8 @@ public class ModItems {
             () -> new EarplugsItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new Item.Properties()));
     public static final DeferredItem<Item> BOGGED_BOOTS = ITEMS.register("bogged_boots",
             () -> new BoggedBootsItem(ModArmorMaterials.BOGGED, ArmorItem.Type.BOOTS, new Item.Properties().durability(96)));
+    public static final DeferredItem<Item> THORNBOW = ITEMS.register("thornbow",
+            () -> new ThornbowItem(new Item.Properties().durability(128)));
 
     // Brews
     public static final DeferredItem<Item> RUSTIC_BOTTLE = ITEMS.registerSimpleItem("rustic_bottle");

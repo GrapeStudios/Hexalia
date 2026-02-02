@@ -3,6 +3,7 @@ package net.astralya.hexalia.entity;
 import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.entity.boat.ModBoatEntity;
 import net.astralya.hexalia.entity.boat.ModChestBoatEntity;
+import net.astralya.hexalia.entity.custom.projectile.ThornArrowEntity;
 import net.astralya.hexalia.entity.custom.projectile.FoulSacProjectile;
 import net.astralya.hexalia.entity.custom.projectile.FrostSacProjectile;
 import net.astralya.hexalia.entity.custom.projectile.PurifyingSacProjectile;
@@ -36,6 +37,10 @@ public class ModEntities {
 
     public static final Supplier<EntityType<FrostSacProjectile>> FROST_SAC = ENTITY_TYPE.register("frost_sac",
             () -> EntityType.Builder.<FrostSacProjectile>of(FrostSacProjectile::new, MobCategory.MISC).sized(0.5f, 0.5f).build("frost_sac"));
+
+    public static final Supplier<EntityType<ThornArrowEntity>> THORN_ARROW = ENTITY_TYPE.register("thorn_arrow",
+            () -> EntityType.Builder.<ThornArrowEntity>of(ThornArrowEntity::new, MobCategory.MISC).sized(0.5f, 0.5f)
+                    .clientTrackingRange(4).updateInterval(20).build("thorn_arrow"));
 
     // Boats
 

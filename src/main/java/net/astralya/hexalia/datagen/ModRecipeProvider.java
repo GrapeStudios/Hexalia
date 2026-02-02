@@ -285,6 +285,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModBlocks.WITCHWEED.get()).build()))
                 .save(recipeOutput);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.THORNBOW.get())
+                .pattern(" ST")
+                .pattern("SEF")
+                .pattern(" ST")
+                .define('S', Items.STICK)
+                .define('E', ModItems.EARTH_NODE.get())
+                .define('T', ModItems.TREE_RESIN)
+                .define('F', Items.STRING)
+                .unlockedBy("has_earth_node",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.EARTH_NODE).build()))
+                .save(recipeOutput);
+
         // Shapeless Recipes for Seeds
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MANDRAKE_SEEDS.get())
                 .requires(ModItems.MANDRAKE.get())

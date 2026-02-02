@@ -116,6 +116,10 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(Blocks.PINK_TULIP.asItem())
                 .add(Blocks.RED_TULIP.asItem())
                 .add(Blocks.WHITE_TULIP.asItem());
+
+        // Other
+        tag(ModTags.Items.ENCHANTABLE_BOW)
+                .add(ModItems.THORNBOW.get());
     }
 
     private void addTreeRelatedTags() {

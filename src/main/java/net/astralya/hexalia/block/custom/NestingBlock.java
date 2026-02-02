@@ -27,6 +27,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.Containers;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
@@ -36,7 +37,14 @@ public class NestingBlock extends BaseEntityBlock {
 
     public static final MapCodec<NestingBlock> CODEC = simpleCodec(NestingBlock::new);
 
-    private static final VoxelShape SHAPE = Block.box(1.0F, 0.0F, 1.0F, 15.0F, 8.0F, 15.0F);
+    public static final VoxelShape SHAPE = Shapes.or(
+            Shapes.box(0, 0.125, 0, 1, 1, 1),
+            Shapes.box(0, 0, 0.8125, 0.1875, 0.125, 1),
+            Shapes.box(0, 0, 0, 0.1875, 0.125, 0.1875),
+            Shapes.box(0.8125, 0, 0, 1, 0.125, 0.1875),
+            Shapes.box(0.8125, 0, 0.8125, 1, 0.125, 1)
+
+    );
 
     public NestingBlock(Properties properties) {
         super(properties);

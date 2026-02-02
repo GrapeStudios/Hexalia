@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-01T14:47:54.8005404	Recipes
+// 1.21.1	2026-02-01T21:32:46.1272347	Recipes
 c327f3ba4eafb4c21dbb4104a1bc4c1d661f542a data/hexalia/advancement/recipes/brewing/rustic_bottle.json
 a8312b0bfae801aa7103827a4307c5c829b7dbf1 data/hexalia/advancement/recipes/building_blocks/celestial_crystal_block.json
 e15994b53b3dfc7b695ca1c1c4e0cf392e20aaa3 data/hexalia/advancement/recipes/building_blocks/cottonwood_planks.json
@@ -13,6 +13,7 @@ bc983f4930ae62d9dab0ed97fa1487a31b4288a0 data/hexalia/advancement/recipes/combat
 e8cc0d9676ca166d439529396a0ab0e84a710f5e data/hexalia/advancement/recipes/combat/frost_sac.json
 1133e654019673bd6dd672b909e1d0e76c6e8775 data/hexalia/advancement/recipes/combat/ghostveil.json
 3c37bba23f0eb1aa9aee70d68636ddf454418905 data/hexalia/advancement/recipes/combat/purifying_sac.json
+5fc795cfa058623a9fdca3bb2980db86771f2898 data/hexalia/advancement/recipes/combat/thornbow.json
 00471ca5da819bbb74159d665fcfad61cd5826c4 data/hexalia/advancement/recipes/decorations/candle_skull.json
 4050d3d45a0fb353eda93d1cee13d8d6b63ac7ef data/hexalia/advancement/recipes/decorations/censer.json
 d0cd4c8dcd81c0c91a1cc910d9026bbd0b1f6d2a data/hexalia/advancement/recipes/decorations/cottonwood_fence.json
@@ -207,6 +208,7 @@ df718c7b759edf527dc93499945258e79bafbf37 data/hexalia/recipe/saltsprout_from_mut
 ddef98ffca8627ef9c7602dcf54ff3e4a6987b75 data/hexalia/recipe/spirit_powder_from_mortar.json
 6e0dc965652018f42117ec5828271defe10bca1a data/hexalia/recipe/sunfire_tomato_seeds.json
 e18e54dc52f9f9818749e589e9112d7369adcc7f data/hexalia/recipe/tempest_idol.json
+3b336588eb19d010531b2fdcb3f6ca6f01c76840 data/hexalia/recipe/thornbow.json
 287690244e50b6e6fc1832542f65596233d0d7d8 data/hexalia/recipe/tuff_from_mutation.json
 479158d46681f0504fc55764f2b295a005879e46 data/hexalia/recipe/verdant_grimoire.json
 3264cf51570650181d04671e3eadf01492a5d23b data/hexalia/recipe/water_node_from_ritual_table.json
