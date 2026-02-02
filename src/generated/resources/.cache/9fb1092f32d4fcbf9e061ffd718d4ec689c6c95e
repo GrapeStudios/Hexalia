@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-01T21:32:46.1272347	Recipes
+// 1.21.1	2026-02-01T22:39:40.0312486	Recipes
 c327f3ba4eafb4c21dbb4104a1bc4c1d661f542a data/hexalia/advancement/recipes/brewing/rustic_bottle.json
 a8312b0bfae801aa7103827a4307c5c829b7dbf1 data/hexalia/advancement/recipes/building_blocks/celestial_crystal_block.json
 e15994b53b3dfc7b695ca1c1c4e0cf392e20aaa3 data/hexalia/advancement/recipes/building_blocks/cottonwood_planks.json
@@ -175,7 +175,7 @@ e48726a56ce0665569507536d8b70b4d07766b9b data/hexalia/recipe/mandrake_seeds.json
 a1899f009eaca6684ca4d41e5129c88b8cb2dab4 data/hexalia/recipe/morphora_from_ritual_table.json
 c64f4231b783523935ee0b3b71437ced3c3242cd data/hexalia/recipe/mortar_and_pestle.json
 ab04db8dbdfd22b632a46e10b90f21a9c53fccd5 data/hexalia/recipe/mud_from_mutation.json
-0314e2ece6432ef8a62c5dd073628addc45c8ecf data/hexalia/recipe/mutavis_from_mortar.json
+c701c582da5ca5094f45faad9e09222511587daf data/hexalia/recipe/mutavis_from_mortar.json
 9192001c1a07309592290d23700c71b5b24c491d data/hexalia/recipe/nautilite_from_ritual_table.json
 b1bc9199f669b2cf5420ff479ca81bb474ffbe97 data/hexalia/recipe/nesting_block.json
 e3b489bd5765e18eb188803109235f6f16fca5a2 data/hexalia/recipe/orange_dye_from_dahlia.json

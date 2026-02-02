@@ -448,7 +448,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         MortarAndPestleRecipeBuilder.mortar(
                         Ingredient.of(ModItems.TREE_RESIN.get()),
-                        Ingredient.of(Items.BONE_MEAL),
+                        Ingredient.of(Items.SLIME_BALL),
                         Ingredient.of(ModTags.Items.CRUSHED_HERBS),
                         new ItemStack(ModItems.MUTAVIS.get())
                 ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE.get())
