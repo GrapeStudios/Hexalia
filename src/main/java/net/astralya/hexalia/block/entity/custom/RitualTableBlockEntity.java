@@ -24,6 +24,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
@@ -218,10 +219,25 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
 
         for (BlockPos cropPos : be.grownCrops) {
             BlockState state = level.getBlockState(cropPos);
-            if (state.getBlock() instanceof CropBlock crop && state.hasProperty(CropBlock.AGE)) {
-                level.setBlock(cropPos, state.setValue(CropBlock.AGE, 0), 3);
+            if (!(state.getBlock() instanceof CropBlock)) {
+                continue;
             }
+
+            IntegerProperty ageProp = null;
+            for (var prop : state.getProperties()) {
+                if (prop instanceof IntegerProperty ip && "age".equals(ip.getName())) {
+                    ageProp = ip;
+                    break;
+                }
+            }
+
+            if (ageProp == null || !state.hasProperty(ageProp)) {
+                continue;
+            }
+
+            level.setBlock(cropPos, state.setValue(ageProp, 0), 3);
         }
+
 
         be.activeBraziers = Collections.emptyList();
         be.nextBrazierIndex = 0;
