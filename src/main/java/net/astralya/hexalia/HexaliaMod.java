@@ -22,6 +22,7 @@ import net.astralya.hexalia.screen.custom.NestingBlockScreen;
 import net.astralya.hexalia.screen.custom.SmallCauldronScreen;
 import net.astralya.hexalia.sound.ModSoundEvents;
 import net.astralya.hexalia.util.ModArmorMaterials;
+import net.astralya.hexalia.util.ModItemProperties;
 import net.astralya.hexalia.util.ModWoodTypes;
 import net.astralya.hexalia.worldgen.gen.decorator.ModTreeDecorators;
 import net.minecraft.client.renderer.Sheets;
@@ -138,37 +139,7 @@ public class HexaliaMod {
             Sheets.addWoodType(ModWoodTypes.COTTONWOOD);
             Sheets.addWoodType(ModWoodTypes.WILLOW);
 
-            ItemProperties.register(
-                    ModItems.BOTTLED_MOTH.get(),
-                    ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "variant"),
-                    (stack, level, entity, seed) -> {
-                        MothData data = stack.get(ModComponents.MOTH.get());
-                        return data != null ? (float) data.variantId() : 0f;
-                    }
-            );
-
-            event.enqueueWork(() -> {
-                ItemProperties.register(
-                        ModItems.THORNBOW.get(),
-                        ResourceLocation.withDefaultNamespace("pull"),
-                        (stack, level, entity, seed) -> {
-                            if (entity == null) {
-                                return 0.0F;
-                            }
-                            if (entity.getUseItem() != stack) {
-                                return 0.0F;
-                            }
-                            return (stack.getUseDuration(entity) - entity.getUseItemRemainingTicks()) / 20.0F;
-                        }
-                );
-
-                ItemProperties.register(
-                        ModItems.THORNBOW.get(),
-                        ResourceLocation.withDefaultNamespace("pulling"),
-                        (stack, level, entity, seed) ->
-                                entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F
-                );
-            });
+            event.enqueueWork(ModItemProperties::addCustomItemProperties);
         }
 
     @SubscribeEvent

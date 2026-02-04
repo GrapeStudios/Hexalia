@@ -129,8 +129,10 @@ public class ModCreativeModeTabs {
                 // Rare Items
                 output.accept(ModItems.ANCIENT_SEED.get());
                 output.accept(ModItems.KELPWEAVE_BLADE.get());
+                output.accept(ModItems.ROOTSHAPER.get());
                 output.accept(ModItems.SAGE_PENDANT.get());
                 output.accept(ModItems.THORNBOW.get());
+                output.accept(ModItems.BRIAR_SICKLE.get());
 
                 // Armor Items
                 output.accept(ModItems.EARPLUGS.get());

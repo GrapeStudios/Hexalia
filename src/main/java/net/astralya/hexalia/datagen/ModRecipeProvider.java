@@ -286,13 +286,24 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeOutput);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.THORNBOW.get())
-                .pattern(" ST")
-                .pattern("SEF")
-                .pattern(" ST")
+                .pattern(" SF")
+                .pattern("REF")
+                .pattern(" SF")
                 .define('S', Items.STICK)
                 .define('E', ModItems.EARTH_NODE.get())
-                .define('T', ModItems.TREE_RESIN)
+                .define('R', ModItems.RABBAGE)
                 .define('F', Items.STRING)
+                .unlockedBy("has_earth_node",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.EARTH_NODE).build()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.BRIAR_SICKLE.get())
+                .pattern(" SS")
+                .pattern("RE ")
+                .pattern(" S ")
+                .define('S', Items.STICK)
+                .define('E', ModItems.EARTH_NODE.get())
+                .define('R', ModItems.RABBAGE)
                 .unlockedBy("has_earth_node",
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.EARTH_NODE).build()))
                 .save(recipeOutput);
@@ -720,15 +731,27 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedByItem("has_hex_focus", ModItems.HEX_FOCUS.get())
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModBlocks.MORPHORA.getId().getPath() + "_from_ritual_table"));
+
         RitualTableRecipeBuilder.ritualTableRecipe(new ItemStack(ModItems.KELPWEAVE_BLADE.get()))
-                .addIngredient(ModItems.SIREN_PASTE.get())
-                .addIngredient(ModItems.WATER_NODE.get())
-                .addIngredient(Items.IRON_NUGGET)
-                .addIngredient(Items.KELP)
                 .addIngredient(ModItems.ANCIENT_SEED.get())
+                .addIngredient(ModItems.WATER_NODE.get())
+                .addIngredient(Items.WOODEN_SWORD)
+                .addIngredient(Items.KELP)
+                .addIngredient(ModItems.SIREN_PASTE.get())
                 .unlockedByItem("has_hex_focus", ModItems.HEX_FOCUS.get())
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.KELPWEAVE_BLADE.getId().getPath() + "_from_ritual_table"));
+
+        RitualTableRecipeBuilder.ritualTableRecipe(new ItemStack(ModItems.ROOTSHAPER.get()))
+                .addIngredient(ModItems.ANCIENT_SEED.get())
+                .addIngredient(ModItems.EARTH_NODE.get())
+                .addIngredient(Items.WOODEN_PICKAXE)
+                .addIngredient(Items.WOODEN_SHOVEL)
+                .addIngredient(ModItems.DREAM_PASTE.get())
+                .unlockedByItem("has_hex_focus", ModItems.HEX_FOCUS.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        ModItems.ROOTSHAPER.getId().getPath() + "_from_ritual_table"));
+
         RitualTableRecipeBuilder.ritualTableRecipe(new ItemStack(ModItems.NAUTILITE.get()))
                 .addIngredient(Items.KELP)
                 .addIngredient(ModItems.SIREN_PASTE.get())

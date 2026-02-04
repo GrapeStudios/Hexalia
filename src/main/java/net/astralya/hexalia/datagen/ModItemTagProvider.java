@@ -65,6 +65,26 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.RABBAGE_SEEDS.get())
                 .add(ModItems.SUNFIRE_TOMATO_SEEDS.get())
                 .add(ModItems.MANDRAKE_SEEDS.get());
+
+        // Tools
+        tag(ItemTags.BOW_ENCHANTABLE)
+                .add(ModItems.THORNBOW.get());
+
+        tag(ItemTags.SHOVELS)
+                .add(ModItems.ROOTSHAPER.get());
+
+        tag(ItemTags.PICKAXES)
+                .add(ModItems.ROOTSHAPER.get());
+
+        tag(ItemTags.SWORDS)
+                .add(ModItems.KELPWEAVE_BLADE.get());
+
+        tag(ItemTags.MINING_ENCHANTABLE)
+                .add(ModItems.BRIAR_SICKLE.get());
+
+        tag(ItemTags.DURABILITY_ENCHANTABLE)
+                .add(ModItems.BRIAR_SICKLE.get())
+                .add(ModItems.ATHAME.get());
     }
 
     private void addCustomTags() {
@@ -116,10 +136,6 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(Blocks.PINK_TULIP.asItem())
                 .add(Blocks.RED_TULIP.asItem())
                 .add(Blocks.WHITE_TULIP.asItem());
-
-        // Other
-        tag(ModTags.Items.ENCHANTABLE_BOW)
-                .add(ModItems.THORNBOW.get());
     }
 
     private void addTreeRelatedTags() {

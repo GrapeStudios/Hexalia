@@ -12,6 +12,7 @@ import net.astralya.hexalia.item.custom.*;
 import net.astralya.hexalia.util.ModArmorMaterials;
 import net.astralya.hexalia.util.ModToolTiers;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
@@ -107,6 +108,13 @@ public class ModItems {
             PurityIdolItem::new, new Item.Properties());
     public static final DeferredItem<Item> MUTAVIS = ITEMS.registerItem("mutavis",
             MutavisItem::new, new Item.Properties());
+    public static final DeferredItem<Item> BRIAR_SICKLE = ITEMS.registerItem("briar_sickle",
+            BriarSickleItem::new, new Item.Properties().durability(256)
+                    .attributes(BriarSickleItem.createAttributes()));
+    public static final DeferredItem<Item> ROOTSHAPER = ITEMS.registerItem("rootshaper",
+            RootshaperItem::new, new Item.Properties().durability(1561)
+                    .component(DataComponents.TOOL, RootshaperItem.createTool())
+                    .attributes(RootshaperItem.createAttributes()));
 
     // Block Items
     public static final DeferredItem<Item> CANDLE_SKULL = ITEMS.register("candle_skull",

@@ -68,6 +68,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.PURITY_IDOL.get());
         basicItem(ModItems.FOUL_SAC.get());
         basicItem(ModItems.FROST_SAC.get());
+        handheldItem(ModItems.BRIAR_SICKLE.get());
 
         basicItem(ModItems.CANDLE_SKULL.get());
         basicItem(ModItems.WITHER_CANDLE_SKULL.get());

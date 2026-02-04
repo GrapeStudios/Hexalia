@@ -22,11 +22,6 @@ public class ModTags {
         public static final TagKey<Item> OFFHAND_EQUIPMENT = createItemTag("offhand_equipment");
         public static final TagKey<Item> TULIPS = createItemTag("tulips");
 
-        public static final TagKey<Item> ENCHANTABLE_BOW = TagKey.create(
-                Registries.ITEM,
-                ResourceLocation.fromNamespaceAndPath("minecraft", "enchantable/bow")
-        );
-
         // Common Item Tags
         public static final TagKey<Item> FOODS = createCommonItemTag("foods");
 
