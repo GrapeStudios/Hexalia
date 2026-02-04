@@ -1,4 +1,4 @@
-// 1.21.1	2026-01-31T21:07:56.6773683	Item Models: hexalia
+// 1.21.1	2026-02-02T01:18:18.0285433	Item Models: hexalia
 e5a7da2fe51e60bdf425b0c5e11675c33540c1ee assets/hexalia/models/item/air_node.json
 15249bcc7b4d170a3f881d5072d7c1103423d8ed assets/hexalia/models/item/ancient_seed.json
 c0e8c094850b55846bff6046e34890e2ac29b293 assets/hexalia/models/item/athame.json
@@ -10,6 +10,7 @@ e95a13b2856bc8663796a74400055435b7b2a936 assets/hexalia/models/item/brew_of_home
 cfd227b4f2c75f3b4cec167a8e45196415e1923a assets/hexalia/models/item/brew_of_siphon.json
 1896bc2b3350f0f079e3d6232c93621232e824a0 assets/hexalia/models/item/brew_of_slimewalker.json
 29692d809c66f6c31206fd15ff5e6ee81339752c assets/hexalia/models/item/brew_of_spikeskin.json
+b3219134d6ef9bcf1ab081068cd796d02220537b assets/hexalia/models/item/briar_sickle.json
 461bcf01276b22c4adb6803abd0a082910d34228 assets/hexalia/models/item/candle_skull.json
 604bdbe2273bfebc51f1bf8262cbb72e36d809f2 assets/hexalia/models/item/celestial_crystal.json
 7fef6cc3c5d979c4902a7276f8611950ac003f36 assets/hexalia/models/item/chillberries.json
