@@ -8,17 +8,17 @@
     "F": {
       "item": "minecraft:string"
     },
+    "R": {
+      "item": "hexalia:rabbage"
+    },
     "S": {
       "item": "minecraft:stick"
-    },
-    "T": {
-      "item": "hexalia:tree_resin"
     }
   },
   "pattern": [
-    " ST",
-    "SEF",
-    " ST"
+    " SF",
+    "REF",
+    " SF"
   ],
   "result": {
     "count": 1,
