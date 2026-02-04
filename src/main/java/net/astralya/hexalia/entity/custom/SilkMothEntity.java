@@ -4,8 +4,10 @@ import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.component.ModComponents;
 import net.astralya.hexalia.component.item.MothData;
 import net.astralya.hexalia.entity.ModEntities;
-import net.astralya.hexalia.entity.ai.silkmoth.AttractedToLightGoal;
+import net.astralya.hexalia.entity.ai.silkmoth.DriftFlyGoal;
+import net.astralya.hexalia.entity.ai.silkmoth.HoverAroundLightGoal;
 import net.astralya.hexalia.entity.ai.silkmoth.LayEggOnLeavesGoal;
+import net.astralya.hexalia.entity.ai.silkmoth.UnstuckNudgeGoal;
 import net.astralya.hexalia.entity.custom.variant.SilkMothVariant;
 import net.astralya.hexalia.item.ModItems;
 import net.minecraft.Util;
@@ -97,9 +99,11 @@ public class SilkMothEntity extends Animal implements GeoEntity {
         this.goalSelector.addGoal(2, new BreedGoal(this, 1.0D));
         this.goalSelector.addGoal(3, new LayEggOnLeavesGoal(this, 1.0D));
         this.goalSelector.addGoal(4, new TemptGoal(this, 1.1D, Ingredient.of(ModItems.FRAGRANT_NECTAR.get()), false));
-        this.goalSelector.addGoal(5, new AttractedToLightGoal(this, 1.25D));
-        this.goalSelector.addGoal(6, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        this.goalSelector.addGoal(5, new HoverAroundLightGoal(this, 1.0D));
+        this.goalSelector.addGoal(6, new DriftFlyGoal(this, 0.55D));
+        this.goalSelector.addGoal(7, new UnstuckNudgeGoal(this));
     }
+
 
     @Override
     protected PathNavigation createNavigation(Level level) {
