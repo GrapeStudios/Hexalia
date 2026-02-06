@@ -4,6 +4,7 @@ import net.astralya.hexalia.particle.ModParticleType;
 import net.astralya.hexalia.recipe.MutationRecipe;
 import net.astralya.hexalia.recipe.MutationRecipeInput;
 import net.astralya.hexalia.recipe.ModRecipes;
+import net.astralya.hexalia.util.MutationOutput;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -28,50 +29,46 @@ public class MutavisItem extends Item {
     @Override
     public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
+        if (level.isClientSide) {
+            return InteractionResult.SUCCESS;
+        }
+
         BlockPos pos = context.getClickedPos();
-        var state = level.getBlockState(pos);
-
-        ItemStack inputStack = new ItemStack(state.getBlock().asItem());
-        if (inputStack.isEmpty()) {
-            return InteractionResult.PASS;
-        }
-
-        if (!level.isClientSide) {
-            Optional<MutationRecipe> match = level.getRecipeManager()
-                    .getRecipeFor(ModRecipes.MUTATION_TYPE.get(), new MutationRecipeInput(inputStack), level)
-                    .map(RecipeHolder::value);
-
-            if (match.isPresent()) {
-                level.destroyBlock(pos, false);
-
-                ServerLevel server = (ServerLevel) level;
-                ItemStack out = match.get().assemble(new MutationRecipeInput(inputStack), server.registryAccess());
-                if (!out.isEmpty()) {
-                    server.addFreshEntity(new ItemEntity(
-                            server,
-                            pos.getX() + 0.5,
-                            pos.getY() + 0.25,
-                            pos.getZ() + 0.5,
-                            out.copy()
-                    ));
-                }
-
-                Player player = context.getPlayer();
-                if (player != null && !player.getAbilities().instabuild) {
-                    context.getItemInHand().shrink(1);
-                }
-
-                emitEffects(server, pos);
-                return InteractionResult.CONSUME;
-            }
-        }
-
-        return InteractionResult.PASS;
+        ItemStack stack = context.getItemInHand();
+        boolean success = tryMutate((ServerLevel) level, pos, stack, context.getPlayer());
+        return success ? InteractionResult.CONSUME : InteractionResult.PASS;
     }
 
-    private void emitEffects(ServerLevel server, BlockPos pos) {
-        server.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 0.5F, 1.0F);
-        server.sendParticles(
+    public boolean tryMutate(ServerLevel level, BlockPos pos, ItemStack mutavisStack, Player player) {
+        ItemStack inputStack = new ItemStack(level.getBlockState(pos).getBlock().asItem());
+        if (inputStack.isEmpty()) {
+            return false;
+        }
+
+        Optional<MutationRecipe> match = level.getRecipeManager()
+                .getRecipeFor(ModRecipes.MUTATION_TYPE.get(), new MutationRecipeInput(inputStack), level)
+                .map(RecipeHolder::value);
+
+        if (match.isEmpty()) {
+            return false;
+        }
+
+        level.destroyBlock(pos, false);
+
+        ItemStack out = match.get().assemble(new MutationRecipeInput(inputStack), level.registryAccess());
+        MutationOutput.apply(level, pos, out);
+
+        if (player == null || !player.getAbilities().instabuild) {
+            mutavisStack.shrink(1);
+        }
+
+        emitEffects(level, pos);
+        return true;
+    }
+
+    public void emitEffects(ServerLevel level, BlockPos pos) {
+        level.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 0.5F, 1.0F);
+        level.sendParticles(
                 ModParticleType.LEAVES.get(),
                 pos.getX() + 0.5, pos.getY() + 0.6, pos.getZ() + 0.5,
                 15, 0.2, 0.25, 0.2, 0.0

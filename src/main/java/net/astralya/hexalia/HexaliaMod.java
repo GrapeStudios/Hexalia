@@ -23,6 +23,7 @@ import net.astralya.hexalia.screen.custom.SmallCauldronScreen;
 import net.astralya.hexalia.sound.ModSoundEvents;
 import net.astralya.hexalia.util.ModArmorMaterials;
 import net.astralya.hexalia.util.ModItemProperties;
+import net.astralya.hexalia.util.ModVanillaBehaviors;
 import net.astralya.hexalia.util.ModWoodTypes;
 import net.astralya.hexalia.worldgen.gen.decorator.ModTreeDecorators;
 import net.minecraft.client.renderer.Sheets;
@@ -104,6 +105,7 @@ public class HexaliaMod {
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.COTTONWOOD_SAPLING.getId(), ModBlocks.POTTED_COTTONWOOD_SAPLING);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.WILLOW_SAPLING.getId(), ModBlocks.POTTED_WILLOW_SAPLING);
             event.enqueueWork(ModFlammables::register);
+            event.enqueueWork(ModVanillaBehaviors::register);
         });
 
     }
