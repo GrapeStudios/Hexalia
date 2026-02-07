@@ -3,6 +3,7 @@ package net.astralya.hexalia.worldgen;
 import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.block.custom.ChillberryBushBlock;
+import net.astralya.hexalia.block.custom.SaltsproutBlock;
 import net.astralya.hexalia.worldgen.gen.decorator.CatkinTreeDecorator;
 import net.astralya.hexalia.worldgen.gen.decorator.CocoonTreeDecorator;
 import net.minecraft.core.Holder;
@@ -48,6 +49,7 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> DAHLIA = registerKey("dahlia");
     public static final ResourceKey<ConfiguredFeature<?, ?>> CELESTIAL_BLOOM = registerKey("celestial_bloom");
     public static final ResourceKey<ConfiguredFeature<?, ?>> GHOST_FERN = registerKey("ghost_fern");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> SALTSPROUT = registerKey("saltsprout");
 
     public static final ResourceKey<ConfiguredFeature<?, ?>> COTTONWOOD = registerKey("cottonwood");
     public static final ResourceKey<ConfiguredFeature<?, ?>> WILLOW = registerKey("willow");
@@ -78,6 +80,9 @@ public class ModConfiguredFeatures {
         register(context, WILD_MANDRAKE, Feature.FLOWER, patchConfig(ModBlocks.WILD_MANDRAKE.get(), 3, 7, 3));
         register(context, CELESTIAL_BLOOM, Feature.RANDOM_PATCH, patchConfig(ModBlocks.CELESTIAL_BLOOM.get(), 1, 7, 3));
         register(context, GHOST_FERN, Feature.RANDOM_PATCH, patchConfig(ModBlocks.GHOST_FERN.get(), 1, 7, 3));
+        register(context, SALTSPROUT, Feature.RANDOM_PATCH,
+                new RandomPatchConfiguration(8, 7, 3,
+                        simple(ModBlocks.SALTSPROUT.get().defaultBlockState().setValue(SaltsproutBlock.AGE, 2))));
     }
 
     private static void registerDecorativePlants(BootstrapContext<ConfiguredFeature<?, ?>> context) {

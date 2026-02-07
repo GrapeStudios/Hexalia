@@ -35,5 +35,7 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider {
         this.tag(ModTags.Biomes.HAS_SWAMP_VEGETATION)
                 .add(Biomes.MANGROVE_SWAMP)
                 .add(Biomes.SWAMP);
+        this.tag(ModTags.Biomes.SILK_MOTH_SPAWNS)
+                .addTag(BiomeTags.IS_FOREST);
     }
 }

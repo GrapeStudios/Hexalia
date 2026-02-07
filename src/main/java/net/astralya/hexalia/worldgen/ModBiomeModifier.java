@@ -1,23 +1,25 @@
 package net.astralya.hexalia.worldgen;
 
 import net.astralya.hexalia.HexaliaMod;
+import net.astralya.hexalia.entity.ModEntities;
 import net.astralya.hexalia.util.ModTags;
-import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biomes;
+import net.minecraft.world.level.biome.MobSpawnSettings;
 import net.minecraft.world.level.levelgen.GenerationStep;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 import net.neoforged.neoforge.common.world.BiomeModifiers;
 import net.neoforged.neoforge.registries.NeoForgeRegistries;
 
-import java.util.Optional;
+import java.util.List;
 
-public class ModBiomeModifier {
+public final class ModBiomeModifier {
+
+    public static final ResourceKey<BiomeModifier> SPAWN_SILK_MOTH = registerKey("spawn_silk_moth");
 
     public static final ResourceKey<BiomeModifier> ADD_SPIRIT_BLOOM = registerKey("add_spirit_bloom");
     public static final ResourceKey<BiomeModifier> ADD_DREAMSHROOM = registerKey("add_dreamshroom");
@@ -28,6 +30,7 @@ public class ModBiomeModifier {
     public static final ResourceKey<BiomeModifier> ADD_WITCHWEED = registerKey("add_witchweed");
     public static final ResourceKey<BiomeModifier> ADD_PALE_MUSHROOM = registerKey("add_pale_mushroom");
     public static final ResourceKey<BiomeModifier> ADD_NIGHTSHADE = registerKey("add_nightshade");
+    public static final ResourceKey<BiomeModifier> ADD_SALTSPROUT = registerKey("add_saltsprout");
 
     public static final ResourceKey<BiomeModifier> ADD_CHILLBERRY = registerKey("add_chillberry");
     public static final ResourceKey<BiomeModifier> ADD_WILD_SUNFIRE_TOMATO = registerKey("add_wild_sunfire_tomato");
@@ -41,19 +44,21 @@ public class ModBiomeModifier {
     public static final ResourceKey<BiomeModifier> ADD_LAVENDER = registerKey("add_lavender");
     public static final ResourceKey<BiomeModifier> ADD_DAHLIA = registerKey("add_dahlia");
 
+    private ModBiomeModifier() {
+    }
+
     public static void bootstrap(BootstrapContext<BiomeModifier> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);
-        Optional<Holder.Reference<Biome>> taigaBiome = biomes.get(Biomes.TAIGA);
-        Optional<Holder.Reference<Biome>> flowerForest = biomes.get(Biomes.FLOWER_FOREST);
-        Optional<Holder.Reference<Biome>> savannaBiome = biomes.get(Biomes.SAVANNA);
-        Optional<Holder.Reference<Biome>> darkForestBiome = biomes.get(Biomes.DARK_FOREST);
-        Optional<Holder.Reference<Biome>> meadowBiome = biomes.get(Biomes.MEADOW);
-        Optional<Holder.Reference<Biome>> swampBiome = biomes.get(Biomes.SWAMP);
-        Optional<Holder.Reference<Biome>> mangroveSwampBiome = biomes.get(Biomes.MANGROVE_SWAMP);
-        Optional<Holder.Reference<Biome>> mushroomFieldsBiome = biomes.get(Biomes.MUSHROOM_FIELDS);
 
-        // Functional Plants
+        context.register(
+                SPAWN_SILK_MOTH,
+                new BiomeModifiers.AddSpawnsBiomeModifier(
+                        biomes.getOrThrow(ModTags.Biomes.SILK_MOTH_SPAWNS),
+                        List.of(new MobSpawnSettings.SpawnerData(ModEntities.SILK_MOTH_ENTITY.get(), 2, 1, 2))
+                )
+        );
+
         context.register(ADD_SPIRIT_BLOOM, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(ModTags.Biomes.HAS_SWAMP_VEGETATION),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.SPIRIT_BLOOM_PLACED)),
@@ -70,12 +75,12 @@ public class ModBiomeModifier {
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
         context.register(ADD_CHILLBERRY, new BiomeModifiers.AddFeaturesBiomeModifier(
-                HolderSet.direct(taigaBiome.get()),
+                HolderSet.direct(biomes.getOrThrow(Biomes.TAIGA)),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.CHILLBERRY_PLACED)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
         context.register(ADD_WILD_SUNFIRE_TOMATO, new BiomeModifiers.AddFeaturesBiomeModifier(
-                HolderSet.direct(savannaBiome.get()),
+                HolderSet.direct(biomes.getOrThrow(Biomes.SAVANNA)),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.WILD_SUNFIRE_TOMATO_PLACED)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
@@ -85,7 +90,7 @@ public class ModBiomeModifier {
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
         context.register(ADD_CELESTIAL_BLOOM, new BiomeModifiers.AddFeaturesBiomeModifier(
-                HolderSet.direct(meadowBiome.get()),
+                HolderSet.direct(biomes.getOrThrow(Biomes.MEADOW)),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.CELESTIAL_BLOOM_PLACED)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
@@ -99,46 +104,53 @@ public class ModBiomeModifier {
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.LOTUS_FLOWER_PLACED)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
-        // Decorative Plants
+        context.register(ADD_SALTSPROUT, new BiomeModifiers.AddFeaturesBiomeModifier(
+                HolderSet.direct(biomes.getOrThrow(Biomes.DESERT)),
+                HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.SALTSPROUT_PLACED)),
+                GenerationStep.Decoration.VEGETAL_DECORATION));
+
         context.register(ADD_BEGONIA, new BiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(ModTags.Biomes.HAS_DECORATIVE_FLOWERS),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.BEGONIA_PLACED)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
+
         context.register(ADD_LAVENDER, new BiomeModifiers.AddFeaturesBiomeModifier(
-                HolderSet.direct(taigaBiome.get()),
+                HolderSet.direct(biomes.getOrThrow(Biomes.TAIGA)),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.LAVENDER_PLACED)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
+
         context.register(ADD_DAHLIA, new BiomeModifiers.AddFeaturesBiomeModifier(
-                HolderSet.direct(flowerForest.get()),
+                HolderSet.direct(biomes.getOrThrow(Biomes.FLOWER_FOREST)),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.DAHLIA_PLACED)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
         context.register(ADD_WITCHWEED, new BiomeModifiers.AddFeaturesBiomeModifier(
-                HolderSet.direct(flowerForest.get()),
+                HolderSet.direct(biomes.getOrThrow(Biomes.FLOWER_FOREST)),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.WITCHWEED_PLACED)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
+
         context.register(ADD_PALE_MUSHROOM, new BiomeModifiers.AddFeaturesBiomeModifier(
-                HolderSet.direct(mushroomFieldsBiome.get()),
+                HolderSet.direct(biomes.getOrThrow(Biomes.MUSHROOM_FIELDS)),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.PALE_MUSHROOM_PLACED)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
+
         context.register(ADD_NIGHTSHADE, new BiomeModifiers.AddFeaturesBiomeModifier(
-                HolderSet.direct(darkForestBiome.get()),
+                HolderSet.direct(biomes.getOrThrow(Biomes.DARK_FOREST)),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.NIGHTSHADE_BUSH_PLACED)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
-        // Trees
         context.register(ADD_DARK_OAK_COCOON, new BiomeModifiers.AddFeaturesBiomeModifier(
-                HolderSet.direct(darkForestBiome.get()),
+                HolderSet.direct(biomes.getOrThrow(Biomes.DARK_FOREST)),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.DARK_OAK_COCOON_PLACED)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
         context.register(ADD_COTTONWOOD, new BiomeModifiers.AddFeaturesBiomeModifier(
-                HolderSet.direct(swampBiome.get()),
+                HolderSet.direct(biomes.getOrThrow(Biomes.SWAMP)),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.COTTONWOOD_PLACED)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
 
         context.register(ADD_WILLOW, new BiomeModifiers.AddFeaturesBiomeModifier(
-                HolderSet.direct(mangroveSwampBiome.get()),
+                HolderSet.direct(biomes.getOrThrow(Biomes.MANGROVE_SWAMP)),
                 HolderSet.direct(placedFeatures.getOrThrow(ModPlacedFeatures.WILLOW_PLACED)),
                 GenerationStep.Decoration.VEGETAL_DECORATION));
     }
