@@ -2,11 +2,10 @@ package net.astralya.hexalia.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.astralya.hexalia.Configuration;
-import net.astralya.hexalia.block.custom.censer.CenserEffectHandler;
-import net.astralya.hexalia.block.custom.censer.HerbCombination;
+import net.astralya.hexalia.gameplay.censer.CenserEffectHandler;
+import net.astralya.hexalia.gameplay.censer.HerbCombination;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.block.entity.custom.CenserBlockEntity;
-import net.astralya.hexalia.block.entity.custom.NautiliteBlockEntity;
 import net.astralya.hexalia.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

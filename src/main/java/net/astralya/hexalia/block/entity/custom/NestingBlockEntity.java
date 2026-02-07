@@ -1,7 +1,7 @@
 package net.astralya.hexalia.block.entity.custom;
 
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
-import net.astralya.hexalia.screen.custom.NestingBlockMenu;
+import net.astralya.hexalia.menu.NestingBlockMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;

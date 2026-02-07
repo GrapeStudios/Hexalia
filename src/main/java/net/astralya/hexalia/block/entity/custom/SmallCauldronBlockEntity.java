@@ -3,7 +3,7 @@ package net.astralya.hexalia.block.entity.custom;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.recipe.ModRecipes;
 import net.astralya.hexalia.recipe.SmallCauldronRecipe;
-import net.astralya.hexalia.screen.custom.SmallCauldronMenu;
+import net.astralya.hexalia.menu.SmallCauldronMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;

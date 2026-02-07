@@ -1,6 +1,6 @@
 package net.astralya.hexalia.mixin;
 
-import net.astralya.hexalia.block.custom.censer.CenserEffectHandler;
+import net.astralya.hexalia.gameplay.censer.CenserEffectHandler;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;

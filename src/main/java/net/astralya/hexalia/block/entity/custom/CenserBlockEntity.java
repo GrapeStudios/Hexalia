@@ -1,8 +1,8 @@
 package net.astralya.hexalia.block.entity.custom;
 
 import net.astralya.hexalia.block.custom.CenserBlock;
-import net.astralya.hexalia.block.custom.censer.CenserEffectHandler;
-import net.astralya.hexalia.block.custom.censer.HerbCombination;
+import net.astralya.hexalia.gameplay.censer.CenserEffectHandler;
+import net.astralya.hexalia.gameplay.censer.HerbCombination;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.util.ModUtil;
 import net.minecraft.core.BlockPos;
@@ -21,7 +21,6 @@ import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class CenserBlockEntity extends SyncBlockEntity {

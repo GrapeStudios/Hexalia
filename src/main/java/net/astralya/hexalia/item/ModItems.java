@@ -73,6 +73,8 @@ public class ModItems {
     public static final DeferredItem<Item> DREAM_PASTE = ITEMS.registerSimpleItem("dream_paste");
     public static final DeferredItem<Item> GHOST_POWDER = ITEMS.registerSimpleItem("ghost_powder");
     public static final DeferredItem<Item> FRAGRANT_NECTAR = ITEMS.registerSimpleItem("fragrant_nectar");
+    public static final DeferredItem<Item> FIREPROOF_WAX = ITEMS.registerItem("fireproof_wax",
+            FireproofWaxItem::new, new Item.Properties());
 
     // Food Items
     public static final DeferredItem<Item> SPICY_SANDWICH = ITEMS.registerItem("spicy_sandwich",

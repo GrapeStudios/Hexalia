@@ -26,6 +26,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModBlocks.GHOST_FERN.get());
                 output.accept(ModBlocks.CELESTIAL_BLOOM.get());
                 output.accept(ModItems.LOTUS_FLOWER.get());
+                output.accept(ModItems.LOTUS_BLOSSOM.get());
                 output.accept(ModBlocks.WITCHWEED.get());
 
                 // Crushed Items
@@ -34,6 +35,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.SIREN_PASTE.get());
                 output.accept(ModItems.GHOST_POWDER.get());
                 output.accept(ModItems.FRAGRANT_NECTAR.get());
+                output.accept(ModItems.FIREPROOF_WAX.get());
 
                 // Nodes
                 output.accept(ModItems.FIRE_NODE.get());

@@ -1,7 +1,7 @@
 package net.astralya.hexalia.item.custom;
 
 import net.astralya.hexalia.HexaliaMod;
-import net.astralya.hexalia.item.custom.client.BoggedBootsRenderer;
+import net.astralya.hexalia.client.renderer.item.BoggedBootsRenderer;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;

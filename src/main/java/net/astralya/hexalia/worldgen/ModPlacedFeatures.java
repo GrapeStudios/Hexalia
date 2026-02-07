@@ -2,6 +2,7 @@ package net.astralya.hexalia.worldgen;
 
 import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.block.ModBlocks;
+import net.astralya.hexalia.block.custom.SaltsproutBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
@@ -10,6 +11,7 @@ import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
@@ -27,6 +29,7 @@ public class ModPlacedFeatures {
     public static final ResourceKey<PlacedFeature> WILD_MANDRAKE_PLACED = registerKey("wild_mandrake_placed");
     public static final ResourceKey<PlacedFeature> GHOST_FERN_PLACED = registerKey("ghost_fern_placed");
     public static final ResourceKey<PlacedFeature> CELESTIAL_BLOOM_PLACED = registerKey("celestial_bloom_placed");
+    public static final ResourceKey<PlacedFeature> SALTSPROUT_PLACED = registerKey("saltsprout_placed");
 
     // Decorative Plants
     public static final ResourceKey<PlacedFeature> BEGONIA_PLACED = registerKey("begonia_placed");
@@ -53,6 +56,16 @@ public class ModPlacedFeatures {
         register(context, WILD_MANDRAKE_PLACED,       configured.getOrThrow(ModConfiguredFeatures.WILD_MANDRAKE),       rarityPatch(10));
         register(context, GHOST_FERN_PLACED,          configured.getOrThrow(ModConfiguredFeatures.GHOST_FERN),          rarityPatch(10));
         register(context, CELESTIAL_BLOOM_PLACED,     configured.getOrThrow(ModConfiguredFeatures.CELESTIAL_BLOOM),     rarityPatch(10));
+
+        BlockState saltsproutState = ModBlocks.SALTSPROUT.get().defaultBlockState().setValue(SaltsproutBlock.AGE, 2);
+        register(
+                context,
+                SALTSPROUT_PLACED,
+                configured.getOrThrow(ModConfiguredFeatures.SALTSPROUT),
+                rarityPatchWithSurvival(15, saltsproutState)
+        );
+
+
 
         register(context, BEGONIA_PLACED,             configured.getOrThrow(ModConfiguredFeatures.BEGONIA),             rarityPatch(10));
         register(context, LAVENDER_PLACED,            configured.getOrThrow(ModConfiguredFeatures.LAVENDER),            rarityPatch(10));
@@ -114,6 +127,16 @@ public class ModPlacedFeatures {
                 PlacementUtils.HEIGHTMAP_OCEAN_FLOOR,
                 BiomeFilter.biome(),
                 BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(sapling.defaultBlockState(), BlockPos.ZERO))
+        );
+    }
+
+    private static List<PlacementModifier> rarityPatchWithSurvival(int rarity, BlockState state) {
+        return List.of(
+                RarityFilter.onAverageOnceEvery(rarity),
+                InSquarePlacement.spread(),
+                PlacementUtils.HEIGHTMAP,
+                BlockPredicateFilter.forPredicate(BlockPredicate.wouldSurvive(state, BlockPos.ZERO)),
+                BiomeFilter.biome()
         );
     }
 }

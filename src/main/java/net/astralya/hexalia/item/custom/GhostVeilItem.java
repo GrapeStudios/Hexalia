@@ -1,6 +1,6 @@
 package net.astralya.hexalia.item.custom;
 
-import net.astralya.hexalia.item.custom.client.GhostVeilRenderer;
+import net.astralya.hexalia.client.renderer.item.GhostVeilRenderer;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffectInstance;

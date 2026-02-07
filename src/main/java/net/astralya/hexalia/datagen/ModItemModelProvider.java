@@ -50,6 +50,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.DREAM_PASTE.get());
         basicItem(ModItems.GHOST_POWDER.get());
         basicItem(ModItems.FRAGRANT_NECTAR.get());
+        basicItem(ModItems.FIREPROOF_WAX.get());
 
         basicItem(ModItems.SPICY_SANDWICH.get());
         basicItem(ModItems.CHILLBERRY_PIE.get());
