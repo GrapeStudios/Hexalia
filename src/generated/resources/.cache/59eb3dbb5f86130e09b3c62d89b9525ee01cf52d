@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-01T14:47:54.7975411	Loot Tables
+// 1.21.1	2026-02-07T21:20:21.4159076	Loot Tables
 9a3df1e2ec6884b6a1d7d652b794a71a76999999 data/hexalia/loot_table/blocks/astrylis.json
 dad5439821b7d3507e19e2713ebd7503704e41ef data/hexalia/loot_table/blocks/begonia.json
 a145885a91e57a61da1dfe8e5d3756080c0e1c03 data/hexalia/loot_table/blocks/candle_skull.json
@@ -36,6 +36,7 @@ f3d3fca576ecd83de493f1be17fdf082f5a00da9 data/hexalia/loot_table/blocks/dreamcat
 c19b540e7b19c169a86fbea5efc0b187b94390b6 data/hexalia/loot_table/blocks/infused_farmland.json
 4bb0d3b18121d5d97a625245beb786917a3c5335 data/hexalia/loot_table/blocks/lavender.json
 9d05805377af2443b59e5e7dcfc52a6a37907fce data/hexalia/loot_table/blocks/lotus_flower.json
+fbcb8fab525e0480436917a8e185081da174882e data/hexalia/loot_table/blocks/lourdes.json
 45d054bcdcd5ae70e9eec79f6a8117d835a7897b data/hexalia/loot_table/blocks/mandrake_crop.json
 152c7b08861eb34b1e99e3f3917469a7e441fdbb data/hexalia/loot_table/blocks/morphora.json
 a044b942e88d38e09b9302dafa88f92bf79ae1b0 data/hexalia/loot_table/blocks/mortar_and_pestle.json
@@ -52,6 +53,7 @@ c574f57b524236969f647b27c7a2341bbced7e51 data/hexalia/loot_table/blocks/potted_c
 9cde2d5bbc53b42c97fe93f5775e5e189703fa4d data/hexalia/loot_table/blocks/potted_ghost_fern.json
 be0ef7041e1e8bbf29339301a7fef8568328bc83 data/hexalia/loot_table/blocks/potted_grimshade.json
 9fb1f27eb1fd70beef2257d0352e4e06804aa4fd data/hexalia/loot_table/blocks/potted_lavender.json
+5baddc36f3906f2dc7c10ed94da7f003daec159f data/hexalia/loot_table/blocks/potted_lourdes.json
 e5dfba66071917ac3ad408d4e553faad85e3e845 data/hexalia/loot_table/blocks/potted_morphora.json
 f3fffd535a6b17860700b25ea3c8784af8265506 data/hexalia/loot_table/blocks/potted_nightshade_bush.json
 ed05898c856cc326d408f5dee257a0892ce433e0 data/hexalia/loot_table/blocks/potted_spirit_bloom.json

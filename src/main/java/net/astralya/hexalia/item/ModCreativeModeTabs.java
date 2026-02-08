@@ -35,7 +35,6 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.SIREN_PASTE.get());
                 output.accept(ModItems.GHOST_POWDER.get());
                 output.accept(ModItems.FRAGRANT_NECTAR.get());
-                output.accept(ModItems.FIREPROOF_WAX.get());
 
                 // Nodes
                 output.accept(ModItems.FIRE_NODE.get());
@@ -49,6 +48,7 @@ public class ModCreativeModeTabs {
                 output.accept(ModItems.NAUTILITE.get());
                 output.accept(ModBlocks.WINDSONG.get());
                 output.accept(ModBlocks.ASTRYLIS.get());
+                output.accept(ModBlocks.LOURDES.get());
 
                 // Other Resources
                 output.accept(ModItems.TREE_RESIN.get());

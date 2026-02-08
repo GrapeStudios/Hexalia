@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-25T14:56:14.4948999	Block States: hexalia
+// 1.21.1	2026-02-07T21:20:21.4191682	Block States: hexalia
 1008a016106b7c4af5a834ac32ca56468e0a6fa0 assets/hexalia/blockstates/astrylis.json
 2c754b7a35d1f42c348b41826d67f74cc29f6ff4 assets/hexalia/blockstates/begonia.json
 e5a52c1bc136da334b4487e20a60cb618cafe765 assets/hexalia/blockstates/celestial_bloom.json
@@ -23,6 +23,7 @@ f6c215bcdc3dcc7ccc00c8d807cd8aa39b46c85e assets/hexalia/blockstates/cottonwood_t
 6ea831a7e7d17307be967d986a115aae168492ce assets/hexalia/blockstates/grimshade.json
 8a7ac22bc2e43f8b29c3cf4856f71fef77831853 assets/hexalia/blockstates/infused_dirt.json
 80077efbd288372fb959c6369c0576c9df729e87 assets/hexalia/blockstates/lavender.json
+22a90f1f1425cea8e10336acba84651611d9fe28 assets/hexalia/blockstates/lourdes.json
 6bed1621310bd1aef90406e15ac001d24bdc5599 assets/hexalia/blockstates/morphora.json
 060d94b5bef9f96f1097a032e7d6c10bf35dec92 assets/hexalia/blockstates/nautilite.json
 17038a02f3beb3f76614a58eebb3a5590c172497 assets/hexalia/blockstates/nightshade_bush.json
@@ -35,6 +36,7 @@ a46abae57e3b94539f1a6fefe4a5e5176710d0a9 assets/hexalia/blockstates/potted_cotto
 637f52e39fd3d87e47e9f5d41c611f769fcda270 assets/hexalia/blockstates/potted_ghost_fern.json
 7bf6680378bfc62bd3a1aca0eb1a327028f440cb assets/hexalia/blockstates/potted_grimshade.json
 c1764a9bf8e4f9aa47e92f61c1cc0ec5af295a9b assets/hexalia/blockstates/potted_lavender.json
+29fff8f97fcc791e5c69868f16e55ebd93f71e94 assets/hexalia/blockstates/potted_lourdes.json
 3c2d8530c2e395d907b4d93c125934cdb073a291 assets/hexalia/blockstates/potted_morphora.json
 a60798ba47e02c88e1087b28fe8dbe75b2092ccb assets/hexalia/blockstates/potted_nightshade_bush.json
 1a7b769bc5914218b3bbd09d590a58881c1e68a1 assets/hexalia/blockstates/potted_spirit_bloom.json
@@ -109,6 +111,7 @@ e1599cb5cf30658624da88e972962d33e0008699 assets/hexalia/models/block/ghost_fern.
 d9225a08995c368549c85a22f2471112cdfa50e0 assets/hexalia/models/block/grimshade.json
 c19fde262df88157354919f0482ce2ba324ccbc2 assets/hexalia/models/block/infused_dirt.json
 ae87a1fd659cf5ff35b0303ad93f3ffde7dbf016 assets/hexalia/models/block/lavender.json
+aa8f5c0ad64cbb625b95dad9fbc82859f7d9e254 assets/hexalia/models/block/lourdes.json
 558f8b9ea6dc5b741f6da649129f903a020a7dc4 assets/hexalia/models/block/morphora.json
 0436ddd921d24937a811c9965965355b988e1014 assets/hexalia/models/block/nautilite.json
 66c0b55cb682b448b93bd54b8d6be2fbd8e26b0a assets/hexalia/models/block/nightshade_bush.json
@@ -121,6 +124,7 @@ df9782e68d1eeb24cc9f0b8fc828066b701f891d assets/hexalia/models/block/potted_drea
 0bd34d3d33855e2541b94207a159c1f8e58ee5de assets/hexalia/models/block/potted_ghost_fern.json
 a1ff5b009136a8eb38dd09a0acfe91dace892116 assets/hexalia/models/block/potted_grimshade.json
 f57143021325cb8573e228aae87ef65e24c3744d assets/hexalia/models/block/potted_lavender.json
+02e35b25a628ef2f03cc02937a403be195f6914b assets/hexalia/models/block/potted_lourdes.json
 bd6f7ac22ff028a3a259991cb5db1b75bf0d8923 assets/hexalia/models/block/potted_morphora.json
 77aaf668d1254159181e9478940322af447928a1 assets/hexalia/models/block/potted_nightshade_bush.json
 7c5ed41653b44479831177de1e9a4043224b2ffd assets/hexalia/models/block/potted_spirit_bloom.json
@@ -194,6 +198,7 @@ f2cf9c5d4d9cb934041c7db38b770255959bf245 assets/hexalia/models/item/ghost_fern.j
 f119eb4b6313e0f1020b2f0327b65256531432fe assets/hexalia/models/item/grimshade.json
 134de2f333015671ec12ac8ad0cb5ada2818e49f assets/hexalia/models/item/infused_dirt.json
 cd8b77ff28a5f84d6a56e6a3488f893277810eb7 assets/hexalia/models/item/lavender.json
+4bf57ac0fb4dd78307894bd3a05b443fe796dc12 assets/hexalia/models/item/lourdes.json
 3a98cf8e814f84c646fff717bee4d3776f9375f7 assets/hexalia/models/item/morphora.json
 32bd097a66a67b5190c5b65c63b73894b3db361e assets/hexalia/models/item/nautilite.json
 f9e9d260ab0ee14759ee2b10ef2f916528d5d4d0 assets/hexalia/models/item/nightshade_bush.json

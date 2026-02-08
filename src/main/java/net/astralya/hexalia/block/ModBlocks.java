@@ -80,6 +80,10 @@ public class ModBlocks {
             () -> new AstrylisBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).noCollission()));
     public static final DeferredBlock<Block> POTTED_ASTRYLIS = BLOCKS.register("potted_astrylis",
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), ASTRYLIS, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY)));
+    public static final DeferredBlock<Block> LOURDES = registerBlock("lourdes",
+            () -> new LourdesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).noCollission()));
+    public static final DeferredBlock<Block> POTTED_LOURDES = BLOCKS.register("potted_lourdes",
+            () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), ASTRYLIS, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY)));
 
     // Decorative Flowers
     public static final DeferredBlock<Block> BEGONIA = registerBlock("begonia",

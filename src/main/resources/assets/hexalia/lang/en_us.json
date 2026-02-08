@@ -58,6 +58,7 @@
   "block.hexalia.mortar_and_pestle": "Mortar And Pestle",
   "block.hexalia.egg_cluster": "Egg Cluster",
   "block.hexalia.nesting_block": "Nesting Block",
+  "block.hexalia.lourdes": "Lourdes",
 
   "item.hexalia.mortar_and_pestle": "Mortar and Pestle",
   "item.hexalia.spirit_powder": "Spirit Powder",
@@ -123,8 +124,7 @@
   "item.hexalia.thornbow": "Thornbow",
   "item.hexalia.briar_sickle": "Briar Sickle",
   "item.hexalia.rootshaper": "Rootshaper",
-  "item.hexalia.fireproof_wax": "Rootshaper",
-
+  
   "entity.hexalia.silk_moth": "Silk Moth",
 
   "container.hexalia.nesting_block": "Nesting Block",
@@ -243,6 +243,8 @@
   "message.hexalia.censer.suction_zone": "A gentle wind gathers loose objects",
 
   "message.hexalia.invalid_item": "This item is not a valid item for this block.",
+
+  "message.hexalia.lourdes.activation": "The Lourdes flower blooms with purifying warmth.",
 
   "block.hexalia.cottonwood_leaves": "Cottonwood Leaves",
   "block.hexalia.cottonwood_catkin": "Cottonwood Catkin",

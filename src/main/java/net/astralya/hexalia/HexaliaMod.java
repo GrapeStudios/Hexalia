@@ -25,6 +25,8 @@ import net.astralya.hexalia.util.ModItemProperties;
 import net.astralya.hexalia.util.ModVanillaBehaviors;
 import net.astralya.hexalia.util.ModWoodTypes;
 import net.astralya.hexalia.worldgen.gen.decorator.ModTreeDecorators;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
@@ -99,6 +101,7 @@ public class HexaliaMod {
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.BEGONIA.getId(), ModBlocks.POTTED_BEGONIA);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.LAVENDER.getId(), ModBlocks.POTTED_LAVENDER);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.DAHLIA.getId(), ModBlocks.POTTED_DAHLIA);
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.LOURDES.getId(), ModBlocks.POTTED_LOURDES);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.NIGHTSHADE_BUSH.getId(), ModBlocks.POTTED_NIGHTSHADE_BUSH);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.COTTONWOOD_SAPLING.getId(), ModBlocks.POTTED_COTTONWOOD_SAPLING);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.WILLOW_SAPLING.getId(), ModBlocks.POTTED_WILLOW_SAPLING);

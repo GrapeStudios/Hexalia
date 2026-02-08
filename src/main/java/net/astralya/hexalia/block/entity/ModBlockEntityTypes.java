@@ -43,6 +43,8 @@ public class ModBlockEntityTypes {
             () -> BlockEntityType.Builder.of(WindsongBlockEntity::new, ModBlocks.WINDSONG.get()).build(null));
     public static final Supplier<BlockEntityType<GrimshadeBlockEntity>> GRIMSHADE = BLOCK_ENTITY_TYPE.register("grimshade",
             () -> BlockEntityType.Builder.of(GrimshadeBlockEntity::new, ModBlocks.GRIMSHADE.get()).build(null));
+    public static final Supplier<BlockEntityType<LourdesBlockEntity>> LOURDES = BLOCK_ENTITY_TYPE.register("lourdes",
+            () -> BlockEntityType.Builder.of(LourdesBlockEntity::new, ModBlocks.LOURDES.get()).build(null));
 
     // Mod Signs
     public static final Supplier<BlockEntityType<ModSignBlockEntity>> MOD_SIGN = BLOCK_ENTITY_TYPE.register(

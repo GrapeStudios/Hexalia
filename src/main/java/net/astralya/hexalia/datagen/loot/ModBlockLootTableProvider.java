@@ -56,6 +56,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.WINDSONG.get());
         this.dropSelf(ModBlocks.ASTRYLIS.get());
         this.dropSelf(ModBlocks.DAHLIA.get());
+        this.dropSelf(ModBlocks.LOURDES.get());
 
         // Potted plants
         this.add(ModBlocks.POTTED_SPIRIT_BLOOM.get(), createPotFlowerItemTable(ModBlocks.SPIRIT_BLOOM.get()));
@@ -69,6 +70,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         this.add(ModBlocks.POTTED_MORPHORA.get(), createPotFlowerItemTable(ModBlocks.MORPHORA.get()));
         this.add(ModBlocks.POTTED_GRIMSHADE.get(), createPotFlowerItemTable(ModBlocks.GRIMSHADE.get()));
         this.add(ModBlocks.POTTED_WINDSONG.get(), createPotFlowerItemTable(ModBlocks.WINDSONG.get()));
+        this.add(ModBlocks.POTTED_LOURDES.get(), createPotFlowerItemTable(ModBlocks.WINDSONG.get()));
         this.add(ModBlocks.POTTED_ASTRYLIS.get(), createPotFlowerItemTable(ModBlocks.ASTRYLIS.get()));
 
         // Special plants
