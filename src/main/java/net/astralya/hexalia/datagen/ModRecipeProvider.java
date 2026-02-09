@@ -308,6 +308,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.EARTH_NODE).build()))
                 .save(recipeOutput);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.SPIRITROOT_TETHER.get())
+                .pattern("ES ")
+                .pattern("SP ")
+                .pattern("  S")
+                .define('S', Items.STRING)
+                .define('E', ModItems.EARTH_NODE.get())
+                .define('P', Items.ENDER_PEARL)
+                .unlockedBy("has_earth_node",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SPIRITROOT_TETHER).build()))
+                .save(recipeOutput);
+
         // Shapeless Recipes for Seeds
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.MANDRAKE_SEEDS.get())
                 .requires(ModItems.MANDRAKE.get())
@@ -800,6 +811,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedByItem("has_hex_focus", ModItems.HEX_FOCUS.get())
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.WATER_NODE.getId().getPath() + "_from_ritual_table"));
+
         RitualTableRecipeBuilder.ritualTableRecipe(new ItemStack(ModItems.EARTH_NODE.get()))
                 .addIngredient(Items.AMETHYST_SHARD)
                 .addIngredient(Items.CLAY_BALL)
@@ -807,6 +819,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedByItem("has_hex_focus", ModItems.HEX_FOCUS.get())
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.EARTH_NODE.getId().getPath() + "_from_ritual_table"));
+
+        RitualTableRecipeBuilder.ritualTableRecipe(new ItemStack(ModBlocks.LOURDES.get()))
+                .addIngredient(Items.BLUE_ORCHID)
+                .addIngredient(Items.HONEYCOMB)
+                .addIngredient(Items.GLISTERING_MELON_SLICE)
+                .addIngredient(ModItems.DREAM_PASTE.get())
+                .unlockedByItem("has_hex_focus", ModItems.HEX_FOCUS.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        ModBlocks.LOURDES.getId().getPath() + "_from_ritual_table"));
 
         // Recipes for Wood-related Blocks
         planksFromLog(recipeOutput, ModBlocks.COTTONWOOD_PLANKS.get(), ModTags.Items.COTTONWOOD_LOGS, 4);

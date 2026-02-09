@@ -124,8 +124,10 @@
   "item.hexalia.thornbow": "Thornbow",
   "item.hexalia.briar_sickle": "Briar Sickle",
   "item.hexalia.rootshaper": "Rootshaper",
-  
+  "item.hexalia.spiritroot_tether": "Spiritroot Tether",
+
   "entity.hexalia.silk_moth": "Silk Moth",
+  "entity.hexalia.thorn_arrow": "Thorn Arrow",
 
   "container.hexalia.nesting_block": "Nesting Block",
 
@@ -245,6 +247,21 @@
   "message.hexalia.invalid_item": "This item is not a valid item for this block.",
 
   "message.hexalia.lourdes.activation": "The Lourdes flower blooms with purifying warmth.",
+
+  "message.hexalia.spiritroot_tether.bound": "Tether bound.",
+  "message.hexalia.spiritroot_tether.invalid_bind_block": "This block cannot be used as a Spiritroot anchor.",
+  "message.hexalia.spiritroot_tether.captured": "Spirit bound.",
+  "message.hexalia.spiritroot_tether.already_occupied": "The tether is already bound to a spirit.",
+  "message.hexalia.spiritroot_tether.not_bound": "The tether is not bound to a location.",
+  "message.hexalia.spiritroot_tether.invalid_dimension": "That location cannot be reached.",
+  "message.hexalia.spiritroot_tether.recall_failed": "The tether fails to recall the spirit.",
+  "message.hexalia.spiritroot_tether.sent_to_anchor": "Spirit returned to its anchor.",
+  "message.hexalia.spiritroot_tether.released": "Spirit released.",
+  "message.hexalia.spiritroot_tether.cannot_capture": "This spirit cannot be bound.",
+
+  "tooltip.hexalia.spiritroot_tether": "Bound Spirit: %s",
+  "tooltip.hexalia.spiritroot_tether.bound": "Bound to: %s, %s, %s",
+  "tooltip.hexalia.spiritroot_tether.unknown": "Unknown",
 
   "block.hexalia.cottonwood_leaves": "Cottonwood Leaves",
   "block.hexalia.cottonwood_catkin": "Cottonwood Catkin",

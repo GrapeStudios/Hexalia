@@ -6,10 +6,12 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 
+@SuppressWarnings("SameParameterValue")
 public class ModTags {
 
     public static class Items {
@@ -56,6 +58,7 @@ public class ModTags {
         public static final TagKey<Block> ATTRACTS_MOTH = createBlockTag("attracts_moth");
         public static final TagKey<Block> COTTONWOOD_LOGS = createBlockTag("cottonwood_logs");
         public static final TagKey<Block> WILLOW_LOGS = createBlockTag("willow_logs");
+        public static final TagKey<Block> SPIRITROOT_BOUND_BLOCKS = createBlockTag("spiritroot_bound_blocks");
 
         // Common Block Tags
         public static final TagKey<Block> SALT_BLOCKS = createCommonBlockTag("salt_blocks");
@@ -66,6 +69,15 @@ public class ModTags {
 
         private static TagKey<Block> createCommonBlockTag(String name) {
             return BlockTags.create(ResourceLocation.fromNamespaceAndPath("c", name));
+        }
+    }
+
+    public static final class EntityTypes {
+
+        public static final TagKey<EntityType<?>> SPIRITROOT_UNCAPTURABLE = createEntityTypeTag("spiritroot_uncapturable");
+
+        private static TagKey<EntityType<?>> createEntityTypeTag(String path) {
+            return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, path));
         }
     }
 

@@ -208,6 +208,9 @@ public class ModBlockTagProvider extends BlockTagsProvider {
     private void addCustomModTags() {
         tag(ModTags.Blocks.SALT_BLOCKS)
                 .add(ModBlocks.SALT_BLOCK.get());
+
+        tag(ModTags.Blocks.SPIRITROOT_BOUND_BLOCKS)
+                .add(ModBlocks.SPIRIT_BLOOM.get());
     }
 
     private void addAdditionalTags() {

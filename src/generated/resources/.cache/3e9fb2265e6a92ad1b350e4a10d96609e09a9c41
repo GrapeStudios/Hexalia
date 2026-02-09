@@ -1,8 +1,9 @@
-// 1.21.1	2026-02-01T14:47:54.8025406	Tags for minecraft:block mod id hexalia
+// 1.21.1	2026-02-08T22:55:32.9738442	Tags for minecraft:block mod id hexalia
 14835ee05f2eb66cecd359de9208e4332b57c085 data/c/tags/block/salt_blocks.json
 d13705e4e223106a2908c0349ca698c84760c4b2 data/hexalia/tags/block/attracts_moth.json
 0a9e24febf41067c0d25e9952dd0c726cba969b9 data/hexalia/tags/block/cottonwood_logs.json
 04c0e07d84d58d99b11955eb3d34ed34630e541e data/hexalia/tags/block/heating_block.json
+f0c306b3e190e9e0996b25c18bbfb5dc20d87ca5 data/hexalia/tags/block/spiritroot_bound_blocks.json
 b2ac93b5e91295fc810ffbae3327970632ffe14a data/hexalia/tags/block/willow_logs.json
 4617cc58d6dd0ffcebd6b4b9f98537ce7f64d7c7 data/minecraft/tags/block/all_hanging_signs.json
 3472226bcb3a644e6dd5b72c47203afd80ebddf8 data/minecraft/tags/block/cave_vines.json

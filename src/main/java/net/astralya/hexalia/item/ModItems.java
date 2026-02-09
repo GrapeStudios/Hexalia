@@ -112,9 +112,11 @@ public class ModItems {
             BriarSickleItem::new, new Item.Properties().durability(256)
                     .attributes(BriarSickleItem.createAttributes()));
     public static final DeferredItem<Item> ROOTSHAPER = ITEMS.registerItem("rootshaper",
-            RootshaperItem::new, new Item.Properties().durability(1561)
+            RootshaperItem::new, new Item.Properties().rarity(Rarity.RARE).durability(1561)
                     .component(DataComponents.TOOL, RootshaperItem.createTool())
                     .attributes(RootshaperItem.createAttributes()));
+    public static final DeferredItem<Item> SPIRITROOT_TETHER = ITEMS.registerItem("spiritroot_tether",
+            SpiritrootTetherItem::new, new Item.Properties());
 
     // Block Items
     public static final DeferredItem<Item> CANDLE_SKULL = ITEMS.register("candle_skull",

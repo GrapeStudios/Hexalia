@@ -84,6 +84,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
         tag(ItemTags.DURABILITY_ENCHANTABLE)
                 .add(ModItems.BRIAR_SICKLE.get())
+                .add(ModItems.SAGE_PENDANT.get())
                 .add(ModItems.ATHAME.get());
     }
 
