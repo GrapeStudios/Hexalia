@@ -486,6 +486,24 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.FRAGRANT_NECTAR.getId().getPath() + "_from_mortar"));
 
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.of(Items.POPPY),
+                        Ingredient.of(ModItems.RABBAGE),
+                        Ingredient.of(Items.AZURE_BLUET),
+                        new ItemStack(ModItems.BRAMBLEGUARD_SALVE.get())
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        ModItems.BRAMBLEGUARD_SALVE.getId().getPath() + "_from_mortar"));
+
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.of(Items.CORNFLOWER),
+                        Ingredient.of(ModItems.TREE_RESIN),
+                        Ingredient.of(Items.OXEYE_DAISY),
+                        new ItemStack(ModItems.MENDERS_SALVE.get())
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        ModItems.MENDERS_SALVE.getId().getPath() + "_from_mortar"));
+
         // Mutation Recipes
         MutationRecipeBuilder.mutation(
                         Ingredient.of(Blocks.BLUE_ORCHID),

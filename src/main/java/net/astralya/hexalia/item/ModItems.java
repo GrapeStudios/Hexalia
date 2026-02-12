@@ -14,6 +14,7 @@ import net.astralya.hexalia.util.ModToolTiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModList;
@@ -165,6 +166,14 @@ public class ModItems {
                     Component.translatable("tooltip.hexalia.arachnid_grace").withStyle(ChatFormatting.BLUE)));
     public static final DeferredItem<Item> BREW_OF_HOMESTEAD = ITEMS.registerItem("brew_of_homestead",
             HomesteadBrewItem::new, new Item.Properties());
+
+    // Salves
+    public static final DeferredItem<Item> BRAMBLEGUARD_SALVE = ITEMS.register("brambleguard_salve",
+            () -> new SalveItem(new Item.Properties().stacksTo(4), () -> ModMobEffects.BRAMBLEGUARD, 20 * 120, 0,
+                    60, Component.translatable("tooltip.hexalia.brambleguard_salve").withStyle(ChatFormatting.BLUE)));
+    public static final DeferredItem<Item> MENDERS_SALVE = ITEMS.register("menders_salve",
+            () -> new SalveItem(new Item.Properties().stacksTo(4), () -> MobEffects.REGENERATION, 20 * 120, 0,
+                    60, Component.translatable("tooltip.hexalia.menders_salve").withStyle(ChatFormatting.BLUE)));
 
     // Entity Related Items
     public static final DeferredItem<Item> BOTTLED_MOTH = ITEMS.register("bottled_moth",

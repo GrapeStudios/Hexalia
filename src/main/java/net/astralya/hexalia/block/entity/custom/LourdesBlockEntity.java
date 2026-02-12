@@ -3,9 +3,9 @@ package net.astralya.hexalia.block.entity.custom;
 import net.astralya.hexalia.Configuration;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.effect.ModEffectCure;
-import net.astralya.hexalia.particle.ModParticleType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.particles.ColorParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -97,19 +97,27 @@ public class LourdesBlockEntity extends BlockEntity {
     }
 
     public void spawnActiveParticles(Level level, BlockPos pos, RandomSource random) {
-        double x = pos.getX() + 0.5D;
-        double y = pos.getY() + 0.35D;
-        double z = pos.getZ() + 0.5D;
+        double cx = pos.getX() + 0.5D;
+        double cy = pos.getY() + 0.35D;
+        double cz = pos.getZ() + 0.5D;
 
-        for (int i = 0; i < 3; i++) {
-            double ox = (random.nextDouble() - 0.5D) * 0.6D;
-            double oy = random.nextDouble() * 0.35D;
-            double oz = (random.nextDouble() - 0.5D) * 0.6D;
+        float r = 0.95F;
+        float g = 0.45F;
+        float b = 0.75F;
 
-            level.addParticle(ParticleTypes.HAPPY_VILLAGER, x + ox, y + oy, z + oz, 0.0D, 0.02D, 0.0D);
-            if ((random.nextInt(3)) == 0) {
-                level.addParticle(ModParticleType.LEAVES.get(), x + ox, y + oy, z + oz, 0.0D, 0.0D, 0.0D);
-            }
+        for (int i = 0; i < 4; i++) {
+            double angle = random.nextDouble() * Math.PI * 2.0D;
+            double dist = 0.8D + random.nextDouble() * 2.2D;
+
+            double x = cx + Math.cos(angle) * dist;
+            double z = cz + Math.sin(angle) * dist;
+            double y = cy + random.nextDouble() * 0.6D;
+
+            double vx = (random.nextDouble() - 0.5D) * 0.01D;
+            double vy = 0.01D + random.nextDouble() * 0.02D;
+            double vz = (random.nextDouble() - 0.5D) * 0.01D;
+
+            level.addParticle(ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, r, g, b), x, y, z, vx, vy, vz);
         }
     }
 

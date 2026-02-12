@@ -35,6 +35,8 @@ public class ModMobEffects {
            () -> new SlimewalkerEffect(MobEffectCategory.BENEFICIAL, 0x2CFB03));
     public static final Holder<MobEffect> ARACHNID_GRACE = MOB_EFFECTS.register("arachnid_grace",
             () -> new ArachnidGraceEffect(MobEffectCategory.BENEFICIAL, 0xE0E0E0));
+    public static final Holder<MobEffect> BRAMBLEGUARD = MOB_EFFECTS.register("brambleguard",
+            () -> new BrambleguardEffect(MobEffectCategory.BENEFICIAL, 0x415437));
 
     public static final Holder<MobEffect> STUNNED = MOB_EFFECTS.register("stunned",
             () -> new StunnedEffect(MobEffectCategory.HARMFUL, 0xFFFFDD));

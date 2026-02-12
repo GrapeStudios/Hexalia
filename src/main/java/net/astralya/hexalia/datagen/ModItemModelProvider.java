@@ -89,6 +89,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.BREW_OF_ARACHNID_GRACE.get());
         basicItem(ModItems.BREW_OF_HOMESTEAD.get());
 
+        basicItem(ModItems.BRAMBLEGUARD_SALVE.get());
+        basicItem(ModItems.MENDERS_SALVE.get());
+
         basicItem(ModBlocks.COTTONWOOD_DOOR.asItem());
         basicItem(ModBlocks.WILLOW_DOOR.asItem());
 

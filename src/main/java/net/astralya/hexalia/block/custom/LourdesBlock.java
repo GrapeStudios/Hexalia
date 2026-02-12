@@ -62,7 +62,7 @@ public class LourdesBlock extends EnchantedPlantBlock implements EntityBlock {
 
         if (!level.isClientSide) {
             lourdes.activate(level.getGameTime());
-            level.playSound(null, pos, SoundEvents.AMETHYST_BLOCK_HIT, SoundSource.BLOCKS, 1.0F, 1.0F);
+            level.playSound(null, pos, SoundEvents.GENERIC_EAT, SoundSource.BLOCKS, 1.0F, 1.0F);
 
             if (!player.isCreative()) {
                 held.shrink(1);

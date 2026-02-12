@@ -125,6 +125,8 @@
   "item.hexalia.briar_sickle": "Briar Sickle",
   "item.hexalia.rootshaper": "Rootshaper",
   "item.hexalia.spiritroot_tether": "Spiritroot Tether",
+  "item.hexalia.brambleguard_salve": "Brambleguard Salve",
+  "item.hexalia.menders_salve": "Mender's Salve",
 
   "entity.hexalia.silk_moth": "Silk Moth",
   "entity.hexalia.thorn_arrow": "Thorn Arrow",
@@ -141,6 +143,8 @@
   "tooltip.hexalia.spikeskin_brew": "Spikeskin (4:00)",
   "tooltip.hexalia.daybloom": "Daybloom (4:00)",
   "tooltip.hexalia.arachnid_grace": "Arachnid Grace (4:00)",
+  "tooltip.hexalia.menders_salve": "Regeneration (1:30)",
+  "tooltip.hexalia.brambleguard_salve": "Brambleguard (1:30)",
   "tooltip.hexalia.hold_shift": "Hold SHIFT for more information",
   "tooltip.hexalia.bogged_armor": "Full Set Bonus:",
   "tooltip.hexalia.bogged_armor_2": "Poison Immunity and Water Breathing",
@@ -177,6 +181,8 @@
   "effect.hexalia.daybloom.description": "During the day the player is healed and has increased speed, but darkness hurts the player.",
   "effect.hexalia.arachnid_grace": "Arachnid Grace",
   "effect.hexalia.arachnid_grace.description": "Allows the user to vertically climb up walls and grants poison immunity. Cobwebs won't affect the user.",
+  "effect.hexalia.brambleguard": "Brambleguard",
+  "effect.hexalia.brambleguard.description": "Grants 10% magical resistance and 5% physical resistance per level. Removes and prevents Bleeding while active.",
 
   "entity.hexalia.silk_moth_entity": "Silk Moth",
 
@@ -247,6 +253,7 @@
   "message.hexalia.invalid_item": "This item is not a valid item for this block.",
 
   "message.hexalia.lourdes.activation": "The Lourdes flower blooms with purifying warmth.",
+  "message.hexalia.lourdes.inactive": "The flowers requires a Lotus Blossom to activate.",
 
   "message.hexalia.spiritroot_tether.bound": "Tether bound.",
   "message.hexalia.spiritroot_tether.invalid_bind_block": "This block cannot be used as a Spiritroot anchor.",

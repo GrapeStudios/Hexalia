@@ -102,6 +102,9 @@ public class ModCreativeModeTabs {
         output.accept(ModItems.BREW_OF_DAYBLOOM.get());
         output.accept(ModItems.BREW_OF_ARACHNID_GRACE.get());
 
+        output.accept(ModItems.BRAMBLEGUARD_SALVE.get());
+        output.accept(ModItems.MENDERS_SALVE.get());
+
         output.accept(ModItems.SALT.get());
         output.accept(ModBlocks.SALT_BLOCK.get());
         output.accept(ModItems.PURIFYING_SAC.get());
