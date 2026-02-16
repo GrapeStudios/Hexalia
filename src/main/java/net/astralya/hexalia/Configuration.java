@@ -26,6 +26,9 @@ public final class Configuration {
     public static ModConfigSpec.IntValue CENSER_EFFECT_RADIUS;
     public static ModConfigSpec.IntValue CENSER_EFFECT_DURATION;
 
+    public static ModConfigSpec.IntValue BREWING_DURATION;
+    public static ModConfigSpec.IntValue OVERCOOKED_DURATION;
+
     public static ModConfigSpec.IntValue DREAMCATCHER_RADIUS;
     public static ModConfigSpec.IntValue PHANTOM_IGNITE_DURATION;
 
@@ -109,6 +112,14 @@ public final class Configuration {
         CENSER_EFFECT_DURATION = builder
                 .comment("Burn duration in ticks of the Censer effect. 20 ticks = 1 second")
                 .defineInRange("censerEffectDuration", 7200, 20, 24000);
+
+        BREWING_DURATION = builder
+                .comment("Brewing duration in ticks of the Small Cauldron. 20 ticks = 1 second")
+                .defineInRange("brewingDuration", 4800, 20, 24000);
+
+        OVERCOOKED_DURATION = builder
+                .comment("Overcook duration in ticks of the Small Cauldron. 20 ticks = 1 second")
+                .defineInRange("brewingDuration", 4800, 20, 24000);
 
         DREAMCATCHER_RADIUS = builder
                 .comment("Radius in blocks the Dreamcatcher detects and affects phantoms")

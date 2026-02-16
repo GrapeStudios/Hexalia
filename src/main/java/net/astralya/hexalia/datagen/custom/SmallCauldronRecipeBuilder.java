@@ -1,7 +1,10 @@
 package net.astralya.hexalia.datagen.custom;
 
 import net.astralya.hexalia.recipe.SmallCauldronRecipe;
-import net.minecraft.advancements.*;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementRequirements;
+import net.minecraft.advancements.AdvancementRewards;
+import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.core.NonNullList;
@@ -17,53 +20,63 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class SmallCauldronRecipeBuilder implements RecipeBuilder {
-    private final NonNullList<Ingredient> ingredients;
-    private final ItemStack output;
+
+    private final NonNullList<Ingredient> inputs;
+    private final ItemStack outputStack;
+    private final float experience;
+    private final int brewTime;
     private final Item result;
-    private Ingredient bottleSlot = Ingredient.EMPTY;
-    private float experience = 0.0F;
-    private int brewTime = 200;
+
     private final Map<String, Criterion<?>> criteria = new LinkedHashMap<>();
 
-    public SmallCauldronRecipeBuilder(ItemStack output) {
-        this.ingredients = NonNullList.create();
-        this.output = output;
-        this.result = output.getItem();
+    private SmallCauldronRecipeBuilder(NonNullList<Ingredient> inputs, ItemStack outputStack, float experience, int brewTime) {
+        this.inputs = inputs;
+        this.outputStack = outputStack;
+        this.experience = experience;
+        this.brewTime = brewTime;
+        this.result = outputStack.getItem();
     }
 
-    public static SmallCauldronRecipeBuilder smallCauldronRecipe(ItemStack output) {
-        return new SmallCauldronRecipeBuilder(output);
+    public static SmallCauldronRecipeBuilder cauldron(Ingredient input, ItemStack output) {
+        NonNullList<Ingredient> inputs = NonNullList.create();
+        inputs.add(input);
+        return new SmallCauldronRecipeBuilder(inputs, output, 0.0F, 200);
     }
 
-    public SmallCauldronRecipeBuilder addIngredient(Ingredient ingredient) {
-        this.ingredients.add(ingredient);
-        return this;
+    public static SmallCauldronRecipeBuilder cauldron(Ingredient input1, Ingredient input2, ItemStack output) {
+        NonNullList<Ingredient> inputs = NonNullList.create();
+        inputs.add(input1);
+        inputs.add(input2);
+        return new SmallCauldronRecipeBuilder(inputs, output, 0.0F, 200);
     }
 
-    public SmallCauldronRecipeBuilder addIngredient(Item item) {
-        return this.addIngredient(Ingredient.of(item));
+    public static SmallCauldronRecipeBuilder cauldron(Ingredient input1, Ingredient input2, Ingredient input3, ItemStack output) {
+        NonNullList<Ingredient> inputs = NonNullList.create();
+        inputs.add(input1);
+        inputs.add(input2);
+        inputs.add(input3);
+        return new SmallCauldronRecipeBuilder(inputs, output, 0.0F, 200);
     }
 
-    public SmallCauldronRecipeBuilder addIngredient(ItemStack itemStack) {
-        return this.addIngredient(Ingredient.of(itemStack));
-    }
-
-    public SmallCauldronRecipeBuilder bottleSlot(Ingredient bottleSlot) {
-        this.bottleSlot = bottleSlot;
-        return this;
-    }
-
-    public SmallCauldronRecipeBuilder bottleSlot(Item item) {
-        return this.bottleSlot(Ingredient.of(item));
+    public static SmallCauldronRecipeBuilder cauldron(Ingredient input1, Ingredient input2, Ingredient input3, Ingredient input4, ItemStack output) {
+        NonNullList<Ingredient> inputs = NonNullList.create();
+        inputs.add(input1);
+        inputs.add(input2);
+        inputs.add(input3);
+        inputs.add(input4);
+        return new SmallCauldronRecipeBuilder(inputs, output, 0.0F, 200);
     }
 
     public SmallCauldronRecipeBuilder experience(float experience) {
-        this.experience = experience;
-        return this;
+        return new SmallCauldronRecipeBuilder(this.inputs, this.outputStack, experience, this.brewTime).copyCriteriaFrom(this);
     }
 
     public SmallCauldronRecipeBuilder brewTime(int brewTime) {
-        this.brewTime = brewTime;
+        return new SmallCauldronRecipeBuilder(this.inputs, this.outputStack, this.experience, brewTime).copyCriteriaFrom(this);
+    }
+
+    private SmallCauldronRecipeBuilder copyCriteriaFrom(SmallCauldronRecipeBuilder other) {
+        this.criteria.putAll(other.criteria);
         return this;
     }
 
@@ -73,17 +86,13 @@ public class SmallCauldronRecipeBuilder implements RecipeBuilder {
         return this;
     }
 
-    @Override
-    public RecipeBuilder group(@Nullable String s) {
-        return this;
-    }
-
     public SmallCauldronRecipeBuilder unlockedByItem(String name, Item item) {
         return this.unlockedBy(name, InventoryChangeTrigger.TriggerInstance.hasItems(item));
     }
 
-    public SmallCauldronRecipeBuilder unlockedByItems(String name, Item... items) {
-        return this.unlockedBy(name, InventoryChangeTrigger.TriggerInstance.hasItems(items));
+    @Override
+    public RecipeBuilder group(@Nullable String group) {
+        return this;
     }
 
     @Override
@@ -92,22 +101,15 @@ public class SmallCauldronRecipeBuilder implements RecipeBuilder {
     }
 
     @Override
-    public void save(RecipeOutput output, ResourceLocation id) {
-        if (this.ingredients.isEmpty()) {
-            throw new IllegalStateException("No ingredients defined for Small Cauldron recipe");
-        }
-        if (this.ingredients.size() > SmallCauldronRecipe.INPUT_SLOTS) {
-            throw new IllegalStateException("Too many ingredients for Small Cauldron recipe (max " + SmallCauldronRecipe.INPUT_SLOTS + ")");
-        }
-
-        Advancement.Builder advancementBuilder = output.advancement()
+    public void save(RecipeOutput out, ResourceLocation id) {
+        Advancement.Builder adv = out.advancement()
                 .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
                 .rewards(AdvancementRewards.Builder.recipe(id))
                 .requirements(AdvancementRequirements.Strategy.OR);
 
-        this.criteria.forEach(advancementBuilder::addCriterion);
+        this.criteria.forEach(adv::addCriterion);
 
-        SmallCauldronRecipe recipe = new SmallCauldronRecipe(this.ingredients, this.bottleSlot, this.output, this.experience, this.brewTime);
-        output.accept(id, recipe, advancementBuilder.build(id.withPrefix("recipes/small_cauldron/")));
+        SmallCauldronRecipe recipe = new SmallCauldronRecipe(this.inputs, this.outputStack, this.experience, this.brewTime);
+        out.accept(id, recipe, adv.build(id.withPrefix("recipes/small_cauldron/")));
     }
 }

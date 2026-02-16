@@ -32,6 +32,11 @@ public class BrewItem extends AbstractConsumableItem {
         this.baseTooltip = tooltip;
     }
 
+    public int getBrewColor() {
+        MobEffect effect = effectSupplier.get().value();
+        return effect.getColor();
+    }
+
     @Override
     protected void handleEffects(Level level, LivingEntity user, ItemStack consumedStack) {
         if (!level.isClientSide) {

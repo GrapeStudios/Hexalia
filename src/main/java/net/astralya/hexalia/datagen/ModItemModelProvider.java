@@ -59,6 +59,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.HEX_FOCUS.get());
         basicItem(ModItems.MORTAR_AND_PESTLE.get());
         handheldItem(ModItems.ATHAME.get());
+        handheldItem(ModItems.LADLE.get());
         basicItem(ModItems.PURIFYING_SAC.get());
         basicItem(ModItems.SAGE_PENDANT.get());
         basicItem(ModItems.SILK_IDOL.get());

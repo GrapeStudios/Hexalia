@@ -1,11 +1,14 @@
 {
 	"format_version": "1.9.0",
 	"credit": "Made with Blockbench",
+	"render_type": "cutout",
 	"texture_size": [64, 64],
 	"textures": {
 		"0": "hexalia:block/small_cauldron",
 		"1": "block/campfire_log",
-		"particle": "block/campfire_log"
+		"3": "block/campfire_fire",
+		"particle": "hexalia:block/censer_log_lit",
+		"log": "hexalia:block/censer_log_lit"
 	},
 	"elements": [
 		{
@@ -39,12 +42,12 @@
 			"from": [5, 0, 0],
 			"to": [11, 1, 16],
 			"faces": {
-				"north": {"uv": [0, 15, 6, 16], "texture": "#1", "cullface": "north"},
-				"east": {"uv": [0, 14, 4, 14.25], "texture": "#1"},
-				"south": {"uv": [0, 15, 6, 16], "texture": "#1", "cullface": "south"},
-				"west": {"uv": [0, 15.75, 4, 16], "texture": "#1"},
-				"up": {"uv": [0, 8, 15.75, 14], "rotation": 90, "texture": "#1"},
-				"down": {"uv": [0, 8, 16, 13.75], "rotation": 90, "texture": "#1", "cullface": "down"}
+				"north": {"uv": [0, 15, 6, 16], "texture": "#log", "cullface": "north"},
+				"east": {"uv": [0, 14, 4, 14.25], "texture": "#log"},
+				"south": {"uv": [0, 15, 6, 16], "texture": "#log", "cullface": "south"},
+				"west": {"uv": [0, 15.75, 4, 16], "texture": "#log"},
+				"up": {"uv": [0, 8, 15.75, 14], "rotation": 90, "texture": "#log"},
+				"down": {"uv": [0, 8, 16, 13.75], "rotation": 90, "texture": "#log", "cullface": "down"}
 			}
 		},
 		{
@@ -189,6 +192,20 @@
 				"up": {"uv": [11.25, 12.5, 11, 11.5], "texture": "#0"},
 				"down": {"uv": [11.5, 11.5, 11.25, 12.5], "texture": "#0"}
 			}
+		},
+		{
+			"name": "fire",
+			"from": [6, 1, 6],
+			"to": [6, 4, 15],
+			"rotation": {"angle": 45, "axis": "y", "origin": [4, 1, 7]},
+			"faces": {
+				"north": {"uv": [0, 0, 0, 0.375], "texture": "#3"},
+				"east": {"uv": [5, 0, 11.375, 3.875], "texture": "#3"},
+				"south": {"uv": [0, 0, 0, 0.375], "texture": "#3"},
+				"west": {"uv": [5, 0, 10.375, 3.875], "texture": "#3"},
+				"up": {"uv": [0, 0, 0, 1.125], "texture": "#3"},
+				"down": {"uv": [0, 0, 0, 1.125], "texture": "#3"}
+			}
 		}
 	],
 	"display": {
@@ -216,7 +233,6 @@
 		},
 		"gui": {
 			"rotation": [30, -135, 0],
-			"translation": [0, -0.5, 0],
 			"scale": [0.5, 0.5, 0.5]
 		},
 		"fixed": {
@@ -256,6 +272,12 @@
 							"children": [12, 13]
 						}
 					]
+				},
+				{
+					"name": "fire",
+					"origin": [9, 1, 4],
+					"color": 0,
+					"children": [14, 15]
 				}
 			]
 		}

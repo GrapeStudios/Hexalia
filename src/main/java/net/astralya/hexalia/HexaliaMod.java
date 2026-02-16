@@ -18,15 +18,12 @@ import net.astralya.hexalia.particle.ModParticleType;
 import net.astralya.hexalia.recipe.ModRecipes;
 import net.astralya.hexalia.menu.ModMenuTypes;
 import net.astralya.hexalia.client.screen.NestingBlockScreen;
-import net.astralya.hexalia.client.screen.SmallCauldronScreen;
 import net.astralya.hexalia.sound.ModSoundEvents;
 import net.astralya.hexalia.util.ModArmorMaterials;
 import net.astralya.hexalia.util.ModItemProperties;
 import net.astralya.hexalia.util.ModVanillaBehaviors;
 import net.astralya.hexalia.util.ModWoodTypes;
 import net.astralya.hexalia.worldgen.gen.decorator.ModTreeDecorators;
-import net.minecraft.client.renderer.ItemBlockRenderTypes;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
@@ -152,6 +149,7 @@ public class HexaliaMod {
             event.registerBlockEntityRenderer(ModBlockEntityTypes.SHELF.get(), ShelfBlockEntityRenderer::new);
             event.registerBlockEntityRenderer(ModBlockEntityTypes.CENSER.get(), CenserBlockEntityRenderer::new);
             event.registerBlockEntityRenderer(ModBlockEntityTypes.MORTAR_AND_PESTLE.get(), MortarAndPestleBlockEntityRenderer::new);
+            event.registerBlockEntityRenderer(ModBlockEntityTypes.SMALL_CAULDRON.get(), SmallCauldronBlockEntityRenderer::new);
 
             event.registerBlockEntityRenderer(ModBlockEntityTypes.MOD_SIGN.get(), SignRenderer::new);
             event.registerBlockEntityRenderer(ModBlockEntityTypes.MOD_HANGING_SIGN.get(), HangingSignRenderer::new);
@@ -167,7 +165,6 @@ public class HexaliaMod {
 
         @SubscribeEvent
         public static void registerScreens(RegisterMenuScreensEvent event) {
-            event.register(ModMenuTypes.SMALL_CAULDRON_MENU.get(), SmallCauldronScreen::new);
             event.register(ModMenuTypes.NESTING_BLOCK_MENU.get(), NestingBlockScreen::new);
         }
     }

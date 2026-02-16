@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_cobbled_deepslate": {
+    "has_stick": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:cobbled_deepslate"
+            "items": "minecraft:stick"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "hexalia:rustic_oven"
+        "recipe": "hexalia:ladle"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_cobbled_deepslate"
+      "has_stick"
     ]
   ],
   "rewards": {
     "recipes": [
-      "hexalia:rustic_oven"
+      "hexalia:ladle"
     ]
   }
 }

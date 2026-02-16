@@ -118,6 +118,8 @@ public class ModItems {
                     .attributes(RootshaperItem.createAttributes()));
     public static final DeferredItem<Item> SPIRITROOT_TETHER = ITEMS.registerItem("spiritroot_tether",
             SpiritrootTetherItem::new, new Item.Properties());
+    public static final DeferredItem<Item> LADLE = ITEMS.registerItem("ladle",
+            Item::new, new Item.Properties().stacksTo(1));
 
     // Block Items
     public static final DeferredItem<Item> CANDLE_SKULL = ITEMS.register("candle_skull",

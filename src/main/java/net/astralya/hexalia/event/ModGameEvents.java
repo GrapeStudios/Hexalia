@@ -20,6 +20,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
+import net.neoforged.neoforge.event.level.BlockEvent;
 
 @EventBusSubscriber(modid = HexaliaMod.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class ModGameEvents {
@@ -81,6 +82,28 @@ public class ModGameEvents {
         }
 
         event.setAmount(event.getAmount() * (1.0f - reduction));
+    }
+
+    @SubscribeEvent
+    public static void onSiphonBlockBreak(BlockEvent.BreakEvent event) {
+        Player player = event.getPlayer();
+
+        if (player.level().isClientSide) {
+            return;
+        }
+
+        if (player.isCreative()) {
+            return;
+        }
+
+        MobEffectInstance inst = player.getEffect(ModMobEffects.SIPHON);
+        if (inst == null) {
+            return;
+        }
+
+        int amp = inst.getAmplifier();
+        float extraExhaustion = 0.025F * (amp + 1);
+        player.causeFoodExhaustion(extraExhaustion);
     }
 
     private static float getBrambleguardReduction(DamageSource source, int level) {

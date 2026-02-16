@@ -129,6 +129,7 @@ public class ModCreativeModeTabs {
         output.accept(ModItems.MORTAR_AND_PESTLE.get());
         output.accept(ModItems.ATHAME.get());
         output.accept(ModItems.HEX_FOCUS.get());
+        output.accept(ModItems.LADLE.get());
 
         output.accept(ModItems.SILK_IDOL.get());
         output.accept(ModItems.RAINFALL_IDOL.get());
@@ -147,7 +148,6 @@ public class ModCreativeModeTabs {
     }
 
     private static void acceptFunctionalBlocks(CreativeModeTab.Output output) {
-        output.accept(ModBlocks.RUSTIC_OVEN.get());
         output.accept(ModItems.SMALL_CAULDRON.get());
         output.accept(ModBlocks.SHELF.get());
         output.accept(ModBlocks.RITUAL_TABLE.get());

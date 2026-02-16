@@ -31,6 +31,7 @@ public class LivingEntityMixin {
                 player.playSound(SoundEvents.NETHER_WART_BREAK, 1.0F, 1.0F);
                 player.heal(healthStealAmount);
             }
+
         }
     }
 

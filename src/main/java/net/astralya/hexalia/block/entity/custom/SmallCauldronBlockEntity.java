@@ -1,230 +1,347 @@
 package net.astralya.hexalia.block.entity.custom;
 
+import net.astralya.hexalia.block.custom.SmallCauldronBlock;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
-import net.astralya.hexalia.recipe.ModRecipes;
-import net.astralya.hexalia.recipe.SmallCauldronRecipe;
-import net.astralya.hexalia.menu.SmallCauldronMenu;
+import net.astralya.hexalia.gameplay.smallcauldron.SmallCauldronContents;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.world.Containers;
-import net.minecraft.world.MenuProvider;
-import net.minecraft.world.SimpleContainer;
-import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.Mth;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.items.ItemStackHandler;
-import net.neoforged.neoforge.items.wrapper.RecipeWrapper;
+import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Optional;
+import java.util.List;
 
-public class SmallCauldronBlockEntity extends SyncBlockEntity implements MenuProvider, HeatingBlock {
+public class SmallCauldronBlockEntity extends SyncBlockEntity {
 
-    public final ItemStackHandler inventory = new ItemStackHandler(5) {
-        @Override
-        protected void onContentsChanged(int slot) {
-            setChanged();
-            if(!level.isClientSide()) {
-                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
-            }
+    public static final int STIR_ANIM_TICKS = 20;
+
+    private static final String TAG_STIR_ANIM_TICK = "StirAnimTick";
+
+    private final SmallCauldronContents contents = new SmallCauldronContents();
+
+    private int stirAnimTick;
+
+    private long clientStirStartGameTime;
+    private int clientStirStartTick;
+
+    private boolean stirAnimDirty;
+
+    private static final int SPOILED_AURA_INTERVAL_TICKS = 20;
+    private static final int SPOILED_POISON_DURATION_TICKS = 60;
+    private static final int SPOILED_POISON_AMPLIFIER = 0;
+
+    public SmallCauldronBlockEntity(BlockPos pos, BlockState state) {
+        super(ModBlockEntityTypes.SMALL_CAULDRON.get(), pos, state);
+    }
+
+    public void tick(Level level, BlockPos pos, BlockState state) {
+        if (!(level instanceof ServerLevel server)) {
+            return;
         }
-    };
 
-    private static final int INPUT_SLOT_1 = 0;
-    private static final int INPUT_SLOT_2 = 1;
-    private static final int INPUT_SLOT_3 = 2;
-    private static final int OUTPUT_SLOT = 3;
-    private static final int BOTTLE_SLOT = 4;
+        boolean blockLit = state.getValue(SmallCauldronBlock.LIT);
 
-    private final ContainerData data;
-    private int progress = 0;
-    private int maxProgress = 175;
-    private final int DEFAULT_MAX_PROGRESS = 175;
-    @Nullable private Player lastInteractedPlayer;
-
-    public SmallCauldronBlockEntity(BlockPos pos, BlockState blockState) {
-        super(ModBlockEntityTypes.SMALL_CAULDRON.get(), pos, blockState);
-        this.data = new ContainerData() {
-            @Override
-            public int get(int index) {
-                return switch (index) {
-                    case 0 -> SmallCauldronBlockEntity.this.progress;
-                    case 1 -> SmallCauldronBlockEntity.this.maxProgress;
-                    default -> 0;
-                };
-            }
-
-            @Override
-            public void set(int index, int value) {
-                switch (index) {
-                    case 0: SmallCauldronBlockEntity.this.progress = value;
-                    case 1: SmallCauldronBlockEntity.this.maxProgress = value;
-                }
-            }
-
-            @Override
-            public int getCount() {
-                return 2;
-            }
-        };
-    }
-
-    public void clearContents() {
-        inventory.setStackInSlot(0, ItemStack.EMPTY);
-    }
-
-    public void drops() {
-        SimpleContainer inv = new SimpleContainer(inventory.getSlots());
-        for(int i = 0; i < inventory.getSlots(); i++) {
-            inv.setItem(i, inventory.getStackInSlot(i));
+        if (stirAnimTick > 0) {
+            stirAnimTick--;
+            stirAnimDirty = true;
         }
-        Containers.dropContents(this.level, this.worldPosition, inv);
+
+        contents.tickServer(server, blockLit);
+
+        if (contents.isSpoiled()) {
+            applySpoiledAura(server, pos);
+        }
+
+        syncIfNeeded();
     }
 
-    public void tick (Level level, BlockPos pos, BlockState state) {
-        if(hasRecipe() && isOutputSlotEmptyOrReceivable() && isHeated()) {
-            increaseCraftingProgress();
-            setChanged(level, pos, state);
+    private void applySpoiledAura(ServerLevel server, BlockPos pos) {
+        if ((server.getGameTime() % SPOILED_AURA_INTERVAL_TICKS) != 0) {
+            return;
+        }
 
-            if (hasCraftingFinished()) {
-                craftItem();
-                resetProgress();
-            }
-        } else {
-            resetProgress();
+        AABB area = new AABB(pos).inflate(1.0, 1.0, 1.0);
+
+        for (Player p : server.getEntitiesOfClass(Player.class, area)) {
+            p.addEffect(new MobEffectInstance(
+                    MobEffects.POISON,
+                    SPOILED_POISON_DURATION_TICKS,
+                    SPOILED_POISON_AMPLIFIER,
+                    false,
+                    true,
+                    true
+            ));
         }
     }
 
-    private void resetProgress() {
-        this.progress = 0;
-        this.maxProgress = DEFAULT_MAX_PROGRESS;
+    public boolean canStir(BlockState state, Player player) {
+        return contents.canStir(state.getValue(SmallCauldronBlock.LIT));
     }
 
-    private void craftItem() {
-        Level level = this.getLevel();
-        if (level == null) return;
-
-        RecipeWrapper wrapper = new RecipeWrapper(inventory);
-
-        Optional<RecipeHolder<SmallCauldronRecipe>> match = level.getRecipeManager()
-                .getRecipeFor(ModRecipes.SMALL_CAULDRON_TYPE.get(), wrapper, level);
-
-        if (match.isPresent()) {
-            SmallCauldronRecipe recipe = match.get().value();
-            ItemStack result = recipe.getResultItem(level.registryAccess());
-            ItemStack currentOutput = inventory.getStackInSlot(OUTPUT_SLOT);
-
-            inventory.setStackInSlot(OUTPUT_SLOT, new ItemStack(result.getItem(),
-                    currentOutput.getCount() + result.getCount()));
-
-            for (int i = 0; i < 3; i++) {
-                inventory.extractItem(i, 1, false);
-            }
-
-            if (!recipe.getBottleSlot().isEmpty()) {
-                inventory.extractItem(BOTTLE_SLOT, 1, false);
-            }
-
-            if (lastInteractedPlayer != null) {
-                grantExperience(lastInteractedPlayer, recipe.getExperience());
-            }
-
-            setChanged(level, worldPosition, getBlockState());
+    public boolean tryStir(BlockState state, Player player) {
+        if (!(level instanceof ServerLevel server)) {
+            return false;
         }
-    }
 
-    private void grantExperience(Player player, float experience) {
-        if (experience > 0 && !player.level().isClientSide) {
-            player.giveExperiencePoints((int) experience);
+        if (!contents.canStir(state.getValue(SmallCauldronBlock.LIT))) {
+            return false;
         }
+
+        SmallCauldronContents.StirResult result = contents.stir(server);
+
+        stirAnimTick = STIR_ANIM_TICKS;
+        stirAnimDirty = true;
+
+        syncIfNeeded();
+        return result == SmallCauldronContents.StirResult.STIRRED || result == SmallCauldronContents.StirResult.STARTED_COOKING;
     }
 
-    public void setLastInteractedPlayer(Player player) {
-        this.lastInteractedPlayer = player;
+    public void triggerStirAnimation() {
+        if (!(level instanceof ServerLevel)) {
+            return;
+        }
+
+        stirAnimTick = STIR_ANIM_TICKS;
+        stirAnimDirty = true;
+
+        syncIfNeeded();
     }
 
-    private boolean hasCraftingFinished() {
-        return this.progress >= this.maxProgress;
+    public int getStirAnimTick() {
+        return stirAnimTick;
     }
 
-    private void increaseCraftingProgress() {
-        progress++;
+    public float getStirProgress(float partialTicks) {
+        Level level = getLevel();
+        if (level == null) {
+            return 0.0F;
+        }
+
+        if (level.isClientSide) {
+            if (clientStirStartTick <= 0) {
+                return 0.0F;
+            }
+
+            float elapsed = (level.getGameTime() - clientStirStartGameTime) + partialTicks;
+            float t = elapsed / (float) clientStirStartTick;
+            if (t >= 1.0F) {
+                return 0.0F;
+            }
+            return Mth.clamp(t, 0.0F, 1.0F);
+        }
+
+        int tick = getStirAnimTick();
+        if (tick <= 0) {
+            return 0.0F;
+        }
+
+        float t = (STIR_ANIM_TICKS - (tick - partialTicks)) / (float) STIR_ANIM_TICKS;
+        return Mth.clamp(t, 0.0F, 1.0F);
     }
 
-    private boolean isOutputSlotEmptyOrReceivable() {
-        return this.inventory.getStackInSlot(OUTPUT_SLOT).isEmpty() ||
-                this.inventory.getStackInSlot(OUTPUT_SLOT).getCount() < this.inventory.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
+    public List<ItemStack> getIngredientsForRender() {
+        return contents.getIngredientsForRender();
     }
 
-    private boolean hasRecipe() {
-        Level level = this.getLevel();
-        if (level == null) return false;
-
-        RecipeWrapper wrapper = new RecipeWrapper(inventory);
-        Optional<RecipeHolder<SmallCauldronRecipe>> match = level.getRecipeManager()
-                .getRecipeFor(ModRecipes.SMALL_CAULDRON_TYPE.get(), wrapper, level);
-
-        if (match.isEmpty()) return false;
-
-        SmallCauldronRecipe recipe = match.get().value();
-        ItemStack result = recipe.getResultItem(level.registryAccess());
-
-        this.maxProgress = recipe.getBrewTime();
-
-        return canInsertAmountIntoOutputSlot(result.getCount()) &&
-                canInsertItemIntoOutputSlot(result);
+    public float getLiquidFill01() {
+        return contents.getLiquidFill01();
     }
 
-    private boolean canInsertItemIntoOutputSlot(ItemStack output) {
-        return inventory.getStackInSlot(OUTPUT_SLOT).isEmpty() ||
-                inventory.getStackInSlot(OUTPUT_SLOT).getItem() == output.getItem();
+    public float getVisualLiquidFill01() {
+        return contents.getVisualLiquidFill01();
     }
 
-    private boolean canInsertAmountIntoOutputSlot(int count) {
-        int maxCount = inventory.getStackInSlot(OUTPUT_SLOT).isEmpty() ? 64 : inventory.getStackInSlot(OUTPUT_SLOT).getMaxStackSize();
-        int currentCount = inventory.getStackInSlot(OUTPUT_SLOT).getCount();
-
-        return maxCount >= currentCount + count;
+    public int getVisualLiquidColor() {
+        return contents.getVisualLiquidColor();
     }
 
-    public boolean isHeated() {
-        return level != null && isHeated(level, worldPosition);
+    public boolean isSpoiled() {
+        return contents.isSpoiled();
     }
 
-    @Override
-    public Component getDisplayName() {
-        return Component.translatable("block.hexalia.small_cauldron");
+    public boolean isCooking() {
+        return contents.isCooking();
     }
 
-    @Override
-    public @Nullable AbstractContainerMenu createMenu(int i, Inventory inventory, Player player) {
-        return new SmallCauldronMenu(i, inventory, this, this.data);
+    public boolean hasMixture() {
+        return contents.hasMixture();
+    }
+
+    public boolean isOvercooked() {
+        return contents.isOvercooked();
+    }
+
+    public int getMixtureBaseColor() {
+        return contents.getMixtureBaseColor();
+    }
+
+    public boolean canExtractOneIngredient() {
+        return contents.canExtractOneIngredient(getBlockState().getValue(SmallCauldronBlock.LIT));
+    }
+
+    public ItemStack extractOneIngredient() {
+        if (!(level instanceof ServerLevel)) {
+            return ItemStack.EMPTY;
+        }
+
+        ItemStack out = contents.extractOneIngredient();
+        syncIfNeeded();
+        return out;
+    }
+
+    public boolean canInsertOne(ItemStack stack) {
+        return contents.canInsertOne(stack);
+    }
+
+    public boolean insertOneIntoCauldron(ItemStack held) {
+        if (!(level instanceof ServerLevel)) {
+            return false;
+        }
+
+        boolean ok = contents.insertOne(held);
+        syncIfNeeded();
+        return ok;
+    }
+
+    public boolean canScoopMixtureWithRusticBottle() {
+        return contents.canScoopMixtureWithRusticBottle();
+    }
+
+    public boolean tryScoopBottlePublic(Player player, InteractionHand hand, ItemStack held) {
+        if (!(level instanceof ServerLevel server)) {
+            return false;
+        }
+
+        boolean ok = contents.tryScoopBottle(server, centerX(), topY(), centerZ(), player, hand, held);
+        syncIfNeeded();
+        return ok;
+    }
+
+    public boolean isRusticBottle(ItemStack stack) {
+        return contents.isRusticBottle(stack);
+    }
+
+    public boolean isLotusBlossom(ItemStack stack) {
+        return contents.isLotusBlossom(stack);
+    }
+
+    public boolean isWaterContainer(ItemStack stack) {
+        return contents.isWaterContainer(stack);
+    }
+
+    public boolean canCleanseSpoiledWithLotus() {
+        return contents.canCleanseSpoiledWithLotus();
+    }
+
+    public boolean tryCleanseSpoiledPublic(Player player, InteractionHand hand, ItemStack held) {
+        if (!(level instanceof ServerLevel)) {
+            return false;
+        }
+
+        boolean ok = contents.tryCleanseSpoiled(player, hand, held);
+        syncIfNeeded();
+        return ok;
+    }
+
+    public boolean canUseWaterContainer(ItemStack stack) {
+        return contents.canUseWaterContainer(stack);
+    }
+
+    public boolean tryFillWithWaterPublic(Player player, InteractionHand hand, ItemStack held) {
+        if (!(level instanceof ServerLevel server)) {
+            return false;
+        }
+
+        boolean ok = contents.tryUseWaterContainer(server, centerX(), centerY(), centerZ(), player, hand, held);
+        syncIfNeeded();
+        return ok;
+    }
+
+    public void dropAll(Level level) {
+        if (level == null || level.isClientSide) {
+            return;
+        }
+
+        contents.dropAll(level, centerX(), centerY(), centerZ());
+        contents.clearDirty();
+        stirAnimDirty = false;
+
+        setChanged();
+        inventoryChanged();
+    }
+
+    private void syncIfNeeded() {
+        boolean needs = stirAnimDirty || contents.isDirty();
+        if (!needs) {
+            return;
+        }
+
+        if (contents.isDirty()) {
+            contents.clearDirty();
+        }
+
+        stirAnimDirty = false;
+        inventoryChanged();
+    }
+
+    private double centerX() {
+        return worldPosition.getX() + 0.5;
+    }
+
+    private double centerY() {
+        return worldPosition.getY() + 0.5;
+    }
+
+    private double centerZ() {
+        return worldPosition.getZ() + 0.5;
+    }
+
+    private double topY() {
+        return worldPosition.getY() + 1.0;
     }
 
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        tag.put("inventory", inventory.serializeNBT(registries));
-        tag.putInt("small_cauldron.progress", progress);
-        tag.putInt("small_cauldron.max_progress", maxProgress);
         super.saveAdditional(tag, registries);
+        tag.putInt(TAG_STIR_ANIM_TICK, stirAnimTick);
+        contents.save(tag, registries);
     }
 
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
-        inventory.deserializeNBT(registries, tag.getCompound("inventory"));
-        progress = tag.getInt("small_cauldron.progress");
-        maxProgress = tag.getInt("small_cauldron.max_progress");
+
+        int prevStir = stirAnimTick;
+
+        stirAnimTick = tag.getInt(TAG_STIR_ANIM_TICK);
+        if (stirAnimTick < 0) stirAnimTick = 0;
+        if (stirAnimTick > STIR_ANIM_TICKS) stirAnimTick = STIR_ANIM_TICKS;
+
+        contents.load(tag, registries);
+
+        Level level = getLevel();
+        if (level != null && level.isClientSide) {
+            if (stirAnimTick > prevStir) {
+                clientStirStartGameTime = level.getGameTime();
+                clientStirStartTick = stirAnimTick;
+            } else if (stirAnimTick <= 0) {
+                clientStirStartTick = 0;
+            }
+        }
+
+        stirAnimDirty = false;
     }
 
     @Override

@@ -28,13 +28,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     protected void buildRecipes(RecipeOutput recipeOutput) {
         // Shaped Recipe for Items & Blocks
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.SMALL_CAULDRON.get())
-                .pattern("S S")
-                .pattern("P P")
-                .pattern("SSS")
-                .define('P', Items.COPPER_INGOT)
-                .define('S', Items.COBBLED_DEEPSLATE)
-                .unlockedBy("has_copper_ingot",
-                        inventoryTrigger(ItemPredicate.Builder.item().of(Items.COPPER_INGOT).build()))
+                .pattern("D D")
+                .pattern("DCD")
+                .pattern("LLL")
+                .define('C', ItemTags.COALS)
+                .define('D', Items.COBBLED_DEEPSLATE)
+                .define('L', ItemTags.LOGS)
+                .unlockedBy("has_cobbled_deepslate",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(Blocks.COBBLED_DEEPSLATE).build()))
                 .save(recipeOutput);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.DREAMCATCHER.get())
@@ -83,19 +84,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("P ")
                 .define('S', Items.FLINT)
                 .define('P', Items.STICK)
-                .unlockedBy("has_cobblestone",
-                        inventoryTrigger(ItemPredicate.Builder.item().of(Blocks.COBBLESTONE).build()))
+                .unlockedBy("has_stick",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(Items.STICK).build()))
                 .save(recipeOutput);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.RUSTIC_OVEN.get())
-                .pattern("PPP")
-                .pattern("SAS")
-                .pattern("SSS")
-                .define('P', Items.IRON_INGOT)
-                .define('S', Items.COBBLED_DEEPSLATE)
-                .define('A', ItemTags.COALS)
-                .unlockedBy("has_cobbled_deepslate",
-                        inventoryTrigger(ItemPredicate.Builder.item().of(Blocks.COBBLED_DEEPSLATE).build()))
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.LADLE.get())
+                .pattern("  B")
+                .pattern(" S ")
+                .pattern("S  ")
+                .define('S', Items.STICK)
+                .define('B', Items.BOWL)
+                .unlockedBy("has_stick",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(Items.STICK).build()))
                 .save(recipeOutput);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.SHELF.get())
@@ -652,76 +652,85 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         ModBlocks.CELESTIAL_CRYSTAL_BLOCK.getId().getPath() + "_from_brazier"));
 
         // Small Cauldron Recipes
-        SmallCauldronRecipeBuilder.smallCauldronRecipe(new ItemStack(ModItems.BREW_OF_SPIKESKIN.get()))
-                .addIngredient(Items.CACTUS)
-                .addIngredient(ModItems.MANDRAKE.get())
-                .addIngredient(ModItems.GHOST_POWDER.get())
-                .bottleSlot(ModItems.RUSTIC_BOTTLE.get())
-                .experience(5.0f)
-                .brewTime(175)
-                .unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
-                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
-                        ModItems.BREW_OF_SPIKESKIN.getId().getPath() + "_from_small_cauldron"));
-        SmallCauldronRecipeBuilder.smallCauldronRecipe(new ItemStack(ModItems.BREW_OF_BLOODLUST.get()))
-                .addIngredient(Items.BEEF)
-                .addIngredient(ModItems.SIREN_PASTE.get())
-                .addIngredient(ModItems.SALTSPROUT.get())
-                .bottleSlot(ModItems.RUSTIC_BOTTLE.get())
-                .experience(5.0f)
-                .brewTime(175)
-                .unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
+        SmallCauldronRecipeBuilder.cauldron(
+                        Ingredient.of(ModItems.MANDRAKE.get()),
+                        Ingredient.of(ModItems.SPIRIT_POWDER.get()),
+                        Ingredient.of(ModItems.TREE_RESIN.get()),
+                        Ingredient.of(Items.ROTTEN_FLESH),
+                        new ItemStack(ModItems.BREW_OF_BLOODLUST.get())
+                ).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.BREW_OF_BLOODLUST.getId().getPath() + "_from_small_cauldron"));
-        SmallCauldronRecipeBuilder.smallCauldronRecipe(new ItemStack(ModItems.BREW_OF_SIPHON.get()))
-                .addIngredient(Items.FLINT)
-                .addIngredient(Items.GOLD_NUGGET)
-                .addIngredient(ModItems.MANDRAKE.get())
-                .bottleSlot(ModItems.RUSTIC_BOTTLE.get())
-                .experience(5.0f)
-                .brewTime(175)
-                .unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
+
+        SmallCauldronRecipeBuilder.cauldron(
+                        Ingredient.of(ModItems.CELESTIAL_CRYSTAL.get()),
+                        Ingredient.of(Items.IRON_NUGGET),
+                        Ingredient.of(Items.SWEET_BERRIES),
+                        Ingredient.of(ModItems.TREE_RESIN.get()),
+                        new ItemStack(ModItems.BREW_OF_SPIKESKIN.get())
+                ).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
-                        ModItems.BREW_OF_SIPHON.getId().getPath() + "_from_small_cauldron"));
-        SmallCauldronRecipeBuilder.smallCauldronRecipe(new ItemStack(ModItems.BREW_OF_SLIMEWALKER.get()))
-                .addIngredient(Items.SLIME_BALL)
-                .addIngredient(Items.SPIDER_EYE)
-                .addIngredient(Items.FEATHER)
-                .bottleSlot(ModItems.RUSTIC_BOTTLE.get())
-                .experience(5.0f)
-                .brewTime(175)
-                .unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
+                        ModItems.BREW_OF_SPIKESKIN.getId().getPath() + "_from_small_cauldron"));
+
+        SmallCauldronRecipeBuilder.cauldron(
+                        Ingredient.of(Items.SLIME_BALL),
+                        Ingredient.of(ModItems.CHILLBERRIES.get()),
+                        Ingredient.of(ModItems.TREE_RESIN.get()),
+                        Ingredient.of(Items.FEATHER),
+                        new ItemStack(ModItems.BREW_OF_SLIMEWALKER.get())
+                ).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.BREW_OF_SLIMEWALKER.getId().getPath() + "_from_small_cauldron"));
-        SmallCauldronRecipeBuilder.smallCauldronRecipe(new ItemStack(ModItems.BREW_OF_HOMESTEAD.get()))
-                .addIngredient(Items.ENDER_PEARL)
-                .addIngredient(ModItems.TREE_RESIN.get())
-                .addIngredient(ModItems.SPIRIT_POWDER.get())
-                .bottleSlot(ModItems.RUSTIC_BOTTLE.get())
-                .experience(5.0f)
-                .brewTime(175)
-                .unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
+
+        SmallCauldronRecipeBuilder.cauldron(
+                        Ingredient.of(ModItems.LOTUS_BLOSSOM.get()),
+                        Ingredient.of(Items.ENDER_PEARL),
+                        Ingredient.of(ModItems.SPIRIT_POWDER.get()),
+                        Ingredient.of(ModItems.GALEBERRIES.get()),
+                        new ItemStack(ModItems.BREW_OF_HOMESTEAD.get())
+                ).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.BREW_OF_HOMESTEAD.getId().getPath() + "_from_small_cauldron"));
-        SmallCauldronRecipeBuilder.smallCauldronRecipe(new ItemStack(ModItems.BREW_OF_DAYBLOOM.get()))
-                .addIngredient(ModItems.GALEBERRIES.get())
-                .addIngredient(ModItems.SUNFIRE_TOMATO.get())
-                .addIngredient(ModItems.SPIRIT_POWDER.get())
-                .bottleSlot(ModItems.RUSTIC_BOTTLE.get())
-                .experience(5.0f)
-                .brewTime(175)
-                .unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
+
+        SmallCauldronRecipeBuilder.cauldron(
+                        Ingredient.of(ModItems.DREAM_PASTE.get()),
+                        Ingredient.of(ModItems.SIREN_PASTE.get()),
+                        Ingredient.of(Items.IRON_INGOT),
+                        Ingredient.of(Items.REDSTONE),
+                        new ItemStack(ModItems.BREW_OF_SIPHON.get())
+                ).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        ModItems.BREW_OF_SIPHON.getId().getPath() + "_from_small_cauldron"));
+
+        SmallCauldronRecipeBuilder.cauldron(
+                        Ingredient.of(ModItems.SUNFIRE_TOMATO.get()),
+                        Ingredient.of(ModItems.SPIRIT_POWDER.get()),
+                        Ingredient.of(Items.GLOW_BERRIES),
+                        Ingredient.of(ModBlocks.WITCHWEED.get()),
+                        new ItemStack(ModItems.BREW_OF_DAYBLOOM.get())
+                ).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.BREW_OF_DAYBLOOM.getId().getPath() + "_from_small_cauldron"));
-        SmallCauldronRecipeBuilder.smallCauldronRecipe(new ItemStack(ModItems.BREW_OF_ARACHNID_GRACE.get()))
-                .addIngredient(ModItems.DREAM_PASTE.get())
-                .addIngredient(Items.SPIDER_EYE)
-                .addIngredient(Items.BLACK_DYE)
-                .bottleSlot(ModItems.RUSTIC_BOTTLE.get())
-                .experience(5.0f)
-                .brewTime(175)
-                .unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
+
+        SmallCauldronRecipeBuilder.cauldron(
+                        Ingredient.of(Items.SPIDER_EYE),
+                        Ingredient.of(ModItems.GHOST_POWDER.get()),
+                        Ingredient.of(Items.BLACK_DYE),
+                        Ingredient.of(ModItems.LOTUS_BLOSSOM.get()),
+                        new ItemStack(ModItems.BREW_OF_ARACHNID_GRACE.get())
+                ).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.BREW_OF_ARACHNID_GRACE.getId().getPath() + "_from_small_cauldron"));
+
+        /*SmallCauldronRecipeBuilder.cauldron(
+                        Ingredient.of(Items.FEATHER),
+                        Ingredient.of(ModItems.GHOST_POWDER.get()),
+                        Ingredient.of(ModItems.CHILLBERRIES.get()),
+                        Ingredient.of(Items.SCULK),
+                        new ItemStack(ModItems.BREW_OF_HOLLOW_SILENCE.get())
+                ).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        ModItems.BREW_OF_HOLLOW_SILENCE.getId().getPath() + "_from_small_cauldron"));*/
 
         // Ritual Table Recipes
         RitualTableRecipeBuilder.ritualTableRecipe(new ItemStack(ModBlocks.GRIMSHADE.get()))

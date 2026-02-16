@@ -1,23 +1,20 @@
 {
   "type": "hexalia:small_cauldron",
-  "bottle_slot": {
-    "item": "hexalia:rustic_bottle"
-  },
-  "brewtime": 175,
-  "experience": 5.0,
   "ingredients": [
+    {
+      "item": "hexalia:lotus_blossom"
+    },
     {
       "item": "minecraft:ender_pearl"
     },
     {
-      "item": "hexalia:tree_resin"
+      "item": "hexalia:spirit_powder"
     },
     {
-      "item": "hexalia:spirit_powder"
+      "item": "hexalia:galeberries"
     }
   ],
   "result": {
-    "count": 1,
-    "id": "hexalia:brew_of_homestead"
+    "item": "hexalia:brew_of_homestead"
   }
 }

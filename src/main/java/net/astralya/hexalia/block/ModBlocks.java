@@ -135,7 +135,7 @@ public class ModBlocks {
 
     // Functional Blocks
     public static final DeferredBlock<Block> SMALL_CAULDRON = BLOCKS.register("small_cauldron",
-            () -> new SmallCauldronBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK)));
+            () -> new SmallCauldronBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAULDRON).noOcclusion().lightLevel(state -> state.getValue(LIT) ? 12 : 0)));
     public static final DeferredBlock<Block> SHELF = registerBlock("shelf",
             () -> new ShelfBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE_BRICKS).noOcclusion()));
     public static final DeferredBlock<Block> RUSTIC_OVEN = registerBlock("rustic_oven",

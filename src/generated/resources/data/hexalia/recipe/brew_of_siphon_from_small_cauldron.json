@@ -1,23 +1,20 @@
 {
   "type": "hexalia:small_cauldron",
-  "bottle_slot": {
-    "item": "hexalia:rustic_bottle"
-  },
-  "brewtime": 175,
-  "experience": 5.0,
   "ingredients": [
     {
-      "item": "minecraft:flint"
+      "item": "hexalia:dream_paste"
     },
     {
-      "item": "minecraft:gold_nugget"
+      "item": "hexalia:siren_paste"
     },
     {
-      "item": "hexalia:mandrake"
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:redstone"
     }
   ],
   "result": {
-    "count": 1,
-    "id": "hexalia:brew_of_siphon"
+    "item": "hexalia:brew_of_siphon"
   }
 }

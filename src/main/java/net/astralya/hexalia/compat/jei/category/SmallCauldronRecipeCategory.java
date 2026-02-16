@@ -83,7 +83,6 @@ public class SmallCauldronRecipeCategory implements IRecipeCategory<SmallCauldro
         builder.addSlot(RecipeIngredientRole.INPUT, 28, 31).addIngredients(recipe.getIngredients().get(0));
         builder.addSlot(RecipeIngredientRole.INPUT, 4, 31).addIngredients(recipe.getIngredients().get(1));
         builder.addSlot(RecipeIngredientRole.INPUT, 52, 31).addIngredients(recipe.getIngredients().get(2));
-        builder.addSlot(RecipeIngredientRole.INPUT, 28, 55).addIngredients(recipe.getBottleSlot());
         builder.addSlot(RecipeIngredientRole.OUTPUT, 89, 31).addItemStack(recipe.getResultItem(null));
     }
 
