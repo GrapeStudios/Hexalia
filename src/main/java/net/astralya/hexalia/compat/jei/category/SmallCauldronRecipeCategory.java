@@ -27,24 +27,22 @@ import javax.annotation.ParametersAreNonnullByDefault;
 public class SmallCauldronRecipeCategory implements IRecipeCategory<SmallCauldronRecipe> {
 
     public static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "small_cauldron");
-    public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID,
-            "textures/gui/small_cauldron_category_gui.png");
+    public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "textures/gui/category/small_cauldron_gui.png");
 
     public static final RecipeType<SmallCauldronRecipe> SMALL_CAULDRON_RECIPE_TYPE =
             new RecipeType<>(UID, SmallCauldronRecipe.class);
 
-    private static final int WIDTH = 118;
-    private static final int HEIGHT = 80;
+    private static final int TEX_U = 14;
+    private static final int TEX_V = 19;
+    private static final int WIDTH = 89;
+    private static final int HEIGHT = 42;
 
     private final IDrawable background;
     private final IDrawable icon;
-    private final IDrawable heatIcon;
 
     public SmallCauldronRecipeCategory(IGuiHelper helper) {
-        this.background = helper.createDrawable(TEXTURE, 0, 0, WIDTH, HEIGHT);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK,
-                new ItemStack(ModBlocks.SMALL_CAULDRON.get()));
-        this.heatIcon = helper.createDrawable(TEXTURE, 0, 0, 16, 16);
+        this.background = helper.createDrawable(TEXTURE, TEX_U, TEX_V, WIDTH, HEIGHT);
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.SMALL_CAULDRON.get()));
     }
 
     @Override
@@ -54,7 +52,7 @@ public class SmallCauldronRecipeCategory implements IRecipeCategory<SmallCauldro
 
     @Override
     public Component getTitle() {
-        return Component.translatable("block.hexalia.small_cauldron");
+        return Component.translatable("container.hexalia.small_cauldron");
     }
 
     @Override
@@ -75,21 +73,19 @@ public class SmallCauldronRecipeCategory implements IRecipeCategory<SmallCauldro
     @Override
     public void draw(SmallCauldronRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
         background.draw(guiGraphics, 0, 0);
-        heatIcon.draw(guiGraphics, 28, 7);
     }
 
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, SmallCauldronRecipe recipe, IFocusGroup focuses) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 28, 31).addIngredients(recipe.getIngredients().get(0));
-        builder.addSlot(RecipeIngredientRole.INPUT, 4, 31).addIngredients(recipe.getIngredients().get(1));
-        builder.addSlot(RecipeIngredientRole.INPUT, 52, 31).addIngredients(recipe.getIngredients().get(2));
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 89, 31).addItemStack(recipe.getResultItem(null));
+        builder.addSlot(RecipeIngredientRole.INPUT, 1, 1).addIngredients(recipe.getIngredients().get(0));
+        builder.addSlot(RecipeIngredientRole.INPUT, 25, 1).addIngredients(recipe.getIngredients().get(1));
+        builder.addSlot(RecipeIngredientRole.INPUT, 1, 25).addIngredients(recipe.getIngredients().get(2));
+        builder.addSlot(RecipeIngredientRole.INPUT, 25, 25).addIngredients(recipe.getIngredients().get(3));
+
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 70, 12).addItemStack(recipe.getResultItem(null));
     }
 
     @Override
     public void getTooltip(ITooltipBuilder tooltip, SmallCauldronRecipe recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
-        if (mouseX >= 28 && mouseX < 44 && mouseY >= 7 && mouseY < 23) {
-            tooltip.add(Component.translatable("tooltip.hexalia.heat"));
-        }
     }
 }

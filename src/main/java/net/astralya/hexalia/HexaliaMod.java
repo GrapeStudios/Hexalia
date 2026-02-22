@@ -129,6 +129,7 @@ public class HexaliaMod {
             EntityRenderers.register(ModEntities.PURIFYING_SAC.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.FOUL_SAC.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.FROST_SAC.get(), ThrownItemRenderer::new);
+            EntityRenderers.register(ModEntities.SEARING_SAC.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.MOD_BOAT.get(), context -> new ModBoatRenderer(context, false));
             EntityRenderers.register(ModEntities.MOD_CHEST_BOAT.get(), context -> new ModBoatRenderer(context, true));
 

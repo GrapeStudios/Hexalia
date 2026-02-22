@@ -245,34 +245,36 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         inventoryTrigger(ItemPredicate.Builder.item().of(Items.LEATHER).build()))
                 .save(recipeOutput);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.PURIFYING_SAC.get())
-                .pattern(" S ")
-                .pattern("PAP")
-                .pattern(" P ")
-                .define('S', ModTags.Items.SALT)
-                .define('A', ModItems.LOTUS_BLOSSOM.get())
-                .define('P', Items.LEATHER)
-                .unlockedBy("has_Salt", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SALT.get()).build()))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.PURIFYING_SAC.get())
+                .requires(ModItems.SALT.get())
+                .requires(ModItems.LOTUS_BLOSSOM.get())
+                .requires(Items.LEATHER)
+                .unlockedBy("has_salt",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SALT.get()).build()))
                 .save(recipeOutput);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.FROST_SAC.get())
-                .pattern(" S ")
-                .pattern("PAP")
-                .pattern(" P ")
-                .define('S', Items.SNOWBALL)
-                .define('A', ModItems.CHILLBERRIES.get())
-                .define('P', Items.LEATHER)
-                .unlockedBy("has_chillberries", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.CHILLBERRIES.get()).build()))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.FROST_SAC.get())
+                .requires(Items.SNOWBALL)
+                .requires(ModItems.CHILLBERRIES.get())
+                .requires(Items.LEATHER)
+                .unlockedBy("has_chillberries",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.CHILLBERRIES.get()).build()))
                 .save(recipeOutput);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.FOUL_SAC.get())
-                .pattern(" S ")
-                .pattern("PAP")
-                .pattern(" P ")
-                .define('S', Items.SPIDER_EYE)
-                .define('A', ModBlocks.WITCHWEED.get())
-                .define('P', Items.LEATHER)
-                .unlockedBy("has_witchweed", inventoryTrigger(ItemPredicate.Builder.item().of(ModBlocks.WITCHWEED.get().asItem()).build()))
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.FOUL_SAC.get())
+                .requires(Items.SPIDER_EYE)
+                .requires(ModBlocks.WITCHWEED.get())
+                .requires(Items.LEATHER)
+                .unlockedBy("has_witchweed",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(ModBlocks.WITCHWEED.get()).build()))
+                .save(recipeOutput);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.SEARING_SAC.get())
+                .requires(ModItems.RABBAGE.get())
+                .requires(ModItems.SUNFIRE_TOMATO.get())
+                .requires(Items.LEATHER)
+                .unlockedBy("has_sunfire_tomato",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SUNFIRE_TOMATO.get()).build()))
                 .save(recipeOutput);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.BOGGED_BOOTS.get())
@@ -849,6 +851,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         RitualTableRecipeBuilder.ritualTableRecipe(new ItemStack(ModBlocks.LOURDES.get()))
                 .addIngredient(Items.BLUE_ORCHID)
+                .addIngredient(ModItems.AIR_NODE.get())
                 .addIngredient(Items.HONEYCOMB)
                 .addIngredient(Items.GLISTERING_MELON_SLICE)
                 .addIngredient(ModItems.DREAM_PASTE.get())

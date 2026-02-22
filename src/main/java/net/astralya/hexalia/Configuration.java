@@ -18,6 +18,7 @@ public final class Configuration {
 
     public static ModConfigSpec.IntValue FOUL_SAC_DURATION;
     public static ModConfigSpec.IntValue FROST_SAC_DURATION;
+    public static ModConfigSpec.IntValue SEARING_SAC_DURATION;
     public static ModConfigSpec.IntValue PURIFYING_SAC_DURATION;
 
     public static ModConfigSpec.DoubleValue SIPHON_RADIUS;
@@ -86,6 +87,10 @@ public final class Configuration {
 
         FROST_SAC_DURATION = builder
                 .comment("Duration in seconds of the frost cloud created by the Frost Sac. Default: 8 seconds")
+                .defineInRange("frostSacDuration", 8, 1, 60);
+
+        SEARING_SAC_DURATION = builder
+                .comment("Duration in seconds of the searing cloud created by the Searing Sac. Default: 8 seconds")
                 .defineInRange("frostSacDuration", 8, 1, 60);
 
         PURIFYING_SAC_DURATION = builder

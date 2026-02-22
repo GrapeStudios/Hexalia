@@ -111,6 +111,7 @@ public class ModCreativeModeTabs {
         output.accept(ModItems.PURIFYING_SAC.get());
         output.accept(ModItems.FOUL_SAC.get());
         output.accept(ModItems.FROST_SAC.get());
+        output.accept(ModItems.SEARING_SAC.get());
     }
 
     private static void acceptMagicComponents(CreativeModeTab.Output output) {

@@ -8,6 +8,7 @@ import net.astralya.hexalia.entity.ModEntities;
 import net.astralya.hexalia.entity.boat.ModBoatEntity;
 import net.astralya.hexalia.entity.custom.projectile.FoulSacProjectile;
 import net.astralya.hexalia.entity.custom.projectile.FrostSacProjectile;
+import net.astralya.hexalia.entity.custom.projectile.SearingSacProjectile;
 import net.astralya.hexalia.item.custom.*;
 import net.astralya.hexalia.util.ModArmorMaterials;
 import net.astralya.hexalia.util.ModToolTiers;
@@ -96,6 +97,8 @@ public class ModItems {
             () -> new ThrownSacItem(new Item.Properties(), FoulSacProjectile::new));
     public static final DeferredItem<Item> FROST_SAC = ITEMS.register("frost_sac",
             () -> new ThrownSacItem(new Item.Properties(), FrostSacProjectile::new));
+    public static final DeferredItem<Item> SEARING_SAC = ITEMS.register("searing_sac",
+            () -> new ThrownSacItem(new Item.Properties(), SearingSacProjectile::new));
     public static final DeferredItem<Item> SAGE_PENDANT = ITEMS.registerItem("sage_pendant",
             Item::new, new Item.Properties().rarity(Rarity.UNCOMMON).durability(64));
     public static final DeferredItem<Item> SILK_IDOL = ITEMS.registerSimpleItem("silk_idol");

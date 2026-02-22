@@ -88,6 +88,7 @@
   "item.hexalia.purifying_sac": "Purifying Sac",
   "item.hexalia.foul_sac": "Foul Sac",
   "item.hexalia.frost_sac": "Frost Sac",
+  "item.hexalia.searing_sac": "Searing Sac",
   "item.hexalia.athame": "Athame",
   "item.hexalia.lotus_blossom": "Lotus Blossom",
   "item.hexalia.tree_resin": "Tree Resin",
@@ -190,6 +191,8 @@
   "effect.hexalia.hollow_silence.description": "Silences the user’s presence, allowing safe movement near sound-sensitive entities, but periodically clouds vision.",
 
   "entity.hexalia.silk_moth_entity": "Silk Moth",
+
+  "container.hexalia.small_cauldron": "Small Cauldron",
 
   "advancements.hexalia.root.title": "Hexalia",
   "advancements.hexalia.root.description": "Obtain a Hex Focus.",

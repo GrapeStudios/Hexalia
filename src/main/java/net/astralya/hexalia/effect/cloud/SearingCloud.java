@@ -1,14 +1,15 @@
 package net.astralya.hexalia.effect.cloud;
 
+import net.astralya.hexalia.effect.ModMobEffects;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.AreaEffectCloud;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
-public class FoulCloud extends AreaEffectCloud {
+public class SearingCloud extends AreaEffectCloud {
 
     private static final float DAMAGE_PER_SECOND = 0.5F;
+    private static final int FIRE_SECONDS_PER_PULSE = 3;
     private static final int HOLD_SECONDS = 2;
 
     private final SacCloudHelper.HoldShrinkPlan holdPlan;
@@ -17,11 +18,10 @@ public class FoulCloud extends AreaEffectCloud {
     private int ageTicks = 0;
     private int tickCounter = 0;
 
-    public FoulCloud(Level level, double x, double y, double z, int durationSeconds) {
+    public SearingCloud(Level level, double x, double y, double z, int durationSeconds) {
         super(level, x, y, z);
-        this.holdPlan = SacCloudHelper.configureWithHold(this, durationSeconds, HOLD_SECONDS, 3.0F, 0x6A9E3B);
-        this.addEffect(new MobEffectInstance(MobEffects.POISON, 200, 2, false, true));
-        this.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 200, 1, false, true));
+        this.holdPlan = SacCloudHelper.configureWithHold(this, durationSeconds, HOLD_SECONDS, 3.0F, 0xE85A2A);
+        this.addEffect(new MobEffectInstance(ModMobEffects.BLEEDING, 200, 0, false, true));
     }
 
     @Override
@@ -35,12 +35,15 @@ public class FoulCloud extends AreaEffectCloud {
         tickCounter++;
         if (tickCounter >= 20) {
             tickCounter = 0;
-            pulseDamage();
+            pulse();
         }
     }
 
-    private void pulseDamage() {
-        SacCloudHelper.forEachLivingInRadius(this, target -> SacCloudHelper.damageMagic(this, target, DAMAGE_PER_SECOND));
+    private void pulse() {
+        SacCloudHelper.forEachLivingInRadius(this, target -> {
+            SacCloudHelper.damageMagic(this, target, DAMAGE_PER_SECOND);
+            target.igniteForSeconds(FIRE_SECONDS_PER_PULSE);
+        });
     }
 
     public void setCloudOwner(LivingEntity owner) {

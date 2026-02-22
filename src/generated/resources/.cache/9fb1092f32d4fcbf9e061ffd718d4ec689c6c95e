@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-21T20:46:15.4147374	Recipes
+// 1.21.1	2026-02-22T19:43:13.9444192	Recipes
 c327f3ba4eafb4c21dbb4104a1bc4c1d661f542a data/hexalia/advancement/recipes/brewing/rustic_bottle.json
 a8312b0bfae801aa7103827a4307c5c829b7dbf1 data/hexalia/advancement/recipes/building_blocks/celestial_crystal_block.json
 e15994b53b3dfc7b695ca1c1c4e0cf392e20aaa3 data/hexalia/advancement/recipes/building_blocks/cottonwood_planks.json
@@ -13,7 +13,8 @@ bc983f4930ae62d9dab0ed97fa1487a31b4288a0 data/hexalia/advancement/recipes/combat
 303a6f98d69ca80550eaf64383f767e0d88c7d5c data/hexalia/advancement/recipes/combat/foul_sac.json
 e8cc0d9676ca166d439529396a0ab0e84a710f5e data/hexalia/advancement/recipes/combat/frost_sac.json
 1133e654019673bd6dd672b909e1d0e76c6e8775 data/hexalia/advancement/recipes/combat/ghostveil.json
-3c37bba23f0eb1aa9aee70d68636ddf454418905 data/hexalia/advancement/recipes/combat/purifying_sac.json
+36f5cd17963d0a50b59623fc8b68b37873cfb4fa data/hexalia/advancement/recipes/combat/purifying_sac.json
+9de400af2b30c72604f5f46f02f2d891ae2321c9 data/hexalia/advancement/recipes/combat/searing_sac.json
 39a5410b469046dd46e9907a53aae7393e4dc5de data/hexalia/advancement/recipes/combat/spiritroot_tether.json
 5fc795cfa058623a9fdca3bb2980db86771f2898 data/hexalia/advancement/recipes/combat/thornbow.json
 00471ca5da819bbb74159d665fcfad61cd5826c4 data/hexalia/advancement/recipes/decorations/candle_skull.json
@@ -165,9 +166,9 @@ b7b065812fe620272bef121da5f4f39173ddcaef data/hexalia/recipe/cottonwood_trapdoor
 41b3b4fb640005c373acf3c9894eeab347e4f0bf data/hexalia/recipe/earplugs.json
 26414e9775ae4688811d4b140220f12b25d50767 data/hexalia/recipe/earth_node_from_ritual_table.json
 6ffa15ff25a67c0cf197abf28b8134c99350d371 data/hexalia/recipe/fire_node_from_ritual_table.json
-eb4fdc19f97ea114101710be62012b4ef3be01f2 data/hexalia/recipe/foul_sac.json
+05bbafa8f5a1e871636c2e84eb7e970fb2065aa2 data/hexalia/recipe/foul_sac.json
 48e1c597289add95fd2e2f7eafe737d1bea719a2 data/hexalia/recipe/fragrant_nectar_from_mortar.json
-d308f03ca8004c73a34333d9aff0c1487650aae4 data/hexalia/recipe/frost_sac.json
+75275d33b775c93e53df90e2bf54a0b5716384f4 data/hexalia/recipe/frost_sac.json
 37b4bb9d4992ceec5b1d5b16c6ef712280473beb data/hexalia/recipe/galeberries_cookie.json
 42e628300360d34826af30b6ffe9d71508b8f70f data/hexalia/recipe/galeberries_from_brazier.json
 02a4fc654d09419b2ea17997d82a43b8bfd29491 data/hexalia/recipe/ghostveil.json
@@ -181,7 +182,7 @@ ceb42ed83cfe9b548a504eb2a04a9f6cc2faa296 data/hexalia/recipe/kelpweave_blade_fro
 3fcefdefc896e429df2574a3522779af8db80e21 data/hexalia/recipe/ladle.json
 b72e8ab736dc4df95eb5f280513bea16701aa0a8 data/hexalia/recipe/leather_from_salt.json
 89ea10b3661ec16d9c221aaa07fa609891ab922c data/hexalia/recipe/lotus_flower_from_mutation.json
-83c33535af257cb356f450a298f509f6945c5e01 data/hexalia/recipe/lourdes_from_ritual_table.json
+ae33f85552473b2df9e128ab88b259bf6042a778 data/hexalia/recipe/lourdes_from_ritual_table.json
 e48726a56ce0665569507536d8b70b4d07766b9b data/hexalia/recipe/mandrake_seeds.json
 39659f457780d8fbf174a599ebbf153e9063b6fb data/hexalia/recipe/mandrake_stew.json
 e4429bb8e267687155164cf85fafa6705852a42b data/hexalia/recipe/menders_salve_from_mortar.json
@@ -195,7 +196,7 @@ e3b489bd5765e18eb188803109235f6f16fca5a2 data/hexalia/recipe/orange_dye_from_dah
 83a7888ad827f0905e7cefd0e5ae0e80fa8ba965 data/hexalia/recipe/packed_ice_from_mutation.json
 aac0ce59d8e3421f2e7b4e95d0df52afa699754c data/hexalia/recipe/pink_dye_from_begonia.json
 4714343b3189d73e3b439a1f712401c70f91f9ac data/hexalia/recipe/podzol_from_mutation.json
-5ba8f0d1eaad6d80b61ba243e328c15ca022b4c8 data/hexalia/recipe/purifying_sac.json
+14e4239ee560f1bbf664d31066e8b844f0676dea data/hexalia/recipe/purifying_sac.json
 436afe87e8d46eaf792f17cc84f4f718f9462c58 data/hexalia/recipe/purity_idol.json
 5f762c42cadc8889d54dd28eeb6036ea9e0730c0 data/hexalia/recipe/purple_dye_from_begonia.json
 624039667f37034218de8c6664ac3290104acda7 data/hexalia/recipe/rabbage_seeds_from_ritual_table.json
@@ -210,6 +211,7 @@ df718c7b759edf527dc93499945258e79bafbf37 data/hexalia/recipe/saltsprout_from_mut
 4ad159c42122fd6554c9cea82adf9ef72ce451e9 data/hexalia/recipe/salt_block.json
 91dffaf77cde02ce0520f9a092c22c17aa0fccf6 data/hexalia/recipe/salt_from_mortar.json
 122872d548f6f512ac100aea366605b1e9b510c8 data/hexalia/recipe/salt_lamp.json
+4844103f7c8cf49e38a6c6d5875f69537456dda6 data/hexalia/recipe/searing_sac.json
 07380eca05d44f8cf43417e0672265b7f4525ce0 data/hexalia/recipe/shelf.json
 3ecf28ba2bee56b6b6326bbe8a8a418fd45f1e52 data/hexalia/recipe/silk_fiber.json
 00d77af73efd98d012a52db291a44398a3c8a154 data/hexalia/recipe/silk_idol.json
