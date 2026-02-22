@@ -88,6 +88,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.BREW_OF_SIPHON.get());
         basicItem(ModItems.BREW_OF_DAYBLOOM.get());
         basicItem(ModItems.BREW_OF_ARACHNID_GRACE.get());
+        basicItem(ModItems.BREW_OF_HOLLOW_SILENCE.get());
         basicItem(ModItems.BREW_OF_HOMESTEAD.get());
 
         basicItem(ModItems.BRAMBLEGUARD_SALVE.get());

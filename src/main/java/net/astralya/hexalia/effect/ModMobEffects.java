@@ -23,13 +23,13 @@ public class ModMobEffects {
             () -> new DaybloomEffect(MobEffectCategory.NEUTRAL, 0xFFD95E));
 
     public static final Holder<MobEffect> BLOODLUST = MOB_EFFECTS.register("bloodlust",
-            () -> new BloodlustEffect(MobEffectCategory.BENEFICIAL, 0x8A0303, 3.0)
+            () -> new BloodlustEffect(MobEffectCategory.NEUTRAL, 0x8A0303, 3.0)
                     .addAttributeModifier(Attributes.ATTACK_DAMAGE,
                             ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "bloodlust"),
                             0.0f, AttributeModifier.Operation.ADD_VALUE));
 
     public static final Holder<MobEffect> SPIKESKIN = MOB_EFFECTS.register("spikeskin",
-            () -> new SpikeskinEffect(MobEffectCategory.BENEFICIAL, 0x3E6B2F, 3.0)
+            () -> new SpikeskinEffect(MobEffectCategory.NEUTRAL, 0x3E6B2F, 3.0)
                     .addAttributeModifier(Attributes.ARMOR,
                             ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "spikeskin_armor"),
                             0.0f, AttributeModifier.Operation.ADD_VALUE)
@@ -38,19 +38,22 @@ public class ModMobEffects {
                             -0.10f, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
 
     public static final Holder<MobEffect> SIPHON = MOB_EFFECTS.register("siphon",
-            () -> new SiphonEffect(MobEffectCategory.BENEFICIAL, 0x6E6EF2, 3.0)
+            () -> new SiphonEffect(MobEffectCategory.NEUTRAL, 0x6E6EF2, 3.0)
                     .addAttributeModifier(Attributes.ATTACK_SPEED,
                             ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "siphon"),
                             0.4f, AttributeModifier.Operation.ADD_VALUE));
 
+    public static final Holder<MobEffect> HOLLOW_SILENCE = MOB_EFFECTS.register("hollow_silence",
+            () -> new HollowSilenceEffect(MobEffectCategory.NEUTRAL, 0x141218));
+
     public static final Holder<MobEffect> SLIMEWALKER = MOB_EFFECTS.register("slimewalker",
-            () -> new SlimewalkerEffect(MobEffectCategory.BENEFICIAL, 0x6BEA45));
+            () -> new SlimewalkerEffect(MobEffectCategory.NEUTRAL, 0x6BEA45));
 
     public static final Holder<MobEffect> ARACHNID_GRACE = MOB_EFFECTS.register("arachnid_grace",
-            () -> new ArachnidGraceEffect(MobEffectCategory.BENEFICIAL, 0x3B2E4A));
+            () -> new ArachnidGraceEffect(MobEffectCategory.NEUTRAL, 0x3B2E4A));
 
     public static final Holder<MobEffect> BRAMBLEGUARD = MOB_EFFECTS.register("brambleguard",
-            () -> new BrambleguardEffect(MobEffectCategory.BENEFICIAL, 0x415437));
+            () -> new BrambleguardEffect(MobEffectCategory.NEUTRAL, 0x415437));
 
     public static final Holder<MobEffect> STUNNED = MOB_EFFECTS.register("stunned",
             () -> new StunnedEffect(MobEffectCategory.HARMFUL, 0xFFFFDD));

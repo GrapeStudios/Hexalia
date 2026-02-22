@@ -9,7 +9,8 @@
 		"CobwebMixin",
 		"FishingHookMixin",
 		"MobMixin",
-		"ItemCombinerMenuAccessor"
+		"ItemCombinerMenuAccessor",
+		"ServerLevelMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

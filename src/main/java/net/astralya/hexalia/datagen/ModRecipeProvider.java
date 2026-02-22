@@ -722,7 +722,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.BREW_OF_ARACHNID_GRACE.getId().getPath() + "_from_small_cauldron"));
 
-        /*SmallCauldronRecipeBuilder.cauldron(
+        SmallCauldronRecipeBuilder.cauldron(
                         Ingredient.of(Items.FEATHER),
                         Ingredient.of(ModItems.GHOST_POWDER.get()),
                         Ingredient.of(ModItems.CHILLBERRIES.get()),
@@ -730,7 +730,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         new ItemStack(ModItems.BREW_OF_HOLLOW_SILENCE.get())
                 ).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
-                        ModItems.BREW_OF_HOLLOW_SILENCE.getId().getPath() + "_from_small_cauldron"));*/
+                        ModItems.BREW_OF_HOLLOW_SILENCE.getId().getPath() + "_from_small_cauldron"));
 
         // Ritual Table Recipes
         RitualTableRecipeBuilder.ritualTableRecipe(new ItemStack(ModBlocks.GRIMSHADE.get()))

@@ -101,6 +101,7 @@ public class ModCreativeModeTabs {
         output.accept(ModItems.BREW_OF_SIPHON.get());
         output.accept(ModItems.BREW_OF_DAYBLOOM.get());
         output.accept(ModItems.BREW_OF_ARACHNID_GRACE.get());
+        output.accept(ModItems.BREW_OF_HOLLOW_SILENCE.get());
 
         output.accept(ModItems.BRAMBLEGUARD_SALVE.get());
         output.accept(ModItems.MENDERS_SALVE.get());
