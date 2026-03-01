@@ -1,5 +1,6 @@
 {
   "values": [
-    "hexalia:silkweave_bindings"
+    "hexalia:silkweave_bindings",
+    "hexalia:moonweave_bindings"
   ]
 }

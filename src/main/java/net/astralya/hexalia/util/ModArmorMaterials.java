@@ -40,6 +40,23 @@ public final class ModArmorMaterials {
                     0.0F
             ));
 
+    public static final Holder<ArmorMaterial> MOONWEAVE =
+            ARMOR_MATERIALS.register("moonweave", () -> new ArmorMaterial(
+                    Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
+                        map.put(ArmorItem.Type.BOOTS, 3);
+                        map.put(ArmorItem.Type.LEGGINGS, 6);
+                        map.put(ArmorItem.Type.CHESTPLATE, 8);
+                        map.put(ArmorItem.Type.HELMET, 3);
+                        map.put(ArmorItem.Type.BODY, 0);
+                    }),
+                    22,
+                    SoundEvents.ARMOR_EQUIP_LEATHER,
+                    () -> Ingredient.of(ModItems.CELESTIAL_CRYSTAL.get()),
+                    List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "moonweave"))),
+                    0.0F,
+                    0.0F
+            ));
+
     public static void register(IEventBus eventBus) {
         ARMOR_MATERIALS.register(eventBus);
     }

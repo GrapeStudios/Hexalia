@@ -79,17 +79,22 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.KELPWEAVE_BLADE.get());
 
         tag(ItemTags.HEAD_ARMOR)
-                .add(ModItems.SILKWEAVE_HOOD.get());
+                .add(ModItems.SILKWEAVE_HOOD.get())
+                .add(ModItems.MOONWEAVE_HOOD.get());
 
         tag(ItemTags.CHEST_ARMOR)
-                .add(ModItems.SILKWEAVE_MANTLE.get());
+                .add(ModItems.SILKWEAVE_MANTLE.get())
+                .add(ModItems.MOONWEAVE_MANTLE.get());
 
         tag(ItemTags.LEG_ARMOR)
-                .add(ModItems.SILKWEAVE_BINDINGS.get());
+                .add(ModItems.SILKWEAVE_BINDINGS.get())
+                .add(ModItems.MOONWEAVE_BINDINGS.get());
 
         tag(ItemTags.FOOT_ARMOR)
-                .add(ModItems.SILKWEAVE_FOOTWRAPS.get());
-        
+                .add(ModItems.BOGGED_BOOTS.get())
+                .add(ModItems.SILKWEAVE_FOOTWRAPS.get())
+                .add(ModItems.MOONWEAVE_FOOTWRAPS.get());
+
         tag(ItemTags.BOW_ENCHANTABLE)
                 .add(ModItems.THORNBOW.get());
 
@@ -102,16 +107,20 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.ATHAME.get());
         
         tag(ItemTags.HEAD_ARMOR_ENCHANTABLE)
-                .add(ModItems.SILKWEAVE_HOOD.get());
-        
+                .add(ModItems.SILKWEAVE_HOOD.get())
+                .add(ModItems.MOONWEAVE_HOOD.get());
+
         tag(ItemTags.CHEST_ARMOR_ENCHANTABLE)
-                .add(ModItems.SILKWEAVE_MANTLE.get());
-        
+                .add(ModItems.SILKWEAVE_MANTLE.get())
+                .add(ModItems.MOONWEAVE_MANTLE.get());
+
         tag(ItemTags.LEG_ARMOR_ENCHANTABLE)
-                .add(ModItems.SILKWEAVE_BINDINGS.get());
-        
+                .add(ModItems.SILKWEAVE_BINDINGS.get())
+                .add(ModItems.MOONWEAVE_BINDINGS.get());
+
         tag(ItemTags.FOOT_ARMOR_ENCHANTABLE)
-                .add(ModItems.SILKWEAVE_FOOTWRAPS.get());
+                .add(ModItems.SILKWEAVE_FOOTWRAPS.get())
+                .add(ModItems.MOONWEAVE_FOOTWRAPS.get());
     }
 
     private void addCustomTags() {

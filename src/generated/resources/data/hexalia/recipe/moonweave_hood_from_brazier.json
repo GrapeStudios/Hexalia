@@ -1,0 +1,7 @@
+{
+  "type": "hexalia:ritual_brazier",
+  "input": {
+    "item": "hexalia:silkweave_hood"
+  },
+  "output": "hexalia:moonweave_hood"
+}

@@ -16,16 +16,16 @@ public final class MagicResistanceTooltip {
 
     public static boolean hasMagicResist(ItemStack stack) {
         Float pct = stack.get(ModComponents.MAGIC_RESIST_PCT.get());
-        return pct != null && pct.floatValue() > 0.0f;
+        return pct != null && pct > 0.0f;
     }
 
     public static void addPieceLine(ItemStack stack, List<Component> lines) {
         Float pct = stack.get(ModComponents.MAGIC_RESIST_PCT.get());
-        if (pct == null || pct.floatValue() <= 0.0f) {
+        if (pct == null || pct <= 0.0f) {
             return;
         }
 
-        lines.add(Component.translatable("tooltip.hexalia.magic_resist_piece", formatPct(pct.floatValue()))
+        lines.add(Component.translatable("tooltip.hexalia.magic_resist_piece", formatPct(pct))
                 .withStyle(ChatFormatting.DARK_GREEN));
     }
 
@@ -84,7 +84,7 @@ public final class MagicResistanceTooltip {
         }
 
         Float bonus = stack.get(ModComponents.FULL_SET_BONUS_PCT.get());
-        return bonus != null ? bonus.floatValue() : 0.0f;
+        return bonus != null ? bonus : 0.0f;
     }
 
     private static String formatPct(float pct) {

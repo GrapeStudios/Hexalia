@@ -151,6 +151,10 @@ public class ModCreativeModeTabs {
         output.accept(ModItems.SILKWEAVE_MANTLE.get());
         output.accept(ModItems.SILKWEAVE_BINDINGS.get());
         output.accept(ModItems.SILKWEAVE_FOOTWRAPS.get());
+        output.accept(ModItems.MOONWEAVE_HOOD.get());
+        output.accept(ModItems.MOONWEAVE_MANTLE.get());
+        output.accept(ModItems.MOONWEAVE_BINDINGS.get());
+        output.accept(ModItems.MOONWEAVE_FOOTWRAPS.get());
     }
 
     private static void acceptFunctionalBlocks(CreativeModeTab.Output output) {

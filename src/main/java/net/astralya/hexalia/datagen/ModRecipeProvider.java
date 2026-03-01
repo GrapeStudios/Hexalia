@@ -681,18 +681,48 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 ).unlockedByItem("has_amethyst_shard", Items.AMETHYST_SHARD)
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.CELESTIAL_CRYSTAL.getId().getPath() + "_from_brazier"));
+        
         RitualBrazierRecipeBuilder.ritualBrazierRecipe(
                         Ingredient.of(Items.GLOW_BERRIES),
                         new ItemStack(ModItems.GALEBERRIES.get())
                 ).unlockedByItem("has_glow_berries", Items.GLOW_BERRIES)
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.GALEBERRIES.getId().getPath() + "_from_brazier"));
+        
         RitualBrazierRecipeBuilder.ritualBrazierRecipe(
                         Ingredient.of(Blocks.AMETHYST_BLOCK),
                         new ItemStack(ModBlocks.CELESTIAL_CRYSTAL_BLOCK.get())
                 ).unlockedByItem("has_amethyst_block", Blocks.AMETHYST_BLOCK.asItem())
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModBlocks.CELESTIAL_CRYSTAL_BLOCK.getId().getPath() + "_from_brazier"));
+        
+        RitualBrazierRecipeBuilder.ritualBrazierRecipe(
+                        Ingredient.of(ModItems.SILKWEAVE_HOOD),
+                        new ItemStack(ModItems.MOONWEAVE_HOOD.get())
+                ).unlockedByItem("has_silkweave_hood", ModItems.SILKWEAVE_HOOD.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        ModItems.MOONWEAVE_HOOD.getId().getPath() + "_from_brazier"));
+        
+        RitualBrazierRecipeBuilder.ritualBrazierRecipe(
+                        Ingredient.of(ModItems.SILKWEAVE_MANTLE),
+                        new ItemStack(ModItems.MOONWEAVE_MANTLE.get())
+                ).unlockedByItem("has_silkweave_mantle", ModItems.SILKWEAVE_MANTLE.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        ModItems.MOONWEAVE_MANTLE.getId().getPath() + "_from_brazier"));
+        
+        RitualBrazierRecipeBuilder.ritualBrazierRecipe(
+                        Ingredient.of(ModItems.SILKWEAVE_BINDINGS),
+                        new ItemStack(ModItems.MOONWEAVE_BINDINGS.get())
+                ).unlockedByItem("has_silkweave_bindings", ModItems.SILKWEAVE_BINDINGS.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        ModItems.MOONWEAVE_BINDINGS.getId().getPath() + "_from_brazier"));
+        
+        RitualBrazierRecipeBuilder.ritualBrazierRecipe(
+                        Ingredient.of(ModItems.SILKWEAVE_FOOTWRAPS),
+                        new ItemStack(ModItems.MOONWEAVE_FOOTWRAPS.get())
+                ).unlockedByItem("has_silkweave_footwraps", ModItems.SILKWEAVE_FOOTWRAPS.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        ModItems.MOONWEAVE_FOOTWRAPS.getId().getPath() + "_from_brazier"));
 
         // Small Cauldron Recipes
         SmallCauldronRecipeBuilder.cauldron(

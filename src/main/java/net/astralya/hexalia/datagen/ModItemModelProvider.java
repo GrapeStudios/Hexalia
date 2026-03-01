@@ -85,6 +85,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.SILKWEAVE_MANTLE.get());
         basicItem(ModItems.SILKWEAVE_BINDINGS.get());
         basicItem(ModItems.SILKWEAVE_FOOTWRAPS.get());
+        basicItem(ModItems.MOONWEAVE_HOOD.get());
+        basicItem(ModItems.MOONWEAVE_MANTLE.get());
+        basicItem(ModItems.MOONWEAVE_BINDINGS.get());
+        basicItem(ModItems.MOONWEAVE_FOOTWRAPS.get());
 
         basicItem(ModItems.RUSTIC_BOTTLE.get());
         basicItem(ModItems.BREW_OF_SPIKESKIN.get());

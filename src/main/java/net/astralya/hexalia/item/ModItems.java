@@ -29,12 +29,16 @@ public class ModItems {
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(HexaliaMod.MODID);
 
-    private static final ResourceLocation SILKWEAVE_SET_ID = ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "silkweave");
+    private static final ResourceLocation SILKWEAVE_SET_ID =
+            ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "silkweave");
 
-    private static Item.Properties silkweaveResistProps() {
+    private static final ResourceLocation MOONWEAVE_SET_ID =
+            ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "moonweave");
+
+    private static Item.Properties armorMagicResistProps(ResourceLocation setId, float perPiecePct) {
         return new Item.Properties()
-                .component(ModComponents.MAGIC_RESIST_PCT.get(), 0.05f)
-                .component(ModComponents.ARMOR_SET_ID.get(), SILKWEAVE_SET_ID)
+                .component(ModComponents.MAGIC_RESIST_PCT.get(), perPiecePct)
+                .component(ModComponents.ARMOR_SET_ID.get(), setId)
                 .component(ModComponents.FULL_SET_BONUS_PCT.get(), 0.10f);
     }
 
@@ -162,13 +166,30 @@ public class ModItems {
             () -> new ThornbowItem(new Item.Properties().durability(128)));
 
     public static final DeferredItem<Item> SILKWEAVE_HOOD = ITEMS.register("silkweave_hood",
-            () -> new SilkweaveHoodItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.HELMET, silkweaveResistProps().durability(240)));
+            () -> new SilkweaveHoodItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.HELMET,
+                    armorMagicResistProps(SILKWEAVE_SET_ID, 0.05f).durability(165)));
     public static final DeferredItem<Item> SILKWEAVE_MANTLE = ITEMS.register("silkweave_mantle",
-            () -> new SilkweaveMantleItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.CHESTPLATE, silkweaveResistProps().durability(360)));
+            () -> new SilkweaveMantleItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.CHESTPLATE,
+                    armorMagicResistProps(SILKWEAVE_SET_ID, 0.05f).durability(240)));
     public static final DeferredItem<Item> SILKWEAVE_BINDINGS = ITEMS.register("silkweave_bindings",
-            () -> new SilkweaveBindingsItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.LEGGINGS, silkweaveResistProps().durability(330)));
+            () -> new SilkweaveBindingsItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.LEGGINGS,
+                    armorMagicResistProps(SILKWEAVE_SET_ID, 0.05f).durability(225)));
     public static final DeferredItem<Item> SILKWEAVE_FOOTWRAPS = ITEMS.register("silkweave_footwraps",
-            () -> new SilkweaveFootwrapsItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.BOOTS, silkweaveResistProps().durability(300)));
+            () -> new SilkweaveFootwrapsItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.BOOTS,
+                    armorMagicResistProps(SILKWEAVE_SET_ID, 0.05f).durability(195)));
+
+    public static final DeferredItem<Item> MOONWEAVE_HOOD = ITEMS.register("moonweave_hood",
+            () -> new MoonweaveHoodItem(ModArmorMaterials.MOONWEAVE, ArmorItem.Type.HELMET,
+                    armorMagicResistProps(MOONWEAVE_SET_ID, 0.10f).durability(363)));
+    public static final DeferredItem<Item> MOONWEAVE_MANTLE = ITEMS.register("moonweave_mantle",
+            () -> new MoonweaveMantleItem(ModArmorMaterials.MOONWEAVE, ArmorItem.Type.CHESTPLATE,
+                    armorMagicResistProps(MOONWEAVE_SET_ID, 0.10f).durability(528)));
+    public static final DeferredItem<Item> MOONWEAVE_BINDINGS = ITEMS.register("moonweave_bindings",
+            () -> new MoonweaveBindingsItem(ModArmorMaterials.MOONWEAVE, ArmorItem.Type.LEGGINGS,
+                    armorMagicResistProps(MOONWEAVE_SET_ID, 0.10f).durability(495)));
+    public static final DeferredItem<Item> MOONWEAVE_FOOTWRAPS = ITEMS.register("moonweave_footwraps",
+            () -> new MoonweaveFootwrapsItem(ModArmorMaterials.MOONWEAVE, ArmorItem.Type.BOOTS,
+                    armorMagicResistProps(MOONWEAVE_SET_ID, 0.10f).durability(429)));
 
     // Brews
     public static final DeferredItem<Item> RUSTIC_BOTTLE = ITEMS.registerSimpleItem("rustic_bottle");
