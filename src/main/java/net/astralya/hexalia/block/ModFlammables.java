@@ -58,6 +58,7 @@ public final class ModFlammables {
         fire.setFlammable(ModBlocks.GRIMSHADE.get(), 60, 100);
         fire.setFlammable(ModBlocks.WINDSONG.get(), 60, 100);
         fire.setFlammable(ModBlocks.ASTRYLIS.get(), 60, 100);
+        fire.setFlammable(ModBlocks.LOURDES.get(), 60, 100);
 
         // Decorative Flowers
         fire.setFlammable(ModBlocks.BEGONIA.get(), 60, 100);

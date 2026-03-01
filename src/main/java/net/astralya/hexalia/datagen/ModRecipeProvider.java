@@ -306,19 +306,60 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('S', Items.STICK)
                 .define('E', ModItems.EARTH_NODE.get())
                 .define('R', ModItems.RABBAGE)
-                .unlockedBy("has_earth_node",
-                        inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.EARTH_NODE).build()))
+                .unlockedBy("has_earth_node", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.EARTH_NODE).build()))
                 .save(recipeOutput);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.SPIRITROOT_TETHER.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SPIRITROOT_TETHER.get())
                 .pattern("ES ")
                 .pattern("SP ")
                 .pattern("  S")
                 .define('S', Items.STRING)
                 .define('E', ModItems.EARTH_NODE.get())
                 .define('P', Items.ENDER_PEARL)
-                .unlockedBy("has_earth_node",
-                        inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SPIRITROOT_TETHER).build()))
+                .unlockedBy("has_earth_node", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SPIRITROOT_TETHER).build()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.SILKWEAVE_HOOD.get())
+                .pattern(" S ")
+                .pattern("SLS")
+                .pattern(" W ")
+                .define('S', ModItems.SILK_FIBER.get())
+                .define('L', Items.LEATHER_HELMET)
+                .define('W', ItemTags.WOOL)
+                .unlockedBy("has_silk_fiber", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SILK_FIBER).build()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.SILKWEAVE_MANTLE.get())
+                .pattern("TWT")
+                .pattern("SLS")
+                .pattern(" S ")
+                .define('S', ModItems.SILK_FIBER.get())
+                .define('L', Items.LEATHER_CHESTPLATE)
+                .define('T', Items.STRING)
+                .define('W', ItemTags.WOOL)
+                .unlockedBy("has_silk_fiber", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SILK_FIBER).build()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.SILKWEAVE_BINDINGS.get())
+                .pattern(" S ")
+                .pattern("SLS")
+                .pattern("TWT")
+                .define('S', ModItems.SILK_FIBER.get())
+                .define('L', Items.LEATHER_CHESTPLATE)
+                .define('T', Items.STRING)
+                .define('W', ItemTags.WOOL)
+                .unlockedBy("has_silk_fiber", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SILK_FIBER).build()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.SILKWEAVE_FOOTWRAPS.get())
+                .pattern(" W ")
+                .pattern("SLS")
+                .pattern("TST")
+                .define('S', ModItems.SILK_FIBER.get())
+                .define('L', Items.LEATHER_CHESTPLATE)
+                .define('T', Items.STRING)
+                .define('W', ItemTags.WOOL)
+                .unlockedBy("has_silk_fiber", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SILK_FIBER).build()))
                 .save(recipeOutput);
 
         // Shapeless Recipes for Seeds
@@ -801,6 +842,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedByItem("has_hex_focus", ModItems.HEX_FOCUS.get())
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.NAUTILITE.getId().getPath() + "_from_ritual_table"));
+        
         RitualTableRecipeBuilder.ritualTableRecipe(new ItemStack(ModBlocks.WINDSONG.get()))
                 .addIngredient(Items.OXEYE_DAISY)
                 .addIngredient(ModItems.AIR_NODE.get())
@@ -810,6 +852,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedByItem("has_hex_focus", ModItems.HEX_FOCUS.get())
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModBlocks.WINDSONG.getId().getPath() + "_from_ritual_table"));
+
         RitualTableRecipeBuilder.ritualTableRecipe(new ItemStack(ModBlocks.ASTRYLIS.get()))
                 .addIngredient(Items.LILY_OF_THE_VALLEY)
                 .addIngredient(ModItems.CELESTIAL_CRYSTAL.get())
@@ -819,6 +862,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedByItem("has_hex_focus", ModItems.HEX_FOCUS.get())
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModBlocks.ASTRYLIS.getId().getPath() + "_from_ritual_table"));
+
         RitualTableRecipeBuilder.ritualTableRecipe(new ItemStack(ModItems.FIRE_NODE.get()))
                 .addIngredient(Items.AMETHYST_SHARD)
                 .addIngredient(Items.COAL)
@@ -826,6 +870,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedByItem("has_hex_focus", ModItems.HEX_FOCUS.get())
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.FIRE_NODE.getId().getPath() + "_from_ritual_table"));
+
         RitualTableRecipeBuilder.ritualTableRecipe(new ItemStack(ModItems.AIR_NODE.get()))
                 .addIngredient(Items.AMETHYST_SHARD)
                 .addIngredient(Items.FEATHER)
@@ -833,6 +878,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedByItem("has_hex_focus", ModItems.HEX_FOCUS.get())
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.AIR_NODE.getId().getPath() + "_from_ritual_table"));
+
         RitualTableRecipeBuilder.ritualTableRecipe(new ItemStack(ModItems.WATER_NODE.get()))
                 .addIngredient(Items.AMETHYST_SHARD)
                 .addIngredient(Items.LILY_PAD)

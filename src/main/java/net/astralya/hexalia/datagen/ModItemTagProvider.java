@@ -25,6 +25,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
         addVanillaTags();
+        addToolsAndEnchantmentsTags();
         addCustomTags();
         addTreeRelatedTags();
         addFoodTags();
@@ -65,11 +66,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.RABBAGE_SEEDS.get())
                 .add(ModItems.SUNFIRE_TOMATO_SEEDS.get())
                 .add(ModItems.MANDRAKE_SEEDS.get());
-
+    }
+    private void addToolsAndEnchantmentsTags() {
         // Tools
-        tag(ItemTags.BOW_ENCHANTABLE)
-                .add(ModItems.THORNBOW.get());
-
         tag(ItemTags.SHOVELS)
                 .add(ModItems.ROOTSHAPER.get());
 
@@ -79,6 +78,21 @@ public class ModItemTagProvider extends ItemTagsProvider {
         tag(ItemTags.SWORDS)
                 .add(ModItems.KELPWEAVE_BLADE.get());
 
+        tag(ItemTags.HEAD_ARMOR)
+                .add(ModItems.SILKWEAVE_HOOD.get());
+
+        tag(ItemTags.CHEST_ARMOR)
+                .add(ModItems.SILKWEAVE_MANTLE.get());
+
+        tag(ItemTags.LEG_ARMOR)
+                .add(ModItems.SILKWEAVE_BINDINGS.get());
+
+        tag(ItemTags.FOOT_ARMOR)
+                .add(ModItems.SILKWEAVE_FOOTWRAPS.get());
+        
+        tag(ItemTags.BOW_ENCHANTABLE)
+                .add(ModItems.THORNBOW.get());
+
         tag(ItemTags.MINING_ENCHANTABLE)
                 .add(ModItems.BRIAR_SICKLE.get());
 
@@ -86,6 +100,18 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.BRIAR_SICKLE.get())
                 .add(ModItems.SAGE_PENDANT.get())
                 .add(ModItems.ATHAME.get());
+        
+        tag(ItemTags.HEAD_ARMOR_ENCHANTABLE)
+                .add(ModItems.SILKWEAVE_HOOD.get());
+        
+        tag(ItemTags.CHEST_ARMOR_ENCHANTABLE)
+                .add(ModItems.SILKWEAVE_MANTLE.get());
+        
+        tag(ItemTags.LEG_ARMOR_ENCHANTABLE)
+                .add(ModItems.SILKWEAVE_BINDINGS.get());
+        
+        tag(ItemTags.FOOT_ARMOR_ENCHANTABLE)
+                .add(ModItems.SILKWEAVE_FOOTWRAPS.get());
     }
 
     private void addCustomTags() {

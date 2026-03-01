@@ -1,4 +1,4 @@
-package net.astralya.hexalia.item.custom;
+package net.astralya.hexalia.item.custom.armor;
 
 import net.astralya.hexalia.client.renderer.item.EarplugsRenderer;
 import net.minecraft.client.model.HumanoidModel;

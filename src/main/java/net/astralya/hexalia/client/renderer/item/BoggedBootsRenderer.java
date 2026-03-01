@@ -1,7 +1,7 @@
 package net.astralya.hexalia.client.renderer.item;
 
 import net.astralya.hexalia.HexaliaMod;
-import net.astralya.hexalia.item.custom.BoggedBootsItem;
+import net.astralya.hexalia.item.custom.armor.BoggedBootsItem;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.DefaultedItemGeoModel;
 import software.bernie.geckolib.renderer.GeoArmorRenderer;

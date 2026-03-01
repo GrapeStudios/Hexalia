@@ -4,6 +4,7 @@ import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.effect.ModMobEffects;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.item.custom.RootshaperItem;
+import net.astralya.hexalia.util.MagicResistanceHelper;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
@@ -97,13 +98,6 @@ public class ModGameEvents {
         return clamp01(0.05f * level);
     }
 
-    private static boolean isMagicDamage(DamageSource source) {
-        return source.is(DamageTypes.MAGIC)
-                || source.is(DamageTypes.INDIRECT_MAGIC)
-                || source.is(DamageTypes.WITHER)
-                || source.is(DamageTypes.DRAGON_BREATH);
-    }
-
     private static float clamp01(float v) {
         if (v < 0.0f) return 0.0f;
         return Math.min(v, 1.0f);
@@ -148,5 +142,32 @@ public class ModGameEvents {
         }
 
         player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 60, 0, true, false, true));
+    }
+
+    // Magic Resistance Sets
+    @SubscribeEvent
+    public static void onArmorMagicResistanceIncomingDamage(LivingIncomingDamageEvent event) {
+        LivingEntity entity = event.getEntity();
+        if (entity.level().isClientSide) {
+            return;
+        }
+
+        if (!isMagicDamage(event.getSource())) {
+            return;
+        }
+
+        float resist = MagicResistanceHelper.getMagicResistancePct(entity);
+        if (resist <= 0.0f) {
+            return;
+        }
+
+        event.setAmount(event.getAmount() * (1.0f - resist));
+    }
+
+    private static boolean isMagicDamage(DamageSource source) {
+        return source.is(DamageTypes.MAGIC)
+                || source.is(DamageTypes.INDIRECT_MAGIC)
+                || source.is(DamageTypes.WITHER)
+                || source.is(DamageTypes.DRAGON_BREATH);
     }
 }

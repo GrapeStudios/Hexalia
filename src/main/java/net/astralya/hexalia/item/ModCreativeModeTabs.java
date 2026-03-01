@@ -147,6 +147,10 @@ public class ModCreativeModeTabs {
         output.accept(ModItems.EARPLUGS.get());
         output.accept(ModItems.GHOSTVEIL.get());
         output.accept(ModItems.BOGGED_BOOTS.get());
+        output.accept(ModItems.SILKWEAVE_HOOD.get());
+        output.accept(ModItems.SILKWEAVE_MANTLE.get());
+        output.accept(ModItems.SILKWEAVE_BINDINGS.get());
+        output.accept(ModItems.SILKWEAVE_FOOTWRAPS.get());
     }
 
     private static void acceptFunctionalBlocks(CreativeModeTab.Output output) {

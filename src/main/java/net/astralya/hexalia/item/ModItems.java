@@ -3,6 +3,7 @@ package net.astralya.hexalia.item;
 import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.block.custom.wood.ModBoatItem;
+import net.astralya.hexalia.component.ModComponents;
 import net.astralya.hexalia.effect.ModMobEffects;
 import net.astralya.hexalia.entity.ModEntities;
 import net.astralya.hexalia.entity.boat.ModBoatEntity;
@@ -10,11 +11,13 @@ import net.astralya.hexalia.entity.custom.projectile.FoulSacProjectile;
 import net.astralya.hexalia.entity.custom.projectile.FrostSacProjectile;
 import net.astralya.hexalia.entity.custom.projectile.SearingSacProjectile;
 import net.astralya.hexalia.item.custom.*;
+import net.astralya.hexalia.item.custom.armor.*;
 import net.astralya.hexalia.util.ModArmorMaterials;
 import net.astralya.hexalia.util.ModToolTiers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
@@ -25,6 +28,15 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class ModItems {
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(HexaliaMod.MODID);
+
+    private static final ResourceLocation SILKWEAVE_SET_ID = ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "silkweave");
+
+    private static Item.Properties silkweaveResistProps() {
+        return new Item.Properties()
+                .component(ModComponents.MAGIC_RESIST_PCT.get(), 0.05f)
+                .component(ModComponents.ARMOR_SET_ID.get(), SILKWEAVE_SET_ID)
+                .component(ModComponents.FULL_SET_BONUS_PCT.get(), 0.10f);
+    }
 
     // Resources
     public static final DeferredItem<Item> SALT = ITEMS.registerSimpleItem("salt");
@@ -141,13 +153,22 @@ public class ModItems {
             () -> new KelpweaveBlade(ModToolTiers.ANCIENT,
                     new Item.Properties().attributes(SwordItem.createAttributes(ModToolTiers.ANCIENT, 3, -2f)).rarity(Rarity.RARE)));
     public static final DeferredItem<Item> GHOSTVEIL = ITEMS.register("ghostveil",
-            () -> new GhostVeilItem(ModArmorMaterials.GHOST, ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(96)));
+            () -> new GhostVeilItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(96)));
     public static final DeferredItem<Item> EARPLUGS = ITEMS.register("earplugs",
             () -> new EarplugsItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new Item.Properties()));
     public static final DeferredItem<Item> BOGGED_BOOTS = ITEMS.register("bogged_boots",
-            () -> new BoggedBootsItem(ModArmorMaterials.BOGGED, ArmorItem.Type.BOOTS, new Item.Properties().durability(96)));
+            () -> new BoggedBootsItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.BOOTS, new Item.Properties().durability(96)));
     public static final DeferredItem<Item> THORNBOW = ITEMS.register("thornbow",
             () -> new ThornbowItem(new Item.Properties().durability(128)));
+
+    public static final DeferredItem<Item> SILKWEAVE_HOOD = ITEMS.register("silkweave_hood",
+            () -> new SilkweaveHoodItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.HELMET, silkweaveResistProps().durability(240)));
+    public static final DeferredItem<Item> SILKWEAVE_MANTLE = ITEMS.register("silkweave_mantle",
+            () -> new SilkweaveMantleItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.CHESTPLATE, silkweaveResistProps().durability(360)));
+    public static final DeferredItem<Item> SILKWEAVE_BINDINGS = ITEMS.register("silkweave_bindings",
+            () -> new SilkweaveBindingsItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.LEGGINGS, silkweaveResistProps().durability(330)));
+    public static final DeferredItem<Item> SILKWEAVE_FOOTWRAPS = ITEMS.register("silkweave_footwraps",
+            () -> new SilkweaveFootwrapsItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.BOOTS, silkweaveResistProps().durability(300)));
 
     // Brews
     public static final DeferredItem<Item> RUSTIC_BOTTLE = ITEMS.registerSimpleItem("rustic_bottle");

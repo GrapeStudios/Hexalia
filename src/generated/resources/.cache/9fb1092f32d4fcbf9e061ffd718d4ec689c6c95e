@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-22T19:43:13.9444192	Recipes
+// 1.21.1	2026-03-01T09:00:31.4743922	Recipes
 c327f3ba4eafb4c21dbb4104a1bc4c1d661f542a data/hexalia/advancement/recipes/brewing/rustic_bottle.json
 a8312b0bfae801aa7103827a4307c5c829b7dbf1 data/hexalia/advancement/recipes/building_blocks/celestial_crystal_block.json
 e15994b53b3dfc7b695ca1c1c4e0cf392e20aaa3 data/hexalia/advancement/recipes/building_blocks/cottonwood_planks.json
@@ -15,7 +15,10 @@ e8cc0d9676ca166d439529396a0ab0e84a710f5e data/hexalia/advancement/recipes/combat
 1133e654019673bd6dd672b909e1d0e76c6e8775 data/hexalia/advancement/recipes/combat/ghostveil.json
 36f5cd17963d0a50b59623fc8b68b37873cfb4fa data/hexalia/advancement/recipes/combat/purifying_sac.json
 9de400af2b30c72604f5f46f02f2d891ae2321c9 data/hexalia/advancement/recipes/combat/searing_sac.json
-39a5410b469046dd46e9907a53aae7393e4dc5de data/hexalia/advancement/recipes/combat/spiritroot_tether.json
+e3dd6abc5181edca4778f1a65db31a7f373fe93b data/hexalia/advancement/recipes/combat/silkweave_bindings.json
+d0b97877a69e15a292923d1938ca3fbf674a5738 data/hexalia/advancement/recipes/combat/silkweave_footwraps.json
+08174c1f642a77daf2800382b1bed5ac9a8cee08 data/hexalia/advancement/recipes/combat/silkweave_hood.json
+70f4260a3d09f0dde4bcdb7efdbc099a74a4118c data/hexalia/advancement/recipes/combat/silkweave_mantle.json
 5fc795cfa058623a9fdca3bb2980db86771f2898 data/hexalia/advancement/recipes/combat/thornbow.json
 00471ca5da819bbb74159d665fcfad61cd5826c4 data/hexalia/advancement/recipes/decorations/candle_skull.json
 4050d3d45a0fb353eda93d1cee13d8d6b63ac7ef data/hexalia/advancement/recipes/decorations/censer.json
@@ -119,6 +122,7 @@ d19451d91cb72c337eb9789072df16f539aa338e data/hexalia/advancement/recipes/tools/
 d8ac48e115921a0e1e38402d38f4eeaa82a9ff2a data/hexalia/advancement/recipes/tools/purity_idol.json
 352da48342bb16b23c7d4e535e6880d394257764 data/hexalia/advancement/recipes/tools/rainfall_idol.json
 a04c28607745ca446ae1b09efb092b786d85acbd data/hexalia/advancement/recipes/tools/silk_idol.json
+39a5410b469046dd46e9907a53aae7393e4dc5de data/hexalia/advancement/recipes/tools/spiritroot_tether.json
 f017ed15d3e83fdf003e1f57af01bd0a29bf40c2 data/hexalia/advancement/recipes/tools/tempest_idol.json
 ad5b50623ecd6d4b098597849072f2464b21fc08 data/hexalia/recipe/air_node_from_ritual_table.json
 5ca0c5404ddd220c623968b302a889b769536dcd data/hexalia/recipe/andesite_from_mutation.json
@@ -213,6 +217,10 @@ df718c7b759edf527dc93499945258e79bafbf37 data/hexalia/recipe/saltsprout_from_mut
 122872d548f6f512ac100aea366605b1e9b510c8 data/hexalia/recipe/salt_lamp.json
 4844103f7c8cf49e38a6c6d5875f69537456dda6 data/hexalia/recipe/searing_sac.json
 07380eca05d44f8cf43417e0672265b7f4525ce0 data/hexalia/recipe/shelf.json
+54ace88f96a6077a834322c3ee976f7e82f0e603 data/hexalia/recipe/silkweave_bindings.json
+e893ed035f6d41ace375fecab61cafe1f59065f1 data/hexalia/recipe/silkweave_footwraps.json
+287459298e58f278dbcecbc2f85865a89ca1c600 data/hexalia/recipe/silkweave_hood.json
+edcb30ee68e85e70fa357d1e762d3fba2d5d5cc7 data/hexalia/recipe/silkweave_mantle.json
 3ecf28ba2bee56b6b6326bbe8a8a418fd45f1e52 data/hexalia/recipe/silk_fiber.json
 00d77af73efd98d012a52db291a44398a3c8a154 data/hexalia/recipe/silk_idol.json
 48cceee5077c129db28a2d14c99172a18b0bb5a7 data/hexalia/recipe/siren_kelp_from_mutation.json
