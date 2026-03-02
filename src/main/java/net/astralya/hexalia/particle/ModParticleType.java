@@ -21,6 +21,8 @@ public class ModParticleType {
             () -> new SimpleParticleType(true));
     public static final Supplier<SimpleParticleType> INFUSED_BUBBLES = PARTICLE_TYPES.register("infused_bubbles",
             () -> new SimpleParticleType(true));
+    public static final Supplier<SimpleParticleType> SPARKLE = PARTICLE_TYPES.register("sparkle",
+            () -> new SimpleParticleType(true));
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

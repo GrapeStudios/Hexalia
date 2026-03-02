@@ -27,9 +27,15 @@ public class RitualBrazierBlockEntityRenderer implements BlockEntityRenderer<Rit
                        MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
         ItemStack stack = blockEntity.getStoredItem();
+        if (stack.isEmpty()) {
+            return;
+        }
+
+        float progress = blockEntity.getChannelProgress(partialTick);
+        float lift = 0.4f + (progress * 0.35f);
 
         poseStack.pushPose();
-        poseStack.translate(0.5f, 0.4f, 0.5f);
+        poseStack.translate(0.5f, lift, 0.5f);
         poseStack.scale(1f, 1f, 1f);
         poseStack.mulPose(Axis.YP.rotationDegrees(blockEntity.getRenderingRotation()));
 

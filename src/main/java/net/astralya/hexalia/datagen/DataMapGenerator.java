@@ -34,6 +34,7 @@ public class DataMapGenerator extends DataMapProvider {
                 .add(ModBlocks.SPIRIT_BLOOM.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModBlocks.DREAMSHROOM.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModBlocks.CELESTIAL_BLOOM.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
+                .add(ModBlocks.WITHERED_CELESTIAL_BLOOM.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModItems.SIREN_KELP.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModBlocks.BEGONIA.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModBlocks.LAVENDER.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)

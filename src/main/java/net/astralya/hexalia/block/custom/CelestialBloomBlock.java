@@ -1,9 +1,9 @@
 package net.astralya.hexalia.block.custom;
 
-import net.astralya.hexalia.Configuration;
+import net.astralya.hexalia.block.ModBlocks;
+import net.astralya.hexalia.particle.ModParticleType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.level.Level;
@@ -11,41 +11,48 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class CelestialBloomBlock extends HerbBlock {
 
-    private static final double MIN_X = 5.0;
-    private static final double MAX_X = 11.0;
-    private static final double MIN_Z = 5.0;
-    private static final double MAX_Z = 11.0;
-    private static final double HEIGHT = 10.0;
-
     public CelestialBloomBlock(Holder<MobEffect> effect, float seconds, Properties properties) {
         super(effect, seconds, properties);
     }
 
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        super.animateTick(state, level, pos, random);
-        if (level.isClientSide() && Configuration.CELESTIAL_BLOOM_EMITS_PARTICLES.get()) {
-            if (random.nextFloat() < 0.2f) {
-                double centerX = pos.getX() + 0.5;
-                double centerZ = pos.getZ() + 0.5;
+        boolean withered = state.is(ModBlocks.WITHERED_CELESTIAL_BLOOM.get());
 
-                double x = centerX + (random.nextDouble() - 0.5) * (MAX_X - MIN_X) / 16.0;
-                double y = pos.getY() + random.nextDouble() * HEIGHT / 16.0;
-                double z = centerZ + (random.nextDouble() - 0.5) * (MAX_Z - MIN_Z) / 16.0;
+        int spawnChance = withered ? 6 : 3;
+        if (random.nextInt(spawnChance) != 0) {
+            return;
+        }
 
-                if (random.nextBoolean()) {
-                    x = centerX + (random.nextBoolean() ? (MAX_X + 0.5) : (MIN_X - 0.5)) / 16.0;
-                } else {
-                    z = centerZ + (random.nextBoolean() ? (MAX_Z + 0.5) : (MIN_Z - 0.5)) / 16.0;
-                }
+        double cx = pos.getX() + 0.5D;
+        double cz = pos.getZ() + 0.5D;
 
-                double motionX = (random.nextDouble() - 0.5) * 0.02;
-                double motionY = random.nextDouble() * 0.02;
-                double motionZ = (random.nextDouble() - 0.5) * 0.02;
+        double x = cx + (random.nextDouble() - 0.5D) * 0.35D;
+        double y = pos.getY() + 0.45D + random.nextDouble() * 0.45D;
+        double z = cz + (random.nextDouble() - 0.5D) * 0.35D;
 
-                level.addParticle(ParticleTypes.END_ROD,
-                        x, y, z,
-                        motionX, motionY, motionZ);
+        double velocityScale = withered ? 0.6D : 1.0D;
+
+        double vx = (random.nextDouble() - 0.5D) * 0.003D;
+        double vy = 0.010D + random.nextDouble() * 0.010D;
+        double vz = (random.nextDouble() - 0.5D) * 0.003D;
+
+        level.addParticle(ModParticleType.SPARKLE.get(), x, y, z, vx, vy, vz);
+
+        int clusterChance = withered ? 14 : 8;
+        if (!withered && random.nextInt(clusterChance) == 0 || withered && random.nextInt(clusterChance) == 0) {
+            int clusterCount = withered ? 1 : 3;
+
+            for (int i = 0; i < clusterCount; i++) {
+                double x2 = cx + (random.nextDouble() - 0.5D) * 0.25D;
+                double y2 = pos.getY() + 0.60D + random.nextDouble() * 0.35D;
+                double z2 = cz + (random.nextDouble() - 0.5D) * 0.25D;
+
+                double vx2 = (random.nextDouble() - 0.5D) * 0.004D * velocityScale;
+                double vy2 = (0.014D + random.nextDouble() * 0.012D) * velocityScale;
+                double vz2 = (random.nextDouble() - 0.5D) * 0.004D * velocityScale;
+
+                level.addParticle(ModParticleType.SPARKLE.get(), x2, y2, z2, vx2, vy2, vz2);
             }
         }
     }

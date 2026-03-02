@@ -91,6 +91,7 @@ public class HexaliaMod {
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.DREAMSHROOM.getId(), ModBlocks.POTTED_DREAMSHROOM);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.GHOST_FERN.getId(), ModBlocks.POTTED_GHOST_FERN);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.CELESTIAL_BLOOM.getId(), ModBlocks.POTTED_CELESTIAL_BLOOM);
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.WITHERED_CELESTIAL_BLOOM.getId(), ModBlocks.POTTED_WITHERED_CELESTIAL_BLOOM);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.MORPHORA.getId(), ModBlocks.POTTED_MORPHORA);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.GRIMSHADE.getId(), ModBlocks.POTTED_GRIMSHADE);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.WINDSONG.getId(), ModBlocks.POTTED_WINDSONG);

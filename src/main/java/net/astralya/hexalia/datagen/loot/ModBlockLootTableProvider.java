@@ -47,6 +47,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.WITCHWEED.get());
         this.dropSelf(ModBlocks.GHOST_FERN.get());
         this.dropSelf(ModBlocks.CELESTIAL_BLOOM.get());
+        this.dropSelf(ModBlocks.WITHERED_CELESTIAL_BLOOM.get());
         this.dropSelf(ModBlocks.NIGHTSHADE_BUSH.get());
         this.dropSelf(ModBlocks.BEGONIA.get());
         this.dropSelf(ModBlocks.LAVENDER.get());
@@ -63,6 +64,7 @@ public class ModBlockLootTableProvider extends BlockLootSubProvider {
         this.add(ModBlocks.POTTED_DREAMSHROOM.get(), createPotFlowerItemTable(ModBlocks.DREAMSHROOM.get()));
         this.add(ModBlocks.POTTED_GHOST_FERN.get(), createPotFlowerItemTable(ModBlocks.GHOST_FERN.get()));
         this.add(ModBlocks.POTTED_CELESTIAL_BLOOM.get(), createPotFlowerItemTable(ModBlocks.CELESTIAL_BLOOM.get()));
+        this.add(ModBlocks.POTTED_WITHERED_CELESTIAL_BLOOM.get(), createPotFlowerItemTable(ModBlocks.WITHERED_CELESTIAL_BLOOM.get()));
         this.add(ModBlocks.POTTED_NIGHTSHADE_BUSH.get(), createPotFlowerItemTable(ModBlocks.NIGHTSHADE_BUSH.get()));
         this.add(ModBlocks.POTTED_BEGONIA.get(), createPotFlowerItemTable(ModBlocks.BEGONIA.get()));
         this.add(ModBlocks.POTTED_LAVENDER.get(), createPotFlowerItemTable(ModBlocks.LAVENDER.get()));

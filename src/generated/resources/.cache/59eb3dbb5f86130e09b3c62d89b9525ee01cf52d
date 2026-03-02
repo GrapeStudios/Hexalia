@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-07T21:20:21.4159076	Loot Tables
+// 1.21.1	2026-03-01T10:21:00.0327079	Loot Tables
 9a3df1e2ec6884b6a1d7d652b794a71a76999999 data/hexalia/loot_table/blocks/astrylis.json
 dad5439821b7d3507e19e2713ebd7503704e41ef data/hexalia/loot_table/blocks/begonia.json
 a145885a91e57a61da1dfe8e5d3756080c0e1c03 data/hexalia/loot_table/blocks/candle_skull.json
@@ -59,6 +59,7 @@ f3fffd535a6b17860700b25ea3c8784af8265506 data/hexalia/loot_table/blocks/potted_n
 ed05898c856cc326d408f5dee257a0892ce433e0 data/hexalia/loot_table/blocks/potted_spirit_bloom.json
 415e3b5f4994fe525c1893ff227b121971387a0e data/hexalia/loot_table/blocks/potted_willow_sapling.json
 9e6b199e5aef01d707eca7a73f86661edfa82813 data/hexalia/loot_table/blocks/potted_windsong.json
+a11abff1c1668362c3fb085a7e7f7dafb1742072 data/hexalia/loot_table/blocks/potted_withered_celestial_bloom.json
 6224adbe45b08dbb9a58f99d467b84c6f6022aec data/hexalia/loot_table/blocks/rabbage_crop.json
 345c46e3f62c1aab35dc63b89cff6c6d3ee2c6fd data/hexalia/loot_table/blocks/ritual_brazier.json
 c273b7c17b460efd90e04c651332fcdacbefebcc data/hexalia/loot_table/blocks/ritual_table.json
@@ -97,4 +98,5 @@ ec0c2bb557d762517d26275ab1987d57200dafa3 data/hexalia/loot_table/blocks/willow_s
 119effe0b8d481c1ee03f661fc25ba46ab8281f1 data/hexalia/loot_table/blocks/willow_wood.json
 4ef2f8b6362f6dd75eb3c46a3c0ad04707299153 data/hexalia/loot_table/blocks/windsong.json
 2a701fda48edc6fc67d69cd7f9f0d51604b7cbfd data/hexalia/loot_table/blocks/witchweed.json
+63260c7ce32ac90ead7fb8c31abc919c449c28bf data/hexalia/loot_table/blocks/withered_celestial_bloom.json
 12c090d01b454d08579d1d2ab8b4e8da61f5744b data/hexalia/loot_table/blocks/wither_candle_skull.json

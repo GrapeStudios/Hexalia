@@ -71,4 +71,10 @@ public final class SunlightCheck {
         if (level.getSkyDarken() >= 4) return false;
         return level.canSeeSky(pos);
     }
+
+    public static boolean hasOpenSky(Level level, BlockPos pos) {
+        if (level == null) return false;
+        if (!level.dimensionType().hasSkyLight()) return false;
+        return level.canSeeSky(pos);
+    }
 }

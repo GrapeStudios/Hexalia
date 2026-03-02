@@ -1,6 +1,7 @@
 package net.astralya.hexalia.block.custom;
 
 import com.mojang.serialization.MapCodec;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.block.entity.custom.RitualBrazierBlockEntity;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.util.ModTags;
@@ -25,6 +26,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -137,13 +140,15 @@ public class RitualBrazierBlock extends BaseEntityBlock {
 
             if (!focusStack.isEmpty()) {
                 if (!level.isClientSide()) {
-                    RitualBrazierBlockEntity.RitualResult result = brazier.tryCelestialRitual();
+                    RitualBrazierBlockEntity.RitualResult result = brazier.tryStartCelestialInfusion();
                     switch (result) {
                         case SUCCESS -> {
                             spawnPoofParticles(level, pos);
                             level.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 0.25f, 0.25f);
                         }
+                        case ALREADY_CHANNELING -> { }
                         case NO_CELESTIAL_BLOOMS -> player.displayClientMessage(Component.translatable("message.hexalia.ritual_brazier.no_celestial_blooms"), true);
+                        case NO_SKY -> player.displayClientMessage(Component.translatable("message.hexalia.ritual_brazier.no_sky"), true);
                         case INVALID_ITEM -> player.displayClientMessage(Component.translatable("message.hexalia.ritual_brazier.invalid_item"), true);
                     }
                 }
@@ -176,5 +181,15 @@ public class RitualBrazierBlock extends BaseEntityBlock {
 
     private void playItemSound(Level level, BlockPos pos) {
         level.playSound(null, pos, SoundEvents.ITEM_PICKUP, SoundSource.BLOCKS, 0.25f, 0.25f);
+    }
+
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
+        if (level.isClientSide()) {
+            return null;
+        }
+        return type == ModBlockEntityTypes.RITUAL_BRAZIER.get()
+                ? (lvl, pos, st, be) -> RitualBrazierBlockEntity.serverTick(lvl, pos, st, (RitualBrazierBlockEntity) be)
+                : null;
     }
 }

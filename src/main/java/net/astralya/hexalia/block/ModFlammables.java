@@ -50,6 +50,7 @@ public final class ModFlammables {
         fire.setFlammable(ModBlocks.SPIRIT_BLOOM.get(), 60, 100);
         fire.setFlammable(ModBlocks.GHOST_FERN.get(), 60, 100);
         fire.setFlammable(ModBlocks.CELESTIAL_BLOOM.get(), 60, 100);
+        fire.setFlammable(ModBlocks.WITHERED_CELESTIAL_BLOOM.get(), 60, 100);
         fire.setFlammable(ModBlocks.WILD_MANDRAKE.get(), 60, 100);
         fire.setFlammable(ModBlocks.CHILLBERRY_BUSH.get(), 60, 100);
 

@@ -60,6 +60,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         flowerWithPotBlock(ModBlocks.DREAMSHROOM.get(), ModBlocks.POTTED_DREAMSHROOM.get());
         flowerWithPotBlock(ModBlocks.GHOST_FERN.get(), ModBlocks.POTTED_GHOST_FERN.get());
         flowerWithPotBlock(ModBlocks.CELESTIAL_BLOOM.get(), ModBlocks.POTTED_CELESTIAL_BLOOM.get());
+        flowerWithPotBlock(ModBlocks.WITHERED_CELESTIAL_BLOOM.get(), ModBlocks.POTTED_WITHERED_CELESTIAL_BLOOM.get());
         flowerWithPotBlock(ModBlocks.MORPHORA.get(), ModBlocks.POTTED_MORPHORA.get());
         flowerWithPotBlock(ModBlocks.GRIMSHADE.get(), ModBlocks.POTTED_GRIMSHADE.get());
         flowerWithPotBlock(ModBlocks.WINDSONG.get(), ModBlocks.POTTED_WINDSONG.get());
