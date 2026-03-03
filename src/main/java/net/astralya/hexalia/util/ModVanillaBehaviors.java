@@ -7,10 +7,20 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.dispenser.BlockSource;
 import net.minecraft.core.dispenser.DefaultDispenseItemBehavior;
+import net.minecraft.core.dispenser.OptionalDispenseItemBehavior;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.common.util.FakePlayerFactory;
 
 public final class ModVanillaBehaviors {
 
@@ -44,6 +54,47 @@ public final class ModVanillaBehaviors {
                 }
 
                 return super.execute(source, stack);
+            }
+        });
+
+        registerUseOnBehavior(ModItems.CELESTIAL_CRYSTAL.get());
+        registerUseOnBehavior(ModItems.HEX_FOCUS.get());
+        registerUseOnBehavior(ModItems.LOTUS_BLOSSOM.get());
+    }
+
+    private static void registerUseOnBehavior(ItemLike item) {
+        DispenserBlock.registerBehavior(item, new OptionalDispenseItemBehavior() {
+            @Override
+            protected ItemStack execute(BlockSource source, ItemStack stack) {
+                ServerLevel level = source.level();
+
+                Direction facing = source.state().getValue(DispenserBlock.FACING);
+                BlockPos dispenserPos = source.pos();
+                BlockPos targetPos = dispenserPos.relative(facing);
+
+                Player fakePlayer = FakePlayerFactory.getMinecraft(level);
+                fakePlayer.setPos(dispenserPos.getX() + 0.5D, dispenserPos.getY() + 0.5D, dispenserPos.getZ() + 0.5D);
+                fakePlayer.setItemInHand(InteractionHand.MAIN_HAND, stack);
+
+                Direction hitFace = facing.getOpposite();
+                Vec3 hitLocation = Vec3.atCenterOf(targetPos)
+                        .add(hitFace.getStepX() * 0.5D, hitFace.getStepY() * 0.5D, hitFace.getStepZ() * 0.5D);
+
+                BlockHitResult hit = new BlockHitResult(hitLocation, hitFace, targetPos, false);
+
+                BlockState targetState = level.getBlockState(targetPos);
+                ItemInteractionResult blockResult = targetState.useItemOn(stack, level, fakePlayer, InteractionHand.MAIN_HAND, hit);
+
+                boolean success = blockResult.consumesAction();
+
+                if (!success && blockResult == ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION) {
+                    UseOnContext context = new UseOnContext(level, fakePlayer, InteractionHand.MAIN_HAND, stack, hit);
+                    InteractionResult itemResult = stack.useOn(context);
+                    success = itemResult.consumesAction();
+                }
+
+                setSuccess(success);
+                return stack;
             }
         });
     }

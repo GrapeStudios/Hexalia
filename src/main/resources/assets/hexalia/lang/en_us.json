@@ -261,7 +261,7 @@
   "message.hexalia.ritual_brazier.no_sky": "The infusion requires an open view to the sky.",
 
   "message.hexalia.censer_not_full": "The censer must be filled with herbs before lighting!",
-  "message.hexalia.invalid_herb_combination": "This combination of herbs does not ",
+  "message.hexalia.invalid_herb_combination": "This combination of herbs does not work.",
   "message.hexalia.censer.fireproof_presence": "A protective warmth radiates from the censer",
   "message.hexalia.censer.undead_veil": "Unnatural stillness quiets the restless dead",
   "message.hexalia.censer.livestock_comfort": "Animals seem soothed by the herbal aroma",

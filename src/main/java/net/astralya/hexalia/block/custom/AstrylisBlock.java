@@ -2,8 +2,8 @@ package net.astralya.hexalia.block.custom;
 
 import net.astralya.hexalia.block.entity.custom.AstrylisBlockEntity;
 import net.astralya.hexalia.item.ModItems;
+import net.astralya.hexalia.particle.ModParticleType;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -37,7 +37,7 @@ public class AstrylisBlock extends EnchantedPlantBlock implements EntityBlock {
                     double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.3;
                     double y = pos.getY() + 0.7 + random.nextDouble() * 0.3;
                     double z = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 0.3;
-                    level.addParticle(ParticleTypes.EFFECT, x, y, z, 0, 0.01, 0);
+                    level.addParticle(ModParticleType.SPARKLE.get(), x, y, z, 0, 0.01, 0);
                 }
             }
         }

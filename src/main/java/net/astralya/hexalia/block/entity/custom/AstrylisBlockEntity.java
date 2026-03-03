@@ -79,12 +79,22 @@ public class AstrylisBlockEntity extends BlockEntity {
         this.activationTime = gameTime;
         this.lastBonemealTime = -1;
         this.setChanged();
+        sync();
     }
 
     public void deactivate() {
         this.activationTime = -1;
         this.lastBonemealTime = -1;
         this.setChanged();
+        sync();
+    }
+
+    private void sync() {
+        if (this.level == null || this.level.isClientSide) {
+            return;
+        }
+        BlockState state = this.getBlockState();
+        this.level.sendBlockUpdated(this.worldPosition, state, state, 3);
     }
 
     public int getDuration() {

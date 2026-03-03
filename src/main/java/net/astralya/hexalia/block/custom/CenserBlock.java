@@ -84,16 +84,17 @@ public class CenserBlock extends BaseEntityBlock {
                 if (level.isClientSide()) player.displayClientMessage(Component.translatable("message.hexalia.invalid_herb_combination"), true);
                 return ItemInteractionResult.FAIL;
             }
+
             if (level.isClientSide()) {
-                censer.clearItems();
-            } else {
-                censer.clearItems();
-                level.setBlockAndUpdate(pos, state.setValue(LIT, true));
-                censer.setActiveCombination(combo);
-                censer.setBurnTime(Configuration.CENSER_EFFECT_DURATION.get());
-                sendEffectActivationMessage(level, pos, combo, player);
-                CenserEffectHandler.startEffect(level, pos, combo);
+                return ItemInteractionResult.SUCCESS;
             }
+
+            censer.clearItems();
+            level.setBlockAndUpdate(pos, state.setValue(LIT, true));
+            censer.setActiveCombination(combo);
+            censer.setBurnTime(Configuration.CENSER_EFFECT_DURATION.get());
+            sendEffectActivationMessage(level, pos, combo, player);
+            CenserEffectHandler.startEffect(level, pos, combo);
             heldItem.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
             level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0f, level.random.nextFloat() * 0.4F + 0.8F);
             return ItemInteractionResult.SUCCESS;

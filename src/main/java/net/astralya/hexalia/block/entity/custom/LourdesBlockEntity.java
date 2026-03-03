@@ -3,6 +3,7 @@ package net.astralya.hexalia.block.entity.custom;
 import net.astralya.hexalia.Configuration;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.effect.ModEffectCure;
+import net.astralya.hexalia.particle.ModParticleType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.particles.ColorParticleOption;
@@ -118,6 +119,7 @@ public class LourdesBlockEntity extends BlockEntity {
             double vz = (random.nextDouble() - 0.5D) * 0.01D;
 
             level.addParticle(ColorParticleOption.create(ParticleTypes.ENTITY_EFFECT, r, g, b), x, y, z, vx, vy, vz);
+            level.addParticle(ModParticleType.SPARKLE.get(), x, y, z, 0, 0.01, 0);
         }
     }
 
