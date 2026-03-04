@@ -5,7 +5,9 @@ import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.particle.ModParticleType;
 import net.astralya.hexalia.sound.ModSoundEvents;
+import net.astralya.hexalia.util.SidedItemHandlers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -25,6 +27,7 @@ import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
@@ -45,11 +48,14 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
         protected void onContentsChanged(int slot) {
             setChanged();
             if (level != null && !level.isClientSide()) {
-                level.invalidateCapabilities(getBlockPos());
                 level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
             }
         }
     };
+
+    private final IItemHandler southInputHandler;
+    private final IItemHandler downOutputHandler;
+    private final IItemHandler lockedHandler;
 
     private ItemStack cachedParticleItem = ItemStack.EMPTY;
     private List<RitualBrazierBlockEntity> activeBraziers = Collections.emptyList();
@@ -63,9 +69,35 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
 
     public RitualTableBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntityTypes.RITUAL_TABLE.get(), pos, state);
+
+        this.southInputHandler = SidedItemHandlers.view(
+                inventory,
+                new int[]{0},
+                true,
+                false
+        );
+
+        this.downOutputHandler = SidedItemHandlers.view(
+                inventory,
+                new int[]{0},
+                false,
+                true
+        );
+
+        this.lockedHandler = SidedItemHandlers.view(
+                inventory,
+                new int[]{0},
+                false,
+                false
+        );
     }
 
-    public ItemStackHandler getItemHandler() { return inventory; }
+    public IItemHandler getItemHandler(@Nullable Direction side) {
+        if (transformTicksRemaining > 0) {
+            return lockedHandler;
+        }
+        return SidedItemHandlers.southDown(side, southInputHandler, downOutputHandler);
+    }
 
     @Override public int getContainerSize() { return 1; }
     @Override public boolean isEmpty() { return inventory.getStackInSlot(0).isEmpty(); }
@@ -80,6 +112,7 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
         rotation = (rotation + 0.5f) % 360f;
         return rotation;
     }
+
 
     public void startTransformation(ItemStack output, int durationTicks, List<RitualBrazierBlockEntity> braziers) {
         if (transformTicksRemaining > 0) return;

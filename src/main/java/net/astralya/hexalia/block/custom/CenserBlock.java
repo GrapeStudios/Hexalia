@@ -2,10 +2,10 @@ package net.astralya.hexalia.block.custom;
 
 import com.mojang.serialization.MapCodec;
 import net.astralya.hexalia.Configuration;
-import net.astralya.hexalia.gameplay.censer.CenserEffectHandler;
-import net.astralya.hexalia.gameplay.censer.HerbCombination;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.block.entity.custom.CenserBlockEntity;
+import net.astralya.hexalia.gameplay.censer.CenserEffectHandler;
+import net.astralya.hexalia.gameplay.censer.HerbCombination;
 import net.astralya.hexalia.util.ModTags;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -27,7 +27,11 @@ import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.BaseEntityBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.RenderShape;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -75,11 +79,14 @@ public class CenserBlock extends BaseEntityBlock {
         if (heldItem.getItem() instanceof FlintAndSteelItem && !state.getValue(LIT)) {
             ItemStack herb1 = censer.getItem(0);
             ItemStack herb2 = censer.getItem(1);
+
             if (herb1.isEmpty() || herb2.isEmpty()) {
                 if (level.isClientSide()) player.displayClientMessage(Component.translatable("message.hexalia.censer_not_full"), true);
                 return ItemInteractionResult.FAIL;
             }
+
             HerbCombination combo = new HerbCombination(herb1.getItem(), herb2.getItem());
+
             if (!CenserEffectHandler.isValidCombination(herb1.getItem(), herb2.getItem())) {
                 if (level.isClientSide()) player.displayClientMessage(Component.translatable("message.hexalia.invalid_herb_combination"), true);
                 return ItemInteractionResult.FAIL;
@@ -115,7 +122,7 @@ public class CenserBlock extends BaseEntityBlock {
 
         if (!state.getValue(LIT)) {
             if (heldItem.isEmpty()) {
-                for (int i = 0; i < censer.getItems().size(); i++) {
+                for (int i = 0; i < 2; i++) {
                     ItemStack stackInSlot = censer.getItem(i);
                     if (!stackInSlot.isEmpty()) {
                         ItemStack removed = censer.removeStack(i);
@@ -125,7 +132,7 @@ public class CenserBlock extends BaseEntityBlock {
                     }
                 }
             } else if (heldItem.is(ModTags.Items.HERBS)) {
-                for (int i = 0; i < censer.getItems().size(); i++) {
+                for (int i = 0; i < 2; i++) {
                     if (censer.getItem(i).isEmpty()) {
                         ItemStack toInsert = heldItem.copy();
                         toInsert.setCount(1);
@@ -148,16 +155,17 @@ public class CenserBlock extends BaseEntityBlock {
         String key = CenserEffectHandler.getMessageKeyForCombination(combo);
         int radius = Configuration.CENSER_EFFECT_RADIUS.get();
         AABB area = new AABB(pos).inflate(radius);
+
         for (Player p : level.getEntitiesOfClass(Player.class, area)) {
             if (!p.getUUID().equals(activatingPlayer.getUUID()) && p instanceof ServerPlayer sp) {
                 sp.displayClientMessage(Component.translatable(key), true);
             }
         }
+
         if (!level.isClientSide() && activatingPlayer instanceof ServerPlayer sp) {
             sp.displayClientMessage(Component.translatable(key), true);
         }
     }
-
 
     @Override
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
@@ -199,7 +207,7 @@ public class CenserBlock extends BaseEntityBlock {
             BlockEntity blockEntity = world.getBlockEntity(pos);
             if (blockEntity instanceof CenserBlockEntity censer) {
                 if (world instanceof ServerLevel) {
-                    Containers.dropContents(world, pos, censer.getItems());
+                    Containers.dropContents(world, pos, censer.getDropsContainer());
                 }
                 world.updateNeighbourForOutputSignal(pos, this);
             }

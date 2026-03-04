@@ -4,6 +4,7 @@ import net.astralya.hexalia.Configuration;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.item.ModItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.item.ItemEntity;
@@ -12,6 +13,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.items.IItemHandler;
 
 public class EggClusterBlockEntity extends BlockEntity {
 
@@ -41,9 +44,14 @@ public class EggClusterBlockEntity extends BlockEntity {
     private void hatch(Level level, BlockPos pos) {
         ItemStack stack = new ItemStack(ModItems.SILKWORM.get(), 4);
 
-        BlockEntity belowBe = level.getBlockEntity(pos.below());
-        if (belowBe instanceof NestingBlockEntity nest) {
-            stack = nest.insertItem(stack);
+        BlockPos belowPos = pos.below();
+        BlockEntity belowBe = level.getBlockEntity(belowPos);
+
+        if (belowBe != null) {
+            IItemHandler handler = level.getCapability(Capabilities.ItemHandler.BLOCK, belowPos, level.getBlockState(belowPos), belowBe, Direction.UP);
+            if (handler != null) {
+                stack = insertAll(handler, stack);
+            }
         }
 
         if (!stack.isEmpty()) {
@@ -59,6 +67,19 @@ public class EggClusterBlockEntity extends BlockEntity {
         }
 
         level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+    }
+
+    private ItemStack insertAll(IItemHandler handler, ItemStack stack) {
+        ItemStack remaining = stack;
+
+        for (int slot = 0; slot < handler.getSlots(); slot++) {
+            if (remaining.isEmpty()) {
+                return ItemStack.EMPTY;
+            }
+            remaining = handler.insertItem(slot, remaining, false);
+        }
+
+        return remaining;
     }
 
     private static int getHatchDurationTicks() {

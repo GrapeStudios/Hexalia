@@ -16,12 +16,14 @@ import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.ContainerOpenersCounter;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.wrapper.InvWrapper;
+import org.jetbrains.annotations.Nullable;
 
 public class NestingBlockEntity extends BlockEntity implements Container, MenuProvider {
 
@@ -30,6 +32,8 @@ public class NestingBlockEntity extends BlockEntity implements Container, MenuPr
     public static final int SIZE = COLUMNS * ROWS;
 
     private final NonNullList<ItemStack> items = NonNullList.withSize(SIZE, ItemStack.EMPTY);
+
+    private final IItemHandler itemHandler = new InvWrapper(this);
 
     private float openProgress;
     private float openProgressOld;
@@ -60,6 +64,11 @@ public class NestingBlockEntity extends BlockEntity implements Container, MenuPr
 
     public NestingBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntityTypes.NESTING_BLOCK.get(), pos, state);
+    }
+
+    @SuppressWarnings("unused")
+    public IItemHandler getItemHandler(@Nullable net.minecraft.core.Direction side) {
+        return itemHandler;
     }
 
     public float getOpenProgress(float partialTick) {
@@ -154,66 +163,9 @@ public class NestingBlockEntity extends BlockEntity implements Container, MenuPr
         setChanged();
     }
 
-    public ItemStack insertItem(ItemStack stack) {
-        if (stack.isEmpty()) {
-            return ItemStack.EMPTY;
-        }
-
-        Item item = stack.getItem();
-
-        for (ItemStack existing : this.items) {
-            if (existing.isEmpty()) {
-                continue;
-            }
-
-            if (!ItemStack.isSameItemSameComponents(existing, stack)) {
-                continue;
-            }
-
-            int max = Math.min(this.getMaxStackSize(), existing.getMaxStackSize());
-            int space = max - existing.getCount();
-            if (space <= 0) {
-                continue;
-            }
-
-            int move = Math.min(space, stack.getCount());
-            existing.grow(move);
-            stack.shrink(move);
-
-            if (stack.isEmpty()) {
-                this.setChanged();
-                return ItemStack.EMPTY;
-            }
-        }
-
-        for (int i = 0; i < this.items.size(); i++) {
-            ItemStack existing = this.items.get(i);
-            if (!existing.isEmpty()) {
-                continue;
-            }
-
-            int max = Math.min(this.getMaxStackSize(), stack.getMaxStackSize());
-            int move = Math.min(max, stack.getCount());
-
-            ItemStack placed = stack.copy();
-            placed.setCount(move);
-            this.items.set(i, placed);
-            stack.shrink(move);
-
-            if (stack.isEmpty()) {
-                this.setChanged();
-                return ItemStack.EMPTY;
-            }
-        }
-
-        this.setChanged();
-        return stack;
-    }
-
-
     @Override
     public boolean canPlaceItem(int slot, ItemStack stack) {
-        return false;
+        return true;
     }
 
     @Override

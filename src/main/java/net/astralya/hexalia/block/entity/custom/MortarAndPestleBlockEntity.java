@@ -4,7 +4,9 @@ import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.recipe.ModRecipes;
 import net.astralya.hexalia.recipe.MortarAndPestleRecipe;
 import net.astralya.hexalia.recipe.MortarAndPestleRecipeInput;
+import net.astralya.hexalia.util.SidedItemHandlers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
@@ -20,6 +22,7 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.Containers;
+import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
@@ -43,8 +46,12 @@ public class MortarAndPestleBlockEntity extends SyncBlockEntity {
     private int pestleCount;
     private boolean pestling;
 
+    private final IItemHandler upInputHandler;
+    private final IItemHandler downOutputHandler;
+
     public MortarAndPestleBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntityTypes.MORTAR_AND_PESTLE.get(), pos, state);
+
         this.items = new ItemStackHandler(4) {
             @Override
             protected void onContentsChanged(int slot) {
@@ -69,10 +76,24 @@ public class MortarAndPestleBlockEntity extends SyncBlockEntity {
                 return 1;
             }
         };
+
+        this.upInputHandler = SidedItemHandlers.view(
+                items,
+                new int[]{INPUT_0, INPUT_1, INPUT_2},
+                true,
+                false
+        );
+
+        this.downOutputHandler = SidedItemHandlers.view(
+                items,
+                new int[]{OUTPUT},
+                false,
+                true
+        );
+
         this.pendingResult = ItemStack.EMPTY;
     }
 
-    @SuppressWarnings("unused")
     public static void tick(Level level, BlockPos pos, BlockState state, MortarAndPestleBlockEntity be) {
         if (be.pestleTick > 0) {
             be.pestleTick--;
@@ -97,6 +118,10 @@ public class MortarAndPestleBlockEntity extends SyncBlockEntity {
 
     public boolean hasOutput() {
         return !items.getStackInSlot(OUTPUT).isEmpty();
+    }
+
+    public IItemHandler getItemHandler(Direction side) {
+        return SidedItemHandlers.upDown(side, upInputHandler, downOutputHandler);
     }
 
     public int getPestleTick() {

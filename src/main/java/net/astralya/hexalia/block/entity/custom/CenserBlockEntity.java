@@ -1,13 +1,14 @@
 package net.astralya.hexalia.block.entity.custom;
 
 import net.astralya.hexalia.block.custom.CenserBlock;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.gameplay.censer.CenserEffectHandler;
 import net.astralya.hexalia.gameplay.censer.HerbCombination;
-import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.util.ModUtil;
+import net.astralya.hexalia.util.SidedItemHandlers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.NonNullList;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -17,23 +18,75 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.neoforged.neoforge.items.IItemHandler;
+import net.neoforged.neoforge.items.ItemStackHandler;
+import org.jetbrains.annotations.Nullable;
 
 public class CenserBlockEntity extends SyncBlockEntity {
 
     private static final int SIZE = 2;
-    private final NonNullList<ItemStack> items = NonNullList.withSize(SIZE, ItemStack.EMPTY);
-    private HerbCombination activeCombination = null;
-    private int burnTime = 0;
+    private static final int SLOT_0 = 0;
+    private static final int SLOT_1 = 1;
+
     private static final int EFFECT_INTERVAL = 40;
-    private boolean effectActive = false;
+
+    private final ItemStackHandler inventory;
+
+    private final IItemHandler upInputHandler;
+    private final IItemHandler lockedHandler;
+    private final IItemHandler blockedHandler;
+
+    private HerbCombination activeCombination;
+    private int burnTime;
+    private boolean effectActive;
 
     public CenserBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntityTypes.CENSER.get(), pos, state);
+
+        this.inventory = new ItemStackHandler(SIZE) {
+            @Override
+            protected void onContentsChanged(int slot) {
+                setChanged();
+                if (level != null && !level.isClientSide()) {
+                    inventoryChanged();
+                    sendUpdate();
+                }
+            }
+
+            @Override
+            public int getSlotLimit(int slot) {
+                return 1;
+            }
+        };
+
+        this.upInputHandler = SidedItemHandlers.view(inventory, new int[]{SLOT_0, SLOT_1}, true, false);
+        this.lockedHandler = SidedItemHandlers.view(inventory, new int[]{SLOT_0, SLOT_1}, false, false);
+        this.blockedHandler = SidedItemHandlers.view(inventory, new int[]{}, false, false);
+
+        this.activeCombination = null;
+        this.burnTime = 0;
+        this.effectActive = false;
+    }
+
+    @SuppressWarnings("unused")
+    public IItemHandler getItemHandler(@Nullable Direction side) {
+        BlockState st = getBlockState();
+        boolean lit = st.hasProperty(CenserBlock.LIT) && st.getValue(CenserBlock.LIT);
+
+        if (lit) {
+            return lockedHandler;
+        }
+
+        if (side == Direction.UP) {
+            return upInputHandler;
+        }
+
+        return blockedHandler;
     }
 
     public void tick(Level level, BlockPos pos, BlockState state) {
@@ -87,6 +140,7 @@ public class CenserBlockEntity extends SyncBlockEntity {
     public void setBurnTime(int time) {
         this.burnTime = time;
         setChanged();
+        sendUpdate();
     }
 
     public int getBurnTime() {
@@ -95,22 +149,29 @@ public class CenserBlockEntity extends SyncBlockEntity {
 
     public ItemStack getItem(int slot) {
         if (slot < 0 || slot >= SIZE) return ItemStack.EMPTY;
-        return items.get(slot);
+        return inventory.getStackInSlot(slot);
     }
 
     public void setItem(int slot, ItemStack stack) {
         if (slot < 0 || slot >= SIZE) return;
-        items.set(slot, stack);
+        ItemStack one = stack.copy();
+        one.setCount(1);
+        inventory.setStackInSlot(slot, one);
+    }
+
+    public void clearItems() {
+        inventory.setStackInSlot(SLOT_0, ItemStack.EMPTY);
+        inventory.setStackInSlot(SLOT_1, ItemStack.EMPTY);
         setChanged();
         sendUpdate();
     }
 
-    public void clearItems() {
+    public SimpleContainer getDropsContainer() {
+        SimpleContainer container = new SimpleContainer(SIZE);
         for (int i = 0; i < SIZE; i++) {
-            items.set(i, ItemStack.EMPTY);
+            container.setItem(i, inventory.getStackInSlot(i));
         }
-        setChanged();
-        sendUpdate();
+        return container;
     }
 
     private void sendUpdate() {
@@ -121,10 +182,6 @@ public class CenserBlockEntity extends SyncBlockEntity {
             }
             level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
         }
-    }
-
-    public NonNullList<ItemStack> getItems() {
-        return items;
     }
 
     public void setActiveCombination(HerbCombination combo) {
@@ -138,14 +195,20 @@ public class CenserBlockEntity extends SyncBlockEntity {
 
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
-        ContainerHelper.loadAllItems(tag, items, registries);
+        super.loadAdditional(tag, registries);
 
-        for (int i = 0; i < items.size(); i++) {
-            ItemStack stack = items.get(i);
+        inventory.deserializeNBT(registries, tag.getCompound("Items"));
+
+        for (int i = 0; i < SIZE; i++) {
+            ItemStack stack = inventory.getStackInSlot(i);
             if (stack.isEmpty()) continue;
             if (stack.getCount() <= 0 || stack.getCount() > stack.getMaxStackSize()) {
                 stack.setCount(1);
             }
+            if (stack.getCount() > 1) {
+                stack.setCount(1);
+            }
+            inventory.setStackInSlot(i, stack);
         }
 
         if (tag.contains("ActiveCombination")) {
@@ -153,6 +216,8 @@ public class CenserBlockEntity extends SyncBlockEntity {
             Item item1 = BuiltInRegistries.ITEM.byId(comboTag.getInt("Item1"));
             Item item2 = BuiltInRegistries.ITEM.byId(comboTag.getInt("Item2"));
             this.activeCombination = new HerbCombination(item1, item2);
+        } else {
+            this.activeCombination = null;
         }
 
         burnTime = tag.getInt("BurnTime");
@@ -162,7 +227,8 @@ public class CenserBlockEntity extends SyncBlockEntity {
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.saveAdditional(tag, registries);
-        ContainerHelper.saveAllItems(tag, items, registries);
+
+        tag.put("Items", inventory.serializeNBT(registries));
         tag.putInt("BurnTime", burnTime);
         tag.putBoolean("EffectActive", effectActive);
 
@@ -193,13 +259,14 @@ public class CenserBlockEntity extends SyncBlockEntity {
     }
 
     public boolean isEmpty() {
-        return items.stream().allMatch(ItemStack::isEmpty);
+        return inventory.getStackInSlot(SLOT_0).isEmpty() && inventory.getStackInSlot(SLOT_1).isEmpty();
     }
 
     public ItemStack removeStack(int slot) {
         if (slot < 0 || slot >= SIZE) return ItemStack.EMPTY;
-        ItemStack stack = items.get(slot).copy();
-        items.set(slot, ItemStack.EMPTY);
+        ItemStack stack = inventory.getStackInSlot(slot);
+        if (stack.isEmpty()) return ItemStack.EMPTY;
+        inventory.setStackInSlot(slot, ItemStack.EMPTY);
         setChanged();
         sendUpdate();
         return stack;

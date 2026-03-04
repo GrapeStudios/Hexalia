@@ -1,6 +1,8 @@
 package net.astralya.hexalia.event;
 
 import net.astralya.hexalia.HexaliaMod;
+import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
+import net.astralya.hexalia.block.entity.custom.*;
 import net.astralya.hexalia.entity.ModEntities;
 import net.astralya.hexalia.entity.custom.SilkMothEntity;
 import net.astralya.hexalia.entity.layers.ModModelLayers;
@@ -11,6 +13,8 @@ import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.level.levelgen.Heightmap;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
@@ -35,5 +39,16 @@ public class ModEventBusSubscriber {
     public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
         event.register(ModEntities.SILK_MOTH_ENTITY.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Animal::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+    }
+
+    @SubscribeEvent
+    public static void registerCapabilities(RegisterCapabilitiesEvent event) {
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntityTypes.MORTAR_AND_PESTLE.get(), MortarAndPestleBlockEntity::getItemHandler);
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntityTypes.RITUAL_BRAZIER.get(), RitualBrazierBlockEntity::getItemHandler);
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntityTypes.RITUAL_TABLE.get(), RitualTableBlockEntity::getItemHandler);
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntityTypes.CENSER.get(), CenserBlockEntity::getItemHandler);
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntityTypes.NESTING_BLOCK.get(), NestingBlockEntity::getItemHandler);
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntityTypes.SMALL_CAULDRON.get(), SmallCauldronBlockEntity::getItemHandler);
+        event.registerBlockEntity(Capabilities.ItemHandler.BLOCK, ModBlockEntityTypes.SHELF.get(), ShelfBlockEntity::getItemHandler);
     }
 }

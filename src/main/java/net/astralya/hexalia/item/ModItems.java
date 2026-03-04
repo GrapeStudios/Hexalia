@@ -212,7 +212,7 @@ public class ModItems {
             () -> new BrewItem(new Item.Properties().stacksTo(4), () -> ModMobEffects.ARACHNID_GRACE, 20 * 240, 0,
                     Component.translatable("tooltip.hexalia.arachnid_grace").withStyle(ChatFormatting.BLUE)));
     public static final DeferredItem<Item> BREW_OF_HOMESTEAD = ITEMS.registerItem("brew_of_homestead",
-            HomesteadBrewItem::new, new Item.Properties());
+            HomesteadBrewItem::new, new Item.Properties().stacksTo(4));
     public static final DeferredItem<Item> BREW_OF_HOLLOW_SILENCE = ITEMS.register("brew_of_hollow_silence",
             () -> new BrewItem(new Item.Properties().stacksTo(4), () -> ModMobEffects.HOLLOW_SILENCE, 20 * 240, 0,
                     Component.translatable("tooltip.hexalia.hollow_silence").withStyle(ChatFormatting.BLUE)));
