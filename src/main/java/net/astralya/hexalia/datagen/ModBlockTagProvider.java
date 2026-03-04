@@ -75,6 +75,14 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.NIGHTSHADE_BUSH.get())
                 .add(ModBlocks.BEGONIA.get())
                 .add(ModBlocks.LAVENDER.get())
+                .add(ModBlocks.AEGIFLORA.get())
+                .add(ModBlocks.WITHERED_AEGIFLORA.get())
+                .add(ModBlocks.MORPHORA.get())
+                .add(ModBlocks.WINDSONG.get())
+                .add(ModBlocks.LOURDES.get())
+                .add(ModBlocks.GRIMSHADE.get())
+                .add(ModBlocks.CELESTIAL_BLOOM.get())
+                .add(ModBlocks.ASTRYLIS.get())
                 .add(ModBlocks.DAHLIA.get());
 
         // Small flowers
@@ -87,6 +95,14 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.NIGHTSHADE_BUSH.get())
                 .add(ModBlocks.BEGONIA.get())
                 .add(ModBlocks.LAVENDER.get())
+                .add(ModBlocks.AEGIFLORA.get())
+                .add(ModBlocks.WITHERED_AEGIFLORA.get())
+                .add(ModBlocks.MORPHORA.get())
+                .add(ModBlocks.WINDSONG.get())
+                .add(ModBlocks.LOURDES.get())
+                .add(ModBlocks.GRIMSHADE.get())
+                .add(ModBlocks.CELESTIAL_BLOOM.get())
+                .add(ModBlocks.ASTRYLIS.get())
                 .add(ModBlocks.DAHLIA.get());
 
         // Special plant properties

@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-03T21:22:51.889527	Recipes
+// 1.21.1	2026-03-03T23:17:18.1248724	Recipes
 c327f3ba4eafb4c21dbb4104a1bc4c1d661f542a data/hexalia/advancement/recipes/brewing/rustic_bottle.json
 a8312b0bfae801aa7103827a4307c5c829b7dbf1 data/hexalia/advancement/recipes/building_blocks/celestial_crystal_block.json
 e15994b53b3dfc7b695ca1c1c4e0cf392e20aaa3 data/hexalia/advancement/recipes/building_blocks/cottonwood_planks.json
@@ -98,6 +98,7 @@ c74332515755a9e99e87f85c1b1b3b136ae0f4be data/hexalia/advancement/recipes/ritual
 320ef72a683f49890f0a548cbae9dc57d64a8b90 data/hexalia/advancement/recipes/ritual_brazier/moonweave_footwraps_from_brazier.json
 75c10a4f0e43391778f2da5c4b9bf911d3329b58 data/hexalia/advancement/recipes/ritual_brazier/moonweave_hood_from_brazier.json
 a61b96b78bfba794aca77c056e731eee6abaff41 data/hexalia/advancement/recipes/ritual_brazier/moonweave_mantle_from_brazier.json
+6e65a0ab48606026523b678520cca47e954166e0 data/hexalia/advancement/recipes/ritual_table/aegiflora_from_ritual_table.json
 f223ba0ea9099bc0b15782f0bfb2d7c8ae115674 data/hexalia/advancement/recipes/ritual_table/air_node_from_ritual_table.json
 3364bfa302f39ffe797d44e17d7b5dbbdb47b4f6 data/hexalia/advancement/recipes/ritual_table/astrylis_from_ritual_table.json
 46b8aef1395911fba923e487386de568d1c6c9d3 data/hexalia/advancement/recipes/ritual_table/earth_node_from_ritual_table.json
@@ -128,6 +129,7 @@ d8ac48e115921a0e1e38402d38f4eeaa82a9ff2a data/hexalia/advancement/recipes/tools/
 a04c28607745ca446ae1b09efb092b786d85acbd data/hexalia/advancement/recipes/tools/silk_idol.json
 39a5410b469046dd46e9907a53aae7393e4dc5de data/hexalia/advancement/recipes/tools/spiritroot_tether.json
 f017ed15d3e83fdf003e1f57af01bd0a29bf40c2 data/hexalia/advancement/recipes/tools/tempest_idol.json
+41d77d2ee97a2f0cdadcbe44ae170970c23dee8f data/hexalia/recipe/aegiflora_from_ritual_table.json
 ad5b50623ecd6d4b098597849072f2464b21fc08 data/hexalia/recipe/air_node_from_ritual_table.json
 5ca0c5404ddd220c623968b302a889b769536dcd data/hexalia/recipe/andesite_from_mutation.json
 8f9946c6af0caccb8070ed70cade238c5a3d5c1b data/hexalia/recipe/astrylis_from_ritual_table.json

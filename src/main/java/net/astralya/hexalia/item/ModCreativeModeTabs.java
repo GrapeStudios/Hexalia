@@ -56,6 +56,7 @@ public class ModCreativeModeTabs {
         output.accept(ModBlocks.WINDSONG.get());
         output.accept(ModBlocks.ASTRYLIS.get());
         output.accept(ModBlocks.LOURDES.get());
+        output.accept(ModBlocks.AEGIFLORA.get());
 
         output.accept(ModBlocks.BEGONIA.get());
         output.accept(ModBlocks.LAVENDER.get());

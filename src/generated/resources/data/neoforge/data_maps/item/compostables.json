@@ -1,5 +1,8 @@
 {
   "values": {
+    "hexalia:aegiflora": {
+      "chance": 0.3
+    },
     "hexalia:astrylis": {
       "chance": 0.3
     },
@@ -91,6 +94,9 @@
       "chance": 0.3
     },
     "hexalia:witchweed": {
+      "chance": 0.3
+    },
+    "hexalia:withered_aegiflora": {
       "chance": 0.3
     },
     "hexalia:withered_celestial_bloom": {

@@ -56,12 +56,10 @@ public class ModBlocks {
             () -> new CelestialBloomBlock(MobEffects.NIGHT_VISION, 6, BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY).lightLevel(state -> 6)));
     public static final DeferredBlock<Block> POTTED_CELESTIAL_BLOOM = BLOCKS.register("potted_celestial_bloom",
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), CELESTIAL_BLOOM, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY).lightLevel(state -> 6)));
-    
     public static final DeferredBlock<Block> WITHERED_CELESTIAL_BLOOM = registerBlock("withered_celestial_bloom",
             () -> new CelestialBloomBlock(MobEffects.NIGHT_VISION, 3, BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY).lightLevel(state -> 6)));
     public static final DeferredBlock<Block> POTTED_WITHERED_CELESTIAL_BLOOM = BLOCKS.register("potted_withered_celestial_bloom",
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), WITHERED_CELESTIAL_BLOOM, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY).lightLevel(state -> 6)));
-    
     public static final DeferredBlock<Block> LOTUS_FLOWER = BLOCKS.register("lotus_flower",
             () -> new LotusFlowerBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.LILY_PAD).lightLevel(state -> 6)));
     public static final DeferredBlock<Block> WITCHWEED = registerBlock("witchweed",
@@ -73,23 +71,31 @@ public class ModBlocks {
     public static final DeferredBlock<Block> POTTED_MORPHORA = BLOCKS.register("potted_morphora",
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), MORPHORA, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY)));
     public static final DeferredBlock<Block> GRIMSHADE = registerBlock("grimshade",
-            () -> new GrimshadeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).noCollission()));
+            () -> new GrimshadeBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY).noCollission()));
     public static final DeferredBlock<Block> POTTED_GRIMSHADE = BLOCKS.register("potted_grimshade",
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), GRIMSHADE, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY)));
     public static final DeferredBlock<Block> NAUTILITE = BLOCKS.register("nautilite",
             () -> new NautiliteBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SEAGRASS)));
     public static final DeferredBlock<Block> WINDSONG = registerBlock("windsong",
-            () -> new WindsongBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).noCollission()));
+            () -> new WindsongBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY).noCollission()));
     public static final DeferredBlock<Block> POTTED_WINDSONG = BLOCKS.register("potted_windsong",
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), WINDSONG, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY)));
     public static final DeferredBlock<Block> ASTRYLIS = registerBlock("astrylis",
-            () -> new AstrylisBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).noCollission()));
+            () -> new AstrylisBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY).noCollission()));
     public static final DeferredBlock<Block> POTTED_ASTRYLIS = BLOCKS.register("potted_astrylis",
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), ASTRYLIS, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY)));
     public static final DeferredBlock<Block> LOURDES = registerBlock("lourdes",
-            () -> new LourdesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.AZALEA).noCollission()));
+            () -> new LourdesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY).noCollission()));
     public static final DeferredBlock<Block> POTTED_LOURDES = BLOCKS.register("potted_lourdes",
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), ASTRYLIS, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY)));
+    public static final DeferredBlock<Block> AEGIFLORA = registerBlock("aegiflora",
+            () -> new AegifloraBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY).noCollission()));
+    public static final DeferredBlock<Block> POTTED_AEGIFLORA = BLOCKS.register("potted_aegiflora",
+            () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), ASTRYLIS, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY)));
+    public static final DeferredBlock<Block> WITHERED_AEGIFLORA = registerBlock("withered_aegiflora",
+            () -> new AegifloraBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.POPPY).noCollission()));
+    public static final DeferredBlock<Block> POTTED_WITHERED_AEGIFLORA = BLOCKS.register("potted_withered_aegiflora",
+            () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), WITHERED_AEGIFLORA, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_POPPY)));
 
     // Decorative Flowers
     public static final DeferredBlock<Block> BEGONIA = registerBlock("begonia",

@@ -100,6 +100,8 @@ public class HexaliaMod {
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.LAVENDER.getId(), ModBlocks.POTTED_LAVENDER);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.DAHLIA.getId(), ModBlocks.POTTED_DAHLIA);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.LOURDES.getId(), ModBlocks.POTTED_LOURDES);
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.AEGIFLORA.getId(), ModBlocks.POTTED_AEGIFLORA);
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.WITHERED_AEGIFLORA.getId(), ModBlocks.POTTED_WITHERED_AEGIFLORA);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.NIGHTSHADE_BUSH.getId(), ModBlocks.POTTED_NIGHTSHADE_BUSH);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.COTTONWOOD_SAPLING.getId(), ModBlocks.POTTED_COTTONWOOD_SAPLING);
             ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(ModBlocks.WILLOW_SAPLING.getId(), ModBlocks.POTTED_WILLOW_SAPLING);

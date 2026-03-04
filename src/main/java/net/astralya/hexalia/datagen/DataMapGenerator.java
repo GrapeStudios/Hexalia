@@ -56,6 +56,8 @@ public class DataMapGenerator extends DataMapProvider {
                 .add(ModItems.NAUTILITE.get().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModBlocks.WINDSONG.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
                 .add(ModBlocks.ASTRYLIS.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
-                .add(ModBlocks.LOURDES.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false);
+                .add(ModBlocks.LOURDES.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
+                .add(ModBlocks.AEGIFLORA.get().asItem().builtInRegistryHolder(), new Compostable(0.3f), false)
+                .add(ModBlocks.WITHERED_AEGIFLORA.asItem().builtInRegistryHolder(), new Compostable(0.3f), false);
     }
 }

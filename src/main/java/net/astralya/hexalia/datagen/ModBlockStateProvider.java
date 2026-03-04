@@ -66,6 +66,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         flowerWithPotBlock(ModBlocks.WINDSONG.get(), ModBlocks.POTTED_WINDSONG.get());
         flowerWithPotBlock(ModBlocks.ASTRYLIS.get(), ModBlocks.POTTED_ASTRYLIS.get());
         flowerWithPotBlock(ModBlocks.LOURDES.get(), ModBlocks.POTTED_LOURDES.get());
+        flowerWithPotBlock(ModBlocks.AEGIFLORA.get(), ModBlocks.POTTED_AEGIFLORA.get());
+        flowerWithPotBlock(ModBlocks.WITHERED_AEGIFLORA.get(), ModBlocks.POTTED_WITHERED_AEGIFLORA.get());
         flowerWithPotBlock(ModBlocks.BEGONIA.get(), ModBlocks.POTTED_BEGONIA.get());
         flowerWithPotBlock(ModBlocks.LAVENDER.get(), ModBlocks.POTTED_LAVENDER.get());
         flowerWithPotBlock(ModBlocks.DAHLIA.get(), ModBlocks.POTTED_DAHLIA.get());

@@ -1,4 +1,5 @@
-// 1.21.1	2026-03-01T10:21:00.0400408	Block States: hexalia
+// 1.21.1	2026-03-03T22:32:05.168036	Block States: hexalia
+368ad60b7ce2d171bd66227ed565b49645535d8c assets/hexalia/blockstates/aegiflora.json
 1008a016106b7c4af5a834ac32ca56468e0a6fa0 assets/hexalia/blockstates/astrylis.json
 2c754b7a35d1f42c348b41826d67f74cc29f6ff4 assets/hexalia/blockstates/begonia.json
 e5a52c1bc136da334b4487e20a60cb618cafe765 assets/hexalia/blockstates/celestial_bloom.json
@@ -27,6 +28,7 @@ f6c215bcdc3dcc7ccc00c8d807cd8aa39b46c85e assets/hexalia/blockstates/cottonwood_t
 6bed1621310bd1aef90406e15ac001d24bdc5599 assets/hexalia/blockstates/morphora.json
 060d94b5bef9f96f1097a032e7d6c10bf35dec92 assets/hexalia/blockstates/nautilite.json
 17038a02f3beb3f76614a58eebb3a5590c172497 assets/hexalia/blockstates/nightshade_bush.json
+0e27a1f5fd29b12dd5faec7fbfb13f21e28809a5 assets/hexalia/blockstates/potted_aegiflora.json
 580194bedefd7e9d6b8d2fe7193b3dda5fed5dee assets/hexalia/blockstates/potted_astrylis.json
 f1f152fb59a553efb97d2c80eb150d345980c9da assets/hexalia/blockstates/potted_begonia.json
 f40c7a6db3ecf39cf910f930647d7eaf47b5ff7c assets/hexalia/blockstates/potted_celestial_bloom.json
@@ -42,6 +44,7 @@ a60798ba47e02c88e1087b28fe8dbe75b2092ccb assets/hexalia/blockstates/potted_night
 1a7b769bc5914218b3bbd09d590a58881c1e68a1 assets/hexalia/blockstates/potted_spirit_bloom.json
 a42efcf19a97e3ec30805b7828e55a751c86401e assets/hexalia/blockstates/potted_willow_sapling.json
 07a711131cba79457aae99d77acab45ad8603487 assets/hexalia/blockstates/potted_windsong.json
+29109879579d16a5d17b537cbaa131fe2d24ded6 assets/hexalia/blockstates/potted_withered_aegiflora.json
 51de24feb7ed6f9a28a69021745aed0a086b2d53 assets/hexalia/blockstates/potted_withered_celestial_bloom.json
 754a5e97946d1793d65a804765d4851a25603315 assets/hexalia/blockstates/rabbage_crop.json
 d5e01551c2808f9f1a88831b2387db48ea665d56 assets/hexalia/blockstates/salt_block.json
@@ -68,7 +71,9 @@ b2e3671b2d41dd0e0cccfb6b27fc4d42df509fc8 assets/hexalia/blockstates/willow_slab.
 956f7d102864accebf135d7a289e18f5016774e1 assets/hexalia/blockstates/willow_wood.json
 1b877c31ce8d93e9c954ce4f295f541c0cb649ca assets/hexalia/blockstates/windsong.json
 f73012b9cc0292803e9870ec955da02a4071c30d assets/hexalia/blockstates/witchweed.json
+92ab6db9b9c4818c26c2c5b3bfce651a42cef4ba assets/hexalia/blockstates/withered_aegiflora.json
 a0c5a43194be16ef7097590df0007f384e5f0e63 assets/hexalia/blockstates/withered_celestial_bloom.json
+86f275aaea1e6593832053a21b6eb2dd39499d63 assets/hexalia/models/block/aegiflora.json
 ae2f324519211ec154bb7bc7b27dcd89b586b3ab assets/hexalia/models/block/astrylis.json
 592b5aff28ceefb227c9b86ecafe9773ab9b2ef9 assets/hexalia/models/block/begonia.json
 094d5d030f4c6b9266ff21921accd433c98b54ee assets/hexalia/models/block/celestial_bloom.json
@@ -117,6 +122,7 @@ aa8f5c0ad64cbb625b95dad9fbc82859f7d9e254 assets/hexalia/models/block/lourdes.jso
 558f8b9ea6dc5b741f6da649129f903a020a7dc4 assets/hexalia/models/block/morphora.json
 0436ddd921d24937a811c9965965355b988e1014 assets/hexalia/models/block/nautilite.json
 66c0b55cb682b448b93bd54b8d6be2fbd8e26b0a assets/hexalia/models/block/nightshade_bush.json
+bd2a8735ee6e7bb37c4e4e069c0742568f43daf6 assets/hexalia/models/block/potted_aegiflora.json
 08f074d80f6fcfe1573de90eb63bf12189ba4552 assets/hexalia/models/block/potted_astrylis.json
 74ae052386781e602a67491832a20314a7263680 assets/hexalia/models/block/potted_begonia.json
 d2285135529fe2787534b6c70a2d8bc9fdfd66d6 assets/hexalia/models/block/potted_celestial_bloom.json
@@ -132,6 +138,7 @@ bd6f7ac22ff028a3a259991cb5db1b75bf0d8923 assets/hexalia/models/block/potted_morp
 7c5ed41653b44479831177de1e9a4043224b2ffd assets/hexalia/models/block/potted_spirit_bloom.json
 aae2a6ffe68c07a3122f0fd3f8801410acc262ad assets/hexalia/models/block/potted_willow_sapling.json
 79a45d8038ed49b12870e369d6453631d3cbf22d assets/hexalia/models/block/potted_windsong.json
+d67f0849c640496936a769330b5e98879391e478 assets/hexalia/models/block/potted_withered_aegiflora.json
 8283a95a0526fb6d9186289261c5589d25f7bd06 assets/hexalia/models/block/potted_withered_celestial_bloom.json
 1f26e9e95511835e6da8be3cf682c8e1ad641916 assets/hexalia/models/block/rabbage_crop_stage0.json
 8bee8d979af5a8bc9daa31849057a2809d01a4ee assets/hexalia/models/block/rabbage_crop_stage1.json
@@ -185,7 +192,9 @@ f519a4e8c54d2130b2d137fc03f5903aaaab7388 assets/hexalia/models/block/willow_stai
 4872fed80a2f6090144461d69bde62b447902221 assets/hexalia/models/block/willow_wood_horizontal.json
 fe86c1d6264ec502b5376801f2f0592bcf737d48 assets/hexalia/models/block/windsong.json
 29167c461beb54157deefae37404ccd667260ec2 assets/hexalia/models/block/witchweed.json
+e23ee391faa028868d15bd7c719ebac411bfaf1c assets/hexalia/models/block/withered_aegiflora.json
 684ccb03a860a456922a30d4a172739cfe6a1be9 assets/hexalia/models/block/withered_celestial_bloom.json
+1787bd8fcac7c5ce9fc4b6a4eecf436eafde644b assets/hexalia/models/item/aegiflora.json
 d2d99aa6643bee0cc2a751dff089d150a52b8190 assets/hexalia/models/item/astrylis.json
 6f3d962a1240528809e201b4a99c71987d6aa8ed assets/hexalia/models/item/begonia.json
 b6a1f58cacadc7fc41e5d07afe15894c9dfbadb3 assets/hexalia/models/item/celestial_bloom.json
@@ -221,4 +230,5 @@ a0f09593fe777e4fd962bc46d48efff395a1e797 assets/hexalia/models/item/willow_plank
 9c690ba9100bec03a251397e0a87de0fe58d3a7e assets/hexalia/models/item/willow_wood.json
 b27b791953f34c0fe1ef1054e0d2dea8ce5e9ecf assets/hexalia/models/item/windsong.json
 1ec96694ca9205829af172411921fe6639a0eb40 assets/hexalia/models/item/witchweed.json
+28349c4afa714c8abfdee255230d00df55227489 assets/hexalia/models/item/withered_aegiflora.json
 1e7e06915fb547bb1072f78b90ddf2b84d892d51 assets/hexalia/models/item/withered_celestial_bloom.json

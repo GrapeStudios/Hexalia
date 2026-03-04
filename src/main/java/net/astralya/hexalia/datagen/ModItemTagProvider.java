@@ -49,6 +49,14 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModBlocks.NIGHTSHADE_BUSH.get().asItem())
                 .add(ModBlocks.BEGONIA.get().asItem())
                 .add(ModBlocks.LAVENDER.get().asItem())
+                .add(ModBlocks.AEGIFLORA.get().asItem())
+                .add(ModBlocks.WITHERED_AEGIFLORA.get().asItem())
+                .add(ModBlocks.MORPHORA.get().asItem())
+                .add(ModBlocks.WINDSONG.get().asItem())
+                .add(ModBlocks.LOURDES.get().asItem())
+                .add(ModBlocks.GRIMSHADE.get().asItem())
+                .add(ModBlocks.CELESTIAL_BLOOM.get().asItem())
+                .add(ModBlocks.ASTRYLIS.get().asItem())
                 .add(ModBlocks.DAHLIA.get().asItem());
 
         // Small flowers
@@ -61,6 +69,14 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModBlocks.NIGHTSHADE_BUSH.get().asItem())
                 .add(ModBlocks.BEGONIA.get().asItem())
                 .add(ModBlocks.LAVENDER.get().asItem())
+                .add(ModBlocks.AEGIFLORA.get().asItem())
+                .add(ModBlocks.WITHERED_AEGIFLORA.get().asItem())
+                .add(ModBlocks.MORPHORA.get().asItem())
+                .add(ModBlocks.WINDSONG.get().asItem())
+                .add(ModBlocks.LOURDES.get().asItem())
+                .add(ModBlocks.GRIMSHADE.get().asItem())
+                .add(ModBlocks.CELESTIAL_BLOOM.get().asItem())
+                .add(ModBlocks.ASTRYLIS.get().asItem())
                 .add(ModBlocks.DAHLIA.get().asItem());
 
         // Villager related
