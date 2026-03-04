@@ -3,7 +3,9 @@ package net.astralya.hexalia.block.entity.custom;
 import net.astralya.hexalia.block.custom.SmallCauldronBlock;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.gameplay.smallcauldron.SmallCauldronContents;
+import net.astralya.hexalia.util.SidedItemHandlers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -19,6 +21,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.neoforged.neoforge.items.IItemHandler;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -30,6 +33,8 @@ public class SmallCauldronBlockEntity extends SyncBlockEntity {
     private static final String TAG_STIR_ANIM_TICK = "StirAnimTick";
 
     private final SmallCauldronContents contents = new SmallCauldronContents();
+
+    private final IItemHandler upInputHandler = new UpInputHandler(this);
 
     private int stirAnimTick;
 
@@ -44,6 +49,14 @@ public class SmallCauldronBlockEntity extends SyncBlockEntity {
 
     public SmallCauldronBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntityTypes.SMALL_CAULDRON.get(), pos, state);
+    }
+
+    public IItemHandler getItemHandler(@Nullable Direction side) {
+        if (contents.isCooking() || contents.isSpoiled()) {
+            return SidedItemHandlers.blocked();
+        }
+
+        return SidedItemHandlers.upOnly(side, upInputHandler);
     }
 
     public void tick(Level level, BlockPos pos, BlockState state) {
@@ -352,5 +365,57 @@ public class SmallCauldronBlockEntity extends SyncBlockEntity {
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
         return saveWithoutMetadata(registries);
+    }
+
+    private static final class UpInputHandler implements IItemHandler {
+        private final SmallCauldronBlockEntity be;
+
+        private UpInputHandler(SmallCauldronBlockEntity be) {
+            this.be = be;
+        }
+
+        @Override
+        public int getSlots() {
+            return 1;
+        }
+
+        @Override
+        public ItemStack getStackInSlot(int slot) {
+            return ItemStack.EMPTY;
+        }
+
+        @Override
+        public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
+            if (slot != 0 || stack.isEmpty()) return stack;
+            if (!be.canInsertOne(stack)) return stack;
+
+            ItemStack remainder = stack.copy();
+            remainder.shrink(1);
+
+            if (simulate) {
+                return remainder;
+            }
+
+            ItemStack single = stack.copy();
+            single.setCount(1);
+
+            boolean ok = be.insertOneIntoCauldron(single);
+            return ok ? remainder : stack;
+        }
+
+        @Override
+        public ItemStack extractItem(int slot, int amount, boolean simulate) {
+            return ItemStack.EMPTY;
+        }
+
+        @Override
+        public int getSlotLimit(int slot) {
+            return 64;
+        }
+
+        @Override
+        public boolean isItemValid(int slot, ItemStack stack) {
+            return slot == 0 && be.canInsertOne(stack);
+        }
     }
 }

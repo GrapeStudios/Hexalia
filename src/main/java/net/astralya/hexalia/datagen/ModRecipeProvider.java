@@ -756,7 +756,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         ModItems.BREW_OF_SLIMEWALKER.getId().getPath() + "_from_small_cauldron"));
 
         SmallCauldronRecipeBuilder.cauldron(
-                        Ingredient.of(ModItems.LOTUS_BLOSSOM.get()),
+                        Ingredient.of(ModItems.TREE_RESIN.get()),
                         Ingredient.of(Items.ENDER_PEARL),
                         Ingredient.of(ModItems.SPIRIT_POWDER.get()),
                         Ingredient.of(ModItems.GALEBERRIES.get()),
@@ -789,7 +789,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         Ingredient.of(Items.SPIDER_EYE),
                         Ingredient.of(ModItems.GHOST_POWDER.get()),
                         Ingredient.of(Items.BLACK_DYE),
-                        Ingredient.of(ModItems.LOTUS_BLOSSOM.get()),
+                        Ingredient.of(Items.STRING),
                         new ItemStack(ModItems.BREW_OF_ARACHNID_GRACE.get())
                 ).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
