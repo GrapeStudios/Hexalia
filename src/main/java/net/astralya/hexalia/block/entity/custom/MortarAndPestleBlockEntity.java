@@ -95,6 +95,12 @@ public class MortarAndPestleBlockEntity extends SyncBlockEntity {
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, MortarAndPestleBlockEntity be) {
+        if (!level.isClientSide) {
+            if (level.hasNeighborSignal(pos) && be.canStartSpin()) {
+                be.startSpin();
+            }
+        }
+
         if (be.pestleTick > 0) {
             be.pestleTick--;
             be.setChanged();
