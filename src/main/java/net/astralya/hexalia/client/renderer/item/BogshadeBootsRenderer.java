@@ -1,0 +1,24 @@
+package net.astralya.hexalia.client.renderer.item;
+
+import net.astralya.hexalia.HexaliaMod;
+import net.astralya.hexalia.item.custom.armor.BogshadeBootsItem;
+import net.minecraft.resources.ResourceLocation;
+import software.bernie.geckolib.model.DefaultedItemGeoModel;
+import software.bernie.geckolib.renderer.GeoArmorRenderer;
+
+public class BogshadeBootsRenderer extends GeoArmorRenderer<BogshadeBootsItem> {
+    public BogshadeBootsRenderer() {
+        super(new DefaultedItemGeoModel<>(ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "armor/bogshade_boots")) {
+                  @Override
+                  public ResourceLocation getTextureResource(BogshadeBootsItem animatable) {
+                      return ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "textures/armor/bogshade_boots.png");
+                  }
+
+                  @Override
+                  public ResourceLocation getAnimationResource(BogshadeBootsItem animatable) {
+                      return ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "animations/bogshade_boots.json");
+                  }
+              }
+        );
+    }
+}

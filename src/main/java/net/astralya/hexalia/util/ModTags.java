@@ -59,6 +59,7 @@ public class ModTags {
         public static final TagKey<Block> COTTONWOOD_LOGS = createBlockTag("cottonwood_logs");
         public static final TagKey<Block> WILLOW_LOGS = createBlockTag("willow_logs");
         public static final TagKey<Block> SPIRITROOT_BOUND_BLOCKS = createBlockTag("spiritroot_bound_blocks");
+        public static final TagKey<Block> BOGSHADE_NO_SLOW = createBlockTag("bogshade_no_slow");
 
         // Common Block Tags
         public static final TagKey<Block> SALT_BLOCKS = createCommonBlockTag("salt_blocks");

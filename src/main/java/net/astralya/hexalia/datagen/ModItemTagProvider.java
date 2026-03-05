@@ -109,7 +109,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.MOONWEAVE_BINDINGS.get());
 
         tag(ItemTags.FOOT_ARMOR)
-                .add(ModItems.BOGGED_BOOTS.get())
+                .add(ModItems.BOGSHADE_BOOTS.get())
                 .add(ModItems.SILKWEAVE_FOOTWRAPS.get())
                 .add(ModItems.MOONWEAVE_FOOTWRAPS.get());
 

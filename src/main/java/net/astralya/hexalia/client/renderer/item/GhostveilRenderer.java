@@ -1,21 +1,21 @@
 package net.astralya.hexalia.client.renderer.item;
 
 import net.astralya.hexalia.HexaliaMod;
-import net.astralya.hexalia.item.custom.armor.GhostVeilItem;
+import net.astralya.hexalia.item.custom.armor.GhostveilItem;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.DefaultedItemGeoModel;
 import software.bernie.geckolib.renderer.GeoArmorRenderer;
 
-public class GhostVeilRenderer extends GeoArmorRenderer<GhostVeilItem> {
-    public GhostVeilRenderer() {
+public class GhostveilRenderer extends GeoArmorRenderer<GhostveilItem> {
+    public GhostveilRenderer() {
         super(new DefaultedItemGeoModel<>(ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "armor/ghostveil")) {
                   @Override
-                  public ResourceLocation getTextureResource(GhostVeilItem animatable) {
+                  public ResourceLocation getTextureResource(GhostveilItem animatable) {
                       return ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "textures/armor/ghostveil.png");
                   }
 
                   @Override
-                  public ResourceLocation getAnimationResource(GhostVeilItem animatable) {
+                  public ResourceLocation getAnimationResource(GhostveilItem animatable) {
                       return ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "animations/ghostveil.animation.json");
                   }
               }
