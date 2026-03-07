@@ -98,18 +98,23 @@ public class ModItemTagProvider extends ItemTagsProvider {
 
         tag(ItemTags.HEAD_ARMOR)
                 .add(ModItems.SILKWEAVE_HOOD.get())
+                .add(ModItems.BLOOMWRAP_HAT.get())
                 .add(ModItems.MOONWEAVE_HOOD.get());
 
         tag(ItemTags.CHEST_ARMOR)
                 .add(ModItems.SILKWEAVE_MANTLE.get())
+                .add(ModItems.GHOSTVEIL.get())
+                .add(ModItems.BLOOMWRAP_ROBES.get())
                 .add(ModItems.MOONWEAVE_MANTLE.get());
 
         tag(ItemTags.LEG_ARMOR)
                 .add(ModItems.SILKWEAVE_BINDINGS.get())
+                .add(ModItems.BLOOMWRAP_LEGGINGS.get())
                 .add(ModItems.MOONWEAVE_BINDINGS.get());
 
         tag(ItemTags.FOOT_ARMOR)
                 .add(ModItems.BOGSHADE_BOOTS.get())
+                .add(ModItems.BLOOMWRAP_BOOTS.get())
                 .add(ModItems.SILKWEAVE_FOOTWRAPS.get())
                 .add(ModItems.MOONWEAVE_FOOTWRAPS.get());
 
@@ -126,18 +131,24 @@ public class ModItemTagProvider extends ItemTagsProvider {
         
         tag(ItemTags.HEAD_ARMOR_ENCHANTABLE)
                 .add(ModItems.SILKWEAVE_HOOD.get())
+                .add(ModItems.BLOOMWRAP_HAT.get())
                 .add(ModItems.MOONWEAVE_HOOD.get());
 
         tag(ItemTags.CHEST_ARMOR_ENCHANTABLE)
                 .add(ModItems.SILKWEAVE_MANTLE.get())
+                .add(ModItems.GHOSTVEIL.get())
+                .add(ModItems.BLOOMWRAP_ROBES.get())
                 .add(ModItems.MOONWEAVE_MANTLE.get());
 
         tag(ItemTags.LEG_ARMOR_ENCHANTABLE)
                 .add(ModItems.SILKWEAVE_BINDINGS.get())
+                .add(ModItems.BLOOMWRAP_LEGGINGS.get())
                 .add(ModItems.MOONWEAVE_BINDINGS.get());
 
         tag(ItemTags.FOOT_ARMOR_ENCHANTABLE)
                 .add(ModItems.SILKWEAVE_FOOTWRAPS.get())
+                .add(ModItems.BOGSHADE_BOOTS.get())
+                .add(ModItems.BLOOMWRAP_BOOTS.get())
                 .add(ModItems.MOONWEAVE_FOOTWRAPS.get());
     }
 
@@ -148,6 +159,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.SIREN_KELP.get())
                 .add(ModBlocks.DREAMSHROOM.get().asItem())
                 .add(ModBlocks.GHOST_FERN.get().asItem())
+                .add(ModBlocks.WITCHWEED.get().asItem())
                 .add(ModBlocks.CELESTIAL_BLOOM.get().asItem());
 
         tag(ModTags.Items.CRUSHED_HERBS)

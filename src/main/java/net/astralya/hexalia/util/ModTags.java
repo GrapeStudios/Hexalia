@@ -76,6 +76,7 @@ public class ModTags {
     public static final class EntityTypes {
 
         public static final TagKey<EntityType<?>> SPIRITROOT_UNCAPTURABLE = createEntityTypeTag("spiritroot_uncapturable");
+        public static final TagKey<EntityType<?>> UNDEAD_VEIL_IMMUNE = createEntityTypeTag("undead_veil_immune");
 
         private static TagKey<EntityType<?>> createEntityTypeTag(String path) {
             return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, path));

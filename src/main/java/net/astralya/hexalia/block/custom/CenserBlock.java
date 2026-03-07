@@ -42,14 +42,51 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.EnumMap;
+import java.util.Map;
+
 public class CenserBlock extends BaseEntityBlock {
 
-    protected static final VoxelShape SHAPE = Block.box(0.0D, 0.0D, 0.0D, 16.0D, 7.0D, 16.0D);
+    private static final VoxelShape SHAPE_NORTH = Shapes.or(
+            Shapes.box(0.0625, 0, 0, 0.3125, 0.25, 1),
+            Shapes.box(0.6875, 0, 0, 0.9375, 0.25, 1),
+            Shapes.box(0.3125, 0, 0, 0.6875, 0.0625, 1),
+            Shapes.box(0, 0.25, 0.0625, 1, 0.375, 0.9375),
+            Shapes.box(0.125, 0.375, 0.1875, 0.25, 0.5, 0.8125),
+            Shapes.box(0.75, 0.375, 0.1875, 0.875, 0.5, 0.8125),
+            Shapes.box(0.25, 0.375, 0.6875, 0.75, 0.5, 0.8125),
+            Shapes.box(0.25, 0.375, 0.1875, 0.75, 0.5, 0.3125)
+    );
+
+    private static final Map<Direction, VoxelShape> SHAPES = new EnumMap<>(Direction.class);
+
+    static {
+        SHAPES.put(Direction.NORTH, SHAPE_NORTH);
+        SHAPES.put(Direction.SOUTH, rotateShape(Direction.NORTH, Direction.SOUTH, SHAPE_NORTH));
+        SHAPES.put(Direction.EAST,  rotateShape(Direction.NORTH, Direction.EAST,  SHAPE_NORTH));
+        SHAPES.put(Direction.WEST,  rotateShape(Direction.NORTH, Direction.WEST,  SHAPE_NORTH));
+    }
+
+    // Rotates a VoxelShape from one horizontal direction to another by applying
+    // 90° CW Y-axis rotations. Each step transforms (x1,z1,x2,z2) → (1-z2, x1, 1-z1, x2).
+    private static VoxelShape rotateShape(Direction from, Direction to, VoxelShape shape) {
+        VoxelShape[] buffer = new VoxelShape[]{ shape, Shapes.empty() };
+        int steps = (to.get2DDataValue() - from.get2DDataValue() + 4) % 4;
+        for (int i = 0; i < steps; i++) {
+            buffer[0].forAllBoxes((x1, y1, z1, x2, y2, z2) ->
+                    buffer[1] = Shapes.or(buffer[1],
+                            Shapes.box(1 - z2, y1, x1, 1 - z1, y2, x2)));
+            buffer[0] = buffer[1];
+            buffer[1] = Shapes.empty();
+        }
+        return buffer[0];
+    }
+
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
     public static final MapCodec<CenserBlock> CODEC = simpleCodec(CenserBlock::new);
@@ -65,9 +102,13 @@ public class CenserBlock extends BaseEntityBlock {
     }
 
     @Override
-    public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        Vec3 vec3 = pState.getOffset(pLevel, pPos);
-        return SHAPE.move(vec3.x, vec3.y, vec3.z);
+    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return SHAPES.getOrDefault(state.getValue(FACING), SHAPE_NORTH);
+    }
+
+    @Override
+    protected VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        return SHAPES.getOrDefault(state.getValue(FACING), SHAPE_NORTH);
     }
 
     @Override
@@ -75,27 +116,21 @@ public class CenserBlock extends BaseEntityBlock {
         ItemStack heldItem = player.getItemInHand(hand);
         BlockEntity be = level.getBlockEntity(pos);
         if (!(be instanceof CenserBlockEntity censer)) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-
         if (heldItem.getItem() instanceof FlintAndSteelItem && !state.getValue(LIT)) {
             ItemStack herb1 = censer.getItem(0);
             ItemStack herb2 = censer.getItem(1);
-
             if (herb1.isEmpty() || herb2.isEmpty()) {
                 if (level.isClientSide()) player.displayClientMessage(Component.translatable("message.hexalia.censer_not_full"), true);
                 return ItemInteractionResult.FAIL;
             }
-
             HerbCombination combo = new HerbCombination(herb1.getItem(), herb2.getItem());
-
             if (!CenserEffectHandler.isValidCombination(herb1.getItem(), herb2.getItem())) {
                 if (level.isClientSide()) player.displayClientMessage(Component.translatable("message.hexalia.invalid_herb_combination"), true);
                 return ItemInteractionResult.FAIL;
             }
-
             if (level.isClientSide()) {
                 return ItemInteractionResult.SUCCESS;
             }
-
             censer.clearItems();
             level.setBlockAndUpdate(pos, state.setValue(LIT, true));
             censer.setActiveCombination(combo);
@@ -106,7 +141,6 @@ public class CenserBlock extends BaseEntityBlock {
             level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0f, level.random.nextFloat() * 0.4F + 0.8F);
             return ItemInteractionResult.SUCCESS;
         }
-
         if (heldItem.getItem() instanceof ShovelItem && state.getValue(LIT)) {
             if (level.isClientSide()) {
                 censer.clearItems();
@@ -119,7 +153,6 @@ public class CenserBlock extends BaseEntityBlock {
             }
             return ItemInteractionResult.SUCCESS;
         }
-
         if (!state.getValue(LIT)) {
             if (heldItem.isEmpty()) {
                 for (int i = 0; i < 2; i++) {
@@ -147,7 +180,6 @@ public class CenserBlock extends BaseEntityBlock {
                 return ItemInteractionResult.FAIL;
             }
         }
-
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
@@ -155,13 +187,11 @@ public class CenserBlock extends BaseEntityBlock {
         String key = CenserEffectHandler.getMessageKeyForCombination(combo);
         int radius = Configuration.CENSER_EFFECT_RADIUS.get();
         AABB area = new AABB(pos).inflate(radius);
-
         for (Player p : level.getEntitiesOfClass(Player.class, area)) {
             if (!p.getUUID().equals(activatingPlayer.getUUID()) && p instanceof ServerPlayer sp) {
                 sp.displayClientMessage(Component.translatable(key), true);
             }
         }
-
         if (!level.isClientSide() && activatingPlayer instanceof ServerPlayer sp) {
             sp.displayClientMessage(Component.translatable(key), true);
         }
@@ -177,21 +207,18 @@ public class CenserBlock extends BaseEntityBlock {
                         0.5F + pRandom.nextFloat(), pRandom.nextFloat() * 0.7F + 0.6F, false
                 );
             }
-
             pLevel.addAlwaysVisibleParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, true,
                     pPos.getX() + 0.5D + pRandom.nextDouble() / 3.0D * (pRandom.nextBoolean() ? 1 : -1),
                     pPos.getY() + pRandom.nextDouble() + pRandom.nextDouble(),
                     pPos.getZ() + 0.5D + pRandom.nextDouble() / 3.0D * (pRandom.nextBoolean() ? 1 : -1),
                     0.0D, 0.07D, 0.0D
             );
-
             pLevel.addParticle(ParticleTypes.SMOKE,
                     pPos.getX() + 0.5D + pRandom.nextDouble() / 4.0D * (pRandom.nextBoolean() ? 1 : -1),
                     pPos.getY() + 0.4D,
                     pPos.getZ() + 0.5D + pRandom.nextDouble() / 4.0D * (pRandom.nextBoolean() ? 1 : -1),
                     0.0D, 0.005D, 0.0D
             );
-
             if (pRandom.nextInt(25) == 0) {
                 pLevel.addParticle(ParticleTypes.LAVA,
                         pPos.getX() + 0.5D, pPos.getY() + 0.3D, pPos.getZ() + 0.5D,
@@ -224,7 +251,7 @@ public class CenserBlock extends BaseEntityBlock {
     }
 
     @Override
-    public RenderShape getRenderShape(BlockState pState) {
+    protected RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
     }
 
@@ -254,7 +281,6 @@ public class CenserBlock extends BaseEntityBlock {
         if (level.isClientSide()) {
             return null;
         }
-
         return createTickerHelper(blockEntityType, ModBlockEntityTypes.CENSER.get(),
                 (level1, pos, state1, blockEntity) -> blockEntity.tick(level1, pos, state1));
     }

@@ -229,6 +229,11 @@ public class ModBlockTagProvider extends BlockTagsProvider {
 
         tag(ModTags.Blocks.SPIRITROOT_BOUND_BLOCKS)
                 .add(ModBlocks.SPIRIT_BLOOM.get());
+
+        tag(ModTags.Blocks.BOGSHADE_NO_SLOW)
+                .add(Blocks.MUD)
+                .add(Blocks.SOUL_SAND)
+                .add(Blocks.HONEY_BLOCK)        ;
     }
 
     private void addAdditionalTags() {

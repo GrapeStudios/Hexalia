@@ -33,6 +33,8 @@ public class ModBlockEntityTypes {
             () -> BlockEntityType.Builder.of(EggClusterBlockEntity::new, ModBlocks.EGG_CLUSTER.get()).build(null));
     public static final Supplier<BlockEntityType<NestingBlockEntity>> NESTING_BLOCK = BLOCK_ENTITY_TYPE.register("nesting_block",
             () -> BlockEntityType.Builder.of(NestingBlockEntity::new, ModBlocks.NESTING_BLOCK.get()).build(null));
+    public static final Supplier<BlockEntityType<DreamcatcherBlockEntity>> DREAMCATCHER = BLOCK_ENTITY_TYPE.register("dreamcatcher",
+            () -> BlockEntityType.Builder.of(DreamcatcherBlockEntity::new, ModBlocks.DREAMCATCHER.get()).build(null));
 
     // Enchanted Plants
     public static final Supplier<BlockEntityType<NautiliteBlockEntity>> NAUTILITE = BLOCK_ENTITY_TYPE.register("nautilite",

@@ -25,6 +25,10 @@ public class ModEntityTypeTagProvider extends EntityTypeTagsProvider {
                 .add(EntityType.ENDER_DRAGON)
                 .add(EntityType.GHAST)
                 .add(EntityType.WITHER)
+                .add(EntityType.PLAYER)
                 .add(EntityType.WARDEN);
+
+        tag(ModTags.EntityTypes.UNDEAD_VEIL_IMMUNE)
+                .add(EntityType.WITHER);
     }
 }

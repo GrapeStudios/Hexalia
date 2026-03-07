@@ -94,37 +94,22 @@ public class CenserBlockEntity extends SyncBlockEntity {
             CenserEffectHandler.registerActiveEffect(level, pos, activeCombination, burnTime);
             effectActive = true;
         }
-
         if (!state.getValue(CenserBlock.LIT)) return;
-
         if (burnTime > 0) {
             burnTime--;
-
-            if (burnTime % EFFECT_INTERVAL == 0 && activeCombination != null) {
-                CenserEffectHandler.applyEffects(level, pos, activeCombination);
-
-                if (!effectActive) {
-                    CenserEffectHandler.registerActiveEffect(level, pos, activeCombination, burnTime);
-                    effectActive = true;
-                }
-            }
-
             if (burnTime <= 0) {
                 extinguish(level, pos, state);
             }
-
             setChanged();
         }
     }
 
     private void extinguish(Level level, BlockPos pos, BlockState state) {
         if (activeCombination != null) {
-            CenserEffectHandler.clearPlayerEffectsInRange(level, pos);
-            CenserEffectHandler.removeActiveEffect(pos);
+            CenserEffectHandler.removeActiveEffect(level, pos);
             activeCombination = null;
             effectActive = false;
         }
-
         level.setBlockAndUpdate(pos, state.setValue(CenserBlock.LIT, false));
         level.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5f, 1.0f);
         inventoryChanged();
@@ -221,7 +206,7 @@ public class CenserBlockEntity extends SyncBlockEntity {
         }
 
         burnTime = tag.getInt("BurnTime");
-        effectActive = tag.getBoolean("EffectActive");
+        effectActive = false;
     }
 
     @Override
