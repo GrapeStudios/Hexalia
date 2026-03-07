@@ -79,7 +79,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.KELPWEAVE_BLADE.get());
         basicItem(ModItems.GHOSTVEIL.get());
         basicItem(ModItems.EARPLUGS.get());
-        basicItem(ModItems.BOGGED_BOOTS.get());
+        basicItem(ModItems.BOGSHADE_BOOTS.get());
         basicItem(ModItems.MUTAVIS.get());
         basicItem(ModItems.SILKWEAVE_HOOD.get());
         basicItem(ModItems.SILKWEAVE_MANTLE.get());
@@ -118,6 +118,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItem(ModItems.WILLOW_CHEST_BOAT.get());
 
         basicItem(ModItems.SILK_MOTH_SPAWN_EGG.get());
+        basicItem(ModItems.CACOFEY_SPAWN_EGG.get());
 
         basicItem(ModItems.VERDANT_GRIMOIRE.get());
 

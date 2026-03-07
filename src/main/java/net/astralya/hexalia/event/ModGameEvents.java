@@ -4,6 +4,7 @@ import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.effect.ModMobEffects;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.item.custom.RootshaperItem;
+import net.astralya.hexalia.item.custom.armor.GhostveilItem;
 import net.astralya.hexalia.util.MagicResistanceHelper;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -14,11 +15,13 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.living.LivingChangeTargetEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerXpEvent;
@@ -28,6 +31,9 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 @EventBusSubscriber(modid = HexaliaMod.MODID, bus = EventBusSubscriber.Bus.GAME)
 public class ModGameEvents {
 
+    private static final double GHOSTVEIL_FORGET_DISTANCE = 16.0D;
+    private static final double GHOSTVEIL_SNEAK_FORGET_DISTANCE = 24.0D;
+    private static final double GHOSTVEIL_MIN_DETECT_DISTANCE = 6.0D;
 
     // Sage Pendant
     @SubscribeEvent
@@ -171,5 +177,39 @@ public class ModGameEvents {
                 || source.is(DamageTypes.DRAGON_BREATH);
     }
 
+    @SubscribeEvent
+    public static void onGhostveilChangeTarget(LivingChangeTargetEvent event) {
+        LivingEntity entity = event.getEntity();
+        if (!(entity instanceof Mob mob)) {
+            return;
+        }
 
+        if (mob.level().isClientSide) {
+            return;
+        }
+
+        if (event.getTargetType() != LivingChangeTargetEvent.LivingTargetType.MOB_TARGET) {
+            return;
+        }
+
+        LivingEntity target = event.getNewAboutToBeSetTarget();
+        if (!(target instanceof Player player)) {
+            return;
+        }
+
+        if (!GhostveilItem.isWornBy(player)) {
+            return;
+        }
+
+        double forgetDistance = player.isCrouching() ? GHOSTVEIL_SNEAK_FORGET_DISTANCE : GHOSTVEIL_FORGET_DISTANCE;
+        double distSqr = mob.distanceToSqr(player);
+
+        if (distSqr <= (GHOSTVEIL_MIN_DETECT_DISTANCE * GHOSTVEIL_MIN_DETECT_DISTANCE)) {
+            return;
+        }
+
+        if (distSqr <= (forgetDistance * forgetDistance)) {
+            event.setNewAboutToBeSetTarget(null);
+        }
+    }
 }

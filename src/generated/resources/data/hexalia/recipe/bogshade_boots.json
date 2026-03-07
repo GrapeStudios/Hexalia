@@ -2,23 +2,22 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
-    "F": {
-      "item": "hexalia:ghost_fern"
-    },
-    "L": {
-      "item": "minecraft:leather"
+    "K": {
+      "item": "minecraft:kelp"
     },
     "S": {
       "item": "hexalia:silk_fiber"
+    },
+    "W": {
+      "item": "hexalia:water_node"
     }
   },
   "pattern": [
-    "LLL",
-    "FSF",
-    "F F"
+    "SWS",
+    "K K"
   ],
   "result": {
     "count": 1,
-    "id": "hexalia:ghostveil"
+    "id": "hexalia:bogshade_boots"
   }
 }

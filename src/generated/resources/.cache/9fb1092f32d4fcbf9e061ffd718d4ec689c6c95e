@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-03T23:17:18.1248724	Recipes
+// 1.21.1	2026-03-05T09:55:39.3974191	Recipes
 c327f3ba4eafb4c21dbb4104a1bc4c1d661f542a data/hexalia/advancement/recipes/brewing/rustic_bottle.json
 a8312b0bfae801aa7103827a4307c5c829b7dbf1 data/hexalia/advancement/recipes/building_blocks/celestial_crystal_block.json
 e15994b53b3dfc7b695ca1c1c4e0cf392e20aaa3 data/hexalia/advancement/recipes/building_blocks/cottonwood_planks.json
@@ -7,7 +7,7 @@ a9d102b6054700cf9c923d98d9a458c84716be21 data/hexalia/advancement/recipes/buildi
 b3c63d5f01d2a6d17478351cb236fb2b011ae6bb data/hexalia/advancement/recipes/building_blocks/salt_block.json
 1f62b7617c02736e362e6c251ec94c51ca363cc7 data/hexalia/advancement/recipes/building_blocks/willow_planks.json
 a69a79a7049ffabb2dacc2e470ef6cbcb92fa91b data/hexalia/advancement/recipes/building_blocks/willow_stairs.json
-bc983f4930ae62d9dab0ed97fa1487a31b4288a0 data/hexalia/advancement/recipes/combat/bogged_boots.json
+e8528ba56486a48c4d74e53f8687490a4630a7d4 data/hexalia/advancement/recipes/combat/bogshade_boots.json
 8885ae8c3bb5145ee3e9f06df2deceda56478409 data/hexalia/advancement/recipes/combat/briar_sickle.json
 3bbe9b2d2bbf1970676dde731dc344b5d24ff4bf data/hexalia/advancement/recipes/combat/earplugs.json
 303a6f98d69ca80550eaf64383f767e0d88c7d5c data/hexalia/advancement/recipes/combat/foul_sac.json
@@ -137,7 +137,7 @@ ad5b50623ecd6d4b098597849072f2464b21fc08 data/hexalia/recipe/air_node_from_ritua
 29b25054551dbd80c7885900d2c05cc46326de68 data/hexalia/recipe/blackstone_from_mutation.json
 e0b6dce9aafb862c7cd861a9f703fcb8dbca9830 data/hexalia/recipe/black_dye_from_nightshade.json
 9926c2573a58acaa0ce50cb10a04580797ed1ae0 data/hexalia/recipe/blue_ice_from_mutation.json
-818dcd14e74761f7ec0a41a1700210350fcbaa27 data/hexalia/recipe/bogged_boots.json
+585f046e8ebad849b14b9ddcc6bf5987b474cb41 data/hexalia/recipe/bogshade_boots.json
 d2176c254a9c45b9cd46c8171307460a9c100799 data/hexalia/recipe/brambleguard_salve_from_mortar.json
 8ac177e2b26cd4d2d5f3ff42a45bb60939cbaa98 data/hexalia/recipe/brew_of_arachnid_grace_from_small_cauldron.json
 61ad9b931ef9bb5969e3d12c89b4af9a9c1cabaa data/hexalia/recipe/brew_of_bloodlust_from_small_cauldron.json
@@ -181,7 +181,7 @@ b7b065812fe620272bef121da5f4f39173ddcaef data/hexalia/recipe/cottonwood_trapdoor
 75275d33b775c93e53df90e2bf54a0b5716384f4 data/hexalia/recipe/frost_sac.json
 37b4bb9d4992ceec5b1d5b16c6ef712280473beb data/hexalia/recipe/galeberries_cookie.json
 42e628300360d34826af30b6ffe9d71508b8f70f data/hexalia/recipe/galeberries_from_brazier.json
-02a4fc654d09419b2ea17997d82a43b8bfd29491 data/hexalia/recipe/ghostveil.json
+eec6c61948dd7adb362a9e8230cf45a390bc694b data/hexalia/recipe/ghostveil.json
 99aea9ddacd101dfb97a087631863e90259714e1 data/hexalia/recipe/ghost_fern_from_mutation.json
 295642a353bff3dff108ba303531a82c13673fc9 data/hexalia/recipe/ghost_powder_from_mortar.json
 3768807a6797222230a27d6a6cc14002ce3a81b2 data/hexalia/recipe/granite_from_mutation.json

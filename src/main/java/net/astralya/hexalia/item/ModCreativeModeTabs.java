@@ -32,7 +32,7 @@ public class ModCreativeModeTabs {
                 acceptRareItems(output);
                 acceptCottonwood(output);
                 acceptWillow(output);
-                output.accept(ModItems.SILK_MOTH_SPAWN_EGG.get());
+                acceptSpawnEggs(output);
             })
             .build());
 
@@ -147,11 +147,15 @@ public class ModCreativeModeTabs {
     private static void acceptWearables(CreativeModeTab.Output output) {
         output.accept(ModItems.EARPLUGS.get());
         output.accept(ModItems.GHOSTVEIL.get());
-        output.accept(ModItems.BOGGED_BOOTS.get());
+        output.accept(ModItems.BOGSHADE_BOOTS.get());
         output.accept(ModItems.SILKWEAVE_HOOD.get());
         output.accept(ModItems.SILKWEAVE_MANTLE.get());
         output.accept(ModItems.SILKWEAVE_BINDINGS.get());
         output.accept(ModItems.SILKWEAVE_FOOTWRAPS.get());
+        output.accept(ModItems.BLOOMWRAP_HAT.get());
+        output.accept(ModItems.BLOOMWRAP_ROBES.get());
+        output.accept(ModItems.BLOOMWRAP_LEGGINGS.get());
+        output.accept(ModItems.BLOOMWRAP_BOOTS.get());
         output.accept(ModItems.MOONWEAVE_HOOD.get());
         output.accept(ModItems.MOONWEAVE_MANTLE.get());
         output.accept(ModItems.MOONWEAVE_BINDINGS.get());
@@ -227,5 +231,10 @@ public class ModCreativeModeTabs {
         output.accept(ModItems.WILLOW_HANGING_SIGN.get());
         output.accept(ModItems.WILLOW_BOAT.get());
         output.accept(ModItems.WILLOW_CHEST_BOAT.get());
+    }
+
+    private static void acceptSpawnEggs(CreativeModeTab.Output output) {
+        output.accept(ModItems.SILK_MOTH_SPAWN_EGG.get());
+        output.accept(ModItems.CACOFEY_SPAWN_EGG.get());
     }
 }

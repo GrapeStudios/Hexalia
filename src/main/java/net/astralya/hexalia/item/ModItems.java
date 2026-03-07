@@ -157,11 +157,11 @@ public class ModItems {
             () -> new KelpweaveBlade(ModToolTiers.ANCIENT,
                     new Item.Properties().attributes(SwordItem.createAttributes(ModToolTiers.ANCIENT, 3, -2f)).rarity(Rarity.RARE)));
     public static final DeferredItem<Item> GHOSTVEIL = ITEMS.register("ghostveil",
-            () -> new GhostVeilItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(96)));
+            () -> new GhostveilItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(96)));
     public static final DeferredItem<Item> EARPLUGS = ITEMS.register("earplugs",
             () -> new EarplugsItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new Item.Properties()));
-    public static final DeferredItem<Item> BOGGED_BOOTS = ITEMS.register("bogged_boots",
-            () -> new BoggedBootsItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.BOOTS, new Item.Properties().durability(96)));
+    public static final DeferredItem<Item> BOGSHADE_BOOTS = ITEMS.register("bogshade_boots",
+            () -> new BogshadeBootsItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.BOOTS, new Item.Properties().durability(96)));
     public static final DeferredItem<Item> THORNBOW = ITEMS.register("thornbow",
             () -> new ThornbowItem(new Item.Properties().durability(128)));
 
@@ -190,6 +190,19 @@ public class ModItems {
     public static final DeferredItem<Item> MOONWEAVE_FOOTWRAPS = ITEMS.register("moonweave_footwraps",
             () -> new MoonweaveFootwrapsItem(ModArmorMaterials.MOONWEAVE, ArmorItem.Type.BOOTS,
                     armorMagicResistProps(MOONWEAVE_SET_ID, 0.10f).durability(429)));
+
+    public static final DeferredItem<Item> BLOOMWRAP_HAT = ITEMS.register("bloomwrap_hat",
+            () -> new BloomwrapHatItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.HELMET,
+                    armorMagicResistProps(SILKWEAVE_SET_ID, 0.10f).durability(363)));
+    public static final DeferredItem<Item> BLOOMWRAP_ROBES = ITEMS.register("bloomwrap_robes",
+            () -> new BloomwrapRobesItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.CHESTPLATE,
+                    armorMagicResistProps(SILKWEAVE_SET_ID, 0.10f).durability(528)));
+    public static final DeferredItem<Item> BLOOMWRAP_LEGGINGS = ITEMS.register("bloomwrap_leggings",
+            () -> new BloomwrapLeggingsItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.LEGGINGS,
+                    armorMagicResistProps(SILKWEAVE_SET_ID, 0.10f).durability(495)));
+    public static final DeferredItem<Item> BLOOMWRAP_BOOTS = ITEMS.register("bloomwrap_boots",
+            () -> new BloomwrapBootsItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.BOOTS,
+                    armorMagicResistProps(SILKWEAVE_SET_ID, 0.10f).durability(429)));
 
     // Brews
     public static final DeferredItem<Item> RUSTIC_BOTTLE = ITEMS.registerSimpleItem("rustic_bottle");
@@ -230,6 +243,7 @@ public class ModItems {
             () -> new BottleMothItem(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> SILK_MOTH_SPAWN_EGG = ITEMS.register("silk_moth_spawn_egg",
             () -> new CustomModelSpawnEggItem(ModEntities.SILK_MOTH_ENTITY.get(), new Item.Properties()));
+    public static final DeferredItem<Item> CACOFEY_SPAWN_EGG = ITEMS.registerSimpleItem("cacofey_spawn_egg");
 
     // Wood-Related Items
     public static final DeferredItem<Item> WILLOW_BOAT = ITEMS.register("willow_boat",

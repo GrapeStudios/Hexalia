@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-03T22:32:05.1670344	Tags for minecraft:item mod id hexalia
+// 1.21.1	2026-03-05T11:12:12.4295615	Tags for minecraft:item mod id hexalia
 c2e7f2f3472c1200322aaafc9a3ccad9b5e2ab8f data/c/tags/item/crops.json
 2cd7b115cf8b4f8d7041a66dc115d81b5f01e549 data/c/tags/item/foods.json
 2dd44f7e98626d3ba68fc97c88b6456b306cf2ca data/c/tags/item/foods/berry.json
@@ -15,28 +15,28 @@ cf908acc2e525a3d3eb097c4741d6d357682c2a7 data/c/tags/item/salt.json
 7464bc0f4ddac3d82855194fea3c6b076e6fb73b data/hexalia/tags/item/brews.json
 0a9e24febf41067c0d25e9952dd0c726cba969b9 data/hexalia/tags/item/cottonwood_logs.json
 5515a7b886a966f1b5e57c9bd9e40c1554d7054f data/hexalia/tags/item/crushed_herbs.json
-8bfb74eb77de5cab4ed6d14dc7bc0ee7cee8ecf8 data/hexalia/tags/item/herbs.json
+7ce4ba8ba238b0ce06194b2c06596cab6a46ec26 data/hexalia/tags/item/herbs.json
 3fc5bfd682b65a58ae3f726f622bb09963059ef9 data/hexalia/tags/item/offhand_equipment.json
 1a1512524ea2d31de1cf2d4fa628a19d295b8932 data/hexalia/tags/item/tulips.json
 b2ac93b5e91295fc810ffbae3327970632ffe14a data/hexalia/tags/item/willow_logs.json
 f3cc2dd5ecf1532bbb967f1c90716ff45b38c136 data/minecraft/tags/item/boats.json
-3012eeea9519a2ee88cfcb59668afb29798d5674 data/minecraft/tags/item/chest_armor.json
+f572a504d925be9b8ef768ebf163dfddf72a6f1b data/minecraft/tags/item/chest_armor.json
 075b893ec4b335ad1b86e750d584a3e91b2e7131 data/minecraft/tags/item/chest_boats.json
 a0f37c79468375b1d559715974a57615f1f9a8fa data/minecraft/tags/item/enchantable/bow.json
-3012eeea9519a2ee88cfcb59668afb29798d5674 data/minecraft/tags/item/enchantable/chest_armor.json
+f572a504d925be9b8ef768ebf163dfddf72a6f1b data/minecraft/tags/item/enchantable/chest_armor.json
 222a451a2a078803ee1b294238b1a694b19d3c1d data/minecraft/tags/item/enchantable/durability.json
-cc4a42ad8c82b270095dc816784c4584731bdf42 data/minecraft/tags/item/enchantable/foot_armor.json
-77e6e69c1bf7f918200963cc01a438d2d82db3c9 data/minecraft/tags/item/enchantable/head_armor.json
-1bcf1fee7f1cf89dbe8118b38a307727706fc03d data/minecraft/tags/item/enchantable/leg_armor.json
+e546e3dce3eea2f3696c57ffb6cf69c0b6e8f0f3 data/minecraft/tags/item/enchantable/foot_armor.json
+29425099f9b05a1c526a626c04e9ea13d50d35d3 data/minecraft/tags/item/enchantable/head_armor.json
+52b1cffc4864cb78117439c802818c389e78de6f data/minecraft/tags/item/enchantable/leg_armor.json
 f3781078c350bcb142cfb91d65861103e95ea28f data/minecraft/tags/item/enchantable/mining.json
 b7d830f27d76289cfc894827fa4c09c515ab8ef1 data/minecraft/tags/item/fence_gates.json
 317e2043ee7d3dafa6e6a72442c846eb0d224aec data/minecraft/tags/item/flowers.json
-6ecf888ca2a4ca5d5540adafcff33dcc43cee0ba data/minecraft/tags/item/foot_armor.json
+4ae03bac641f2cf213f914c8c49f1169713b4c7b data/minecraft/tags/item/foot_armor.json
 2dd44f7e98626d3ba68fc97c88b6456b306cf2ca data/minecraft/tags/item/fox_food.json
 4317eb2d2bffc7108a77847f50209b87c2d79200 data/minecraft/tags/item/hanging_signs.json
-77e6e69c1bf7f918200963cc01a438d2d82db3c9 data/minecraft/tags/item/head_armor.json
+29425099f9b05a1c526a626c04e9ea13d50d35d3 data/minecraft/tags/item/head_armor.json
 f134380f62b34107c4f630aa282ff1e39dc6ae44 data/minecraft/tags/item/leaves.json
-1bcf1fee7f1cf89dbe8118b38a307727706fc03d data/minecraft/tags/item/leg_armor.json
+52b1cffc4864cb78117439c802818c389e78de6f data/minecraft/tags/item/leg_armor.json
 e96141f97c40cc3068df2fc925fb0cd87fddb6c8 data/minecraft/tags/item/logs_that_burn.json
 3af98593831ce2d1863c7e6aee0dad3d24df5630 data/minecraft/tags/item/pickaxes.json
 1f77a399f423b315344121cfc2e387008e06be66 data/minecraft/tags/item/planks.json

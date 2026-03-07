@@ -222,27 +222,24 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("PP")
                 .pattern("PP")
                 .define('P', ModItems.CELESTIAL_CRYSTAL.get())
-                .unlockedBy("has_celestial_crystal",
-                        inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.CELESTIAL_CRYSTAL.get()).build()))
+                .unlockedBy("has_celestial_crystal", inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.CELESTIAL_CRYSTAL.get()).build()))
                 .save(recipeOutput);
 
         // Armor Recipes
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.GHOSTVEIL.get())
-                .pattern("A A")
-                .pattern("PAP")
-                .pattern("SSS")
-                .define('P', ModItems.SILK_FIBER.get())
-                .define('S', ModBlocks.GHOST_FERN.get())
-                .define('A', Items.LEATHER)
-                .unlockedBy("has_ghost_fern",
-                        inventoryTrigger(ItemPredicate.Builder.item().of(ModBlocks.GHOST_FERN.get()).build()))
+                .pattern("LLL")
+                .pattern("FSF")
+                .pattern("F F")
+                .define('S', ModItems.SILK_FIBER.get())
+                .define('F', ModBlocks.GHOST_FERN.get())
+                .define('L', Items.LEATHER)
+                .unlockedBy("has_ghost_fern", inventoryTrigger(ItemPredicate.Builder.item().of(ModBlocks.GHOST_FERN.get()).build()))
                 .save(recipeOutput);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.EARPLUGS.get())
                 .pattern("P P")
                 .define('P', Items.LEATHER)
-                .unlockedBy("has_leather",
-                        inventoryTrigger(ItemPredicate.Builder.item().of(Items.LEATHER).build()))
+                .unlockedBy("has_leather", inventoryTrigger(ItemPredicate.Builder.item().of(Items.LEATHER).build()))
                 .save(recipeOutput);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.COMBAT, ModItems.PURIFYING_SAC.get())
@@ -277,14 +274,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SUNFIRE_TOMATO.get()).build()))
                 .save(recipeOutput);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.BOGGED_BOOTS.get())
-                .pattern("PSP")
-                .pattern("A A")
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.BOGSHADE_BOOTS.get())
+                .pattern("SWS")
+                .pattern("K K")
                 .define('S', ModItems.SILK_FIBER.get())
-                .define('P', ModBlocks.WITCHWEED.get())
-                .define('A', Items.DRIED_KELP)
+                .define('W', ModItems.WATER_NODE.get())
+                .define('K', Items.KELP)
                 .unlockedBy("has_ghost_fern",
-                        inventoryTrigger(ItemPredicate.Builder.item().of(ModBlocks.WITCHWEED.get()).build()))
+                        inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.SILK_FIBER.get()).build()))
                 .save(recipeOutput);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.THORNBOW.get())
