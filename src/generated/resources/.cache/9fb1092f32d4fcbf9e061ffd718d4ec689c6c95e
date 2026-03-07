@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-05T09:55:39.3974191	Recipes
+// 1.21.1	2026-03-07T08:39:47.6855058	Recipes
 c327f3ba4eafb4c21dbb4104a1bc4c1d661f542a data/hexalia/advancement/recipes/brewing/rustic_bottle.json
 a8312b0bfae801aa7103827a4307c5c829b7dbf1 data/hexalia/advancement/recipes/building_blocks/celestial_crystal_block.json
 e15994b53b3dfc7b695ca1c1c4e0cf392e20aaa3 data/hexalia/advancement/recipes/building_blocks/cottonwood_planks.json
@@ -83,6 +83,7 @@ a6224fe0c1ae1307b607ae6ac9cead40fd28f215 data/hexalia/advancement/recipes/mutati
 42419fe4ff9225726c8958a9acd761aa9a48d68f data/hexalia/advancement/recipes/mutation/siren_kelp_from_mutation.json
 58655fcbee05cbdd7d3a5174e9a7cf42c2a75ce7 data/hexalia/advancement/recipes/mutation/spirit_bloom_from_mutation.json
 40ecde45227d95aed018e6259e39fd8c9be56689 data/hexalia/advancement/recipes/mutation/tuff_from_mutation.json
+6b9c0c5223631f5c79eaa28a6a847d33caa81168 data/hexalia/advancement/recipes/mutation/witchweed_from_mutation.json
 988163c9c882fe4430666973bbf8f7d9faef135e data/hexalia/advancement/recipes/redstone/cottonwood_door.json
 30d8279d8658f3c0d4c3c668919c9cd370565ca4 data/hexalia/advancement/recipes/redstone/cottonwood_fence_gate.json
 73b079108bbca6a011ce468c6099e4c75487ad12 data/hexalia/advancement/recipes/redstone/cottonwood_pressure_plate.json
@@ -258,4 +259,5 @@ aa105491265885a9ea4f3d2b799a60dc5e42f881 data/hexalia/recipe/willow_pressure_pla
 111e69bbc1ed1b2cd52809ec8f378282f9728f0c data/hexalia/recipe/willow_stairs.json
 168c5155a3aae6793e7709d4a4d4cd52683eca87 data/hexalia/recipe/willow_trapdoor.json
 864ef7402f352b4a8845f128345c85ebe9f33fba data/hexalia/recipe/windsong_from_ritual_table.json
+f4b5bd2a44f4e099d5333c3b9c8c7797a2792ef3 data/hexalia/recipe/witchweed_from_mutation.json
 956a29cc9c5900fd56f251e0f3abab8a0f8c1283 data/hexalia/recipe/wither_candle_skull.json
