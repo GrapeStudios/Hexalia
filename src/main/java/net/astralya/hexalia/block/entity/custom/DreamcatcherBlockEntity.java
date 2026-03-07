@@ -5,16 +5,17 @@ import net.astralya.hexalia.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class DreamcatcherBlockEntity extends SyncBlockEntity {
+public class DreamcatcherBlockEntity extends BlockEntity {
 
     private static final int TICKS_PER_NODE = 30000;
 
@@ -48,7 +49,7 @@ public class DreamcatcherBlockEntity extends SyncBlockEntity {
         if (!player.isCreative()) held.shrink(1);
         fuelTicks = TICKS_PER_NODE;
         setChanged();
-        sendUpdate();
+        syncToClient();
         return InteractionResult.SUCCESS;
     }
 
@@ -56,12 +57,25 @@ public class DreamcatcherBlockEntity extends SyncBlockEntity {
         if (fuelTicks <= 0) return ItemStack.EMPTY;
         fuelTicks = 0;
         setChanged();
-        sendUpdate();
+        syncToClient();
         return new ItemStack(ModItems.FIRE_NODE.get());
     }
 
-    private void sendUpdate() {
-        if (level != null && !level.isClientSide()) {
+    public void spawnActiveParticles(Level level, BlockPos pos, RandomSource random) {
+        double cx = pos.getX() + 0.5;
+        double cy = pos.getY() + 0.5;
+        double cz = pos.getZ() + 0.5;
+        for (int i = 0; i < 2; i++) {
+            double x = cx + (random.nextDouble() - 0.5) * 0.4;
+            double y = cy + random.nextDouble() * 0.3;
+            double z = cz + (random.nextDouble() - 0.5) * 0.4;
+            level.addParticle(ParticleTypes.FLAME, x, y, z, 0, 0.02, 0);
+            level.addParticle(ParticleTypes.SMOKE, x, y, z, 0, 0.01, 0);
+        }
+    }
+
+    private void syncToClient() {
+        if (level != null && !level.isClientSide) {
             level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
         }
     }
@@ -80,11 +94,13 @@ public class DreamcatcherBlockEntity extends SyncBlockEntity {
 
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
-        return saveWithoutMetadata(registries);
+        CompoundTag tag = super.getUpdateTag(registries);
+        tag.putInt("FuelTicks", fuelTicks);
+        return tag;
     }
 
     @Override
-    public Packet<ClientGamePacketListener> getUpdatePacket() {
+    public ClientboundBlockEntityDataPacket getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
     }
 }
