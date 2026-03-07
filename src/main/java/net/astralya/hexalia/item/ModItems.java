@@ -31,14 +31,16 @@ public class ModItems {
 
     private static final ResourceLocation SILKWEAVE_SET_ID =
             ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "silkweave");
-
     private static final ResourceLocation MOONWEAVE_SET_ID =
             ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "moonweave");
+    private static final ResourceLocation WOVEN_GROUP_ID =
+            ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "woven");
 
     private static Item.Properties armorMagicResistProps(ResourceLocation setId, float perPiecePct) {
         return new Item.Properties()
                 .component(ModComponents.MAGIC_RESIST_PCT.get(), perPiecePct)
                 .component(ModComponents.ARMOR_SET_ID.get(), setId)
+                .component(ModComponents.ARMOR_SET_GROUP_ID.get(), WOVEN_GROUP_ID)
                 .component(ModComponents.FULL_SET_BONUS_PCT.get(), 0.10f);
     }
 

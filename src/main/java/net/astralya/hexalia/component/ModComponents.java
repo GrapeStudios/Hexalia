@@ -41,6 +41,13 @@ public final class ModComponents {
                     .networkSynchronized(ResourceLocation.STREAM_CODEC)
                     .build());
 
+
+    public static final Supplier<DataComponentType<ResourceLocation>> ARMOR_SET_GROUP_ID =
+            COMPONENT_TYPES.register("armor_group_set_id", () -> DataComponentType.<ResourceLocation>builder()
+                    .persistent(ResourceLocation.CODEC)
+                    .networkSynchronized(ResourceLocation.STREAM_CODEC)
+                    .build());
+
     public static final Supplier<DataComponentType<Float>> FULL_SET_BONUS_PCT =
             COMPONENT_TYPES.register("full_set_bonus_pct", () -> DataComponentType.<Float>builder()
                     .persistent(Codec.FLOAT)

@@ -7,23 +7,42 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 
 public final class MagicResistanceHelper {
-    private MagicResistanceHelper() {
-    }
+
+    private MagicResistanceHelper() {}
 
     public static float getMagicResistancePct(LivingEntity entity) {
-        ItemStack head = entity.getItemBySlot(EquipmentSlot.HEAD);
+        ItemStack head  = entity.getItemBySlot(EquipmentSlot.HEAD);
         ItemStack chest = entity.getItemBySlot(EquipmentSlot.CHEST);
-        ItemStack legs = entity.getItemBySlot(EquipmentSlot.LEGS);
-        ItemStack feet = entity.getItemBySlot(EquipmentSlot.FEET);
+        ItemStack legs  = entity.getItemBySlot(EquipmentSlot.LEGS);
+        ItemStack feet  = entity.getItemBySlot(EquipmentSlot.FEET);
 
         float total = getPiecePct(head) + getPiecePct(chest) + getPiecePct(legs) + getPiecePct(feet);
 
-        ResourceLocation setId = getFullSetId(head, chest, legs, feet);
-        if (setId != null) {
-            total += getFullSetBonus(head, chest, legs, feet, setId);
+        ResourceLocation groupId = getSharedGroupId(head, chest, legs, feet);
+        if (groupId != null) {
+            total += getGroupBonus(head, chest, legs, feet, groupId);
         }
 
         return clamp01(total);
+    }
+
+    public static boolean isWearingFullSetGroup(LivingEntity entity, ResourceLocation groupId) {
+        return matchesGroup(entity.getItemBySlot(EquipmentSlot.HEAD),  groupId)
+                && matchesGroup(entity.getItemBySlot(EquipmentSlot.CHEST), groupId)
+                && matchesGroup(entity.getItemBySlot(EquipmentSlot.LEGS),  groupId)
+                && matchesGroup(entity.getItemBySlot(EquipmentSlot.FEET),  groupId);
+    }
+
+    public static float getGroupBonusForEntity(LivingEntity entity, ResourceLocation groupId) {
+        float bonus = 0.0f;
+        for (EquipmentSlot slot : new EquipmentSlot[]{ EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET }) {
+            ItemStack stack = entity.getItemBySlot(slot);
+            if (matchesGroup(stack, groupId)) {
+                Float b = stack.get(ModComponents.FULL_SET_BONUS_PCT.get());
+                if (b != null) bonus = Math.max(bonus, b);
+            }
+        }
+        return bonus;
     }
 
     private static float getPiecePct(ItemStack stack) {
@@ -31,52 +50,34 @@ public final class MagicResistanceHelper {
         return pct != null ? pct : 0.0f;
     }
 
-    private static ResourceLocation getFullSetId(ItemStack head, ItemStack chest, ItemStack legs, ItemStack feet) {
-        if (head.isEmpty() || chest.isEmpty() || legs.isEmpty() || feet.isEmpty()) {
-            return null;
-        }
-
-        ResourceLocation a = head.get(ModComponents.ARMOR_SET_ID.get());
-        if (a == null) {
-            return null;
-        }
-
-        ResourceLocation b = chest.get(ModComponents.ARMOR_SET_ID.get());
-        ResourceLocation c = legs.get(ModComponents.ARMOR_SET_ID.get());
-        ResourceLocation d = feet.get(ModComponents.ARMOR_SET_ID.get());
-
-        if (a.equals(b) && a.equals(c) && a.equals(d)) {
-            return a;
-        }
-
-        return null;
+    private static ResourceLocation getSharedGroupId(ItemStack head, ItemStack chest, ItemStack legs, ItemStack feet) {
+        ResourceLocation g = head.get(ModComponents.ARMOR_SET_GROUP_ID.get());
+        if (g == null) return null;
+        if (!g.equals(chest.get(ModComponents.ARMOR_SET_GROUP_ID.get()))) return null;
+        if (!g.equals(legs.get(ModComponents.ARMOR_SET_GROUP_ID.get()))) return null;
+        if (!g.equals(feet.get(ModComponents.ARMOR_SET_GROUP_ID.get()))) return null;
+        return g;
     }
 
-    private static float getFullSetBonus(ItemStack head, ItemStack chest, ItemStack legs, ItemStack feet, ResourceLocation setId) {
+    private static float getGroupBonus(ItemStack head, ItemStack chest, ItemStack legs, ItemStack feet, ResourceLocation groupId) {
         float bonus = 0.0f;
-
-        bonus = Math.max(bonus, bonusIfMatches(head, setId));
-        bonus = Math.max(bonus, bonusIfMatches(chest, setId));
-        bonus = Math.max(bonus, bonusIfMatches(legs, setId));
-        bonus = Math.max(bonus, bonusIfMatches(feet, setId));
-
+        for (ItemStack stack : new ItemStack[]{ head, chest, legs, feet }) {
+            if (matchesGroup(stack, groupId)) {
+                Float b = stack.get(ModComponents.FULL_SET_BONUS_PCT.get());
+                if (b != null) bonus = Math.max(bonus, b);
+            }
+        }
         return bonus;
     }
 
-    private static float bonusIfMatches(ItemStack stack, ResourceLocation setId) {
-        ResourceLocation id = stack.get(ModComponents.ARMOR_SET_ID.get());
-        if (id == null || !id.equals(setId)) {
-            return 0.0f;
-        }
-
-        Float bonus = stack.get(ModComponents.FULL_SET_BONUS_PCT.get());
-        return bonus != null ? bonus : 0.0f;
+    private static boolean matchesGroup(ItemStack stack, ResourceLocation groupId) {
+        if (stack.isEmpty()) return false;
+        ResourceLocation id = stack.get(ModComponents.ARMOR_SET_GROUP_ID.get());
+        return id != null && id.equals(groupId);
     }
 
     private static float clamp01(float value) {
-        if (value <= 0.0f) {
-            return 0.0f;
-        }
+        if (value <= 0.0f) return 0.0f;
         return Math.min(value, 1.0f);
     }
 }
