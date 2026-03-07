@@ -203,6 +203,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(Blocks.PINK_TULIP.asItem())
                 .add(Blocks.RED_TULIP.asItem())
                 .add(Blocks.WHITE_TULIP.asItem());
+
+        // Stun Immune Headwear
+        tag(ModTags.Items.STUN_IMMUNE_HEADWEAR)
+                .add(ModItems.EARPLUGS.get())
+                .add(ModItems.BLOOMWRAP_HAT.get());
     }
 
     private void addTreeRelatedTags() {

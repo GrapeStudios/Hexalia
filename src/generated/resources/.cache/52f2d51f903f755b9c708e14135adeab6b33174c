@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-05T11:12:12.4295615	Tags for minecraft:item mod id hexalia
+// 1.21.1	2026-03-07T12:54:26.293048	Tags for minecraft:item mod id hexalia
 c2e7f2f3472c1200322aaafc9a3ccad9b5e2ab8f data/c/tags/item/crops.json
 2cd7b115cf8b4f8d7041a66dc115d81b5f01e549 data/c/tags/item/foods.json
 2dd44f7e98626d3ba68fc97c88b6456b306cf2ca data/c/tags/item/foods/berry.json
@@ -17,6 +17,7 @@ cf908acc2e525a3d3eb097c4741d6d357682c2a7 data/c/tags/item/salt.json
 5515a7b886a966f1b5e57c9bd9e40c1554d7054f data/hexalia/tags/item/crushed_herbs.json
 7ce4ba8ba238b0ce06194b2c06596cab6a46ec26 data/hexalia/tags/item/herbs.json
 3fc5bfd682b65a58ae3f726f622bb09963059ef9 data/hexalia/tags/item/offhand_equipment.json
+7896ddd2e8c6ec7d4cef0baa1cfa8a0d521a5645 data/hexalia/tags/item/stun_immune_headwear.json
 1a1512524ea2d31de1cf2d4fa628a19d295b8932 data/hexalia/tags/item/tulips.json
 b2ac93b5e91295fc810ffbae3327970632ffe14a data/hexalia/tags/item/willow_logs.json
 f3cc2dd5ecf1532bbb967f1c90716ff45b38c136 data/minecraft/tags/item/boats.json
@@ -24,7 +25,7 @@ f572a504d925be9b8ef768ebf163dfddf72a6f1b data/minecraft/tags/item/chest_armor.js
 075b893ec4b335ad1b86e750d584a3e91b2e7131 data/minecraft/tags/item/chest_boats.json
 a0f37c79468375b1d559715974a57615f1f9a8fa data/minecraft/tags/item/enchantable/bow.json
 f572a504d925be9b8ef768ebf163dfddf72a6f1b data/minecraft/tags/item/enchantable/chest_armor.json
-222a451a2a078803ee1b294238b1a694b19d3c1d data/minecraft/tags/item/enchantable/durability.json
+371d2149920e3becf4e7e23ba3abd1f3d065135c data/minecraft/tags/item/enchantable/durability.json
 e546e3dce3eea2f3696c57ffb6cf69c0b6e8f0f3 data/minecraft/tags/item/enchantable/foot_armor.json
 29425099f9b05a1c526a626c04e9ea13d50d35d3 data/minecraft/tags/item/enchantable/head_armor.json
 52b1cffc4864cb78117439c802818c389e78de6f data/minecraft/tags/item/enchantable/leg_armor.json

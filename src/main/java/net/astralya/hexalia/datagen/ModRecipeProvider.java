@@ -952,6 +952,46 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModBlocks.AEGIFLORA.getId().getPath() + "_from_ritual_table"));
 
+        RitualTableRecipeBuilder.ritualTableRecipe(new ItemStack(ModItems.BLOOMWRAP_HAT.get()))
+                .addIngredient(Items.LEATHER_HELMET)
+                .addIngredient(Items.PINK_TULIP)
+                .addIngredient(ModItems.SILK_FIBER.get())
+                .addIngredient(ModItems.MANDRAKE.get())
+                .addIngredient(Items.ROOTED_DIRT)
+                .unlockedByItem("has_hex_focus", ModItems.HEX_FOCUS.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        ModItems.BLOOMWRAP_HAT.getId().getPath() + "_from_ritual_table"));
+
+        RitualTableRecipeBuilder.ritualTableRecipe(new ItemStack(ModItems.BLOOMWRAP_ROBES.get()))
+                .addIngredient(Items.LEATHER_CHESTPLATE)
+                .addIngredient(Items.MOSS_BLOCK)
+                .addIngredient(ModItems.EARTH_NODE.get())
+                .addIngredient(ModItems.SILK_FIBER.get())
+                .addIngredient(Items.IRON_NUGGET)
+                .unlockedByItem("has_hex_focus", ModItems.HEX_FOCUS.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        ModItems.BLOOMWRAP_ROBES.getId().getPath() + "_from_ritual_table"));
+
+        RitualTableRecipeBuilder.ritualTableRecipe(new ItemStack(ModItems.BLOOMWRAP_LEGGINGS.get()))
+                .addIngredient(Items.LEATHER_LEGGINGS)
+                .addIngredient(Items.PEONY)
+                .addIngredient(ModBlocks.SPIRIT_BLOOM.get().asItem())
+                .addIngredient(ModItems.SILK_FIBER.get())
+                .addIngredient(Items.HONEYCOMB)
+                .unlockedByItem("has_hex_focus", ModItems.HEX_FOCUS.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        ModItems.BLOOMWRAP_LEGGINGS.getId().getPath() + "_from_ritual_table"));
+
+        RitualTableRecipeBuilder.ritualTableRecipe(new ItemStack(ModItems.BLOOMWRAP_BOOTS.get()))
+                .addIngredient(Items.LEATHER_BOOTS)
+                .addIngredient(Items.DANDELION)
+                .addIngredient(ModItems.AIR_NODE.get())
+                .addIngredient(ModItems.SILK_FIBER.get())
+                .addIngredient(Items.SUGAR)
+                .unlockedByItem("has_hex_focus", ModItems.HEX_FOCUS.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        ModItems.BLOOMWRAP_BOOTS.getId().getPath() + "_from_ritual_table"));
+
         // Recipes for Wood-related Blocks
         planksFromLog(recipeOutput, ModBlocks.COTTONWOOD_PLANKS.get(), ModTags.Items.COTTONWOOD_LOGS, 4);
 

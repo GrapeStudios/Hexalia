@@ -23,6 +23,7 @@ public class ModTags {
         public static final TagKey<Item> WILLOW_LOGS = createItemTag("willow_logs");
         public static final TagKey<Item> OFFHAND_EQUIPMENT = createItemTag("offhand_equipment");
         public static final TagKey<Item> TULIPS = createItemTag("tulips");
+        public static final TagKey<Item> STUN_IMMUNE_HEADWEAR = createItemTag("stun_immune_headwear");
 
         // Common Item Tags
         public static final TagKey<Item> FOODS = createCommonItemTag("foods");

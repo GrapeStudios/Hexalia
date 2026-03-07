@@ -195,16 +195,16 @@ public class ModItems {
 
     public static final DeferredItem<Item> BLOOMWRAP_HAT = ITEMS.register("bloomwrap_hat",
             () -> new BloomwrapHatItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.HELMET,
-                    armorMagicResistProps(SILKWEAVE_SET_ID, 0.10f).durability(363)));
+                    new Item.Properties().durability(165)));
     public static final DeferredItem<Item> BLOOMWRAP_ROBES = ITEMS.register("bloomwrap_robes",
             () -> new BloomwrapRobesItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.CHESTPLATE,
-                    armorMagicResistProps(SILKWEAVE_SET_ID, 0.10f).durability(528)));
+                    new Item.Properties().durability(240)));
     public static final DeferredItem<Item> BLOOMWRAP_LEGGINGS = ITEMS.register("bloomwrap_leggings",
             () -> new BloomwrapLeggingsItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.LEGGINGS,
-                    armorMagicResistProps(SILKWEAVE_SET_ID, 0.10f).durability(495)));
+                    new Item.Properties().durability(225)));
     public static final DeferredItem<Item> BLOOMWRAP_BOOTS = ITEMS.register("bloomwrap_boots",
             () -> new BloomwrapBootsItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.BOOTS,
-                    armorMagicResistProps(SILKWEAVE_SET_ID, 0.10f).durability(429)));
+                    new Item.Properties().durability(195)));
 
     // Brews
     public static final DeferredItem<Item> RUSTIC_BOTTLE = ITEMS.registerSimpleItem("rustic_bottle");
