@@ -230,6 +230,8 @@
   "tooltip.hexalia.spiritroot_tether": "Bound Spirit: %s",
   "tooltip.hexalia.spiritroot_tether.bound": "Bound to: %s, %s, %s",
   "tooltip.hexalia.spiritroot_tether.unknown": "Unknown",
+  "tooltip.hexalia.rootshaper.mode_3x3_active": "3×3 Mining: Active",
+  "tooltip.hexalia.rootshaper.mode_3x3_hint": "Sneak while mining to enable 3×3 mode",
 
   "sounds.hexalia.mandrake_scream": "Mandrake screamed",
   "sounds.hexalia.ritual_success": "Ritual completed",
