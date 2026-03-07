@@ -136,7 +136,7 @@ public class ModItems {
                     .component(DataComponents.TOOL, RootshaperItem.createTool())
                     .attributes(RootshaperItem.createAttributes()));
     public static final DeferredItem<Item> SPIRITROOT_TETHER = ITEMS.registerItem("spiritroot_tether",
-            SpiritrootTetherItem::new, new Item.Properties());
+            SpiritrootTetherItem::new, new Item.Properties().durability(32));
     public static final DeferredItem<Item> LADLE = ITEMS.registerItem("ladle",
             Item::new, new Item.Properties().stacksTo(1));
 

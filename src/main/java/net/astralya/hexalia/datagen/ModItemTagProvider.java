@@ -127,8 +127,9 @@ public class ModItemTagProvider extends ItemTagsProvider {
         tag(ItemTags.DURABILITY_ENCHANTABLE)
                 .add(ModItems.BRIAR_SICKLE.get())
                 .add(ModItems.SAGE_PENDANT.get())
+                .add(ModItems.SPIRITROOT_TETHER.get())
                 .add(ModItems.ATHAME.get());
-        
+
         tag(ItemTags.HEAD_ARMOR_ENCHANTABLE)
                 .add(ModItems.SILKWEAVE_HOOD.get())
                 .add(ModItems.BLOOMWRAP_HAT.get())

@@ -62,52 +62,37 @@ public class SpiritrootTetherItem extends Item {
         if (level.isClientSide) {
             return InteractionResult.SUCCESS;
         }
-
         if (!(target instanceof Mob mob)) {
             return InteractionResult.PASS;
         }
-
         ItemStack handStack = player.getItemInHand(hand);
         SpiritrootTetherData data = ensureData(handStack);
-
         if (data.hasMob()) {
             player.displayClientMessage(Component.translatable("message.hexalia.spiritroot_tether.already_occupied"), true);
             return InteractionResult.SUCCESS;
         }
-
         if (!canCapture(player, mob)) {
             player.displayClientMessage(Component.translatable("message.hexalia.spiritroot_tether.cannot_capture"), true);
             return InteractionResult.SUCCESS;
         }
-
         CompoundTag mobTag = new CompoundTag();
         mob.saveWithoutId(mobTag);
-
         ResourceLocation typeId = BuiltInRegistries.ENTITY_TYPE.getKey(mob.getType());
-
         UUID uuid = mob.getUUID();
         String nameJson = encodeNameJson(mob);
-
         handStack.set(componentType(), data.withCapturedMob(typeId, mobTag, uuid, nameJson));
-
         if (level instanceof ServerLevel serverLevel) {
             serverLevel.sendParticles(
                     ModParticleType.LEAVES.get(),
                     mob.getX(),
                     mob.getY() + (mob.getBbHeight() * 0.5D),
                     mob.getZ(),
-                    18,
-                    0.25D,
-                    0.25D,
-                    0.25D,
-                    0.02D
+                    18, 0.25D, 0.25D, 0.25D, 0.02D
             );
         }
-
         level.playSound(null, mob.getX(), mob.getY(), mob.getZ(), SoundEvents.SOUL_ESCAPE, SoundSource.PLAYERS, 0.6F, 1.2F);
-
         mob.discard();
-
+        handStack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
         player.displayClientMessage(Component.translatable("message.hexalia.spiritroot_tether.captured"), true);
         return InteractionResult.SUCCESS;
     }
@@ -116,18 +101,14 @@ public class SpiritrootTetherItem extends Item {
     public InteractionResult useOn(UseOnContext context) {
         Level level = context.getLevel();
         Player player = context.getPlayer();
-
         if (player == null) {
             return InteractionResult.PASS;
         }
-
         if (level.isClientSide) {
             return InteractionResult.SUCCESS;
         }
-
         ItemStack stack = context.getItemInHand();
         SpiritrootTetherData data = ensureData(stack);
-
         if (player.isShiftKeyDown()) {
             if (!data.hasMob()) {
                 BlockPos pos = context.getClickedPos();
@@ -135,76 +116,72 @@ public class SpiritrootTetherItem extends Item {
                     player.displayClientMessage(Component.translatable("message.hexalia.spiritroot_tether.invalid_bind_block"), true);
                     return InteractionResult.SUCCESS;
                 }
-
                 stack.set(componentType(), data.withBound(level.dimension(), pos));
                 player.displayClientMessage(Component.translatable("message.hexalia.spiritroot_tether.bound"), true);
                 return InteractionResult.SUCCESS;
             }
-
             Optional<SpiritrootTetherData.BoundLocation> boundOpt = data.bound();
             if (boundOpt.isEmpty()) {
                 player.displayClientMessage(Component.translatable("message.hexalia.spiritroot_tether.not_bound"), true);
                 return InteractionResult.SUCCESS;
             }
-
             SpiritrootTetherData.BoundLocation bound = boundOpt.get();
             ServerLevel targetLevel = ((ServerLevel) level).getServer().getLevel(bound.dimension());
             if (targetLevel == null) {
                 player.displayClientMessage(Component.translatable("message.hexalia.spiritroot_tether.invalid_dimension"), true);
                 return InteractionResult.SUCCESS;
             }
-
             BlockPos spawnPos = bound.pos().above();
             boolean spawned = spawnCapturedMob(targetLevel, spawnPos, data);
             if (!spawned) {
                 player.displayClientMessage(Component.translatable("message.hexalia.spiritroot_tether.recall_failed"), true);
                 return InteractionResult.SUCCESS;
             }
-
             targetLevel.playSound(null, spawnPos.getX() + 0.5D, spawnPos.getY(), spawnPos.getZ() + 0.5D, SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.PLAYERS, 0.7F, 1.1F);
-
             stack.set(componentType(), data.clearedMob());
+            releaseWithDurability(stack, player, context.getHand(), targetLevel, spawnPos);
             player.displayClientMessage(Component.translatable("message.hexalia.spiritroot_tether.sent_to_anchor"), true);
             return InteractionResult.SUCCESS;
         }
-
         if (!data.hasMob()) {
             return InteractionResult.PASS;
         }
-
         BlockPos spawnPos = context.getClickedPos().above();
         boolean spawned = spawnCapturedMob((ServerLevel) level, spawnPos, data);
         if (!spawned) {
             player.displayClientMessage(Component.translatable("message.hexalia.spiritroot_tether.recall_failed"), true);
             return InteractionResult.SUCCESS;
         }
-
         level.playSound(null, spawnPos.getX() + 0.5D, spawnPos.getY(), spawnPos.getZ() + 0.5D, SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.PLAYERS, 0.7F, 1.1F);
-
         stack.set(componentType(), data.clearedMob());
+        releaseWithDurability(stack, player, context.getHand(), (ServerLevel) level, spawnPos);
         player.displayClientMessage(Component.translatable("message.hexalia.spiritroot_tether.released"), true);
         return InteractionResult.SUCCESS;
+    }
+
+    // Applies one durability on release. If the item would break and a mob was
+    // stored, the mob has already been cleared and spawned before this is called,
+    // so nothing is lost when the item is destroyed.
+    private static void releaseWithDurability(ItemStack stack, Player player, InteractionHand hand,
+                                              ServerLevel level, BlockPos spawnPos) {
+        stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
     }
 
     @Override
     public void appendHoverText(ItemStack stack, TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         SpiritrootTetherData data = ensureData(stack);
-
         if (data.hasMob()) {
             Component mobName = getCapturedMobName(data);
             tooltipComponents.add(
                     Component.translatable("tooltip.hexalia.spiritroot_tether", mobName)
                             .withStyle(ChatFormatting.AQUA)
             );
-
             data.bound().ifPresent(bound -> {
                 BlockPos pos = bound.pos();
                 tooltipComponents.add(
                         Component.translatable(
                                 "tooltip.hexalia.spiritroot_tether.bound",
-                                pos.getX(),
-                                pos.getY(),
-                                pos.getZ()
+                                pos.getX(), pos.getY(), pos.getZ()
                         ).withStyle(ChatFormatting.BLUE)
                 );
             });
@@ -215,18 +192,15 @@ public class SpiritrootTetherItem extends Item {
         if (mob.getType().is(ModTags.EntityTypes.SPIRITROOT_UNCAPTURABLE)) {
             return false;
         }
-
         if (mob.isVehicle() || mob.hasPassenger((Entity passenger) -> true)) {
             return false;
         }
-
         if (mob instanceof OwnableEntity ownable) {
             UUID owner = ownable.getOwnerUUID();
             if (owner != null && !owner.equals(player.getUUID())) {
                 return false;
             }
         }
-
         return mob.isAlive();
     }
 
@@ -235,7 +209,6 @@ public class SpiritrootTetherItem extends Item {
         if (name == null) {
             return "";
         }
-
         DataResult<JsonElement> encoded = net.minecraft.network.chat.ComponentSerialization.CODEC.encodeStart(JsonOps.INSTANCE, name);
         return encoded.result().map(JsonElement::toString).orElse("");
     }
@@ -245,76 +218,43 @@ public class SpiritrootTetherItem extends Item {
         if (mobOpt.isEmpty()) {
             return Component.translatable("tooltip.hexalia.spiritroot_tether.unknown");
         }
-
         SpiritrootTetherData.CapturedMob mob = mobOpt.get();
-
         if (mob.nameJson() != null && !mob.nameJson().isEmpty()) {
             try {
                 JsonElement element = JsonParser.parseString(mob.nameJson());
                 DataResult<Component> parsed = net.minecraft.network.chat.ComponentSerialization.CODEC.parse(JsonOps.INSTANCE, element);
                 Component name = parsed.result().orElse(null);
-                if (name != null) {
-                    return name;
-                }
-            } catch (Exception ignored) {
-            }
+                if (name != null) return name;
+            } catch (Exception ignored) {}
         }
-
         EntityType<?> type = BuiltInRegistries.ENTITY_TYPE.get(mob.typeId());
         return Component.translatable(type.getDescriptionId());
     }
 
     private static boolean spawnCapturedMob(ServerLevel level, BlockPos pos, SpiritrootTetherData data) {
         Optional<SpiritrootTetherData.CapturedMob> mobOpt = data.mob();
-        if (mobOpt.isEmpty()) {
-            return false;
-        }
-
+        if (mobOpt.isEmpty()) return false;
         SpiritrootTetherData.CapturedMob mob = mobOpt.get();
-
         CompoundTag tag;
         try {
             tag = TagParser.parseTag(mob.snbt());
         } catch (Exception ignored) {
             return false;
         }
-
         tag.putString("id", mob.typeId().toString());
-
         Entity spawned = EntityType.loadEntityRecursive(tag, level, entity -> entity);
-        if (spawned == null) {
-            return false;
-        }
-
+        if (spawned == null) return false;
         spawned.moveTo(pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, spawned.getYRot(), spawned.getXRot());
-
-        if (spawned instanceof Mob spawnedMob) {
-            spawnedMob.setPersistenceRequired();
-        }
-
-        if (level.addFreshEntity(spawned)) {
-            return true;
-        }
-
+        if (spawned instanceof Mob spawnedMob) spawnedMob.setPersistenceRequired();
+        if (level.addFreshEntity(spawned)) return true;
         UUID uuid = mob.uuid();
-        if (uuid == null) {
-            return false;
-        }
-
+        if (uuid == null) return false;
         spawned.discard();
-
         Entity retry = EntityType.loadEntityRecursive(tag, level, entity -> entity);
-        if (retry == null) {
-            return false;
-        }
-
+        if (retry == null) return false;
         retry.setUUID(uuid);
         retry.moveTo(pos.getX() + 0.5D, pos.getY(), pos.getZ() + 0.5D, retry.getYRot(), retry.getXRot());
-
-        if (retry instanceof Mob retryMob) {
-            retryMob.setPersistenceRequired();
-        }
-
+        if (retry instanceof Mob retryMob) retryMob.setPersistenceRequired();
         return level.addFreshEntity(retry);
     }
 }
