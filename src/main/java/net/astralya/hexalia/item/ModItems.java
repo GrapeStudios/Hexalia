@@ -245,7 +245,8 @@ public class ModItems {
             () -> new BottleMothItem(new Item.Properties().stacksTo(1)));
     public static final DeferredItem<Item> SILK_MOTH_SPAWN_EGG = ITEMS.register("silk_moth_spawn_egg",
             () -> new CustomModelSpawnEggItem(ModEntities.SILK_MOTH_ENTITY.get(), new Item.Properties()));
-    public static final DeferredItem<Item> CACOFEY_SPAWN_EGG = ITEMS.registerSimpleItem("cacofey_spawn_egg");
+    public static final DeferredItem<Item> CACOFEY_SPAWN_EGG = ITEMS.register("cacofey_spawn_egg",
+            () -> new CustomModelSpawnEggItem(ModEntities.CACOFEY_ENTITY.get(), new Item.Properties()));
 
     // Wood-Related Items
     public static final DeferredItem<Item> WILLOW_BOAT = ITEMS.register("willow_boat",

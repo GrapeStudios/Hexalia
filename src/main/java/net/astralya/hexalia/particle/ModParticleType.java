@@ -23,6 +23,8 @@ public class ModParticleType {
             () -> new SimpleParticleType(true));
     public static final Supplier<SimpleParticleType> SPARKLE = PARTICLE_TYPES.register("sparkle",
             () -> new SimpleParticleType(true));
+    public static final Supplier<SimpleParticleType> CACOFEY_DUST = PARTICLE_TYPES.register("cacofey_dust",
+            () -> new SimpleParticleType(true));
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);

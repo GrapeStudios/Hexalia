@@ -18,5 +18,12 @@
     "sounds": [
       "hexalia:sac_impact"
     ]
+  },
+
+  "cacofey_giggle": {
+    "subtitle": "sounds.hexalia.cacofey_giggle",
+    "sounds": [
+      "hexalia:cacofey_giggle"
+    ]
   }
 }

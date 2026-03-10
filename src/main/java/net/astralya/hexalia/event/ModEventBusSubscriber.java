@@ -4,6 +4,7 @@ import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.block.entity.custom.*;
 import net.astralya.hexalia.entity.ModEntities;
+import net.astralya.hexalia.entity.custom.CacofeyEntity;
 import net.astralya.hexalia.entity.custom.SilkMothEntity;
 import net.astralya.hexalia.entity.layers.ModModelLayers;
 import net.minecraft.client.model.BoatModel;
@@ -33,11 +34,14 @@ public class ModEventBusSubscriber {
     @SubscribeEvent
     public static void entityAttributesEvent(EntityAttributeCreationEvent event) {
         event.put(ModEntities.SILK_MOTH_ENTITY.get(), SilkMothEntity.setAttributes());
+        event.put(ModEntities.CACOFEY_ENTITY.get(), CacofeyEntity.setAttributes());
     }
 
     @SubscribeEvent
     public static void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
         event.register(ModEntities.SILK_MOTH_ENTITY.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+                Animal::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+        event.register(ModEntities.CACOFEY_ENTITY.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
                 Animal::checkAnimalSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
     }
 

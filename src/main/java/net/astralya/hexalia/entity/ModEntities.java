@@ -3,6 +3,7 @@ package net.astralya.hexalia.entity;
 import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.entity.boat.ModBoatEntity;
 import net.astralya.hexalia.entity.boat.ModChestBoatEntity;
+import net.astralya.hexalia.entity.custom.CacofeyEntity;
 import net.astralya.hexalia.entity.custom.projectile.*;
 import net.astralya.hexalia.entity.custom.SilkMothEntity;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -19,6 +20,8 @@ public class ModEntities {
 
     public static final Supplier<EntityType<SilkMothEntity>> SILK_MOTH_ENTITY  = ENTITY_TYPE.register("silk_moth",
             () -> EntityType.Builder.of(SilkMothEntity::new, MobCategory.CREATURE).sized(0.6f, 0.45f).build("silk_moth"));
+    public static final Supplier<EntityType<CacofeyEntity>> CACOFEY_ENTITY = ENTITY_TYPE.register("cacofey",
+            () -> EntityType.Builder.of(CacofeyEntity::new, MobCategory.CREATURE).sized(0.6f, 0.45f).build("cacofey"));
 
     // Projectiles
 

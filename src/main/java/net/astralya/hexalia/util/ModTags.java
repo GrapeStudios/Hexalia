@@ -122,5 +122,7 @@ public class ModTags {
                 ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_decorative_flowers"));
         public static final TagKey<Biome> SILK_MOTH_SPAWNS = TagKey.create(Registries.BIOME,
                 ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "silk_moth_spawns"));
+        public static final TagKey<Biome> CACOFEY_SPAWNS = TagKey.create(Registries.BIOME,
+                ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "cacofey_spawns"));
     }
 }

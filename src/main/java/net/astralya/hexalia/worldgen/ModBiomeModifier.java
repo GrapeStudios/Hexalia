@@ -20,6 +20,7 @@ import java.util.List;
 public final class ModBiomeModifier {
 
     public static final ResourceKey<BiomeModifier> SPAWN_SILK_MOTH = registerKey("spawn_silk_moth");
+    public static final ResourceKey<BiomeModifier> SPAWN_CACOFEY = registerKey("spawn_cacofey");
 
     public static final ResourceKey<BiomeModifier> ADD_SPIRIT_BLOOM = registerKey("add_spirit_bloom");
     public static final ResourceKey<BiomeModifier> ADD_DREAMSHROOM = registerKey("add_dreamshroom");
@@ -56,6 +57,14 @@ public final class ModBiomeModifier {
                 new BiomeModifiers.AddSpawnsBiomeModifier(
                         biomes.getOrThrow(ModTags.Biomes.SILK_MOTH_SPAWNS),
                         List.of(new MobSpawnSettings.SpawnerData(ModEntities.SILK_MOTH_ENTITY.get(), 2, 1, 2))
+                )
+        );
+
+        context.register(
+                SPAWN_CACOFEY,
+                new BiomeModifiers.AddSpawnsBiomeModifier(
+                        biomes.getOrThrow(ModTags.Biomes.CACOFEY_SPAWNS),
+                        List.of(new MobSpawnSettings.SpawnerData(ModEntities.CACOFEY_ENTITY.get(), 2, 1, 1))
                 )
         );
 

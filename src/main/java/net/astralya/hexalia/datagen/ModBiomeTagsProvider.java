@@ -37,5 +37,7 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider {
                 .add(Biomes.SWAMP);
         this.tag(ModTags.Biomes.SILK_MOTH_SPAWNS)
                 .addTag(BiomeTags.IS_FOREST);
+        this.tag(ModTags.Biomes.CACOFEY_SPAWNS)
+                .addTag(BiomeTags.IS_JUNGLE);
     }
 }

@@ -26,6 +26,7 @@ public class ClientSetUpEvents {
         Minecraft.getInstance().particleEngine.register(ModParticleType.LEAVES.get(), LeavesParticle.Factory::new);
         Minecraft.getInstance().particleEngine.register(ModParticleType.SPORE.get(), SporeParticle.Factory::new);
         Minecraft.getInstance().particleEngine.register(ModParticleType.SPARKLE.get(), SparkleParticle.Factory::new);
+        Minecraft.getInstance().particleEngine.register(ModParticleType.CACOFEY_DUST.get(), CacofeyDustParticle.Factory::new);
     }
 
     @SubscribeEvent

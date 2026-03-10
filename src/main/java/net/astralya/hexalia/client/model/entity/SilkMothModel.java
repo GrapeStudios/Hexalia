@@ -14,7 +14,7 @@ public class SilkMothModel extends GeoModel<SilkMothEntity> {
 
     @Override
     public ResourceLocation getTextureResource(SilkMothEntity animatable) {
-        return ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "textures/armor/silk_moth_default.png");
+        return ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "textures/entity/silk_moth_default.png");
     }
 
     @Override

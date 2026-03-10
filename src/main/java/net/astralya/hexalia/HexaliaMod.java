@@ -4,6 +4,7 @@ import net.astralya.hexalia.block.ModFlammables;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.client.renderer.blockentity.*;
+import net.astralya.hexalia.client.renderer.entity.CacofeyRenderer;
 import net.astralya.hexalia.component.ModComponents;
 import net.astralya.hexalia.effect.ModMobEffects;
 import net.astralya.hexalia.entity.ModEntities;
@@ -139,6 +140,7 @@ public class HexaliaMod {
             EntityRenderers.register(ModEntities.THORN_ARROW.get(), ThornArrowRenderer::new);
 
             EntityRenderers.register(ModEntities.SILK_MOTH_ENTITY.get(), SilkMothRenderer::new);
+            EntityRenderers.register(ModEntities.CACOFEY_ENTITY.get(), CacofeyRenderer::new);
 
             Sheets.addWoodType(ModWoodTypes.COTTONWOOD);
             Sheets.addWoodType(ModWoodTypes.WILLOW);

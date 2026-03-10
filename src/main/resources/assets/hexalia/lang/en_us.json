@@ -237,6 +237,7 @@
   "sounds.hexalia.ritual_success": "Ritual completed",
   "sounds.hexalia.conversion": "Block converted",
   "sounds.hexalia.sac_impact": "Sac hits the ground",
+  "sounds.hexalia.cacofey_giggle": "Cacofey giggling",
 
   "effect.hexalia.bloodlust": "Bloodlust",
   "effect.hexalia.bloodlust.description": "Increases strength and restores a portion of damage dealt to foes, but the Regeneration effect is disabled.",
