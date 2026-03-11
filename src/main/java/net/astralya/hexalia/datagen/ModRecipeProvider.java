@@ -678,6 +678,20 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
                         "witchweed_from_mutation"));
 
+        MutationRecipeBuilder.mutation(
+                        Ingredient.of(Blocks.OAK_SAPLING),
+                        new ItemStack(ModBlocks.COTTONWOOD_SAPLING.get())
+                ).unlockedByItem("has_mutavis", ModItems.MUTAVIS.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        "cottonwood_sapling_from_mutation"));
+
+        MutationRecipeBuilder.mutation(
+                        Ingredient.of(Blocks.BIRCH_SAPLING),
+                        new ItemStack(ModBlocks.WILLOW_SAPLING.get())
+                ).unlockedByItem("has_mutavis", ModItems.MUTAVIS.get())
+                .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
+                        "willow_sapling_from_mutation"));
+
         // Ritual Brazier Recipes
         RitualBrazierRecipeBuilder.ritualBrazierRecipe(
                         Ingredient.of(Items.AMETHYST_SHARD),

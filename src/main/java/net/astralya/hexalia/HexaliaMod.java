@@ -24,6 +24,7 @@ import net.astralya.hexalia.util.ModArmorMaterials;
 import net.astralya.hexalia.util.ModItemProperties;
 import net.astralya.hexalia.util.ModVanillaBehaviors;
 import net.astralya.hexalia.util.ModWoodTypes;
+import net.astralya.hexalia.worldgen.ModFeatures;
 import net.astralya.hexalia.worldgen.gen.decorator.ModTreeDecorators;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
@@ -81,6 +82,8 @@ public class HexaliaMod {
         ModArmorMaterials.register(modEventBus);
         ModComponents.register(modEventBus);
         ModTreeDecorators.register(modEventBus);
+
+        ModFeatures.FEATURES.register(modEventBus);
 
         NeoForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
