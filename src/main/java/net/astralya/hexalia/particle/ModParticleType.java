@@ -11,7 +11,8 @@ import java.util.function.Supplier;
 
 public class ModParticleType {
 
-    public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = DeferredRegister.create(Registries.PARTICLE_TYPE, HexaliaMod.MODID);
+    public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES =
+            DeferredRegister.create(Registries.PARTICLE_TYPE, HexaliaMod.MODID);
 
     public static final Supplier<SimpleParticleType> SPORE = PARTICLE_TYPES.register("spore",
             () -> new SimpleParticleType(true));
@@ -25,9 +26,10 @@ public class ModParticleType {
             () -> new SimpleParticleType(true));
     public static final Supplier<SimpleParticleType> CACOFEY_DUST = PARTICLE_TYPES.register("cacofey_dust",
             () -> new SimpleParticleType(true));
+    public static final Supplier<SimpleParticleType> CACOFEY_DUST_HELD = PARTICLE_TYPES.register("cacofey_dust_held",
+            () -> new SimpleParticleType(true));
 
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);
     }
-
 }

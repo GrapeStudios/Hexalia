@@ -1,0 +1,7 @@
+{
+  "type": "hexalia:mutation",
+  "input": {
+    "item": "minecraft:birch_sapling"
+  },
+  "output": "hexalia:willow_sapling"
+}

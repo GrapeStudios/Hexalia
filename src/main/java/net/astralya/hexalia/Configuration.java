@@ -55,6 +55,8 @@ public final class Configuration {
     public static ModConfigSpec.IntValue LOURDES_DURATION;
     public static ModConfigSpec.DoubleValue LOURDES_EFFECT_RADIUS;
 
+    public static ModConfigSpec.IntValue CACOFEY_HARVEST_RADIUS;
+
     static {
         COMMON_CONFIG = buildCommon();
         CLIENT_CONFIG = buildClient();
@@ -104,6 +106,10 @@ public final class Configuration {
         BLEEDING_DAMAGE = builder
                 .comment("Damage applied by the Bleeding effect per tick (in half-hearts). Default: 0.5")
                 .defineInRange("bleedingDamage", 0.5D, 0.0D, 10.0D);
+
+        CACOFEY_HARVEST_RADIUS = builder
+                .comment("Radius in blocks the tamed Cacofey scans for mature crops when anchored. Default: 16")
+                .defineInRange("cacofeyHarvestRadius", 16, 4, 64);
 
         builder.pop();
 

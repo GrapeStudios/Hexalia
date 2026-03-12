@@ -19,13 +19,13 @@ import software.bernie.geckolib.renderer.layer.GeoRenderLayer;
 
 public class CacofeyHeldItemLayer extends GeoRenderLayer<CacofeyEntity> {
 
-    private static final float ITEM_SCALE    = 0.5f;
-    private static final float ORBIT_RADIUS  = 0.55f;
-    private static final float ORBIT_Y       = 0.45f;
-    private static final float ORBIT_SPEED   = 1.8f;
-    private static final float BOB_AMP       = 0.04f;
-    private static final float BOB_SPEED     = 0.07f;
-    private static final int   PARTICLE_INTERVAL = 8;
+    private static final float ITEM_SCALE        = 0.5f;
+    private static final float ORBIT_RADIUS      = 0.55f;
+    private static final float ORBIT_Y           = 0.45f;
+    private static final float ORBIT_SPEED       = 1.8f;
+    private static final float BOB_AMP           = 0.04f;
+    private static final float BOB_SPEED         = 0.07f;
+    private static final int   PARTICLE_INTERVAL = 4;
 
     public CacofeyHeldItemLayer(GeoEntityRenderer<CacofeyEntity> renderer) {
         super(renderer);
@@ -40,19 +40,18 @@ public class CacofeyHeldItemLayer extends GeoRenderLayer<CacofeyEntity> {
         ItemStack held = animatable.getHeldItem();
         if (held.isEmpty()) return;
 
-        float age    = animatable.tickCount + partialTick;
-        float angle  = (float) Math.toRadians(age * ORBIT_SPEED % 360f);
-        float bob    = Mth.sin(age * BOB_SPEED) * BOB_AMP;
-
-        float ox = Mth.cos(angle) * ORBIT_RADIUS;
-        float oz = Mth.sin(angle) * ORBIT_RADIUS;
+        float age   = animatable.tickCount + partialTick;
+        float angle = (float) Math.toRadians(age * ORBIT_SPEED % 360f);
+        float bob   = Mth.sin(age * BOB_SPEED) * BOB_AMP;
+        float ox    = Mth.cos(angle) * ORBIT_RADIUS;
+        float oz    = Mth.sin(angle) * ORBIT_RADIUS;
 
         if (animatable.level().isClientSide && animatable.tickCount % PARTICLE_INTERVAL == 0) {
-            double px = animatable.getX() + ox + (animatable.getRandom().nextDouble() - 0.5) * 0.15;
-            double py = animatable.getY() + ORBIT_Y + bob + (animatable.getRandom().nextDouble() - 0.5) * 0.1;
-            double pz = animatable.getZ() + oz + (animatable.getRandom().nextDouble() - 0.5) * 0.15;
+            double px = animatable.getX() + ox + (animatable.getRandom().nextDouble() - 0.5) * 0.12;
+            double py = animatable.getY() + ORBIT_Y + bob + (animatable.getRandom().nextDouble() - 0.5) * 0.08;
+            double pz = animatable.getZ() + oz + (animatable.getRandom().nextDouble() - 0.5) * 0.12;
             Minecraft.getInstance().level.addParticle(
-                    ModParticleType.CACOFEY_DUST.get(),
+                    ModParticleType.CACOFEY_DUST_HELD.get(),
                     px, py, pz,
                     0.0, 0.01, 0.0);
         }

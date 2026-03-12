@@ -99,11 +99,6 @@ public class JEIPlugin implements IModPlugin {
                 Component.translatable("jei.info.chillberry_bushes")
         );
 
-        registration.addIngredientInfo(List.of(new ItemStack(ModItems.SALTSPROUT.get())),
-                VanillaTypes.ITEM_STACK,
-                Component.translatable("jei.info.saltsprout")
-        );
-
         registration.addIngredientInfo(List.of(new ItemStack(ModBlocks.RITUAL_BRAZIER.get())),
                 VanillaTypes.ITEM_STACK,
                 Component.translatable("jei.info.ritual_brazier")
@@ -112,6 +107,21 @@ public class JEIPlugin implements IModPlugin {
         registration.addIngredientInfo(List.of(new ItemStack(ModBlocks.RITUAL_TABLE.get())),
                 VanillaTypes.ITEM_STACK,
                 Component.translatable("jei.info.ritual_table")
+        );
+
+        registration.addIngredientInfo(List.of(new ItemStack(ModItems.LOTUS_BLOSSOM.get())),
+                VanillaTypes.ITEM_STACK,
+                Component.translatable("jei.info.lotus_blossom")
+        );
+
+        registration.addIngredientInfo(List.of(new ItemStack(ModItems.TREE_RESIN.get())),
+                VanillaTypes.ITEM_STACK,
+                Component.translatable("jei.info.tree_resin")
+        );
+
+        registration.addIngredientInfo(List.of(new ItemStack(ModItems.SILKWORM.get())),
+                VanillaTypes.ITEM_STACK,
+                Component.translatable("jei.info.silk_fiber")
         );
     }
 

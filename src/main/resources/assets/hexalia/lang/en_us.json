@@ -148,7 +148,7 @@
   "item.hexalia.purity_idol": "Purity Idol",
   "item.hexalia.mutavis": "Mutavis",
   "item.hexalia.briar_sickle": "Briar Sickle",
-  "item.hexalia.rootshaper": "Rootshaper",
+  "item.hexalia.rootshaper": "Rootshaper Pickaxe",
   "item.hexalia.spiritroot_tether": "Spiritroot Tether",
   "item.hexalia.ladle": "Ladle",
   "item.hexalia.kelpweave_blade": "Kelpweave Blade",
@@ -196,6 +196,8 @@
   "entity.hexalia.silk_moth": "Silk Moth",
   "entity.hexalia.thorn_arrow": "Thorn Arrow",
   "entity.hexalia.silk_moth_entity": "Silk Moth",
+  "entity.hexalia.cacofey": "Cacofey",
+  "entity.hexalia.cacofey_entity": "Cacofey",
 
   "container.hexalia.nesting_block": "Nesting Block",
   "container.hexalia.small_cauldron": "Small Cauldron",
@@ -343,11 +345,19 @@
   "message.hexalia.spiritroot_tether.sent_to_anchor": "Spirit returned to its anchor.",
   "message.hexalia.spiritroot_tether.released": "Spirit released.",
   "message.hexalia.spiritroot_tether.cannot_capture": "This spirit cannot be bound.",
+  "message.hexalia.cacofey.stay": "Cacofey is staying put.",
+  "message.hexalia.cacofey.follow": "Cacofey is following you.",
+  "message.hexalia.cacofey.wander": "Cacofey is wandering.",
+  "message.hexalia.cacofey.attuned": "Hex Focus attuned to %s - right-click a container.",
+  "message.hexalia.cacofey.anchored": "%s will harvest crops around this container.",
+  "message.hexalia.cacofey.invalid_container": "That's not a valid container.",
 
   "jei.info.wild_sunfire_tomatoes": "Wild Sunfire Tomatoes can be found in savannas.",
   "jei.info.wild_mandrakes": "Wild Mandrakes can be found in forests.",
-  "jei.info.saltsprout": "Saltsprouts can be found in Herbalist Huts, a structure found in swamps.",
   "jei.info.chillberry_bushes": "Chillberries can be found in taigas.",
   "jei.info.ritual_brazier": "Can be obtained after right-clicking any planks block with an Athame while crouching.",
-  "jei.info.ritual_table": "Can be obtained after right-clicking Deepslate or Cobbled Deepslate with a Hex Focus."
+  "jei.info.ritual_table": "Can be obtained after right-clicking Deepslate or Cobbled Deepslate with a Hex Focus.",
+  "jei.info.lotus_blossom": "Can be obtained after right-clicking Lotus Flowers with an Athame.",
+  "jei.info.tree_resin": "Can be obtained after right-clicking Cottonwood Logs or Dark Oag Logs with an Athame.",
+  "jei.info.silk_fiber": "Can be obtained after breeding Silk Moths."
 }

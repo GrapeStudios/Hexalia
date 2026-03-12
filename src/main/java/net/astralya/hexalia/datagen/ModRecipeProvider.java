@@ -168,6 +168,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         inventoryTrigger(ItemPredicate.Builder.item().of(Items.STRING).build()))
                 .save(recipeOutput);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.RITUAL_TABLE.get())
+                .pattern("DCD")
+                .pattern(" D ")
+                .pattern("DDD")
+                .define('D', Blocks.DEEPSLATE)
+                .define('C', Blocks.MOSS_CARPET)
+                .unlockedBy("has_deepslate",
+                        inventoryTrigger(ItemPredicate.Builder.item().of(Blocks.DEEPSLATE).build()))
+                .save(recipeOutput);
+
         // Recipes for Vanilla Items & Blocks
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.LEATHER)
                 .pattern(" S ")

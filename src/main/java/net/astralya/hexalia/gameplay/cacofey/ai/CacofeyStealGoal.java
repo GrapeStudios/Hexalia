@@ -22,12 +22,14 @@ public class CacofeyStealGoal extends Goal {
     private static final int    FLEE_TICKS     = 80;
     private static final int    STEAL_COOLDOWN = 1200;
     private static final float  APPROACH_SPEED = 1.0F;
+    private static final float  FLEE_SPEED     = 2.4F;
 
     private final CacofeyEntity cacofey;
-    private Phase phase    = Phase.SCAN;
-    private Player target  = null;
-    private int phaseTimer = 0;
-    private int scanTimer  = 0;
+    private Phase phase      = Phase.SCAN;
+    private Player target    = null;
+    private int phaseTimer   = 0;
+    private int scanTimer    = 0;
+    private double fleeOriginY = 0;
 
     public CacofeyStealGoal(CacofeyEntity cacofey) {
         this.cacofey = cacofey;
@@ -94,7 +96,6 @@ public class CacofeyStealGoal extends Goal {
         }
         cacofey.getLookControl().setLookAt(target, 30F, 30F);
         cacofey.getNavigation().moveTo(target, APPROACH_SPEED);
-
         if (cacofey.distanceTo(target) <= STEAL_RADIUS) {
             cacofey.setInspecting(false);
             cacofey.getNavigation().stop();
@@ -116,17 +117,30 @@ public class CacofeyStealGoal extends Goal {
         ItemStack display = stolen.copyWithCount(1);
         stolen.shrink(1);
         cacofey.setHeldItem(display);
+        fleeOriginY = cacofey.getY();
         phase = Phase.FLEE;
         phaseTimer = 0;
     }
 
     private void tickFlee() {
-        if (phaseTimer == 0) {
-            Vec3 flee = cacofey.position()
-                    .add(cacofey.getLookAngle().scale(-1).multiply(1, 0, 1).normalize().scale(5))
-                    .add(0, 2, 0);
-            cacofey.getNavigation().moveTo(flee.x, flee.y, flee.z, APPROACH_SPEED);
+        Vec3 awayDir = cacofey.position().subtract(
+                target != null ? target.position() : cacofey.position()
+        ).multiply(1, 0, 1).normalize();
+
+        if (awayDir.lengthSqr() < 0.001) {
+            awayDir = new Vec3(1, 0, 0);
         }
+
+        double clampedY = Math.min(cacofey.getY() + 1, fleeOriginY + 4);
+
+        Vec3 fleeTarget = new Vec3(
+                cacofey.getX() + awayDir.x * 8,
+                clampedY,
+                cacofey.getZ() + awayDir.z * 8
+        );
+
+        cacofey.getNavigation().moveTo(fleeTarget.x, fleeTarget.y, fleeTarget.z, FLEE_SPEED);
+
         if (++phaseTimer >= FLEE_TICKS) {
             cacofey.getNavigation().stop();
             phase = Phase.CONSUME;

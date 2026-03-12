@@ -64,7 +64,7 @@ public final class ModBiomeModifier {
                 SPAWN_CACOFEY,
                 new BiomeModifiers.AddSpawnsBiomeModifier(
                         biomes.getOrThrow(ModTags.Biomes.CACOFEY_SPAWNS),
-                        List.of(new MobSpawnSettings.SpawnerData(ModEntities.CACOFEY_ENTITY.get(), 2, 1, 1))
+                        List.of(new MobSpawnSettings.SpawnerData(ModEntities.CACOFEY_ENTITY.get(), 8, 1, 2))
                 )
         );
 
