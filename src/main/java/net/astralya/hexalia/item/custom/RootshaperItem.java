@@ -7,6 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.InteractionResult;
@@ -135,7 +136,7 @@ public class RootshaperItem extends Item {
         level.playSound(
                 null,
                 player != null ? player.blockPosition() : BlockPos.ZERO,
-                ModSoundEvents.CONVERSION.get(),
+                SoundEvents.AMETHYST_BLOCK_CHIME,
                 SoundSource.PLAYERS,
                 0.6F,
                 1.2F

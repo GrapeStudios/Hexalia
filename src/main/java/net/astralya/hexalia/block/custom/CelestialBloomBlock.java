@@ -1,5 +1,6 @@
 package net.astralya.hexalia.block.custom;
 
+import net.astralya.hexalia.Configuration;
 import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.particle.ModParticleType;
 import net.minecraft.core.BlockPos;
@@ -17,6 +18,8 @@ public class CelestialBloomBlock extends HerbBlock {
 
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        if (!Configuration.CELESTIAL_BLOOM_EMITS_PARTICLES.get()) return;
+
         boolean withered = state.is(ModBlocks.WITHERED_CELESTIAL_BLOOM.get());
 
         int spawnChance = withered ? 6 : 3;

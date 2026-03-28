@@ -144,6 +144,7 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(Blocks.SEA_LANTERN)
                 .add(Blocks.SOUL_LANTERN)
                 .add(ModBlocks.SALT_LAMP.get())
+                .add(ModBlocks.GHOST_FERN.get())
                 .add(Blocks.END_ROD)
                 .add(Blocks.TORCH);
     }
@@ -260,6 +261,10 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.POTTED_MORPHORA.get())
                 .add(ModBlocks.POTTED_COTTONWOOD_SAPLING.get())
                 .add(ModBlocks.POTTED_WILLOW_SAPLING.get())
+                .add(ModBlocks.POTTED_AEGIFLORA.get())
+                .add(ModBlocks.POTTED_LOURDES.get())
+                .add(ModBlocks.POTTED_WITHERED_AEGIFLORA.get())
+                .add(ModBlocks.POTTED_WITHERED_CELESTIAL_BLOOM.get())
                 .add(ModBlocks.POTTED_DAHLIA.get());
 
         // Dirt

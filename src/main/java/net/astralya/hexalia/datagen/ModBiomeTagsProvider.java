@@ -19,22 +19,44 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        this.tag(ModTags.Biomes.HAS_MANDRAKES)
-                .add(Biomes.FOREST)
-                .add(Biomes.BIRCH_FOREST);
-        this.tag(ModTags.Biomes.HAS_DREAMSHROOMS)
+        // Vegetation
+        this.tag(ModTags.Biomes.HAS_SHROOMS)
                 .add(Biomes.OLD_GROWTH_PINE_TAIGA)
                 .add(Biomes.MUSHROOM_FIELDS);
+
         this.tag(ModTags.Biomes.HAS_SIREN_KELP)
                 .addTag(BiomeTags.IS_OCEAN);
-        this.tag(ModTags.Biomes.HAS_GHOST_FERNS)
-                .add(Biomes.DARK_FOREST);
+
         this.tag(ModTags.Biomes.HAS_DECORATIVE_FLOWERS)
                 .add(Biomes.SUNFLOWER_PLAINS)
                 .add(Biomes.PLAINS);
+
         this.tag(ModTags.Biomes.HAS_SWAMP_VEGETATION)
                 .add(Biomes.MANGROVE_SWAMP)
                 .add(Biomes.SWAMP);
+
+        this.tag(ModTags.Biomes.HAS_FLORAL_VEGETATION)
+                .add(Biomes.MEADOW)
+                .add(Biomes.OLD_GROWTH_BIRCH_FOREST)
+                .add(Biomes.BIRCH_FOREST)
+                .add(Biomes.FLOWER_FOREST);
+
+        this.tag(ModTags.Biomes.HAS_SHADED_VEGETATION)
+                .add(Biomes.DARK_FOREST);
+
+        this.tag(ModTags.Biomes.HAS_COOL_BIOME_VEGETATION)
+                .add(Biomes.TAIGA)
+                .add(Biomes.OLD_GROWTH_SPRUCE_TAIGA)
+                .add(Biomes.SNOWY_TAIGA)
+                .add(Biomes.SNOWY_PLAINS);
+
+        this.tag(ModTags.Biomes.HAS_DRY_BIOME_VEGETATION)
+                .add(Biomes.DESERT)
+                .add(Biomes.BADLANDS)
+                .add(Biomes.WINDSWEPT_SAVANNA)
+                .add(Biomes.SAVANNA);
+
+        // Entities
         this.tag(ModTags.Biomes.SILK_MOTH_SPAWNS)
                 .addTag(BiomeTags.IS_FOREST);
         this.tag(ModTags.Biomes.CACOFEY_SPAWNS)

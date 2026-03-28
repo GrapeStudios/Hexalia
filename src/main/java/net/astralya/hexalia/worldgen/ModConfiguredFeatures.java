@@ -48,7 +48,9 @@ public class ModConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> GHOST_FERN = registerKey("ghost_fern");
     public static final ResourceKey<ConfiguredFeature<?, ?>> SALTSPROUT = registerKey("saltsprout");
     public static final ResourceKey<ConfiguredFeature<?, ?>> COTTONWOOD = registerKey("cottonwood");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> COTTONWOOD_COCOON = registerKey("cottonwood_cocoon");
     public static final ResourceKey<ConfiguredFeature<?, ?>> WILLOW = registerKey("willow");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> DARK_OAK_PLAIN = registerKey("dark_oak_plain");
     public static final ResourceKey<ConfiguredFeature<?, ?>> DARK_OAK_COCOON = registerKey("dark_oak_cocoon");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LOTUS_FLOWER = registerKey("lotus_flower");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PALE_MUSHROOM = registerKey("pale_mushroom");
@@ -124,6 +126,14 @@ public class ModConfiguredFeatures {
     }
 
     private static void registerTrees(BootstrapContext<ConfiguredFeature<?, ?>> context) {
+        register(context, DARK_OAK_PLAIN, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(Blocks.DARK_OAK_LOG),
+                new DarkOakTrunkPlacer(5, 2, 1),
+                BlockStateProvider.simple(Blocks.DARK_OAK_LEAVES),
+                new DarkOakFoliagePlacer(ConstantInt.of(1), ConstantInt.of(0)) {},
+                new TwoLayersFeatureSize(1, 0, 1))
+                .build());
+
         register(context, DARK_OAK_COCOON, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(Blocks.DARK_OAK_LOG),
                 new DarkOakTrunkPlacer(5, 2, 1),
@@ -139,6 +149,15 @@ public class ModConfiguredFeatures {
                 new FancyFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), 3) {},
                 new TwoLayersFeatureSize(1, 0, 2))
                 .decorators(List.of(new CatkinTreeDecorator()))
+                .build());
+
+        register(context, COTTONWOOD_COCOON, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
+                BlockStateProvider.simple(ModBlocks.COTTONWOOD_LOG.get()),
+                new StraightTrunkPlacer(6, 2, 1),
+                BlockStateProvider.simple(ModBlocks.COTTONWOOD_LEAVES.get()),
+                new FancyFoliagePlacer(ConstantInt.of(3), ConstantInt.of(1), 3) {},
+                new TwoLayersFeatureSize(1, 0, 2))
+                .decorators(List.of(new CatkinTreeDecorator(), new CocoonTreeDecorator(0.2f)))
                 .build());
 
         register(context, WILLOW, Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(

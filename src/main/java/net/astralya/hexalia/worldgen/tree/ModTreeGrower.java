@@ -7,8 +7,18 @@ import net.minecraft.world.level.block.grower.TreeGrower;
 import java.util.Optional;
 
 public class ModTreeGrower {
-    public static final TreeGrower COTTONWOOD = new TreeGrower(HexaliaMod.MODID + ":cottonwood",
-            Optional.empty(), Optional.of(ModConfiguredFeatures.COTTONWOOD), Optional.empty());
-    public static final TreeGrower WILLOW = new TreeGrower(HexaliaMod.MODID + ":willow",
-            Optional.empty(), Optional.of(ModConfiguredFeatures.WILLOW), Optional.empty());
+
+    public static final TreeGrower COTTONWOOD = new TreeGrower(
+            HexaliaMod.MODID + ":cottonwood",
+            Optional.empty(),
+            Optional.empty(),
+            Optional.of(ModConfiguredFeatures.COTTONWOOD)
+    );
+
+    public static final TreeGrower WILLOW = new TreeGrower(
+            HexaliaMod.MODID + ":willow",
+            Optional.empty(),
+            Optional.empty(),
+            Optional.of(ModConfiguredFeatures.WILLOW)
+    );
 }

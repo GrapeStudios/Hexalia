@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.astralya.hexalia.block.ModBlocks;
-import net.astralya.hexalia.block.custom.CocoonBlock;
+import net.astralya.hexalia.block.custom.SilkwormCocoonBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -40,7 +40,7 @@ public class CocoonTreeDecorator extends TreeDecorator {
                 Direction direction = directions[random.nextInt(directions.length)];
                 BlockPos target = pos.relative(direction);
                 if (context.isAir(target) && context.isAir(target.below())) {
-                    context.setBlock(target, ModBlocks.SILKWORM_COCOON.get().defaultBlockState().setValue(CocoonBlock.FACING, direction));
+                    context.setBlock(target, ModBlocks.SILKWORM_COCOON.get().defaultBlockState().setValue(SilkwormCocoonBlock.FACING, direction));
                     break;
                 }
             }

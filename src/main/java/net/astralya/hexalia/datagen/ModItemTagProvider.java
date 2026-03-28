@@ -178,6 +178,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.BREW_OF_SIPHON.get())
                 .add(ModItems.BREW_OF_DAYBLOOM.get())
                 .add(ModItems.BREW_OF_ARACHNID_GRACE.get())
+                .add(ModItems.BREW_OF_HOLLOW_SILENCE.get())
                 .add(ModItems.RUSTIC_BOTTLE.get());
 
         // Minerals

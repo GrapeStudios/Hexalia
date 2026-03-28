@@ -1,6 +1,6 @@
-// 1.21.1	2026-03-04T22:08:32.9889183	Tags for minecraft:block mod id hexalia
+// 1.21.1	2026-03-18T21:10:25.2784637	Tags for minecraft:block mod id hexalia
 14835ee05f2eb66cecd359de9208e4332b57c085 data/c/tags/block/salt_blocks.json
-d13705e4e223106a2908c0349ca698c84760c4b2 data/hexalia/tags/block/attracts_moth.json
+319da9e7317292fcbe7a40fa245caf6b1a4051b3 data/hexalia/tags/block/attracts_moth.json
 322433cbed0be4e8da074b600286aad1f9b7aff5 data/hexalia/tags/block/bogshade_no_slow.json
 0a9e24febf41067c0d25e9952dd0c726cba969b9 data/hexalia/tags/block/cottonwood_logs.json
 04c0e07d84d58d99b11955eb3d34ed34630e541e data/hexalia/tags/block/heating_block.json

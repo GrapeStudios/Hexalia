@@ -27,7 +27,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
@@ -36,19 +35,18 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public class CocoonBlock extends Block {
+public class SilkwormCocoonBlock extends Block {
 
-    public static final DirectionProperty FACING = BlockStateProperties.FACING;
-    public static final IntegerProperty HATCH = IntegerProperty.create("hatch", 0, 2);
+    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
     private static final VoxelShape NORTH_SHAPE = Shapes.create(new AABB(5.0 / 16.0, 5.0 / 16.0, 11.0 / 16.0, 11.0 / 16.0, 12.0 / 16.0, 1.0));
     private static final VoxelShape SOUTH_SHAPE = Shapes.create(new AABB(5.0 / 16.0, 5.0 / 16.0, 0.0, 11.0 / 16.0, 12.0 / 16.0, 5.0 / 16.0));
-    private static final VoxelShape WEST_SHAPE = Shapes.create(new AABB(11.0 / 16.0, 5.0 / 16.0, 5.0 / 16.0, 1.0, 12.0 / 16.0, 11.0 / 16.0));
-    private static final VoxelShape EAST_SHAPE = Shapes.create(new AABB(0.0, 5.0 / 16.0, 5.0 / 16.0, 5.0 / 16.0, 12.0 / 16.0, 11.0 / 16.0));
+    private static final VoxelShape WEST_SHAPE  = Shapes.create(new AABB(11.0 / 16.0, 5.0 / 16.0, 5.0 / 16.0, 1.0, 12.0 / 16.0, 11.0 / 16.0));
+    private static final VoxelShape EAST_SHAPE  = Shapes.create(new AABB(0.0, 5.0 / 16.0, 5.0 / 16.0, 5.0 / 16.0, 12.0 / 16.0, 11.0 / 16.0));
 
-    public CocoonBlock(Properties properties) {
+    public SilkwormCocoonBlock(Properties properties) {
         super(properties);
-        this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH).setValue(HATCH, 0));
+        this.registerDefaultState(this.defaultBlockState().setValue(FACING, Direction.NORTH));
     }
 
     @Override
@@ -56,7 +54,6 @@ public class CocoonBlock extends Block {
         if (level.isClientSide()) {
             return ItemInteractionResult.SUCCESS;
         }
-
         ItemStack itemStack = player.getItemInHand(hand);
         if (itemStack.getItem() instanceof BlockItem blockItem) {
             Block block = blockItem.getBlock();
@@ -65,14 +62,12 @@ public class CocoonBlock extends Block {
                 return ItemInteractionResult.SUCCESS;
             }
         }
-
         return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
     }
 
     @Override
     protected void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         level.removeBlock(pos, false);
-
         SilkMothEntity silkMoth = ModEntities.SILK_MOTH_ENTITY.get().create(level);
         if (silkMoth != null) {
             silkMoth.moveTo(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 0.0F, 0.0F);
@@ -80,14 +75,12 @@ public class CocoonBlock extends Block {
             silkMoth.setVariant(variant);
             level.addFreshEntity(silkMoth);
         }
-
         level.gameEvent(null, GameEvent.BLOCK_DESTROY, pos);
     }
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        Direction direction = state.getValue(FACING);
-        return switch (direction) {
+        return switch (state.getValue(FACING)) {
             case SOUTH -> SOUTH_SHAPE;
             case WEST -> WEST_SHAPE;
             case EAST -> EAST_SHAPE;
@@ -101,10 +94,7 @@ public class CocoonBlock extends Block {
         if (face.getAxis().isVertical()) {
             return null;
         }
-
-        return this.defaultBlockState()
-                .setValue(FACING, face)
-                .setValue(HATCH, 0);
+        return this.defaultBlockState().setValue(FACING, face);
     }
 
     @Override
@@ -118,10 +108,6 @@ public class CocoonBlock extends Block {
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         Direction facing = state.getValue(FACING);
-        if (facing.getAxis().isVertical()) {
-            return false;
-        }
-
         BlockPos attachedPos = pos.relative(facing.getOpposite());
         return level.getBlockState(attachedPos).is(BlockTags.LOGS);
     }
@@ -143,6 +129,6 @@ public class CocoonBlock extends Block {
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(FACING, HATCH);
+        builder.add(FACING);
     }
 }

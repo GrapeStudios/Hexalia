@@ -1,7 +1,7 @@
 package net.astralya.hexalia.item.custom;
 
 import net.astralya.hexalia.block.ModBlocks;
-import net.astralya.hexalia.block.custom.CocoonBlock;
+import net.astralya.hexalia.block.custom.SilkwormCocoonBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -45,7 +45,7 @@ public class SilkwormItem extends Item {
 
         BlockState cocoonState = ModBlocks.SILKWORM_COCOON.get()
                 .defaultBlockState()
-                .setValue(CocoonBlock.FACING, face);
+                .setValue(SilkwormCocoonBlock.FACING, face);
 
         if (!cocoonState.canSurvive(level, placePos)) {
             return InteractionResult.FAIL;

@@ -1,6 +1,6 @@
 {
   "type": "neoforge:add_features",
-  "biomes": "minecraft:taiga",
+  "biomes": "#hexalia:has_cool_biome_vegetation",
   "features": "hexalia:chillberry_placed",
   "step": "vegetal_decoration"
 }

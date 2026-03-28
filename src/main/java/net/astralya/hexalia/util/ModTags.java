@@ -108,18 +108,25 @@ public class ModTags {
     }
 
     public static class Biomes {
-        public static final TagKey<Biome> HAS_MANDRAKES = TagKey.create(Registries.BIOME,
-                ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_mandrakes"));
-        public static final TagKey<Biome> HAS_DREAMSHROOMS = TagKey.create(Registries.BIOME,
-                ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_dreamshrooms"));
+        // Vegetation
+        public static final TagKey<Biome> HAS_SHROOMS = TagKey.create(Registries.BIOME,
+                ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_shrooms"));
         public static final TagKey<Biome> HAS_SIREN_KELP = TagKey.create(Registries.BIOME,
                 ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_siren_kelp"));
-        public static final TagKey<Biome> HAS_GHOST_FERNS = TagKey.create(Registries.BIOME,
-                ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_ghost_ferns"));
         public static final TagKey<Biome> HAS_SWAMP_VEGETATION = TagKey.create(Registries.BIOME,
                 ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_swamp_vegetation"));
         public static final TagKey<Biome> HAS_DECORATIVE_FLOWERS = TagKey.create(Registries.BIOME,
                 ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_decorative_flowers"));
+        public static final TagKey<Biome> HAS_FLORAL_VEGETATION = TagKey.create(Registries.BIOME,
+                ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_floral_vegetation"));
+        public static final TagKey<Biome> HAS_SHADED_VEGETATION = TagKey.create(Registries.BIOME,
+                ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_shade_vegetation"));
+        public static final TagKey<Biome> HAS_COOL_BIOME_VEGETATION = TagKey.create(Registries.BIOME,
+                ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_cool_biome_vegetation"));
+        public static final TagKey<Biome> HAS_DRY_BIOME_VEGETATION = TagKey.create(Registries.BIOME,
+                ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_dry_biome_vegetation"));
+
+        // Entities
         public static final TagKey<Biome> SILK_MOTH_SPAWNS = TagKey.create(Registries.BIOME,
                 ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "silk_moth_spawns"));
         public static final TagKey<Biome> CACOFEY_SPAWNS = TagKey.create(Registries.BIOME,

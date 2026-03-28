@@ -319,7 +319,7 @@
   "message.hexalia.ritual_brazier.no_sky": "The infusion requires an open view to the sky.",
   "message.hexalia.censer_not_full": "The censer must be filled with herbs before lighting!",
   "message.hexalia.invalid_herb_combination": "This combination of herbs does not work.",
-  "message.hexalia.censer.fireproof_presence": "A protective warmth radiates from the censer",
+  "message.hexalia.censer.tidewarden": "A gentle tide lifts the spirit, carrying it beyond harm",
   "message.hexalia.censer.undead_veil": "Unnatural stillness quiets the restless dead",
   "message.hexalia.censer.ethereal_grazing": "A pale tranquility settles over the herd, and life renews itself without need",
   "message.hexalia.censer.miners_respite": "Metals whisper secrets of perfect balance",
@@ -351,6 +351,7 @@
   "message.hexalia.cacofey.attuned": "Hex Focus attuned to %s - right-click a container.",
   "message.hexalia.cacofey.anchored": "%s will harvest crops around this container.",
   "message.hexalia.cacofey.invalid_container": "That's not a valid container.",
+  "message.hexalia.dreamcatcher_full": "The dreamcatcher cannot hold any more fuel.",
 
   "jei.info.wild_sunfire_tomatoes": "Wild Sunfire Tomatoes can be found in savannas.",
   "jei.info.wild_mandrakes": "Wild Mandrakes can be found in forests.",

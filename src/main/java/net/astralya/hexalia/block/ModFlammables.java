@@ -9,6 +9,12 @@ public final class ModFlammables {
     public static void register() {
         FireBlock fire = (FireBlock) Blocks.FIRE;
 
+        // Other
+        fire.setFlammable(ModBlocks.NESTING_BLOCK.get(), 5, 20);
+        fire.setFlammable(ModBlocks.RITUAL_BRAZIER.get(), 5, 20);
+        fire.setFlammable(ModBlocks.DREAMCATCHER.get(), 5, 20);
+        fire.setFlammable(ModBlocks.SILKWORM_COCOON.get(), 60, 100);
+
         // Leaves
         fire.setFlammable(ModBlocks.COTTONWOOD_CATKIN.get(), 30, 60);
         fire.setFlammable(ModBlocks.COTTONWOOD_LEAVES.get(), 30, 60);

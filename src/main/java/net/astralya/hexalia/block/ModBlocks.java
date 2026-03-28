@@ -6,6 +6,7 @@ import net.astralya.hexalia.block.custom.wood.*;
 import net.astralya.hexalia.effect.ModMobEffects;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.util.ModWoodTypes;
+import net.astralya.hexalia.worldgen.ModConfiguredFeatures;
 import net.astralya.hexalia.worldgen.tree.ModTreeGrower;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
@@ -33,7 +34,7 @@ public class ModBlocks {
             () -> new InfusedFarmlandBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.FARMLAND)
                     .randomTicks().sound(SoundType.MUD).noOcclusion()));
     public static final DeferredBlock<Block> SILKWORM_COCOON = registerBlock("silkworm_cocoon",
-            () -> new CocoonBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_WOOL)));
+            () -> new SilkwormCocoonBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.WHITE_WOOL)));
     public static final DeferredBlock<Block> EGG_CLUSTER = registerBlock("egg_cluster",
             () -> new EggClusterBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.MOSS_BLOCK).noOcclusion()));
 
@@ -179,7 +180,8 @@ public class ModBlocks {
     public static final DeferredBlock<Block> COTTONWOOD_LEAVES = registerBlock("cottonwood_leaves",
             () -> new LeavesBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LEAVES).strength(0.2f).noOcclusion()));
     public static final DeferredBlock<Block> COTTONWOOD_SAPLING = registerBlock("cottonwood_sapling",
-            () -> new SaplingBlock(ModTreeGrower.COTTONWOOD, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).strength(0.2f)));
+            () -> new CocoonSaplingBlock(ModTreeGrower.COTTONWOOD, ModConfiguredFeatures.COTTONWOOD, ModConfiguredFeatures.COTTONWOOD_COCOON,
+                    BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_SAPLING).strength(0.2f)));
     public static final DeferredBlock<Block> POTTED_COTTONWOOD_SAPLING = BLOCKS.register("potted_cottonwood_sapling",
             () -> new FlowerPotBlock((() -> (FlowerPotBlock) Blocks.FLOWER_POT), COTTONWOOD_SAPLING, BlockBehaviour.Properties.ofFullCopy(Blocks.POTTED_ALLIUM)));
     public static final DeferredBlock<Block> COTTONWOOD_LOG = registerBlock("cottonwood_log",
