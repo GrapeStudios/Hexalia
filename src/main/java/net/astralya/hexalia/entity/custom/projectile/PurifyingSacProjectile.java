@@ -65,7 +65,7 @@ public class PurifyingSacProjectile extends ThrownItemEntity {
     private void spawnLingeringCloudAndCleanse() {
         if (getWorld().isClient()) return;
 
-        int durationSeconds = Math.max(1, Configuration.common().tools.purifyingSacDuration);
+        int durationSeconds = Math.max(1, Configuration.PURIFYING_SAC_DURATION.get());
 
         AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(getWorld(), getX(), getY(), getZ());
         if (getOwner() instanceof LivingEntity le) {

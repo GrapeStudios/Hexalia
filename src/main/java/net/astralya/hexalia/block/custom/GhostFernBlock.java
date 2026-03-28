@@ -17,7 +17,7 @@ public class GhostFernBlock extends HerbBlock {
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        if (!Configuration.client().plants.ghostFernEmitsParticles) return;
+        if (!Configuration.GHOST_FERN_EMITS_PARTICLES.get()) return;
 
         double cx = pos.getX() + 0.5;
         double cy = pos.getY() + 0.5;

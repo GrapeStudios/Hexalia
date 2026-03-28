@@ -53,6 +53,7 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.WITCHWEED);
         addDrop(ModBlocks.GHOST_FERN);
         addDrop(ModBlocks.CELESTIAL_BLOOM);
+        addDrop(ModBlocks.WITHERED_CELESTIAL_BLOOM);
         addDrop(ModBlocks.NIGHTSHADE_BUSH);
         addDrop(ModBlocks.BEGONIA);
         addDrop(ModBlocks.LAVENDER);
@@ -62,12 +63,16 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.WINDSONG);
         addDrop(ModBlocks.ASTRYLIS);
         addDrop(ModBlocks.DAHLIA);
+        addDrop(ModBlocks.LOURDES);
+        addDrop(ModBlocks.AEGIFLORA);
+        addDrop(ModBlocks.WITHERED_AEGIFLORA);
 
         // Potted plants
         addPottedPlantDrops(ModBlocks.POTTED_SPIRIT_BLOOM);
         addPottedPlantDrops(ModBlocks.POTTED_DREAMSHROOM);
         addPottedPlantDrops(ModBlocks.POTTED_GHOST_FERN);
         addPottedPlantDrops(ModBlocks.POTTED_CELESTIAL_BLOOM);
+        addPottedPlantDrops(ModBlocks.POTTED_WITHERED_CELESTIAL_BLOOM);
         addPottedPlantDrops(ModBlocks.POTTED_NIGHTSHADE_BUSH);
         addPottedPlantDrops(ModBlocks.POTTED_BEGONIA);
         addPottedPlantDrops(ModBlocks.POTTED_LAVENDER);
@@ -76,6 +81,9 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addPottedPlantDrops(ModBlocks.POTTED_GRIMSHADE);
         addPottedPlantDrops(ModBlocks.POTTED_WINDSONG);
         addPottedPlantDrops(ModBlocks.POTTED_ASTRYLIS);
+        addPottedPlantDrops(ModBlocks.POTTED_LOURDES);
+        addPottedPlantDrops(ModBlocks.POTTED_AEGIFLORA);
+        addPottedPlantDrops(ModBlocks.POTTED_WITHERED_AEGIFLORA);
 
         // Special Plants
         addDrop(ModBlocks.SIREN_KELP, drops(ModItems.SIREN_KELP));
@@ -97,6 +105,8 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.CELESTIAL_CRYSTAL_BLOCK);
         addDrop(ModBlocks.SHELF);
         addDrop(ModBlocks.CENSER);
+        addDrop(ModBlocks.MORTAR_AND_PESTLE);
+        addDrop(ModBlocks.NESTING_BLOCK);
 
         // Special drops
         addDrop(ModBlocks.INFUSED_FARMLAND, drops(ModBlocks.INFUSED_DIRT));
@@ -104,6 +114,7 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         this.addDrop(ModBlocks.SALT_BLOCK, block -> oreDrops(ModBlocks.SALT_BLOCK, ModItems.SALT));
         this.addDrop(ModBlocks.SILKWORM_COCOON, ModItems.SILKWORM);
         this.addDrop(ModBlocks.PALE_MUSHROOM, flowerbedDrops(ModBlocks.PALE_MUSHROOM));
+        this.addDrop(ModBlocks.EGG_CLUSTER, Items.STRING);
     }
 
     private void generateCrops() {

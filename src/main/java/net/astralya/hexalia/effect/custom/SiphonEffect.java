@@ -28,7 +28,7 @@ public class SiphonEffect extends StatusEffect {
         }
 
         World world = player.getWorld();
-        double radius = Configuration.common().tools.siphonRadius;
+        double radius = Configuration.SIPHON_RADIUS.get();
         Box box = player.getBoundingBox().expand(radius);
 
         List<ItemEntity> itemEntities = world.getEntitiesByClass(ItemEntity.class, box, item -> true);

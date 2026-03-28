@@ -49,6 +49,16 @@ public class ModRecipes {
                 }
             });
 
+    public static final RecipeSerializer<MortarAndPestleRecipe> MORTAR_AND_PESTLE_SERIALIZER = Registry.register(
+            Registries.RECIPE_SERIALIZER, Identifier.of(HexaliaMod.MODID, "mortar_and_pestle"), new MortarAndPestleRecipe.Serializer());
+    public static final RecipeType<MortarAndPestleRecipe> MORTAR_AND_PESTLE_TYPE = Registry.register(
+            Registries.RECIPE_TYPE, Identifier.of(HexaliaMod.MODID, "mortar_and_pestle"), new RecipeType<>() {
+                @Override
+                public String toString() {
+                    return "mortar_and_pestle";
+                }
+            });
+
     public static void registerRecipes() {
         HexaliaMod.LOGGER.info("Registering Custom Recipes for " + HexaliaMod.MODID);
     }

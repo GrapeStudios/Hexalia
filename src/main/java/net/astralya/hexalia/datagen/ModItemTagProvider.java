@@ -19,6 +19,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
     @Override
     protected void configure(RegistryWrapper.WrapperLookup arg) {
         addVanillaTags();
+        addToolsAndEnchantmentsTags();
         addCustomTags();
         addTreeRelatedTags();
         addFoodTags();
@@ -38,20 +39,38 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModBlocks.WITCHWEED.asItem())
                 .add(ModBlocks.GHOST_FERN.asItem())
                 .add(ModBlocks.CELESTIAL_BLOOM.asItem())
+                .add(ModBlocks.WITHERED_CELESTIAL_BLOOM.asItem())
                 .add(ModBlocks.NIGHTSHADE_BUSH.asItem())
                 .add(ModBlocks.BEGONIA.asItem())
                 .add(ModBlocks.LAVENDER.asItem())
+                .add(ModBlocks.AEGIFLORA.asItem())
+                .add(ModBlocks.WITHERED_AEGIFLORA.asItem())
+                .add(ModBlocks.MORPHORA.asItem())
+                .add(ModBlocks.WINDSONG.asItem())
+                .add(ModBlocks.LOURDES.asItem())
+                .add(ModBlocks.GRIMSHADE.asItem())
+                .add(ModBlocks.CELESTIAL_BLOOM.asItem())
+                .add(ModBlocks.ASTRYLIS.asItem())
                 .add(ModBlocks.DAHLIA.asItem());
 
-        // Copy to small flowers if appropriate
+        // Small Flowers
         getOrCreateTagBuilder(ItemTags.SMALL_FLOWERS)
                 .add(ModBlocks.SPIRIT_BLOOM.asItem())
                 .add(ModBlocks.WITCHWEED.asItem())
                 .add(ModBlocks.GHOST_FERN.asItem())
                 .add(ModBlocks.CELESTIAL_BLOOM.asItem())
+                .add(ModBlocks.WITHERED_CELESTIAL_BLOOM.asItem())
                 .add(ModBlocks.NIGHTSHADE_BUSH.asItem())
                 .add(ModBlocks.BEGONIA.asItem())
                 .add(ModBlocks.LAVENDER.asItem())
+                .add(ModBlocks.AEGIFLORA.asItem())
+                .add(ModBlocks.WITHERED_AEGIFLORA.asItem())
+                .add(ModBlocks.MORPHORA.asItem())
+                .add(ModBlocks.WINDSONG.asItem())
+                .add(ModBlocks.LOURDES.asItem())
+                .add(ModBlocks.GRIMSHADE.asItem())
+                .add(ModBlocks.CELESTIAL_BLOOM.asItem())
+                .add(ModBlocks.ASTRYLIS.asItem())
                 .add(ModBlocks.DAHLIA.asItem());
 
         // Villager related
@@ -61,6 +80,74 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.MANDRAKE_SEEDS);
     }
 
+    private void addToolsAndEnchantmentsTags() {
+        // Tools
+        getOrCreateTagBuilder(ItemTags.SHOVELS)
+                .add(ModItems.ROOTSHAPER);
+
+        getOrCreateTagBuilder(ItemTags.PICKAXES)
+                .add(ModItems.ROOTSHAPER);
+
+        getOrCreateTagBuilder(ItemTags.SWORDS)
+                .add(ModItems.KELPWEAVE_BLADE);
+
+        getOrCreateTagBuilder(ItemTags.HEAD_ARMOR)
+                .add(ModItems.SILKWEAVE_HOOD)
+                .add(ModItems.BLOOMWRAP_HAT)
+                .add(ModItems.MOONWEAVE_HOOD);
+
+        getOrCreateTagBuilder(ItemTags.CHEST_ARMOR)
+                .add(ModItems.SILKWEAVE_MANTLE)
+                .add(ModItems.GHOSTVEIL)
+                .add(ModItems.BLOOMWRAP_ROBES)
+                .add(ModItems.MOONWEAVE_MANTLE);
+
+        getOrCreateTagBuilder(ItemTags.LEG_ARMOR)
+                .add(ModItems.SILKWEAVE_BINDINGS)
+                .add(ModItems.BLOOMWRAP_LEGGINGS)
+                .add(ModItems.MOONWEAVE_BINDINGS);
+
+        getOrCreateTagBuilder(ItemTags.FOOT_ARMOR)
+                .add(ModItems.BOGSHADE_BOOTS)
+                .add(ModItems.BLOOMWRAP_BOOTS)
+                .add(ModItems.SILKWEAVE_FOOTWRAPS)
+                .add(ModItems.MOONWEAVE_FOOTWRAPS);
+
+        getOrCreateTagBuilder(ItemTags.BOW_ENCHANTABLE)
+                .add(ModItems.THORNBOW);
+
+        getOrCreateTagBuilder(ItemTags.MINING_ENCHANTABLE)
+                .add(ModItems.BRIAR_SICKLE);
+
+        getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE)
+                .add(ModItems.BRIAR_SICKLE)
+                .add(ModItems.SAGE_PENDANT)
+                .add(ModItems.SPIRITROOT_TETHER)
+                .add(ModItems.ATHAME);
+
+        getOrCreateTagBuilder(ItemTags.HEAD_ARMOR_ENCHANTABLE)
+                .add(ModItems.SILKWEAVE_HOOD)
+                .add(ModItems.BLOOMWRAP_HAT)
+                .add(ModItems.MOONWEAVE_HOOD);
+
+        getOrCreateTagBuilder(ItemTags.CHEST_ARMOR_ENCHANTABLE)
+                .add(ModItems.SILKWEAVE_MANTLE)
+                .add(ModItems.GHOSTVEIL)
+                .add(ModItems.BLOOMWRAP_ROBES)
+                .add(ModItems.MOONWEAVE_MANTLE);
+
+        getOrCreateTagBuilder(ItemTags.LEG_ARMOR_ENCHANTABLE)
+                .add(ModItems.SILKWEAVE_BINDINGS)
+                .add(ModItems.BLOOMWRAP_LEGGINGS)
+                .add(ModItems.MOONWEAVE_BINDINGS);
+
+        getOrCreateTagBuilder(ItemTags.FOOT_ARMOR_ENCHANTABLE)
+                .add(ModItems.SILKWEAVE_FOOTWRAPS)
+                .add(ModItems.BOGSHADE_BOOTS)
+                .add(ModItems.BLOOMWRAP_BOOTS)
+                .add(ModItems.MOONWEAVE_FOOTWRAPS);
+    }
+
     private void addCustomTags() {
         // Herbs and magical components
         getOrCreateTagBuilder(ModTags.Items.HERBS)
@@ -68,6 +155,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.SIREN_KELP)
                 .add(ModBlocks.DREAMSHROOM.asItem())
                 .add(ModBlocks.GHOST_FERN.asItem())
+                .add(ModBlocks.WITCHWEED.asItem())
                 .add(ModBlocks.CELESTIAL_BLOOM.asItem());
 
         getOrCreateTagBuilder(ModTags.Items.CRUSHED_HERBS)
@@ -85,6 +173,7 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(ModItems.BREW_OF_SIPHON)
                 .add(ModItems.BREW_OF_DAYBLOOM)
                 .add(ModItems.BREW_OF_ARACHNID_GRACE)
+                .add(ModItems.BREW_OF_HOLLOW_SILENCE)
                 .add(ModItems.RUSTIC_BOTTLE);
 
         // Minerals
@@ -110,6 +199,11 @@ public class ModItemTagProvider extends FabricTagProvider.ItemTagProvider {
                 .add(Blocks.PINK_TULIP.asItem())
                 .add(Blocks.RED_TULIP.asItem())
                 .add(Blocks.WHITE_TULIP.asItem());
+
+        // Stun Immune Headwear
+        getOrCreateTagBuilder(ModTags.Items.STUN_IMMUNE_HEADWEAR)
+                .add(ModItems.EARPLUGS)
+                .add(ModItems.BLOOMWRAP_HAT);
     }
 
     private void addTreeRelatedTags() {

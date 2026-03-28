@@ -51,7 +51,7 @@ public class FrostSacProjectile extends ThrownItemEntity {
                     0.8F + getWorld().random.nextFloat() * 0.4F
             );
 
-            int durationSeconds = Math.max(1, Configuration.common().tools.frostSacDuration);
+            int durationSeconds = Math.max(1, Configuration.FROST_SAC_DURATION.get());
             FrostCloud cloud = new FrostCloud(getWorld(), getX(), getY(), getZ(), durationSeconds);
 
             if (getOwner() instanceof LivingEntity le) {

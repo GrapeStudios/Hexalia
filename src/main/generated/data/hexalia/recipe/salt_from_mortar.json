@@ -1,0 +1,9 @@
+{
+  "type": "hexalia:mortar_and_pestle",
+  "ingredients": [
+    {
+      "item": "hexalia:saltsprout"
+    }
+  ],
+  "result": "hexalia:salt"
+}

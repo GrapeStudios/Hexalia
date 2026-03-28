@@ -1,7 +1,11 @@
-// 1.21.1	2025-10-08T19:06:00.5962598	Hexalia/Tags for minecraft:worldgen/biome
-6b5b6188dc8d42fef0fbcbba6e03e9cd3a3a88d7 data\hexalia\tags\worldgen\biome\has_dreamshrooms.json
+// 1.21.1	2026-03-28T00:08:09.0829761	Hexalia/Tags for minecraft:worldgen/biome
+f3da22dde9ab58a75ef89f5f43dcadc698e760f5 data\hexalia\tags\worldgen\biome\has_dry_biome_vegetation.json
+5f176659fa27569cc678ddae4a306c2055a89a16 data\hexalia\tags\worldgen\biome\has_shade_vegetation.json
 27b5c61d0bd6297d6f29b5f49d7a3a7d52b5e029 data\hexalia\tags\worldgen\biome\has_decorative_flowers.json
-9b6bd1672627b177d1420a042cfaba354104a8ef data\hexalia\tags\worldgen\biome\has_mandrakes.json
+a98d7d0ca1bdef5682a1928aaee7ce724227c8c0 data\hexalia\tags\worldgen\biome\has_cool_biome_vegetation.json
+47f02d647a88fb06b4299217e2a5e87c598bc56a data\hexalia\tags\worldgen\biome\silk_moth_spawns.json
+6b5b6188dc8d42fef0fbcbba6e03e9cd3a3a88d7 data\hexalia\tags\worldgen\biome\has_shrooms.json
+79fd8e772b777110d8a9d1b1c282cf20d9010ca0 data\hexalia\tags\worldgen\biome\cacofey_spawns.json
 3e00d0ecf4c9744bbf1b1c80ff5270a55488fc87 data\hexalia\tags\worldgen\biome\has_swamp_vegetation.json
-6c302eac16b314baddbaff8a4dc4cebd9405aab6 data\hexalia\tags\worldgen\biome\has_siren_kelp.json
-5f176659fa27569cc678ddae4a306c2055a89a16 data\hexalia\tags\worldgen\biome\has_ghost_ferns.json
+41fa040d0fb54e6268ac13a1ca75a845fa1824d0 data\hexalia\tags\worldgen\biome\has_floral_vegetation.json
+0cf9a994d70b5e185a1150c7aeb5b83fd894994d data\hexalia\tags\worldgen\biome\has_siren_kelp.json

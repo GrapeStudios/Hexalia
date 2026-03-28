@@ -19,65 +19,50 @@ import org.jetbrains.annotations.Nullable;
 
 public class AstrylisBlockEntity extends BlockEntity {
 
-    private long activationTime   = -1;
-    private int  duration         = 0;
+    private long activationTime = -1;
     private long lastBonemealTime = -1;
 
     public AstrylisBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntityTypes.ASTRYLIS, pos, state);
     }
 
-    private static int cfgDuration() {
-        return Math.max(1, Configuration.common().plants.astrylisDuration);
-    }
-    private static int cfgInterval() {
-        return Math.max(1, Configuration.common().plants.astrylisBonemealInterval);
-    }
-
-    public static void tick(World world, BlockPos pos, BlockState state, AstrylisBlockEntity be) {
-        if (!(world instanceof ServerWorld server) || !be.isActive()) return;
-
-        final long now       = world.getTime();
-        final long elapsed   = now - be.activationTime;
-        final int interval   = cfgInterval();
-
-        if (elapsed >= be.duration) {
-            be.deactivate();
-            be.syncToClient();
-            return;
-        }
-
-        long expectedApplications = elapsed / interval;
-        long actualApplications   = (be.lastBonemealTime == -1)
-                ? 0
-                : ((be.lastBonemealTime - be.activationTime) / interval) + 1;
-
-        if (expectedApplications > actualApplications) {
-            long missed = Math.min(expectedApplications - actualApplications, 5);
-            for (long i = 0; i < missed; i++) {
-                applyBonemealToCropsAndSaplings(server, pos);
+    public static void tick(World world, BlockPos pos, BlockState state, AstrylisBlockEntity entity) {
+        if (world instanceof ServerWorld serverWorld && entity.isActive()) {
+            long currentTime = world.getTime();
+            long elapsedTime = currentTime - entity.activationTime;
+            int interval = Configuration.ASTRYLIS_BONEMEAL_INTERVAL.get();
+            int duration = Configuration.ASTRYLIS_DURATION.get();
+            if (elapsedTime >= duration) {
+                entity.deactivate();
+                return;
             }
-            be.lastBonemealTime = now;
-        } else if (elapsed % interval == 0 && elapsed > 0) {
-            applyBonemealToCropsAndSaplings(server, pos);
-            be.lastBonemealTime = now;
+            long expectedApplications = elapsedTime / interval;
+            long actualApplications = entity.lastBonemealTime == -1 ? 0 :
+                    (entity.lastBonemealTime - entity.activationTime) / interval + 1;
+            if (expectedApplications > actualApplications) {
+                long missed = Math.min(expectedApplications - actualApplications, 5);
+                for (long i = 0; i < missed; i++) {
+                    applyBonemealToCropsAndSaplings(serverWorld, pos);
+                }
+                entity.lastBonemealTime = currentTime;
+            } else if (elapsedTime % interval == 0 && elapsedTime > 0) {
+                applyBonemealToCropsAndSaplings(serverWorld, pos);
+                entity.lastBonemealTime = currentTime;
+            }
+            entity.markDirty();
         }
-
-        be.markDirty();
     }
 
-    private static void applyBonemealToCropsAndSaplings(ServerWorld world, BlockPos center) {
-        BlockPos.iterate(center.add(-4, -2, -4), center.add(4, 2, 4)).forEach(p -> {
-            BlockState s = world.getBlockState(p);
-            if (s.getBlock() instanceof Fertilizable fert
-                    && (s.isIn(BlockTags.CROPS) || s.isIn(BlockTags.SAPLINGS))) {
-                if (fert.isFertilizable(world, p, s)) {
-                    fert.grow(world, world.getRandom(), p, s);
-                    world.spawnParticles(
-                            ParticleTypes.HAPPY_VILLAGER,
-                            p.getX() + 0.5, p.getY() + 0.5, p.getZ() + 0.5,
-                            1, 0.2, 0.2, 0.2, 0.0
-                    );
+    private static void applyBonemealToCropsAndSaplings(ServerWorld world, BlockPos centerPos) {
+        BlockPos.stream(centerPos.add(-4, -2, -4), centerPos.add(4, 2, 4)).forEach(pos -> {
+            BlockState state = world.getBlockState(pos);
+            if (state.getBlock() instanceof Fertilizable fertilizable &&
+                    (state.isIn(BlockTags.CROPS) || state.isIn(BlockTags.SAPLINGS))) {
+                if (fertilizable.isFertilizable(world, pos, state)) {
+                    fertilizable.grow(world, world.random, pos, state);
+                    world.spawnParticles(ParticleTypes.HAPPY_VILLAGER,
+                            pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
+                            1, 0.2, 0.2, 0.2, 0.0);
                 }
             }
         });
@@ -88,61 +73,53 @@ public class AstrylisBlockEntity extends BlockEntity {
     }
 
     public void activate(long gameTime) {
-        activate(gameTime, cfgDuration());
-    }
-
-    public void activate(long gameTime, int customDuration) {
-        this.activationTime   = gameTime;
-        this.duration         = Math.max(1, customDuration);
+        this.activationTime = gameTime;
         this.lastBonemealTime = -1;
         this.markDirty();
-        syncToClient();
+        sync();
     }
 
     public void deactivate() {
-        this.activationTime   = -1;
+        this.activationTime = -1;
         this.lastBonemealTime = -1;
         this.markDirty();
-        syncToClient();
+        sync();
+    }
+
+    private void sync() {
+        if (this.world == null || this.world.isClient) return;
+        BlockState state = this.getCachedState();
+        this.world.updateListeners(this.pos, state, state, 3);
     }
 
     public int getDuration() {
-        return duration;
+        return Configuration.ASTRYLIS_DURATION.get();
     }
 
     public float getProgress() {
-        if (!isActive() || world == null || duration <= 0) return 0.0f;
+        if (!isActive() || world == null) return 0.0f;
         long elapsed = world.getTime() - activationTime;
-        return Math.min(1.0f, (float) elapsed / duration);
-    }
-
-    private void syncToClient() {
-        if (world != null) {
-            world.updateListeners(pos, getCachedState(), getCachedState(), 3); // NOTIFY_ALL
-        }
+        return Math.min(1.0f, (float) elapsed / getDuration());
     }
 
     @Override
-    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        super.writeNbt(nbt, registryLookup);
+    protected void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries) {
+        super.writeNbt(nbt, registries);
         nbt.putLong("activationTime", activationTime);
-        nbt.putInt("duration", duration);
         nbt.putLong("lastBonemealTime", lastBonemealTime);
     }
 
     @Override
-    protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
-        super.readNbt(nbt, registryLookup);
-        this.activationTime   = nbt.getLong("activationTime");
-        this.duration         = nbt.contains("duration") ? nbt.getInt("duration") : cfgDuration();
+    protected void readNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registries) {
+        super.readNbt(nbt, registries);
+        this.activationTime = nbt.getLong("activationTime");
         this.lastBonemealTime = nbt.getLong("lastBonemealTime");
     }
 
     @Override
-    public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registryLookup) {
-        NbtCompound nbt = super.toInitialChunkDataNbt(registryLookup);
+    public NbtCompound toInitialChunkDataNbt(RegistryWrapper.WrapperLookup registries) {
+        NbtCompound nbt = super.toInitialChunkDataNbt(registries);
         nbt.putLong("activationTime", activationTime);
-        nbt.putInt("duration", duration);
         nbt.putLong("lastBonemealTime", lastBonemealTime);
         return nbt;
     }

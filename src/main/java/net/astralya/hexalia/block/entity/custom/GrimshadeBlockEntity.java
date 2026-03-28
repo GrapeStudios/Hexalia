@@ -37,12 +37,12 @@ public class GrimshadeBlockEntity extends BlockEntity {
     }
 
     private static int duration() {
-        int v = Configuration.common().plants.grimshadeDuration;
+        int v = Configuration.GRIMSHADE_DURATION.get();
         return Math.max(1, v <= 0 ? 2400 : v);
     }
 
     private static int effectRadius() {
-        int v = Configuration.common().plants.grimshadeEffectRadius;
+        int v = Configuration.GRIMSHADE_EFFECT_RADIUS.get();
         return Math.max(1, v <= 0 ? 8 : v);
     }
 

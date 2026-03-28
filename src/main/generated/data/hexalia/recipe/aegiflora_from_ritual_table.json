@@ -1,0 +1,24 @@
+{
+  "type": "hexalia:ritual_table",
+  "ingredients": [
+    {
+      "item": "minecraft:dandelion"
+    },
+    {
+      "item": "hexalia:ghost_powder"
+    },
+    {
+      "item": "hexalia:lotus_blossom"
+    },
+    {
+      "item": "minecraft:moss_block"
+    },
+    {
+      "item": "minecraft:gunpowder"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "id": "hexalia:aegiflora"
+  }
+}

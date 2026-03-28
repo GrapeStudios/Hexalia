@@ -151,7 +151,7 @@ public class ShelfBlock extends BlockWithEntity {
         int slot = column + (row * 3);
 
         ItemStack heldItem = player.getStackInHand(hand);
-        ItemStack shelfItem = shelf.getItem(slot);
+        ItemStack shelfItem = shelf.getStack(slot);
 
         if (!shelfItem.isEmpty()) {
             ItemStack removed = shelf.removeStack(slot);
@@ -169,7 +169,7 @@ public class ShelfBlock extends BlockWithEntity {
                 toPlace.setCount(1);
             }
 
-            shelf.setItem(slot, toPlace);
+            shelf.setStack(slot, toPlace);
             world.playSound(null, pos, SoundEvents.ENTITY_ITEM_FRAME_ADD_ITEM, SoundCategory.BLOCKS, 1.0F, 1.0F);
             world.emitGameEvent(player, GameEvent.BLOCK_CHANGE, pos);
             return ItemActionResult.success(world.isClient());
@@ -189,7 +189,6 @@ public class ShelfBlock extends BlockWithEntity {
                             ItemScatterer.spawn(world, pos.getX(), pos.getY(), pos.getZ(), stack);
                         }
                     }
-                    shelf.clearContents();
                 }
                 world.removeBlockEntity(pos);
                 world.updateComparators(pos, this);

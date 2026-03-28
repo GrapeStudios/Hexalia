@@ -11,69 +11,37 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
+import net.minecraft.recipe.input.RecipeInput;
+import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 
-import java.util.List;
-import java.util.Objects;
-
-public class SmallCauldronRecipe implements Recipe<SmallCauldronRecipeInput> {
-
-    public static final int INPUT_SLOTS = 3;
+public class SmallCauldronRecipe implements Recipe<RecipeInput> {
 
     private final DefaultedList<Ingredient> ingredients;
     private final ItemStack output;
-    private final Ingredient bottleSlot;
     private final float experience;
     private final int brewTime;
 
-    public SmallCauldronRecipe(DefaultedList<Ingredient> ingredients,
-                               Ingredient bottleSlot,
-                               ItemStack output,
-                               float experience,
-                               int brewTime) {
+    public SmallCauldronRecipe(DefaultedList<Ingredient> ingredients, ItemStack output, float experience, int brewTime) {
         this.ingredients = ingredients;
-        this.bottleSlot = bottleSlot;
         this.output = output;
         this.experience = experience;
         this.brewTime = brewTime;
     }
 
-    public DefaultedList<Ingredient> getIngredientList() { return ingredients; }
-    public Ingredient getBottleSlot() { return bottleSlot; }
-    public ItemStack getOutputStack() { return output; }
-    public float getExperience() { return experience; }
-    public int getBrewTime() { return brewTime; }
-
     @Override
-    public boolean matches(SmallCauldronRecipeInput input, World world) {
-        int inputsCount = 0;
-        for (int j = 0; j < 3; j++) {
-            if (!input.getStackInSlot(j).isEmpty()) inputsCount++;
-        }
-        if (inputsCount != this.ingredients.size()) return false;
-
-        boolean[] used = new boolean[3];
-        for (Ingredient ing : ingredients) {
-            boolean found = false;
-            for (int j = 0; j < 3; j++) {
-                if (!used[j] && ing.test(input.getStackInSlot(j))) {
-                    used[j] = true;
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) return false;
-        }
-
-        ItemStack bottle = input.getStackInSlot(3);
-        return bottleSlot.test(bottle);
+    public DefaultedList<Ingredient> getIngredients() {
+        return ingredients;
     }
 
-    @Override
-    public ItemStack craft(SmallCauldronRecipeInput input, RegistryWrapper.WrapperLookup registries) {
-        return output.copy();
+    public float getExperience() {
+        return experience;
+    }
+
+    public int getBrewTime() {
+        return brewTime;
     }
 
     @Override
@@ -82,8 +50,51 @@ public class SmallCauldronRecipe implements Recipe<SmallCauldronRecipeInput> {
     }
 
     @Override
+    public boolean matches(RecipeInput input, World world) {
+        if (world.isClient()) {
+            return false;
+        }
+
+        int inputCount = 0;
+        for (int i = 0; i < input.getSize(); i++) {
+            if (!input.getStackInSlot(i).isEmpty()) {
+                inputCount++;
+            }
+        }
+
+        if (inputCount != ingredients.size()) {
+            return false;
+        }
+
+        boolean[] used = new boolean[input.getSize()];
+
+        for (Ingredient ingredient : ingredients) {
+            boolean found = false;
+
+            for (int i = 0; i < input.getSize(); i++) {
+                if (!used[i] && ingredient.test(input.getStackInSlot(i))) {
+                    used[i] = true;
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    @Override
+    public ItemStack craft(RecipeInput input, RegistryWrapper.WrapperLookup registries) {
+        return output.copy();
+    }
+
+    @Override
     public boolean fits(int width, int height) {
-        return width * height >= this.ingredients.size();
+        return width * height >= ingredients.size();
     }
 
     @Override
@@ -101,92 +112,65 @@ public class SmallCauldronRecipe implements Recipe<SmallCauldronRecipeInput> {
         return new ItemStack(ModItems.SMALL_CAULDRON);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof SmallCauldronRecipe that)) return false;
-        return Float.compare(that.getExperience(), getExperience()) == 0
-                && getBrewTime() == that.getBrewTime()
-                && Objects.equals(getGroup(), that.getGroup())
-                && ingredients.equals(that.ingredients)
-                && output.equals(that.output)
-                && bottleSlot.equals(that.bottleSlot);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = getGroup().hashCode();
-        result = 31 * result + ingredients.hashCode();
-        result = 31 * result + output.hashCode();
-        result = 31 * result + bottleSlot.hashCode();
-        result = 31 * result + (getExperience() != 0.0f ? Float.floatToIntBits(getExperience()) : 0);
-        result = 31 * result + getBrewTime();
-        return result;
-    }
-
     public static class Serializer implements RecipeSerializer<SmallCauldronRecipe> {
-        private static DefaultedList<Ingredient> toDefaulted(List<Ingredient> list) {
-            DefaultedList<Ingredient> dl = DefaultedList.ofSize(list.size(), Ingredient.EMPTY);
-            for (int i = 0; i < list.size(); i++) dl.set(i, list.get(i));
-            return dl;
-        }
 
-        private static final MapCodec<SmallCauldronRecipe> JSON_CODEC =
-                RecordCodecBuilder.mapCodec(instance -> instance.group(
-                        Ingredient.DISALLOW_EMPTY_CODEC.listOf()
-                                .fieldOf("ingredients")
-                                .xmap(Serializer::toDefaulted, list -> list)
-                                .forGetter(SmallCauldronRecipe::getIngredientList),
-                        ItemStack.CODEC
-                                .fieldOf("result")
-                                .forGetter(SmallCauldronRecipe::getOutputStack),
-                        Ingredient.DISALLOW_EMPTY_CODEC
-                                .fieldOf("bottle_slot")
-                                .forGetter(SmallCauldronRecipe::getBottleSlot),
-                        Codec.FLOAT.optionalFieldOf("experience", 0.0F)
-                                .forGetter(SmallCauldronRecipe::getExperience),
-                        Codec.INT.optionalFieldOf("brewtime", 200)
-                                .forGetter(SmallCauldronRecipe::getBrewTime)
-                ).apply(instance, (ings, result, bottle, xp, time) ->
-                        new SmallCauldronRecipe(ings, bottle, result, xp, time)));
+        private static final Codec<ItemStack> RESULT_CODEC = RecordCodecBuilder.create(inst -> inst.group(
+                Registries.ITEM.getCodec().fieldOf("item").forGetter(ItemStack::getItem),
+                Codec.INT.optionalFieldOf("count", 1).forGetter(ItemStack::getCount)
+        ).apply(inst, (item, count) -> new ItemStack(item, count)));
 
-        private static final PacketCodec<RegistryByteBuf, SmallCauldronRecipe> NET_CODEC =
-                new PacketCodec<>() {
-                    @Override
-                    public void encode(RegistryByteBuf buf, SmallCauldronRecipe value) {
-                        buf.writeVarInt(value.ingredients.size());
-                        for (Ingredient ing : value.ingredients) {
-                            Ingredient.PACKET_CODEC.encode(buf, ing);
-                        }
-                        ItemStack.PACKET_CODEC.encode(buf, value.output);
-                        Ingredient.PACKET_CODEC.encode(buf, value.bottleSlot);
-                        buf.writeFloat(value.experience);
-                        buf.writeVarInt(value.brewTime);
-                    }
+        private static final MapCodec<SmallCauldronRecipe> CODEC = RecordCodecBuilder.mapCodec(inst -> inst.group(
+                Ingredient.DISALLOW_EMPTY_CODEC.listOf().fieldOf("ingredients").xmap(list -> {
+                    DefaultedList<Ingredient> nn = DefaultedList.of();
+                    nn.addAll(list);
+                    return nn;
+                }, nn -> nn).forGetter(SmallCauldronRecipe::getIngredients),
+                RESULT_CODEC.fieldOf("result").forGetter(r -> r.output),
+                Codec.FLOAT.optionalFieldOf("experience", 0.0F).forGetter(SmallCauldronRecipe::getExperience),
+                Codec.INT.optionalFieldOf("brewtime", 200).forGetter(SmallCauldronRecipe::getBrewTime)
+        ).apply(inst, SmallCauldronRecipe::new));
 
-                    @Override
-                    public SmallCauldronRecipe decode(RegistryByteBuf buf) {
-                        int count = buf.readVarInt();
-                        DefaultedList<Ingredient> ingreds = DefaultedList.ofSize(count, Ingredient.EMPTY);
-                        for (int i = 0; i < count; i++) {
-                            ingreds.set(i, Ingredient.PACKET_CODEC.decode(buf));
-                        }
-                        ItemStack out = ItemStack.PACKET_CODEC.decode(buf);
-                        Ingredient bottle = Ingredient.PACKET_CODEC.decode(buf);
-                        float xp = buf.readFloat();
-                        int time = buf.readVarInt();
-                        return new SmallCauldronRecipe(ingreds, bottle, out, xp, time);
-                    }
-                };
+        public static final PacketCodec<RegistryByteBuf, SmallCauldronRecipe> STREAM_CODEC =
+                PacketCodec.of(
+                        (recipe, buf) -> write(buf, recipe),
+                        Serializer::read
+                );
 
         @Override
         public MapCodec<SmallCauldronRecipe> codec() {
-            return JSON_CODEC;
+            return CODEC;
         }
 
         @Override
         public PacketCodec<RegistryByteBuf, SmallCauldronRecipe> packetCodec() {
-            return NET_CODEC;
+            return STREAM_CODEC;
+        }
+
+        private static SmallCauldronRecipe read(RegistryByteBuf buf) {
+            int size = buf.readVarInt();
+            DefaultedList<Ingredient> ingredients = DefaultedList.ofSize(size, Ingredient.EMPTY);
+
+            for (int i = 0; i < size; i++) {
+                ingredients.set(i, Ingredient.PACKET_CODEC.decode(buf));
+            }
+
+            ItemStack output = ItemStack.PACKET_CODEC.decode(buf);
+            float experience = buf.readFloat();
+            int brewTime = buf.readVarInt();
+
+            return new SmallCauldronRecipe(ingredients, output, experience, brewTime);
+        }
+
+        private static void write(RegistryByteBuf buf, SmallCauldronRecipe recipe) {
+            buf.writeVarInt(recipe.ingredients.size());
+
+            for (Ingredient ingredient : recipe.ingredients) {
+                Ingredient.PACKET_CODEC.encode(buf, ingredient);
+            }
+
+            ItemStack.PACKET_CODEC.encode(buf, recipe.output);
+            buf.writeFloat(recipe.experience);
+            buf.writeVarInt(recipe.brewTime);
         }
     }
 }

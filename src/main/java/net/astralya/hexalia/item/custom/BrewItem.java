@@ -1,18 +1,25 @@
 package net.astralya.hexalia.item.custom;
 
+import net.astralya.hexalia.component.ModComponents;
 import net.astralya.hexalia.item.ModItems;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 
 import java.util.List;
 import java.util.function.Supplier;
 
 public class BrewItem extends AbstractConsumableItem {
+
+    private static final Identifier MOONWEAVE_SET_ID = Identifier.of("hexalia", "moonweave");
+    private static final float MOONWEAVE_DURATION_MULTIPLIER = 1.5f;
 
     private final int durationTicks;
     private final int baseAmplifier;
@@ -31,11 +38,26 @@ public class BrewItem extends AbstractConsumableItem {
         this.baseTooltip = tooltip;
     }
 
+    public int getBrewColor() {
+        return effectSupplier.get().value().getColor();
+    }
+
     @Override
     protected void handleEffects(World world, LivingEntity user, ItemStack consumedStack) {
-        if (!world.isClient) {
-            user.addStatusEffect(new StatusEffectInstance(effectSupplier.get(), durationTicks, baseAmplifier));
+        if (world.isClient) return;
+        int duration = isWearingFullMoonweaveSet(user)
+                ? Math.round(durationTicks * MOONWEAVE_DURATION_MULTIPLIER)
+                : durationTicks;
+        user.addStatusEffect(new StatusEffectInstance(effectSupplier.get(), duration, baseAmplifier));
+    }
+
+    private static boolean isWearingFullMoonweaveSet(LivingEntity entity) {
+        for (EquipmentSlot slot : new EquipmentSlot[]{ EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET }) {
+            ItemStack piece = entity.getEquippedStack(slot);
+            Identifier id = piece.get(ModComponents.ARMOR_SET_ID);
+            if (!MOONWEAVE_SET_ID.equals(id)) return false;
         }
+        return true;
     }
 
     @Override
@@ -49,7 +71,7 @@ public class BrewItem extends AbstractConsumableItem {
     }
 
     @Override
-    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, net.minecraft.item.tooltip.TooltipType type) {
+    public void appendTooltip(ItemStack stack, TooltipContext ctx, List<Text> tooltip, TooltipType type) {
         tooltip.add(baseTooltip);
     }
 }

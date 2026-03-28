@@ -1,0 +1,10 @@
+{
+  "type": "hexalia:mutation",
+  "input": {
+    "item": "minecraft:short_grass"
+  },
+  "output": {
+    "count": 1,
+    "id": "hexalia:witchweed"
+  }
+}

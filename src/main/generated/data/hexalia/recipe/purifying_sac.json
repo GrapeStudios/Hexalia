@@ -1,18 +1,15 @@
 {
   "type": "minecraft:crafting_shapeless",
-  "category": "misc",
+  "category": "equipment",
   "ingredients": [
     {
-      "tag": "c:salt_dusts"
+      "item": "hexalia:salt"
+    },
+    {
+      "item": "hexalia:lotus_blossom"
     },
     {
       "item": "minecraft:leather"
-    },
-    {
-      "tag": "hexalia:crushed_herbs"
-    },
-    {
-      "tag": "hexalia:crushed_herbs"
     }
   ],
   "result": {

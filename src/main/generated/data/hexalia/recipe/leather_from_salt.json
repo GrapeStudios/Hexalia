@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "S": {
-      "tag": "c:salt_dusts"
+      "tag": "c:dusts/salt"
     },
     "T": {
       "item": "minecraft:rotten_flesh"

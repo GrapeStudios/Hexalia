@@ -1,10 +1,9 @@
 package net.astralya.hexalia.util;
 
 import net.astralya.hexalia.HexaliaMod;
-import net.astralya.hexalia.block.ModBlocks;
+import net.astralya.hexalia.item.ModItems;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
-import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -15,38 +14,51 @@ import net.minecraft.util.Util;
 
 import java.util.EnumMap;
 import java.util.List;
-import java.util.function.Supplier;
 
-public class ModArmorMaterials {
+public final class ModArmorMaterials {
 
-    public static final RegistryEntry<ArmorMaterial> BOGGED = registerArmorMaterial("bogged",
-            () -> new ArmorMaterial(Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-                map.put(ArmorItem.Type.BOOTS, 1);
-                map.put(ArmorItem.Type.LEGGINGS, 4);
-                map.put(ArmorItem.Type.CHESTPLATE, 5);
-                map.put(ArmorItem.Type.HELMET, 2);
-                map.put(ArmorItem.Type.BODY, 0);
-            }), 12, SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, () -> Ingredient.ofItems(Items.DRIED_KELP),
-                    List.of(new ArmorMaterial.Layer(Identifier.of(HexaliaMod.MODID, "bogged"))), 0.0f, 0));
+    private ModArmorMaterials() {
+    }
 
-    public static final RegistryEntry<ArmorMaterial> GHOST = registerArmorMaterial("ghost",
-            () -> new ArmorMaterial(
+    public static final RegistryEntry<ArmorMaterial> SILKWEAVE = register("silkweave",
+            new ArmorMaterial(
                     Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-                        map.put(ArmorItem.Type.BOOTS, 1);
-                        map.put(ArmorItem.Type.LEGGINGS, 1);
-                        map.put(ArmorItem.Type.CHESTPLATE, 3);
-                        map.put(ArmorItem.Type.HELMET, 1);
+                        map.put(ArmorItem.Type.BOOTS, 2);
+                        map.put(ArmorItem.Type.LEGGINGS, 5);
+                        map.put(ArmorItem.Type.CHESTPLATE, 6);
+                        map.put(ArmorItem.Type.HELMET, 2);
                         map.put(ArmorItem.Type.BODY, 0);
                     }),
-                    10,
+                    22,
                     SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
-                    () -> Ingredient.ofItems(ModBlocks.GHOST_FERN.asItem()),
-                    List.of(new ArmorMaterial.Layer(Identifier.of(HexaliaMod.MODID, "ghost"))),
-                    0.0f,
-                    0.0f
-            )
-    );
-    public static RegistryEntry<ArmorMaterial> registerArmorMaterial(String name, Supplier<ArmorMaterial> material) {
-        return Registry.registerReference(Registries.ARMOR_MATERIAL, Identifier.of(HexaliaMod.MODID, name), material.get());
+                    () -> Ingredient.ofItems(ModItems.SILK_FIBER),
+                    List.of(new ArmorMaterial.Layer(Identifier.of(HexaliaMod.MODID, "silkweave"))),
+                    0.0F,
+                    0.0F
+            ));
+
+    public static final RegistryEntry<ArmorMaterial> MOONWEAVE = register("moonweave",
+            new ArmorMaterial(
+                    Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
+                        map.put(ArmorItem.Type.BOOTS, 3);
+                        map.put(ArmorItem.Type.LEGGINGS, 6);
+                        map.put(ArmorItem.Type.CHESTPLATE, 8);
+                        map.put(ArmorItem.Type.HELMET, 3);
+                        map.put(ArmorItem.Type.BODY, 0);
+                    }),
+                    22,
+                    SoundEvents.ITEM_ARMOR_EQUIP_LEATHER,
+                    () -> Ingredient.ofItems(ModItems.CELESTIAL_CRYSTAL),
+                    List.of(new ArmorMaterial.Layer(Identifier.of(HexaliaMod.MODID, "moonweave"))),
+                    0.0F,
+                    0.0F
+            ));
+
+    private static RegistryEntry<ArmorMaterial> register(String name, ArmorMaterial material) {
+        return Registry.registerReference(Registries.ARMOR_MATERIAL, Identifier.of(HexaliaMod.MODID, name), material);
+    }
+
+    public static void registerModArmorMaterials() {
+        HexaliaMod.LOGGER.info("Registering Armor Materials for " + HexaliaMod.MODID);
     }
 }

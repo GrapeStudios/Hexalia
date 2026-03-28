@@ -3,15 +3,15 @@ package net.astralya.hexalia.item.custom;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.util.TeleportUtil;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.tooltip.TooltipType;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
-
-import java.util.List;
 
 public class HomesteadBrewItem extends AbstractConsumableItem {
 
@@ -29,9 +29,16 @@ public class HomesteadBrewItem extends AbstractConsumableItem {
 
     @Override
     protected void handleEffects(World world, LivingEntity user, ItemStack consumedStack) {
-        if (user instanceof PlayerEntity player) {
-            TeleportUtil.teleportPlayerToSpawn(world, player, true);
-        }
+        if (!(user instanceof PlayerEntity player)) return;
+        TeleportUtil.teleportPlayerToSpawn(world, player, true);
+        player.addStatusEffect(new StatusEffectInstance(
+                StatusEffects.NAUSEA,
+                600,
+                0,
+                false,
+                true,
+                true
+        ));
     }
 
     @Override
@@ -41,11 +48,6 @@ public class HomesteadBrewItem extends AbstractConsumableItem {
 
     @Override
     protected Text getTooltip(ItemStack stack) {
-        return Text.translatable("tooltip.hexalia.homestead_brew");
-    }
-
-    @Override
-    public void appendTooltip(ItemStack stack, TooltipContext context, List<Text> tooltip, TooltipType type) {
-        tooltip.add(Text.translatable("tooltip.hexalia.homestead_brew"));
+        return Text.translatable("tooltip.hexalia.homestead_brew").formatted(Formatting.BLUE);
     }
 }

@@ -1,16 +1,24 @@
 {
-	"required": true,
-	"package": "net.astralya.hexalia.mixin",
-	"compatibilityLevel": "JAVA_21",
-	"mixins": [
-		"CobwebMixin",
-		"LivingEntityMixin",
-		"CropBlockMixin",
-		"StemBlockMixin",
-		"SugarCaneBlockMixin",
-        "ExperienceMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
-	}
+  "required": true,
+  "package": "net.astralya.hexalia.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "CobwebMixin",
+    "CropBlockMixin",
+    "ExperienceOrbMixin",
+    "ExplosionMixin",
+    "LivingEntityMixin",
+    "MobMixin",
+    "PlayerTickMixin",
+    "ServerLevelMixin",
+    "ServerPlayerMixin",
+    "StemBlockMixin",
+    "SugarCaneBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "client.ClientPlayerMixin"
+	]
 }

@@ -1,8 +1,13 @@
 {
   "values": [
-    {
-      "id": "#minecraft:is_ocean",
-      "required": false
-    }
+    "minecraft:ocean",
+    "minecraft:deep_ocean",
+    "minecraft:cold_ocean",
+    "minecraft:deep_cold_ocean",
+    "minecraft:lukewarm_ocean",
+    "minecraft:deep_lukewarm_ocean",
+    "minecraft:warm_ocean",
+    "minecraft:frozen_ocean",
+    "minecraft:deep_frozen_ocean"
   ]
 }

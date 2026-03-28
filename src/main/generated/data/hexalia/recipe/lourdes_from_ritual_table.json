@@ -1,0 +1,24 @@
+{
+  "type": "hexalia:ritual_table",
+  "ingredients": [
+    {
+      "item": "minecraft:blue_orchid"
+    },
+    {
+      "item": "hexalia:air_node"
+    },
+    {
+      "item": "hexalia:dream_paste"
+    },
+    {
+      "item": "minecraft:honeycomb"
+    },
+    {
+      "item": "minecraft:glistering_melon_slice"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "id": "hexalia:lourdes"
+  }
+}

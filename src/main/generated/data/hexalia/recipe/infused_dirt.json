@@ -3,10 +3,10 @@
   "category": "misc",
   "key": {
     "P": {
-      "item": "hexalia:siren_kelp"
+      "item": "minecraft:dirt"
     },
     "S": {
-      "item": "minecraft:dirt"
+      "item": "hexalia:siren_kelp"
     }
   },
   "pattern": [

@@ -4,14 +4,14 @@ import net.astralya.hexalia.util.ModTags;
 import net.astralya.hexalia.worldgen.ModPlacedFeatures;
 import net.fabricmc.fabric.api.biome.v1.BiomeModifications;
 import net.fabricmc.fabric.api.biome.v1.BiomeSelectors;
-import net.minecraft.world.biome.BiomeKeys;
 import net.minecraft.world.gen.GenerationStep;
 
 public final class ModNaturalGeneration {
 
-    private ModNaturalGeneration() {}
+    private ModNaturalGeneration() {
+    }
 
-    public static void registerNaturalGeneration () {
+    public static void registerNaturalGeneration() {
         addVegetation();
         addTrees();
     }
@@ -20,96 +20,100 @@ public final class ModNaturalGeneration {
         BiomeModifications.addFeature(
                 BiomeSelectors.tag(ModTags.Biomes.HAS_SWAMP_VEGETATION),
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                ModPlacedFeatures.SPIRIT_BLOOM_PLACED_KEY
+                ModPlacedFeatures.SPIRIT_BLOOM_PLACED
         );
         BiomeModifications.addFeature(
-                BiomeSelectors.tag(ModTags.Biomes.HAS_DREAMSHROOMS),
+                BiomeSelectors.tag(ModTags.Biomes.HAS_SHROOMS),
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                ModPlacedFeatures.DREAMSHROOM_PLACED_KEY
+                ModPlacedFeatures.DREAMSHROOM_PLACED
         );
         BiomeModifications.addFeature(
                 BiomeSelectors.tag(ModTags.Biomes.HAS_SIREN_KELP),
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                ModPlacedFeatures.SIREN_KELP_PLACED_KEY
+                ModPlacedFeatures.SIREN_KELP_PLACED
         );
         BiomeModifications.addFeature(
-                BiomeSelectors.includeByKey(BiomeKeys.TAIGA),
+                BiomeSelectors.tag(ModTags.Biomes.HAS_COOL_BIOME_VEGETATION),
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                ModPlacedFeatures.CHILLBERRY_PLACED_KEY
+                ModPlacedFeatures.CHILLBERRY_PLACED
         );
         BiomeModifications.addFeature(
-                BiomeSelectors.includeByKey(BiomeKeys.SAVANNA),
+                BiomeSelectors.tag(ModTags.Biomes.HAS_DRY_BIOME_VEGETATION),
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                ModPlacedFeatures.WILD_SUNFIRE_TOMATO_PLACED_KEY
+                ModPlacedFeatures.WILD_SUNFIRE_TOMATO_PLACED
         );
         BiomeModifications.addFeature(
-                BiomeSelectors.tag(ModTags.Biomes.HAS_MANDRAKES),
+                BiomeSelectors.tag(ModTags.Biomes.HAS_FLORAL_VEGETATION),
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                ModPlacedFeatures.WILD_MANDRAKE_PLACED_KEY
+                ModPlacedFeatures.WILD_MANDRAKE_PLACED
         );
         BiomeModifications.addFeature(
-                BiomeSelectors.includeByKey(BiomeKeys.MEADOW),
+                BiomeSelectors.tag(ModTags.Biomes.HAS_FLORAL_VEGETATION),
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                ModPlacedFeatures.CELESTIAL_BLOOM_PLACED_KEY
+                ModPlacedFeatures.CELESTIAL_BLOOM_PLACED
         );
         BiomeModifications.addFeature(
-                BiomeSelectors.tag(ModTags.Biomes.HAS_GHOST_FERNS),
+                BiomeSelectors.tag(ModTags.Biomes.HAS_SHADED_VEGETATION),
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                ModPlacedFeatures.GHOST_FERN_PLACED_KEY
+                ModPlacedFeatures.GHOST_FERN_PLACED
         );
         BiomeModifications.addFeature(
                 BiomeSelectors.tag(ModTags.Biomes.HAS_SWAMP_VEGETATION),
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                ModPlacedFeatures.LOTUS_FLOWER_PLACED_KEY
+                ModPlacedFeatures.LOTUS_FLOWER_PLACED
         );
-
+        BiomeModifications.addFeature(
+                BiomeSelectors.tag(ModTags.Biomes.HAS_DRY_BIOME_VEGETATION),
+                GenerationStep.Feature.VEGETAL_DECORATION,
+                ModPlacedFeatures.SALTSPROUT_PLACED
+        );
         BiomeModifications.addFeature(
                 BiomeSelectors.tag(ModTags.Biomes.HAS_DECORATIVE_FLOWERS),
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                ModPlacedFeatures.BEGONIA_PLACED_KEY
+                ModPlacedFeatures.BEGONIA_PLACED
         );
         BiomeModifications.addFeature(
-                BiomeSelectors.includeByKey(BiomeKeys.TAIGA),
+                BiomeSelectors.tag(ModTags.Biomes.HAS_COOL_BIOME_VEGETATION),
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                ModPlacedFeatures.LAVENDER_PLACED_KEY
+                ModPlacedFeatures.LAVENDER_PLACED
         );
         BiomeModifications.addFeature(
-                BiomeSelectors.includeByKey(BiomeKeys.FLOWER_FOREST),
+                BiomeSelectors.tag(ModTags.Biomes.HAS_FLORAL_VEGETATION),
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                ModPlacedFeatures.DAHLIA_PLACED_KEY
+                ModPlacedFeatures.DAHLIA_PLACED
         );
         BiomeModifications.addFeature(
-                BiomeSelectors.includeByKey(BiomeKeys.FLOWER_FOREST),
+                BiomeSelectors.tag(ModTags.Biomes.HAS_FLORAL_VEGETATION),
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                ModPlacedFeatures.WITCHWEED_PLACED_KEY
+                ModPlacedFeatures.WITCHWEED_PLACED
         );
         BiomeModifications.addFeature(
-                BiomeSelectors.includeByKey(BiomeKeys.MUSHROOM_FIELDS),
+                BiomeSelectors.tag(ModTags.Biomes.HAS_SHROOMS),
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                ModPlacedFeatures.PALE_MUSHROOM_PLACED_KEY
+                ModPlacedFeatures.PALE_MUSHROOM_PLACED
         );
         BiomeModifications.addFeature(
-                BiomeSelectors.includeByKey(BiomeKeys.DARK_FOREST),
+                BiomeSelectors.tag(ModTags.Biomes.HAS_SHADED_VEGETATION),
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                ModPlacedFeatures.NIGHTSHADE_BUSH_PLACED_KEY
+                ModPlacedFeatures.NIGHTSHADE_BUSH_PLACED
         );
     }
 
     private static void addTrees() {
         BiomeModifications.addFeature(
-                BiomeSelectors.includeByKey(BiomeKeys.DARK_FOREST),
+                BiomeSelectors.tag(ModTags.Biomes.HAS_SHADED_VEGETATION),
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                ModPlacedFeatures.DARK_OAK_COCOON_PLACED_KEY
+                ModPlacedFeatures.DARK_OAK_COCOON_PLACED
         );
         BiomeModifications.addFeature(
-                BiomeSelectors.includeByKey(BiomeKeys.SWAMP),
+                BiomeSelectors.tag(ModTags.Biomes.HAS_SWAMP_VEGETATION),
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                ModPlacedFeatures.COTTONWOOD_PLACED_KEY
+                ModPlacedFeatures.COTTONWOOD_PLACED
         );
         BiomeModifications.addFeature(
-                BiomeSelectors.includeByKey(BiomeKeys.MANGROVE_SWAMP),
+                BiomeSelectors.tag(ModTags.Biomes.HAS_SWAMP_VEGETATION),
                 GenerationStep.Feature.VEGETAL_DECORATION,
-                ModPlacedFeatures.WILLOW_PLACED_KEY
+                ModPlacedFeatures.WILLOW_PLACED
         );
     }
 }

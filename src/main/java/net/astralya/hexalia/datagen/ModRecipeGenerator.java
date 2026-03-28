@@ -1,10 +1,7 @@
 package net.astralya.hexalia.datagen;
 
 import net.astralya.hexalia.HexaliaMod;
-import net.astralya.hexalia.datagen.custom.MutationRecipeBuilder;
-import net.astralya.hexalia.datagen.custom.RitualBrazierRecipeBuilder;
-import net.astralya.hexalia.datagen.custom.RitualTableRecipeBuilder;
-import net.astralya.hexalia.datagen.custom.SmallCauldronRecipeBuilder;
+import net.astralya.hexalia.datagen.custom.*;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.astralya.hexalia.block.ModBlocks;
@@ -44,12 +41,13 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
     public void generate(RecipeExporter exporter) {
         // Shaped Recipe for Items & Blocks
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.SMALL_CAULDRON)
-                .pattern("S S")
-                .pattern("P P")
-                .pattern("SSS")
-                .input('P', Items.COPPER_INGOT)
-                .input('S', Items.COBBLED_DEEPSLATE)
-                .criterion(hasItem(Items.COPPER_INGOT), conditionsFromItem(Items.COPPER_INGOT))
+                .pattern("D D")
+                .pattern("DCD")
+                .pattern("LLL")
+                .input('C', ItemTags.COALS)
+                .input('D', Items.COBBLED_DEEPSLATE)
+                .input('L', ItemTags.LOGS)
+                .criterion(hasItem(Items.COBBLED_DEEPSLATE), conditionsFromItem(Items.COBBLED_DEEPSLATE))
                 .offerTo(exporter, Identifier.of(getRecipeName(ModItems.SMALL_CAULDRON)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.DREAMCATCHER)
@@ -84,8 +82,8 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.INFUSED_DIRT, 2)
                 .pattern("SP")
                 .pattern("PS")
-                .input('S', Blocks.DIRT)
-                .input('P', ModItems.SIREN_KELP)
+                .input('P', Blocks.DIRT)
+                .input('S', ModItems.SIREN_KELP)
                 .criterion(hasItem(ModItems.SIREN_KELP), conditionsFromItem(ModItems.SIREN_KELP))
                 .offerTo(exporter, Identifier.of(getRecipeName(ModBlocks.INFUSED_DIRT)));
 
@@ -97,15 +95,14 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
                 .offerTo(exporter, Identifier.of(getRecipeName(ModItems.ATHAME)));
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.RUSTIC_OVEN)
-                .pattern("TTT")
-                .pattern("SPS")
-                .pattern("SSS")
-                .input('P', ItemTags.COALS)
-                .input('S', Items.COBBLED_DEEPSLATE)
-                .input('T', Items.IRON_INGOT)
-                .criterion(hasItem(Items.COBBLED_DEEPSLATE), conditionsFromItem(Items.COBBLED_DEEPSLATE))
-                .offerTo(exporter, Identifier.of(getRecipeName(ModBlocks.RUSTIC_OVEN)));
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.LADLE)
+                .pattern("  B")
+                .pattern(" S ")
+                .pattern("S  ")
+                .input('S', Items.STICK)
+                .input('B', Items.BOWL)
+                .criterion(hasItem(Items.STICK), conditionsFromItem(Items.STICK))
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.LADLE)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.HEX_FOCUS)
                 .pattern("  S")
@@ -142,21 +139,41 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModItems.SILK_FIBER), conditionsFromItem(ModItems.SILK_FIBER))
                 .offerTo(exporter, Identifier.of(getRecipeName(ModItems.SILK_IDOL)));
 
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.NESTING_BLOCK)
+                .pattern("SSS")
+                .pattern("PNP")
+                .pattern("PPP")
+                .input('P', ItemTags.PLANKS)
+                .input('N', ItemTags.LEAVES)
+                .input('S', Items.STRING)
+                .criterion(hasItem(Items.STRING), conditionsFromItem(Items.STRING))
+                .offerTo(exporter, Identifier.of(getRecipeName(ModBlocks.NESTING_BLOCK)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.RITUAL_TABLE)
+                .pattern("DCD")
+                .pattern(" D ")
+                .pattern("DDD")
+                .input('D', Items.DEEPSLATE)
+                .input('C', Items.MOSS_CARPET)
+                .criterion(hasItem(Items.DEEPSLATE), conditionsFromItem(Items.DEEPSLATE))
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.RITUAL_TABLE)));
+
+
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.SHELF)
                 .pattern(" P ")
                 .pattern("S S")
-                .input('S', Blocks.COBBLED_DEEPSLATE_SLAB)
-                .input('P', Items.STICK)
+                .input('P', Blocks.COBBLED_DEEPSLATE_SLAB)
+                .input('S', Items.STICK)
                 .criterion(hasItem(Blocks.COBBLED_DEEPSLATE), conditionsFromItem(Blocks.COBBLED_DEEPSLATE))
                 .offerTo(exporter, Identifier.of(getRecipeName(ModBlocks.SHELF)));
 
         ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModBlocks.CENSER)
                 .pattern(" P ")
-                .pattern("APA")
+                .pattern("PAP")
                 .pattern("SSS")
-                .input('S', ItemTags.LOGS_THAT_BURN)
-                .input('A', ItemTags.COALS)
                 .input('P', Items.BRICK)
+                .input('S', ItemTags.LOGS)
+                .input('A', ItemTags.COALS)
                 .criterion(hasItem(Items.BRICK), conditionsFromItem(Items.BRICK))
                 .offerTo(exporter, Identifier.of(getRecipeName(ModBlocks.CENSER)));
 
@@ -190,31 +207,133 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
         offerReversibleCompactingRecipes(exporter, RecipeCategory.MISC, ModItems.SALT,
                 RecipeCategory.MISC, ModBlocks.SALT_BLOCK);
 
-        // Armor Recipes
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.GHOSTVEIL)
-                .pattern("T T")
-                .pattern("PTP")
-                .pattern("SSS")
-                .input('T', Items.LEATHER)
-                .input('P', ModItems.SILK_FIBER)
-                .input('S', ModBlocks.GHOST_FERN)
+        // Armor Recipes & Tools
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.GHOSTVEIL)
+                .pattern("LLL")
+                .pattern("FSF")
+                .pattern("F F")
+                .input('S', ModItems.SILK_FIBER)
+                .input('F', ModBlocks.GHOST_FERN)
+                .input('L', Items.LEATHER)
                 .criterion(hasItem(ModBlocks.GHOST_FERN), conditionsFromItem(ModBlocks.GHOST_FERN))
                 .offerTo(exporter, Identifier.of(getRecipeName(ModItems.GHOSTVEIL)));
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.EARPLUGS)
-                .pattern("T T")
-                .input('T', Items.LEATHER)
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.EARPLUGS)
+                .pattern("P P")
+                .input('P', Items.LEATHER)
                 .criterion(hasItem(Items.LEATHER), conditionsFromItem(Items.LEATHER))
-                .offerTo(exporter);
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.EARPLUGS)));
 
-        ShapedRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.BOGGED_BOOTS)
-                .pattern("PSP")
-                .pattern("A A")
-                .input('S', ModItems.SILK_FIBER)
-                .input('P', ModBlocks.WITCHWEED)
-                .input('A', Items.DRIED_KELP)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.PURIFYING_SAC)
+                .input(ModItems.SALT)
+                .input(ModItems.LOTUS_BLOSSOM)
+                .input(Items.LEATHER)
+                .criterion(hasItem(ModItems.SALT), conditionsFromItem(ModItems.SALT))
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.PURIFYING_SAC)));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.FROST_SAC)
+                .input(Items.SNOWBALL)
+                .input(ModItems.CHILLBERRIES)
+                .input(Items.LEATHER)
+                .criterion(hasItem(ModItems.CHILLBERRIES), conditionsFromItem(ModItems.CHILLBERRIES))
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.FROST_SAC)));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.FOUL_SAC)
+                .input(Items.SPIDER_EYE)
+                .input(ModBlocks.WITCHWEED)
+                .input(Items.LEATHER)
                 .criterion(hasItem(ModBlocks.WITCHWEED), conditionsFromItem(ModBlocks.WITCHWEED))
-                .offerTo(exporter);
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.FOUL_SAC)));
+
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.SEARING_SAC)
+                .input(ModItems.RABBAGE)
+                .input(ModItems.SUNFIRE_TOMATO)
+                .input(Items.LEATHER)
+                .criterion(hasItem(ModItems.SUNFIRE_TOMATO), conditionsFromItem(ModItems.SUNFIRE_TOMATO))
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.SEARING_SAC)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.BOGSHADE_BOOTS)
+                .pattern("SWS")
+                .pattern("K K")
+                .input('S', ModItems.SILK_FIBER)
+                .input('W', ModItems.WATER_NODE)
+                .input('K', Items.KELP)
+                .criterion(hasItem(ModItems.SILK_FIBER), conditionsFromItem(ModItems.SILK_FIBER))
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.BOGSHADE_BOOTS)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.THORNBOW)
+                .pattern(" SF")
+                .pattern("REF")
+                .pattern(" SF")
+                .input('S', Items.STICK)
+                .input('E', ModItems.EARTH_NODE)
+                .input('R', ModItems.RABBAGE)
+                .input('F', Items.STRING)
+                .criterion(hasItem(ModItems.EARTH_NODE), conditionsFromItem(ModItems.EARTH_NODE))
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.THORNBOW)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.BRIAR_SICKLE)
+                .pattern(" SS")
+                .pattern("RE ")
+                .pattern(" S ")
+                .input('S', Items.STICK)
+                .input('E', ModItems.EARTH_NODE)
+                .input('R', ModItems.RABBAGE)
+                .criterion(hasItem(ModItems.EARTH_NODE), conditionsFromItem(ModItems.EARTH_NODE))
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.BRIAR_SICKLE)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.TOOLS, ModItems.SPIRITROOT_TETHER)
+                .pattern("ES ")
+                .pattern("SP ")
+                .pattern("  S")
+                .input('S', Items.STRING)
+                .input('E', ModItems.EARTH_NODE)
+                .input('P', Items.ENDER_PEARL)
+                .criterion(hasItem(ModItems.EARTH_NODE), conditionsFromItem(ModItems.EARTH_NODE))
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.SPIRITROOT_TETHER)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.SILKWEAVE_HOOD)
+                .pattern(" S ")
+                .pattern("SLS")
+                .pattern(" W ")
+                .input('S', ModItems.SILK_FIBER)
+                .input('L', Items.LEATHER_HELMET)
+                .input('W', ItemTags.WOOL)
+                .criterion(hasItem(ModItems.SILK_FIBER), conditionsFromItem(ModItems.SILK_FIBER))
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.SILKWEAVE_HOOD)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.SILKWEAVE_MANTLE)
+                .pattern("TWT")
+                .pattern("SLS")
+                .pattern(" S ")
+                .input('S', ModItems.SILK_FIBER)
+                .input('L', Items.LEATHER_CHESTPLATE)
+                .input('T', Items.STRING)
+                .input('W', ItemTags.WOOL)
+                .criterion(hasItem(ModItems.SILK_FIBER), conditionsFromItem(ModItems.SILK_FIBER))
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.SILKWEAVE_MANTLE)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.SILKWEAVE_BINDINGS)
+                .pattern(" S ")
+                .pattern("SLS")
+                .pattern("TWT")
+                .input('S', ModItems.SILK_FIBER)
+                .input('L', Items.LEATHER_CHESTPLATE)
+                .input('T', Items.STRING)
+                .input('W', ItemTags.WOOL)
+                .criterion(hasItem(ModItems.SILK_FIBER), conditionsFromItem(ModItems.SILK_FIBER))
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.SILKWEAVE_BINDINGS)));
+
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, ModItems.SILKWEAVE_FOOTWRAPS)
+                .pattern(" W ")
+                .pattern("SLS")
+                .pattern("TST")
+                .input('S', ModItems.SILK_FIBER)
+                .input('L', Items.LEATHER_CHESTPLATE)
+                .input('T', Items.STRING)
+                .input('W', ItemTags.WOOL)
+                .criterion(hasItem(ModItems.SILK_FIBER), conditionsFromItem(ModItems.SILK_FIBER))
+                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.SILKWEAVE_FOOTWRAPS)));
 
         // Shapeless Recipe for Seeds
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MANDRAKE_SEEDS)
@@ -249,14 +368,6 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .input(ModTags.Items.FOODS_VEGETABLES)
                 .input(ModTags.Items.FOODS_VEGETABLES)
                 .criterion(hasItem(ModItems.MANDRAKE), conditionsFromItem(ModItems.MANDRAKE))
-                .offerTo(exporter);
-
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.PURIFYING_SAC)
-                .input(ModTags.Items.SALT_DUSTS)
-                .input(Items.LEATHER)
-                .input(ModTags.Items.CRUSHED_HERBS)
-                .input(ModTags.Items.CRUSHED_HERBS)
-                .criterion(hasItem(ModItems.SALT), conditionsFromItem(ModItems.SALT))
                 .offerTo(exporter);
 
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.BLACK_DYE)
@@ -330,42 +441,6 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModBlocks.CELESTIAL_CRYSTAL_BLOCK), conditionsFromItem(ModBlocks.CELESTIAL_CRYSTAL_BLOCK))
                 .offerTo(exporter);
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.VERDANT_GRIMOIRE)
-                .input(Items.BOOK)
-                .input(ModTags.Items.HERBS)
-                .criterion(hasItem(Items.BOOK), conditionsFromItem(Items.BOOK))
-                .offerTo(exporter);
-
-        // Shapeless Recipe for Mortar & Pestle, and Mortar & Pestle Resources
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MORTAR_AND_PESTLE)
-                .input(Items.BOWL)
-                .input(Items.STONE)
-                .criterion(hasItem(Items.BOWL), conditionsFromItem(Items.BOWL))
-                .offerTo(exporter);
-
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SPIRIT_POWDER)
-                .input(ModItems.MORTAR_AND_PESTLE)
-                .input(ModBlocks.SPIRIT_BLOOM)
-                .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
-                .offerTo(exporter);
-
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SIREN_PASTE)
-                .input(ModItems.MORTAR_AND_PESTLE)
-                .input(ModItems.SIREN_KELP)
-                .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
-                .offerTo(exporter);
-
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.DREAM_PASTE)
-                .input(ModItems.MORTAR_AND_PESTLE)
-                .input(ModBlocks.DREAMSHROOM)
-                .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
-                .offerTo(exporter);
-
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.GHOST_POWDER)
-                .input(ModItems.MORTAR_AND_PESTLE)
-                .input(ModBlocks.GHOST_FERN)
-                .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
-                .offerTo(exporter);
         //TODO
         /*ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.VERDANT_GRIMOIRE)
                 .input(Items.BOOK)
@@ -373,96 +448,87 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(Items.BOOK), conditionsFromItem(Items.BOOK))
                 .offerTo(exporter);*/
 
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, Items.STRING)
-                .input(ModItems.MORTAR_AND_PESTLE)
-                .input(ModItems.SILK_FIBER)
-                .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
-                .offerTo(exporter, Identifier.of(getRecipeName(Items.STRING) + "_from_mortar_and_pestle"));
-
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.SALT)
-                .input(ModItems.MORTAR_AND_PESTLE)
-                .input(ModItems.SALTSPROUT)
-                .criterion(hasItem(ModItems.MORTAR_AND_PESTLE), conditionsFromItem(ModItems.MORTAR_AND_PESTLE))
-                .offerTo(exporter, Identifier.of(getRecipeName(ModItems.SALT) + "_from_mortar_and_pestle"));
-
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MUTAVIS)
-                .input(Items.BONE_MEAL)
-                .input(ModItems.TREE_RESIN)
-                .input(ModTags.Items.CRUSHED_HERBS)
-                .input(ModTags.Items.CRUSHED_HERBS)
-                .criterion(hasItem(Items.BONE_MEAL), conditionsFromItem(Items.BONE_MEAL))
-                .offerTo(exporter);
-
         // Small Cauldron brews
-        SmallCauldronRecipeBuilder.smallCauldron()
-                .addIngredient(Blocks.CACTUS)
-                .addIngredient(ModItems.MANDRAKE)
-                .addIngredient(ModItems.GHOST_POWDER)
-                .bottle(ModItems.RUSTIC_BOTTLE)
-                .result(ModItems.BREW_OF_SPIKESKIN, 1)
-                .brewTime(175)
-                .experience(5.0f)
-                .offerTo(exporter, Identifier.of(ModItems.BREW_OF_SPIKESKIN + "_from_small_cauldron"));
+        SmallCauldronRecipeBuilder.cauldron(
+                        Ingredient.ofItems(ModItems.MANDRAKE),
+                        Ingredient.ofItems(ModItems.SPIRIT_POWDER),
+                        Ingredient.ofItems(ModItems.TREE_RESIN),
+                        Ingredient.ofItems(Items.ROTTEN_FLESH),
+                        new ItemStack(ModItems.BREW_OF_BLOODLUST)
+                ).unlockedBy("has_rustic_bottle", InventoryChangedCriterion.Conditions.items(ModItems.RUSTIC_BOTTLE))
+                .save(exporter, Identifier.of("hexalia",
+                        Registries.ITEM.getId(ModItems.BREW_OF_BLOODLUST).getPath() + "_from_small_cauldron"));
 
-        SmallCauldronRecipeBuilder.smallCauldron()
-                .addIngredient(Items.BEEF)
-                .addIngredient(ModItems.SIREN_PASTE)
-                .addIngredient(ModItems.SALTSPROUT)
-                .bottle(ModItems.RUSTIC_BOTTLE)
-                .result(ModItems.BREW_OF_BLOODLUST, 1)
-                .brewTime(175)
-                .experience(5.0f)
-                .offerTo(exporter, Identifier.of(ModItems.BREW_OF_BLOODLUST + "_from_small_cauldron"));
+        SmallCauldronRecipeBuilder.cauldron(
+                        Ingredient.ofItems(ModItems.CELESTIAL_CRYSTAL),
+                        Ingredient.ofItems(Items.IRON_NUGGET),
+                        Ingredient.ofItems(Items.SWEET_BERRIES),
+                        Ingredient.ofItems(ModItems.TREE_RESIN),
+                        new ItemStack(ModItems.BREW_OF_SPIKESKIN)
+                ).unlockedBy("has_rustic_bottle", InventoryChangedCriterion.Conditions.items(ModItems.RUSTIC_BOTTLE))
+                .save(exporter, Identifier.of("hexalia",
+                        Registries.ITEM.getId(ModItems.BREW_OF_SPIKESKIN).getPath() + "_from_small_cauldron"));
 
-        SmallCauldronRecipeBuilder.smallCauldron()
-                .addIngredient(Items.SLIME_BALL)
-                .addIngredient(Items.FEATHER)
-                .addIngredient(Items.SPIDER_EYE)
-                .bottle(ModItems.RUSTIC_BOTTLE)
-                .result(ModItems.BREW_OF_SLIMEWALKER, 1)
-                .brewTime(175)
-                .experience(5.0f)
-                .offerTo(exporter, Identifier.of(ModItems.BREW_OF_SLIMEWALKER + "_from_small_cauldron"));
+        SmallCauldronRecipeBuilder.cauldron(
+                        Ingredient.ofItems(Items.SLIME_BALL),
+                        Ingredient.ofItems(ModItems.CHILLBERRIES),
+                        Ingredient.ofItems(ModItems.TREE_RESIN),
+                        Ingredient.ofItems(Items.FEATHER),
+                        new ItemStack(ModItems.BREW_OF_SLIMEWALKER)
+                ).unlockedBy("has_rustic_bottle", InventoryChangedCriterion.Conditions.items(ModItems.RUSTIC_BOTTLE))
+                .save(exporter, Identifier.of("hexalia",
+                        Registries.ITEM.getId(ModItems.BREW_OF_SLIMEWALKER).getPath() + "_from_small_cauldron"));
 
-        SmallCauldronRecipeBuilder.smallCauldron()
-                .addIngredient(Items.ENDER_PEARL)
-                .addIngredient(ModItems.TREE_RESIN)
-                .addIngredient(ModItems.SPIRIT_POWDER)
-                .bottle(ModItems.RUSTIC_BOTTLE)
-                .result(ModItems.BREW_OF_HOMESTEAD, 1)
-                .brewTime(175)
-                .experience(5.0f)
-                .offerTo(exporter, Identifier.of(ModItems.BREW_OF_HOMESTEAD + "_from_small_cauldron"));
+        SmallCauldronRecipeBuilder.cauldron(
+                        Ingredient.ofItems(ModItems.TREE_RESIN),
+                        Ingredient.ofItems(Items.ENDER_PEARL),
+                        Ingredient.ofItems(ModItems.SPIRIT_POWDER),
+                        Ingredient.ofItems(ModItems.GALEBERRIES),
+                        new ItemStack(ModItems.BREW_OF_HOMESTEAD)
+                ).unlockedBy("has_rustic_bottle", InventoryChangedCriterion.Conditions.items(ModItems.RUSTIC_BOTTLE))
+                .save(exporter, Identifier.of("hexalia",
+                        Registries.ITEM.getId(ModItems.BREW_OF_HOMESTEAD).getPath() + "_from_small_cauldron"));
 
-        SmallCauldronRecipeBuilder.smallCauldron()
-                .addIngredient(Items.FLINT)
-                .addIngredient(Items.GOLD_NUGGET)
-                .addIngredient(ModItems.MANDRAKE)
-                .bottle(ModItems.RUSTIC_BOTTLE)
-                .result(ModItems.BREW_OF_SIPHON, 1)
-                .brewTime(175)
-                .experience(5.0f)
-                .offerTo(exporter, Identifier.of(ModItems.BREW_OF_SIPHON + "_from_small_cauldron"));
+        SmallCauldronRecipeBuilder.cauldron(
+                        Ingredient.ofItems(ModItems.DREAM_PASTE),
+                        Ingredient.ofItems(ModItems.SIREN_PASTE),
+                        Ingredient.ofItems(Items.IRON_INGOT),
+                        Ingredient.ofItems(Items.REDSTONE),
+                        new ItemStack(ModItems.BREW_OF_SIPHON)
+                ).unlockedBy("has_rustic_bottle", InventoryChangedCriterion.Conditions.items(ModItems.RUSTIC_BOTTLE))
+                .save(exporter, Identifier.of("hexalia",
+                        Registries.ITEM.getId(ModItems.BREW_OF_SIPHON).getPath() + "_from_small_cauldron"));
 
-        SmallCauldronRecipeBuilder.smallCauldron()
-                .addIngredient(ModItems.GALEBERRIES)
-                .addIngredient(ModItems.SUNFIRE_TOMATO)
-                .addIngredient(Items.BLACK_DYE)
-                .bottle(ModItems.RUSTIC_BOTTLE)
-                .result(ModItems.BREW_OF_DAYBLOOM, 1)
-                .brewTime(175)
-                .experience(5.0f)
-                .offerTo(exporter, Identifier.of(ModItems.BREW_OF_DAYBLOOM + "_from_small_cauldron"));
+        SmallCauldronRecipeBuilder.cauldron(
+                        Ingredient.ofItems(ModItems.SUNFIRE_TOMATO),
+                        Ingredient.ofItems(ModItems.SPIRIT_POWDER),
+                        Ingredient.ofItems(Items.GLOW_BERRIES),
+                        Ingredient.ofItems(ModBlocks.WITCHWEED),
+                        new ItemStack(ModItems.BREW_OF_DAYBLOOM)
+                ).unlockedBy("has_rustic_bottle", InventoryChangedCriterion.Conditions.items(ModItems.RUSTIC_BOTTLE))
+                .save(exporter, Identifier.of("hexalia",
+                        Registries.ITEM.getId(ModItems.BREW_OF_DAYBLOOM).getPath() + "_from_small_cauldron"));
 
-        SmallCauldronRecipeBuilder.smallCauldron()
-                .addIngredient(ModItems.DREAM_PASTE)
-                .addIngredient(Items.SPIDER_EYE)
-                .addIngredient(Items.BLACK_DYE)
-                .bottle(ModItems.RUSTIC_BOTTLE)
-                .result(ModItems.BREW_OF_ARACHNID_GRACE, 1)
-                .brewTime(175)
-                .experience(5.0f)
-                .offerTo(exporter, Identifier.of(ModItems.BREW_OF_ARACHNID_GRACE + "_from_small_cauldron"));
+        SmallCauldronRecipeBuilder.cauldron(
+                        Ingredient.ofItems(Items.SPIDER_EYE),
+                        Ingredient.ofItems(ModItems.GHOST_POWDER),
+                        Ingredient.ofItems(Items.BLACK_DYE),
+                        Ingredient.ofItems(Items.STRING),
+                        new ItemStack(ModItems.BREW_OF_ARACHNID_GRACE)
+                ).unlockedBy("has_rustic_bottle", InventoryChangedCriterion.Conditions.items(ModItems.RUSTIC_BOTTLE))
+                .save(exporter, Identifier.of("hexalia",
+                        Registries.ITEM.getId(ModItems.BREW_OF_ARACHNID_GRACE).getPath() + "_from_small_cauldron"));
+
+        SmallCauldronRecipeBuilder.cauldron(
+                        Ingredient.ofItems(Items.FEATHER),
+                        Ingredient.ofItems(ModItems.GHOST_POWDER),
+                        Ingredient.ofItems(ModItems.CHILLBERRIES),
+                        Ingredient.ofItems(Items.SCULK),
+                        new ItemStack(ModItems.BREW_OF_HOLLOW_SILENCE)
+                ).unlockedBy("has_rustic_bottle", InventoryChangedCriterion.Conditions.items(ModItems.RUSTIC_BOTTLE))
+                .save(exporter, Identifier.of("hexalia",
+                        Registries.ITEM.getId(ModItems.BREW_OF_HOLLOW_SILENCE).getPath() + "_from_small_cauldron"));
+
 
         // Recipes for Ritual Table Items
         RitualTableRecipeBuilder.ritual(new ItemStack(ModBlocks.GRIMSHADE, 1))
@@ -509,6 +575,15 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .brazierItem(Items.KELP)
                 .criterion("has_ancient_seed", InventoryChangedCriterion.Conditions.items(ModItems.ANCIENT_SEED))
                 .offerTo(exporter, Identifier.of((ModItems.KELPWEAVE_BLADE) + "_from_ritual_table"));
+
+        RitualTableRecipeBuilder.ritual(new ItemStack(ModItems.ROOTSHAPER, 1))
+                .tableItem(ModItems.ANCIENT_SEED)
+                .brazierItem(ModItems.EARTH_NODE)
+                .brazierItem(ModItems.DREAM_PASTE)
+                .brazierItem(Items.WOODEN_SHOVEL)
+                .brazierItem(Items.WOODEN_PICKAXE)
+                .criterion("has_ancient_seed", InventoryChangedCriterion.Conditions.items(ModItems.ANCIENT_SEED))
+                .offerTo(exporter, Identifier.of((ModItems.ROOTSHAPER) + "_from_ritual_table"));
 
         RitualTableRecipeBuilder.ritual(new ItemStack(ModBlocks.NAUTILITE, 1))
                 .tableItem(Items.KELP)
@@ -564,6 +639,123 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .brazierItem(Items.BROWN_MUSHROOM)
                 .criterion("has_amethyst_shard", InventoryChangedCriterion.Conditions.items(Items.AMETHYST_SHARD))
                 .offerTo(exporter, Identifier.of((ModItems.EARTH_NODE) + "_from_ritual_table"));
+        
+        RitualTableRecipeBuilder.ritual(new ItemStack(ModBlocks.LOURDES, 1))
+                .tableItem(Blocks.BLUE_ORCHID)
+                .brazierItem(ModItems.AIR_NODE)
+                .brazierItem(ModItems.DREAM_PASTE)
+                .brazierItem(Items.HONEYCOMB)
+                .brazierItem(Items.GLISTERING_MELON_SLICE)
+                .criterion("has_blue_orchid", InventoryChangedCriterion.Conditions.items(Blocks.BLUE_ORCHID))
+                .offerTo(exporter, Identifier.of((ModBlocks.LOURDES).asItem() + "_from_ritual_table"));
+        
+        RitualTableRecipeBuilder.ritual(new ItemStack(ModBlocks.AEGIFLORA, 1))
+                .tableItem(Blocks.DANDELION)
+                .brazierItem(ModItems.GHOST_POWDER)
+                .brazierItem(ModItems.LOTUS_BLOSSOM)
+                .brazierItem(Items.MOSS_BLOCK)
+                .brazierItem(Items.GUNPOWDER)
+                .criterion("has_dandelion", InventoryChangedCriterion.Conditions.items(Blocks.DANDELION))
+                .offerTo(exporter, Identifier.of((ModBlocks.AEGIFLORA).asItem() + "_from_ritual_table"));
+
+        RitualTableRecipeBuilder.ritual(new ItemStack(ModItems.BLOOMWRAP_HAT, 1))
+                .tableItem(Items.LEATHER_HELMET)
+                .brazierItem(Items.PINK_TULIP)
+                .brazierItem(ModItems.SILK_FIBER)
+                .brazierItem(ModItems.MANDRAKE)
+                .brazierItem(Items.ROOTED_DIRT)
+                .criterion("has_hex_focus", InventoryChangedCriterion.Conditions.items(ModItems.HEX_FOCUS))
+                .offerTo(exporter, Identifier.of((ModItems.BLOOMWRAP_HAT) + "_from_ritual_table"));
+
+        RitualTableRecipeBuilder.ritual(new ItemStack(ModItems.BLOOMWRAP_ROBES, 1))
+                .tableItem(Items.LEATHER_CHESTPLATE)
+                .brazierItem(Items.MOSS_BLOCK)
+                .brazierItem(ModItems.EARTH_NODE)
+                .brazierItem(ModItems.SILK_FIBER)
+                .brazierItem(Items.IRON_NUGGET)
+                .criterion("has_hex_focus", InventoryChangedCriterion.Conditions.items(ModItems.HEX_FOCUS))
+                .offerTo(exporter, Identifier.of((ModItems.BLOOMWRAP_ROBES) + "_from_ritual_table"));
+
+        RitualTableRecipeBuilder.ritual(new ItemStack(ModItems.BLOOMWRAP_LEGGINGS, 1))
+                .tableItem(Items.LEATHER_LEGGINGS)
+                .brazierItem(Items.PEONY)
+                .brazierItem(ModBlocks.SPIRIT_BLOOM)
+                .brazierItem(ModItems.SILK_FIBER)
+                .brazierItem(Items.HONEYCOMB)
+                .criterion("has_hex_focus", InventoryChangedCriterion.Conditions.items(ModItems.HEX_FOCUS))
+                .offerTo(exporter, Identifier.of((ModItems.BLOOMWRAP_LEGGINGS) + "_from_ritual_table"));
+
+        RitualTableRecipeBuilder.ritual(new ItemStack(ModItems.BLOOMWRAP_BOOTS, 1))
+                .tableItem(Items.LEATHER_BOOTS)
+                .brazierItem(Items.DANDELION)
+                .brazierItem(ModItems.AIR_NODE)
+                .brazierItem(ModItems.SILK_FIBER)
+                .brazierItem(Items.SUGAR)
+                .criterion("has_hex_focus", InventoryChangedCriterion.Conditions.items(ModItems.HEX_FOCUS))
+                .offerTo(exporter, Identifier.of((ModItems.BLOOMWRAP_BOOTS) + "_from_ritual_table"));
+
+        // Mortar and Pestle Recipes (using custom builder)
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.ofItems(ModBlocks.SPIRIT_BLOOM),
+                        new ItemStack(ModItems.SPIRIT_POWDER)
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE)
+                .offerTo(exporter, id(pathOf(ModItems.SPIRIT_POWDER) + "_from_mortar"));
+
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.ofItems(ModItems.SIREN_KELP),
+                        new ItemStack(ModItems.SIREN_PASTE)
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE)
+                .offerTo(exporter, id(pathOf(ModItems.SIREN_PASTE) + "_from_mortar"));
+
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.ofItems(ModBlocks.DREAMSHROOM),
+                        new ItemStack(ModItems.DREAM_PASTE)
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE)
+                .offerTo(exporter, id(pathOf(ModItems.DREAM_PASTE) + "_from_mortar"));
+
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.ofItems(ModBlocks.GHOST_FERN),
+                        new ItemStack(ModItems.GHOST_POWDER)
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE)
+                .offerTo(exporter, id(pathOf(ModItems.GHOST_POWDER) + "_from_mortar"));
+
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.ofItems(ModItems.SALTSPROUT),
+                        new ItemStack(ModItems.SALT)
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE)
+                .offerTo(exporter, id(pathOf(ModItems.SALT) + "_from_mortar"));
+
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.ofItems(ModItems.TREE_RESIN),
+                        Ingredient.ofItems(Items.SLIME_BALL),
+                        Ingredient.fromTag(ModTags.Items.CRUSHED_HERBS),
+                        new ItemStack(ModItems.MUTAVIS)
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE)
+                .offerTo(exporter, id(pathOf(ModItems.MUTAVIS) + "_from_mortar"));
+
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.fromTag(ItemTags.SMALL_FLOWERS),
+                        Ingredient.ofItems(Items.HONEYCOMB),
+                        Ingredient.fromTag(ModTags.Items.CRUSHED_HERBS),
+                        new ItemStack(ModItems.FRAGRANT_NECTAR)
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE)
+                .offerTo(exporter, id(pathOf(ModItems.FRAGRANT_NECTAR) + "_from_mortar"));
+
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.ofItems(Items.POPPY),
+                        Ingredient.ofItems(ModItems.RABBAGE),
+                        Ingredient.ofItems(Items.AZURE_BLUET),
+                        new ItemStack(ModItems.BRAMBLEGUARD_SALVE)
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE)
+                .offerTo(exporter, id(pathOf(ModItems.BRAMBLEGUARD_SALVE) + "_from_mortar"));
+
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.ofItems(Items.CORNFLOWER),
+                        Ingredient.ofItems(ModItems.TREE_RESIN),
+                        Ingredient.ofItems(Items.OXEYE_DAISY),
+                        new ItemStack(ModItems.MENDERS_SALVE)
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE)
+                .offerTo(exporter, id(pathOf(ModItems.MENDERS_SALVE) + "_from_mortar"));
 
         // Mutation Recipes
         MutationRecipeBuilder.mutation(
@@ -595,7 +787,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                         new ItemStack(ModBlocks.GHOST_FERN.asItem())
                 ).criterion("has_mutavis", InventoryChangedCriterion.Conditions.items(ModItems.MUTAVIS))
                 .offerTo(exporter, id(pathOf(ModBlocks.GHOST_FERN) + "_from_mutation"));
-        
+
         MutationRecipeBuilder.mutation(Ingredient.ofItems(Blocks.DIORITE), new ItemStack(Blocks.GRANITE))
                 .criterion("has_mutavis", InventoryChangedCriterion.Conditions.items(ModItems.MUTAVIS))
                 .offerTo(exporter, id("granite_from_mutation"));
@@ -648,16 +840,46 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion("has_mutavis", InventoryChangedCriterion.Conditions.items(ModItems.MUTAVIS))
                 .offerTo(exporter, id("saltsprout_from_mutation"));
 
+        MutationRecipeBuilder.mutation(Ingredient.ofItems(Blocks.SHORT_GRASS), new ItemStack(ModBlocks.WITCHWEED))
+                .criterion("has_mutavis", InventoryChangedCriterion.Conditions.items(ModItems.MUTAVIS))
+                .offerTo(exporter, id("witchweed_from_mutation"));
+
+        MutationRecipeBuilder.mutation(Ingredient.ofItems(Blocks.OAK_SAPLING), new ItemStack(ModBlocks.COTTONWOOD_SAPLING))
+                .criterion("has_mutavis", InventoryChangedCriterion.Conditions.items(ModItems.MUTAVIS))
+                .offerTo(exporter, id("cottonwood_sapling_from_mutation"));
+
+        MutationRecipeBuilder.mutation(Ingredient.ofItems(Blocks.BIRCH_SAPLING), new ItemStack(ModBlocks.WILLOW_SAPLING))
+                .criterion("has_mutavis", InventoryChangedCriterion.Conditions.items(ModItems.MUTAVIS))
+                .offerTo(exporter, id("willow_sapling_from_mutation"));
+
         // Celestial Ritual
         new RitualBrazierRecipeBuilder(Items.AMETHYST_SHARD, ModItems.CELESTIAL_CRYSTAL.getDefaultStack())
                 .criterion("has_amethyst_shard", conditionsFromItem(Items.AMETHYST_SHARD))
                 .offerTo(exporter, Identifier.of(ModItems.CELESTIAL_CRYSTAL + "_from_ritual_brazier"));
+
         new RitualBrazierRecipeBuilder(Items.GLOW_BERRIES, ModItems.GALEBERRIES.getDefaultStack())
                 .criterion("has_glow_berries", conditionsFromItem(Items.GLOW_BERRIES))
                 .offerTo(exporter, Identifier.of(ModItems.GALEBERRIES + "_from_ritual_brazier"));
+
         new RitualBrazierRecipeBuilder(Blocks.AMETHYST_BLOCK, ModBlocks.CELESTIAL_CRYSTAL_BLOCK.asItem().getDefaultStack())
                 .criterion("has_amethyst_block", conditionsFromItem(Blocks.AMETHYST_BLOCK))
                 .offerTo(exporter, Identifier.of(ModBlocks.CELESTIAL_CRYSTAL_BLOCK.asItem() + "_from_ritual_brazier"));
+
+        new RitualBrazierRecipeBuilder(ModItems.SILKWEAVE_HOOD, ModItems.MOONWEAVE_HOOD.getDefaultStack())
+                .criterion("has_silkweave_hood", conditionsFromItem(ModItems.SILKWEAVE_HOOD))
+                .offerTo(exporter, Identifier.of(ModItems.MOONWEAVE_HOOD + "_from_ritual_brazier"));
+
+        new RitualBrazierRecipeBuilder(ModItems.SILKWEAVE_MANTLE, ModItems.MOONWEAVE_MANTLE.getDefaultStack())
+                .criterion("has_silkweave_mantle", conditionsFromItem(ModItems.SILKWEAVE_MANTLE))
+                .offerTo(exporter, Identifier.of(ModItems.MOONWEAVE_MANTLE + "_from_ritual_brazier"));
+
+        new RitualBrazierRecipeBuilder(ModItems.SILKWEAVE_BINDINGS, ModItems.MOONWEAVE_BINDINGS.getDefaultStack())
+                .criterion("has_silkweave_bindings", conditionsFromItem(ModItems.SILKWEAVE_BINDINGS))
+                .offerTo(exporter, Identifier.of(ModItems.MOONWEAVE_BINDINGS + "_from_ritual_brazier"));
+
+        new RitualBrazierRecipeBuilder(ModItems.SILKWEAVE_FOOTWRAPS, ModItems.MOONWEAVE_FOOTWRAPS.getDefaultStack())
+                .criterion("has_silkweave_footwraps", conditionsFromItem(ModItems.SILKWEAVE_FOOTWRAPS))
+                .offerTo(exporter, Identifier.of(ModItems.MOONWEAVE_FOOTWRAPS + "_from_ritual_brazier"));
 
         // Recipes for Wooden Blocks
         offerPlanksRecipe(exporter, ModBlocks.COTTONWOOD_PLANKS, ModTags.Items.COTTONWOOD_LOGS, 4);

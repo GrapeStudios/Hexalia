@@ -3,29 +3,27 @@ package net.astralya.hexalia.recipe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.input.RecipeInput;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public record SmallCauldronRecipeInput(List<ItemStack> stacks) implements RecipeInput {
+public final class SmallCauldronRecipeInput implements RecipeInput {
 
-    public SmallCauldronRecipeInput(ItemStack input1, ItemStack input2, ItemStack input3, ItemStack bottle) {
-        this(List.of(input1, input2, input3, bottle));
+    private final List<ItemStack> items;
+
+    public SmallCauldronRecipeInput(List<ItemStack> stacks) {
+        this.items = new ArrayList<>(stacks.size());
+        for (ItemStack stack : stacks) {
+            this.items.add(stack.copy());
+        }
     }
 
     @Override
-    public ItemStack getStackInSlot(int slot) {
-        return stacks.get(slot);
+    public ItemStack getStackInSlot(int index) {
+        return items.get(index);
     }
 
     @Override
     public int getSize() {
-        return stacks.size();
-    }
-
-    public ItemStack getBottle() {
-        return stacks.get(3);
-    }
-
-    public List<ItemStack> getInputs() {
-        return stacks.subList(0, 3);
+        return items.size();
     }
 }

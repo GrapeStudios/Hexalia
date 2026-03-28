@@ -14,11 +14,9 @@ import java.util.Collections;
 import java.util.List;
 
 public final class SmallCauldronDisplay extends BasicDisplay {
-    private final EntryIngredient bottleSlot;
 
-    public SmallCauldronDisplay(List<EntryIngredient> inputs, List<EntryIngredient> outputs, EntryIngredient bottleSlot) {
+    public SmallCauldronDisplay(List<EntryIngredient> inputs, List<EntryIngredient> outputs) {
         super(inputs, outputs);
-        this.bottleSlot = bottleSlot;
     }
 
     public SmallCauldronDisplay(RecipeEntry<SmallCauldronRecipe> entry) {
@@ -26,11 +24,8 @@ public final class SmallCauldronDisplay extends BasicDisplay {
     }
 
     public SmallCauldronDisplay(SmallCauldronRecipe recipe) {
-        super(
-                getInputList(recipe),
-                List.of(EntryIngredient.of(EntryStacks.of(recipe.getOutputStack().copy())))
-        );
-        this.bottleSlot = EntryIngredients.ofIngredient(recipe.getBottleSlot());
+        super(getInputList(recipe),
+                List.of(EntryIngredient.of(EntryStacks.of(recipe.getResult(null).copy()))));
     }
 
     @Override
@@ -38,15 +33,11 @@ public final class SmallCauldronDisplay extends BasicDisplay {
         return SmallCauldronCategory.SMALL_CAULDRON;
     }
 
-    public EntryIngredient getBottleSlot() {
-        return bottleSlot;
-    }
-
     private static List<EntryIngredient> getInputList(SmallCauldronRecipe recipe) {
         if (recipe == null) return Collections.emptyList();
         List<EntryIngredient> list = new ArrayList<>();
-        for (Ingredient ing : recipe.getIngredientList()) {
-            list.add(EntryIngredients.ofIngredient(ing));
+        for (Ingredient ingredient : recipe.getIngredients()) {
+            list.add(EntryIngredients.ofIngredient(ingredient));
         }
         return list;
     }

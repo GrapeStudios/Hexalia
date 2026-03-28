@@ -35,10 +35,10 @@ public class WindsongBlockEntity extends BlockEntity {
     }
 
     private static int cfgDuration() {
-        return Math.max(1, Configuration.common().plants.windsongDuration);
+        return Math.max(1, Configuration.WINDSONG_DURATION.get());
     }
     private static int cfgRadius() {
-        return Math.max(1, Configuration.common().plants.windsongEffectRadius);
+        return Math.max(1, Configuration.WINDSONG_EFFECT_RADIUS.get());
     }
 
     public void activate() {

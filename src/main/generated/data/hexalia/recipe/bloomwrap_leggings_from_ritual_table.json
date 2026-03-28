@@ -1,0 +1,24 @@
+{
+  "type": "hexalia:ritual_table",
+  "ingredients": [
+    {
+      "item": "minecraft:leather_leggings"
+    },
+    {
+      "item": "minecraft:peony"
+    },
+    {
+      "item": "hexalia:spirit_bloom"
+    },
+    {
+      "item": "hexalia:silk_fiber"
+    },
+    {
+      "item": "minecraft:honeycomb"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "id": "hexalia:bloomwrap_leggings"
+  }
+}

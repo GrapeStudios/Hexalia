@@ -20,7 +20,7 @@ import java.util.List;
 
 public final class SmallCauldronCategory implements DisplayCategory<SmallCauldronDisplay> {
 
-    public static final Identifier TEXTURE = Identifier.of(HexaliaMod.MODID, "textures/gui/small_cauldron_category_gui.png");
+    public static final Identifier TEXTURE = Identifier.of(HexaliaMod.MODID, "textures/gui/category/small_cauldron_gui.png");
     public static final CategoryIdentifier<SmallCauldronDisplay> SMALL_CAULDRON =
             CategoryIdentifier.of(HexaliaMod.MODID, "small_cauldron");
 
@@ -31,7 +31,7 @@ public final class SmallCauldronCategory implements DisplayCategory<SmallCauldro
 
     @Override
     public Text getTitle() {
-        return Text.translatable("block.hexalia.small_cauldron");
+        return Text.translatable("container.hexalia.small_cauldron");
     }
 
     @Override
@@ -43,54 +43,38 @@ public final class SmallCauldronCategory implements DisplayCategory<SmallCauldro
     public List<Widget> setupDisplay(SmallCauldronDisplay display, Rectangle bounds) {
         Point origin = bounds.getLocation();
         List<Widget> widgets = new LinkedList<>();
-
         widgets.add(Widgets.createRecipeBase(bounds));
 
-        final int guiWidth = 118;
-        final int guiHeight = 80;
-        final int fixedY = 36;
-        final int fixedX = 28;
+        final int guiWidth = 89;
+        final int guiHeight = 42;
 
         Rectangle startPoint = HexaliaREIClientPlugin.centeredIntoRecipeBase(origin, guiWidth, guiHeight);
+        widgets.add(Widgets.createTexturedWidget(TEXTURE, startPoint.x, startPoint.y, 14, 19, guiWidth, guiHeight));
 
-        widgets.add(Widgets.createTexturedWidget(TEXTURE, startPoint.x, startPoint.y, 0, -5, guiWidth, guiHeight));
-
-        List<EntryIngredient> ingredients = display.getInputEntries();
-
-        if (!ingredients.isEmpty()) {
-            widgets.add(Widgets.createSlot(new Point(startPoint.x + fixedX, startPoint.y + fixedY))
-                    .entries(ingredients.get(0))
-                    .markInput()
-                    .disableBackground());
+        List<EntryIngredient> inputs = display.getInputEntries();
+        if (inputs != null) {
+            if (!inputs.isEmpty()) {
+                widgets.add(Widgets.createSlot(new Point(startPoint.x + 1, startPoint.y + 1))
+                        .entries(inputs.get(0)).markInput().disableBackground());
+            }
+            if (inputs.size() >= 2) {
+                widgets.add(Widgets.createSlot(new Point(startPoint.x + 25, startPoint.y + 1))
+                        .entries(inputs.get(1)).markInput().disableBackground());
+            }
+            if (inputs.size() >= 3) {
+                widgets.add(Widgets.createSlot(new Point(startPoint.x + 1, startPoint.y + 25))
+                        .entries(inputs.get(2)).markInput().disableBackground());
+            }
+            if (inputs.size() >= 4) {
+                widgets.add(Widgets.createSlot(new Point(startPoint.x + 25, startPoint.y + 25))
+                        .entries(inputs.get(3)).markInput().disableBackground());
+            }
         }
-        if (ingredients.size() >= 2) {
-            widgets.add(Widgets.createSlot(new Point(startPoint.x + 4, startPoint.y + fixedY))
-                    .entries(ingredients.get(1))
-                    .markInput()
-                    .disableBackground());
-        }
-        if (ingredients.size() >= 3) {
-            widgets.add(Widgets.createSlot(new Point(startPoint.x + 52, startPoint.y + fixedY))
-                    .entries(ingredients.get(2))
-                    .markInput()
-                    .disableBackground());
-        }
-
-        widgets.add(Widgets.createSlot(new Point(startPoint.x + fixedX, startPoint.y + 60))
-                .entries(display.getBottleSlot())
-                .markInput()
-                .disableBackground());
-
-        widgets.add(Widgets.createTooltip(
-                new Rectangle(startPoint.x + fixedX, startPoint.y + 15, 16, 16),
-                Text.translatable("tooltip.hexalia.heat")));
 
         List<EntryIngredient> outputs = display.getOutputEntries();
-        if (!outputs.isEmpty()) {
-            widgets.add(Widgets.createSlot(new Point(startPoint.x + 89, startPoint.y + fixedY))
-                    .entries(outputs.get(0))
-                    .markOutput()
-                    .disableBackground());
+        if (outputs != null && !outputs.isEmpty()) {
+            widgets.add(Widgets.createSlot(new Point(startPoint.x + 70, startPoint.y + 12))
+                    .entries(outputs.getFirst()).markOutput().disableBackground());
         }
 
         return widgets;
@@ -98,6 +82,6 @@ public final class SmallCauldronCategory implements DisplayCategory<SmallCauldro
 
     @Override
     public int getDisplayHeight() {
-        return 90;
+        return 62;
     }
 }

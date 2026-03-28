@@ -41,6 +41,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.SHELF)
                 .add(ModBlocks.CENSER)
                 .add(ModBlocks.RITUAL_BRAZIER)
+                .add(ModBlocks.NESTING_BLOCK)
+                .add(ModBlocks.MORTAR_AND_PESTLE)
                 .add(ModBlocks.LOTUS_FLOWER);
 
         // Requires stone tool
@@ -54,6 +56,8 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.RITUAL_TABLE)
                 .add(ModBlocks.SALT_BLOCK)
                 .add(ModBlocks.RITUAL_BRAZIER)
+                .add(ModBlocks.NESTING_BLOCK)
+                .add(ModBlocks.MORTAR_AND_PESTLE)
                 .add(ModBlocks.CELESTIAL_CRYSTAL_BLOCK);
     }
 
@@ -64,9 +68,18 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.WITCHWEED)
                 .add(ModBlocks.GHOST_FERN)
                 .add(ModBlocks.CELESTIAL_BLOOM)
+                .add(ModBlocks.WITHERED_CELESTIAL_BLOOM)
                 .add(ModBlocks.NIGHTSHADE_BUSH)
                 .add(ModBlocks.BEGONIA)
                 .add(ModBlocks.LAVENDER)
+                .add(ModBlocks.AEGIFLORA)
+                .add(ModBlocks.WITHERED_AEGIFLORA)
+                .add(ModBlocks.MORPHORA)
+                .add(ModBlocks.WINDSONG)
+                .add(ModBlocks.LOURDES)
+                .add(ModBlocks.GRIMSHADE)
+                .add(ModBlocks.CELESTIAL_BLOOM)
+                .add(ModBlocks.ASTRYLIS)
                 .add(ModBlocks.DAHLIA);
 
         // Small flowers
@@ -75,9 +88,18 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.WITCHWEED)
                 .add(ModBlocks.GHOST_FERN)
                 .add(ModBlocks.CELESTIAL_BLOOM)
+                .add(ModBlocks.WITHERED_CELESTIAL_BLOOM)
                 .add(ModBlocks.NIGHTSHADE_BUSH)
                 .add(ModBlocks.BEGONIA)
                 .add(ModBlocks.LAVENDER)
+                .add(ModBlocks.AEGIFLORA)
+                .add(ModBlocks.WITHERED_AEGIFLORA)
+                .add(ModBlocks.MORPHORA)
+                .add(ModBlocks.WINDSONG)
+                .add(ModBlocks.LOURDES)
+                .add(ModBlocks.GRIMSHADE)
+                .add(ModBlocks.CELESTIAL_BLOOM)
+                .add(ModBlocks.ASTRYLIS)
                 .add(ModBlocks.DAHLIA);
 
         // Special plant properties
@@ -105,15 +127,6 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     }
 
     private void addFunctionalTags() {
-        getOrCreateTagBuilder(ModTags.Blocks.HEATING_BLOCKS)
-                .add(Blocks.MAGMA_BLOCK)
-                .add(Blocks.LAVA)
-                .add(Blocks.CAMPFIRE)
-                .add(Blocks.SOUL_CAMPFIRE)
-                .add(Blocks.FIRE)
-                .add(Blocks.SOUL_FIRE)
-                .add(ModBlocks.RUSTIC_OVEN);
-
         getOrCreateTagBuilder(ModTags.Blocks.ATTRACTS_MOTH)
                 .add(Blocks.LANTERN)
                 .add(Blocks.SEA_LANTERN)
@@ -205,6 +218,14 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
     private void addCustomModTags() {
         getOrCreateTagBuilder(ModTags.Blocks.SALT_BLOCKS)
                 .add(ModBlocks.SALT_BLOCK);
+
+        getOrCreateTagBuilder(ModTags.Blocks.SPIRITROOT_BOUND_BLOCKS)
+                .add(ModBlocks.SPIRIT_BLOOM);
+
+        getOrCreateTagBuilder(ModTags.Blocks.BOGSHADE_NO_SLOW)
+                .add(Blocks.MUD)
+                .add(Blocks.SOUL_SAND)
+                .add(Blocks.HONEY_BLOCK);
     }
 
     private void addAdditionalTags() {
@@ -231,6 +252,10 @@ public class ModBlockTagProvider extends FabricTagProvider.BlockTagProvider {
                 .add(ModBlocks.POTTED_MORPHORA)
                 .add(ModBlocks.POTTED_COTTONWOOD_SAPLING)
                 .add(ModBlocks.POTTED_WILLOW_SAPLING)
+                .add(ModBlocks.POTTED_AEGIFLORA)
+                .add(ModBlocks.POTTED_LOURDES)
+                .add(ModBlocks.POTTED_WITHERED_AEGIFLORA)
+                .add(ModBlocks.POTTED_WITHERED_CELESTIAL_BLOOM)
                 .add(ModBlocks.POTTED_DAHLIA);
 
         // Dirt

@@ -12,19 +12,15 @@ public final class SunlightCheck {
 
     private final World world;
     private BlockPos pos;
-
     private final boolean needsRainCheck;
     private final float peakMultiplier;
-
     private boolean canSeeSun;
 
     public SunlightCheck(World world, BlockPos pos) {
         this.world = world;
         this.pos = pos;
-
         Biome biome = this.world.getBiome(this.pos).value();
         this.needsRainCheck = biome.getPrecipitation(this.pos) != Biome.Precipitation.NONE;
-
         float tempEff = 0.3F * (0.8F - biome.getTemperature());
         float humidity = resolveDownfall(biome);
         float humidityEff = this.needsRainCheck ? -0.3F * humidity : 0.0F;
@@ -61,8 +57,8 @@ public final class SunlightCheck {
         float curve = 1.0F - (MathHelper.cos(t * MathHelper.TAU) * 2.0F + 0.2F);
         curve = MathHelper.clamp(curve, 0.0F, 1.0F);
         curve = 1.0F - curve;
-        curve = (float)(curve * (1.0D - world.getRainGradient(tickDelta) * 5.0F / 16.0D));
-        curve = (float)(curve * (1.0D - world.getThunderGradient(tickDelta) * 5.0F / 16.0D));
+        curve = (float) (curve * (1.0D - world.getRainGradient(tickDelta) * 5.0F / 16.0D));
+        curve = (float) (curve * (1.0D - world.getThunderGradient(tickDelta) * 5.0F / 16.0D));
         return curve * 0.8F + 0.2F;
     }
 
@@ -70,6 +66,12 @@ public final class SunlightCheck {
         if (world == null) return false;
         if (!world.getDimension().hasSkyLight()) return false;
         if (world.getAmbientDarkness() >= 4) return false;
+        return world.isSkyVisible(pos);
+    }
+
+    public static boolean hasOpenSky(World world, BlockPos pos) {
+        if (world == null) return false;
+        if (!world.getDimension().hasSkyLight()) return false;
         return world.isSkyVisible(pos);
     }
 

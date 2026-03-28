@@ -1,0 +1,9 @@
+{
+  "type": "hexalia:mortar_and_pestle",
+  "ingredients": [
+    {
+      "item": "hexalia:siren_kelp"
+    }
+  ],
+  "result": "hexalia:siren_paste"
+}

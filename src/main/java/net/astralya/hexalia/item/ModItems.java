@@ -3,14 +3,18 @@ package net.astralya.hexalia.item;
 import com.terraformersmc.terraform.boat.api.item.TerraformBoatItemHelper;
 import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.block.ModBlocks;
-import net.astralya.hexalia.effect.ModEffects;
+import net.astralya.hexalia.component.ModComponents;
+import net.astralya.hexalia.effect.ModMobEffects;
 import net.astralya.hexalia.entity.ModEntities;
 import net.astralya.hexalia.entity.boat.ModBoats;
 import net.astralya.hexalia.entity.custom.projectile.FoulSacProjectile;
 import net.astralya.hexalia.entity.custom.projectile.FrostSacProjectile;
+import net.astralya.hexalia.entity.custom.projectile.SearingSacProjectile;
 import net.astralya.hexalia.item.custom.*;
+import net.astralya.hexalia.item.custom.armor.*;
 import net.astralya.hexalia.util.ModArmorMaterials;
 import net.astralya.hexalia.util.ModToolMaterials;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.*;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -21,19 +25,33 @@ import net.minecraft.util.Rarity;
 
 public class ModItems {
 
+    private static final Identifier SILKWEAVE_SET_ID = Identifier.of(HexaliaMod.MODID, "silkweave");
+    private static final Identifier MOONWEAVE_SET_ID = Identifier.of(HexaliaMod.MODID, "moonweave");
+    private static final Identifier WOVEN_GROUP_ID   = Identifier.of(HexaliaMod.MODID, "woven");
+
+    private static Item.Settings armorMagicResistSettings(Identifier setId, float perPiecePct) {
+        return new Item.Settings()
+                .component(ModComponents.MAGIC_RESIST_PCT, perPiecePct)
+                .component(ModComponents.ARMOR_SET_ID, setId)
+                .component(ModComponents.ARMOR_SET_GROUP_ID, WOVEN_GROUP_ID)
+                .component(ModComponents.FULL_SET_BONUS_PCT, 0.10f);
+    }
+
     // Resources
     public static final Item SALT = registerItem("salt", new Item(new Item.Settings()));
     public static final Item TREE_RESIN = registerItem("tree_resin", new Item(new Item.Settings()));
     public static final Item SILK_FIBER = registerItem("silk_fiber", new Item(new Item.Settings()));
-    public static final Item SILKWORM = registerItem("silkworm", new Item(new Item.Settings()));
+    public static final Item SILKWORM = registerItem("silkworm",
+            new SilkwormItem(new Item.Settings()));
     public static final Item CELESTIAL_CRYSTAL = registerItem("celestial_crystal", new Item(new Item.Settings()));
     public static final Item FIRE_NODE = registerItem("fire_node", new Item(new Item.Settings()));
     public static final Item WATER_NODE = registerItem("water_node", new Item(new Item.Settings()));
     public static final Item AIR_NODE = registerItem("air_node", new Item(new Item.Settings()));
     public static final Item EARTH_NODE = registerItem("earth_node", new Item(new Item.Settings()));
-    public static final Item ANCIENT_SEED = registerItem("ancient_seed", new Item(new Item.Settings().rarity(Rarity.RARE)));
+    public static final Item ANCIENT_SEED = registerItem("ancient_seed",
+            new Item(new Item.Settings().rarity(Rarity.RARE)));
 
-    // Crops, Plants & Seeds
+    // Crops & Seeds
     public static final Item SUNFIRE_TOMATO = registerItem("sunfire_tomato",
             new Item(new Item.Settings().food(ModFoodComponents.SUNFIRE_TOMATO)));
     public static final Item SUNFIRE_TOMATO_SEEDS = registerItem("sunfire_tomato_seeds",
@@ -64,10 +82,11 @@ public class ModItems {
             new Item(new Item.Settings()));
 
     // Refined Resources
-    public static final Item SIREN_PASTE = registerItem("siren_paste", new Item(new Item.Settings()));
     public static final Item SPIRIT_POWDER = registerItem("spirit_powder", new Item(new Item.Settings()));
+    public static final Item SIREN_PASTE = registerItem("siren_paste", new Item(new Item.Settings()));
     public static final Item DREAM_PASTE = registerItem("dream_paste", new Item(new Item.Settings()));
     public static final Item GHOST_POWDER = registerItem("ghost_powder", new Item(new Item.Settings()));
+    public static final Item FRAGRANT_NECTAR = registerItem("fragrant_nectar", new Item(new Item.Settings()));
 
     // Food Items
     public static final Item SPICY_SANDWICH = registerItem("spicy_sandwich",
@@ -82,8 +101,6 @@ public class ModItems {
     // Tools
     public static final Item HEX_FOCUS = registerItem("hex_focus",
             new HexFocusItem(new Item.Settings().maxCount(1)));
-    public static final Item MORTAR_AND_PESTLE = registerItem("mortar_and_pestle",
-            new MortarAndPestleItem(new Item.Settings().maxDamage(64)));
     public static final Item ATHAME = registerItem("athame",
             new AthameItem(new Item.Settings().maxDamage(64)));
     public static final Item PURIFYING_SAC = registerItem("purifying_sac",
@@ -92,13 +109,15 @@ public class ModItems {
             new ThrownSacItem(new Item.Settings(), FoulSacProjectile::new));
     public static final Item FROST_SAC = registerItem("frost_sac",
             new ThrownSacItem(new Item.Settings(), FrostSacProjectile::new));
+    public static final Item SEARING_SAC = registerItem("searing_sac",
+            new ThrownSacItem(new Item.Settings(), SearingSacProjectile::new));
     public static final Item SAGE_PENDANT = registerItem("sage_pendant",
             new Item(new Item.Settings().maxCount(1).maxDamage(64).rarity(Rarity.UNCOMMON)));
     public static final Item SILK_IDOL = registerItem("silk_idol",
             new Item(new Item.Settings()));
-    public static final Item RAINFALL_IDOL = registerItem("rainfall_idol",
-            new WeatherIdolItem(new Item.Settings()));
     public static final Item CLARITY_IDOL = registerItem("clarity_idol",
+            new WeatherIdolItem(new Item.Settings()));
+    public static final Item RAINFALL_IDOL = registerItem("rainfall_idol",
             new WeatherIdolItem(new Item.Settings()));
     public static final Item TEMPEST_IDOL = registerItem("tempest_idol",
             new WeatherIdolItem(new Item.Settings()));
@@ -106,6 +125,14 @@ public class ModItems {
             new PurityIdolItem(new Item.Settings()));
     public static final Item MUTAVIS = registerItem("mutavis",
             new MutavisItem(new Item.Settings()));
+    public static final Item BRIAR_SICKLE = registerItem("briar_sickle",
+            new BriarSickleItem(new Item.Settings().maxDamage(256)));
+    public static final Item ROOTSHAPER = registerItem("rootshaper",
+            new RootshaperItem(new Item.Settings().rarity(Rarity.RARE).maxDamage(1561)));
+    public static final Item SPIRITROOT_TETHER = registerItem("spiritroot_tether",
+            new SpiritrootTetherItem(new Item.Settings().maxDamage(32)));
+    public static final Item LADLE = registerItem("ladle",
+            new Item(new Item.Settings().maxCount(1)));
 
     // Block Items
     public static final Item CANDLE_SKULL = registerItem("candle_skull",
@@ -116,68 +143,120 @@ public class ModItems {
             new BlockItem(ModBlocks.SALT_LAMP, new Item.Settings()));
     public static final Item SMALL_CAULDRON = registerItem("small_cauldron",
             new BlockItem(ModBlocks.SMALL_CAULDRON, new Item.Settings()));
+    public static final Item MORTAR_AND_PESTLE = registerItem("mortar_and_pestle",
+            new BlockItem(ModBlocks.MORTAR_AND_PESTLE, new Item.Settings()));
     public static final Item RITUAL_TABLE = registerItem("ritual_table",
-           new BlockItem(ModBlocks.RITUAL_TABLE, new Item.Settings()));
+            new BlockItem(ModBlocks.RITUAL_TABLE, new Item.Settings()));
 
     // Weapons & Armor
     public static final Item KELPWEAVE_BLADE = registerItem("kelpweave_blade",
             new KelpweaveBladeItem(ModToolMaterials.ANCIENT, new Item.Settings().rarity(Rarity.RARE)
                     .attributeModifiers(SwordItem.createAttributeModifiers(ModToolMaterials.ANCIENT, 3, -2.0f))));
     public static final Item GHOSTVEIL = registerItem("ghostveil",
-            new GhostVeilItem(ModArmorMaterials.GHOST, ArmorItem.Type.CHESTPLATE, new Item.Settings().maxDamage(96)));
+            new GhostVeilItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.CHESTPLATE, new Item.Settings().maxDamage(96)));
     public static final Item EARPLUGS = registerItem("earplugs",
-            new EarplugsItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new Item.Settings().maxDamage(96)));
-    public static final Item BOGGED_BOOTS = registerItem("bogged_boots",
-            new BoggedBootsItem(ModArmorMaterials.BOGGED, ArmorItem.Type.BOOTS, new Item.Settings().maxDamage(96)));
+            new EarplugsItem(ArmorMaterials.LEATHER, ArmorItem.Type.HELMET, new Item.Settings()));
+    public static final Item BOGSHADE_BOOTS = registerItem("bogshade_boots",
+            new BogshadeBootsItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.BOOTS, new Item.Settings().maxDamage(96)));
+    public static final Item THORNBOW = registerItem("thornbow",
+            new ThornbowItem(new Item.Settings().maxDamage(128)));
+    public static final Item SILKWEAVE_HOOD = registerItem("silkweave_hood",
+            new SilkweaveHoodItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.HELMET,
+                    armorMagicResistSettings(SILKWEAVE_SET_ID, 0.05f).maxDamage(165)));
+    public static final Item SILKWEAVE_MANTLE = registerItem("silkweave_mantle",
+            new SilkweaveMantleItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.CHESTPLATE,
+                    armorMagicResistSettings(SILKWEAVE_SET_ID, 0.05f).maxDamage(240)));
+    public static final Item SILKWEAVE_BINDINGS = registerItem("silkweave_bindings",
+            new SilkweaveBindingsItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.LEGGINGS,
+                    armorMagicResistSettings(SILKWEAVE_SET_ID, 0.05f).maxDamage(225)));
+    public static final Item SILKWEAVE_FOOTWRAPS = registerItem("silkweave_footwraps",
+            new SilkweaveFootwrapsItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.BOOTS,
+                    armorMagicResistSettings(SILKWEAVE_SET_ID, 0.05f).maxDamage(195)));
+    public static final Item MOONWEAVE_HOOD = registerItem("moonweave_hood",
+            new MoonweaveHoodItem(ModArmorMaterials.MOONWEAVE, ArmorItem.Type.HELMET,
+                    armorMagicResistSettings(MOONWEAVE_SET_ID, 0.10f).maxDamage(363)));
+    public static final Item MOONWEAVE_MANTLE = registerItem("moonweave_mantle",
+            new MoonweaveMantleItem(ModArmorMaterials.MOONWEAVE, ArmorItem.Type.CHESTPLATE,
+                    armorMagicResistSettings(MOONWEAVE_SET_ID, 0.10f).maxDamage(528)));
+    public static final Item MOONWEAVE_BINDINGS = registerItem("moonweave_bindings",
+            new MoonweaveBindingsItem(ModArmorMaterials.MOONWEAVE, ArmorItem.Type.LEGGINGS,
+                    armorMagicResistSettings(MOONWEAVE_SET_ID, 0.10f).maxDamage(495)));
+    public static final Item MOONWEAVE_FOOTWRAPS = registerItem("moonweave_footwraps",
+            new MoonweaveFootwrapsItem(ModArmorMaterials.MOONWEAVE, ArmorItem.Type.BOOTS,
+                    armorMagicResistSettings(MOONWEAVE_SET_ID, 0.10f).maxDamage(429)));
+    public static final Item BLOOMWRAP_HAT = registerItem("bloomwrap_hat",
+            new BloomwrapHatItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.HELMET,
+                    new Item.Settings().maxDamage(165)));
+    public static final Item BLOOMWRAP_ROBES = registerItem("bloomwrap_robes",
+            new BloomwrapRobesItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.CHESTPLATE,
+                    new Item.Settings().maxDamage(240)));
+    public static final Item BLOOMWRAP_LEGGINGS = registerItem("bloomwrap_leggings",
+            new BloomwrapLeggingsItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.LEGGINGS,
+                    new Item.Settings().maxDamage(225)));
+    public static final Item BLOOMWRAP_BOOTS = registerItem("bloomwrap_boots",
+            new BloomwrapBootsItem(ModArmorMaterials.SILKWEAVE, ArmorItem.Type.BOOTS,
+                    new Item.Settings().maxDamage(195)));
 
     // Brews
     public static final Item RUSTIC_BOTTLE = registerItem("rustic_bottle",
             new Item(new Item.Settings()));
     public static final Item BREW_OF_SPIKESKIN = registerItem("brew_of_spikeskin",
-            new BrewItem(new Item.Settings().maxCount(4), () -> ModEffects.SPIKESKIN, 20 * 240, 0,
+            new BrewItem(new Item.Settings().maxCount(4), () -> ModMobEffects.SPIKESKIN, 20 * 240, 0,
                     Text.translatable("tooltip.hexalia.spikeskin_brew").formatted(Formatting.BLUE)));
     public static final Item BREW_OF_BLOODLUST = registerItem("brew_of_bloodlust",
-            new BrewItem(new Item.Settings().maxCount(4), () -> ModEffects.BLOODLUST, 20 * 240, 0,
+            new BrewItem(new Item.Settings().maxCount(4), () -> ModMobEffects.BLOODLUST, 20 * 240, 0,
                     Text.translatable("tooltip.hexalia.bloodlust_brew").formatted(Formatting.BLUE)));
     public static final Item BREW_OF_SLIMEWALKER = registerItem("brew_of_slimewalker",
-            new BrewItem(new Item.Settings().maxCount(4), () -> ModEffects.SLIMEWALKER, 20 * 240, 0,
-                    Text.translatable("tooltip.hexalia.spikeskin_brew").formatted(Formatting.BLUE)));
+            new BrewItem(new Item.Settings().maxCount(4), () -> ModMobEffects.SLIMEWALKER, 20 * 240, 0,
+                    Text.translatable("tooltip.hexalia.slimewalker_brew").formatted(Formatting.BLUE)));
     public static final Item BREW_OF_SIPHON = registerItem("brew_of_siphon",
-            new BrewItem(new Item.Settings().maxCount(4), () -> ModEffects.SIPHON, 20 * 240, 0,
+            new BrewItem(new Item.Settings().maxCount(4), () -> ModMobEffects.SIPHON, 20 * 240, 0,
                     Text.translatable("tooltip.hexalia.siphon_brew").formatted(Formatting.BLUE)));
     public static final Item BREW_OF_DAYBLOOM = registerItem("brew_of_daybloom",
-            new BrewItem(new Item.Settings().maxCount(4), () -> ModEffects.DAYBLOOM, 20 * 240, 0,
+            new BrewItem(new Item.Settings().maxCount(4), () -> ModMobEffects.DAYBLOOM, 20 * 240, 0,
                     Text.translatable("tooltip.hexalia.daybloom").formatted(Formatting.BLUE)));
     public static final Item BREW_OF_ARACHNID_GRACE = registerItem("brew_of_arachnid_grace",
-            new BrewItem(new Item.Settings().maxCount(4), () -> ModEffects.ARACHNID_GRACE, 20 * 240, 0,
+            new BrewItem(new Item.Settings().maxCount(4), () -> ModMobEffects.ARACHNID_GRACE, 20 * 240, 0,
                     Text.translatable("tooltip.hexalia.arachnid_grace").formatted(Formatting.BLUE)));
     public static final Item BREW_OF_HOMESTEAD = registerItem("brew_of_homestead",
             new HomesteadBrewItem(new Item.Settings().maxCount(4)));
+    public static final Item BREW_OF_HOLLOW_SILENCE = registerItem("brew_of_hollow_silence",
+            new BrewItem(new Item.Settings().maxCount(4), () -> ModMobEffects.HOLLOW_SILENCE, 20 * 240, 0,
+                    Text.translatable("tooltip.hexalia.hollow_silence").formatted(Formatting.BLUE)));
+
+    // Salves
+    public static final Item BRAMBLEGUARD_SALVE = registerItem("brambleguard_salve",
+            new SalveItem(new Item.Settings().maxCount(4), () -> ModMobEffects.BRAMBLEGUARD, 20 * 90, 0,
+                    60, Text.translatable("tooltip.hexalia.brambleguard_salve").formatted(Formatting.BLUE)));
+    public static final Item MENDERS_SALVE = registerItem("menders_salve",
+            new SalveItem(new Item.Settings().maxCount(4), () -> StatusEffects.REGENERATION, 20 * 90, 0,
+                    60, Text.translatable("tooltip.hexalia.menders_salve").formatted(Formatting.BLUE)));
 
     // Entity Related Items
     public static final Item BOTTLED_MOTH = registerItem("bottled_moth",
             new BottledMothItem(new Item.Settings().maxCount(1)));
     public static final Item SILK_MOTH_SPAWN_EGG = registerItem("silk_moth_spawn_egg",
-            new CustomModelSpawnEggItem(ModEntities.SILK_MOTH, new Item.Settings()));
+            new CustomModelSpawnEggItem(ModEntities.SILK_MOTH_ENTITY, new Item.Settings()));
+    public static final Item CACOFEY_SPAWN_EGG = registerItem("cacofey_spawn_egg",
+            new CustomModelSpawnEggItem(ModEntities.CACOFEY_ENTITY, new Item.Settings()));
 
-    // Wooden-related Items
-    public static final Item COTTONWOOD_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.COTTONWOOD_BOAT_ID,
-            ModBoats.COTTONWOOD_BOAT_KEY, false);
-    public static final Item COTTONWOOD_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.COTTONWOOD_CHEST_BOAT_ID,
-            ModBoats.COTTONWOOD_BOAT_KEY, true);
-    public static final Item COTTONWOOD_SIGN = registerItem("cottonwood_sign",
-            new SignItem(new Item.Settings().maxCount(16), ModBlocks.COTTONWOOD_SIGN, ModBlocks.COTTONWOOD_WALL_SIGN));
-    public static final Item COTTONWOOD_HANGING_SIGN = registerItem("cottonwood_hanging_sign",
-            new HangingSignItem(ModBlocks.COTTONWOOD_HANGING_SIGN, ModBlocks.COTTONWOOD_HANGING_WALL_SIGN, new Item.Settings().maxCount(16)));
-
+    // Wood-Related Items
     public static final Item WILLOW_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.WILLOW_BOAT_ID,
             ModBoats.WILLOW_BOAT_KEY, false);
     public static final Item WILLOW_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.WILLOW_CHEST_BOAT_ID,
             ModBoats.WILLOW_BOAT_KEY, true);
+    public static final Item COTTONWOOD_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.COTTONWOOD_BOAT_ID,
+            ModBoats.COTTONWOOD_BOAT_KEY, false);
+    public static final Item COTTONWOOD_CHEST_BOAT = TerraformBoatItemHelper.registerBoatItem(ModBoats.COTTONWOOD_CHEST_BOAT_ID,
+            ModBoats.COTTONWOOD_BOAT_KEY, true);
     public static final Item WILLOW_SIGN = registerItem("willow_sign",
             new SignItem(new Item.Settings().maxCount(16), ModBlocks.WILLOW_SIGN, ModBlocks.WILLOW_WALL_SIGN));
+    public static final Item COTTONWOOD_SIGN = registerItem("cottonwood_sign",
+            new SignItem(new Item.Settings().maxCount(16), ModBlocks.COTTONWOOD_SIGN, ModBlocks.COTTONWOOD_WALL_SIGN));
     public static final Item WILLOW_HANGING_SIGN = registerItem("willow_hanging_sign",
             new HangingSignItem(ModBlocks.WILLOW_HANGING_SIGN, ModBlocks.WILLOW_HANGING_WALL_SIGN, new Item.Settings().maxCount(16)));
+    public static final Item COTTONWOOD_HANGING_SIGN = registerItem("cottonwood_hanging_sign",
+            new HangingSignItem(ModBlocks.COTTONWOOD_HANGING_SIGN, ModBlocks.COTTONWOOD_HANGING_WALL_SIGN, new Item.Settings().maxCount(16)));
 
     // Compat Items
     public static final Item VERDANT_GRIMOIRE = registerItem("verdant_grimoire",

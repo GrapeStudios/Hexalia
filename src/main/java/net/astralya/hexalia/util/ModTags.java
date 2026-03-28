@@ -2,6 +2,7 @@ package net.astralya.hexalia.util;
 
 import net.astralya.hexalia.HexaliaMod;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityType;
 import net.minecraft.item.Item;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.tag.TagKey;
@@ -9,8 +10,8 @@ import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 
 public class ModTags {
-    public static class Items {
 
+    public static class Items {
         public static final TagKey<Item> HERBS = createItemTag("herbs");
         public static final TagKey<Item> CRUSHED_HERBS = createItemTag("crushed_herbs");
         public static final TagKey<Item> BREWS = createItemTag("brews");
@@ -18,25 +19,21 @@ public class ModTags {
         public static final TagKey<Item> WILLOW_LOGS = createItemTag("willow_logs");
         public static final TagKey<Item> OFFHAND_EQUIPMENT = createItemTag("offhand_equipment");
         public static final TagKey<Item> TULIPS = createItemTag("tulips");
+        public static final TagKey<Item> STUN_IMMUNE_HEADWEAR = createItemTag("stun_immune_headwear");
 
-        // Conventional Item Tags
         public static final TagKey<Item> FOODS = createCommonItemTag("foods");
-
         public static final TagKey<Item> FOODS_BREADS = createCommonItemTag("foods/breads");
         public static final TagKey<Item> CROPS = createCommonItemTag("crops");
-        public static final TagKey<Item> CROPS_TOMATO = createCommonItemTag("crops/tomato");
+        public static final TagKey<Item> CROPS_TOMATO = createCommonItemTag("crops/tomatoes");
         public static final TagKey<Item> FOODS_BERRIES = createCommonItemTag("foods/berries");
         public static final TagKey<Item> FOODS_COOKED_MEATS = createCommonItemTag("foods/cooked_meats");
-
         public static final TagKey<Item> FOODS_VEGETABLES = createCommonItemTag("foods/vegetables");
         public static final TagKey<Item> FOODS_VEGETABLES_TOMATO = createCommonItemTag("foods/vegetables/tomatoes");
-
-        public static final TagKey<Item> SALT_DUSTS = createCommonItemTag("salt_dusts");
-        public static final TagKey<Item> BERRIES = createCommonItemTag("berries");
+        public static final TagKey<Item> SALT_DUSTS = createCommonItemTag("dusts/salt");
+        public static final TagKey<Item> BERRIES = createCommonItemTag("foods/berries");
         public static final TagKey<Item> SEEDS = createCommonItemTag("seeds");
-        public static final TagKey<Item> MUSHROOMS = createCommonItemTag("mushrooms");
-
-        public static final TagKey<Item> SALT_BLOCKS = createCommonItemTag("salt_blocks");
+        public static final TagKey<Item> MUSHROOMS = createCommonItemTag("foods/mushrooms");
+        public static final TagKey<Item> SALT_BLOCKS = createCommonItemTag("storage_blocks/salt");
 
         private static TagKey<Item> createItemTag(String name) {
             return TagKey.of(RegistryKeys.ITEM, Identifier.of(HexaliaMod.MODID, name));
@@ -46,17 +43,16 @@ public class ModTags {
             return TagKey.of(RegistryKeys.ITEM, Identifier.of("c", name));
         }
     }
-    public static class Blocks {
 
-        // Custom Block Tags
-        public static final TagKey<Block> HEATING_BLOCKS = createBlockTag("heating_block");
+    public static class Blocks {
         public static final TagKey<Block> ATTRACTS_MOTH = createBlockTag("attracts_moth");
         public static final TagKey<Block> COTTONWOOD_LOGS = createBlockTag("cottonwood_logs");
         public static final TagKey<Block> WILLOW_LOGS = createBlockTag("willow_logs");
         public static final TagKey<Block> COCOON_LOGS = createBlockTag("cocoon_logs");
+        public static final TagKey<Block> SPIRITROOT_BOUND_BLOCKS = createBlockTag("spiritroot_bound_blocks");
+        public static final TagKey<Block> BOGSHADE_NO_SLOW = createBlockTag("bogshade_no_slow");
 
-        // Common Block Tags
-        public static final TagKey<Block> SALT_BLOCKS = createCommonBlockTag("salt_blocks");
+        public static final TagKey<Block> SALT_BLOCKS = createCommonBlockTag("storage_blocks/salt");
 
         private static TagKey<Block> createBlockTag(String name) {
             return TagKey.of(RegistryKeys.BLOCK, Identifier.of(HexaliaMod.MODID, name));
@@ -67,8 +63,16 @@ public class ModTags {
         }
     }
 
+    public static class EntityTypes {
+        public static final TagKey<EntityType<?>> SPIRITROOT_UNCAPTURABLE = createEntityTypeTag("spiritroot_uncapturable");
+        public static final TagKey<EntityType<?>> UNDEAD_VEIL_IMMUNE = createEntityTypeTag("undead_veil_immune");
+
+        private static TagKey<EntityType<?>> createEntityTypeTag(String name) {
+            return TagKey.of(RegistryKeys.ENTITY_TYPE, Identifier.of(HexaliaMod.MODID, name));
+        }
+    }
+
     public static class Compat {
-        // Serene Seasons
         public static final String SERENE_SEASONS = "sereneseasons";
         public static final TagKey<Block> SERENE_SEASONS_AUTUMN_CROPS_BLOCK = externalBlockTag(SERENE_SEASONS, "autumn_crops");
         public static final TagKey<Block> SERENE_SEASONS_SPRING_CROPS_BLOCK = externalBlockTag(SERENE_SEASONS, "spring_crops");
@@ -90,13 +94,19 @@ public class ModTags {
     }
 
     public static class Biomes {
-
-        public static final TagKey<Biome> HAS_MANDRAKES = createBiomeTag("has_mandrakes");
-        public static final TagKey<Biome> HAS_DREAMSHROOMS = createBiomeTag("has_dreamshrooms");
+        // Vegetation
+        public static final TagKey<Biome> HAS_SHROOMS = createBiomeTag("has_shrooms");
         public static final TagKey<Biome> HAS_SIREN_KELP = createBiomeTag("has_siren_kelp");
-        public static final TagKey<Biome> HAS_GHOST_FERNS = createBiomeTag("has_ghost_ferns");
         public static final TagKey<Biome> HAS_SWAMP_VEGETATION = createBiomeTag("has_swamp_vegetation");
         public static final TagKey<Biome> HAS_DECORATIVE_FLOWERS = createBiomeTag("has_decorative_flowers");
+        public static final TagKey<Biome> HAS_FLORAL_VEGETATION = createBiomeTag("has_floral_vegetation");
+        public static final TagKey<Biome> HAS_SHADED_VEGETATION = createBiomeTag("has_shade_vegetation");
+        public static final TagKey<Biome> HAS_COOL_BIOME_VEGETATION = createBiomeTag("has_cool_biome_vegetation");
+        public static final TagKey<Biome> HAS_DRY_BIOME_VEGETATION = createBiomeTag("has_dry_biome_vegetation");
+
+        // Entities
+        public static final TagKey<Biome> SILK_MOTH_SPAWNS = createBiomeTag("silk_moth_spawns");
+        public static final TagKey<Biome> CACOFEY_SPAWNS = createBiomeTag("cacofey_spawns");
 
         private static TagKey<Biome> createBiomeTag(String name) {
             return TagKey.of(RegistryKeys.BIOME, Identifier.of(HexaliaMod.MODID, name));

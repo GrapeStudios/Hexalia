@@ -1,0 +1,9 @@
+{
+  "type": "hexalia:mortar_and_pestle",
+  "ingredients": [
+    {
+      "item": "hexalia:spirit_bloom"
+    }
+  ],
+  "result": "hexalia:spirit_powder"
+}

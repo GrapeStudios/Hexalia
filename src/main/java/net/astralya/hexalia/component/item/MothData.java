@@ -15,7 +15,7 @@ public record MothData(String name, int variantId) {
             Codec.INT   .optionalFieldOf("Variant", 0).forGetter(MothData::variantId)
     ).apply(i, MothData::new));
 
-    public static final PacketCodec<RegistryByteBuf, MothData> PACKET_CODEC =
+    public static final PacketCodec<RegistryByteBuf, MothData> STREAM_CODEC =
             PacketCodec.tuple(
                     PacketCodecs.STRING,  MothData::name,
                     PacketCodecs.VAR_INT, MothData::variantId,

@@ -1,8 +1,8 @@
 package net.astralya.hexalia.util;
 
+import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.item.ModItems;
-import net.minecraft.block.ComposterBlock;
-import net.minecraft.item.Item;
+import net.fabricmc.fabric.api.registry.CompostingChanceRegistry;
 
 public class ModRegistries {
 
@@ -15,25 +15,48 @@ public class ModRegistries {
     public static final float LARGE = 0.65f;
 
     private static void registerCompostables() {
-        // Seeds and small plants (30% chance)
-        registerCompostable(ModItems.MANDRAKE_SEEDS, SMALL);
-        registerCompostable(ModItems.SUNFIRE_TOMATO_SEEDS, SMALL);
-        registerCompostable(ModItems.RABBAGE_SEEDS, SMALL);
-        registerCompostable(ModItems.CHILLBERRIES, SMALL);
-        registerCompostable(ModItems.LOTUS_FLOWER, SMALL);
-        registerCompostable(ModItems.LOTUS_BLOSSOM, SMALL);
-        registerCompostable(ModItems.GALEBERRIES, SMALL);
+        // 30%
+        CompostingChanceRegistry.INSTANCE.add(ModItems.MANDRAKE_SEEDS, SMALL);
+        CompostingChanceRegistry.INSTANCE.add(ModItems.SUNFIRE_TOMATO_SEEDS, SMALL);
+        CompostingChanceRegistry.INSTANCE.add(ModItems.RABBAGE_SEEDS, SMALL);
+        CompostingChanceRegistry.INSTANCE.add(ModItems.CHILLBERRIES, SMALL);
+        CompostingChanceRegistry.INSTANCE.add(ModItems.GALEBERRIES, SMALL);
+        CompostingChanceRegistry.INSTANCE.add(ModItems.LOTUS_FLOWER, SMALL);
+        CompostingChanceRegistry.INSTANCE.add(ModItems.LOTUS_BLOSSOM, SMALL);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.COTTONWOOD_LEAVES, SMALL);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.COTTONWOOD_SAPLING, SMALL);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.COTTONWOOD_CATKIN, SMALL);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.WILLOW_LEAVES, SMALL);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.WILLOW_SAPLING, SMALL);
 
-        // Medium-value items (50% chance)
-        registerCompostable(ModItems.SIREN_KELP, MEDIUM);
+        // 50%
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.SPIRIT_BLOOM, MEDIUM);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.DREAMSHROOM, MEDIUM);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.CELESTIAL_BLOOM, MEDIUM);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.WITHERED_CELESTIAL_BLOOM, MEDIUM);
+        CompostingChanceRegistry.INSTANCE.add(ModItems.SIREN_KELP, MEDIUM);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.BEGONIA, MEDIUM);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.LAVENDER, MEDIUM);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.DAHLIA, MEDIUM);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.PALE_MUSHROOM, MEDIUM);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.WITCHWEED, MEDIUM);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.GHOST_FERN, MEDIUM);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.NIGHTSHADE_BUSH, MEDIUM);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.LOURDES, MEDIUM);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.AEGIFLORA, MEDIUM);
 
-        // High-value crops (60% chance)
-        registerCompostable(ModItems.MANDRAKE, LARGE);
-        registerCompostable(ModItems.SUNFIRE_TOMATO, LARGE);
-        registerCompostable(ModItems.RABBAGE, LARGE);
-    }
+        // 60%
+        CompostingChanceRegistry.INSTANCE.add(ModItems.MANDRAKE, LARGE);
+        CompostingChanceRegistry.INSTANCE.add(ModItems.SUNFIRE_TOMATO, LARGE);
+        CompostingChanceRegistry.INSTANCE.add(ModItems.RABBAGE, LARGE);
+        CompostingChanceRegistry.INSTANCE.add(ModItems.SALTSPROUT, LARGE);
 
-    private static void registerCompostable(Item item, float chance) {
-        ComposterBlock.ITEM_TO_LEVEL_INCREASE_CHANCE.put(item.asItem(), chance);
+        // 80%
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.MORPHORA, 0.8F);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.GRIMSHADE, 0.8F);
+        CompostingChanceRegistry.INSTANCE.add(ModItems.NAUTILITE, 0.8F);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.WINDSONG, 0.8F);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.ASTRYLIS, 0.8F);
+        CompostingChanceRegistry.INSTANCE.add(ModBlocks.WITHERED_AEGIFLORA, 0.8F);
     }
 }

@@ -38,10 +38,10 @@ public class NautiliteBlockEntity extends BlockEntity {
     }
 
     private static int duration() {
-        return Math.max(1, Configuration.common().plants.nautiliteDuration);
+        return Math.max(1, Configuration.NAUTILITE_DURATION.get());
     }
     private static int effectRadius() {
-        return Math.max(1, Configuration.common().plants.nautiliteEffectRadius);
+        return Math.max(1, Configuration.NAUTILITE_EFFECT_RADIUS.get());
     }
 
     public void activate() {

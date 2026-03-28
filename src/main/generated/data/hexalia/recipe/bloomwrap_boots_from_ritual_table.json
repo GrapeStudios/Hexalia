@@ -1,0 +1,24 @@
+{
+  "type": "hexalia:ritual_table",
+  "ingredients": [
+    {
+      "item": "minecraft:leather_boots"
+    },
+    {
+      "item": "minecraft:dandelion"
+    },
+    {
+      "item": "hexalia:air_node"
+    },
+    {
+      "item": "hexalia:silk_fiber"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "output": {
+    "count": 1,
+    "id": "hexalia:bloomwrap_boots"
+  }
+}

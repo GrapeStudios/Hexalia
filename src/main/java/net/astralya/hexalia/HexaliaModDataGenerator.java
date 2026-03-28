@@ -21,6 +21,7 @@ public class HexaliaModDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModWorldGenerator::new);
 		pack.addProvider(ModBiomeTagsProvider::new);
         pack.addProvider(ModAdvancementsProvider::new);
+        pack.addProvider(ModEntityTypeTagProvider::new);
 	}
 
 	@Override
