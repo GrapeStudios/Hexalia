@@ -14,26 +14,26 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 
 public class AstrylisBlockEntity extends BlockEntity {
 
     private long activationTime = -1;
-    private int duration = Configuration.ASTRYLIS_DURATION.get();
     private long lastBonemealTime = -1;
 
-    public AstrylisBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntityTypes.ASTRYLIS_BE.get(), pPos, pBlockState);
+    public AstrylisBlockEntity(BlockPos pos, BlockState blockState) {
+        super(ModBlockEntityTypes.ASTRYLIS.get(), pos, blockState);
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, AstrylisBlockEntity entity) {
         if (level instanceof ServerLevel serverLevel && entity.isActive()) {
-            int interval = Math.max(1, Configuration.ASTRYLIS_BONEMEAL_INTERVAL.get());
-
             long currentTime = level.getGameTime();
             long elapsedTime = currentTime - entity.activationTime;
+            int interval = Configuration.ASTRYLIS_BONEMEAL_INTERVAL.get();
+            int duration = Configuration.ASTRYLIS_DURATION.get();
 
-            if (elapsedTime >= entity.duration) {
+            if (elapsedTime >= duration) {
                 entity.deactivate();
                 return;
             }
@@ -59,15 +59,21 @@ public class AstrylisBlockEntity extends BlockEntity {
 
     private static void applyBonemealToCropsAndSaplings(ServerLevel level, BlockPos centerPos) {
         BlockPos.betweenClosedStream(centerPos.offset(-4, -2, -4), centerPos.offset(4, 2, 4)).forEach(pos -> {
-            BlockState s = level.getBlockState(pos);
-            if (s.getBlock() instanceof BonemealableBlock growable
-                    && (s.is(BlockTags.CROPS) || s.is(BlockTags.SAPLINGS))) {
-                if (growable.isValidBonemealTarget(level, pos, s, false)) {
-                    growable.performBonemeal(level, level.random, pos, s);
+            BlockState state = level.getBlockState(pos);
+            if (state.getBlock() instanceof BonemealableBlock bonemealableBlock
+                    && (state.is(BlockTags.CROPS) || state.is(BlockTags.SAPLINGS))) {
+                if (bonemealableBlock.isValidBonemealTarget(level, pos, state, false)) {
+                    bonemealableBlock.performBonemeal(level, level.random, pos, state);
                     level.sendParticles(
                             ParticleTypes.HAPPY_VILLAGER,
-                            pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5,
-                            1, 0.2, 0.2, 0.2, 0.0
+                            pos.getX() + 0.5D,
+                            pos.getY() + 0.5D,
+                            pos.getZ() + 0.5D,
+                            1,
+                            0.2D,
+                            0.2D,
+                            0.2D,
+                            0.0D
                     );
                 }
             }
@@ -75,65 +81,64 @@ public class AstrylisBlockEntity extends BlockEntity {
     }
 
     public boolean isActive() {
-        return activationTime > 0 && level != null && level.getGameTime() >= activationTime;
+        return this.activationTime > 0 && this.level != null && this.level.getGameTime() >= this.activationTime;
     }
 
     public void activate(long gameTime) {
-        activate(gameTime, Configuration.ASTRYLIS_DURATION.get());
-    }
-
-    public void activate(long gameTime, int customDuration) {
         this.activationTime = gameTime;
-        this.duration = Math.max(1, customDuration);
         this.lastBonemealTime = -1;
         this.setChanged();
+        this.sync();
     }
 
     public void deactivate() {
         this.activationTime = -1;
         this.lastBonemealTime = -1;
         this.setChanged();
+        this.sync();
+    }
+
+    private void sync() {
+        if (this.level == null || this.level.isClientSide) {
+            return;
+        }
+
+        BlockState state = this.getBlockState();
+        this.level.sendBlockUpdated(this.worldPosition, state, state, 3);
     }
 
     public int getDuration() {
-        return duration;
+        return Configuration.ASTRYLIS_DURATION.get();
     }
 
     public float getProgress() {
-        if (!isActive() || level == null) return 0.0f;
-        long elapsed = level.getGameTime() - activationTime;
-        return Math.min(1.0f, (float) elapsed / (float) duration);
+        if (!this.isActive() || this.level == null) {
+            return 0.0F;
+        }
+
+        long elapsed = this.level.getGameTime() - this.activationTime;
+        return Math.min(1.0F, (float) elapsed / this.getDuration());
     }
 
     @Override
     protected void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
-        tag.putLong("activationTime", activationTime);
-        tag.putInt("duration", duration);
-        tag.putLong("lastBonemealTime", lastBonemealTime);
+        tag.putLong("activationTime", this.activationTime);
+        tag.putLong("lastBonemealTime", this.lastBonemealTime);
     }
 
     @Override
     public void load(CompoundTag tag) {
         super.load(tag);
         this.activationTime = tag.getLong("activationTime");
-
-        // Use saved duration if present; otherwise fall back to current config
-        if (tag.contains("duration")) {
-            this.duration = Math.max(1, tag.getInt("duration"));
-        } else {
-            this.duration = Math.max(1, Configuration.ASTRYLIS_DURATION.get());
-        }
-
         this.lastBonemealTime = tag.getLong("lastBonemealTime");
     }
 
     @Override
     public CompoundTag getUpdateTag() {
         CompoundTag tag = super.getUpdateTag();
-        tag.putLong("activationTime", activationTime);
-        tag.putInt("duration", duration);
-        tag.putLong("lastBonemealTime", lastBonemealTime);
+        tag.putLong("activationTime", this.activationTime);
+        tag.putLong("lastBonemealTime", this.lastBonemealTime);
         return tag;
     }
 

@@ -1,22 +1,20 @@
 {
   "type": "hexalia:small_cauldron",
-  "bottle_slot": {
-    "item": "hexalia:rustic_bottle"
-  },
-  "brew_time": 175,
-  "experience": 5.0,
   "ingredients": [
     {
-      "item": "minecraft:beef"
+      "item": "hexalia:mandrake"
     },
     {
-      "item": "hexalia:siren_paste"
+      "item": "hexalia:spirit_powder"
     },
     {
-      "item": "hexalia:saltsprout"
+      "item": "hexalia:tree_resin"
+    },
+    {
+      "item": "minecraft:rotten_flesh"
     }
   ],
-  "output": {
+  "result": {
     "item": "hexalia:brew_of_bloodlust"
   }
 }

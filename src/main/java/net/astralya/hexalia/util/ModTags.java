@@ -6,6 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
@@ -21,6 +22,7 @@ public class ModTags {
         public static final TagKey<Item> WILLOW_LOGS = createItemTag("willow_logs");
         public static final TagKey<Item> OFFHAND_EQUIPMENT = createItemTag("offhand_equipment");
         public static final TagKey<Item> TULIPS = createItemTag("tulips");
+        public static final TagKey<Item> STUN_IMMUNE_HEADWEAR = createItemTag("stun_immune_headwear");
 
         // Forge Item Tags
         public static final TagKey<Item> BREAD = forgeItemTag("bread");
@@ -51,19 +53,18 @@ public class ModTags {
     }
 
     public static class Blocks {
-        // Custom Block Tags
-        public static final TagKey<Block> HEATING_BLOCKS = tag("heating_blocks");
-        public static final TagKey<Block> ATTRACTS_MOTH = tag("attracts_moth");
-        public static final TagKey<Block> COCOON_LOGS = tag("cocoon_logs");
+
+        public static final TagKey<Block> ATTRACTS_MOTH = createBlockTag("attracts_moth");
+        public static final TagKey<Block> COTTONWOOD_LOGS = createBlockTag("cottonwood_logs");
+        public static final TagKey<Block> WILLOW_LOGS = createBlockTag("willow_logs");
+        public static final TagKey<Block> SPIRITROOT_BOUND_BLOCKS = createBlockTag("spiritroot_bound_blocks");
+        public static final TagKey<Block> BOGSHADE_NO_SLOW = createBlockTag("bogshade_no_slow");
 
         // Common Block Tags
         public static final TagKey<Block> SALT_BLOCKS = forgeTag("salt_blocks");
 
-        // Wood-related Tags
-        public static final TagKey<Block> COTTONWOOD_LOGS = tag("cottonwood_logs");
-        public static final TagKey<Block> WILLOW_LOGS = tag("willow_logs");
 
-        private static TagKey<Block> tag(String name){
+        private static TagKey<Block> createBlockTag(String name){
             return BlockTags.create(new ResourceLocation(HexaliaMod.MODID, name));
         }
         private static TagKey<Block> forgeTag(String name){
@@ -71,7 +72,16 @@ public class ModTags {
         }
     }
 
-    // Compatibility Tags
+    public static final class EntityTypes {
+
+        public static final TagKey<EntityType<?>> SPIRITROOT_UNCAPTURABLE = createEntityTypeTag("spiritroot_uncapturable");
+        public static final TagKey<EntityType<?>> AFFECTED_BY_UNDEAD_VEIL = createEntityTypeTag("affected_by_deadveil");
+
+        private static TagKey<EntityType<?>> createEntityTypeTag(String path) {
+            return TagKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, path));
+        }
+    }
+
     public static class Compat {
 
         // Serene Seasons
@@ -95,19 +105,29 @@ public class ModTags {
         }
     }
 
-    // World Gen Tags
     public static class Biomes {
-        public static final TagKey<Biome> HAS_MANDRAKES = TagKey.create(Registries.BIOME,
-                (new ResourceLocation(HexaliaMod.MODID, "has_mandrakes")));
-        public static final TagKey<Biome> HAS_DREAMSHROOMS = TagKey.create(Registries.BIOME,
-                (new ResourceLocation(HexaliaMod.MODID, "has_dreamshrooms")));
+        // Vegetation
+        public static final TagKey<Biome> HAS_SHROOMS = TagKey.create(Registries.BIOME,
+                ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_shrooms"));
         public static final TagKey<Biome> HAS_SIREN_KELP = TagKey.create(Registries.BIOME,
-                (new ResourceLocation(HexaliaMod.MODID, "has_siren_kelp")));
-        public static final TagKey<Biome> HAS_GHOST_FERNS = TagKey.create(Registries.BIOME,
-                (new ResourceLocation(HexaliaMod.MODID, "has_ghost_ferns")));
+                ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_siren_kelp"));
         public static final TagKey<Biome> HAS_SWAMP_VEGETATION = TagKey.create(Registries.BIOME,
-                (new ResourceLocation(HexaliaMod.MODID, "has_swamp_vegetation")));
+                ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_swamp_vegetation"));
         public static final TagKey<Biome> HAS_DECORATIVE_FLOWERS = TagKey.create(Registries.BIOME,
-                (new ResourceLocation(HexaliaMod.MODID, "has_decorative_flowers")));
+                ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_decorative_flowers"));
+        public static final TagKey<Biome> HAS_FLORAL_VEGETATION = TagKey.create(Registries.BIOME,
+                ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_floral_vegetation"));
+        public static final TagKey<Biome> HAS_SHADED_VEGETATION = TagKey.create(Registries.BIOME,
+                ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_shade_vegetation"));
+        public static final TagKey<Biome> HAS_COOL_BIOME_VEGETATION = TagKey.create(Registries.BIOME,
+                ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_cool_biome_vegetation"));
+        public static final TagKey<Biome> HAS_DRY_BIOME_VEGETATION = TagKey.create(Registries.BIOME,
+                ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "has_dry_biome_vegetation"));
+
+        // Entities
+        public static final TagKey<Biome> SILK_MOTH_SPAWNS = TagKey.create(Registries.BIOME,
+                ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "silk_moth_spawns"));
+        public static final TagKey<Biome> CACOFEY_SPAWNS = TagKey.create(Registries.BIOME,
+                ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "cacofey_spawns"));
     }
 }

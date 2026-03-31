@@ -1,0 +1,23 @@
+{
+  "type": "hexalia:ritual_table",
+  "ingredients": [
+    {
+      "item": "minecraft:leather_helmet"
+    },
+    {
+      "item": "minecraft:pink_tulip"
+    },
+    {
+      "item": "hexalia:silk_fiber"
+    },
+    {
+      "item": "hexalia:mandrake"
+    },
+    {
+      "item": "minecraft:rooted_dirt"
+    }
+  ],
+  "output": {
+    "item": "hexalia:bloomwrap_hat"
+  }
+}

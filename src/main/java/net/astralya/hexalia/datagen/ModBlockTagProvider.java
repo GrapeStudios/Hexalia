@@ -44,6 +44,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.SHELF.get())
                 .add(ModBlocks.CENSER.get())
                 .add(ModBlocks.RITUAL_BRAZIER.get())
+                .add(ModBlocks.NESTING_BLOCK.get())
+                .add(ModBlocks.MORTAR_AND_PESTLE.get())
                 .add(ModBlocks.LOTUS_FLOWER.get());
 
         // Tool requirements
@@ -57,6 +59,8 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.RITUAL_TABLE.get())
                 .add(ModBlocks.SALT_BLOCK.get())
                 .add(ModBlocks.RITUAL_BRAZIER.get())
+                .add(ModBlocks.NESTING_BLOCK.get())
+                .add(ModBlocks.MORTAR_AND_PESTLE.get())
                 .add(ModBlocks.CELESTIAL_CRYSTAL_BLOCK.get());
     }
 
@@ -67,9 +71,18 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.WITCHWEED.get())
                 .add(ModBlocks.GHOST_FERN.get())
                 .add(ModBlocks.CELESTIAL_BLOOM.get())
+                .add(ModBlocks.WITHERED_CELESTIAL_BLOOM.get())
                 .add(ModBlocks.NIGHTSHADE_BUSH.get())
                 .add(ModBlocks.BEGONIA.get())
                 .add(ModBlocks.LAVENDER.get())
+                .add(ModBlocks.AEGIFLORA.get())
+                .add(ModBlocks.WITHERED_AEGIFLORA.get())
+                .add(ModBlocks.MORPHORA.get())
+                .add(ModBlocks.WINDSONG.get())
+                .add(ModBlocks.LOURDES.get())
+                .add(ModBlocks.GRIMSHADE.get())
+                .add(ModBlocks.CELESTIAL_BLOOM.get())
+                .add(ModBlocks.ASTRYLIS.get())
                 .add(ModBlocks.DAHLIA.get());
 
         // Small flowers
@@ -78,9 +91,18 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.WITCHWEED.get())
                 .add(ModBlocks.GHOST_FERN.get())
                 .add(ModBlocks.CELESTIAL_BLOOM.get())
+                .add(ModBlocks.WITHERED_CELESTIAL_BLOOM.get())
                 .add(ModBlocks.NIGHTSHADE_BUSH.get())
                 .add(ModBlocks.BEGONIA.get())
                 .add(ModBlocks.LAVENDER.get())
+                .add(ModBlocks.AEGIFLORA.get())
+                .add(ModBlocks.WITHERED_AEGIFLORA.get())
+                .add(ModBlocks.MORPHORA.get())
+                .add(ModBlocks.WINDSONG.get())
+                .add(ModBlocks.LOURDES.get())
+                .add(ModBlocks.GRIMSHADE.get())
+                .add(ModBlocks.CELESTIAL_BLOOM.get())
+                .add(ModBlocks.ASTRYLIS.get())
                 .add(ModBlocks.DAHLIA.get());
 
         // Special plant properties
@@ -108,20 +130,12 @@ public class ModBlockTagProvider extends BlockTagsProvider {
     }
 
     private void addFunctionalTags() {
-        tag(ModTags.Blocks.HEATING_BLOCKS)
-                .add(Blocks.MAGMA_BLOCK)
-                .add(Blocks.LAVA)
-                .add(Blocks.CAMPFIRE)
-                .add(Blocks.SOUL_CAMPFIRE)
-                .add(Blocks.FIRE)
-                .add(Blocks.SOUL_FIRE)
-                .add(ModBlocks.RUSTIC_OVEN.get());
-
         tag(ModTags.Blocks.ATTRACTS_MOTH)
                 .add(Blocks.LANTERN)
                 .add(Blocks.SEA_LANTERN)
                 .add(Blocks.SOUL_LANTERN)
                 .add(ModBlocks.SALT_LAMP.get())
+                .add(ModBlocks.GHOST_FERN.get())
                 .add(Blocks.END_ROD)
                 .add(Blocks.TORCH);
     }
@@ -140,11 +154,6 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.STRIPPED_WILLOW_LOG.get())
                 .add(ModBlocks.WILLOW_WOOD.get())
                 .add(ModBlocks.STRIPPED_WILLOW_WOOD.get());
-
-        // Special log types
-        tag(ModTags.Blocks.COCOON_LOGS)
-                .add(Blocks.DARK_OAK_LOG)
-                .add(ModBlocks.COTTONWOOD_LOG.get());
 
         // Vanilla wood categories
         tag(BlockTags.LOGS_THAT_BURN)
@@ -209,6 +218,14 @@ public class ModBlockTagProvider extends BlockTagsProvider {
     private void addCustomModTags() {
         tag(ModTags.Blocks.SALT_BLOCKS)
                 .add(ModBlocks.SALT_BLOCK.get());
+
+        tag(ModTags.Blocks.SPIRITROOT_BOUND_BLOCKS)
+                .add(ModBlocks.SPIRIT_BLOOM.get());
+
+        tag(ModTags.Blocks.BOGSHADE_NO_SLOW)
+                .add(Blocks.MUD)
+                .add(Blocks.SOUL_SAND)
+                .add(Blocks.HONEY_BLOCK)        ;
     }
 
     private void addAdditionalTags() {
@@ -235,6 +252,10 @@ public class ModBlockTagProvider extends BlockTagsProvider {
                 .add(ModBlocks.POTTED_MORPHORA.get())
                 .add(ModBlocks.POTTED_COTTONWOOD_SAPLING.get())
                 .add(ModBlocks.POTTED_WILLOW_SAPLING.get())
+                .add(ModBlocks.POTTED_AEGIFLORA.get())
+                .add(ModBlocks.POTTED_LOURDES.get())
+                .add(ModBlocks.POTTED_WITHERED_AEGIFLORA.get())
+                .add(ModBlocks.POTTED_WITHERED_CELESTIAL_BLOOM.get())
                 .add(ModBlocks.POTTED_DAHLIA.get());
 
         // Dirt

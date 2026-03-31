@@ -1,14 +1,18 @@
 package net.astralya.hexalia.block.entity.custom;
 
+import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.block.custom.RitualBrazierBlock;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
+import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.particle.ModParticleType;
 import net.astralya.hexalia.sound.ModSoundEvents;
+import net.astralya.hexalia.util.SidedItemHandlers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
@@ -21,9 +25,14 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -32,21 +41,29 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@Mod.EventBusSubscriber(modid = HexaliaMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class RitualTableBlockEntity extends BlockEntity implements Container {
 
     public static final int DURATION = 8 * 20;
 
     private final ItemStackHandler inventory = new ItemStackHandler(1) {
         @Override
+        public boolean isItemValid(int slot, ItemStack stack) {
+            return !stack.is(ModItems.HEX_FOCUS.get());
+        }
+
+        @Override
         protected void onContentsChanged(int slot) {
             setChanged();
-            if (level != null && !level.isClientSide) {
-                level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+            if (level != null && !level.isClientSide()) {
+                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
             }
         }
     };
 
-    private LazyOptional<ItemStackHandler> itemCap = LazyOptional.of(() -> inventory);
+    private final LazyOptional<IItemHandler> southInputOptional;
+    private final LazyOptional<IItemHandler> downOutputOptional;
+    private final LazyOptional<IItemHandler> lockedOptional;
 
     private ItemStack cachedParticleItem = ItemStack.EMPTY;
     private List<RitualBrazierBlockEntity> activeBraziers = Collections.emptyList();
@@ -56,158 +73,162 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
     private int transformTicksRemaining = 0;
     private int totalTransformTicks = 0;
     private int nextBrazierIndex = 0;
-    private float rotation = 0.0f;
+    private float rotation = 0.0F;
 
     public RitualTableBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntityTypes.RITUAL_TABLE_BE.get(), pos, state);
+        super(ModBlockEntityTypes.RITUAL_TABLE.get(), pos, state);
+        this.southInputOptional = LazyOptional.of(() -> SidedItemHandlers.view(this.inventory, new int[]{0}, true, false));
+        this.downOutputOptional = LazyOptional.of(() -> SidedItemHandlers.view(this.inventory, new int[]{0}, false, true));
+        this.lockedOptional = LazyOptional.of(SidedItemHandlers::blocked);
     }
 
-    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> cap, @Nullable Direction side) {
-        if (cap == ForgeCapabilities.ITEM_HANDLER) {
-            return itemCap.cast();
-        }
-        return super.getCapability(cap, side);
-    }
-
-    public void invalidateCaps() {
-        super.invalidateCaps();
-        itemCap.invalidate();
-    }
-
-    public void reviveCaps() {
-        super.reviveCaps();
-        itemCap = LazyOptional.of(() -> inventory);
-    }
-
-    public ItemStackHandler getItemHandler() {
-        return inventory;
-    }
-
+    @Override
     public int getContainerSize() {
         return 1;
     }
 
+    @Override
     public boolean isEmpty() {
-        return inventory.getStackInSlot(0).isEmpty();
+        return this.inventory.getStackInSlot(0).isEmpty();
     }
 
-    public ItemStack getItem(int i) {
-        return inventory.getStackInSlot(i);
+    @Override
+    public ItemStack getItem(int index) {
+        return this.inventory.getStackInSlot(index);
     }
 
+    @Override
     public ItemStack removeItem(int index, int count) {
-        ItemStack extracted = inventory.extractItem(index, count, false);
-        setChanged();
-        return extracted;
+        return this.inventory.extractItem(index, count, false);
     }
 
+    @Override
     public ItemStack removeItemNoUpdate(int index) {
-        ItemStack current = inventory.getStackInSlot(index);
-        if (!current.isEmpty()) {
-            inventory.setStackInSlot(index, ItemStack.EMPTY);
-            setChanged();
-        }
-        return current;
+        return this.inventory.extractItem(index, 1, false);
     }
 
+    @Override
     public void setItem(int index, ItemStack stack) {
-        if (!stack.isEmpty()) stack = stack.copyWithCount(1);
-        inventory.setStackInSlot(index, stack);
-        setChanged();
+        ItemStack one = stack.copy();
+        one.setCount(1);
+        this.inventory.setStackInSlot(index, one);
     }
 
+    @Override
     public boolean stillValid(Player player) {
-        if (level == null || level.getBlockEntity(worldPosition) != this) return false;
-        double dx = player.getX() - (worldPosition.getX() + 0.5);
-        double dy = player.getY() - (worldPosition.getY() + 0.5);
-        double dz = player.getZ() - (worldPosition.getZ() + 0.5);
-        return dx * dx + dy * dy + dz * dz <= 64.0;
+        return Container.stillValidBlockEntity(this, player);
     }
 
+    @Override
     public void clearContent() {
-        inventory.setStackInSlot(0, ItemStack.EMPTY);
-    }
-
-    public int getMaxStackSize() {
-        return 1;
+        this.inventory.setStackInSlot(0, ItemStack.EMPTY);
     }
 
     public float getRenderingRotation() {
-        rotation = (rotation + 0.5f) % 360f;
-        return rotation;
+        this.rotation = (this.rotation + 0.5F) % 360.0F;
+        return this.rotation;
     }
 
-    public void startTransformation(ItemStack output, int durationTicks, List<RitualBrazierBlockEntity> braziers, List<BlockPos> grownCropPositions) {
-        if (transformTicksRemaining > 0) return;
+    public void startTransformation(ItemStack output, int durationTicks, List<RitualBrazierBlockEntity> braziers) {
+        if (this.transformTicksRemaining > 0) {
+            return;
+        }
         this.transformTicksRemaining = Math.max(1, durationTicks);
         this.totalTransformTicks = this.transformTicksRemaining;
         this.pendingOutput = output.copy();
         this.activeBraziers = new ArrayList<>(braziers);
-        this.grownCrops = new ArrayList<>(grownCropPositions);
         this.nextBrazierIndex = 0;
-        this.cachedParticleItem = ItemStack.EMPTY;
-        setChanged();
+        this.setChanged();
     }
 
-    public static void serverTick(Level level, BlockPos pos, BlockState st, RitualTableBlockEntity be) {
-        if (be.transformTicksRemaining <= 0) return;
-        if (be.isEmpty() || hasMissingBrazierItems(be)) {
-            cancelRitual(level, pos, be);
+    public void setGrownCropPositions(List<BlockPos> crops) {
+        this.grownCrops = new ArrayList<>(crops);
+    }
+
+    public static void serverTick(Level level, BlockPos pos, BlockState state, RitualTableBlockEntity blockEntity) {
+        if (blockEntity.transformTicksRemaining <= 0) {
             return;
         }
-        int base = be.totalTransformTicks > 0 ? be.totalTransformTicks : DURATION;
-        int elapsed = base - be.transformTicksRemaining;
-        handleActiveBraziers(level, pos, be, elapsed);
-        be.transformTicksRemaining--;
-        if (be.transformTicksRemaining == 0) {
-            completeRitual(level, pos, be);
+
+        if (blockEntity.isEmpty() || hasMissingBrazierItems(blockEntity)) {
+            cancelRitual(level, pos, blockEntity);
+            return;
+        }
+
+        int base = blockEntity.totalTransformTicks > 0 ? blockEntity.totalTransformTicks : DURATION;
+        int elapsed = base - blockEntity.transformTicksRemaining;
+
+        handleActiveBraziers(level, pos, blockEntity, elapsed);
+        blockEntity.transformTicksRemaining--;
+
+        if (blockEntity.transformTicksRemaining == 0) {
+            completeRitual(level, pos, blockEntity);
         }
     }
 
-    private static boolean hasMissingBrazierItems(RitualTableBlockEntity be) {
-        for (int i = be.nextBrazierIndex; i < be.activeBraziers.size(); i++) {
-            RitualBrazierBlockEntity brazier = be.activeBraziers.get(i);
-            if (i == be.nextBrazierIndex && !be.cachedParticleItem.isEmpty()) continue;
-            if (brazier == null || brazier.isRemoved() || brazier.isEmpty()) return true;
+    private static boolean hasMissingBrazierItems(RitualTableBlockEntity blockEntity) {
+        for (int i = blockEntity.nextBrazierIndex; i < blockEntity.activeBraziers.size(); i++) {
+            RitualBrazierBlockEntity brazier = blockEntity.activeBraziers.get(i);
+            if (i == blockEntity.nextBrazierIndex && !blockEntity.cachedParticleItem.isEmpty()) {
+                continue;
+            }
+            if (brazier == null || brazier.isRemoved() || brazier.isEmpty()) {
+                return true;
+            }
         }
         return false;
     }
 
-    private static void handleActiveBraziers(Level level, BlockPos pos, RitualTableBlockEntity be, int elapsed) {
-        if (be.activeBraziers.isEmpty() || be.nextBrazierIndex >= be.activeBraziers.size()) return;
+    private static void handleActiveBraziers(Level level, BlockPos pos, RitualTableBlockEntity blockEntity, int elapsed) {
+        if (blockEntity.activeBraziers.isEmpty() || blockEntity.nextBrazierIndex >= blockEntity.activeBraziers.size()) {
+            return;
+        }
+
         int ticksPerBrazier = 40;
-        int currentTime = elapsed - (be.nextBrazierIndex * ticksPerBrazier);
-        RitualBrazierBlockEntity brazier = be.activeBraziers.get(be.nextBrazierIndex);
-        if (brazier == null) return;
+        int currentTime = elapsed - (blockEntity.nextBrazierIndex * ticksPerBrazier);
+        RitualBrazierBlockEntity brazier = blockEntity.activeBraziers.get(blockEntity.nextBrazierIndex);
+        if (brazier == null) {
+            return;
+        }
 
         if (currentTime == 0) {
-            be.cachedParticleItem = brazier.getStoredItem().copy();
+            blockEntity.cachedParticleItem = brazier.getStoredItem().copy();
             brazier.removeItem();
-            BlockState bs = level.getBlockState(brazier.getBlockPos());
-            if (bs.getBlock() instanceof RitualBrazierBlock && bs.hasProperty(RitualBrazierBlock.SALTED) && bs.getValue(RitualBrazierBlock.SALTED)) {
-                level.setBlock(brazier.getBlockPos(), bs.setValue(RitualBrazierBlock.SALTED, false), 3);
+
+            BlockState brazierState = level.getBlockState(brazier.getBlockPos());
+            if (brazierState.getBlock() instanceof RitualBrazierBlock
+                    && brazierState.hasProperty(RitualBrazierBlock.SALTED)
+                    && brazierState.getValue(RitualBrazierBlock.SALTED)) {
+                level.setBlock(brazier.getBlockPos(), brazierState.setValue(RitualBrazierBlock.SALTED, false), 3);
             }
         }
 
-        if (currentTime >= 0 && currentTime < ticksPerBrazier && level instanceof ServerLevel server) {
-            spawnItemParticles(server, be.cachedParticleItem, brazier.getBlockPos(), pos, currentTime, ticksPerBrazier);
+        if (currentTime >= 0 && currentTime < ticksPerBrazier && level instanceof ServerLevel serverLevel) {
+            spawnItemParticles(serverLevel, blockEntity.cachedParticleItem, brazier.getBlockPos(), pos, currentTime, ticksPerBrazier);
         }
 
         if (currentTime == ticksPerBrazier - 1) {
-            if (level instanceof ServerLevel server) {
-                spawnAbsorbBurst(server, pos, be.cachedParticleItem);
+            if (level instanceof ServerLevel serverLevel) {
+                spawnAbsorbBurst(serverLevel, pos, blockEntity.cachedParticleItem);
             }
-            be.nextBrazierIndex++;
-            be.cachedParticleItem = ItemStack.EMPTY;
+            blockEntity.nextBrazierIndex++;
+            blockEntity.cachedParticleItem = ItemStack.EMPTY;
         }
     }
 
-    private static void spawnItemParticles(ServerLevel server, ItemStack item, BlockPos from, BlockPos to, int time, int totalTime) {
-        if (item.isEmpty()) return;
+    private static void spawnItemParticles(ServerLevel serverLevel, ItemStack item, BlockPos from, BlockPos to, int time, int totalTime) {
+        if (item.isEmpty()) {
+            return;
+        }
+
         ItemParticleOption particle = new ItemParticleOption(ParticleTypes.ITEM, item);
 
-        double startX = from.getX() + 0.5, startY = from.getY() + 0.4, startZ = from.getZ() + 0.5;
-        double endX = to.getX() + 0.5, endY = to.getY() + 1.15, endZ = to.getZ() + 0.5;
+        double startX = from.getX() + 0.5D;
+        double startY = from.getY() + 0.4D;
+        double startZ = from.getZ() + 0.5D;
+        double endX = to.getX() + 0.5D;
+        double endY = to.getY() + 1.15D;
+        double endZ = to.getZ() + 0.5D;
         double progress = time / (double) totalTime;
 
         double px = startX + (endX - startX) * progress;
@@ -215,137 +236,187 @@ public class RitualTableBlockEntity extends BlockEntity implements Container {
         double pz = startZ + (endZ - startZ) * progress;
 
         for (int i = 0; i < 3; i++) {
-            double offsetX = (server.random.nextDouble() - 0.5) * 0.05;
-            double offsetY = (server.random.nextDouble() - 0.5) * 0.05;
-            double offsetZ = (server.random.nextDouble() - 0.5) * 0.05;
-            double speed = 0.008 + server.random.nextDouble() * 0.004;
+            double offsetX = (serverLevel.random.nextDouble() - 0.5D) * 0.05D;
+            double offsetY = (serverLevel.random.nextDouble() - 0.5D) * 0.05D;
+            double offsetZ = (serverLevel.random.nextDouble() - 0.5D) * 0.05D;
+            double speed = 0.008D + serverLevel.random.nextDouble() * 0.004D;
 
-            double velX = (endX - startX) * speed;
-            double velY = (endY - startY) * speed + 0.003;
-            double velZ = (endZ - startZ) * speed;
+            double velocityX = (endX - startX) * speed;
+            double velocityY = (endY - startY) * speed + 0.003D;
+            double velocityZ = (endZ - startZ) * speed;
 
-            server.sendParticles(particle, px + offsetX, py + offsetY, pz + offsetZ, 1, velX, velY, velZ, 0.0);
+            serverLevel.sendParticles(particle, px + offsetX, py + offsetY, pz + offsetZ, 1, velocityX, velocityY, velocityZ, 0.0D);
         }
     }
 
-    private static void spawnAbsorbBurst(ServerLevel server, BlockPos pos, ItemStack item) {
-        double cx = pos.getX() + 0.5, cy = pos.getY() + 1.1, cz = pos.getZ() + 0.5;
+    private static void spawnAbsorbBurst(ServerLevel serverLevel, BlockPos pos, ItemStack item) {
+        double centerX = pos.getX() + 0.5D;
+        double centerY = pos.getY() + 1.1D;
+        double centerZ = pos.getZ() + 0.5D;
 
         for (int i = 0; i < 12; i++) {
-            double ox = (server.random.nextDouble() - 0.5) * 0.5;
-            double oy = server.random.nextDouble() * 0.3;
-            double oz = (server.random.nextDouble() - 0.5) * 0.5;
-            double vx = (server.random.nextDouble() - 0.5) * 0.02;
-            double vy = 0.04 + server.random.nextDouble() * 0.02;
-            double vz = (server.random.nextDouble() - 0.5) * 0.02;
-
-            server.sendParticles(ParticleTypes.WITCH, cx + ox, cy + oy, cz + oz, 1, vx, vy, vz, 0.0);
+            double offsetX = (serverLevel.random.nextDouble() - 0.5D) * 0.5D;
+            double offsetY = serverLevel.random.nextDouble() * 0.3D;
+            double offsetZ = (serverLevel.random.nextDouble() - 0.5D) * 0.5D;
+            double velocityX = (serverLevel.random.nextDouble() - 0.5D) * 0.02D;
+            double velocityY = 0.04D + serverLevel.random.nextDouble() * 0.02D;
+            double velocityZ = (serverLevel.random.nextDouble() - 0.5D) * 0.02D;
+            serverLevel.sendParticles(ParticleTypes.WITCH, centerX + offsetX, centerY + offsetY, centerZ + offsetZ, 1, velocityX, velocityY, velocityZ, 0.0D);
         }
 
         if (!item.isEmpty()) {
             for (int i = 0; i < 8; i++) {
-                double ox = (server.random.nextDouble() - 0.5) * 0.2;
-                double oy = server.random.nextDouble() * 0.2;
-                double oz = (server.random.nextDouble() - 0.5) * 0.2;
-                double vx = (server.random.nextDouble() - 0.5) * 0.005;
-                double vy = 0.015 + server.random.nextDouble() * 0.005;
-                double vz = (server.random.nextDouble() - 0.5) * 0.005;
-
-                server.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, item), cx + ox, cy + oy, cz + oz, 1, vx, vy, vz, 0.0);
+                double offsetX = (serverLevel.random.nextDouble() - 0.5D) * 0.2D;
+                double offsetY = serverLevel.random.nextDouble() * 0.2D;
+                double offsetZ = (serverLevel.random.nextDouble() - 0.5D) * 0.2D;
+                double velocityX = (serverLevel.random.nextDouble() - 0.5D) * 0.005D;
+                double velocityY = 0.015D + serverLevel.random.nextDouble() * 0.005D;
+                double velocityZ = (serverLevel.random.nextDouble() - 0.5D) * 0.005D;
+                serverLevel.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, item), centerX + offsetX, centerY + offsetY, centerZ + offsetZ, 1, velocityX, velocityY, velocityZ, 0.0D);
             }
         }
 
-        server.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 0.4f, 1.2f + server.random.nextFloat() * 0.2f);
+        serverLevel.playSound(null, pos, SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.BLOCKS, 0.4F, 1.2F + serverLevel.random.nextFloat() * 0.2F);
     }
 
-    private static void completeRitual(Level level, BlockPos pos, RitualTableBlockEntity be) {
-        be.setItem(0, be.pendingOutput);
-        be.pendingOutput = ItemStack.EMPTY;
+    private static void completeRitual(Level level, BlockPos pos, RitualTableBlockEntity blockEntity) {
+        blockEntity.setItem(0, blockEntity.pendingOutput);
+        blockEntity.pendingOutput = ItemStack.EMPTY;
 
-        for (BlockPos cropPos : be.grownCrops) {
-            BlockState state = level.getBlockState(cropPos);
-            if (state.getBlock() instanceof CropBlock crop && state.hasProperty(CropBlock.AGE)) {
-                level.setBlock(cropPos, state.setValue(CropBlock.AGE, 0), 3);
+        for (BlockPos cropPos : blockEntity.grownCrops) {
+            BlockState cropState = level.getBlockState(cropPos);
+            if (!(cropState.getBlock() instanceof CropBlock)) {
+                continue;
             }
-        }
-        be.activeBraziers = Collections.emptyList();
-        be.nextBrazierIndex = 0;
-        be.cachedParticleItem = ItemStack.EMPTY;
-        be.grownCrops = Collections.emptyList();
 
-        level.playSound(null, pos, ModSoundEvents.RITUAL_SUCCESS.get(), SoundSource.BLOCKS, 0.8f, 1.0f);
-        if (level instanceof ServerLevel server) {
-            server.sendParticles(ModParticleType.LEAVES.get(), pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5, 15, 0.3, 0.3, 0.3, 0.0);
+            IntegerProperty ageProperty = null;
+            for (Object property : cropState.getProperties()) {
+                if (property instanceof IntegerProperty integerProperty && "age".equals(integerProperty.getName())) {
+                    ageProperty = integerProperty;
+                    break;
+                }
+            }
+
+            if (ageProperty == null || !cropState.hasProperty(ageProperty)) {
+                continue;
+            }
+
+            level.setBlock(cropPos, cropState.setValue(ageProperty, 0), 3);
         }
-        be.setChanged();
+
+        blockEntity.activeBraziers = Collections.emptyList();
+        blockEntity.nextBrazierIndex = 0;
+
+        level.playSound(null, pos, ModSoundEvents.RITUAL_SUCCESS.get(), SoundSource.BLOCKS, 0.8F, 1.0F);
+        if (level instanceof ServerLevel serverLevel) {
+            serverLevel.sendParticles(ModParticleType.LEAVES.get(), pos.getX() + 0.5D, pos.getY() + 1.0D, pos.getZ() + 0.5D, 15, 0.3D, 0.3D, 0.3D, 0.0D);
+        }
+        blockEntity.setChanged();
     }
 
-    private static void cancelRitual(Level level, BlockPos pos, RitualTableBlockEntity be) {
-        be.transformTicksRemaining = 0;
-        be.totalTransformTicks = 0;
-        be.pendingOutput = ItemStack.EMPTY;
-        be.activeBraziers = Collections.emptyList();
-        be.nextBrazierIndex = 0;
-        be.cachedParticleItem = ItemStack.EMPTY;
-        be.grownCrops = Collections.emptyList();
+    private static void cancelRitual(Level level, BlockPos pos, RitualTableBlockEntity blockEntity) {
+        blockEntity.transformTicksRemaining = 0;
+        blockEntity.totalTransformTicks = 0;
+        blockEntity.pendingOutput = ItemStack.EMPTY;
+        blockEntity.activeBraziers = Collections.emptyList();
+        blockEntity.nextBrazierIndex = 0;
+        blockEntity.cachedParticleItem = ItemStack.EMPTY;
 
-        if (level instanceof ServerLevel server) {
-            server.sendParticles(ParticleTypes.SMOKE, pos.getX() + 0.5, pos.getY() + 1.0, pos.getZ() + 0.5, 12, 0.4, 0.4, 0.4, 0.02);
-            Player nearest = server.getNearestPlayer(pos.getX(), pos.getY(), pos.getZ(), 5, false);
+        if (level instanceof ServerLevel serverLevel) {
+            serverLevel.sendParticles(ParticleTypes.SMOKE, pos.getX() + 0.5D, pos.getY() + 1.0D, pos.getZ() + 0.5D, 12, 0.4D, 0.4D, 0.4D, 0.02D);
+            Player nearest = serverLevel.getNearestPlayer(pos.getX(), pos.getY(), pos.getZ(), 5.0D, false);
             if (nearest != null) {
                 nearest.displayClientMessage(Component.translatable("message.hexalia.ritual.stopped_ritual"), true);
             }
         }
-        level.playSound(null, pos, SoundEvents.CANDLE_EXTINGUISH, SoundSource.BLOCKS, 0.4f, 0.6f);
-        be.setChanged();
+
+        level.playSound(null, pos, SoundEvents.CANDLE_EXTINGUISH, SoundSource.BLOCKS, 0.4F, 0.6F);
+        blockEntity.setChanged();
     }
 
+    @Override
+    public void setRemoved() {
+        super.setRemoved();
+        this.southInputOptional.invalidate();
+        this.downOutputOptional.invalidate();
+        this.lockedOptional.invalidate();
+    }
+
+    @Override
     protected void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
-        tag.put("Inv", inventory.serializeNBT());
+        tag.put("Inv", this.inventory.serializeNBT());
         tag.putInt("TicksLeft", this.transformTicksRemaining);
         tag.putInt("TotalTicks", this.totalTransformTicks);
         if (!this.pendingOutput.isEmpty()) {
-            CompoundTag out = new CompoundTag();
-            this.pendingOutput.save(out);
-            tag.put("PendingOut", out);
+            CompoundTag pendingTag = new CompoundTag();
+            this.pendingOutput.save(pendingTag);
+            tag.put("PendingOut", pendingTag);
         }
     }
 
+    @Override
     public void load(CompoundTag tag) {
         super.load(tag);
-        inventory.deserializeNBT(tag.getCompound("Inv"));
+        this.inventory.deserializeNBT(tag.getCompound("Inv"));
         this.transformTicksRemaining = tag.getInt("TicksLeft");
         this.totalTransformTicks = tag.getInt("TotalTicks");
         this.pendingOutput = tag.contains("PendingOut") ? ItemStack.of(tag.getCompound("PendingOut")) : ItemStack.EMPTY;
     }
 
+    @Override
     public CompoundTag getUpdateTag() {
-        return saveWithoutMetadata();
+        CompoundTag tag = super.getUpdateTag();
+        tag.put("Inv", this.inventory.serializeNBT());
+        tag.putInt("TicksLeft", this.transformTicksRemaining);
+        tag.putInt("TotalTicks", this.totalTransformTicks);
+        if (!this.pendingOutput.isEmpty()) {
+            CompoundTag pendingTag = new CompoundTag();
+            this.pendingOutput.save(pendingTag);
+            tag.put("PendingOut", pendingTag);
+        }
+        return tag;
     }
 
+    @Override
+    public void handleUpdateTag(CompoundTag tag) {
+        super.handleUpdateTag(tag);
+        this.inventory.deserializeNBT(tag.getCompound("Inv"));
+        this.transformTicksRemaining = tag.getInt("TicksLeft");
+        this.totalTransformTicks = tag.getInt("TotalTicks");
+        this.pendingOutput = tag.contains("PendingOut") ? ItemStack.of(tag.getCompound("PendingOut")) : ItemStack.EMPTY;
+    }
+
+    @Override
     public @Nullable ClientboundBlockEntityDataPacket getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
     }
 
-    public void setGrownCropPositions(List<BlockPos> crops) {
-        this.grownCrops = new ArrayList<>(crops);
+    @Override
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket packet) {
+        super.onDataPacket(net, packet);
+        if (this.level != null && this.level.isClientSide) {
+            this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), 3);
+        }
     }
 
-    public static List<BlockPos> collectGrownCrops(Level level, BlockPos tablePos) {
-        List<BlockPos> list = new ArrayList<>(16);
-        BlockPos[] positions = {
-                tablePos.offset(-2, 0, -2), tablePos.offset(-1, 0, -2), tablePos.offset(1, 0, -2), tablePos.offset(2, 0, -2),
-                tablePos.offset(-2, 0, -1), tablePos.offset(-1, 0, -1), tablePos.offset(1, 0, -1), tablePos.offset(2, 0, -1),
-                tablePos.offset(-2, 0, 1), tablePos.offset(-1, 0, 1), tablePos.offset(1, 0, 1), tablePos.offset(2, 0, 1),
-                tablePos.offset(-2, 0, 2), tablePos.offset(-1, 0, 2), tablePos.offset(1, 0, 2), tablePos.offset(2, 0, 2)
-        };
-        for (BlockPos p : positions) {
-            BlockState st = level.getBlockState(p);
-            if (st.getBlock() instanceof CropBlock crop && crop.getAge(st) >= crop.getMaxAge()) {
-                list.add(p.immutable());
+    @Override
+    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction side) {
+        if (capability == ForgeCapabilities.ITEM_HANDLER) {
+            if (this.transformTicksRemaining > 0) {
+                return this.lockedOptional.cast();
             }
+            if (side == Direction.DOWN) {
+                return this.downOutputOptional.cast();
+            }
+            return this.southInputOptional.cast();
         }
-        return list;
+        return super.getCapability(capability, side);
+    }
+
+    @SubscribeEvent
+    public static void attachCapabilities(AttachCapabilitiesEvent<BlockEntity> event) {
+        if (event.getObject() instanceof RitualTableBlockEntity) {
+        }
     }
 }

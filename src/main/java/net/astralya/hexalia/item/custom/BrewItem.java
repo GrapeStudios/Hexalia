@@ -1,7 +1,9 @@
 package net.astralya.hexalia.item.custom;
 
 import net.astralya.hexalia.item.ModItems;
+import net.astralya.hexalia.util.MagicResistanceUtil;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -14,6 +16,9 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class BrewItem extends AbstractConsumableItem {
+
+    private static final ResourceLocation MOONWEAVE_SET_ID = new ResourceLocation("hexalia", "moonweave");
+    private static final float MOONWEAVE_DURATION_MULTIPLIER = 1.5f;
 
     private final int durationTicks;
     private final int baseAmplifier;
@@ -32,11 +37,21 @@ public class BrewItem extends AbstractConsumableItem {
         this.baseTooltip = tooltip;
     }
 
+    public int getBrewColor() {
+        return effectSupplier.get().getColor();
+    }
+
     @Override
     protected void handleEffects(Level level, LivingEntity user, ItemStack consumedStack) {
-        if (!level.isClientSide()) {
-            user.addEffect(new MobEffectInstance(effectSupplier.get(), durationTicks, baseAmplifier));
+        if (level.isClientSide) {
+            return;
         }
+
+        int duration = MagicResistanceUtil.isWearingFullSet(user, MOONWEAVE_SET_ID)
+                ? Math.round(durationTicks * MOONWEAVE_DURATION_MULTIPLIER)
+                : durationTicks;
+
+        user.addEffect(new MobEffectInstance(effectSupplier.get(), duration, baseAmplifier));
     }
 
     @Override
@@ -45,7 +60,12 @@ public class BrewItem extends AbstractConsumableItem {
     }
 
     @Override
-    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag tooltipFlag) {
+    protected Component getTooltip(ItemStack stack) {
+        return baseTooltip;
+    }
+
+    @Override
+    public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
         tooltip.add(baseTooltip);
     }
 }

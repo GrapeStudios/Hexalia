@@ -18,7 +18,7 @@ import java.util.Objects;
 public class LivingEntityMixin {
 
     @Unique
-    private final LivingEntity livingEntity = (LivingEntity) (Object) this;
+    private final LivingEntity hexalia$livingEntity = (LivingEntity) (Object) this;
 
     @Inject(
             at = @At("HEAD"),
@@ -31,6 +31,7 @@ public class LivingEntityMixin {
                 player.playSound(SoundEvents.NETHER_WART_BREAK, 1.0F, 1.0F);
                 player.heal(healthStealAmount);
             }
+
         }
     }
 
@@ -38,11 +39,10 @@ public class LivingEntityMixin {
     public void returnDamage(DamageSource source, float amount, CallbackInfoReturnable<Float> cir) {
         float newAmount = cir.getReturnValue();
         Entity attacker = source.getEntity();
-        if (livingEntity.hasEffect(ModMobEffects.SPIKESKIN.get()) && attacker instanceof LivingEntity livingAttacker) {
-            livingAttacker.hurt(livingAttacker.damageSources().indirectMagic(livingAttacker, livingEntity),
+        if (hexalia$livingEntity.hasEffect(ModMobEffects.SPIKESKIN.get()) && attacker instanceof LivingEntity livingAttacker) {
+            livingAttacker.hurt(livingAttacker.damageSources().indirectMagic(livingAttacker, hexalia$livingEntity),
                     (float) (newAmount * 0.2)
-                            + Objects.requireNonNull(livingEntity.getEffect(ModMobEffects.SPIKESKIN.get())).getAmplifier() + 1);
+                            + Objects.requireNonNull(hexalia$livingEntity.getEffect(ModMobEffects.SPIKESKIN.get())).getAmplifier() + 1);
         }
     }
 }
-

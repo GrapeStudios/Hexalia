@@ -33,7 +33,7 @@ public class NautiliteBlockEntity extends BlockEntity {
     private long activationTime = -1;
 
     public NautiliteBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntityTypes.NAUTILITE_BE.get(), pPos, pBlockState);
+        super(ModBlockEntityTypes.NAUTILITE.get(), pPos, pBlockState);
     }
 
     public void activate() {

@@ -2,11 +2,14 @@ package net.astralya.hexalia.block.entity.custom;
 
 import net.astralya.hexalia.block.custom.CenserBlock;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
-import net.astralya.hexalia.block.custom.censer.CenserEffectHandler;
-import net.astralya.hexalia.block.custom.censer.HerbCombination;
+import net.astralya.hexalia.gameplay.censer.CenserEffectHandler;
+import net.astralya.hexalia.gameplay.censer.HerbCombination;
 import net.astralya.hexalia.util.ModUtil;
+import net.astralya.hexalia.util.SidedItemHandlers;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.NonNullList;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -15,118 +18,162 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.ContainerHelper;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.Nullable;
 
-public class CenserBlockEntity extends BlockEntity {
+public class CenserBlockEntity extends SyncBlockEntity {
 
     private static final int SIZE = 2;
-    private final NonNullList<ItemStack> items = NonNullList.withSize(SIZE, ItemStack.EMPTY);
-    private HerbCombination activeCombination = null;
-    private int burnTime = 0;
-    private static final int EFFECT_INTERVAL = 40;
-    private boolean effectActive = false;
+    private static final int SLOT_0 = 0;
+    private static final int SLOT_1 = 1;
+
+    private final ItemStackHandler inventory;
+    private final IItemHandler upInputHandler;
+    private final IItemHandler lockedHandler;
+    private final IItemHandler blockedHandler;
+
+    private HerbCombination activeCombination;
+    private int burnTime;
+    private boolean effectActive;
 
     public CenserBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntityTypes.CENSER_BE.get(), pos, state);
-    }
+        super(ModBlockEntityTypes.CENSER.get(), pos, state);
 
-
-    public void tick(Level level, BlockPos pos, BlockState state) {
-        if (!state.getValue(CenserBlock.LIT)) return;
-
-        if (burnTime > 0) {
-            burnTime--;
-
-            if (burnTime % EFFECT_INTERVAL == 0 && activeCombination != null) {
-                CenserEffectHandler.applyEffects(level, pos, activeCombination);
-
-                if (!effectActive) {
-                    CenserEffectHandler.registerActiveEffect(level, pos, activeCombination, burnTime);
-                    effectActive = true;
+        this.inventory = new ItemStackHandler(SIZE) {
+            @Override
+            protected void onContentsChanged(int slot) {
+                setChanged();
+                if (level != null && !level.isClientSide()) {
+                    inventoryChanged();
+                    sendUpdate();
                 }
             }
 
-            if (burnTime <= 0) {
-                extinguish(level, pos, state);
+            @Override
+            public int getSlotLimit(int slot) {
+                return 1;
             }
+        };
 
-            setChanged();
+        this.upInputHandler = SidedItemHandlers.view(this.inventory, new int[]{SLOT_0, SLOT_1}, true, false);
+        this.lockedHandler = SidedItemHandlers.view(this.inventory, new int[]{SLOT_0, SLOT_1}, false, false);
+        this.blockedHandler = SidedItemHandlers.view(this.inventory, new int[]{}, false, false);
+    }
+
+    @SuppressWarnings("unused")
+    public IItemHandler getItemHandler(@Nullable Direction side) {
+        BlockState state = this.getBlockState();
+        boolean lit = state.hasProperty(CenserBlock.LIT) && state.getValue(CenserBlock.LIT);
+
+        if (lit) {
+            return this.lockedHandler;
+        }
+
+        if (side == Direction.UP) {
+            return this.upInputHandler;
+        }
+
+        return this.blockedHandler;
+    }
+
+    public void tick(Level level, BlockPos pos, BlockState state) {
+        if (!level.isClientSide && this.activeCombination != null && this.burnTime > 0 && !this.effectActive) {
+            CenserEffectHandler.registerActiveEffect(level, pos, this.activeCombination, this.burnTime);
+            this.effectActive = true;
+        }
+
+        if (!state.getValue(CenserBlock.LIT)) {
+            return;
+        }
+
+        if (this.burnTime > 0) {
+            this.burnTime--;
+            if (this.burnTime <= 0) {
+                this.extinguish(level, pos, state);
+            }
+            this.setChanged();
         }
     }
 
-
     private void extinguish(Level level, BlockPos pos, BlockState state) {
-        if (activeCombination != null) {
-            CenserEffectHandler.clearPlayerEffectsInRange(level, pos);
-            CenserEffectHandler.removeActiveEffect(pos);
-            activeCombination = null;
-            effectActive = false;
+        if (this.activeCombination != null) {
+            CenserEffectHandler.removeActiveEffect(level, pos);
+            this.activeCombination = null;
+            this.effectActive = false;
         }
 
         level.setBlockAndUpdate(pos, state.setValue(CenserBlock.LIT, false));
-        level.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5f, 1.0f);
-        setChanged();
-        sendUpdate();
+        level.playSound(null, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5F, 1.0F);
+        inventoryChanged();
     }
 
     public void reactivateEffect() {
-        if (activeCombination != null && burnTime > 0 && !effectActive && level != null) {
-            CenserEffectHandler.registerActiveEffect(level, worldPosition, activeCombination, burnTime);
-            effectActive = true;
+        if (this.activeCombination != null && this.burnTime > 0 && !this.effectActive && this.level != null) {
+            CenserEffectHandler.registerActiveEffect(this.level, this.worldPosition, this.activeCombination, this.burnTime);
+            this.effectActive = true;
         }
     }
 
     public void setBurnTime(int time) {
         this.burnTime = time;
-        setChanged();
+        this.setChanged();
+        this.sendUpdate();
     }
 
     public int getBurnTime() {
-        return burnTime;
+        return this.burnTime;
     }
 
     public ItemStack getItem(int slot) {
-        if (slot < 0 || slot >= SIZE) return ItemStack.EMPTY;
-        return items.get(slot);
+        if (slot < 0 || slot >= SIZE) {
+            return ItemStack.EMPTY;
+        }
+        return this.inventory.getStackInSlot(slot);
     }
 
     public void setItem(int slot, ItemStack stack) {
-        if (slot < 0 || slot >= SIZE) return;
-        items.set(slot, stack);
-        setChanged();
-        sendUpdate();
+        if (slot < 0 || slot >= SIZE) {
+            return;
+        }
+        ItemStack one = stack.copy();
+        one.setCount(1);
+        this.inventory.setStackInSlot(slot, one);
     }
 
     public void clearItems() {
+        this.inventory.setStackInSlot(SLOT_0, ItemStack.EMPTY);
+        this.inventory.setStackInSlot(SLOT_1, ItemStack.EMPTY);
+        this.setChanged();
+        this.sendUpdate();
+    }
+
+    public SimpleContainer getDropsContainer() {
+        SimpleContainer container = new SimpleContainer(SIZE);
         for (int i = 0; i < SIZE; i++) {
-            items.set(i, ItemStack.EMPTY);
+            container.setItem(i, this.inventory.getStackInSlot(i));
         }
-        setChanged();
-        sendUpdate();
+        return container;
     }
 
     private void sendUpdate() {
-        if (level != null && !level.isClientSide()) {
-            Packet<ClientGamePacketListener> updatePacket = getUpdatePacket();
-            for (ServerPlayer player : ModUtil.tracking((ServerLevel) level, worldPosition)) {
+        if (this.level != null && !this.level.isClientSide()) {
+            Packet<ClientGamePacketListener> updatePacket = this.getUpdatePacket();
+            for (ServerPlayer player : ModUtil.tracking((ServerLevel) this.level, this.worldPosition)) {
                 player.connection.send(updatePacket);
             }
-            level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+            this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), 3);
         }
-    }
-
-    public NonNullList<ItemStack> getItems() {
-        return items;
     }
 
     public void setActiveCombination(HerbCombination combo) {
         this.activeCombination = combo;
-        setChanged();
+        inventoryChanged();
     }
 
     public HerbCombination getActiveCombination() {
@@ -136,38 +183,48 @@ public class CenserBlockEntity extends BlockEntity {
     @Override
     public void load(CompoundTag tag) {
         super.load(tag);
-        ContainerHelper.loadAllItems(tag, items);
 
-        for (int i = 0; i < items.size(); i++) {
-            ItemStack stack = items.get(i);
-            if (stack.isEmpty()) continue;
+        this.inventory.deserializeNBT(tag.getCompound("Items"));
+
+        for (int i = 0; i < SIZE; i++) {
+            ItemStack stack = this.inventory.getStackInSlot(i);
+            if (stack.isEmpty()) {
+                continue;
+            }
             if (stack.getCount() <= 0 || stack.getCount() > stack.getMaxStackSize()) {
                 stack.setCount(1);
             }
+            if (stack.getCount() > 1) {
+                stack.setCount(1);
+            }
+            this.inventory.setStackInSlot(i, stack);
         }
 
         if (tag.contains("ActiveCombination")) {
             CompoundTag comboTag = tag.getCompound("ActiveCombination");
-            Item item1 = Item.byId(comboTag.getInt("Item1"));
-            Item item2 = Item.byId(comboTag.getInt("Item2"));
+            Item item1 = BuiltInRegistries.ITEM.byId(comboTag.getInt("Item1"));
+            Item item2 = BuiltInRegistries.ITEM.byId(comboTag.getInt("Item2"));
             this.activeCombination = new HerbCombination(item1, item2);
+        } else {
+            this.activeCombination = null;
         }
 
-        burnTime = tag.getInt("BurnTime");
-        effectActive = tag.getBoolean("EffectActive");
+        this.burnTime = tag.getInt("BurnTime");
+        this.effectActive = false;
     }
 
     @Override
     protected void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
-        ContainerHelper.saveAllItems(tag, items);
-        tag.putInt("BurnTime", burnTime);
-        tag.putBoolean("EffectActive", effectActive);
 
-        if (activeCombination != null) {
+        tag.put("Items", this.inventory.serializeNBT());
+        tag.putInt("BurnTime", this.burnTime);
+        tag.putBoolean("EffectActive", this.effectActive);
+
+        if (this.activeCombination != null) {
             CompoundTag comboTag = new CompoundTag();
-            comboTag.putInt("Item1", Item.getId(activeCombination.item1()));
-            comboTag.putInt("Item2", Item.getId(activeCombination.item2()));
+            comboTag.putInt("Item1", BuiltInRegistries.ITEM.getId(this.activeCombination.item1()));
+            comboTag.putInt("Item2", BuiltInRegistries.ITEM.getId(this.activeCombination.item2()));
             tag.put("ActiveCombination", comboTag);
         }
     }
@@ -175,14 +232,14 @@ public class CenserBlockEntity extends BlockEntity {
     @Override
     public void onLoad() {
         super.onLoad();
-        if (level != null && !level.isClientSide && activeCombination != null && burnTime > 0) {
-            reactivateEffect();
+        if (this.level != null && !this.level.isClientSide && this.activeCombination != null && this.burnTime > 0) {
+            this.reactivateEffect();
         }
     }
 
     @Override
     public CompoundTag getUpdateTag() {
-        return saveWithoutMetadata();
+        return this.saveWithoutMetadata();
     }
 
     @Override
@@ -191,15 +248,22 @@ public class CenserBlockEntity extends BlockEntity {
     }
 
     public boolean isEmpty() {
-        return items.stream().allMatch(ItemStack::isEmpty);
+        return this.inventory.getStackInSlot(SLOT_0).isEmpty() && this.inventory.getStackInSlot(SLOT_1).isEmpty();
     }
 
     public ItemStack removeStack(int slot) {
-        if (slot < 0 || slot >= SIZE) return ItemStack.EMPTY;
-        ItemStack stack = items.get(slot).copy();
-        items.set(slot, ItemStack.EMPTY);
-        setChanged();
-        sendUpdate();
+        if (slot < 0 || slot >= SIZE) {
+            return ItemStack.EMPTY;
+        }
+
+        ItemStack stack = this.inventory.getStackInSlot(slot);
+        if (stack.isEmpty()) {
+            return ItemStack.EMPTY;
+        }
+
+        this.inventory.setStackInSlot(slot, ItemStack.EMPTY);
+        this.setChanged();
+        this.sendUpdate();
         return stack;
     }
 }

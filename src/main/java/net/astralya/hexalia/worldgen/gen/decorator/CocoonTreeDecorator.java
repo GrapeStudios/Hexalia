@@ -2,7 +2,7 @@ package net.astralya.hexalia.worldgen.gen.decorator;
 
 import com.mojang.serialization.Codec;
 import net.astralya.hexalia.block.ModBlocks;
-import net.astralya.hexalia.block.custom.CocoonBlock;
+import net.astralya.hexalia.block.custom.SilkwormCocoonBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
@@ -27,7 +27,7 @@ public class CocoonTreeDecorator extends TreeDecorator {
             Direction direction = directions[random.nextInt(directions.length)];
             BlockPos blockPos = pPos.offset(direction.getNormal());
             if (pContext.isAir(blockPos) && pContext.isAir(blockPos.below())) {
-                pContext.setBlock(blockPos, ModBlocks.SILKWORM_COCOON.get().defaultBlockState().setValue(CocoonBlock.FACING, direction));
+                pContext.setBlock(blockPos, ModBlocks.SILKWORM_COCOON.get().defaultBlockState().setValue(SilkwormCocoonBlock.FACING, direction));
                 break;
             }
         }

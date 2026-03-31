@@ -44,6 +44,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.LOTUS_FLOWER.get());
         this.dropSelf(ModBlocks.WITCHWEED.get());
         this.dropSelf(ModBlocks.GHOST_FERN.get());
+        this.dropSelf(ModBlocks.CELESTIAL_BLOOM.get());
+        this.dropSelf(ModBlocks.WITHERED_CELESTIAL_BLOOM.get());
         this.dropSelf(ModBlocks.NIGHTSHADE_BUSH.get());
         this.dropSelf(ModBlocks.BEGONIA.get());
         this.dropSelf(ModBlocks.LAVENDER.get());
@@ -53,21 +55,27 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.WINDSONG.get());
         this.dropSelf(ModBlocks.ASTRYLIS.get());
         this.dropSelf(ModBlocks.DAHLIA.get());
-        this.dropSelf(ModBlocks.CELESTIAL_BLOOM.get());
+        this.dropSelf(ModBlocks.LOURDES.get());
+        this.dropSelf(ModBlocks.AEGIFLORA.get());
+        this.dropSelf(ModBlocks.WITHERED_AEGIFLORA.get());
 
         // Potted plants
         this.add(ModBlocks.POTTED_SPIRIT_BLOOM.get(), createPotFlowerItemTable(ModBlocks.SPIRIT_BLOOM.get()));
         this.add(ModBlocks.POTTED_DREAMSHROOM.get(), createPotFlowerItemTable(ModBlocks.DREAMSHROOM.get()));
-        this.add(ModBlocks.POTTED_GHOST_FERN.get(), createPotFlowerItemTable(ModBlocks.DREAMSHROOM.get()));
+        this.add(ModBlocks.POTTED_GHOST_FERN.get(), createPotFlowerItemTable(ModBlocks.GHOST_FERN.get()));
         this.add(ModBlocks.POTTED_CELESTIAL_BLOOM.get(), createPotFlowerItemTable(ModBlocks.CELESTIAL_BLOOM.get()));
+        this.add(ModBlocks.POTTED_WITHERED_CELESTIAL_BLOOM.get(), createPotFlowerItemTable(ModBlocks.WITHERED_CELESTIAL_BLOOM.get()));
         this.add(ModBlocks.POTTED_NIGHTSHADE_BUSH.get(), createPotFlowerItemTable(ModBlocks.NIGHTSHADE_BUSH.get()));
         this.add(ModBlocks.POTTED_BEGONIA.get(), createPotFlowerItemTable(ModBlocks.BEGONIA.get()));
         this.add(ModBlocks.POTTED_LAVENDER.get(), createPotFlowerItemTable(ModBlocks.LAVENDER.get()));
+        this.add(ModBlocks.POTTED_DAHLIA.get(), createPotFlowerItemTable(ModBlocks.DAHLIA.get()));
         this.add(ModBlocks.POTTED_MORPHORA.get(), createPotFlowerItemTable(ModBlocks.MORPHORA.get()));
         this.add(ModBlocks.POTTED_GRIMSHADE.get(), createPotFlowerItemTable(ModBlocks.GRIMSHADE.get()));
         this.add(ModBlocks.POTTED_WINDSONG.get(), createPotFlowerItemTable(ModBlocks.WINDSONG.get()));
+        this.add(ModBlocks.POTTED_LOURDES.get(), createPotFlowerItemTable(ModBlocks.WINDSONG.get()));
         this.add(ModBlocks.POTTED_ASTRYLIS.get(), createPotFlowerItemTable(ModBlocks.ASTRYLIS.get()));
-        this.add(ModBlocks.POTTED_DAHLIA.get(), createPotFlowerItemTable(ModBlocks.DAHLIA.get()));
+        this.add(ModBlocks.POTTED_AEGIFLORA.get(), createPotFlowerItemTable(ModBlocks.AEGIFLORA.get()));
+        this.add(ModBlocks.POTTED_WITHERED_AEGIFLORA.get(), createPotFlowerItemTable(ModBlocks.WITHERED_AEGIFLORA.get()));
 
         // Special plants
         this.add(ModBlocks.SIREN_KELP.get(), this.createSingleItemTable(ModItems.SIREN_KELP.get()));
@@ -90,12 +98,15 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.CELESTIAL_CRYSTAL_BLOCK.get());
         this.dropSelf(ModBlocks.SHELF.get());
         this.dropSelf(ModBlocks.CENSER.get());
+        this.dropSelf(ModBlocks.MORTAR_AND_PESTLE.get());
+        this.dropSelf(ModBlocks.NESTING_BLOCK.get());
 
         // Special drops
         this.add(ModBlocks.INFUSED_FARMLAND.get(), this.createSingleItemTable(ModBlocks.INFUSED_DIRT.get()));
         this.add(ModBlocks.RITUAL_TABLE.get(), this.createSingleItemTable(ModBlocks.RITUAL_TABLE.get()));
         this.add(ModBlocks.SALT_BLOCK.get(), block -> createOreDrop(ModBlocks.SALT_BLOCK.get(), ModItems.SALT.get()));
         this.add(ModBlocks.SILKWORM_COCOON.get(), this.createSingleItemTable(ModItems.SILKWORM.get()));
+        this.add(ModBlocks.EGG_CLUSTER.get(), this.createSingleItemTable(Items.STRING));
     }
 
     private void generateCrops() {

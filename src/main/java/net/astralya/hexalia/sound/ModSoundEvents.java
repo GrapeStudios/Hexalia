@@ -17,6 +17,7 @@ public class ModSoundEvents {
     public static final RegistryObject<SoundEvent> SAC_IMPACT = registerSoundEvent("sac_impact");
     public static final RegistryObject<SoundEvent> WIND_BURST = registerSoundEvent("wind_burst");
     public static final RegistryObject<SoundEvent> WIND_DEFLECT = registerSoundEvent("wind_deflect");
+    public static final RegistryObject<SoundEvent> CACOFEY_GIGGLE = registerSoundEvent("cacofey_giggle");
 
     private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
         ResourceLocation id = new ResourceLocation(HexaliaMod.MODID, name);

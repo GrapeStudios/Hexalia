@@ -32,7 +32,7 @@ public class GrimshadeBlockEntity extends BlockEntity {
     private long activationTime = -1;
 
     public GrimshadeBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntityTypes.GRIMSHADE_BE.get(), pos, state);
+        super(ModBlockEntityTypes.GRIMSHADE.get(), pos, state);
     }
 
     private static int duration() {

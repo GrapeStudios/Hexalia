@@ -2,127 +2,162 @@ package net.astralya.hexalia.datagen.custom;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.recipe.SmallCauldronRecipe;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.RequirementsStrategy;
+import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
-import net.minecraft.world.level.ItemLike;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.function.Consumer;
 
 public class SmallCauldronRecipeBuilder implements RecipeBuilder {
 
-    private final List<Ingredient> ingredients = new ArrayList<>();
+    private final ItemStack outputStack;
+    private final float experience;
+    private final int brewTime;
     private final Item result;
-    private final Item bottleSlotItem;
-    private int brewTime = 200;
-    private float experience = 0.0f;
-    private final Advancement.Builder advancement = Advancement.Builder.advancement();
+    private final Ingredient[] inputs;
 
-    public SmallCauldronRecipeBuilder(List<ItemLike> ingredients, ItemLike bottleSlotItem, ItemLike result) {
-        for (ItemLike ingredient : ingredients) {
-            this.ingredients.add(Ingredient.of(ingredient));
-        }
-        this.bottleSlotItem = bottleSlotItem.asItem();
-        this.result = result.asItem();
+    private final Map<String, CriterionTriggerInstance> criteria = new LinkedHashMap<>();
+
+    private SmallCauldronRecipeBuilder(Ingredient[] inputs, ItemStack outputStack, float experience, int brewTime) {
+        this.inputs = inputs;
+        this.outputStack = outputStack;
+        this.experience = experience;
+        this.brewTime = brewTime;
+        this.result = outputStack.getItem();
     }
 
-    public SmallCauldronRecipeBuilder brewTime(int brewTime) {
-        this.brewTime = brewTime;
-        return this;
+    public static SmallCauldronRecipeBuilder cauldron(Ingredient input, ItemStack output) {
+        return new SmallCauldronRecipeBuilder(new Ingredient[]{input}, output, 0.0F, 200);
+    }
+
+    public static SmallCauldronRecipeBuilder cauldron(Ingredient input1, Ingredient input2, ItemStack output) {
+        return new SmallCauldronRecipeBuilder(new Ingredient[]{input1, input2}, output, 0.0F, 200);
+    }
+
+    public static SmallCauldronRecipeBuilder cauldron(Ingredient input1, Ingredient input2, Ingredient input3, ItemStack output) {
+        return new SmallCauldronRecipeBuilder(new Ingredient[]{input1, input2, input3}, output, 0.0F, 200);
+    }
+
+    public static SmallCauldronRecipeBuilder cauldron(Ingredient input1, Ingredient input2, Ingredient input3, Ingredient input4, ItemStack output) {
+        return new SmallCauldronRecipeBuilder(new Ingredient[]{input1, input2, input3, input4}, output, 0.0F, 200);
     }
 
     public SmallCauldronRecipeBuilder experience(float experience) {
-        this.experience = experience;
+        return new SmallCauldronRecipeBuilder(this.inputs, this.outputStack, experience, this.brewTime).copyCriteriaFrom(this);
+    }
+
+    public SmallCauldronRecipeBuilder brewTime(int brewTime) {
+        return new SmallCauldronRecipeBuilder(this.inputs, this.outputStack, this.experience, brewTime).copyCriteriaFrom(this);
+    }
+
+    private SmallCauldronRecipeBuilder copyCriteriaFrom(SmallCauldronRecipeBuilder other) {
+        this.criteria.putAll(other.criteria);
         return this;
     }
 
     @Override
-    public RecipeBuilder unlockedBy(String pCriterionName, CriterionTriggerInstance pCriterionTrigger) {
-        this.advancement.addCriterion(pCriterionName, pCriterionTrigger);
+    public SmallCauldronRecipeBuilder unlockedBy(String name, CriterionTriggerInstance criterion) {
+        this.criteria.put(name, criterion);
         return this;
     }
 
+    public SmallCauldronRecipeBuilder unlockedByItem(String name, Item item) {
+        return this.unlockedBy(name, InventoryChangeTrigger.TriggerInstance.hasItems(item));
+    }
+
     @Override
-    public RecipeBuilder group(@Nullable String pGroupName) {
+    public RecipeBuilder group(@Nullable String group) {
         return this;
     }
 
     @Override
     public Item getResult() {
-        return result;
+        return this.result;
     }
 
     @Override
-    public void save(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ResourceLocation pRecipeId) {
-        this.advancement.parent(new ResourceLocation("recipes/root"))
-                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(pRecipeId))
-                .rewards(AdvancementRewards.Builder.recipe(pRecipeId)).requirements(RequirementsStrategy.OR);
-        pFinishedRecipeConsumer.accept(new Result(pRecipeId, this.result, this.ingredients, this.bottleSlotItem,
-                this.brewTime, this.experience, this.advancement, new ResourceLocation(pRecipeId.getNamespace(), "recipes/"
-                + pRecipeId.getPath())));
+    public void save(Consumer<FinishedRecipe> consumer, ResourceLocation id) {
+        Advancement.Builder advancement = Advancement.Builder.recipeAdvancement()
+                .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
+                .rewards(AdvancementRewards.Builder.recipe(id))
+                .requirements(RequirementsStrategy.OR);
+
+        for (Map.Entry<String, CriterionTriggerInstance> entry : this.criteria.entrySet()) {
+            advancement.addCriterion(entry.getKey(), entry.getValue());
+        }
+
+        consumer.accept(new Result(
+                id,
+                this.inputs,
+                this.outputStack,
+                this.experience,
+                this.brewTime,
+                advancement,
+                new ResourceLocation(id.getNamespace(), "recipes/small_cauldron/" + id.getPath())
+        ));
     }
 
     public static class Result implements FinishedRecipe {
+
         private final ResourceLocation id;
-        private final Item result;
-        private final List<Ingredient> ingredients;
-        private final Item bottleSlotItem;
-        private final int brewTime;
+        private final Ingredient[] inputs;
+        private final ItemStack outputStack;
         private final float experience;
+        private final int brewTime;
         private final Advancement.Builder advancement;
         private final ResourceLocation advancementId;
 
-        public Result(ResourceLocation id, Item result, List<Ingredient> ingredients, Item bottleSlotItem,
-                      int brewTime, float experience, Advancement.Builder advancement, ResourceLocation advancementId) {
+        public Result(ResourceLocation id, Ingredient[] inputs, ItemStack outputStack, float experience, int brewTime,
+                      Advancement.Builder advancement, ResourceLocation advancementId) {
             this.id = id;
-            this.result = result;
-            this.ingredients = ingredients;
-            this.bottleSlotItem = bottleSlotItem;
-            this.brewTime = brewTime;
+            this.inputs = inputs;
+            this.outputStack = outputStack;
             this.experience = experience;
+            this.brewTime = brewTime;
             this.advancement = advancement;
             this.advancementId = advancementId;
         }
 
         @Override
-        public void serializeRecipeData(JsonObject pJson) {
-            pJson.addProperty("type", "hexalia:small_cauldron");
-
-            JsonArray jsonIngredients = new JsonArray();
-            for (Ingredient ingredient : ingredients) {
-                jsonIngredients.add(ingredient.toJson());
+        public void serializeRecipeData(JsonObject json) {
+            JsonArray ingredientsArray = new JsonArray();
+            for (Ingredient input : this.inputs) {
+                ingredientsArray.add(input.toJson());
             }
-            pJson.add("ingredients", jsonIngredients);
+            json.add("ingredients", ingredientsArray);
 
-            JsonObject jsonBottleSlot = new JsonObject();
-            jsonBottleSlot.addProperty("item", ForgeRegistries.ITEMS.getKey(this.bottleSlotItem).toString());
-            pJson.add("bottle_slot", jsonBottleSlot);
+            JsonObject resultObject = new JsonObject();
+            resultObject.addProperty("item", this.outputStack.getItem().builtInRegistryHolder().key().location().toString());
+            if (this.outputStack.getCount() > 1) {
+                resultObject.addProperty("count", this.outputStack.getCount());
+            }
+            json.add("result", resultObject);
 
-            JsonObject jsonOutput = new JsonObject();
-            jsonOutput.addProperty("item", ForgeRegistries.ITEMS.getKey(this.result).toString());
-            pJson.add("output", jsonOutput);
-
-            pJson.addProperty("brew_time", this.brewTime);
-            pJson.addProperty("experience", this.experience);
+            if (this.experience != 0.0F) {
+                json.addProperty("experience", this.experience);
+            }
+            if (this.brewTime != 200) {
+                json.addProperty("brewtime", this.brewTime);
+            }
         }
 
         @Override
         public ResourceLocation getId() {
-            return new ResourceLocation(HexaliaMod.MODID, ForgeRegistries.ITEMS.getKey(this.result).getPath() + "_from_small_cauldron");
+            return this.id;
         }
 
         @Override
@@ -130,15 +165,13 @@ public class SmallCauldronRecipeBuilder implements RecipeBuilder {
             return SmallCauldronRecipe.Serializer.INSTANCE;
         }
 
-        @Nullable
         @Override
-        public JsonObject serializeAdvancement() {
+        public @Nullable JsonObject serializeAdvancement() {
             return this.advancement.serializeToJson();
         }
 
-        @Nullable
         @Override
-        public ResourceLocation getAdvancementId() {
+        public @Nullable ResourceLocation getAdvancementId() {
             return this.advancementId;
         }
     }

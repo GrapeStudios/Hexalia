@@ -1,0 +1,9 @@
+{
+  "type": "hexalia:mutation",
+  "input": {
+    "item": "minecraft:grass"
+  },
+  "output": {
+    "item": "hexalia:witchweed"
+  }
+}

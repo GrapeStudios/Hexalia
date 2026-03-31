@@ -24,6 +24,9 @@ public class ModRecipes {
     public static final RegistryObject<RecipeSerializer<MutationRecipe>> MUTATION_SERIALIZER =
             SERIALIZERS.register("mutation", () -> MutationRecipe.Serializer.INSTANCE);
 
+    public static final RegistryObject<RecipeSerializer<MortarAndPestleRecipe>> MORTAR_AND_PESTLE_SERIALIZER =
+            SERIALIZERS.register("mortar_and_pestle", () -> MortarAndPestleRecipe.Serializer.INSTANCE);
+
     public static void register(IEventBus eventBus) {
         SERIALIZERS.register(eventBus);
     }

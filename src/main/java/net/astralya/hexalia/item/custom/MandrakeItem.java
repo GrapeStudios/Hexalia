@@ -4,6 +4,7 @@ import net.astralya.hexalia.Configuration;
 import net.astralya.hexalia.effect.ModMobEffects;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.sound.ModSoundEvents;
+import net.astralya.hexalia.util.ModTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
@@ -35,7 +36,7 @@ public class MandrakeItem extends Item {
 
             List<Entity> entities = level.getEntities(player, player.getBoundingBox().inflate(radius));
             for (Entity entity : entities) {
-                if (entity instanceof LivingEntity livingEntity && !(player.getItemBySlot(EquipmentSlot.HEAD).is(ModItems.EARPLUGS.get()))) {
+                if (entity instanceof LivingEntity livingEntity && !(player.getItemBySlot(EquipmentSlot.HEAD).is(ModTags.Items.STUN_IMMUNE_HEADWEAR))) {
                     livingEntity.addEffect(new MobEffectInstance(ModMobEffects.STUNNED.get(), stunDuration * 20, 0));
                 }
             }

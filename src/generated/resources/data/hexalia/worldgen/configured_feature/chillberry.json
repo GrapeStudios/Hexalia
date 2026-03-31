@@ -1,30 +1,18 @@
 {
-  "type": "minecraft:random_patch",
+  "type": "hexalia:wild_crop",
   "config": {
-    "feature": {
-      "feature": {
-        "type": "minecraft:simple_block",
-        "config": {
-          "to_place": {
-            "type": "minecraft:simple_state_provider",
-            "state": {
-              "Name": "hexalia:chillberry_bush",
-              "Properties": {
-                "age": "3"
-              }
-            }
-          }
+    "ground_predicate": {
+      "type": "minecraft:matching_block_tag",
+      "tag": "minecraft:dirt"
+    },
+    "to_place": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "hexalia:chillberry_bush",
+        "Properties": {
+          "age": "3"
         }
-      },
-      "placement": [
-        {
-          "type": "minecraft:block_predicate_filter",
-          "predicate": {
-            "type": "minecraft:matching_blocks",
-            "blocks": "minecraft:air"
-          }
-        }
-      ]
+      }
     },
     "tries": 30,
     "xz_spread": 8,

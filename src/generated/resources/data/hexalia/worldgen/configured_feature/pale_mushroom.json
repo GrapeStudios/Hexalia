@@ -1,31 +1,19 @@
 {
-  "type": "minecraft:random_patch",
+  "type": "hexalia:wild_crop",
   "config": {
-    "feature": {
-      "feature": {
-        "type": "minecraft:simple_block",
-        "config": {
-          "to_place": {
-            "type": "minecraft:simple_state_provider",
-            "state": {
-              "Name": "hexalia:pale_mushroom",
-              "Properties": {
-                "facing": "north",
-                "flower_amount": "1"
-              }
-            }
-          }
+    "ground_predicate": {
+      "type": "minecraft:matching_blocks",
+      "blocks": "minecraft:mycelium"
+    },
+    "to_place": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "hexalia:pale_mushroom",
+        "Properties": {
+          "facing": "north",
+          "flower_amount": "1"
         }
-      },
-      "placement": [
-        {
-          "type": "minecraft:block_predicate_filter",
-          "predicate": {
-            "type": "minecraft:matching_blocks",
-            "blocks": "minecraft:air"
-          }
-        }
-      ]
+      }
     },
     "tries": 2,
     "xz_spread": 2,

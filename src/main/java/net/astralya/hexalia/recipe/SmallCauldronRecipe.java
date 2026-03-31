@@ -2,32 +2,35 @@ package net.astralya.hexalia.recipe;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import net.astralya.hexalia.item.ModItems;
+import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.NonNullList;
+import net.minecraft.util.GsonHelper;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.Level;
-import net.minecraft.util.GsonHelper;
 
 public class SmallCauldronRecipe implements Recipe<SimpleContainer> {
-    private final ResourceLocation id;
-    private final ItemStack output;
-    private final NonNullList<Ingredient> recipeItems;
-    private final Ingredient bottleSlot;
-    private final int brewTime;
-    private final float experience;
 
-    public SmallCauldronRecipe(ResourceLocation id, ItemStack output, NonNullList<Ingredient> recipeItems,
-                               Ingredient bottleSlot, int brewTime, float experience) {
+    private final ResourceLocation id;
+    private final NonNullList<Ingredient> ingredients;
+    private final ItemStack output;
+    private final float experience;
+    private final int brewTime;
+
+    public SmallCauldronRecipe(ResourceLocation id, NonNullList<Ingredient> ingredients, ItemStack output, float experience, int brewTime) {
         this.id = id;
+        this.ingredients = ingredients;
         this.output = output;
-        this.recipeItems = recipeItems;
-        this.bottleSlot = bottleSlot;
-        this.brewTime = brewTime;
         this.experience = experience;
+        this.brewTime = brewTime;
     }
 
     @Override
@@ -36,62 +39,74 @@ public class SmallCauldronRecipe implements Recipe<SimpleContainer> {
             return false;
         }
 
-        boolean[] slotsMatched = new boolean[container.getContainerSize()];
-        for (Ingredient ingredient : recipeItems) {
-            boolean foundIngredient = false;
-            for (int i = 0; i < container.getContainerSize() - 1; i++) {  // Exclude bottle slot
-                if (slotsMatched[i]) {
-                    continue;
-                }
-                if (ingredient.test(container.getItem(i))) {
-                    slotsMatched[i] = true;
-                    foundIngredient = true;
+        int inputCount = 0;
+        for (int i = 0; i < container.getContainerSize(); i++) {
+            if (!container.getItem(i).isEmpty()) {
+                inputCount++;
+            }
+        }
+
+        if (inputCount != this.ingredients.size()) {
+            return false;
+        }
+
+        boolean[] used = new boolean[container.getContainerSize()];
+
+        for (Ingredient ingredient : this.ingredients) {
+            boolean found = false;
+
+            for (int i = 0; i < container.getContainerSize(); i++) {
+                if (!used[i] && ingredient.test(container.getItem(i))) {
+                    used[i] = true;
+                    found = true;
                     break;
                 }
             }
-            if (!foundIngredient) {
+
+            if (!found) {
                 return false;
             }
         }
 
-        return bottleSlot.test(container.getItem(container.getContainerSize() - 1));
-    }
-
-    @Override
-    public ItemStack assemble(SimpleContainer pContainer, RegistryAccess pRegistryAccess) {
-        return output.copy();
-    }
-
-    @Override
-    public boolean canCraftInDimensions(int width, int height) {
         return true;
     }
 
     @Override
-    public ItemStack getResultItem(RegistryAccess pRegistryAccess) {
-        return output.copy();
+    public ItemStack assemble(SimpleContainer container, RegistryAccess registryAccess) {
+        return this.output.copy();
+    }
+
+    @Override
+    public boolean canCraftInDimensions(int width, int height) {
+        return width * height >= this.ingredients.size();
+    }
+
+    @Override
+    public ItemStack getResultItem(RegistryAccess registryAccess) {
+        return this.output.copy();
     }
 
     @Override
     public NonNullList<Ingredient> getIngredients() {
-        return recipeItems;
-    }
-
-    public Ingredient getBottleSlot() {
-        return bottleSlot;
-    }
-
-    public int getBrewTime() {
-        return brewTime;
+        return this.ingredients;
     }
 
     public float getExperience() {
-        return experience;
+        return this.experience;
+    }
+
+    public int getBrewTime() {
+        return this.brewTime;
+    }
+
+    @Override
+    public ItemStack getToastSymbol() {
+        return new ItemStack(ModItems.SMALL_CAULDRON.get());
     }
 
     @Override
     public ResourceLocation getId() {
-        return id;
+        return this.id;
     }
 
     @Override
@@ -114,48 +129,47 @@ public class SmallCauldronRecipe implements Recipe<SimpleContainer> {
 
         @Override
         public SmallCauldronRecipe fromJson(ResourceLocation id, JsonObject json) {
-            ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "output"));
+            JsonArray ingredientArray = GsonHelper.getAsJsonArray(json, "ingredients");
+            NonNullList<Ingredient> ingredients = NonNullList.create();
 
-            JsonArray ingredients = GsonHelper.getAsJsonArray(json, "ingredients");
-            NonNullList<Ingredient> inputs = NonNullList.withSize(ingredients.size(), Ingredient.EMPTY);
-            for (int i = 0; i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
+            for (int i = 0; i < ingredientArray.size(); i++) {
+                ingredients.add(Ingredient.fromJson(ingredientArray.get(i)));
             }
 
-            Ingredient bottleSlot = Ingredient.fromJson(GsonHelper.getAsJsonObject(json, "bottle_slot"));
+            ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result"));
+            float experience = GsonHelper.getAsFloat(json, "experience", 0.0F);
+            int brewTime = GsonHelper.getAsInt(json, "brewtime", 200);
 
-            // Read brewTime and experience from JSON, with default values if not present
-            int brewTime = GsonHelper.getAsInt(json, "brew_time", 175); // Default to 175 ticks
-            float experience = GsonHelper.getAsFloat(json, "experience", 0.0f); // Default to no experience
-
-            return new SmallCauldronRecipe(id, output, inputs, bottleSlot, brewTime, experience);
+            return new SmallCauldronRecipe(id, ingredients, output, experience, brewTime);
         }
 
         @Override
-        public SmallCauldronRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buf) {
-            NonNullList<Ingredient> inputs = NonNullList.withSize(buf.readInt(), Ingredient.EMPTY);
-            for (int i = 0; i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.fromNetwork(buf));
+        public SmallCauldronRecipe fromNetwork(ResourceLocation id, FriendlyByteBuf buffer) {
+            int size = buffer.readVarInt();
+            NonNullList<Ingredient> ingredients = NonNullList.withSize(size, Ingredient.EMPTY);
+
+            for (int i = 0; i < size; i++) {
+                ingredients.set(i, Ingredient.fromNetwork(buffer));
             }
 
-            ItemStack output = buf.readItem();
-            Ingredient bottleSlot = Ingredient.fromNetwork(buf);
-            int brewTime = buf.readInt();
-            float experience = buf.readFloat();
+            ItemStack output = buffer.readItem();
+            float experience = buffer.readFloat();
+            int brewTime = buffer.readVarInt();
 
-            return new SmallCauldronRecipe(id, output, inputs, bottleSlot, brewTime, experience);
+            return new SmallCauldronRecipe(id, ingredients, output, experience, brewTime);
         }
 
         @Override
-        public void toNetwork(FriendlyByteBuf buf, SmallCauldronRecipe recipe) {
-            buf.writeInt(recipe.recipeItems.size());
-            for (Ingredient ingredient : recipe.recipeItems) {
-                ingredient.toNetwork(buf);
+        public void toNetwork(FriendlyByteBuf buffer, SmallCauldronRecipe recipe) {
+            buffer.writeVarInt(recipe.ingredients.size());
+
+            for (Ingredient ingredient : recipe.ingredients) {
+                ingredient.toNetwork(buffer);
             }
-            buf.writeItem(recipe.getResultItem(null));
-            recipe.bottleSlot.toNetwork(buf);
-            buf.writeInt(recipe.brewTime);
-            buf.writeFloat(recipe.experience);
+
+            buffer.writeItem(recipe.output);
+            buffer.writeFloat(recipe.experience);
+            buffer.writeVarInt(recipe.brewTime);
         }
     }
 }

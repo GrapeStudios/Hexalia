@@ -44,9 +44,18 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModBlocks.WITCHWEED.get().asItem())
                 .add(ModBlocks.GHOST_FERN.get().asItem())
                 .add(ModBlocks.CELESTIAL_BLOOM.get().asItem())
+                .add(ModBlocks.WITHERED_CELESTIAL_BLOOM.get().asItem())
                 .add(ModBlocks.NIGHTSHADE_BUSH.get().asItem())
                 .add(ModBlocks.BEGONIA.get().asItem())
                 .add(ModBlocks.LAVENDER.get().asItem())
+                .add(ModBlocks.AEGIFLORA.get().asItem())
+                .add(ModBlocks.WITHERED_AEGIFLORA.get().asItem())
+                .add(ModBlocks.MORPHORA.get().asItem())
+                .add(ModBlocks.WINDSONG.get().asItem())
+                .add(ModBlocks.LOURDES.get().asItem())
+                .add(ModBlocks.GRIMSHADE.get().asItem())
+                .add(ModBlocks.CELESTIAL_BLOOM.get().asItem())
+                .add(ModBlocks.ASTRYLIS.get().asItem())
                 .add(ModBlocks.DAHLIA.get().asItem());
 
         // Small flowers
@@ -55,9 +64,18 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModBlocks.WITCHWEED.get().asItem())
                 .add(ModBlocks.GHOST_FERN.get().asItem())
                 .add(ModBlocks.CELESTIAL_BLOOM.get().asItem())
+                .add(ModBlocks.WITHERED_CELESTIAL_BLOOM.get().asItem())
                 .add(ModBlocks.NIGHTSHADE_BUSH.get().asItem())
                 .add(ModBlocks.BEGONIA.get().asItem())
                 .add(ModBlocks.LAVENDER.get().asItem())
+                .add(ModBlocks.AEGIFLORA.get().asItem())
+                .add(ModBlocks.WITHERED_AEGIFLORA.get().asItem())
+                .add(ModBlocks.MORPHORA.get().asItem())
+                .add(ModBlocks.WINDSONG.get().asItem())
+                .add(ModBlocks.LOURDES.get().asItem())
+                .add(ModBlocks.GRIMSHADE.get().asItem())
+                .add(ModBlocks.CELESTIAL_BLOOM.get().asItem())
+                .add(ModBlocks.ASTRYLIS.get().asItem())
                 .add(ModBlocks.DAHLIA.get().asItem());
 
         // Villager related
@@ -65,6 +83,19 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.RABBAGE_SEEDS.get())
                 .add(ModItems.SUNFIRE_TOMATO_SEEDS.get())
                 .add(ModItems.MANDRAKE_SEEDS.get());
+    }
+    private void addToolsAndEnchantmentsTags() {
+        // Tools
+        tag(ItemTags.SHOVELS)
+                .add(ModItems.ROOTSHAPER.get());
+
+        tag(ItemTags.PICKAXES)
+                .add(ModItems.ROOTSHAPER.get());
+
+        tag(ItemTags.SWORDS)
+                .add(ModItems.KELPWEAVE_BLADE.get());
+
+
     }
 
     private void addCustomTags() {
@@ -74,6 +105,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.SIREN_KELP.get())
                 .add(ModBlocks.DREAMSHROOM.get().asItem())
                 .add(ModBlocks.GHOST_FERN.get().asItem())
+                .add(ModBlocks.WITCHWEED.get().asItem())
                 .add(ModBlocks.CELESTIAL_BLOOM.get().asItem());
 
         tag(ModTags.Items.CRUSHED_HERBS)
@@ -91,6 +123,7 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(ModItems.BREW_OF_SIPHON.get())
                 .add(ModItems.BREW_OF_DAYBLOOM.get())
                 .add(ModItems.BREW_OF_ARACHNID_GRACE.get())
+                .add(ModItems.BREW_OF_HOLLOW_SILENCE.get())
                 .add(ModItems.RUSTIC_BOTTLE.get());
 
         // Minerals
@@ -100,15 +133,12 @@ public class ModItemTagProvider extends ItemTagsProvider {
         tag(ModTags.Items.SALT_BLOCKS)
                 .add(ModBlocks.SALT_BLOCK.get().asItem());
 
-        tag(ModTags.Items.GEMS_DIAMOND)
-                .add(Items.DIAMOND);
-
         // Fungi
         tag(ModTags.Items.MUSHROOMS)
                 .add(ModBlocks.DREAMSHROOM.get().asItem())
                 .add(ModBlocks.PALE_MUSHROOM.get().asItem());
 
-        // Offhand Equipment
+        // OFF
         tag(ModTags.Items.OFFHAND_EQUIPMENT)
                 .add(ModItems.HEX_FOCUS.get())
                 .addTag(ModTags.Items.SALT);
@@ -119,6 +149,11 @@ public class ModItemTagProvider extends ItemTagsProvider {
                 .add(Blocks.PINK_TULIP.asItem())
                 .add(Blocks.RED_TULIP.asItem())
                 .add(Blocks.WHITE_TULIP.asItem());
+
+        // Stun Immune Headwear
+        tag(ModTags.Items.STUN_IMMUNE_HEADWEAR)
+                .add(ModItems.EARPLUGS.get())
+                .add(ModItems.BLOOMWRAP_HAT.get());
     }
 
     private void addTreeRelatedTags() {

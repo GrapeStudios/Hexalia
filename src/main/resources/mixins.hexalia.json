@@ -1,18 +1,17 @@
 {
-	"required": true,
-	"package": "net.astralya.hexalia.mixin",
-	"compatibilityLevel": "JAVA_17",
-	"minVersion": "0.8",
-	"refmap": "mixins.hexalia.refmap.json",
-	"mixins": [
-		"LivingEntityMixin",
-		"SugarCanePlanting",
-		"CobwebMixin",
-		"ItemCombinerMenuAccessor",
-		"MobMixin",
-		"FishingHookMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
+  "required": true,
+  "package": "net.astralya.hexalia.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "refmap": "mixins.hexalia.refmap.json",
+  "mixins": [
+    "CobwebMixin",
+    "LivingEntityMixin",
+    "MobMixin",
+    "SugarCanePlanting",
+    "WardenVibrationUserMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
 	}
 }

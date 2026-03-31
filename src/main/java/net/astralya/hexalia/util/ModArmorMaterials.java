@@ -1,97 +1,80 @@
 package net.astralya.hexalia.util;
 
 import net.astralya.hexalia.HexaliaMod;
-import net.astralya.hexalia.block.ModBlocks;
-import net.minecraft.Util;
+import net.astralya.hexalia.item.ModItems;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.ArmorMaterials;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-
-import java.util.EnumMap;
-import java.util.function.Supplier;
+import net.minecraftforge.common.util.Lazy;
 
 public enum ModArmorMaterials implements ArmorMaterial {
+    SILKWEAVE("silkweave", 22, new int[]{ 2, 5, 6, 2 }, 0, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0f, 0.0f,
+            Lazy.of(() -> Ingredient.of(ModItems.SILK_FIBER.get()))),
+    MOONWEAVE("moonweave", 22, new int[]{ 3, 6, 8, 3 }, 0, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0f, 0.0f,
+            Lazy.of(() -> Ingredient.of(ModItems.CELESTIAL_CRYSTAL.get())));
 
-    GHOST("ghost", 15, Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-        map.put(ArmorItem.Type.BOOTS, 1);
-        map.put(ArmorItem.Type.LEGGINGS, 1);
-        map.put(ArmorItem.Type.CHESTPLATE, 3);
-        map.put(ArmorItem.Type.HELMET, 1);
-    }), 10, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.of(ModBlocks.GHOST_FERN.get().asItem())),
+    private static final int[] HEALTH_PER_SLOT = new int[]{ 13, 15, 16, 11 };
 
-    BOGGED("bogged", 15, Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
-        map.put(ArmorItem.Type.BOOTS, 2);
-        map.put(ArmorItem.Type.LEGGINGS, 4);
-        map.put(ArmorItem.Type.CHESTPLATE, 5);
-        map.put(ArmorItem.Type.HELMET, 2);
-    }), 20, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> Ingredient.of(Items.DRIED_KELP));
-
-    public static final StringRepresentable.EnumCodec<ArmorMaterials> CODEC = StringRepresentable.fromEnum(ArmorMaterials::values);
-    private static final EnumMap<ArmorItem.Type, Integer> HEALTH_FUNCTION_FOR_TYPE = Util.make(new EnumMap<>(ArmorItem.Type.class), (p_266653_) -> {
-        p_266653_.put(ArmorItem.Type.BOOTS, 13);
-        p_266653_.put(ArmorItem.Type.LEGGINGS, 15);
-        p_266653_.put(ArmorItem.Type.CHESTPLATE, 16);
-        p_266653_.put(ArmorItem.Type.HELMET, 11);
-    });
     private final String name;
     private final int durabilityMultiplier;
-    private final EnumMap<ArmorItem.Type, Integer> protectionFunctionForType;
+    private final int[] slotProtections;
     private final int enchantmentValue;
     private final SoundEvent sound;
     private final float toughness;
     private final float knockbackResistance;
-    private final Supplier<Ingredient> repairIngredient;
+    private final Lazy<Ingredient> repairIngredient;
 
-    ModArmorMaterials(String name, int durabilityMultiplier, EnumMap<ArmorItem.Type, Integer> protectionTypeMap,
-                      int enchantmentValue, SoundEvent soundEvent, float toughness, float knockbackRes, Supplier<Ingredient> repairMaterial) {
-        this.name = name;
+    ModArmorMaterials(String name, int durabilityMultiplier, int[] slotProtections, int enchantmentValue,
+                      SoundEvent sound, float toughness, float knockbackResistance, Lazy<Ingredient> repairIngredient) {
+        this.name = HexaliaMod.MODID + ":" + name;
         this.durabilityMultiplier = durabilityMultiplier;
-        this.protectionFunctionForType = protectionTypeMap;
+        this.slotProtections = slotProtections;
         this.enchantmentValue = enchantmentValue;
-        this.sound = soundEvent;
+        this.sound = sound;
         this.toughness = toughness;
-        this.knockbackResistance = knockbackRes;
-        this.repairIngredient = repairMaterial;
+        this.knockbackResistance = knockbackResistance;
+        this.repairIngredient = repairIngredient;
     }
 
-    public int getDurabilityForType(ArmorItem.Type p_266745_) {
-        return HEALTH_FUNCTION_FOR_TYPE.get(p_266745_) * this.durabilityMultiplier;
+    @Override
+    public int getDurabilityForType(ArmorItem.Type type) {
+        return HEALTH_PER_SLOT[type.getSlot().getIndex()] * this.durabilityMultiplier;
     }
 
-    public int getDefenseForType(ArmorItem.Type p_266752_) {
-        return this.protectionFunctionForType.get(p_266752_);
+    @Override
+    public int getDefenseForType(ArmorItem.Type type) {
+        return this.slotProtections[type.getSlot().getIndex()];
     }
 
+    @Override
     public int getEnchantmentValue() {
         return this.enchantmentValue;
     }
 
+    @Override
     public SoundEvent getEquipSound() {
         return this.sound;
     }
 
+    @Override
     public Ingredient getRepairIngredient() {
         return this.repairIngredient.get();
     }
 
+    @Override
     public String getName() {
-        return HexaliaMod.MODID + ":" + this.name;
+        return this.name;
     }
 
+    @Override
     public float getToughness() {
         return this.toughness;
     }
 
+    @Override
     public float getKnockbackResistance() {
         return this.knockbackResistance;
-    }
-
-    public String getSerializedName() {
-        return HexaliaMod.MODID + ":" + this.name;
     }
 }

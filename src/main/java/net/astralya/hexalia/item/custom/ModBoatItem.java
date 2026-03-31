@@ -1,7 +1,7 @@
 package net.astralya.hexalia.item.custom;
 
-import net.astralya.hexalia.entity.custom.ModBoatEntity;
-import net.astralya.hexalia.entity.custom.ModChestBoatEntity;
+import net.astralya.hexalia.entity.custom.boat.ModBoatEntity;
+import net.astralya.hexalia.entity.custom.boat.ModChestBoatEntity;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;

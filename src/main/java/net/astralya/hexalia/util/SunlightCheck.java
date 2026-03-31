@@ -6,13 +6,10 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.Biome.Precipitation;
 
-import java.lang.reflect.Method;
-
 public final class SunlightCheck {
 
     private final Level level;
     private BlockPos pos;
-
     private final boolean needsRainCheck;
     private final float peakMultiplier;
 
@@ -22,12 +19,11 @@ public final class SunlightCheck {
         this.level = level;
         this.pos = pos;
 
-        Biome biome = this.level.getBiome(this.pos).value();
+        Biome biome = this.level.getBiomeManager().getBiome(this.pos).value();
         this.needsRainCheck = biome.getPrecipitationAt(this.pos) != Precipitation.NONE;
 
         float tempEff = 0.3F * (0.8F - biome.getBaseTemperature());
-        float humidity = resolveDownfall(biome);
-        float humidityEff = this.needsRainCheck ? -0.3F * humidity : 0.0F;
+        float humidityEff = this.needsRainCheck ? -0.3F * biome.getModifiedClimateSettings().downfall() : 0.0F;
         this.peakMultiplier = 1.0F + tempEff + humidityEff;
     }
 
@@ -49,7 +45,9 @@ public final class SunlightCheck {
     }
 
     public float getGenerationMultiplier() {
-        if (!this.canSeeSun) return 0.0F;
+        if (!this.canSeeSun) {
+            return 0.0F;
+        }
         if (this.needsRainCheck && (this.level.isRaining() || this.level.isThundering())) {
             return this.peakMultiplier * 0.2F;
         }
@@ -67,25 +65,25 @@ public final class SunlightCheck {
     }
 
     public static boolean canSeeSun(Level level, BlockPos pos) {
-        if (level == null) return false;
-        if (!level.dimensionType().hasSkyLight()) return false;
-        if (level.getSkyDarken() >= 4) return false;
+        if (level == null) {
+            return false;
+        }
+        if (!level.dimensionType().hasSkyLight()) {
+            return false;
+        }
+        if (level.getSkyDarken() >= 4) {
+            return false;
+        }
         return level.canSeeSky(pos);
     }
 
-    private static float resolveDownfall(Biome biome) {
-        try {
-            Method m = Biome.class.getMethod("getDownfall");
-            return ((Float) m.invoke(biome));
-        } catch (NoSuchMethodException ignored) {
-            try {
-                Method m = Biome.class.getMethod("downfall");
-                return ((Float) m.invoke(biome));
-            } catch (Exception e2) {
-                return 0.0F;
-            }
-        } catch (Exception e) {
-            return 0.0F;
+    public static boolean hasOpenSky(Level level, BlockPos pos) {
+        if (level == null) {
+            return false;
         }
+        if (!level.dimensionType().hasSkyLight()) {
+            return false;
+        }
+        return level.canSeeSky(pos);
     }
 }

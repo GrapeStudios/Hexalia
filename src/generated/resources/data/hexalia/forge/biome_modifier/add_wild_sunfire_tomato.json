@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
-  "biomes": "minecraft:savanna",
+  "biomes": "#hexalia:has_dry_biome_vegetation",
   "features": "hexalia:wild_sunfire_tomato_placed",
   "step": "vegetal_decoration"
 }

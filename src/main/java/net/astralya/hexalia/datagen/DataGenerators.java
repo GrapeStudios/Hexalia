@@ -1,6 +1,7 @@
 package net.astralya.hexalia.datagen;
 
 import net.astralya.hexalia.HexaliaMod;
+import net.astralya.hexalia.datagen.loot.ModGlobalLootModifierProvider;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -28,7 +29,7 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(), ModLootTableProvider.create(packOutput));
 
         BlockTagsProvider blockTagsProvider = new ModBlockTagProvider(packOutput, lookupProvider, existingFileHelper);
-        BiomeTagsProvider biomeTagsProvider = new ModBiomeTagProvider(packOutput, lookupProvider, existingFileHelper);
+        BiomeTagsProvider biomeTagsProvider = new ModBiomeTagsProvider(packOutput, lookupProvider, existingFileHelper);
 
         generator.addProvider(event.includeServer(), blockTagsProvider);
         generator.addProvider(event.includeServer(), biomeTagsProvider);
@@ -39,5 +40,7 @@ public class DataGenerators {
         generator.addProvider(event.includeServer(), new ModWorldGenProvider(packOutput, lookupProvider));
 
         generator.addProvider(event.includeClient(), new ModGlobalLootModifierProvider(packOutput));
+
+        generator.addProvider(event.includeServer(), new ModEntityTypeTagProvider(packOutput, lookupProvider, existingFileHelper));
     }
 }

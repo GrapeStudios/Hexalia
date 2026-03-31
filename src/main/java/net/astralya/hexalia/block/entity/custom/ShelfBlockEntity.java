@@ -1,12 +1,14 @@
 package net.astralya.hexalia.block.entity.custom;
 
+import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.util.ModUtil;
+import net.astralya.hexalia.util.SidedItemHandlers;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -14,50 +16,131 @@ import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.util.LazyOptional;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+@Mod.EventBusSubscriber(modid = HexaliaMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ShelfBlockEntity extends BlockEntity {
-    private static final int SIZE = 6;
-    private final NonNullList<ItemStack> items = NonNullList.withSize(SIZE, ItemStack.EMPTY);
 
-    public ShelfBlockEntity(BlockPos pos, BlockState state) {
-        super(ModBlockEntityTypes.SHELF_BE.get(), pos, state);
+    private static final int SIZE = 6;
+
+    private final NonNullList<ItemStack> items = NonNullList.withSize(SIZE, ItemStack.EMPTY);
+    private final ItemStackHandler automationInventory;
+    private final LazyOptional<IItemHandler> sidedHandlerOptional;
+
+    public ShelfBlockEntity(BlockPos pos, BlockState blockState) {
+        super(ModBlockEntityTypes.SHELF.get(), pos, blockState);
+
+        this.automationInventory = new ItemStackHandler(SIZE) {
+            @Override
+            protected void onContentsChanged(int slot) {
+                setChanged();
+                sendUpdate();
+            }
+
+            @Override
+            public int getSlotLimit(int slot) {
+                return 1;
+            }
+
+            @Override
+            public ItemStack getStackInSlot(int slot) {
+                return items.get(slot);
+            }
+
+            @Override
+            public void setStackInSlot(int slot, ItemStack stack) {
+                ItemStack one = stack.copy();
+                if (!one.isEmpty()) {
+                    one.setCount(1);
+                }
+                items.set(slot, one);
+            }
+        };
+
+        this.sidedHandlerOptional = LazyOptional.of(() -> SidedItemHandlers.view(this.automationInventory, new int[]{0, 1, 2, 3, 4, 5}, true, true));
     }
 
     public ItemStack getItem(int slot) {
-        if (slot < 0 || slot >= SIZE) return ItemStack.EMPTY;
-        return items.get(slot);
+        if (slot < 0 || slot >= SIZE) {
+            return ItemStack.EMPTY;
+        }
+        return this.items.get(slot);
     }
 
     public void setItem(int slot, ItemStack stack) {
-        if (slot < 0 || slot >= SIZE) return;
-        items.set(slot, stack);
-        setChanged();
-        sendUpdate();
-    }
-
-    private void sendUpdate() {
-        if (level != null && !level.isClientSide()) {
-            Packet<ClientGamePacketListener> updatePacket = getUpdatePacket();
-            for (ServerPlayer player : ModUtil.tracking((ServerLevel) level, worldPosition)) {
-                player.connection.send(updatePacket);
-            }
-            level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
+        if (slot < 0 || slot >= SIZE) {
+            return;
         }
+
+        ItemStack one = stack.copy();
+        if (!one.isEmpty()) {
+            one.setCount(1);
+        }
+
+        this.items.set(slot, one);
+        this.setChanged();
+        this.sendUpdate();
     }
 
     public NonNullList<ItemStack> getItems() {
-        return items;
+        return this.items;
+    }
+
+    public boolean isEmpty() {
+        return this.items.stream().allMatch(ItemStack::isEmpty);
+    }
+
+    public ItemStack removeStack(int slot) {
+        if (slot < 0 || slot >= SIZE) {
+            return ItemStack.EMPTY;
+        }
+
+        ItemStack stack = this.items.get(slot).copy();
+        this.items.set(slot, ItemStack.EMPTY);
+        this.setChanged();
+        this.sendUpdate();
+        return stack;
+    }
+
+    private void sendUpdate() {
+        if (this.level != null && !this.level.isClientSide()) {
+            ClientboundBlockEntityDataPacket updatePacket = this.getUpdatePacket();
+            for (ServerPlayer player : ModUtil.tracking((ServerLevel) this.level, this.worldPosition)) {
+                player.connection.send(updatePacket);
+            }
+            this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), 3);
+        }
+    }
+
+    @Override
+    public void setRemoved() {
+        super.setRemoved();
+        this.sidedHandlerOptional.invalidate();
     }
 
     @Override
     public void load(CompoundTag tag) {
         super.load(tag);
-        ContainerHelper.loadAllItems(tag, items);
-        for (int i = 0; i < items.size(); i++) {
-            ItemStack stack = items.get(i);
-            if (stack.isEmpty()) continue;
+        ContainerHelper.loadAllItems(tag, this.items);
+
+        for (ItemStack stack : this.items) {
+            if (stack.isEmpty()) {
+                continue;
+            }
             if (stack.getCount() <= 0 || stack.getCount() > stack.getMaxStackSize()) {
-                stack.setCount(1); 
+                stack.setCount(1);
+            }
+            if (stack.getCount() > 1) {
+                stack.setCount(1);
             }
         }
     }
@@ -65,29 +148,44 @@ public class ShelfBlockEntity extends BlockEntity {
     @Override
     protected void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
-        ContainerHelper.saveAllItems(tag, items);
+        ContainerHelper.saveAllItems(tag, this.items);
     }
 
     @Override
     public CompoundTag getUpdateTag() {
-        return saveWithoutMetadata();
+        return this.saveWithoutMetadata();
     }
 
     @Override
-    public Packet<ClientGamePacketListener> getUpdatePacket() {
+    public void handleUpdateTag(CompoundTag tag) {
+        super.handleUpdateTag(tag);
+        ContainerHelper.loadAllItems(tag, this.items);
+    }
+
+    @Override
+    public @Nullable ClientboundBlockEntityDataPacket getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
     }
 
-    public boolean isEmpty() {
-        return items.stream().allMatch(ItemStack::isEmpty);
+    @Override
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket packet) {
+        super.onDataPacket(net, packet);
+        if (this.level != null && this.level.isClientSide) {
+            this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), 3);
+        }
     }
 
-    public ItemStack removeStack(int slot) {
-        if (slot < 0 || slot >= SIZE) return ItemStack.EMPTY;
-        ItemStack stack = items.get(slot).copy();
-        items.set(slot, ItemStack.EMPTY);
-        setChanged();
-        sendUpdate();
-        return stack;
+    @Override
+    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction side) {
+        if (capability == ForgeCapabilities.ITEM_HANDLER) {
+            return this.sidedHandlerOptional.cast();
+        }
+        return super.getCapability(capability, side);
+    }
+
+    @SubscribeEvent
+    public static void attachCapabilities(AttachCapabilitiesEvent<BlockEntity> event) {
+        if (event.getObject() instanceof ShelfBlockEntity) {
+        }
     }
 }

@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
-  "biomes": "minecraft:dark_forest",
+  "biomes": "#hexalia:has_shade_vegetation",
   "features": "hexalia:dark_oak_cocoon_placed",
   "step": "vegetal_decoration"
 }

@@ -40,7 +40,7 @@ public class InfusedDirtBlock extends Block {
             double x = pPos.getX() + 0.5 + random.nextDouble(-0.5, 0.5);
             double y = pPos.getY() + 1.0;
             double z = pPos.getZ() + 0.5 + random.nextDouble(-0.5, 0.5);
-            pLevel.addParticle(ModParticleType.INFUSED_BUBBLE.get(), x, y, z, 0.0d,
+            pLevel.addParticle(ModParticleType.INFUSED_BUBBLES.get(), x, y, z, 0.0d,
                     0.05d, 0.0d);
         }
     }

@@ -6,6 +6,8 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -35,6 +37,7 @@ public class HomesteadBrewItem extends AbstractConsumableItem {
         if (!(user instanceof Player player)) return;
         if (player instanceof FakePlayer) return;
         TeleportUtil.teleportPlayerToSpawn(level, player, true);
+        player.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 600, 0, false, true, true));
     }
 
     @Override

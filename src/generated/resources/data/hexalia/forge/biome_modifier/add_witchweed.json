@@ -1,6 +1,6 @@
 {
   "type": "forge:add_features",
-  "biomes": "minecraft:flower_forest",
+  "biomes": "#hexalia:has_floral_vegetation",
   "features": "hexalia:witchweed_placed",
   "step": "vegetal_decoration"
 }

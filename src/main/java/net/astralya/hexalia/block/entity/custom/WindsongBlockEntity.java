@@ -29,7 +29,7 @@ public class WindsongBlockEntity extends BlockEntity {
     private int particleCooldown = 0;
 
     public WindsongBlockEntity(BlockPos pPos, BlockState pBlockState) {
-        super(ModBlockEntityTypes.WINDSONG_BE.get(), pPos, pBlockState);
+        super(ModBlockEntityTypes.WINDSONG.get(), pPos, pBlockState);
     }
 
     public void activate() {
