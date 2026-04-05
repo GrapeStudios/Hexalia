@@ -2,17 +2,20 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "P": {
-      "item": "minecraft:copper_ingot"
+    "C": {
+      "tag": "minecraft:coals"
     },
-    "S": {
+    "D": {
       "item": "minecraft:cobbled_deepslate"
+    },
+    "L": {
+      "tag": "minecraft:logs"
     }
   },
   "pattern": [
-    "S S",
-    "P P",
-    "SSS"
+    "D D",
+    "DCD",
+    "LLL"
   ],
   "result": {
     "item": "hexalia:small_cauldron"

@@ -13,6 +13,7 @@ public class ModSoundEvents {
     public static final SoundEvent WIND_BURST = registerSoundEvent("wind_burst");
     public static final SoundEvent WIND_DEFLECT = registerSoundEvent("wind_deflect");
     public static final SoundEvent SAC_IMPACT = registerSoundEvent("sac_impact");
+    public static final SoundEvent CACOFEY_GIGGLE = registerSoundEvent("cacofey_giggle");
 
     private static SoundEvent registerSoundEvent(String name) {
         Identifier identifier = new Identifier(HexaliaMod.MODID, name);

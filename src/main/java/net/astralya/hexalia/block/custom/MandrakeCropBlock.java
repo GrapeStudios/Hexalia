@@ -1,6 +1,6 @@
 package net.astralya.hexalia.block.custom;
 
-import net.astralya.hexalia.effect.ModEffects;
+import net.astralya.hexalia.effect.ModMobEffects;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.sound.ModSoundEvents;
 import net.minecraft.block.Block;
@@ -49,7 +49,7 @@ public class MandrakeCropBlock extends CropBlock {
         super.onBreak(world, pos, state, player);
         if (!world.isClient() && state.get(AGE) == MAX_AGE) {
             if (!(player.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.EARPLUGS))) {
-                player.addStatusEffect(new StatusEffectInstance(ModEffects.STUNNED, 60, 0));
+                player.addStatusEffect(new StatusEffectInstance(ModMobEffects.STUNNED, 60, 0));
                 world.playSound(null, player.getX(), player.getY(), player.getZ(), ModSoundEvents.MANDRAKE_SCREAM,
                         SoundCategory.PLAYERS, 1.0f, 1.0f);
             }

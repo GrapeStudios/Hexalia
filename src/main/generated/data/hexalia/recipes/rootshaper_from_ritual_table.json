@@ -1,0 +1,23 @@
+{
+  "type": "hexalia:ritual_table",
+  "ingredients": [
+    {
+      "item": "hexalia:ancient_seed"
+    },
+    {
+      "item": "hexalia:earth_node"
+    },
+    {
+      "item": "hexalia:dream_paste"
+    },
+    {
+      "item": "minecraft:wooden_shovel"
+    },
+    {
+      "item": "minecraft:wooden_pickaxe"
+    }
+  ],
+  "output": {
+    "item": "hexalia:rootshaper"
+  }
+}

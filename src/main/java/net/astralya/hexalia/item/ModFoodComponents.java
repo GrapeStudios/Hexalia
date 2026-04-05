@@ -1,6 +1,6 @@
 package net.astralya.hexalia.item;
 
-import net.astralya.hexalia.effect.ModEffects;
+import net.astralya.hexalia.effect.ModMobEffects;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.item.FoodComponent;
@@ -14,7 +14,7 @@ public class ModFoodComponents {
             .statusEffect(new StatusEffectInstance(StatusEffects.FIRE_RESISTANCE, 900, 1), 1f).build();
 
     public static final FoodComponent MANDRAKE_STEW = new FoodComponent.Builder().hunger(6).saturationModifier(0.7f)
-            .statusEffect(new StatusEffectInstance(ModEffects.OVERFED, 900, 0), 1f).build();
+            .statusEffect(new StatusEffectInstance(ModMobEffects.OVERFED, 900, 0), 1f).build();
 
     public static final FoodComponent SUNFIRE_TOMATO = new FoodComponent.Builder().hunger(1).saturationModifier(0.3f).build();
     public static final FoodComponent SPICY_SANDWICH = new FoodComponent.Builder().hunger(6).saturationModifier(0.6f)

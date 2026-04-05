@@ -9,47 +9,92 @@ import net.minecraft.util.Identifier;
 
 public class ModRecipes {
 
-    public static final RecipeSerializer<RitualBrazierRecipe> RITUAL_BRAZIER_SERIALIZER = Registry.register(
-            Registries.RECIPE_SERIALIZER, new Identifier(HexaliaMod.MODID, "ritual_brazier"), new RitualBrazierRecipe.Serializer());
-    public static final RecipeType<RitualBrazierRecipe> RITUAL_BRAZIER_TYPE = Registry.register(
-            Registries.RECIPE_TYPE, new Identifier(HexaliaMod.MODID, "ritual_brazier"), new RecipeType<RitualBrazierRecipe>() {
-                @Override
-                public String toString() {
-                    return "ritual_brazier";
-                }
-            });
-
     public static final RecipeSerializer<SmallCauldronRecipe> SMALL_CAULDRON_SERIALIZER = Registry.register(
-            Registries.RECIPE_SERIALIZER, new Identifier(HexaliaMod.MODID, "small_cauldron"), new SmallCauldronRecipe.Serializer());
+            Registries.RECIPE_SERIALIZER,
+            new Identifier(HexaliaMod.MODID, "small_cauldron"),
+            new SmallCauldronRecipe.Serializer()
+    );
+
     public static final RecipeType<SmallCauldronRecipe> SMALL_CAULDRON_TYPE = Registry.register(
-            Registries.RECIPE_TYPE, new Identifier(HexaliaMod.MODID, "small_cauldron"), new RecipeType<SmallCauldronRecipe>() {
+            Registries.RECIPE_TYPE,
+            new Identifier(HexaliaMod.MODID, "small_cauldron"),
+            new RecipeType<SmallCauldronRecipe>() {
                 @Override
                 public String toString() {
                     return "small_cauldron";
                 }
-            });
+            }
+    );
 
     public static final RecipeSerializer<RitualTableRecipe> RITUAL_TABLE_SERIALIZER = Registry.register(
-            Registries.RECIPE_SERIALIZER, new Identifier(HexaliaMod.MODID, "ritual_table"), new RitualTableRecipe.Serializer());
+            Registries.RECIPE_SERIALIZER,
+            new Identifier(HexaliaMod.MODID, "ritual_table"),
+            new RitualTableRecipe.Serializer()
+    );
+
     public static final RecipeType<RitualTableRecipe> RITUAL_TABLE_TYPE = Registry.register(
-            Registries.RECIPE_TYPE, new Identifier(HexaliaMod.MODID, "ritual_table"), new RecipeType<RitualTableRecipe>() {
+            Registries.RECIPE_TYPE,
+            new Identifier(HexaliaMod.MODID, "ritual_table"),
+            new RecipeType<RitualTableRecipe>() {
                 @Override
                 public String toString() {
                     return "ritual_table";
                 }
-            });
+            }
+    );
+
+    public static final RecipeSerializer<RitualBrazierRecipe> RITUAL_BRAZIER_SERIALIZER = Registry.register(
+            Registries.RECIPE_SERIALIZER,
+            new Identifier(HexaliaMod.MODID, "ritual_brazier"),
+            new RitualBrazierRecipe.Serializer()
+    );
+
+    public static final RecipeType<RitualBrazierRecipe> RITUAL_BRAZIER_TYPE = Registry.register(
+            Registries.RECIPE_TYPE,
+            new Identifier(HexaliaMod.MODID, "ritual_brazier"),
+            new RecipeType<RitualBrazierRecipe>() {
+                @Override
+                public String toString() {
+                    return "ritual_brazier";
+                }
+            }
+    );
 
     public static final RecipeSerializer<MutationRecipe> MUTATION_SERIALIZER = Registry.register(
-            Registries.RECIPE_SERIALIZER, new Identifier(HexaliaMod.MODID, "mutation"), new MutationRecipe.Serializer());
+            Registries.RECIPE_SERIALIZER,
+            new Identifier(HexaliaMod.MODID, "mutation"),
+            new MutationRecipe.Serializer()
+    );
+
     public static final RecipeType<MutationRecipe> MUTATION_TYPE = Registry.register(
-            Registries.RECIPE_TYPE, new Identifier(HexaliaMod.MODID, "mutation"), new RecipeType<MutationRecipe>() {
+            Registries.RECIPE_TYPE,
+            new Identifier(HexaliaMod.MODID, "mutation"),
+            new RecipeType<MutationRecipe>() {
                 @Override
                 public String toString() {
                     return "mutation";
                 }
-            });
+            }
+    );
+
+    public static final RecipeSerializer<MortarAndPestleRecipe> MORTAR_AND_PESTLE_SERIALIZER = Registry.register(
+            Registries.RECIPE_SERIALIZER,
+            new Identifier(HexaliaMod.MODID, "mortar_and_pestle"),
+            new MortarAndPestleRecipe.Serializer()
+    );
+
+    public static final RecipeType<MortarAndPestleRecipe> MORTAR_AND_PESTLE_TYPE = Registry.register(
+            Registries.RECIPE_TYPE,
+            new Identifier(HexaliaMod.MODID, "mortar_and_pestle"),
+            new RecipeType<MortarAndPestleRecipe>() {
+                @Override
+                public String toString() {
+                    return "mortar_and_pestle";
+                }
+            }
+    );
 
     public static void registerRecipes() {
-        HexaliaMod.LOGGER.info("Registering Custom Recipes for " + HexaliaMod.MODID);
+        HexaliaMod.LOGGER.info("Registering custom recipes for {}", HexaliaMod.MODID);
     }
 }

@@ -16,7 +16,7 @@ public class BleedingEffect extends StatusEffect {
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         if (!entity.getEntityWorld().isClient && entity.getHealth() > 0f) {
-            float damage = (float) Configuration.common().tools.bleedingDamage;
+            float damage = (float) Configuration.BLEEDING_DAMAGE.get();
             entity.damage(entity.getDamageSources().generic(), damage);
         }
     }

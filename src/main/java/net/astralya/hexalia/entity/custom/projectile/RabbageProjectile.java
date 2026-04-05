@@ -1,6 +1,6 @@
 package net.astralya.hexalia.entity.custom.projectile;
 
-import net.astralya.hexalia.effect.ModEffects;
+import net.astralya.hexalia.effect.ModMobEffects;
 import net.astralya.hexalia.entity.ModEntities;
 import net.astralya.hexalia.item.ModItems;
 import net.minecraft.entity.Entity;
@@ -62,7 +62,7 @@ public class RabbageProjectile extends ThrownItemEntity {
         if (entity instanceof LivingEntity livingEntity) {
             int damage = 1;
             entity.damage(this.getDamageSources().thrown(this, this.getOwner()), damage);
-            livingEntity.addStatusEffect(new StatusEffectInstance(ModEffects.BLEEDING, 100, 0));
+            livingEntity.addStatusEffect(new StatusEffectInstance(ModMobEffects.BLEEDING, 100, 0));
         }
     }
 

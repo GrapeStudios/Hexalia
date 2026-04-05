@@ -21,7 +21,7 @@
               "block": "hexalia:saltsprout",
               "condition": "minecraft:block_state_property",
               "properties": {
-                "age": "3"
+                "age": "2"
               }
             }
           ],
@@ -47,7 +47,7 @@
               "block": "hexalia:saltsprout",
               "condition": "minecraft:block_state_property",
               "properties": {
-                "age": "3"
+                "age": "2"
               }
             }
           ],

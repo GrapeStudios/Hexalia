@@ -9,12 +9,12 @@
       "item": "minecraft:brick"
     },
     "S": {
-      "tag": "minecraft:logs_that_burn"
+      "tag": "minecraft:logs"
     }
   },
   "pattern": [
     " P ",
-    "APA",
+    "PAP",
     "SSS"
   ],
   "result": {

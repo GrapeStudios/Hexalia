@@ -1,5 +1,7 @@
 package net.astralya.hexalia.compat.rei.ritual_brazier;
 
+import java.util.ArrayList;
+import java.util.List;
 import me.shedaniel.math.Point;
 import me.shedaniel.math.Rectangle;
 import me.shedaniel.rei.api.client.gui.Renderer;
@@ -15,15 +17,10 @@ import net.astralya.hexalia.compat.rei.HexaliaREIClientPlugin;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RitualBrazierCategory implements DisplayCategory<RitualBrazierDisplay> {
 
-    public static final Identifier TEXTURE =
-            new Identifier(HexaliaMod.MODID, "textures/gui/ritual_brazier_gui.png");
-    public static final CategoryIdentifier<RitualBrazierDisplay> RITUAL_BRAZIER =
-            CategoryIdentifier.of(HexaliaMod.MODID, "ritual_brazier");
+    public static final Identifier TEXTURE = new Identifier(HexaliaMod.MODID, "textures/gui/ritual_brazier_gui.png");
+    public static final CategoryIdentifier<RitualBrazierDisplay> RITUAL_BRAZIER = CategoryIdentifier.of(HexaliaMod.MODID, "ritual_brazier");
 
     @Override
     public CategoryIdentifier<? extends RitualBrazierDisplay> getCategoryIdentifier() {
@@ -76,8 +73,6 @@ public class RitualBrazierCategory implements DisplayCategory<RitualBrazierDispl
 
     @Override
     public int getDisplayHeight() {
-        return 90;
+        return 80;
     }
-
-
 }

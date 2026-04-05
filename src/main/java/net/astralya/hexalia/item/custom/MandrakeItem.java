@@ -1,9 +1,10 @@
 package net.astralya.hexalia.item.custom;
 
 import net.astralya.hexalia.Configuration;
-import net.astralya.hexalia.effect.ModEffects;
+import net.astralya.hexalia.effect.ModMobEffects;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.sound.ModSoundEvents;
+import net.astralya.hexalia.util.ModTags;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EquipmentSlot;
@@ -38,18 +39,18 @@ public class MandrakeItem extends Item {
     @Override
     public ItemStack finishUsing(ItemStack stack, World world, LivingEntity user) {
         if (!world.isClient && user instanceof PlayerEntity player) {
-            double radius = Math.max(0.0, Configuration.common().tools.mandrakeScreamRadius);
-            int stunDuration = Math.max(1, Configuration.common().tools.mandrakeStunDuration);
+            double radius = Math.max(0.0, Configuration.MANDRAKE_SCREAM_RADIUS.get());
+            int stunDuration = Math.max(1, Configuration.MANDRAKE_STUN_DURATION.get());
 
             List<Entity> entities = world.getOtherEntities(player, player.getBoundingBox().expand(radius));
             for (Entity e : entities) {
                 if (e instanceof LivingEntity living) {
                     boolean protectedByEarplugs =
-                            player.getEquippedStack(EquipmentSlot.HEAD).isOf(ModItems.EARPLUGS)
+                            player.getEquippedStack(EquipmentSlot.HEAD).isIn(ModTags.Items.STUN_IMMUNE_HEADWEAR)
                                     && !player.getAbilities().creativeMode;
 
                     if (!protectedByEarplugs) {
-                        living.addStatusEffect(new StatusEffectInstance(ModEffects.STUNNED, stunDuration, 0));
+                        living.addStatusEffect(new StatusEffectInstance(ModMobEffects.STUNNED, stunDuration, 0));
                     }
                 }
             }

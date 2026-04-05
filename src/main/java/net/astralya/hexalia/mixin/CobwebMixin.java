@@ -1,6 +1,6 @@
 package net.astralya.hexalia.mixin;
 
-import net.astralya.hexalia.effect.ModEffects;
+import net.astralya.hexalia.effect.ModMobEffects;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CobwebBlock;
 import net.minecraft.entity.Entity;
@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class CobwebMixin {
     @Inject(method = "onEntityCollision", at = @At("HEAD"), cancellable = true)
     private void onEntityInside(BlockState state, World world, BlockPos pos, Entity entity, CallbackInfo ci) {
-        if (entity instanceof LivingEntity living && living.hasStatusEffect(ModEffects.ARACHNID_GRACE)) {
+        if (entity instanceof LivingEntity living && living.hasStatusEffect(ModMobEffects.ARACHNID_GRACE)) {
             ci.cancel();
         }
     }

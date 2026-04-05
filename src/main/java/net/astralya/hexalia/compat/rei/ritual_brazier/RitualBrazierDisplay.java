@@ -1,5 +1,8 @@
 package net.astralya.hexalia.compat.rei.ritual_brazier;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.display.basic.BasicDisplay;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
@@ -7,11 +10,6 @@ import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.astralya.hexalia.recipe.RitualBrazierRecipe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.registry.DynamicRegistryManager;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class RitualBrazierDisplay extends BasicDisplay {
 
@@ -23,13 +21,19 @@ public class RitualBrazierDisplay extends BasicDisplay {
         super(getInputList(recipe), getOutputList(recipe));
     }
 
+    @Override
+    public CategoryIdentifier<?> getCategoryIdentifier() {
+        return RitualBrazierCategory.RITUAL_BRAZIER;
+    }
+
     private static List<EntryIngredient> getInputList(RitualBrazierRecipe recipe) {
-        if (recipe == null) return Collections.emptyList();
+        if (recipe == null) {
+            return Collections.emptyList();
+        }
 
         List<EntryIngredient> inputs = new ArrayList<>();
-
-        Ingredient inputIngredient = recipe.getIngredients().get(0);
-        for (ItemStack stack : inputIngredient.getMatchingStacks()) {
+        Ingredient ingredient = recipe.getIngredients().get(0);
+        for (ItemStack stack : ingredient.getMatchingStacks()) {
             inputs.add(EntryIngredient.of(EntryStacks.of(stack)));
         }
 
@@ -37,16 +41,12 @@ public class RitualBrazierDisplay extends BasicDisplay {
     }
 
     private static List<EntryIngredient> getOutputList(RitualBrazierRecipe recipe) {
-        if (recipe == null) return Collections.emptyList();
+        if (recipe == null) {
+            return Collections.emptyList();
+        }
 
         List<EntryIngredient> outputs = new ArrayList<>();
-        outputs.add(EntryIngredient.of(EntryStacks.of(recipe.getOutput(DynamicRegistryManager.EMPTY))));
-
+        outputs.add(EntryIngredient.of(EntryStacks.of(recipe.getOutput(null))));
         return outputs;
-    }
-
-    @Override
-    public CategoryIdentifier<?> getCategoryIdentifier() {
-        return RitualBrazierCategory.RITUAL_BRAZIER;
     }
 }

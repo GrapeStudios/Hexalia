@@ -20,17 +20,10 @@
     ]
   },
 
-  "wind_burst": {
-    "subtitle": "sounds.hexalia.wind_burst",
+  "cacofey_giggle": {
+    "subtitle": "sounds.hexalia.cacofey_giggle",
     "sounds": [
-      "hexalia:wind_burst"
-    ]
-  },
-
-  "wind_deflect": {
-    "subtitle": "sounds.hexalia.wind_deflect",
-    "sounds": [
-      "hexalia:wind_deflect"
+      "hexalia:cacofey_giggle"
     ]
   }
 }

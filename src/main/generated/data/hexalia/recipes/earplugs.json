@@ -1,13 +1,13 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "misc",
+  "category": "equipment",
   "key": {
-    "T": {
+    "P": {
       "item": "minecraft:leather"
     }
   },
   "pattern": [
-    "T T"
+    "P P"
   ],
   "result": {
     "item": "hexalia:earplugs"

@@ -1,10 +1,14 @@
 package net.astralya.hexalia.datagen;
 
+import net.astralya.hexalia.block.ModBlocks;
+import net.astralya.hexalia.block.custom.ChillberryBushBlock;
+import net.astralya.hexalia.block.custom.MandrakeCropBlock;
+import net.astralya.hexalia.block.custom.RabbageCropBlock;
+import net.astralya.hexalia.block.custom.SaltsproutBlock;
+import net.astralya.hexalia.block.custom.SunfireTomatoCropBlock;
+import net.astralya.hexalia.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
-import net.astralya.hexalia.block.ModBlocks;
-import net.astralya.hexalia.block.custom.*;
-import net.astralya.hexalia.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.CaveVines;
 import net.minecraft.enchantment.Enchantments;
@@ -48,7 +52,6 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addPottedPlantDrops(ModBlocks.POTTED_GHOST_FERN);
         addDrop(ModBlocks.NIGHTSHADE_BUSH);
         addPottedPlantDrops(ModBlocks.POTTED_NIGHTSHADE_BUSH);
-        this.addDrop(ModBlocks.COTTONWOOD_CATKIN, Items.STRING);
         addDrop(ModBlocks.BEGONIA);
         addPottedPlantDrops(ModBlocks.POTTED_BEGONIA);
         addDrop(ModBlocks.LAVENDER);
@@ -62,12 +65,21 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addPottedPlantDrops(ModBlocks.POTTED_WINDSONG);
         addDrop(ModBlocks.ASTRYLIS);
         addPottedPlantDrops(ModBlocks.POTTED_ASTRYLIS);
-        this.addDrop(ModBlocks.GALEBERRIES_VINE, galeberriesDrop(ModBlocks.GALEBERRIES_VINE));
-        this.addDrop(ModBlocks.GALEBERRIES_VINE_PLANT, galeberriesDrop(ModBlocks.GALEBERRIES_VINE_PLANT));
         addDrop(ModBlocks.DAHLIA);
         addPottedPlantDrops(ModBlocks.POTTED_DAHLIA);
         addDrop(ModBlocks.CELESTIAL_BLOOM);
         addPottedPlantDrops(ModBlocks.POTTED_CELESTIAL_BLOOM);
+        addDrop(ModBlocks.WITHERED_CELESTIAL_BLOOM);
+        addPottedPlantDrops(ModBlocks.POTTED_WITHERED_CELESTIAL_BLOOM);
+        addDrop(ModBlocks.LOURDES);
+        addPottedPlantDrops(ModBlocks.POTTED_LOURDES);
+        addDrop(ModBlocks.AEGIFLORA);
+        addPottedPlantDrops(ModBlocks.POTTED_AEGIFLORA);
+        addDrop(ModBlocks.WITHERED_AEGIFLORA);
+        addPottedPlantDrops(ModBlocks.POTTED_WITHERED_AEGIFLORA);
+        this.addDrop(ModBlocks.COTTONWOOD_CATKIN, Items.STRING);
+        this.addDrop(ModBlocks.GALEBERRIES_VINE, galeberriesDrop(ModBlocks.GALEBERRIES_VINE));
+        this.addDrop(ModBlocks.GALEBERRIES_VINE_PLANT, galeberriesDrop(ModBlocks.GALEBERRIES_VINE_PLANT));
         this.addDrop(ModBlocks.PALE_MUSHROOM, flowerbedDrops(ModBlocks.PALE_MUSHROOM));
     }
 
@@ -76,14 +88,19 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.CELESTIAL_CRYSTAL_BLOCK);
         addDrop(ModBlocks.INFUSED_DIRT);
         addDrop(ModBlocks.INFUSED_FARMLAND, drops(ModBlocks.INFUSED_DIRT));
-        addDrop(ModBlocks.RITUAL_TABLE, drops(ModItems.RITUAL_TABLE));
+        addDrop(ModBlocks.RITUAL_TABLE);
         addDrop(ModBlocks.SALT_LAMP);
         addDrop(ModBlocks.CANDLE_SKULL);
+        addDrop(ModBlocks.WITHER_CANDLE_SKULL);
         addDrop(ModBlocks.DREAMCATCHER);
         addDrop(ModBlocks.RUSTIC_OVEN);
         addDrop(ModBlocks.SMALL_CAULDRON);
-        addDrop(ModBlocks.SILKWORM_COCOON);
+        addDrop(ModBlocks.SHELF);
+        addDrop(ModBlocks.CENSER);
+        addDrop(ModBlocks.MORTAR_AND_PESTLE);
+        addDrop(ModBlocks.NESTING_BLOCK);
         this.addDrop(ModBlocks.SILKWORM_COCOON, ModItems.SILKWORM);
+        this.addDrop(ModBlocks.EGG_CLUSTER, Items.STRING);
         addDrop(ModBlocks.SALT_BLOCK, LootTable.builder()
                 .pool(LootPool.builder()
                         .rolls(ConstantLootNumberProvider.create(1))
@@ -100,34 +117,34 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
                         )
                 )
         );
-        addDrop(ModBlocks.SHELF);
-        addDrop(ModBlocks.CENSER);
     }
 
     private void generateCrops() {
-        addDrop(ModBlocks.WILD_SUNFIRE_TOMATO);
         this.addDrop(ModBlocks.WILD_SUNFIRE_TOMATO, ModItems.SUNFIRE_TOMATO_SEEDS);
-        addDrop(ModBlocks.WILD_MANDRAKE);
         this.addDrop(ModBlocks.WILD_MANDRAKE, ModItems.MANDRAKE_SEEDS);
+
         BlockStatePropertyLootCondition.Builder builder2 = BlockStatePropertyLootCondition.builder(ModBlocks.MANDRAKE_CROP)
                 .properties(StatePredicate.Builder.create().exactMatch(MandrakeCropBlock.AGE, 3));
         this.addDrop(ModBlocks.MANDRAKE_CROP, this.cropDrops(ModBlocks.MANDRAKE_CROP, ModItems.MANDRAKE, ModItems.MANDRAKE_SEEDS, builder2));
+
         BlockStatePropertyLootCondition.Builder builder3 = BlockStatePropertyLootCondition.builder(ModBlocks.SUNFIRE_TOMATO_CROP)
                 .properties(StatePredicate.Builder.create().exactMatch(SunfireTomatoCropBlock.AGE, 3));
         this.addDrop(ModBlocks.SUNFIRE_TOMATO_CROP, this.cropDrops(ModBlocks.SUNFIRE_TOMATO_CROP, ModItems.SUNFIRE_TOMATO, ModItems.SUNFIRE_TOMATO_SEEDS, builder3));
+
         BlockStatePropertyLootCondition.Builder builder4 = BlockStatePropertyLootCondition.builder(ModBlocks.RABBAGE_CROP)
                 .properties(StatePredicate.Builder.create().exactMatch(RabbageCropBlock.AGE, 3));
         this.addDrop(ModBlocks.RABBAGE_CROP, this.cropDrops(ModBlocks.RABBAGE_CROP, ModItems.RABBAGE, ModItems.RABBAGE_SEEDS, builder4));
+
         BlockStatePropertyLootCondition.Builder builder5 = BlockStatePropertyLootCondition.builder(ModBlocks.SALTSPROUT)
-                .properties(StatePredicate.Builder.create().exactMatch(RabbageCropBlock.AGE, 3));
+                .properties(StatePredicate.Builder.create().exactMatch(SaltsproutBlock.AGE, 2));
         this.addDrop(ModBlocks.SALTSPROUT, this.createSimpleCropBlock(ModBlocks.SALTSPROUT, ModItems.SALTSPROUT, builder5));
+
         this.addDrop(ModBlocks.CHILLBERRY_BUSH, createHarvestablePlantBlock(
                 ModBlocks.CHILLBERRY_BUSH, ModItems.CHILLBERRIES,
                 ChillberryBushBlock.AGE, 3, 2.0F, 3.0F));
     }
 
     private void generateTreeBlocks() {
-        // Cottonwood
         addDrop(ModBlocks.COTTONWOOD_LEAVES, leavesDrops(ModBlocks.COTTONWOOD_LEAVES, ModBlocks.COTTONWOOD_SAPLING, SAPLING_DROP_CHANCE));
         addDrop(ModBlocks.COTTONWOOD_LOG);
         addDrop(ModBlocks.COTTONWOOD_WOOD);
@@ -144,6 +161,10 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.COTTONWOOD_FENCE_GATE);
         addDrop(ModBlocks.COTTONWOOD_TRAPDOOR);
         addDrop(ModBlocks.COTTONWOOD_DOOR, doorDrops(ModBlocks.COTTONWOOD_DOOR));
+        addDrop(ModBlocks.COTTONWOOD_SIGN, ModBlocks.COTTONWOOD_SIGN.asItem());
+        addDrop(ModBlocks.COTTONWOOD_WALL_SIGN, ModBlocks.COTTONWOOD_SIGN.asItem());
+        addDrop(ModBlocks.COTTONWOOD_HANGING_SIGN, ModBlocks.COTTONWOOD_HANGING_SIGN.asItem());
+        addDrop(ModBlocks.COTTONWOOD_HANGING_WALL_SIGN, ModBlocks.COTTONWOOD_HANGING_SIGN.asItem());
 
         addDrop(ModBlocks.WILLOW_LEAVES, leavesDrops(ModBlocks.WILLOW_LEAVES, ModBlocks.WILLOW_SAPLING, SAPLING_DROP_CHANCE));
         addDrop(ModBlocks.WILLOW_LOG);
@@ -161,6 +182,10 @@ public class ModBlockLootTableGenerator extends FabricBlockLootTableProvider {
         addDrop(ModBlocks.WILLOW_FENCE_GATE);
         addDrop(ModBlocks.WILLOW_TRAPDOOR);
         addDrop(ModBlocks.WILLOW_DOOR, doorDrops(ModBlocks.WILLOW_DOOR));
+        addDrop(ModBlocks.WILLOW_SIGN, ModBlocks.WILLOW_SIGN.asItem());
+        addDrop(ModBlocks.WILLOW_WALL_SIGN, ModBlocks.WILLOW_SIGN.asItem());
+        addDrop(ModBlocks.WILLOW_HANGING_SIGN, ModBlocks.WILLOW_HANGING_SIGN.asItem());
+        addDrop(ModBlocks.WILLOW_HANGING_WALL_SIGN, ModBlocks.WILLOW_HANGING_SIGN.asItem());
     }
 
     protected LootTable.Builder galeberriesDrop(Block drop) {

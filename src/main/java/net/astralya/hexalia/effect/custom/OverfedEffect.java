@@ -1,6 +1,5 @@
 package net.astralya.hexalia.effect.custom;
 
-import net.astralya.hexalia.mixin.accessors.ExhaustionAccessorMixin;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
@@ -20,7 +19,7 @@ public class OverfedEffect extends StatusEffect {
             boolean isPlayerHealing = player.getWorld().getGameRules().getBoolean(GameRules.NATURAL_REGENERATION)
                     && player.canFoodHeal() && hungerManager.getFoodLevel() >= 18;
             if (!isPlayerHealing){
-                float exhaustion = ((ExhaustionAccessorMixin) hungerManager).getExhaustion();
+                float exhaustion = hungerManager.getExhaustion();
                 float reduce = Math.min(exhaustion, 4f);
                 if (exhaustion > .0f) {
                     player.addExhaustion(-reduce);

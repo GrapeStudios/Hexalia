@@ -1,9 +1,11 @@
 {
   "replace": false,
   "values": [
-    "hexalia:dreamshroom",
-    "hexalia:siren_kelp",
     "hexalia:spirit_bloom",
-    "hexalia:ghost_fern"
+    "hexalia:siren_kelp",
+    "hexalia:dreamshroom",
+    "hexalia:ghost_fern",
+    "hexalia:witchweed",
+    "hexalia:celestial_bloom"
   ]
 }

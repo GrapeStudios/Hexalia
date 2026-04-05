@@ -1,8 +1,8 @@
 package net.astralya.hexalia.block.custom;
 
 import net.astralya.hexalia.block.entity.custom.AstrylisBlockEntity;
-import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.item.ModItems;
+import net.astralya.hexalia.particle.ModParticleType;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -10,7 +10,6 @@ import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
@@ -23,77 +22,76 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 public class AstrylisBlock extends EnchantedPlantBlock implements BlockEntityProvider {
-
     public AstrylisBlock(Settings settings) {
         super(settings);
     }
 
     @Override
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        if (world.isClient) {
-            BlockEntity blockEntity = world.getBlockEntity(pos);
-            if (blockEntity instanceof AstrylisBlockEntity astrylisBlockEntity && astrylisBlockEntity.isActive()) {
-                for (int i = 0; i < 6; i++) {
-                    double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.3;
-                    double y = pos.getY() + 0.7 + random.nextDouble() * 0.3;
-                    double z = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 0.3;
-                    world.addParticle(ParticleTypes.EFFECT, x, y, z, 0, 0.01, 0);
-                }
+        if (!world.isClient) {
+            return;
+        }
+
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (blockEntity instanceof AstrylisBlockEntity astrylis && astrylis.isActive()) {
+            float progress = astrylis.getProgress();
+            int particleCount = Math.max(2, (int) (6 * (1.0f - progress * 0.5f)));
+
+            for (int i = 0; i < particleCount; i++) {
+                double x = pos.getX() + 0.5 + (random.nextDouble() - 0.5) * 0.3;
+                double y = pos.getY() + 0.7 + random.nextDouble() * 0.3;
+                double z = pos.getZ() + 0.5 + (random.nextDouble() - 0.5) * 0.3;
+                world.addParticle(ModParticleType.SPARKLE, x, y, z, 0.0, 0.01, 0.0);
             }
         }
     }
 
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ItemStack stack = player.getStackInHand(hand);
-        BlockEntity be = world.getBlockEntity(pos);
-        if (!(be instanceof AstrylisBlockEntity astrylis)) {
+        ItemStack itemStack = player.getStackInHand(hand);
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+
+        if (!(blockEntity instanceof AstrylisBlockEntity astrylis)) {
             return ActionResult.PASS;
         }
 
-        if (stack.isEmpty()) {
-            if (!astrylis.isActive()) {
-                if (!world.isClient) {
-                    player.sendMessage(Text.translatable("message.hexalia.astrylis.inactive"), true);
-                }
+        if (itemStack.isEmpty()) {
+            if (!astrylis.isActive() && !world.isClient) {
+                player.sendMessage(Text.translatable("message.hexalia.astrylis.inactive"), true);
             }
-            return ActionResult.SUCCESS;
+            return ActionResult.success(world.isClient);
         }
 
-        if (stack.getItem() == ModItems.CELESTIAL_CRYSTAL) {
-            if (!astrylis.isActive()) {
-                if (!world.isClient) {
-                    astrylis.activate(world.getTime());
-                    world.playSound(null, pos, SoundEvents.BLOCK_AMETHYST_BLOCK_HIT, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                    if (!player.isCreative()) {
-                        stack.decrement(1);
-                    }
-                    player.sendMessage(Text.translatable("message.hexalia.astrylis.activation"), true);
+        if (itemStack.isOf(ModItems.CELESTIAL_CRYSTAL) && !astrylis.isActive()) {
+            if (!world.isClient) {
+                astrylis.activate(world.getTime());
+                world.playSound(null, pos, SoundEvents.BLOCK_AMETHYST_BLOCK_HIT, SoundCategory.BLOCKS, 1.0f, 1.0f);
+                if (!player.isCreative()) {
+                    itemStack.decrement(1);
                 }
-                return ActionResult.SUCCESS;
+                player.sendMessage(Text.translatable("message.hexalia.astrylis.activation"), true);
             }
+            return ActionResult.success(world.isClient);
         }
 
         return ActionResult.PASS;
     }
 
-
-    @Nullable
     @Override
-    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+    public @Nullable BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
         return new AstrylisBlockEntity(pos, state);
     }
 
-    @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+    public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
         if (world.isClient) {
             return null;
         }
-        return type == ModBlockEntityTypes.ASTRYLIS ? (world1, pos, state1, blockEntity) -> {
-            if (blockEntity instanceof AstrylisBlockEntity astrylisBlockEntity) {
-                AstrylisBlockEntity.tick(world1, pos, state1, astrylisBlockEntity);
+
+        return (tickWorld, tickPos, tickState, blockEntity) -> {
+            if (blockEntity instanceof AstrylisBlockEntity astrylis) {
+                AstrylisBlockEntity.tick(tickWorld, tickPos, tickState, astrylis);
             }
-        } : null;
+        };
     }
 }

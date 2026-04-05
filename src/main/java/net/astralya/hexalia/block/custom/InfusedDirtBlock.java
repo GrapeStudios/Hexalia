@@ -38,7 +38,7 @@ public class InfusedDirtBlock extends Block {
                 double x = pos.getX() + 0.5 + random.nextDouble(-0.5, 0.5);
                 double y = pos.getY() + 1.0;
                 double z = pos.getZ() + 0.5 + random.nextDouble(-0.5, 0.5);
-                world.addParticle(ModParticleType.INFUSED_BUBBLES, x, y, z, 0.0D, 0.05D, 0.0D);
+                world.addParticle(ModParticleType.INFUSED_BUBBLE, x, y, z, 0.0D, 0.05D, 0.0D);
             }
         }
     }

@@ -1,5 +1,8 @@
 package net.astralya.hexalia.compat.rei.small_cauldron;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.display.basic.BasicDisplay;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
@@ -8,39 +11,30 @@ import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.astralya.hexalia.recipe.SmallCauldronRecipe;
 import net.minecraft.recipe.Ingredient;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+public final class SmallCauldronDisplay extends BasicDisplay {
 
-public class SmallCauldronDisplay extends BasicDisplay {
-    private final EntryIngredient bottleSlot;
-
-    public SmallCauldronDisplay(List<EntryIngredient> inputs, List<EntryIngredient> outputs, EntryIngredient bottleSlot) {
+    public SmallCauldronDisplay(List<EntryIngredient> inputs, List<EntryIngredient> outputs) {
         super(inputs, outputs);
-        this.bottleSlot = bottleSlot;
     }
 
     public SmallCauldronDisplay(SmallCauldronRecipe recipe) {
-        super(getInputList(recipe), List.of(EntryIngredient.of(EntryStacks.of(recipe.getOutput(null)))));
-        this.bottleSlot = EntryIngredients.ofIngredient(recipe.getBottleSlot());
-    }
-
-    private static List<EntryIngredient> getInputList(SmallCauldronRecipe recipe) {
-        if (recipe == null) return Collections.emptyList();
-        List<EntryIngredient> list = new ArrayList<>();
-        for (Ingredient ingredient : recipe.getIngredients()) {
-            list.add(EntryIngredients.ofIngredient(ingredient));
-        }
-        list.add(EntryIngredients.ofIngredient(recipe.getBottleSlot()));
-        return list;
-    }
-
-    public EntryIngredient getBottleSlot() {
-        return bottleSlot;
+        super(getInputList(recipe), List.of(EntryIngredient.of(EntryStacks.of(recipe.getOutput(null).copy()))));
     }
 
     @Override
     public CategoryIdentifier<?> getCategoryIdentifier() {
         return SmallCauldronCategory.SMALL_CAULDRON;
+    }
+
+    private static List<EntryIngredient> getInputList(SmallCauldronRecipe recipe) {
+        if (recipe == null) {
+            return Collections.emptyList();
+        }
+
+        List<EntryIngredient> list = new ArrayList<>();
+        for (Ingredient ingredient : recipe.getIngredients()) {
+            list.add(EntryIngredients.ofIngredient(ingredient));
+        }
+        return list;
     }
 }

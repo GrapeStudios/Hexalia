@@ -3,10 +3,10 @@
   "category": "misc",
   "key": {
     "P": {
-      "item": "minecraft:stick"
+      "item": "minecraft:cobbled_deepslate_slab"
     },
     "S": {
-      "item": "minecraft:cobbled_deepslate_slab"
+      "item": "minecraft:stick"
     }
   },
   "pattern": [

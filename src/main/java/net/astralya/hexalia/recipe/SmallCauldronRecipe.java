@@ -2,90 +2,102 @@ package net.astralya.hexalia.recipe;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import net.astralya.hexalia.item.ModItems;
 import net.minecraft.inventory.SimpleInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.Recipe;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.recipe.RecipeType;
-import net.minecraft.recipe.ShapedRecipe;
 import net.minecraft.registry.DynamicRegistryManager;
+import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.JsonHelper;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.world.World;
 
-public class SmallCauldronRecipe implements Recipe<SimpleInventory> {
+public final class SmallCauldronRecipe implements Recipe<SimpleInventory> {
 
     private final Identifier id;
+    private final DefaultedList<Ingredient> ingredients;
     private final ItemStack output;
-    private final DefaultedList<Ingredient> recipeItems;
-    private final Ingredient bottleSlot;
-    private final int brewTime;
     private final float experience;
+    private final int brewTime;
 
-    public SmallCauldronRecipe(Identifier id, ItemStack output, DefaultedList<Ingredient> recipeItems,
-                               Ingredient bottleSlot, int brewTime, float experience) {
+    public SmallCauldronRecipe(Identifier id, DefaultedList<Ingredient> ingredients, ItemStack output, float experience, int brewTime) {
         this.id = id;
+        this.ingredients = ingredients;
         this.output = output;
-        this.recipeItems = recipeItems;
-        this.bottleSlot = bottleSlot;
-        this.brewTime = brewTime;
         this.experience = experience;
+        this.brewTime = brewTime;
     }
 
     @Override
     public boolean matches(SimpleInventory inventory, World world) {
-        if (world.isClient) return false;
+        if (world.isClient) {
+            return false;
+        }
 
-        boolean[] slotsMatched = new boolean[inventory.size()];
-        for (Ingredient ingredient : recipeItems) {
+        int inputCount = 0;
+        for (int i = 0; i < inventory.size(); i++) {
+            if (!inventory.getStack(i).isEmpty()) {
+                inputCount++;
+            }
+        }
+
+        if (inputCount != ingredients.size()) {
+            return false;
+        }
+
+        boolean[] used = new boolean[inventory.size()];
+
+        for (Ingredient ingredient : ingredients) {
             boolean found = false;
+
             for (int i = 0; i < inventory.size(); i++) {
-                if (slotsMatched[i]) continue;
-                if (ingredient.test(inventory.getStack(i))) {
-                    slotsMatched[i] = true;
+                if (!used[i] && ingredient.test(inventory.getStack(i))) {
+                    used[i] = true;
                     found = true;
                     break;
                 }
             }
-            if (!found) return false;
+
+            if (!found) {
+                return false;
+            }
         }
 
-        return bottleSlot.test(inventory.getStack(inventory.size() - 1));
+        return true;
     }
 
     @Override
-    public ItemStack craft(SimpleInventory inventory, DynamicRegistryManager manager) {
+    public ItemStack craft(SimpleInventory inventory, DynamicRegistryManager registryManager) {
         return output.copy();
     }
 
     @Override
     public boolean fits(int width, int height) {
-        return true;
+        return width * height >= ingredients.size();
     }
 
     @Override
-    public ItemStack getOutput(DynamicRegistryManager manager) {
+    public ItemStack getOutput(DynamicRegistryManager registryManager) {
         return output.copy();
     }
 
     @Override
     public DefaultedList<Ingredient> getIngredients() {
-        return recipeItems;
-    }
-
-    public Ingredient getBottleSlot() {
-        return bottleSlot;
-    }
-
-    public int getBrewTime() {
-        return brewTime;
+        return ingredients;
     }
 
     public float getExperience() {
         return experience;
+    }
+
+    public int getBrewTime() {
+        return brewTime;
     }
 
     @Override
@@ -103,44 +115,63 @@ public class SmallCauldronRecipe implements Recipe<SimpleInventory> {
         return ModRecipes.SMALL_CAULDRON_TYPE;
     }
 
+    @Override
+    public ItemStack createIcon() {
+        return new ItemStack(ModItems.SMALL_CAULDRON);
+    }
+
     public static class Serializer implements RecipeSerializer<SmallCauldronRecipe> {
+
         @Override
         public SmallCauldronRecipe read(Identifier id, JsonObject json) {
-            ItemStack output = ShapedRecipe.outputFromJson(JsonHelper.getObject(json, "output"));
-            JsonArray ingredients = JsonHelper.getArray(json, "ingredients");
-            DefaultedList<Ingredient> inputs = DefaultedList.ofSize(ingredients.size(), Ingredient.EMPTY);
-            for (int i = 0; i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
+            JsonArray ingredientsArray = JsonHelper.getArray(json, "ingredients");
+            DefaultedList<Ingredient> ingredients = DefaultedList.ofSize(ingredientsArray.size(), Ingredient.EMPTY);
+
+            for (int i = 0; i < ingredientsArray.size(); i++) {
+                ingredients.set(i, Ingredient.fromJson(ingredientsArray.get(i)));
             }
-            Ingredient bottleSlot = Ingredient.fromJson(JsonHelper.getObject(json, "bottle_slot"));
-            int brewTime = JsonHelper.getInt(json, "brew_time", 175);
-            float experience = JsonHelper.getFloat(json, "experience", 5.0f);
-            return new SmallCauldronRecipe(id, output, inputs, bottleSlot, brewTime, experience);
+
+            ItemStack output = outputFromJson(JsonHelper.getObject(json, "result"));
+            float experience = JsonHelper.getFloat(json, "experience", 0.0F);
+            int brewTime = JsonHelper.getInt(json, "brewtime", 200);
+
+            return new SmallCauldronRecipe(id, ingredients, output, experience, brewTime);
         }
 
         @Override
         public SmallCauldronRecipe read(Identifier id, PacketByteBuf buf) {
-            DefaultedList<Ingredient> inputs = DefaultedList.ofSize(buf.readInt(), Ingredient.EMPTY);
-            for (int i = 0; i < inputs.size(); i++) {
-                inputs.set(i, Ingredient.fromPacket(buf));
+            int size = buf.readVarInt();
+            DefaultedList<Ingredient> ingredients = DefaultedList.ofSize(size, Ingredient.EMPTY);
+
+            for (int i = 0; i < size; i++) {
+                ingredients.set(i, Ingredient.fromPacket(buf));
             }
+
             ItemStack output = buf.readItemStack();
-            Ingredient bottleSlot = Ingredient.fromPacket(buf);
-            int brewTime = buf.readInt();
             float experience = buf.readFloat();
-            return new SmallCauldronRecipe(id, output, inputs, bottleSlot, brewTime, experience);
+            int brewTime = buf.readVarInt();
+
+            return new SmallCauldronRecipe(id, ingredients, output, experience, brewTime);
         }
 
         @Override
         public void write(PacketByteBuf buf, SmallCauldronRecipe recipe) {
-            buf.writeInt(recipe.getIngredients().size());
-            for (Ingredient ing : recipe.getIngredients()) {
-                ing.write(buf);
+            buf.writeVarInt(recipe.ingredients.size());
+
+            for (Ingredient ingredient : recipe.ingredients) {
+                ingredient.write(buf);
             }
+
             buf.writeItemStack(recipe.output.copy());
-            recipe.getBottleSlot().write(buf);
-            buf.writeInt(recipe.brewTime);
             buf.writeFloat(recipe.experience);
+            buf.writeVarInt(recipe.brewTime);
+        }
+
+        private static ItemStack outputFromJson(JsonObject json) {
+            String itemId = JsonHelper.getString(json, "item");
+            Item item = Registries.ITEM.get(new Identifier(itemId));
+            int count = JsonHelper.getInt(json, "count", 1);
+            return new ItemStack(item, count);
         }
     }
 }

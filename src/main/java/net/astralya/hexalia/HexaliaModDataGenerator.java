@@ -1,5 +1,6 @@
 package net.astralya.hexalia;
 
+import net.astralya.hexalia.datagen.ModBlockLootTableGenerator;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.astralya.hexalia.datagen.*;
@@ -21,6 +22,7 @@ public class HexaliaModDataGenerator implements DataGeneratorEntrypoint {
 		pack.addProvider(ModWorldGenerator::new);
 		pack.addProvider(ModAdvancementsProvider::new);
         pack.addProvider(ModBiomeTagsProvider::new);
+        pack.addProvider(ModEntityTypeTagProvider::new);
 	}
 
 	@Override

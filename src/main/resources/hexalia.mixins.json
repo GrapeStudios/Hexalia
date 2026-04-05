@@ -1,18 +1,24 @@
 {
   "required": true,
   "package": "net.astralya.hexalia.mixin",
-  "compatibilityLevel": "JAVA_17",
+  "compatibilityLevel": "JAVA_21",
   "mixins": [
     "CobwebMixin",
-    "ExperienceMixin",
     "CropBlockMixin",
-    "StemBlockMixin",
+    "ExperienceOrbMixin",
+    "ExplosionMixin",
     "LivingEntityMixin",
     "MobMixin",
-    "SugarCanePlantingMixin",
-    "accessors.ExhaustionAccessorMixin"
+    "PlayerTickMixin",
+    "ServerLevelMixin",
+    "ServerPlayerMixin",
+    "StemBlockMixin",
+    "SugarCaneBlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1
-	}
+  },
+  "client": [
+    "client.ClientPlayerMixin"
+	]
 }

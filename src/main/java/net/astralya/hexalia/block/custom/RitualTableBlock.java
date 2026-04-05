@@ -11,6 +11,7 @@ import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.BlockWithEntity;
 import net.minecraft.block.CropBlock;
+import net.minecraft.block.HorizontalFacingBlock;
 import net.minecraft.block.ShapeContext;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
@@ -22,11 +23,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.DirectionProperty;
-import net.minecraft.state.property.Properties;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
@@ -38,7 +39,6 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraft.server.world.ServerWorld;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -46,14 +46,13 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class RitualTableBlock extends BlockWithEntity {
-
-    public static final DirectionProperty FACING = Properties.HORIZONTAL_FACING;
+    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
 
     private static final VoxelShape SHAPE = VoxelShapes.union(
-            VoxelShapes.cuboid(0.1875, 0,      0.1875, 0.8125, 0.125,  0.8125),
-            VoxelShapes.cuboid(0.25,   0.125,  0.25,   0.75,   0.625,  0.75),
-            VoxelShapes.cuboid(0.1875, 0.625,  0.1875, 0.8125, 0.6875, 0.8125),
-            VoxelShapes.cuboid(0.125,  0.6875, 0.125,  0.875,  0.8125, 0.875)
+            VoxelShapes.cuboid(0.1875, 0.0, 0.1875, 0.8125, 0.125, 0.8125),
+            VoxelShapes.cuboid(0.25, 0.125, 0.25, 0.75, 0.625, 0.75),
+            VoxelShapes.cuboid(0.1875, 0.625, 0.1875, 0.8125, 0.6875, 0.8125),
+            VoxelShapes.cuboid(0.125, 0.6875, 0.125, 0.875, 0.8125, 0.875)
     );
 
     public RitualTableBlock(Settings settings) {
@@ -88,14 +87,14 @@ public class RitualTableBlock extends BlockWithEntity {
 
     @Override
     public @Nullable <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
-        return world.isClient ? null : checkType(type, ModBlockEntityTypes.RITUAL_TABLE, RitualTableBlockEntity::tick);
+        return world.isClient ? null : checkType(type, ModBlockEntityTypes.RITUAL_TABLE, RitualTableBlockEntity::serverTick);
     }
 
     @Override
     public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
-        if (state.getBlock() != newState.getBlock()) {
-            BlockEntity be = world.getBlockEntity(pos);
-            if (be instanceof RitualTableBlockEntity table) {
+        if (!state.isOf(newState.getBlock())) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof RitualTableBlockEntity table) {
                 ItemScatterer.spawn(world, pos, table);
                 world.updateComparators(pos, this);
             }
@@ -104,15 +103,19 @@ public class RitualTableBlock extends BlockWithEntity {
     }
 
     @Override
-    public ActionResult onUse(BlockState state, World world, BlockPos pos,
-                              PlayerEntity player, Hand hand, BlockHitResult hit) {
-        if (hand != Hand.MAIN_HAND) return ActionResult.PASS;
+    public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
+        if (hand != Hand.MAIN_HAND) {
+            return ActionResult.PASS;
+        }
+
+        BlockEntity blockEntity = world.getBlockEntity(pos);
+        if (!(blockEntity instanceof RitualTableBlockEntity tableBE)) {
+            return ActionResult.PASS;
+        }
 
         ItemStack stack = player.getStackInHand(hand);
-        BlockEntity be = world.getBlockEntity(pos);
-        if (!(be instanceof RitualTableBlockEntity tableBE)) return ActionResult.PASS;
 
-        if (stack.isOf(ModItems.HEX_FOCUS) && tryStartRitual(world, pos, player, tableBE, stack)) {
+        if (stack.isOf(ModItems.HEX_FOCUS) && tryStartRitual(world, pos, player, tableBE)) {
             return ActionResult.SUCCESS;
         }
 
@@ -129,154 +132,175 @@ public class RitualTableBlock extends BlockWithEntity {
         return ActionResult.PASS;
     }
 
-    private boolean tryStartRitual(World world, BlockPos pos, PlayerEntity player,
-                                   RitualTableBlockEntity tableBE, ItemStack held) {
+    private boolean tryStartRitual(World world, BlockPos pos, PlayerEntity player, RitualTableBlockEntity tableBE) {
         ItemStack tableItem = tableBE.getStack(0);
+        if (tableItem.isEmpty()) {
+            fail(world, pos, player, "message.hexalia.ritual.missing_ingredients");
+            return true;
+        }
 
-        BlockPos[] offsets = { pos.north(2), pos.south(2), pos.east(2), pos.west(2) };
+        BlockPos[] offsets = {pos.north(2), pos.south(2), pos.east(2), pos.west(2)};
         List<RitualBrazierBlockEntity> filledBraziers = new ArrayList<>();
 
-        for (BlockPos bp : offsets) {
-            BlockEntity be = world.getBlockEntity(bp);
-            if (be instanceof RitualBrazierBlockEntity brazier && !brazier.isEmpty()) {
+        for (BlockPos brazierPos : offsets) {
+            BlockEntity blockEntity = world.getBlockEntity(brazierPos);
+            if (blockEntity instanceof RitualBrazierBlockEntity brazier && !brazier.getStoredItem().isEmpty()) {
                 filledBraziers.add(brazier);
             }
         }
 
         MatchResult match = findMatchingRecipe(world, tableItem, filledBraziers);
         if (match == null) {
-            failWithMessage(world, pos, player, "message.hexalia.ritual.wrong_recipe");
+            fail(world, pos, player, "message.hexalia.ritual.wrong_recipe");
             return true;
         }
 
         for (RitualBrazierBlockEntity brazier : match.usedBraziers) {
-            BlockState bs = world.getBlockState(brazier.getPos());
-            if (bs.contains(RitualBrazierBlock.SALTED) && !bs.get(RitualBrazierBlock.SALTED)) {
-                failWithMessage(world, pos, player, "message.hexalia.ritual.missing_salt");
+            BlockState brazierState = world.getBlockState(brazier.getPos());
+            if (!brazierState.contains(RitualBrazierBlock.SALTED) || !brazierState.get(RitualBrazierBlock.SALTED)) {
+                fail(world, pos, player, "message.hexalia.ritual.missing_salt");
                 return true;
             }
         }
 
         List<BlockPos> grownCrops = findFullyGrownCrops(world, pos, 8, 8);
         if (grownCrops.size() < 8) {
-            failWithMessage(world, pos, player, "message.hexalia.ritual.invalid_crops");
+            fail(world, pos, player, "message.hexalia.ritual.invalid_crops");
             return true;
         }
 
         int duration = match.usedBraziers.size() * 40;
-        tableBE.startTransformation(match.recipe.getOutput(world.getRegistryManager()).copy(),
-                duration, match.usedBraziers);
+        tableBE.startTransformation(match.recipe.getOutput(world.getRegistryManager()).copy(), duration, match.usedBraziers);
         tableBE.setGrownCropPositions(grownCrops);
 
         for (RitualBrazierBlockEntity brazier : match.usedBraziers) {
-            BlockPos bp = brazier.getPos();
-            BlockState bs = world.getBlockState(bp);
-            if (bs.contains(RitualBrazierBlock.SALTED) && bs.get(RitualBrazierBlock.SALTED)) {
-                world.setBlockState(bp, bs.with(RitualBrazierBlock.SALTED, false), 3);
+            BlockPos brazierPos = brazier.getPos();
+            BlockState brazierState = world.getBlockState(brazierPos);
+            if (brazierState.contains(RitualBrazierBlock.SALTED) && brazierState.get(RitualBrazierBlock.SALTED)) {
+                world.setBlockState(brazierPos, brazierState.with(RitualBrazierBlock.SALTED, false), Block.NOTIFY_ALL);
             }
         }
 
-        playInteractionSound(world, pos);
-        spawnParticles(world, pos, ParticleTypes.POOF, 5, 10);
+        play(world, pos);
+        puff(world, pos, ParticleTypes.POOF, 5, 10);
         return true;
     }
 
-    private @Nullable MatchResult findMatchingRecipe(World world, ItemStack tableItem,
-                                                     List<RitualBrazierBlockEntity> availableBraziers) {
-        SimpleInventory inv = new SimpleInventory(RitualTableRecipe.INPUT_SLOTS);
-        inv.setStack(0, tableItem.copy());
+    private @Nullable MatchResult findMatchingRecipe(World world, ItemStack tableItem, List<RitualBrazierBlockEntity> availableBraziers) {
+        SimpleInventory inventory = new SimpleInventory(RitualTableRecipe.INPUT_SLOTS);
+        inventory.setStack(0, tableItem.copy());
 
-        List<RitualTableRecipe> candidates =
-                world.getRecipeManager().getAllMatches(ModRecipes.RITUAL_TABLE_TYPE, inv, world);
+        List<RitualTableRecipe> candidates = world.getRecipeManager().getAllMatches(ModRecipes.RITUAL_TABLE_TYPE, inventory, world);
 
         for (RitualTableRecipe recipe : candidates) {
-            var ings = recipe.getIngredients();
-            if (ings.isEmpty() || !ings.get(0).test(tableItem)) continue;
+            List<Ingredient> ingredients = recipe.getIngredients();
+            if (ingredients.isEmpty() || !ingredients.get(0).test(tableItem)) {
+                continue;
+            }
 
-            List<Ingredient> needed = ings.subList(1, ings.size());
             List<RitualBrazierBlockEntity> pool = new ArrayList<>(availableBraziers);
             List<RitualBrazierBlockEntity> used = new ArrayList<>();
+            boolean matches = true;
 
-            boolean ok = true;
-            for (Ingredient ing : needed) {
-                int idx = -1;
+            for (Ingredient ingredient : ingredients.subList(1, ingredients.size())) {
+                int index = -1;
                 for (int i = 0; i < pool.size(); i++) {
-                    if (ing.test(pool.get(i).getStoredItem())) {
-                        idx = i;
+                    if (ingredient.test(pool.get(i).getStoredItem())) {
+                        index = i;
                         break;
                     }
                 }
-                if (idx == -1) { ok = false; break; }
-                used.add(pool.remove(idx));
+
+                if (index == -1) {
+                    matches = false;
+                    break;
+                }
+
+                used.add(pool.remove(index));
             }
 
-            if (ok) {
+            if (matches) {
                 return new MatchResult(recipe, used);
             }
         }
-        return null;
-    }
 
-    private void failWithMessage(World world, BlockPos pos, PlayerEntity player, String key) {
-        spawnParticles(world, pos, ParticleTypes.SMOKE, 8, 12);
-        if (!world.isClient) player.sendMessage(Text.translatable(key), true);
+        return null;
     }
 
     private List<BlockPos> findFullyGrownCrops(World world, BlockPos center, int requiredCount, int radius) {
         List<BlockPos> found = new ArrayList<>();
+
         for (int dx = -radius; dx <= radius; dx++) {
             for (int dz = -radius; dz <= radius; dz++) {
-                BlockPos check = center.add(dx, 0, dz);
-                BlockState st = world.getBlockState(check);
-                if (st.getBlock() instanceof CropBlock crop && crop.isMature(st)) {
-                    found.add(check);
-                    if (found.size() >= requiredCount) return found;
+                BlockPos checkPos = center.add(dx, 0, dz);
+                BlockState state = world.getBlockState(checkPos);
+                if (state.getBlock() instanceof CropBlock crop && crop.isMature(state)) {
+                    found.add(checkPos);
+                    if (found.size() >= requiredCount) {
+                        return found;
+                    }
                 }
             }
         }
+
         return found;
     }
 
-    private void addItemToBlock(ItemStack stack, World world, BlockPos pos,
-                                PlayerEntity player, RitualTableBlockEntity table) {
-        table.setStack(0, stack);
-        if (!player.getAbilities().creativeMode) stack.decrement(1);
-        playInteractionSound(world, pos);
+    private void addItemToBlock(ItemStack stack, World world, BlockPos pos, PlayerEntity player, RitualTableBlockEntity table) {
+        ItemStack single = stack.copy();
+        single.setCount(1);
+        table.setStack(0, single);
+
+        if (!player.getAbilities().creativeMode) {
+            stack.decrement(1);
+        }
+
+        play(world, pos);
     }
 
-    private void removeItemFromBlock(World world, BlockPos pos,
-                                     PlayerEntity player, RitualTableBlockEntity table) {
+    private void removeItemFromBlock(World world, BlockPos pos, PlayerEntity player, RitualTableBlockEntity table) {
         ItemStack onTable = table.getStack(0);
+
         if (!player.getAbilities().creativeMode) {
             player.setStackInHand(Hand.MAIN_HAND, onTable);
         }
+
         table.clear();
-        playInteractionSound(world, pos);
+        play(world, pos);
     }
 
-    private void spawnParticles(World world, BlockPos pos, DefaultParticleType type, int min, int max) {
-        if (world instanceof ServerWorld server) {
+    private void fail(World world, BlockPos pos, PlayerEntity player, String key) {
+        puff(world, pos, ParticleTypes.SMOKE, 8, 12);
+        if (!world.isClient) {
+            player.sendMessage(Text.translatable(key), true);
+        }
+        world.playSound(null, pos, SoundEvents.BLOCK_CANDLE_EXTINGUISH, SoundCategory.BLOCKS, 0.4f, 0.6f);
+    }
+
+    private void puff(World world, BlockPos pos, DefaultParticleType type, int min, int max) {
+        if (world instanceof ServerWorld serverWorld) {
             int count = ThreadLocalRandom.current().nextInt(min, max);
             for (int i = 0; i < count; i++) {
                 double x = pos.getX() + 0.5 + ThreadLocalRandom.current().nextDouble(-0.5, 0.5);
                 double y = pos.getY() + 1.0 + ThreadLocalRandom.current().nextDouble(0.0, 0.5);
                 double z = pos.getZ() + 0.5 + ThreadLocalRandom.current().nextDouble(-0.5, 0.5);
-                server.spawnParticles(type, x, y, z, 1, 0.0, 0.0, 0.0, 0.0);
+                serverWorld.spawnParticles(type, x, y, z, 1, 0.0, 0.0, 0.0, 0.0);
             }
         }
+    }
+
+    private void play(World world, BlockPos pos) {
+        world.playSound(null, pos, SoundEvents.BLOCK_CHISELED_BOOKSHELF_PICKUP_ENCHANTED, SoundCategory.BLOCKS, 0.8f, 0.5f);
+        world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8f, 0.5f);
     }
 
     private static final class MatchResult {
         final RitualTableRecipe recipe;
         final List<RitualBrazierBlockEntity> usedBraziers;
+
         MatchResult(RitualTableRecipe recipe, List<RitualBrazierBlockEntity> usedBraziers) {
             this.recipe = recipe;
             this.usedBraziers = usedBraziers;
         }
-    }
-
-    private void playInteractionSound(World world, BlockPos pos) {
-        world.playSound(null, pos, SoundEvents.BLOCK_CHISELED_BOOKSHELF_PICKUP_ENCHANTED, SoundCategory.BLOCKS, 0.8f, 0.5f);
-        world.playSound(null, pos, SoundEvents.ENTITY_ITEM_PICKUP, SoundCategory.BLOCKS, 0.8f, 0.5f);
     }
 }

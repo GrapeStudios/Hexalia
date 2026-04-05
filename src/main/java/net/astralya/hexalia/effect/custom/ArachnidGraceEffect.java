@@ -3,11 +3,11 @@ package net.astralya.hexalia.effect.custom;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.util.math.Vec3d;
 
 public class ArachnidGraceEffect extends StatusEffect {
-    private static final double CLIMB_SPEED = 0.2;
 
     public ArachnidGraceEffect(StatusEffectCategory category, int color) {
         super(category, color);
@@ -16,16 +16,22 @@ public class ArachnidGraceEffect extends StatusEffect {
     @Override
     public void applyUpdateEffect(LivingEntity entity, int amplifier) {
         if (entity.horizontalCollision && !entity.isSneaking()) {
-            Vec3d motion = entity.getVelocity();
-            if (motion.y <= CLIMB_SPEED) {
-                entity.setVelocity(motion.x, CLIMB_SPEED, motion.z);
-                entity.fallDistance = 0.0F;
-            }
+            Vec3d initialVec = entity.getVelocity();
+            Vec3d climbVec = new Vec3d(initialVec.x, 0.2D, initialVec.z);
+            entity.setVelocity(climbVec.multiply(0.96D));
+            return;
         }
 
         if (entity.hasStatusEffect(StatusEffects.POISON)) {
             entity.removeStatusEffect(StatusEffects.POISON);
+            return;
         }
+
+        if (entity.isTouchingWaterOrRain() || entity.isSubmergedInWater()) {
+            entity.addStatusEffect(new StatusEffectInstance(StatusEffects.WEAKNESS, 40, 0, false, true, true));
+        }
+
+        super.applyUpdateEffect(entity, amplifier);
     }
 
     @Override
