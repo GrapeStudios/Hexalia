@@ -1,4 +1,4 @@
-package net.astralya.hexalia.effect.cloud;
+package net.astralya.hexalia.gameplay.cloud;
 
 import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.EntityType;

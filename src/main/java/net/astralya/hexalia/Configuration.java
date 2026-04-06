@@ -126,6 +126,9 @@ public final class Configuration implements ConfigData {
     @ConfigEntry.Category("plants")
     public boolean celestialBloomEmitsParticles = true;
 
+    @ConfigEntry.Category("plants")
+    public boolean dreamshroomEmitsParticles = true;
+
     public static void register() {
         AutoConfig.register(Configuration.class, GsonConfigSerializer::new);
         INSTANCE = AutoConfig.getConfigHolder(Configuration.class).getConfig();
@@ -165,6 +168,7 @@ public final class Configuration implements ConfigData {
     public static DoubleValue LOURDES_EFFECT_RADIUS = () -> get().lourdesEffectRadius;
     public static BooleanValue GHOST_FERN_EMITS_PARTICLES = () -> get().ghostFernEmitsParticles;
     public static BooleanValue CELESTIAL_BLOOM_EMITS_PARTICLES = () -> get().celestialBloomEmitsParticles;
+    public static BooleanValue DREAMSHROOM_EMITS_PARTICLES = () -> get().dreamshroomEmitsParticles;
 
     @FunctionalInterface
     public interface IntValue {

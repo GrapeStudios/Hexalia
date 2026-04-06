@@ -12,23 +12,31 @@ import net.minecraft.util.math.MathHelper;
 public class GhostParticle extends SpriteBillboardParticle {
 
     private final SpriteProvider spriteProvider;
-    private final double swayOffset;
+    private final double orbitOffset;
     private final float baseSize;
+    private final double centerX;
+    private final double centerZ;
+    private final double orbitRadius;
+    private final double upwardDrift;
 
     protected GhostParticle(ClientWorld world, double x, double y, double z,
                             double velocityX, double velocityY, double velocityZ,
                             SpriteProvider spriteProvider) {
         super(world, x, y, z, velocityX, velocityY, velocityZ);
         this.spriteProvider = spriteProvider;
-        this.swayOffset = this.random.nextDouble() * Math.PI * 2.0;
-        this.velocityX = velocityX + (this.random.nextDouble() - 0.5) * 0.012;
-        this.velocityY = velocityY;
-        this.velocityZ = velocityZ + (this.random.nextDouble() - 0.5) * 0.012;
-        this.baseSize = 0.06f + this.random.nextFloat() * 0.04f;
+        this.orbitOffset = this.random.nextDouble() * Math.PI * 2.0;
+        this.centerX = x;
+        this.centerZ = z;
+        this.orbitRadius = 0.025 + this.random.nextDouble() * 0.03;
+        this.upwardDrift = 0.003 + this.random.nextDouble() * 0.002;
+        this.velocityX = 0.0;
+        this.velocityY = this.upwardDrift;
+        this.velocityZ = 0.0;
+        this.baseSize = 0.05f + this.random.nextFloat() * 0.03f;
         this.scale = this.baseSize;
-        this.maxAge = 70 + this.random.nextInt(30);
+        this.maxAge = 50 + this.random.nextInt(20);
         this.gravityStrength = 0.0f;
-        this.velocityMultiplier = 0.98f;
+        this.velocityMultiplier = 0.92f;
         this.collidesWithWorld = false;
         this.alpha = 0.0f;
         this.setSpriteForAge(spriteProvider);
@@ -48,17 +56,19 @@ public class GhostParticle extends SpriteBillboardParticle {
         this.setSpriteForAge(this.spriteProvider);
 
         float lifeT = (float) this.age / (float) this.maxAge;
-
         this.alpha = lifeT < 0.2f
-                ? MathHelper.clamp(lifeT / 0.2f, 0.0f, 1.0f) * 0.55f
-                : lifeT > 0.7f
-                ? MathHelper.clamp((1.0f - lifeT) / 0.3f, 0.0f, 1.0f) * 0.55f
-                : 0.55f;
+                ? MathHelper.clamp(lifeT / 0.2f, 0.0f, 1.0f) * 0.35f
+                : lifeT > 0.75f
+                  ? MathHelper.clamp((1.0f - lifeT) / 0.25f, 0.0f, 1.0f) * 0.35f
+                  : 0.35f;
 
-        double sway = Math.sin((this.age + this.swayOffset) * 0.06) * 0.004;
-        this.velocityX += sway;
-        this.velocityZ += Math.cos((this.age + this.swayOffset) * 0.06) * 0.004;
-        this.velocityY *= 0.985;
+        double angle = this.orbitOffset + this.age * 0.08;
+        double targetX = this.centerX + Math.cos(angle) * this.orbitRadius;
+        double targetZ = this.centerZ + Math.sin(angle) * this.orbitRadius;
+
+        this.velocityX = (targetX - this.x) * 0.08;
+        this.velocityZ = (targetZ - this.z) * 0.08;
+        this.velocityY = this.upwardDrift;
 
         this.move(this.velocityX, this.velocityY, this.velocityZ);
     }
@@ -66,10 +76,10 @@ public class GhostParticle extends SpriteBillboardParticle {
     @Override
     public float getSize(float tickProgress) {
         float lifeT = ((float) this.age + tickProgress) / (float) this.maxAge;
-        float scale = lifeT < 0.5f
-                ? 1.0f + lifeT * 0.6f
-                : 1.3f - (lifeT - 0.5f) * 0.6f;
-        return this.baseSize * scale;
+        float scaleFactor = lifeT < 0.5f
+                ? 1.0f + lifeT * 0.2f
+                : 1.1f - (lifeT - 0.5f) * 0.2f;
+        return this.baseSize * scaleFactor;
     }
 
     @Override

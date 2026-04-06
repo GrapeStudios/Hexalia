@@ -11,7 +11,6 @@ public class ModSoundEvents {
     public static final SoundEvent MANDRAKE_SCREAM = registerSoundEvent("mandrake_scream");
     public static final SoundEvent RITUAL_SUCCESS = registerSoundEvent("ritual_success");
     public static final SoundEvent WIND_BURST = registerSoundEvent("wind_burst");
-    public static final SoundEvent WIND_DEFLECT = registerSoundEvent("wind_deflect");
     public static final SoundEvent SAC_IMPACT = registerSoundEvent("sac_impact");
     public static final SoundEvent CACOFEY_GIGGLE = registerSoundEvent("cacofey_giggle");
 

@@ -1,6 +1,7 @@
 package net.astralya.hexalia.effect.custom;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.attribute.AttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
@@ -16,13 +17,19 @@ public class BloodlustEffect extends StatusEffect {
     }
 
     @Override
-    public void applyUpdateEffect(LivingEntity entity, int amplifier) {
-        if (entity.hasStatusEffect(StatusEffects.REGENERATION)) {
-            entity.removeStatusEffect(StatusEffects.REGENERATION);
-            return;
-        }
+    public void onApplied(LivingEntity entity, AttributeContainer attributes, int amplifier) {
+        entity.removeStatusEffect(StatusEffects.REGENERATION);
+        super.onApplied(entity, attributes, amplifier);
+    }
 
-        super.applyUpdateEffect(entity, amplifier);
+    @Override
+    public boolean canApplyUpdateEffect(int duration, int amplifier) {
+        return true;
+    }
+
+    @Override
+    public void applyUpdateEffect(LivingEntity entity, int amplifier) {
+        entity.removeStatusEffect(StatusEffects.REGENERATION);
     }
 
     @Override

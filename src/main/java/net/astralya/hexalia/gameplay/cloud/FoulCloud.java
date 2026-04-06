@@ -1,16 +1,15 @@
-package net.astralya.hexalia.effect.cloud;
+package net.astralya.hexalia.gameplay.cloud;
 
-import net.astralya.hexalia.effect.ModMobEffects;
 import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.world.World;
 
-public class SearingCloud extends AreaEffectCloudEntity {
+public class FoulCloud extends AreaEffectCloudEntity {
 
     private static final float DAMAGE_PER_SECOND = 0.5F;
-    private static final int FIRE_SECONDS_PER_PULSE = 3;
     private static final int HOLD_SECONDS = 2;
 
     private final SacCloudHelper.HoldShrinkPlan holdPlan;
@@ -18,11 +17,12 @@ public class SearingCloud extends AreaEffectCloudEntity {
     private int ageTicks;
     private int tickCounter;
 
-    public SearingCloud(World world, double x, double y, double z, int durationSeconds) {
+    public FoulCloud(World world, double x, double y, double z, int durationSeconds) {
         super(EntityType.AREA_EFFECT_CLOUD, world);
         this.setPosition(x, y, z);
-        this.holdPlan = SacCloudHelper.configureWithHold(this, durationSeconds, HOLD_SECONDS, 3.0F, 0xE85A2A);
-        this.addEffect(new StatusEffectInstance(ModMobEffects.BLEEDING, 200, 0, false, true));
+        this.holdPlan = SacCloudHelper.configureWithHold(this, durationSeconds, HOLD_SECONDS, 3.0F, 0x6A9E3B);
+        this.addEffect(new StatusEffectInstance(StatusEffects.POISON, 200, 2, false, true));
+        this.addEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 200, 1, false, true));
     }
 
     @Override
@@ -38,15 +38,12 @@ public class SearingCloud extends AreaEffectCloudEntity {
         this.tickCounter++;
         if (this.tickCounter >= 20) {
             this.tickCounter = 0;
-            this.pulse();
+            this.pulseDamage();
         }
     }
 
-    private void pulse() {
-        SacCloudHelper.forEachLivingInRadius(this, target -> {
-            SacCloudHelper.damageMagic(this, target, DAMAGE_PER_SECOND);
-            target.setOnFireFor(FIRE_SECONDS_PER_PULSE);
-        });
+    private void pulseDamage() {
+        SacCloudHelper.forEachLivingInRadius(this, target -> SacCloudHelper.damageMagic(this, target, DAMAGE_PER_SECOND));
     }
 
     public void setCloudOwner(LivingEntity owner) {

@@ -2,6 +2,7 @@ package net.astralya.hexalia.block.entity.custom;
 
 import net.astralya.hexalia.Configuration;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
+import net.astralya.hexalia.sound.ModSoundEvents;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.Entity;
@@ -97,7 +98,7 @@ public class WindsongBlockEntity extends BlockEntity {
         }
 
         if (this.activeTicks <= 0) {
-            world.playSound(null, pos, SoundEvents.ENTITY_PHANTOM_FLAP, SoundCategory.BLOCKS, 1.0f, 1.0f);
+            world.playSound(null, pos, ModSoundEvents.WIND_BURST, SoundCategory.BLOCKS, 1.0f, 1.0f);
             world.breakBlock(pos, false);
         } else {
             markDirty();
@@ -105,7 +106,7 @@ public class WindsongBlockEntity extends BlockEntity {
     }
 
     private void discardProjectile(ServerWorld world, Entity projectile) {
-        world.playSound(null, projectile.getX(), projectile.getY(), projectile.getZ(), SoundEvents.ENTITY_PLAYER_ATTACK_SWEEP, SoundCategory.BLOCKS, 1.0f, 1.0f);
+        world.playSound(null, projectile.getX(), projectile.getY(), projectile.getZ(), ModSoundEvents.WIND_BURST, SoundCategory.BLOCKS, 1.0f, 1.0f);
 
         Vec3d projectilePos = projectile.getPos();
         for (int i = 0; i < 5; i++) {

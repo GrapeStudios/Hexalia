@@ -5,17 +5,13 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
 
 public class SpikeskinEffect extends StatusEffect {
-    protected final double modifier;
 
     public SpikeskinEffect(StatusEffectCategory category, int color, double modifier) {
         super(category, color);
-        this.modifier = modifier;
     }
 
+    @Override
     public double adjustModifierAmount(int amplifier, EntityAttributeModifier modifier) {
-        return this.modifier * (double)(amplifier + 1);
+        return modifier.getValue() * (double) (amplifier + 1);
     }
 }
-
-
-

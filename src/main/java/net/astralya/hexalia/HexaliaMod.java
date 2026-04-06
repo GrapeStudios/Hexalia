@@ -4,6 +4,7 @@ import net.astralya.hexalia.block.ModBlockProperties;
 import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.effect.ModMobEffects;
+import net.astralya.hexalia.entity.ModBoats;
 import net.astralya.hexalia.entity.ModEntities;
 import net.astralya.hexalia.entity.custom.CacofeyEntity;
 import net.astralya.hexalia.entity.custom.SilkMothEntity;
@@ -11,6 +12,7 @@ import net.astralya.hexalia.event.RootshaperEventHandler;
 import net.astralya.hexalia.gameplay.censer.CenserServerTickHandler;
 import net.astralya.hexalia.item.ModCreativeModeTabs;
 import net.astralya.hexalia.item.ModItems;
+import net.astralya.hexalia.loot.ModLootTableModifiers;
 import net.astralya.hexalia.menu.ModMenuTypes;
 import net.astralya.hexalia.particle.ModParticleType;
 import net.astralya.hexalia.recipe.ModRecipes;
@@ -58,6 +60,8 @@ public class HexaliaMod implements ModInitializer {
 		ModArmorMaterials.registerModArmorMaterials();
 		ModWorldGeneration.generateModWorldGeneration();
 		ModFeatures.register();
+		ModLootTableModifiers.register();
+		ModBoats.registerBoats();
 	}
 
 	private static void registerGameplay() {

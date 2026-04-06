@@ -60,7 +60,7 @@ public class ModBlocks {
     public static final Block SIREN_KELP = registerBlockWithoutBlockItem("siren_kelp",
             new SirenKelpBlock(FabricBlockSettings.copyOf(Blocks.SEAGRASS)));
     public static final Block GHOST_FERN = registerBlock("ghost_fern",
-            new GhostFernBlock(StatusEffects.INVISIBILITY, 6, FabricBlockSettings.copyOf(Blocks.FERN)));
+            new GhostFernBlock(StatusEffects.INVISIBILITY, 6, FabricBlockSettings.copyOf(Blocks.POPPY)));
     public static final Block POTTED_GHOST_FERN = registerBlockWithoutBlockItem("potted_ghost_fern",
             new FlowerPotBlock(GHOST_FERN, FabricBlockSettings.copyOf(Blocks.POTTED_POPPY)));
     public static final Block CELESTIAL_BLOOM = registerBlock("celestial_bloom",
