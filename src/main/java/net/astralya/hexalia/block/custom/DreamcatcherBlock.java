@@ -148,6 +148,7 @@ public class DreamcatcherBlock extends BaseEntityBlock {
         if (!level.isClientSide()) {
             return;
         }
+
         BlockEntity be = level.getBlockEntity(pos);
         if (be instanceof DreamcatcherBlockEntity dreamcatcher && dreamcatcher.hasFuel()) {
             dreamcatcher.spawnActiveParticles(level, pos, random);

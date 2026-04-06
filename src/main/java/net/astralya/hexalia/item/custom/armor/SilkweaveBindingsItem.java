@@ -40,6 +40,11 @@ public class SilkweaveBindingsItem extends ArmorItem implements GeoItem, MagicRe
     }
 
     @Override
+    public ResourceLocation getArmorSetGroupId() {
+        return new ResourceLocation("hexalia", "woven");
+    }
+
+    @Override
     public float getMagicResistanceBonus() {
         return MAGIC_RESISTANCE_BONUS;
     }

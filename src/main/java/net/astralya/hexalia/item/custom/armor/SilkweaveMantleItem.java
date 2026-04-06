@@ -35,16 +35,6 @@ public class SilkweaveMantleItem extends ArmorItem implements GeoItem, MagicResi
     }
 
     @Override
-    public ResourceLocation getArmorSetId() {
-        return ARMOR_SET_ID;
-    }
-
-    @Override
-    public float getMagicResistanceBonus() {
-        return MAGIC_RESISTANCE_BONUS;
-    }
-
-    @Override
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
         consumer.accept(new IClientItemExtensions() {
             private SilkweaveMantleRenderer renderer;
@@ -72,5 +62,20 @@ public class SilkweaveMantleItem extends ArmorItem implements GeoItem, MagicResi
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
+    }
+
+    @Override
+    public ResourceLocation getArmorSetId() {
+        return ARMOR_SET_ID;
+    }
+
+    @Override
+    public ResourceLocation getArmorSetGroupId() {
+        return new ResourceLocation("hexalia", "woven");
+    }
+
+    @Override
+    public float getMagicResistanceBonus() {
+        return MAGIC_RESISTANCE_BONUS;
     }
 }

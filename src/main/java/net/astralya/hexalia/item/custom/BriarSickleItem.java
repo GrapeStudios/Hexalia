@@ -135,6 +135,7 @@ public class BriarSickleItem extends ShearsItem {
                 || block == Blocks.FERN
                 || block == Blocks.LARGE_FERN
                 || state.is(BlockTags.FLOWERS)
+                || state.is(BlockTags.SAPLINGS)
                 || state.is(BlockTags.LEAVES);
     }
 

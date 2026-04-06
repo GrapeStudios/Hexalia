@@ -25,5 +25,12 @@
     "sounds": [
       "hexalia:cacofey_giggle"
     ]
+  },
+
+  "wind_burst": {
+    "subtitle": "sounds.hexalia.wind_burst",
+    "sounds": [
+      "hexalia:wind_burst"
+    ]
   }
 }

@@ -37,7 +37,7 @@ public class ModMobEffects {
             () -> new DaybloomEffect(MobEffectCategory.NEUTRAL, 0xFFD95E));
 
     public static final RegistryObject<MobEffect> BLOODLUST = MOB_EFFECTS.register("bloodlust",
-            () -> new BloodlustEffect(MobEffectCategory.NEUTRAL, 0x8A0303, 3.0).addAttributeModifier(
+            () -> new BloodlustEffect(MobEffectCategory.NEUTRAL, 0x8A0303).addAttributeModifier(
                     Attributes.ATTACK_DAMAGE,
                     "6d7d66d6-0f2d-4d82-92b3-8f44f63f9012",
                     0.0D,

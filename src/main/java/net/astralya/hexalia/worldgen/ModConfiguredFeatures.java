@@ -70,7 +70,7 @@ public class ModConfiguredFeatures {
         register(context, SIREN_KELP, ModFeatures.WILD_CROP.get(),
                 WildCropConfiguration.forWater(
                         BlockStateProvider.simple(ModBlocks.SIREN_KELP.get()),
-                        2, 3, 1, onDirtOrSand()));
+                        2, 3, 1, onOceanFloor()));
         register(context, CHILLBERRY, ModFeatures.WILD_CROP.get(),
                 wildCropConfig(
                         BlockStateProvider.simple(ModBlocks.CHILLBERRY_BUSH.get().defaultBlockState()
@@ -170,10 +170,11 @@ public class ModConfiguredFeatures {
         );
     }
 
-    private static BlockPredicate onDirtOrSand() {
+    private static BlockPredicate onOceanFloor() {
         return BlockPredicate.anyOf(
                 BlockPredicate.matchesTag(BlockTags.DIRT),
-                BlockPredicate.matchesTag(BlockTags.SAND)
+                BlockPredicate.matchesTag(BlockTags.SAND),
+                BlockPredicate.matchesBlocks(List.of(Blocks.GRAVEL, Blocks.CLAY))
         );
     }
 

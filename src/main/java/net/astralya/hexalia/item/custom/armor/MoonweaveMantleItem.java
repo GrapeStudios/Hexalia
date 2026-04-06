@@ -40,6 +40,11 @@ public class MoonweaveMantleItem extends ArmorItem implements GeoItem, MagicResi
     }
 
     @Override
+    public ResourceLocation getArmorSetGroupId() {
+        return new ResourceLocation("hexalia", "woven");
+    }
+
+    @Override
     public float getMagicResistanceBonus() {
         return MAGIC_RESISTANCE_BONUS;
     }

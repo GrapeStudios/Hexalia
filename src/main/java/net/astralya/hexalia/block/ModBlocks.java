@@ -54,7 +54,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> POTTED_DREAMSHROOM = BLOCKS.register("potted_dreamshroom",
             () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, DREAMSHROOM, BlockBehaviour.Properties.copy(Blocks.POTTED_POPPY)));
     public static final RegistryObject<Block> GHOST_FERN = registerBlock("ghost_fern",
-            () -> new GhostFernBlock(() -> MobEffects.INVISIBILITY, 6, BlockBehaviour.Properties.copy(Blocks.FERN).noCollission()));
+            () -> new GhostFernBlock(() -> MobEffects.INVISIBILITY, 6, BlockBehaviour.Properties.copy(Blocks.POPPY).noCollission()));
     public static final RegistryObject<Block> POTTED_GHOST_FERN = BLOCKS.register("potted_ghost_fern",
             () -> new FlowerPotBlock(() -> (FlowerPotBlock) Blocks.FLOWER_POT, GHOST_FERN, BlockBehaviour.Properties.copy(Blocks.POTTED_FERN)));
     public static final RegistryObject<Block> CELESTIAL_BLOOM = registerBlock("celestial_bloom",

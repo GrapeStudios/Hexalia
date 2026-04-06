@@ -1,5 +1,6 @@
 package net.astralya.hexalia.block.custom;
 
+import net.astralya.hexalia.Configuration;
 import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.particle.ModParticleType;
 import net.minecraft.core.BlockPos;
@@ -40,6 +41,7 @@ public class DreamshroomBlock extends ShroomBlock {
 
     @Override
     public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, RandomSource pRandom) {
+        if (!Configuration.DREAMSHROOM_EMITS_PARTICLES.get()) return;
         createSporeParticles(pLevel, pPos, pRandom, PARTICLE_FREQUENCY);
     }
 

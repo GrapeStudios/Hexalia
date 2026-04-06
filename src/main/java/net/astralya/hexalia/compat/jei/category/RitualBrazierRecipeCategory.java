@@ -27,23 +27,20 @@ import javax.annotation.ParametersAreNonnullByDefault;
 public class RitualBrazierRecipeCategory implements IRecipeCategory<RitualBrazierRecipe> {
 
     public static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "ritual_brazier");
-    public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID,
-            "textures/gui/ritual_brazier_gui.png");
-
+    public static final ResourceLocation TEXTURE = ResourceLocation.fromNamespaceAndPath(HexaliaMod.MODID, "textures/gui/ritual_brazier_gui.png");
     public static final RecipeType<RitualBrazierRecipe> RITUAL_BRAZIER_RECIPE_TYPE =
             new RecipeType<>(UID, RitualBrazierRecipe.class);
+
+    private static final int WIDTH = 118;
+    private static final int HEIGHT = 80;
 
     private final IDrawable background;
     private final IDrawable icon;
     private final IDrawable hexIcon;
 
-    private static final int WIDTH = 118;
-    private static final int HEIGHT = 80;
-
     public RitualBrazierRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 0, 0, WIDTH, HEIGHT);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK,
-                new ItemStack(ModBlocks.RITUAL_BRAZIER.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.RITUAL_BRAZIER.get()));
         this.hexIcon = helper.createDrawable(TEXTURE, 0, 0, 16, 16);
     }
 
@@ -81,7 +78,7 @@ public class RitualBrazierRecipeCategory implements IRecipeCategory<RitualBrazie
     @Override
     public void setRecipe(IRecipeLayoutBuilder builder, RitualBrazierRecipe recipe, IFocusGroup focuses) {
         builder.addSlot(RecipeIngredientRole.INPUT, 28, 31)
-                .addIngredients(recipe.getIngredients().get(0));
+                .addIngredients(recipe.getInput());
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 89, 31)
                 .addItemStack(recipe.getResultItem(null));

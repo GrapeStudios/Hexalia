@@ -1,31 +1,36 @@
 package net.astralya.hexalia.effect.custom;
 
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 
+import java.util.List;
+
 public class BloodlustEffect extends MobEffect {
-    protected final double modifier;
 
-    public BloodlustEffect(MobEffectCategory category, int color, double modifier) {
+    public BloodlustEffect(MobEffectCategory category, int color) {
         super(category, color);
-        this.modifier = modifier;
     }
 
     @Override
-    public void applyEffectTick(LivingEntity livingEntity, int amplifier) {
-        if (livingEntity.hasEffect(MobEffects.REGENERATION)) {
-            livingEntity.removeEffect(MobEffects.REGENERATION);
-            return;
-        }
+    public void applyEffectTick(LivingEntity entity, int amplifier) {
+        List<MobEffectInstance> bleedingEffects = entity.getActiveEffects().stream()
+                .filter(instance -> {
+                    ResourceLocation id = BuiltInRegistries.MOB_EFFECT.getKey(instance.getEffect());
+                    return id != null && (id.getPath().contains("regeneration"));
+                })
+                .toList();
 
-        super.applyEffectTick(livingEntity, amplifier);
+        bleedingEffects.forEach(instance -> entity.removeEffect(instance.getEffect()));
     }
 
     @Override
-    public double getAttributeModifierValue(int amplifier, AttributeModifier modifier) {
-        return this.modifier * (double) (amplifier + 1);
+    public boolean isDurationEffectTick(int duration, int amplifier) {
+        return true;
     }
 }

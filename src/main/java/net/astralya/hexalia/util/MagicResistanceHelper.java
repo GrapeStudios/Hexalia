@@ -7,30 +7,47 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 
 public final class MagicResistanceHelper {
-    private MagicResistanceHelper() {}
+
+    private static final EquipmentSlot[] ARMOR_SLOTS = new EquipmentSlot[]{
+            EquipmentSlot.HEAD,
+            EquipmentSlot.CHEST,
+            EquipmentSlot.LEGS,
+            EquipmentSlot.FEET
+    };
+
+    private MagicResistanceHelper() {
+    }
 
     public static float getMagicResistancePct(LivingEntity entity) {
         return clamp01(MagicResistanceUtil.getTotalMagicResistance(entity));
     }
 
     public static boolean isWearingFullSetGroup(LivingEntity entity, ResourceLocation groupId) {
-        return MagicResistanceUtil.isWearingFullSet(entity, groupId);
+        return MagicResistanceUtil.isWearingFullSetGroup(entity, groupId);
     }
 
     public static float getGroupBonusForEntity(LivingEntity entity, ResourceLocation groupId) {
-        if (!MagicResistanceUtil.isWearingFullSet(entity, groupId)) return 0.0f;
-        float bonus = 0.0f;
-        for (EquipmentSlot slot : new EquipmentSlot[]{ EquipmentSlot.HEAD, EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET }) {
+        if (!MagicResistanceUtil.isWearingFullSetGroup(entity, groupId)) {
+            return 0.0f;
+        }
+
+        for (EquipmentSlot slot : ARMOR_SLOTS) {
             ItemStack stack = entity.getItemBySlot(slot);
-            if (stack.getItem() instanceof MagicResistanceArmor armor && groupId.equals(armor.getArmorSetId())) {
-                bonus = Math.max(bonus, MagicResistanceUtil.FULL_SET_BONUS);
+            if (!(stack.getItem() instanceof MagicResistanceArmor armor)) {
+                return 0.0f;
+            }
+            if (!groupId.equals(armor.getArmorSetGroupId())) {
+                return 0.0f;
             }
         }
-        return bonus;
+
+        return MagicResistanceUtil.FULL_SET_BONUS;
     }
 
     private static float clamp01(float value) {
-        if (value <= 0.0f) return 0.0f;
+        if (value <= 0.0f) {
+            return 0.0f;
+        }
         return Math.min(value, 1.0f);
     }
 }

@@ -87,7 +87,7 @@ public class WindsongBlockEntity extends BlockEntity {
 
     private void discardProjectile(ServerLevel pLevel, Entity projectile) {
         pLevel.playSound(null, projectile.getX(), projectile.getY(), projectile.getZ(),
-                ModSoundEvents.WIND_DEFLECT.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
+                ModSoundEvents.WIND_BURST.get(), SoundSource.BLOCKS, 1.0f, 1.0f);
 
         Vec3 pos = projectile.position();
         for (int i = 0; i < 5; i++) {

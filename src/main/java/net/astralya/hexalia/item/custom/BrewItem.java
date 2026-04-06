@@ -47,7 +47,7 @@ public class BrewItem extends AbstractConsumableItem {
             return;
         }
 
-        int duration = MagicResistanceUtil.isWearingFullSet(user, MOONWEAVE_SET_ID)
+        int duration = MagicResistanceUtil.isWearingFullSetGroup(user, MOONWEAVE_SET_ID)
                 ? Math.round(durationTicks * MOONWEAVE_DURATION_MULTIPLIER)
                 : durationTicks;
 

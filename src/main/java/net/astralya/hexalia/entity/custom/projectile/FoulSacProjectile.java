@@ -1,7 +1,7 @@
 package net.astralya.hexalia.entity.custom.projectile;
 
 import net.astralya.hexalia.Configuration;
-import net.astralya.hexalia.effect.cloud.FoulCloud;
+import net.astralya.hexalia.gameplay.cloud.FoulCloud;
 import net.astralya.hexalia.entity.ModEntities;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.sound.ModSoundEvents;
