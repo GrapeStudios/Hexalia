@@ -24,7 +24,7 @@ public class ModMobEffects {
             new DaybloomEffect(StatusEffectCategory.NEUTRAL, 0xFFD95E));
 
     public static final RegistryEntry<StatusEffect> BLOODLUST = register("bloodlust",
-            new BloodlustEffect(StatusEffectCategory.NEUTRAL, 0x8A0303, 3.0)
+            new BloodlustEffect(StatusEffectCategory.NEUTRAL, 0x8A0303)
                     .addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE,
                             Identifier.of(HexaliaMod.MODID, "bloodlust"),
                             0.0f, EntityAttributeModifier.Operation.ADD_VALUE));

@@ -4,28 +4,35 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectCategory;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.registry.Registries;
+import net.minecraft.util.Identifier;
+
+import java.util.List;
 
 public class BloodlustEffect extends StatusEffect {
 
-    protected final double modifier;
-
-    public BloodlustEffect(StatusEffectCategory category, int color, double modifier) {
+    public BloodlustEffect(StatusEffectCategory category, int color) {
         super(category, color);
-        this.modifier = modifier;
     }
 
     @Override
     public boolean applyUpdateEffect(LivingEntity entity, int amplifier) {
-        if (entity.hasStatusEffect(StatusEffects.REGENERATION)) {
-            entity.removeStatusEffect(StatusEffects.REGENERATION);
-            return true;
-        }
+        List<StatusEffectInstance> bleedingEffects = entity.getStatusEffects().stream()
+                .filter(instance -> {
+                    Identifier id = Registries.STATUS_EFFECT.getId(instance.getEffectType().value());
+                    return id != null && (id.getPath().contains("regeneration"));
+                })
+                .toList();
 
-        return super.applyUpdateEffect(entity, amplifier);
+        bleedingEffects.forEach(instance -> entity.removeStatusEffect(instance.getEffectType()));
+
+        return true;
     }
 
-    public double adjustModifierAmount(int amplifier, EntityAttributeModifier modifier) {
-        return this.modifier * (double)(amplifier + 1);
+    @Override
+    public boolean canApplyUpdateEffect(int duration, int amplifier) {
+        return true;
     }
 }

@@ -70,7 +70,7 @@ public final class ModConfiguredFeatures {
                 2,
                 3,
                 1,
-                onDirtOrSand()
+                onOceanFloor()
         ));
         register(context, CHILLBERRY, ModFeatures.WILD_CROP, wildCropConfig(
                 BlockStateProvider.of(ModBlocks.CHILLBERRY_BUSH.getDefaultState().with(ChillberryBushBlock.AGE, 3)),
@@ -179,10 +179,11 @@ public final class ModConfiguredFeatures {
         );
     }
 
-    private static BlockPredicate onDirtOrSand() {
+    private static BlockPredicate onOceanFloor() {
         return BlockPredicate.anyOf(
                 BlockPredicate.matchingBlockTag(BlockTags.DIRT),
-                BlockPredicate.matchingBlockTag(BlockTags.SAND)
+                BlockPredicate.matchingBlockTag(BlockTags.SAND),
+                BlockPredicate.matchingBlocks(List.of(Blocks.GRAVEL, Blocks.CLAY))
         );
     }
 

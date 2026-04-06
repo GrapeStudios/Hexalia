@@ -48,7 +48,7 @@ public final class ModPlacedFeatures {
 
         register(context, SPIRIT_BLOOM_PLACED, configured.getOrThrow(ModConfiguredFeatures.SPIRIT_BLOOM), rarityPatch(4));
         register(context, DREAMSHROOM_PLACED, configured.getOrThrow(ModConfiguredFeatures.DREAMSHROOM), rarityPatch(4));
-        register(context, SIREN_KELP_PLACED, configured.getOrThrow(ModConfiguredFeatures.SIREN_KELP), waterSurfacePatch(4));
+        register(context, SIREN_KELP_PLACED, configured.getOrThrow(ModConfiguredFeatures.SIREN_KELP), oceanFloorPatch(4));
         register(context, GHOST_FERN_PLACED, configured.getOrThrow(ModConfiguredFeatures.GHOST_FERN), rarityPatch(4));
         register(context, CELESTIAL_BLOOM_PLACED, configured.getOrThrow(ModConfiguredFeatures.CELESTIAL_BLOOM), rarityPatch(4));
         register(context, WITCHWEED_PLACED, configured.getOrThrow(ModConfiguredFeatures.WITCHWEED), rarityPatch(4));
@@ -77,11 +77,11 @@ public final class ModPlacedFeatures {
         );
     }
 
-    private static List<PlacementModifier> waterSurfacePatch(int count) {
+    private static List<PlacementModifier> oceanFloorPatch(int rarity) {
         return List.of(
-                net.minecraft.world.gen.placementmodifier.CountPlacementModifier.of(count),
+                RarityFilterPlacementModifier.of(rarity),
                 SquarePlacementModifier.of(),
-                PlacedFeatures.WORLD_SURFACE_WG_HEIGHTMAP,
+                PlacedFeatures.OCEAN_FLOOR_WG_HEIGHTMAP,
                 BiomePlacementModifier.of()
         );
     }

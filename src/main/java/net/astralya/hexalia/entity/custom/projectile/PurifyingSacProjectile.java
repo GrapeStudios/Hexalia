@@ -2,22 +2,16 @@ package net.astralya.hexalia.entity.custom.projectile;
 
 import net.astralya.hexalia.Configuration;
 import net.astralya.hexalia.entity.ModEntities;
+import net.astralya.hexalia.gameplay.cloud.CleansingCloud;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.sound.ModSoundEvents;
-import net.astralya.hexalia.util.ModUtil;
-import net.minecraft.entity.AreaEffectCloudEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.projectile.thrown.ThrownItemEntity;
 import net.minecraft.item.Item;
-import net.minecraft.particle.EntityEffectParticleEffect;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.hit.HitResult;
-import net.minecraft.util.math.Box;
 import net.minecraft.world.World;
-
-import java.util.List;
 
 public class PurifyingSacProjectile extends ThrownItemEntity {
 
@@ -56,50 +50,13 @@ public class PurifyingSacProjectile extends ThrownItemEntity {
                     0.9F,
                     0.8F + getWorld().random.nextFloat() * 0.4F
             );
-
-            spawnLingeringCloudAndCleanse();
-            discard();
-        }
-    }
-
-    private void spawnLingeringCloudAndCleanse() {
-        if (getWorld().isClient()) return;
-
-        int durationSeconds = Math.max(1, Configuration.PURIFYING_SAC_DURATION.get());
-
-        AreaEffectCloudEntity cloud = new AreaEffectCloudEntity(getWorld(), getX(), getY(), getZ());
-        if (getOwner() instanceof LivingEntity le) {
-            cloud.setOwner(le);
-        }
-
-        cloud.setRadius(3.0F);
-        cloud.setRadiusGrowth(-3.0F / (durationSeconds * 20.0F));
-        cloud.setDuration(durationSeconds * 20);
-        cloud.setWaitTime(0);
-
-        int argb = 0xFFCFE9FF;
-        cloud.setParticleType(EntityEffectParticleEffect.create(ParticleTypes.ENTITY_EFFECT, argb));
-
-        float r = cloud.getRadius();
-        Box box = new Box(
-                getX() - r, getY() - 1.0D, getZ() - r,
-                getX() + r, getY() + 1.0D, getZ() + r
-        );
-
-        List<LivingEntity> targets = getWorld().getEntitiesByClass(
-                LivingEntity.class,
-                box,
-                LivingEntity::isAlive
-        );
-
-        for (LivingEntity target : targets) {
-            double dx = target.getX() - getX();
-            double dz = target.getZ() - getZ();
-            if ((dx * dx + dz * dz) <= (r * r)) {
-                ModUtil.removeHarmfulEffects(target);
+            int durationSeconds = Math.max(1, Configuration.PURIFYING_SAC_DURATION.get());
+            CleansingCloud cloud = new CleansingCloud(this.getWorld(), this.getX(), this.getY(), this.getZ(), durationSeconds);
+            if (this.getOwner() instanceof LivingEntity le) {
+                cloud.setCloudOwner(le);
             }
+            this.getWorld().spawnEntity(cloud);
+            this.discard();
         }
-
-        getWorld().spawnEntity(cloud);
     }
 }
