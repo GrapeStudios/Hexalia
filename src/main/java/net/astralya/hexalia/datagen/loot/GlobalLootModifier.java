@@ -7,6 +7,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.neoforged.neoforge.common.data.GlobalLootModifierProvider;
 import net.neoforged.neoforge.common.loot.LootTableIdCondition;
 
@@ -20,6 +21,8 @@ public class GlobalLootModifier extends GlobalLootModifierProvider {
     @Override
     protected void start() {
         add("ancient_seed_from_jungle_temple", new AddItemModifier(new LootItemCondition[]{
-                new LootTableIdCondition.Builder(BuiltInLootTables.JUNGLE_TEMPLE.location()).build()}, ModItems.ANCIENT_SEED.get()));
+                new LootTableIdCondition.Builder(BuiltInLootTables.JUNGLE_TEMPLE.location()).build(),
+                LootItemRandomChanceCondition.randomChance(0.35F).build()
+        }, ModItems.ANCIENT_SEED.get()));
     }
 }

@@ -62,15 +62,15 @@ public class ModItems {
     public static final DeferredItem<Item> SUNFIRE_TOMATO = ITEMS.registerItem("sunfire_tomato",
             Item::new, new Item.Properties().food(ModFoodProperties.SUNFIRE_TOMATO));
     public static final DeferredItem<Item> SUNFIRE_TOMATO_SEEDS = ITEMS.register("sunfire_tomato_seeds",
-            () -> new BlockItem(ModBlocks.SUNFIRE_TOMATO_CROP.get(), new Item.Properties()));
+            () -> new ItemNameBlockItem(ModBlocks.SUNFIRE_TOMATO_CROP.get(), new Item.Properties()));
     public static final DeferredItem<Item> MANDRAKE = ITEMS.registerItem("mandrake",
             MandrakeItem::new, new Item.Properties());
     public static final DeferredItem<Item> MANDRAKE_SEEDS = ITEMS.register("mandrake_seeds",
-            () -> new BlockItem(ModBlocks.MANDRAKE_CROP.get(), new Item.Properties()));
+            () -> new ItemNameBlockItem(ModBlocks.MANDRAKE_CROP.get(), new Item.Properties()));
     public static final DeferredItem<Item> RABBAGE = ITEMS.registerItem("rabbage",
             RabbageItem::new, new Item.Properties());
     public static final DeferredItem<Item> RABBAGE_SEEDS = ITEMS.register("rabbage_seeds",
-            () -> new BlockItem(ModBlocks.RABBAGE_CROP.get(), new Item.Properties()));
+            () -> new ItemNameBlockItem(ModBlocks.RABBAGE_CROP.get(), new Item.Properties()));
     public static final DeferredItem<Item> CHILLBERRIES = ITEMS.register("chillberries",
             () -> new BlockItem(ModBlocks.CHILLBERRY_BUSH.get(), new Item.Properties().food(ModFoodProperties.CHILLBERRIES)));
     public static final DeferredItem<Item> SALTSPROUT = ITEMS.register("saltsprout",
@@ -234,10 +234,10 @@ public class ModItems {
 
     // Salves
     public static final DeferredItem<Item> BRAMBLEGUARD_SALVE = ITEMS.register("brambleguard_salve",
-            () -> new SalveItem(new Item.Properties().stacksTo(4), () -> ModMobEffects.BRAMBLEGUARD, 20 * 120, 0,
+            () -> new SalveItem(new Item.Properties().stacksTo(4), () -> ModMobEffects.BRAMBLEGUARD, 20 * 90, 0,
                     60, Component.translatable("tooltip.hexalia.brambleguard_salve").withStyle(ChatFormatting.BLUE)));
     public static final DeferredItem<Item> MENDERS_SALVE = ITEMS.register("menders_salve",
-            () -> new SalveItem(new Item.Properties().stacksTo(4), () -> MobEffects.REGENERATION, 20 * 120, 0,
+            () -> new SalveItem(new Item.Properties().stacksTo(4), () -> MobEffects.REGENERATION, 20 * 90, 0,
                     60, Component.translatable("tooltip.hexalia.menders_salve").withStyle(ChatFormatting.BLUE)));
 
     // Entity Related Items

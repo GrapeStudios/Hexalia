@@ -51,6 +51,7 @@ public final class Configuration {
 
     public static ModConfigSpec.BooleanValue GHOST_FERN_EMITS_PARTICLES;
     public static ModConfigSpec.BooleanValue CELESTIAL_BLOOM_EMITS_PARTICLES;
+    public static ModConfigSpec.BooleanValue DREAMSHROOM_EMITS_PARTICLES;
 
     public static ModConfigSpec.IntValue LOURDES_DURATION;
     public static ModConfigSpec.DoubleValue LOURDES_EFFECT_RADIUS;
@@ -211,6 +212,10 @@ public final class Configuration {
         CELESTIAL_BLOOM_EMITS_PARTICLES = builder
                 .comment("If true, Celestial Bloom blocks emit ambient particles client-side")
                 .define("celestialBloomEmitsParticles", true);
+
+        DREAMSHROOM_EMITS_PARTICLES = builder
+                .comment("If true, Dreamshrooms emit ambient particles client-side")
+                .define("dreamshroomEmitsParticles", true);
 
         builder.pop();
 

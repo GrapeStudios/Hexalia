@@ -1,9 +1,13 @@
 package net.astralya.hexalia.effect.custom;
 
-import net.astralya.hexalia.effect.ModMobEffects;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
+
+import java.util.List;
 
 public class BrambleguardEffect extends MobEffect {
 
@@ -13,9 +17,15 @@ public class BrambleguardEffect extends MobEffect {
 
     @Override
     public boolean applyEffectTick(LivingEntity entity, int amplifier) {
-        if (entity.hasEffect(ModMobEffects.BLEEDING)) {
-            entity.removeEffect(ModMobEffects.BLEEDING);
-        }
+        List<MobEffectInstance> bleedingEffects = entity.getActiveEffects().stream()
+                .filter(instance -> {
+                    ResourceLocation id = BuiltInRegistries.MOB_EFFECT.getKey(instance.getEffect().value());
+                    return id != null && (id.getPath().contains("bleed") || id.getPath().contains("bleeding"));
+                })
+                .toList();
+
+        bleedingEffects.forEach(instance -> entity.removeEffect(instance.getEffect()));
+
         return true;
     }
 

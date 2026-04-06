@@ -1,4 +1,4 @@
-// 1.21.1	2026-03-07T12:54:26.293048	Tags for minecraft:item mod id hexalia
+// 1.21.1	2026-04-05T17:01:30.2000529	Tags for minecraft:item mod id hexalia
 c2e7f2f3472c1200322aaafc9a3ccad9b5e2ab8f data/c/tags/item/crops.json
 2cd7b115cf8b4f8d7041a66dc115d81b5f01e549 data/c/tags/item/foods.json
 2dd44f7e98626d3ba68fc97c88b6456b306cf2ca data/c/tags/item/foods/berry.json
@@ -12,7 +12,7 @@ e9fba7072f3bada2cf97bc949140868f9715f95b data/c/tags/item/mushrooms.json
 cf908acc2e525a3d3eb097c4741d6d357682c2a7 data/c/tags/item/salt.json
 14835ee05f2eb66cecd359de9208e4332b57c085 data/c/tags/item/salt_blocks.json
 1bda8dbaec2e3d9f017aa2f6328b7756c629ae05 data/c/tags/item/seeds.json
-7464bc0f4ddac3d82855194fea3c6b076e6fb73b data/hexalia/tags/item/brews.json
+40b76593a1d46ef1800f24262d83ae3802aee03a data/hexalia/tags/item/brews.json
 0a9e24febf41067c0d25e9952dd0c726cba969b9 data/hexalia/tags/item/cottonwood_logs.json
 5515a7b886a966f1b5e57c9bd9e40c1554d7054f data/hexalia/tags/item/crushed_herbs.json
 7ce4ba8ba238b0ce06194b2c06596cab6a46ec26 data/hexalia/tags/item/herbs.json

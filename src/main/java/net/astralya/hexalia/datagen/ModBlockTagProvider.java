@@ -130,15 +130,6 @@ public class ModBlockTagProvider extends BlockTagsProvider {
     }
 
     private void addFunctionalTags() {
-        tag(ModTags.Blocks.HEATING_BLOCKS)
-                .add(Blocks.MAGMA_BLOCK)
-                .add(Blocks.LAVA)
-                .add(Blocks.CAMPFIRE)
-                .add(Blocks.SOUL_CAMPFIRE)
-                .add(Blocks.FIRE)
-                .add(Blocks.SOUL_FIRE)
-                .add(ModBlocks.RUSTIC_OVEN.get());
-
         tag(ModTags.Blocks.ATTRACTS_MOTH)
                 .add(Blocks.LANTERN)
                 .add(Blocks.SEA_LANTERN)
