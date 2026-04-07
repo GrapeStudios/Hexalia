@@ -5,7 +5,7 @@
 	"name": "Hexalia",
 	"description": "Hexalia is a magical mod centered on plant-based magic and rustic applications. It adds witchery, rituals, brewing new potions, and more.",
 	"authors": [
-		"astralya Studios"
+		"Astralya Studios"
 	],
 	"contact": {
 		"homepage": "https://github.com/AstralyaStudios/",
@@ -26,6 +26,9 @@
 		],
 		"rei_client": [
 			"net.astralya.hexalia.compat.rei.HexaliaREIClientPlugin"
+		],
+		"jei_mod_plugin": [
+			"net.astralya.hexalia.compat.jei.JEIPlugin"
 		]
 	},
 	"mixins": [
