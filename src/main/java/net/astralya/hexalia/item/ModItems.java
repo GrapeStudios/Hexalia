@@ -214,13 +214,13 @@ public class ModItems {
 
     // Wood-Related Items
     public static final RegistryObject<Item> WILLOW_BOAT = ITEMS.register("willow_boat",
-            () -> new ModBoatItem(false, ModBoatEntity.Type.WILLOW, new Item.Properties()));
+            () -> new ModBoatItem(false, ModBoatEntity.Type.WILLOW, new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> WILLOW_CHEST_BOAT = ITEMS.register("willow_chest_boat",
-            () -> new ModBoatItem(true, ModBoatEntity.Type.WILLOW, new Item.Properties()));
+            () -> new ModBoatItem(true, ModBoatEntity.Type.WILLOW, new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> COTTONWOOD_BOAT = ITEMS.register("cottonwood_boat",
-            () -> new ModBoatItem(false, ModBoatEntity.Type.COTTONWOOD, new Item.Properties()));
+            () -> new ModBoatItem(false, ModBoatEntity.Type.COTTONWOOD, new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> COTTONWOOD_CHEST_BOAT = ITEMS.register("cottonwood_chest_boat",
-            () -> new ModBoatItem(true, ModBoatEntity.Type.COTTONWOOD, new Item.Properties()));
+            () -> new ModBoatItem(true, ModBoatEntity.Type.COTTONWOOD, new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> WILLOW_SIGN = ITEMS.register("willow_sign",
             () -> new SignItem(new Item.Properties().stacksTo(16), ModBlocks.WILLOW_SIGN.get(), ModBlocks.WILLOW_WALL_SIGN.get()));
     public static final RegistryObject<Item> COTTONWOOD_SIGN = ITEMS.register("cottonwood_sign",
