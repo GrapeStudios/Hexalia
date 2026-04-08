@@ -436,12 +436,11 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(ModBlocks.CELESTIAL_CRYSTAL_BLOCK), conditionsFromItem(ModBlocks.CELESTIAL_CRYSTAL_BLOCK))
                 .offerTo(exporter);
 
-        //TODO
-        /*ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.VERDANT_GRIMOIRE)
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.VERDANT_GRIMOIRE)
                 .input(Items.BOOK)
                 .input(ModTags.Items.HERBS)
                 .criterion(hasItem(Items.BOOK), conditionsFromItem(Items.BOOK))
-                .offerTo(exporter);*/
+                .offerTo(exporter);
 
         SmallCauldronRecipeBuilder.cauldron(
                         Ingredient.ofItems(ModItems.MANDRAKE),
