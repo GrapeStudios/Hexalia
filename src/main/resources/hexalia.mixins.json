@@ -1,7 +1,7 @@
 {
   "required": true,
   "package": "net.astralya.hexalia.mixin",
-  "compatibilityLevel": "JAVA_21",
+  "compatibilityLevel": "JAVA_17",
   "mixins": [
     "CobwebMixin",
     "CropBlockMixin",
