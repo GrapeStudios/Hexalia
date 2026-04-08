@@ -3,6 +3,8 @@ package net.astralya.hexalia.loot;
 import net.astralya.hexalia.item.ModItems;
 import net.fabricmc.fabric.api.loot.v3.LootTableEvents;
 import net.minecraft.loot.LootPool;
+import net.minecraft.loot.LootTable;
+import net.minecraft.loot.condition.RandomChanceLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.registry.RegistryKey;
@@ -11,7 +13,7 @@ import net.minecraft.util.Identifier;
 
 public final class ModLootTableModifiers {
 
-    private static final RegistryKey<net.minecraft.loot.LootTable> JUNGLE_PYRAMID_CHEST =
+    private static final RegistryKey<LootTable> JUNGLE_PYRAMID_CHEST =
             RegistryKey.of(RegistryKeys.LOOT_TABLE, Identifier.ofVanilla("chests/jungle_temple"));
 
     private ModLootTableModifiers() {
@@ -19,7 +21,7 @@ public final class ModLootTableModifiers {
 
     public static void register() {
         LootTableEvents.MODIFY.register((key, tableBuilder, source, registries) -> {
-            if (!source.isBuiltin()) {
+            if (!source.isBuiltin() || !JUNGLE_PYRAMID_CHEST.equals(key)) {
                 return;
             }
 
@@ -31,6 +33,6 @@ public final class ModLootTableModifiers {
         return LootPool.builder()
                 .rolls(ConstantLootNumberProvider.create(1.0F))
                 .with(ItemEntry.builder(ModItems.ANCIENT_SEED))
-                .conditionally(net.minecraft.loot.condition.RandomChanceLootCondition.builder(0.35F));
+                .conditionally(RandomChanceLootCondition.builder(0.35F));
     }
 }

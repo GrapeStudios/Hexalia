@@ -1,5 +1,6 @@
 package net.astralya.hexalia.util;
 
+import com.mojang.authlib.GameProfile;
 import net.astralya.hexalia.block.custom.MorphoraBlock;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.item.custom.MutavisItem;
@@ -18,9 +19,15 @@ import net.minecraft.util.math.BlockPointer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.GameMode;
+
+import java.util.UUID;
 
 public final class ModVanillaBehaviors {
+
+    private static final GameProfile DISPENSER_PROFILE = new GameProfile(
+            UUID.fromString("5b10f7e7-0b45-4db5-9c64-ce0f1a7f2d63"),
+            "[HexaliaDispenser]"
+    );
 
     private ModVanillaBehaviors() {
     }
@@ -36,16 +43,15 @@ public final class ModVanillaBehaviors {
                 ServerWorld world = pointer.world();
                 Direction facing = pointer.state().get(DispenserBlock.FACING);
                 BlockPos targetPos = pointer.pos().offset(facing);
-                if (stack.getItem() instanceof MutavisItem mutavisItem) {
-                    if (mutavisItem.tryMutate(world, targetPos, stack, null)) {
-                        return stack;
-                    }
+
+                if (stack.getItem() instanceof MutavisItem mutavisItem && mutavisItem.tryMutate(world, targetPos, stack, null)) {
+                    return stack;
                 }
-                if (world.getBlockState(targetPos).getBlock() instanceof MorphoraBlock morphoraBlock) {
-                    if (morphoraBlock.tryActivateWithMutavis(world, targetPos, stack, null)) {
-                        return stack;
-                    }
+
+                if (world.getBlockState(targetPos).getBlock() instanceof MorphoraBlock morphoraBlock && morphoraBlock.tryActivateWithMutavis(world, targetPos, stack, null)) {
+                    return stack;
                 }
+
                 return super.dispenseSilently(pointer, stack);
             }
         });
@@ -64,21 +70,32 @@ public final class ModVanillaBehaviors {
                 BlockPos dispenserPos = pointer.pos();
                 BlockPos targetPos = dispenserPos.offset(facing);
 
-                FakePlayer fakePlayer = FakePlayer.get(world, null);
-                fakePlayer.setPos(dispenserPos.getX() + 0.5D, dispenserPos.getY() + 0.5D, dispenserPos.getZ() + 0.5D);
+                FakePlayer fakePlayer = FakePlayer.get(world, DISPENSER_PROFILE);
+                fakePlayer.refreshPositionAndAngles(
+                        dispenserPos.getX() + 0.5D,
+                        dispenserPos.getY() + 0.5D,
+                        dispenserPos.getZ() + 0.5D,
+                        facing.asRotation(),
+                        0.0F
+                );
                 fakePlayer.setStackInHand(Hand.MAIN_HAND, stack);
-                fakePlayer.changeGameMode(GameMode.SURVIVAL);
 
                 Direction hitFace = facing.getOpposite();
-                Vec3d hitLocation = Vec3d.ofCenter(targetPos)
-                        .add(hitFace.getOffsetX() * 0.5D, hitFace.getOffsetY() * 0.5D, hitFace.getOffsetZ() * 0.5D);
+                Vec3d hitLocation = Vec3d.ofCenter(targetPos).add(
+                        hitFace.getOffsetX() * 0.5D,
+                        hitFace.getOffsetY() * 0.5D,
+                        hitFace.getOffsetZ() * 0.5D
+                );
                 BlockHitResult hit = new BlockHitResult(hitLocation, hitFace, targetPos, false);
 
-                ItemUsageContext context = new ItemUsageContext(world, fakePlayer, Hand.MAIN_HAND, stack, hit);
-                ActionResult result = stack.useOnBlock(context);
+                ActionResult result = world.getBlockState(targetPos).onUse(world, fakePlayer, hit);
+
+                if (!result.isAccepted()) {
+                    result = fakePlayer.getStackInHand(Hand.MAIN_HAND).useOnBlock(new ItemUsageContext(fakePlayer, Hand.MAIN_HAND, hit));
+                }
 
                 this.setSuccess(result.isAccepted());
-                return stack;
+                return fakePlayer.getStackInHand(Hand.MAIN_HAND);
             }
         });
     }
