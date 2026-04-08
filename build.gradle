@@ -38,6 +38,11 @@ repositories {
 
     maven { url = "https://maven.shedaniel.me/" }
     maven { url = "https://maven.architectury.dev/" }
+
+    maven {
+        name = "TerraformersMC"
+        url = "https://maven.terraformersmc.com/"
+    }
 }
 
 base {
@@ -112,7 +117,10 @@ dependencies {
     runtimeOnly "vazkii.patchouli:Patchouli:${patchouli_version}-NEOFORGE"
 
     compileOnly "me.shedaniel:RoughlyEnoughItems-api-neoforge:${rei_version}"
-    runtimeOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"
+    //runtimeOnly "me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"
+
+    compileOnly "dev.emi:emi-neoforge:${emi_version}:api"
+    runtimeOnly "dev.emi:emi-neoforge:${emi_version}"
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources) {
