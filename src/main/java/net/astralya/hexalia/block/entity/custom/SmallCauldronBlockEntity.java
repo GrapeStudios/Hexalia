@@ -20,7 +20,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -30,18 +34,19 @@ public class SmallCauldronBlockEntity extends SyncBlockEntity {
     public static final int STIR_ANIM_TICKS = 20;
 
     private static final String TAG_STIR_ANIM_TICK = "StirAnimTick";
+    private static final int SPOILED_AURA_INTERVAL_TICKS = 20;
+    private static final int SPOILED_POISON_DURATION_TICKS = 60;
+    private static final int SPOILED_POISON_AMPLIFIER = 0;
 
     private final SmallCauldronContents contents = new SmallCauldronContents();
     private final IItemHandler upInputHandler = new UpInputHandler(this);
+    private final LazyOptional<IItemHandler> upInputOptional = LazyOptional.of(() -> this.upInputHandler);
+    private final LazyOptional<IItemHandler> blockedOptional = LazyOptional.of(SidedItemHandlers::blocked);
 
     private int stirAnimTick;
     private long clientStirStartGameTime;
     private int clientStirStartTick;
     private boolean stirAnimDirty;
-
-    private static final int SPOILED_AURA_INTERVAL_TICKS = 20;
-    private static final int SPOILED_POISON_DURATION_TICKS = 60;
-    private static final int SPOILED_POISON_AMPLIFIER = 0;
 
     public SmallCauldronBlockEntity(BlockPos pos, BlockState state) {
         super(ModBlockEntityTypes.SMALL_CAULDRON.get(), pos, state);
@@ -49,10 +54,14 @@ public class SmallCauldronBlockEntity extends SyncBlockEntity {
 
     public IItemHandler getItemHandler(@Nullable Direction side) {
         if (this.contents.isCooking() || this.contents.isSpoiled()) {
-            return SidedItemHandlers.blocked();
+            return this.blockedOptional.orElseGet(SidedItemHandlers::blocked);
         }
 
-        return SidedItemHandlers.upOnly(side, this.upInputHandler);
+        if (side == Direction.UP) {
+            return this.upInputOptional.orElseGet(SidedItemHandlers::blocked);
+        }
+
+        return this.blockedOptional.orElseGet(SidedItemHandlers::blocked);
     }
 
     public void tick(Level level, BlockPos pos, BlockState state) {
@@ -359,6 +368,13 @@ public class SmallCauldronBlockEntity extends SyncBlockEntity {
     }
 
     @Override
+    public void setRemoved() {
+        super.setRemoved();
+        this.upInputOptional.invalidate();
+        this.blockedOptional.invalidate();
+    }
+
+    @Override
     public @Nullable Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
     }
@@ -366,6 +382,23 @@ public class SmallCauldronBlockEntity extends SyncBlockEntity {
     @Override
     public CompoundTag getUpdateTag() {
         return this.saveWithoutMetadata();
+    }
+
+    @Override
+    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction side) {
+        if (capability == ForgeCapabilities.ITEM_HANDLER) {
+            if (this.contents.isCooking() || this.contents.isSpoiled()) {
+                return this.blockedOptional.cast();
+            }
+
+            if (side == Direction.UP) {
+                return this.upInputOptional.cast();
+            }
+
+            return this.blockedOptional.cast();
+        }
+
+        return super.getCapability(capability, side);
     }
 
     private static final class UpInputHandler implements IItemHandler {

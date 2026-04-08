@@ -34,7 +34,8 @@ public class ShelfBlockEntity extends BlockEntity {
 
     private final NonNullList<ItemStack> items = NonNullList.withSize(SIZE, ItemStack.EMPTY);
     private final ItemStackHandler automationInventory;
-    private final LazyOptional<IItemHandler> sidedHandlerOptional;
+    private final LazyOptional<IItemHandler> upInputOptional;
+    private final LazyOptional<IItemHandler> blockedOptional;
 
     public ShelfBlockEntity(BlockPos pos, BlockState blockState) {
         super(ModBlockEntityTypes.SHELF.get(), pos, blockState);
@@ -53,20 +54,30 @@ public class ShelfBlockEntity extends BlockEntity {
 
             @Override
             public ItemStack getStackInSlot(int slot) {
+                if (slot < 0 || slot >= SIZE) {
+                    return ItemStack.EMPTY;
+                }
                 return items.get(slot);
             }
 
             @Override
             public void setStackInSlot(int slot, ItemStack stack) {
+                if (slot < 0 || slot >= SIZE) {
+                    return;
+                }
+
                 ItemStack one = stack.copy();
                 if (!one.isEmpty()) {
                     one.setCount(1);
                 }
+
                 items.set(slot, one);
+                onContentsChanged(slot);
             }
         };
 
-        this.sidedHandlerOptional = LazyOptional.of(() -> SidedItemHandlers.view(this.automationInventory, new int[]{0, 1, 2, 3, 4, 5}, true, true));
+        this.upInputOptional = LazyOptional.of(() -> SidedItemHandlers.view(this.automationInventory, new int[]{0, 1, 2, 3, 4, 5}, true, false));
+        this.blockedOptional = LazyOptional.of(SidedItemHandlers::blocked);
     }
 
     public ItemStack getItem(int slot) {
@@ -124,7 +135,8 @@ public class ShelfBlockEntity extends BlockEntity {
     @Override
     public void setRemoved() {
         super.setRemoved();
-        this.sidedHandlerOptional.invalidate();
+        this.upInputOptional.invalidate();
+        this.blockedOptional.invalidate();
     }
 
     @Override
@@ -178,7 +190,10 @@ public class ShelfBlockEntity extends BlockEntity {
     @Override
     public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction side) {
         if (capability == ForgeCapabilities.ITEM_HANDLER) {
-            return this.sidedHandlerOptional.cast();
+            if (side == Direction.UP) {
+                return this.upInputOptional.cast();
+            }
+            return this.blockedOptional.cast();
         }
         return super.getCapability(capability, side);
     }

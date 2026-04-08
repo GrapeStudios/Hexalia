@@ -8,7 +8,6 @@ import net.astralya.hexalia.util.ModUtil;
 import net.astralya.hexalia.util.SidedItemHandlers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
@@ -23,8 +22,12 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class CenserBlockEntity extends SyncBlockEntity {
@@ -34,9 +37,9 @@ public class CenserBlockEntity extends SyncBlockEntity {
     private static final int SLOT_1 = 1;
 
     private final ItemStackHandler inventory;
-    private final IItemHandler upInputHandler;
-    private final IItemHandler lockedHandler;
-    private final IItemHandler blockedHandler;
+    private final LazyOptional<IItemHandler> upInputOptional;
+    private final LazyOptional<IItemHandler> lockedOptional;
+    private final LazyOptional<IItemHandler> blockedOptional;
 
     private HerbCombination activeCombination;
     private int burnTime;
@@ -61,25 +64,24 @@ public class CenserBlockEntity extends SyncBlockEntity {
             }
         };
 
-        this.upInputHandler = SidedItemHandlers.view(this.inventory, new int[]{SLOT_0, SLOT_1}, true, false);
-        this.lockedHandler = SidedItemHandlers.view(this.inventory, new int[]{SLOT_0, SLOT_1}, false, false);
-        this.blockedHandler = SidedItemHandlers.view(this.inventory, new int[]{}, false, false);
+        this.upInputOptional = LazyOptional.of(() -> SidedItemHandlers.view(this.inventory, new int[]{SLOT_0, SLOT_1}, true, false));
+        this.lockedOptional = LazyOptional.of(() -> SidedItemHandlers.view(this.inventory, new int[]{SLOT_0, SLOT_1}, false, false));
+        this.blockedOptional = LazyOptional.of(SidedItemHandlers::blocked);
     }
 
-    @SuppressWarnings("unused")
     public IItemHandler getItemHandler(@Nullable Direction side) {
         BlockState state = this.getBlockState();
         boolean lit = state.hasProperty(CenserBlock.LIT) && state.getValue(CenserBlock.LIT);
 
         if (lit) {
-            return this.lockedHandler;
+            return this.lockedOptional.orElseGet(SidedItemHandlers::blocked);
         }
 
         if (side == Direction.UP) {
-            return this.upInputHandler;
+            return this.upInputOptional.orElseGet(SidedItemHandlers::blocked);
         }
 
-        return this.blockedHandler;
+        return this.blockedOptional.orElseGet(SidedItemHandlers::blocked);
     }
 
     public void tick(Level level, BlockPos pos, BlockState state) {
@@ -142,7 +144,9 @@ public class CenserBlockEntity extends SyncBlockEntity {
             return;
         }
         ItemStack one = stack.copy();
-        one.setCount(1);
+        if (!one.isEmpty()) {
+            one.setCount(1);
+        }
         this.inventory.setStackInSlot(slot, one);
     }
 
@@ -238,6 +242,14 @@ public class CenserBlockEntity extends SyncBlockEntity {
     }
 
     @Override
+    public void setRemoved() {
+        super.setRemoved();
+        this.upInputOptional.invalidate();
+        this.lockedOptional.invalidate();
+        this.blockedOptional.invalidate();
+    }
+
+    @Override
     public CompoundTag getUpdateTag() {
         return this.saveWithoutMetadata();
     }
@@ -265,5 +277,25 @@ public class CenserBlockEntity extends SyncBlockEntity {
         this.setChanged();
         this.sendUpdate();
         return stack;
+    }
+
+    @Override
+    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction side) {
+        if (capability == ForgeCapabilities.ITEM_HANDLER) {
+            BlockState state = this.getBlockState();
+            boolean lit = state.hasProperty(CenserBlock.LIT) && state.getValue(CenserBlock.LIT);
+
+            if (lit) {
+                return this.lockedOptional.cast();
+            }
+
+            if (side == Direction.UP) {
+                return this.upInputOptional.cast();
+            }
+
+            return this.blockedOptional.cast();
+        }
+
+        return super.getCapability(capability, side);
     }
 }
