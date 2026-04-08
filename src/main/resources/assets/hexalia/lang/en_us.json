@@ -320,7 +320,7 @@
   "message.hexalia.ritual_brazier.no_sky": "The infusion requires an open view to the sky.",
   "message.hexalia.censer_not_full": "The censer must be filled with herbs before lighting!",
   "message.hexalia.invalid_herb_combination": "This combination of herbs does not work.",
-    "message.hexalia.censer.tidewarden": "A gentle tide lifts the spirit, carrying it beyond harm",
+  "message.hexalia.censer.tidewarden": "A gentle tide lifts the spirit, carrying it beyond harm",
   "message.hexalia.censer.undead_veil": "Unnatural stillness quiets the restless dead",
   "message.hexalia.censer.ethereal_grazing": "A pale tranquility settles over the herd, and life renews itself without need",
   "message.hexalia.censer.miners_respite": "Metals whisper secrets of perfect balance",
@@ -361,5 +361,52 @@
   "jei.info.ritual_table": "Can be obtained after right-clicking Deepslate or Cobbled Deepslate with a Hex Focus.",
   "jei.info.lotus_blossom": "Can be obtained after right-clicking Lotus Flowers with an Athame.",
   "jei.info.tree_resin": "Can be obtained after right-clicking Cottonwood Logs or Dark Oag Logs with an Athame.",
-  "jei.info.silk_fiber": "Can be obtained after breeding Silk Moths."
+  "jei.info.silk_fiber": "Can be obtained after breeding Silk Moths.",
+
+  "emi.category.hexalia.mutation": "Mutation",
+  "emi.category.hexalia.mortar_and_pestle": "Mortar and Pestle",
+  "emi.category.hexalia.ritual_brazier": "Ritual Brazier",
+  "emi.category.hexalia.ritual_table": "Ritual Table",
+  "emi.category.hexalia.small_cauldron": "Small Cauldron",
+
+  "tag.item.hexalia.herbs": "Herbs",
+  "tag.item.hexalia.crushed_herbs": "Crushed Herbs",
+  "tag.item.hexalia.brews": "Brews",
+  "tag.item.hexalia.cottonwood_logs": "Cottonwood Logs",
+  "tag.item.hexalia.willow_logs": "Willow Logs",
+  "tag.item.hexalia.offhand_equipment": "Offhand Equipment",
+  "tag.item.hexalia.tulips": "Tulips",
+  "tag.item.hexalia.stun_immune_headwear": "Stun-Immune Headwear",
+
+  "tag.item.forge.bread": "Bread",
+  "tag.item.forge.crops": "Crops",
+  "tag.item.forge.crops.tomato": "Tomatoes",
+  "tag.item.forge.vegetables": "Vegetables",
+  "tag.item.forge.vegetables.tomato": "Tomatoes",
+  "tag.item.forge.salt": "Salt",
+  "tag.item.forge.berries": "Berries",
+  "tag.item.forge.seeds": "Seeds",
+  "tag.item.forge.mushrooms": "Mushrooms",
+  "tag.item.forge.salt_blocks": "Salt Blocks",
+  "tag.item.forge.cooked_meats": "Cooked Meats",
+  "tag.item.forge.gems.diamond": "Diamonds",
+
+  "tag.item.sereneseasons.autumn_crops": "Autumn Crops",
+  "tag.item.sereneseasons.spring_crops": "Spring Crops",
+  "tag.item.sereneseasons.summer_crops": "Summer Crops",
+  "tag.item.sereneseasons.winter_crops": "Winter Crops",
+
+  "tag.block.hexalia.attracts_moth": "Attracts Moths",
+  "tag.block.hexalia.cottonwood_logs": "Cottonwood Logs",
+  "tag.block.hexalia.willow_logs": "Willow Logs",
+  "tag.block.hexalia.spiritroot_bound_blocks": "Spiritroot Bound Blocks",
+  "tag.block.hexalia.bogshade_no_slow": "Bogshade No-Slow Blocks",
+
+  "tag.block.forge.salt_blocks": "Salt Blocks",
+
+  "tag.block.sereneseasons.autumn_crops": "Autumn Crops",
+  "tag.block.sereneseasons.spring_crops": "Spring Crops",
+  "tag.block.sereneseasons.summer_crops": "Summer Crops",
+  "tag.block.sereneseasons.winter_crops": "Winter Crops",
+  "tag.block.sereneseasons.unbreakable_infertile_crops": "Unbreakable Infertile Crops"
 }
