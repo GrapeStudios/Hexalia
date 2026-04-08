@@ -1,0 +1,48 @@
+{
+  "name": "Brewing",
+  "icon": "hexalia:small_cauldron",
+  "category": "hexalia:core_mechanics",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Small Cauldron",
+      "text": "The Small Cauldron is used to brew magical mixtures by combining water, ingredients, and heat. Through careful preparation and timing, it produces a wide range of useful concoctions."
+    },
+    {
+      "type": "text",
+      "title": "Brewing Process",
+      "anchor": "process",
+      "text": "Water is placed into the cauldron, followed by ingredients. Using a $(l:hexalia:content/tools#ladle)Ladle$(/l), the mixture is stirred and begins to cook when heat is applied from below."
+    },
+    {
+      "type": "text",
+      "title": "On Cooking",
+      "anchor": "cooking",
+      "text": "As the mixture cooks, it gradually transforms into its final result. The cauldron must remain heated, and space must be available for the output to form."
+    },
+    {
+      "type": "text",
+      "title": "Spoiled Mixture",
+      "anchor": "spoiled",
+      "text": "Improper combinations result in a spoiled mixture. This unstable substance emits corrupted energy and can harm those nearby until it is cleansed or removed."
+    },
+    {
+      "type": "text",
+      "title": "Overcooking",
+      "anchor": "overcooking",
+      "text": "Leaving a finished brew unattended will degrade its quality, reducing the yield. Careful timing ensures the best results."
+    },
+    {
+      "type": "text",
+      "title": "Ladle",
+      "anchor": "ladle",
+      "text": "A Ladle is required to stir the cauldron and begin the brewing process. Without it, mixtures will not properly combine or progress."
+    },
+    {
+      "type": "text",
+      "title": "On Brewing",
+      "text": "Brewing rewards attention and experimentation. Different ingredient combinations yield different results, with success depending on both preparation and timing."
+    }
+  ]
+}

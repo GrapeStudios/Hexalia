@@ -408,5 +408,7 @@
   "tag.block.sereneseasons.spring_crops": "Spring Crops",
   "tag.block.sereneseasons.summer_crops": "Summer Crops",
   "tag.block.sereneseasons.winter_crops": "Winter Crops",
-  "tag.block.sereneseasons.unbreakable_infertile_crops": "Unbreakable Infertile Crops"
+  "tag.block.sereneseasons.unbreakable_infertile_crops": "Unbreakable Infertile Crops",
+
+  "item.hexalia.verdant_grimoire.landing_text": "A detailed book is your trusted tool in matters of witchcraft and plant care."
 }
