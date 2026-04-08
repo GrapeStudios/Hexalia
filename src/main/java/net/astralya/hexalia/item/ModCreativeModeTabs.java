@@ -2,6 +2,7 @@ package net.astralya.hexalia.item;
 
 import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.block.ModBlocks;
+import net.astralya.hexalia.util.ModUtil;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
@@ -30,6 +31,7 @@ public class ModCreativeModeTabs {
                         acceptCottonwood(entries);
                         acceptWillow(entries);
                         acceptSpawnEggs(entries);
+                        acceptCompatItems(entries);
                     }).build());
 
     public static void registerItemGroups() {
@@ -224,5 +226,11 @@ public class ModCreativeModeTabs {
     private static void acceptSpawnEggs(ItemGroup.Entries entries) {
         entries.add(ModItems.SILK_MOTH_SPAWN_EGG);
         entries.add(ModItems.CACOFEY_SPAWN_EGG);
+    }
+
+    private static void acceptCompatItems(ItemGroup.Entries entries) {
+        if (ModUtil.isModLoaded("patchouli")) {
+            entries.add(ModItems.VERDANT_GRIMOIRE);
+        }
     }
 }

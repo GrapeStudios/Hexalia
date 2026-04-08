@@ -1,4 +1,4 @@
-// 1.21.1	2026-04-05T19:22:22.426236027	Hexalia/Recipes
+// 1.21.1	2026-04-08T02:02:14.265159984	Hexalia/Recipes
 91689241a11db03fe25c3e7b4a3e4200752e69b4 data/hexalia/advancement/recipes/misc/leather_from_salt.json
 75275d33b775c93e53df90e2bf54a0b5716384f4 data/hexalia/recipe/frost_sac.json
 f017ed15d3e83fdf003e1f57af01bd0a29bf40c2 data/hexalia/advancement/recipes/misc/tempest_idol.json
@@ -103,6 +103,7 @@ db0963fd3ef94aa92a0c2b74ec0385d0e30f2842 data/hexalia/recipe/cottonwood_planks.j
 ea9dcc61411511981919646b462f4bd64fb01c1b data/hexalia/recipe/willow_fence.json
 4ad00f02b711ccc0863459170ee10ad2881782c9 data/hexalia/advancement/recipes/misc/silk_fiber.json
 f987f10c3f16167a1280cc616eea53859e10be7b data/hexalia/advancement/recipes/building_blocks/cottonwood_planks.json
+479158d46681f0504fc55764f2b295a005879e46 data/hexalia/recipe/verdant_grimoire.json
 6af8c61d04a6d777f752d82579075614f9d6fad6 data/hexalia/advancement/recipes/ritual_table/water_node_from_ritual_table.json
 85d1123cdb310bd1decd09d12bd391d250bf3bae data/hexalia/recipe/rustic_bottle.json
 3b358b61a11361e4a657a554acc48d979d3820a6 data/hexalia/recipe/candle_skull.json
@@ -146,6 +147,7 @@ a69a79a7049ffabb2dacc2e470ef6cbcb92fa91b data/hexalia/advancement/recipes/buildi
 aac0ce59d8e3421f2e7b4e95d0df52afa699754c data/hexalia/recipe/pink_dye.json
 90d59e1ff1f04703c4ee2c481d4a4cd9fe61204b data/hexalia/advancement/recipes/ritual_table/bloomwrap_leggings_from_ritual_table.json
 54ace88f96a6077a834322c3ee976f7e82f0e603 data/hexalia/recipe/silkweave_bindings.json
+3c9d97eec1f3f815bc732ac33b3bacc589023485 data/hexalia/advancement/recipes/misc/verdant_grimoire.json
 bcde26555896685290a3522f961464b7e7f4f7b8 data/hexalia/recipe/thornbow.json
 1eb5879e07396f11743dd2b06ed3cd46778e8b59 data/hexalia/advancement/recipes/mutation/celestial_bloom_from_mutation.json
 631c18dc46b80a9c97d77fcf97b1608eaf0fb8bf data/hexalia/advancement/recipes/transportation/cottonwood_boat.json

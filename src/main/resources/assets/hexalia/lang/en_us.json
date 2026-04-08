@@ -402,5 +402,7 @@
   "tag.block.sereneseasons.unbreakable_infertile_crops": "Unbreakable Infertile Crops",
 
   "tag.entity_type.hexalia.spiritroot_uncapturable": "Spiritroot Uncapturable",
-  "tag.entity_type.hexalia.undead_veil_immune": "Undead Veil Immune"
+  "tag.entity_type.hexalia.undead_veil_immune": "Undead Veil Immune",
+
+  "item.hexalia.verdant_grimoire.landing_text": "A detailed book is your trusted tool in matters of witchcraft and plant care."
 }
