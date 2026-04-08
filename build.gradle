@@ -68,7 +68,10 @@ dependencies {
     modImplementation("me.shedaniel.cloth:cloth-config-fabric:11.1.136")
     modCompileOnly("mezz.jei:jei-1.20.1-common-api-intermediary:${jei_version}")
     modCompileOnly("mezz.jei:jei-1.20.1-fabric-api:${jei_version}")
-    modRuntimeOnly("mezz.jei:jei-1.20.1-fabric:${jei_version}")
+    // modRuntimeOnly("mezz.jei:jei-1.20.1-fabric:${jei_version}")
+
+    modCompileOnly "dev.emi:emi-fabric:${emi_version}:api"
+    modLocalRuntime "dev.emi:emi-fabric:${emi_version}"
 }
 
 processResources {
