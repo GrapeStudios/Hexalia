@@ -26,6 +26,9 @@
 		],
 		"rei_client": [
 			"net.astralya.hexalia.compat.rei.HexaliaREIClientPlugin"
+		],
+		"emi": [
+			"net.astralya.hexalia.compat.emi.HexaliaEmiPlugin"
 		]
 	},
 	"mixins": [

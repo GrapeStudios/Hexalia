@@ -353,16 +353,54 @@
   "message.hexalia.cacofey.invalid_container": "That's not a valid container.",
   "message.hexalia.dreamcatcher_full": "The dreamcatcher cannot hold any more fuel.",
 
-  "tag.item.c.dusts.salt": "Salt Dusts",
-  "tag.item.c.storage_blocks.salt": "Salt Blocks",
+  "emi.category.hexalia.mutation": "Mutation",
+  "emi.category.hexalia.mortar_and_pestle": "Mortar and Pestle",
+  "emi.category.hexalia.ritual_brazier": "Ritual Brazier",
+  "emi.category.hexalia.ritual_table": "Ritual Table",
+  "emi.category.hexalia.small_cauldron": "Small Cauldron",
+
+  "tag.item.hexalia.herbs": "Herbs",
+  "tag.item.hexalia.crushed_herbs": "Crushed Herbs",
+  "tag.item.hexalia.brews": "Brews",
+  "tag.item.hexalia.cottonwood_logs": "Cottonwood Logs",
+  "tag.item.hexalia.willow_logs": "Willow Logs",
+  "tag.item.hexalia.offhand_equipment": "Offhand Equipment",
+  "tag.item.hexalia.tulips": "Tulips",
+  "tag.item.hexalia.stun_immune_headwear": "Stun-Immune Headwear",
+
+  "tag.item.c.foods": "Foods",
+  "tag.item.c.foods.breads": "Breads",
+  "tag.item.c.crops": "Crops",
   "tag.item.c.crops.tomatoes": "Tomatoes",
-  "tag.item.c.foods.mushrooms": "Mushrooms",
-  "tag.item.c.seeds": "Seeds",
   "tag.item.c.foods.berries": "Berries",
+  "tag.item.c.foods.cooked_meats": "Cooked Meats",
   "tag.item.c.foods.vegetables": "Vegetables",
   "tag.item.c.foods.vegetables.tomatoes": "Tomatoes",
-  "tag.item.c.foods.breads": "Breads",
-  "tag.item.c.foods.cooked_meats": "Cooked Meats",
-  "tag.item.c.crops": "Crops",
-  "tag.item.c.foods": "Foods"
+  "tag.item.c.dusts.salt": "Salt Dusts",
+  "tag.item.c.seeds": "Seeds",
+  "tag.item.c.foods.mushrooms": "Mushrooms",
+  "tag.item.c.storage_blocks.salt": "Salt Blocks",
+
+  "tag.item.sereneseasons.autumn_crops": "Autumn Crops",
+  "tag.item.sereneseasons.spring_crops": "Spring Crops",
+  "tag.item.sereneseasons.summer_crops": "Summer Crops",
+  "tag.item.sereneseasons.winter_crops": "Winter Crops",
+
+  "tag.block.hexalia.attracts_moth": "Attracts Moths",
+  "tag.block.hexalia.cottonwood_logs": "Cottonwood Logs",
+  "tag.block.hexalia.willow_logs": "Willow Logs",
+  "tag.block.hexalia.cocoon_logs": "Cocoon Logs",
+  "tag.block.hexalia.spiritroot_bound_blocks": "Spiritroot Bound Blocks",
+  "tag.block.hexalia.bogshade_no_slow": "Bogshade No-Slow Blocks",
+
+  "tag.block.c.storage_blocks.salt": "Salt Blocks",
+
+  "tag.block.sereneseasons.autumn_crops": "Autumn Crops",
+  "tag.block.sereneseasons.spring_crops": "Spring Crops",
+  "tag.block.sereneseasons.summer_crops": "Summer Crops",
+  "tag.block.sereneseasons.winter_crops": "Winter Crops",
+  "tag.block.sereneseasons.unbreakable_infertile_crops": "Unbreakable Infertile Crops",
+
+  "tag.entity_type.hexalia.spiritroot_uncapturable": "Spiritroot Uncapturable",
+  "tag.entity_type.hexalia.undead_veil_immune": "Undead Veil Immune"
 }
