@@ -7,6 +7,9 @@ import net.astralya.hexalia.gameplay.censer.HerbCombination;
 import net.astralya.hexalia.util.ModUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.SidedInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
@@ -21,13 +24,16 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public class CenserBlockEntity extends BlockEntity {
+public class CenserBlockEntity extends BlockEntity implements SidedInventory {
     private static final int SIZE = 2;
     private static final int SLOT_0 = 0;
     private static final int SLOT_1 = 1;
+    private static final int[] TOP_SLOTS = new int[]{SLOT_0, SLOT_1};
+    private static final int[] NO_SLOTS = new int[0];
 
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(SIZE, ItemStack.EMPTY);
     private @Nullable HerbCombination activeCombination;
@@ -87,31 +93,6 @@ public class CenserBlockEntity extends BlockEntity {
 
     public int getBurnTime() {
         return burnTime;
-    }
-
-    public ItemStack getStack(int slot) {
-        if (slot < 0 || slot >= SIZE) {
-            return ItemStack.EMPTY;
-        }
-        return inventory.get(slot);
-    }
-
-    public void setStack(int slot, ItemStack stack) {
-        if (slot < 0 || slot >= SIZE) {
-            return;
-        }
-
-        ItemStack one = stack.copy();
-        one.setCount(1);
-        inventory.set(slot, one);
-        onInventoryChanged();
-    }
-
-    public void clearItems() {
-        inventory.set(SLOT_0, ItemStack.EMPTY);
-        inventory.set(SLOT_1, ItemStack.EMPTY);
-        markDirty();
-        sendUpdate();
     }
 
     public DefaultedList<ItemStack> getDropsContainer() {
@@ -229,10 +210,53 @@ public class CenserBlockEntity extends BlockEntity {
         return BlockEntityUpdateS2CPacket.create(this);
     }
 
+    @Override
+    public int[] getAvailableSlots(Direction side) {
+        return side == Direction.UP ? TOP_SLOTS : NO_SLOTS;
+    }
+
+    @Override
+    public boolean canInsert(int slot, ItemStack stack, @Nullable Direction direction) {
+        return direction == Direction.UP
+                && slot >= 0
+                && slot < SIZE
+                && !stack.isEmpty()
+                && inventory.get(slot).isEmpty();
+    }
+
+    @Override
+    public boolean canExtract(int slot, ItemStack stack, Direction direction) {
+        return false;
+    }
+
+    @Override
+    public int size() {
+        return SIZE;
+    }
+
+    @Override
     public boolean isEmpty() {
         return inventory.get(SLOT_0).isEmpty() && inventory.get(SLOT_1).isEmpty();
     }
 
+    @Override
+    public ItemStack getStack(int slot) {
+        if (slot < 0 || slot >= SIZE) {
+            return ItemStack.EMPTY;
+        }
+        return inventory.get(slot);
+    }
+
+    @Override
+    public ItemStack removeStack(int slot, int amount) {
+        ItemStack removed = Inventories.splitStack(inventory, slot, amount);
+        if (!removed.isEmpty()) {
+            onInventoryChanged();
+        }
+        return removed;
+    }
+
+    @Override
     public ItemStack removeStack(int slot) {
         if (slot < 0 || slot >= SIZE) {
             return ItemStack.EMPTY;
@@ -243,9 +267,42 @@ public class CenserBlockEntity extends BlockEntity {
             return ItemStack.EMPTY;
         }
 
+        ItemStack removed = stack.copy();
         inventory.set(slot, ItemStack.EMPTY);
-        markDirty();
-        sendUpdate();
-        return stack;
+        onInventoryChanged();
+        return removed;
+    }
+
+    @Override
+    public void setStack(int slot, ItemStack stack) {
+        if (slot < 0 || slot >= SIZE) {
+            return;
+        }
+
+        ItemStack one = stack.copy();
+        if (!one.isEmpty()) {
+            one.setCount(1);
+        }
+        inventory.set(slot, one);
+        onInventoryChanged();
+    }
+
+    @Override
+    public boolean isValid(int slot, ItemStack stack) {
+        return slot >= 0 && slot < SIZE && !stack.isEmpty() && inventory.get(slot).isEmpty();
+    }
+
+    @Override
+    public boolean canPlayerUse(PlayerEntity player) {
+        return world != null
+                && world.getBlockEntity(pos) == this
+                && player.squaredDistanceTo(pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D) <= 64.0D;
+    }
+
+    @Override
+    public void clear() {
+        inventory.set(SLOT_0, ItemStack.EMPTY);
+        inventory.set(SLOT_1, ItemStack.EMPTY);
+        onInventoryChanged();
     }
 }

@@ -85,7 +85,12 @@ public final class ModVanillaBehaviors {
                 );
                 BlockHitResult hit = new BlockHitResult(hitLocation, hitFace, targetPos, false);
 
-                ActionResult result = stack.useOnBlock(new ItemUsageContext(fakePlayer, Hand.MAIN_HAND, hit));
+                ActionResult result = world.getBlockState(targetPos).onUse(world, fakePlayer, Hand.MAIN_HAND, hit);
+
+                if (!result.isAccepted()) {
+                    result = fakePlayer.getStackInHand(Hand.MAIN_HAND).useOnBlock(new ItemUsageContext(fakePlayer, Hand.MAIN_HAND, hit));
+                }
+
                 this.setSuccess(result.isAccepted());
                 return fakePlayer.getStackInHand(Hand.MAIN_HAND);
             }

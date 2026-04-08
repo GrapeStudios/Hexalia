@@ -131,7 +131,7 @@ public class CenserBlock extends BlockWithEntity {
             }
 
             if (!world.isClient) {
-                censer.clearItems();
+                censer.clear();
                 world.setBlockState(pos, state.with(LIT, true), Block.NOTIFY_ALL);
                 censer.setActiveCombination(combo);
                 censer.setBurnTime(Configuration.CENSER_EFFECT_DURATION.get());
@@ -148,7 +148,7 @@ public class CenserBlock extends BlockWithEntity {
             if (!world.isClient) {
                 world.setBlockState(pos, state.with(LIT, false), Block.NOTIFY_ALL);
                 censer.setBurnTime(0);
-                censer.clearItems();
+                censer.clear();
                 censer.setActiveCombination(null);
                 world.playSound(null, pos, SoundEvents.ENTITY_GENERIC_EXTINGUISH_FIRE, SoundCategory.BLOCKS, 0.5f, 1.0f);
             }
