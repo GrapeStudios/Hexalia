@@ -43,6 +43,46 @@
       "type": "text",
       "title": "On Brewing",
       "text": "Brewing rewards attention and experimentation. Different ingredient combinations yield different results, with success depending on both preparation and timing."
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:brew_of_arachnid_grace_from_small_cauldron",
+      "layout": "small_cauldron"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:brew_of_bloodlust_from_small_cauldron",
+      "layout": "small_cauldron"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:brew_of_daybloom_from_small_cauldron",
+      "layout": "small_cauldron"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:brew_of_hollow_silence_from_small_cauldron",
+      "layout": "small_cauldron"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:brew_of_homestead_from_small_cauldron",
+      "layout": "small_cauldron"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:brew_of_siphon_from_small_cauldron",
+      "layout": "small_cauldron"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:brew_of_slimewalker_from_small_cauldron",
+      "layout": "small_cauldron"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:brew_of_spikeskin_from_small_cauldron",
+      "layout": "small_cauldron"
     }
   ]
 }
