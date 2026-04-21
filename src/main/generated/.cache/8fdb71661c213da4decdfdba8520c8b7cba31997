@@ -1,4 +1,4 @@
-// 1.21.1	2026-04-08T02:02:14.265159984	Hexalia/Recipes
+// 1.21.1	2026-04-21T06:44:08.502022792	Hexalia/Recipes
 91689241a11db03fe25c3e7b4a3e4200752e69b4 data/hexalia/advancement/recipes/misc/leather_from_salt.json
 75275d33b775c93e53df90e2bf54a0b5716384f4 data/hexalia/recipe/frost_sac.json
 f017ed15d3e83fdf003e1f57af01bd0a29bf40c2 data/hexalia/advancement/recipes/misc/tempest_idol.json
@@ -30,6 +30,7 @@ e48726a56ce0665569507536d8b70b4d07766b9b data/hexalia/recipe/mandrake_seeds.json
 f8d40a045e4d9a61282f7a2ddda64da198dc7d4b data/hexalia/advancement/recipes/small_cauldron/brew_of_bloodlust_from_small_cauldron.json
 0544a9dd3d575295ccb9f14693b0175ac2117907 data/hexalia/advancement/recipes/ritual_table/earth_node_from_ritual_table.json
 8dab953d00ce8b82dcb8938a753410d9d3adc0ff data/hexalia/advancement/recipes/mutation/podzol_from_mutation.json
+c64f4231b783523935ee0b3b71437ced3c3242cd data/hexalia/recipe/mortar_and_pestle.json
 21b1eab18ae59ad5045b90ebfe8030b9d1abaf60 data/hexalia/recipe/small_cauldron.json
 832cfc743946663b65a24a5d252d956d0aa2f804 data/hexalia/advancement/recipes/ritual_table/morphora_from_ritual_table.json
 7e5926e4d52f53144b2d0e371bcd1fb3a7907867 data/hexalia/advancement/recipes/mortar_and_pestle/brambleguard_salve_from_mortar.json
@@ -228,6 +229,7 @@ a227c12c5c74fe41ad6404d4acebe1bb17998a61 data/hexalia/advancement/recipes/mortar
 e1c97b1c22b999cc36e2f26ed641c52b52edb2f0 data/hexalia/advancement/recipes/misc/cobweb_from_fiber.json
 44c6369acb58a8be724dff1eed0dc4b3977e9d54 data/hexalia/advancement/recipes/ritual_table/kelpweave_blade_from_ritual_table.json
 c2ffdf232607963d3b3401bc5ab6291f3a13bc17 data/hexalia/recipe/earth_node_from_ritual_table.json
+319e1d4f0465ad96e2cf8366f7320859c1f1db97 data/hexalia/advancement/recipes/misc/mortar_and_pestle.json
 e938acdaa0613917d1e7fb2cdaaf0edfb0365a2b data/hexalia/advancement/recipes/redstone/willow_door.json
 3d303dd86844d1bf1d6a7779ed67478b6d679aa0 data/hexalia/recipe/silk_fiber.json
 6303bb0ef41adc9b1dcb4fb3473bfdf202b284fc data/hexalia/recipe/morphora_from_ritual_table.json

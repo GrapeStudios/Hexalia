@@ -1,9 +1,9 @@
-// 1.21.1	2026-04-08T02:02:14.26328585	Hexalia/Block Loot Tables
+// 1.21.1	2026-04-21T06:44:08.499983131	Hexalia/Block Loot Tables
 8176b91fe375c1e4fdcad69ff850188ee4468edb data/hexalia/loot_table/blocks/cottonwood_hanging_wall_sign.json
 aa32c44ab864017094331bc80dd7349368d98cc8 data/hexalia/loot_table/blocks/potted_withered_aegiflora.json
 8176b91fe375c1e4fdcad69ff850188ee4468edb data/hexalia/loot_table/blocks/cottonwood_hanging_sign.json
-a9d3cf0a303443aa371cc2241686c95c45912605 data/hexalia/loot_table/blocks/willow_stairs.json
 d2ee6a83811c15d0c7e0fb4e81c24ea563ffcce3 data/hexalia/loot_table/blocks/shelf.json
+a9d3cf0a303443aa371cc2241686c95c45912605 data/hexalia/loot_table/blocks/willow_stairs.json
 697bf667b4e2b051fb3efe6bead57dd84ad086d3 data/hexalia/loot_table/blocks/dahlia.json
 2273d315ca9acdb5aab7de2a0a251658b360c919 data/hexalia/loot_table/blocks/willow_door.json
 ae24eb4d93b06cacaf71623f037959bc4f7b7403 data/hexalia/loot_table/blocks/wild_sunfire_tomato.json

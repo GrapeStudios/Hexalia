@@ -447,6 +447,12 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion(hasItem(Items.BOOK), conditionsFromItem(Items.BOOK))
                 .offerTo(exporter);
 
+        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, ModItems.MORTAR_AND_PESTLE)
+                .input(Items.BOWL)
+                .input(Items.STONE)
+                .criterion(hasItem(Items.BOWL), conditionsFromItem(Items.BOWL))
+                .offerTo(exporter);
+
         // Small Cauldron brews
         SmallCauldronRecipeBuilder.cauldron(
                         Ingredient.ofItems(ModItems.MANDRAKE),
