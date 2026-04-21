@@ -42,7 +42,102 @@
     {
       "type": "text",
       "title": "On Failure",
-      "text": "Improper preparation—such as missing salt, incorrect ingredients, or insufficient surrounding growth—will prevent the ritual from completing."
+      "text": "Improper preparation\u2014such as missing salt, incorrect ingredients, or insufficient surrounding growth\u2014will prevent the ritual from completing."
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:aegiflora_from_ritual_table",
+      "layout": "ritual_table"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:air_node_from_ritual_table",
+      "layout": "ritual_table"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:astrylis_from_ritual_table",
+      "layout": "ritual_table"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:bloomwrap_boots_from_ritual_table",
+      "layout": "ritual_table"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:bloomwrap_hat_from_ritual_table",
+      "layout": "ritual_table"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:bloomwrap_leggings_from_ritual_table",
+      "layout": "ritual_table"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:bloomwrap_robes_from_ritual_table",
+      "layout": "ritual_table"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:earth_node_from_ritual_table",
+      "layout": "ritual_table"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:fire_node_from_ritual_table",
+      "layout": "ritual_table"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:grimshade_from_ritual_table",
+      "layout": "ritual_table"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:kelpweave_blade_from_ritual_table",
+      "layout": "ritual_table"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:lourdes_from_ritual_table",
+      "layout": "ritual_table"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:morphora_from_ritual_table",
+      "layout": "ritual_table"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:nautilite_from_ritual_table",
+      "layout": "ritual_table"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:rabbage_seeds_from_ritual_table",
+      "layout": "ritual_table"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:rootshaper_from_ritual_table",
+      "layout": "ritual_table"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:sage_pendant_from_ritual_table",
+      "layout": "ritual_table"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:water_node_from_ritual_table",
+      "layout": "ritual_table"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:windsong_from_ritual_table",
+      "layout": "ritual_table"
     }
   ]
 }

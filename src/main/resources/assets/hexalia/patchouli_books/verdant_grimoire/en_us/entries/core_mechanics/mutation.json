@@ -37,6 +37,111 @@
       "type": "text",
       "title": "On Discovery",
       "text": "Different materials respond differently to Mutavis. Plants, stone, and earth each reveal their own transformations, encouraging experimentation across the natural world."
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:andesite_from_mutation",
+      "layout": "mutation"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:blackstone_from_mutation",
+      "layout": "mutation"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:blue_ice_from_mutation",
+      "layout": "mutation"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:celestial_bloom_from_mutation",
+      "layout": "mutation"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:cottonwood_sapling_from_mutation",
+      "layout": "mutation"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:diorite_from_mutation",
+      "layout": "mutation"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:dreamshroom_from_mutation",
+      "layout": "mutation"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:ghost_fern_from_mutation",
+      "layout": "mutation"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:granite_from_mutation",
+      "layout": "mutation"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:lotus_flower_from_mutation",
+      "layout": "mutation"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:mud_from_mutation",
+      "layout": "mutation"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:packed_ice_from_mutation",
+      "layout": "mutation"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:podzol_from_mutation",
+      "layout": "mutation"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:red_sand_from_mutation",
+      "layout": "mutation"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:rooted_dirt_from_mutation",
+      "layout": "mutation"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:saltsprout_from_mutation",
+      "layout": "mutation"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:siren_kelp_from_mutation",
+      "layout": "mutation"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:spirit_bloom_from_mutation",
+      "layout": "mutation"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:tuff_from_mutation",
+      "layout": "mutation"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:willow_sapling_from_mutation",
+      "layout": "mutation"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:witchweed_from_mutation",
+      "layout": "mutation"
     }
   ]
 }
