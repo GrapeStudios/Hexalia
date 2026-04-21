@@ -31,6 +31,41 @@
       "type": "text",
       "title": "On Use",
       "text": "Celestial Infusion provides a simpler alternative to more complex rituals, allowing quick transformations at the cost of natural resources gathered from the world."
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:celestial_crystal_block_from_ritual_brazier",
+      "layout": "ritual_brazier"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:celestial_crystal_from_ritual_brazier",
+      "layout": "ritual_brazier"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:galeberries_from_ritual_brazier",
+      "layout": "ritual_brazier"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:moonweave_bindings_from_ritual_brazier",
+      "layout": "ritual_brazier"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:moonweave_footwraps_from_ritual_brazier",
+      "layout": "ritual_brazier"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:moonweave_hood_from_ritual_brazier",
+      "layout": "ritual_brazier"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:moonweave_mantle_from_ritual_brazier",
+      "layout": "ritual_brazier"
     }
   ]
 }
