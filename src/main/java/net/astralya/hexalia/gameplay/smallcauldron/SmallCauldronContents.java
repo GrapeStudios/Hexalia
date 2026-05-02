@@ -764,7 +764,7 @@ public final class SmallCauldronContents {
         return bottle;
     }
 
-    private void resetToEmpty() {
+    public void resetToEmpty() {
         clearIngredientsAndCount();
         stirsDone = 0;
         cookProgress = 0;

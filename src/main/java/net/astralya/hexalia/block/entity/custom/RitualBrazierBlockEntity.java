@@ -19,6 +19,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
+import net.minecraft.world.Clearable;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.Level;
@@ -29,7 +30,7 @@ import net.neoforged.neoforge.items.ItemStackHandler;
 
 import java.util.Optional;
 
-public class RitualBrazierBlockEntity extends SyncBlockEntity {
+public class RitualBrazierBlockEntity extends SyncBlockEntity implements Clearable {
 
     public static final int CHANNEL_DURATION = 120;
 
@@ -197,6 +198,13 @@ public class RitualBrazierBlockEntity extends SyncBlockEntity {
 
         be.setChanged();
         server.sendBlockUpdated(pos, state, state, 3);
+    }
+
+    @Override
+    public void clearContent() {
+        for (int i = 0; i < inventory.getSlots(); i++) {
+            inventory.setStackInSlot(i, ItemStack.EMPTY);
+        }
     }
 
     private boolean isValidBloomPos(BlockPos pos) {
