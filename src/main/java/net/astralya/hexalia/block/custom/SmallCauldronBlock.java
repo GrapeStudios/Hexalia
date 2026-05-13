@@ -156,7 +156,7 @@ public class SmallCauldronBlock extends BlockWithEntity {
         ItemActionResult result;
         result = tryStirWithLadle(stack, state, world, pos, player, hand, cauldron);
         if (result != null) return result;
-        result = tryIgniteWithFlintAndSteel(stack, state, world, pos, player, hand);
+        result = tryIgniteWithFireStarter(stack, state, world, pos, player, hand);
         if (result != null) return result;
         result = tryRusticBottle(stack, world, player, hand, cauldron);
         if (result != null) return result;
@@ -195,14 +195,29 @@ public class SmallCauldronBlock extends BlockWithEntity {
         return ItemActionResult.CONSUME;
     }
 
-    private @Nullable ItemActionResult tryIgniteWithFlintAndSteel(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand) {
-        if (!stack.isOf(Items.FLINT_AND_STEEL)) return null;
+    public @Nullable ItemActionResult tryIgniteWithFireStarter(ItemStack stack, BlockState state, World world, BlockPos pos, @Nullable PlayerEntity player, Hand hand) {
+        if (!isFireStarter(stack)) return null;
         if (state.get(WATERLOGGED) || state.get(LIT)) return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-        if (world.isClient) return ItemActionResult.SUCCESS;
+        if (world.isClient()) return ItemActionResult.SUCCESS;
         world.setBlockState(pos, state.with(LIT, true), 3);
-        stack.damage(1, player, player.getPreferredEquipmentSlot(stack));
+        if (player != null) consumeFireStarter(stack, player);
         world.playSound(null, pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0F, 1.0F);
         return ItemActionResult.CONSUME;
+    }
+
+    private boolean isFireStarter(ItemStack stack) {
+        return stack.isOf(Items.FLINT_AND_STEEL) || stack.isOf(Items.FIRE_CHARGE);
+    }
+
+    private void consumeFireStarter(ItemStack stack, PlayerEntity player) {
+        if (stack.isOf(Items.FIRE_CHARGE)) {
+            if (!player.isCreative()) {
+                stack.decrement(1);
+            }
+            return;
+        }
+
+        stack.damage(1, player, player.getPreferredEquipmentSlot(stack));
     }
 
     private @Nullable ItemActionResult tryRusticBottle(ItemStack stack, World world, PlayerEntity player, Hand hand, SmallCauldronBlockEntity cauldron) {

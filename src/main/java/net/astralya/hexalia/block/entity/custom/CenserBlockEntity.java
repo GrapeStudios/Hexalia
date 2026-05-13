@@ -3,7 +3,6 @@ import net.astralya.hexalia.block.custom.CenserBlock;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.gameplay.censer.CenserEffectHandler;
 import net.astralya.hexalia.gameplay.censer.HerbCombination;
-import net.astralya.hexalia.util.ModUtil;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -17,8 +16,6 @@ import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.s2c.play.BlockEntityUpdateS2CPacket;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
@@ -92,12 +89,7 @@ public class CenserBlockEntity extends BlockEntity implements SidedInventory {
     }
     private void sendUpdate() {
         if (world != null && !world.isClient) {
-            Packet<ClientPlayPacketListener> packet = toUpdatePacket();
-            if (packet != null) {
-                for (ServerPlayerEntity player : ModUtil.tracking((ServerWorld) world, pos)) {
-                    player.networkHandler.sendPacket(packet);
-                }
-            }
+            markDirty();
             world.updateListeners(pos, getCachedState(), getCachedState(), 3);
         }
     }
@@ -164,9 +156,7 @@ public class CenserBlockEntity extends BlockEntity implements SidedInventory {
             if (stack.isEmpty()) {
                 continue;
             }
-            NbtCompound stackTag = new NbtCompound();
-            stack.encode(registries, stackTag);
-            itemsTag.put("Slot" + i, stackTag);
+            itemsTag.put("Slot" + i, stack.encode(registries));
         }
         nbt.put("Items", itemsTag);
         nbt.putInt("BurnTime", burnTime);

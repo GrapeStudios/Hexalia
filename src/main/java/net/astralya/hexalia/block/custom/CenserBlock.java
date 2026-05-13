@@ -17,8 +17,8 @@ import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.ItemScatterer;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.FlintAndSteelItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -47,6 +47,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class CenserBlock extends BlockWithEntity {
 
@@ -110,39 +111,18 @@ public class CenserBlock extends BlockWithEntity {
 
     @Override
     protected ItemActionResult onUseWithItem(ItemStack stack, BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit) {
-        ItemStack heldItem = player.getStackInHand(hand);
+        ItemStack heldItem = stack;
         BlockEntity be = world.getBlockEntity(pos);
         if (!(be instanceof CenserBlockEntity censer)) return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 
-        if (heldItem.getItem() instanceof FlintAndSteelItem && !state.get(LIT)) {
-            ItemStack herb1 = censer.getStack(0);
-            ItemStack herb2 = censer.getStack(1);
-            if (herb1.isEmpty() || herb2.isEmpty()) {
-                if (world.isClient()) player.sendMessage(Text.translatable("message.hexalia.censer_not_full"), true);
-                return ItemActionResult.FAIL;
-            }
-            HerbCombination combo = new HerbCombination(herb1.getItem(), herb2.getItem());
-            if (!CenserEffectHandler.isValidCombination(herb1.getItem(), herb2.getItem())) {
-                if (world.isClient()) player.sendMessage(Text.translatable("message.hexalia.invalid_herb_combination"), true);
-                return ItemActionResult.FAIL;
-            }
-            if (world.isClient()) {
-                return ItemActionResult.SUCCESS;
-            }
-            censer.clearItems();
-            world.setBlockState(pos, state.with(LIT, true));
-            censer.setActiveCombination(combo);
-            censer.setBurnTime(Configuration.CENSER_EFFECT_DURATION.get());
-            sendEffectActivationMessage(world, pos, combo, player);
-            CenserEffectHandler.startEffect(world, pos, combo);
-            heldItem.damage(1, player, player.getPreferredEquipmentSlot(heldItem));
-            world.playSound(null, pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0f, world.random.nextFloat() * 0.4F + 0.8F);
-            return ItemActionResult.SUCCESS;
+        ItemActionResult ignitionResult = tryIgniteWithFireStarter(heldItem, state, world, pos, player, censer);
+        if (ignitionResult != null) {
+            return ignitionResult;
         }
 
         if (heldItem.getItem() instanceof ShovelItem && state.get(LIT)) {
             if (world.isClient()) {
-                censer.clearItems();
+                return ItemActionResult.SUCCESS;
             } else {
                 world.setBlockState(pos, state.with(LIT, false));
                 censer.setBurnTime(0);
@@ -154,6 +134,14 @@ public class CenserBlock extends BlockWithEntity {
         }
 
         if (!state.get(LIT)) {
+            if (world.isClient()) {
+                if (heldItem.isEmpty() || heldItem.isIn(ModTags.Items.HERBS)) {
+                    return ItemActionResult.SUCCESS;
+                }
+                player.sendMessage(Text.translatable("message.hexalia.invalid_item"), true);
+                return ItemActionResult.FAIL;
+            }
+
             if (heldItem.isEmpty()) {
                 for (int i = 0; i < 2; i++) {
                     ItemStack stackInSlot = censer.getStack(i);
@@ -176,7 +164,6 @@ public class CenserBlock extends BlockWithEntity {
                     }
                 }
             } else {
-                if (world.isClient()) player.sendMessage(Text.translatable("message.hexalia.invalid_item"), true);
                 return ItemActionResult.FAIL;
             }
         }
@@ -184,16 +171,72 @@ public class CenserBlock extends BlockWithEntity {
         return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
-    private void sendEffectActivationMessage(World world, BlockPos pos, HerbCombination combo, PlayerEntity activatingPlayer) {
+    public ItemActionResult tryIgniteWithFireStarter(ItemStack stack, BlockState state, World world, BlockPos pos, @Nullable PlayerEntity player) {
+        BlockEntity be = world.getBlockEntity(pos);
+        if (!(be instanceof CenserBlockEntity censer)) {
+            return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        }
+        return tryIgniteWithFireStarter(stack, state, world, pos, player, censer);
+    }
+
+    private ItemActionResult tryIgniteWithFireStarter(ItemStack stack, BlockState state, World world, BlockPos pos, @Nullable PlayerEntity player, CenserBlockEntity censer) {
+        if (!isFireStarter(stack)) {
+            return null;
+        }
+        if (state.get(LIT)) {
+            return ItemActionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        }
+        if (world.isClient()) {
+            return ItemActionResult.SUCCESS;
+        }
+        ItemStack herb1 = censer.getStack(0);
+        ItemStack herb2 = censer.getStack(1);
+        if (herb1.isEmpty() || herb2.isEmpty()) {
+            if (player != null) player.sendMessage(Text.translatable("message.hexalia.censer_not_full"), true);
+            return ItemActionResult.FAIL;
+        }
+        HerbCombination combo = new HerbCombination(herb1.getItem(), herb2.getItem());
+        if (!CenserEffectHandler.isValidCombination(herb1.getItem(), herb2.getItem())) {
+            if (player != null) player.sendMessage(Text.translatable("message.hexalia.invalid_herb_combination"), true);
+            return ItemActionResult.FAIL;
+        }
+        censer.clearItems();
+        world.setBlockState(pos, state.with(LIT, true));
+        censer.setActiveCombination(combo);
+        censer.setBurnTime(Configuration.CENSER_EFFECT_DURATION.get());
+        sendEffectActivationMessage(world, pos, combo, player);
+        CenserEffectHandler.startEffect(world, pos, combo);
+        if (player != null) consumeFireStarter(stack, player);
+        world.playSound(null, pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0f, world.random.nextFloat() * 0.4F + 0.8F);
+        return ItemActionResult.CONSUME;
+    }
+
+    private boolean isFireStarter(ItemStack stack) {
+        return stack.isOf(Items.FLINT_AND_STEEL) || stack.isOf(Items.FIRE_CHARGE);
+    }
+
+    private void consumeFireStarter(ItemStack stack, PlayerEntity player) {
+        if (stack.isOf(Items.FIRE_CHARGE)) {
+            if (!player.isCreative()) {
+                stack.decrement(1);
+            }
+            return;
+        }
+
+        stack.damage(1, player, player.getPreferredEquipmentSlot(stack));
+    }
+
+    private void sendEffectActivationMessage(World world, BlockPos pos, HerbCombination combo, @Nullable PlayerEntity activatingPlayer) {
         String key = CenserEffectHandler.getMessageKeyForCombination(combo);
         int radius = Configuration.CENSER_EFFECT_RADIUS.get();
         Box area = new Box(pos).expand(radius);
+        UUID activatorId = activatingPlayer != null ? activatingPlayer.getUuid() : null;
         for (PlayerEntity p : world.getEntitiesByClass(PlayerEntity.class, area, e -> true)) {
-            if (!p.getUuid().equals(activatingPlayer.getUuid()) && p instanceof ServerPlayerEntity sp) {
+            if ((activatorId == null || !p.getUuid().equals(activatorId)) && p instanceof ServerPlayerEntity sp) {
                 sp.sendMessage(Text.translatable(key), true);
             }
         }
-        if (!world.isClient() && activatingPlayer instanceof ServerPlayerEntity sp) {
+        if (activatingPlayer instanceof ServerPlayerEntity sp) {
             sp.sendMessage(Text.translatable(key), true);
         }
     }

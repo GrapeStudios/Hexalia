@@ -1,5 +1,6 @@
 package net.astralya.hexalia.item.custom;
 
+import net.astralya.hexalia.block.custom.MorphoraBlock;
 import net.astralya.hexalia.particle.ModParticleType;
 import net.astralya.hexalia.recipe.MutationRecipe;
 import net.astralya.hexalia.recipe.MutationRecipeInput;
@@ -34,6 +35,9 @@ public class MutavisItem extends Item {
         BlockPos pos = context.getBlockPos();
         ItemStack stack = context.getStack();
         boolean success = tryMutate((ServerWorld) world, pos, stack, context.getPlayer());
+        if (!success && world.getBlockState(pos).getBlock() instanceof MorphoraBlock morphoraBlock) {
+            success = morphoraBlock.tryActivateWithMutavis((ServerWorld) world, pos, stack, context.getPlayer());
+        }
         return success ? ActionResult.CONSUME : ActionResult.PASS;
     }
 
