@@ -1,7 +1,7 @@
 {
   "type": "hexalia:mutation",
   "input": {
-    "item": "minecraft:short_grass"
+    "item": "minecraft:azure_bluet"
   },
   "output": "hexalia:witchweed"
 }

@@ -37,6 +37,7 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
+import net.neoforged.neoforge.common.ItemAbilities;
 import org.jetbrains.annotations.Nullable;
 
 public class SmallCauldronBlock extends BaseEntityBlock {
@@ -196,7 +197,7 @@ public class SmallCauldronBlock extends BaseEntityBlock {
             return result;
         }
 
-        result = tryIgniteWithFlintAndSteel(stack, state, level, pos, player, hand);
+        result = tryIgniteWithFireStarter(stack, state, level, pos, player, hand);
         if (result != null) {
             return result;
         }
@@ -268,8 +269,8 @@ public class SmallCauldronBlock extends BaseEntityBlock {
         return ItemInteractionResult.CONSUME;
     }
 
-    private @Nullable ItemInteractionResult tryIgniteWithFlintAndSteel(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand) {
-        if (!stack.is(Items.FLINT_AND_STEEL)) {
+    private @Nullable ItemInteractionResult tryIgniteWithFireStarter(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand) {
+        if (!stack.canPerformAction(ItemAbilities.FIRESTARTER_LIGHT)) {
             return null;
         }
 
@@ -282,9 +283,20 @@ public class SmallCauldronBlock extends BaseEntityBlock {
         }
 
         level.setBlock(pos, state.setValue(LIT, true), 3);
-        stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
+        consumeFireStarter(stack, player, hand);
         level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
         return ItemInteractionResult.CONSUME;
+    }
+
+    private void consumeFireStarter(ItemStack stack, Player player, InteractionHand hand) {
+        if (stack.is(Items.FIRE_CHARGE)) {
+            if (!player.isCreative()) {
+                stack.shrink(1);
+            }
+            return;
+        }
+
+        stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
     }
 
     private @Nullable ItemInteractionResult tryRusticBottle(ItemStack stack, Level level, Player player, InteractionHand hand, SmallCauldronBlockEntity cauldron) {

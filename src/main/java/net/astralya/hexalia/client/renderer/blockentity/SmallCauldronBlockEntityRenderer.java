@@ -61,9 +61,6 @@ public class SmallCauldronBlockEntityRenderer implements BlockEntityRenderer<Sma
 
     private final Map<SmallCauldronBlockEntity, SwirlState> swirlStates = new WeakHashMap<>();
 
-    private long debugNextLogGameTime;
-    private int debugLastFingerprint;
-
     public SmallCauldronBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
         this.itemRenderer = context.getItemRenderer();
     }
@@ -102,8 +99,6 @@ public class SmallCauldronBlockEntityRenderer implements BlockEntityRenderer<Sma
             visible[toRender] = s;
             toRender++;
         }
-
-        debugRenderDump(be, level, toRender, stacks.size());
 
         if (toRender == 0) {
             return;
@@ -221,38 +216,6 @@ public class SmallCauldronBlockEntityRenderer implements BlockEntityRenderer<Sma
         a %= twoPi;
         if (a < 0.0F) a += twoPi;
         return a;
-    }
-
-    private void debugRenderDump(SmallCauldronBlockEntity be, Level level, int nonEmpty, int listSize) {
-        long now = level.getGameTime();
-        int fingerprint = computeFingerprint(be, nonEmpty, listSize);
-
-        if (fingerprint == debugLastFingerprint && now < debugNextLogGameTime) {
-            return;
-        }
-
-        debugLastFingerprint = fingerprint;
-        debugNextLogGameTime = now + 20;
-
-        System.out.println("SmallCauldron render @ " + be.getBlockPos()
-                + " nonEmpty=" + nonEmpty
-                + " listSize=" + listSize
-                + " fill=" + be.getLiquidFill01()
-                + " kindSpoiled=" + be.isSpoiled()
-                + " kindMix=" + be.hasMixture()
-                + " kindCook=" + be.isCooking());
-    }
-
-    private int computeFingerprint(SmallCauldronBlockEntity be, int nonEmpty, int listSize) {
-        int h = 1;
-        h = 31 * h + nonEmpty;
-        h = 31 * h + listSize;
-        h = 31 * h + Float.floatToIntBits(be.getLiquidFill01());
-        h = 31 * h + (be.isSpoiled() ? 1 : 0);
-        h = 31 * h + (be.hasMixture() ? 1 : 0);
-        h = 31 * h + (be.isCooking() ? 1 : 0);
-        h = 31 * h + be.getBlockPos().hashCode();
-        return h;
     }
 
     private void renderLiquid(SmallCauldronBlockEntity be, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {

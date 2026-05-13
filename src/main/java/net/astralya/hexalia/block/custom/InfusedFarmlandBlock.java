@@ -52,11 +52,13 @@ public class InfusedFarmlandBlock extends FarmBlock {
         if (itemStack.getItem() instanceof ShovelItem && state.getBlock() == ModBlocks.INFUSED_FARMLAND.get() &&
             hitResult.getDirection() != Direction.DOWN && level.getBlockState(pos.above()).isAir()) {
             level.playSound(player, pos, SoundEvents.SHOVEL_FLATTEN, SoundSource.BLOCKS, 1.0f, 1.0f);
-            if (level.isClientSide) {
+            if (!level.isClientSide) {
                 level.setBlockAndUpdate(pos, ModBlocks.INFUSED_DIRT.get().defaultBlockState());
-                itemStack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
+                if (!player.isCreative()) {
+                    itemStack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
+                }
             }
-            return ItemInteractionResult.SUCCESS;
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }
         return ItemInteractionResult.SKIP_DEFAULT_BLOCK_INTERACTION;
     }

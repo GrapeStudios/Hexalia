@@ -21,8 +21,8 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.FlintAndSteelItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -45,6 +45,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.neoforged.neoforge.common.ItemAbilities;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumMap;
@@ -73,7 +74,7 @@ public class CenserBlock extends BaseEntityBlock {
     }
 
     // Rotates a VoxelShape from one horizontal direction to another by applying
-    // 90° CW Y-axis rotations. Each step transforms (x1,z1,x2,z2) → (1-z2, x1, 1-z1, x2).
+    // 90Â° CW Y-axis rotations. Each step transforms (x1,z1,x2,z2) â†’ (1-z2, x1, 1-z1, x2).
     private static VoxelShape rotateShape(Direction from, Direction to, VoxelShape shape) {
         VoxelShape[] buffer = new VoxelShape[]{ shape, Shapes.empty() };
         int steps = (to.get2DDataValue() - from.get2DDataValue() + 4) % 4;
@@ -116,7 +117,7 @@ public class CenserBlock extends BaseEntityBlock {
         ItemStack heldItem = player.getItemInHand(hand);
         BlockEntity be = level.getBlockEntity(pos);
         if (!(be instanceof CenserBlockEntity censer)) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-        if (heldItem.getItem() instanceof FlintAndSteelItem && !state.getValue(LIT)) {
+        if (isFireStarter(heldItem) && !state.getValue(LIT)) {
             ItemStack herb1 = censer.getItem(0);
             ItemStack herb2 = censer.getItem(1);
             if (herb1.isEmpty() || herb2.isEmpty()) {
@@ -137,7 +138,7 @@ public class CenserBlock extends BaseEntityBlock {
             censer.setBurnTime(Configuration.CENSER_EFFECT_DURATION.get());
             sendEffectActivationMessage(level, pos, combo, player);
             CenserEffectHandler.startEffect(level, pos, combo);
-            heldItem.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
+            consumeFireStarter(heldItem, player, hand);
             level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0f, level.random.nextFloat() * 0.4F + 0.8F);
             return ItemInteractionResult.SUCCESS;
         }
@@ -181,6 +182,21 @@ public class CenserBlock extends BaseEntityBlock {
             }
         }
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+
+    private boolean isFireStarter(ItemStack stack) {
+        return stack.canPerformAction(ItemAbilities.FIRESTARTER_LIGHT);
+    }
+
+    private void consumeFireStarter(ItemStack stack, Player player, InteractionHand hand) {
+        if (stack.is(Items.FIRE_CHARGE)) {
+            if (!player.isCreative()) {
+                stack.shrink(1);
+            }
+            return;
+        }
+
+        stack.hurtAndBreak(1, player, LivingEntity.getSlotForHand(hand));
     }
 
     private void sendEffectActivationMessage(Level level, BlockPos pos, HerbCombination combo, Player activatingPlayer) {

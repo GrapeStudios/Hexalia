@@ -682,7 +682,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         "saltsprout_from_mutation"));
 
         MutationRecipeBuilder.mutation(
-                        Ingredient.of(Blocks.SHORT_GRASS),
+                        Ingredient.of(Blocks.AZURE_BLUET),
                         new ItemStack(ModBlocks.WITCHWEED.get())
                 ).unlockedByItem("has_mutavis", ModItems.MUTAVIS.get())
                 .save(recipeOutput, ResourceLocation.fromNamespaceAndPath("hexalia",
