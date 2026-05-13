@@ -13,6 +13,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.DispenserBlock;
@@ -59,6 +60,8 @@ public final class ModVanillaBehaviors {
         registerUseOnBehavior(ModItems.CELESTIAL_CRYSTAL.get());
         registerUseOnBehavior(ModItems.HEX_FOCUS.get());
         registerUseOnBehavior(ModItems.LOTUS_BLOSSOM.get());
+        registerUseOnBehavior(Items.FLINT_AND_STEEL);
+        registerUseOnBehavior(Items.FIRE_CHARGE);
     }
 
     private static void registerUseOnBehavior(ItemLike item) {

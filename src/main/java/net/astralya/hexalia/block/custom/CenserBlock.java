@@ -19,8 +19,8 @@ import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.FlintAndSteelItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ShovelItem;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -43,12 +43,15 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.common.ToolAction;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.EnumMap;
 import java.util.Map;
 
 public class CenserBlock extends BaseEntityBlock {
+    private static final ToolAction FIRESTARTER_LIGHT = ToolAction.get("firestarter_light");
+
 
     private static final VoxelShape SHAPE_NORTH = Shapes.or(
             Shapes.box(0.0625, 0, 0, 0.3125, 0.25, 1),
@@ -108,7 +111,7 @@ public class CenserBlock extends BaseEntityBlock {
             return InteractionResult.PASS;
         }
 
-        if (heldItem.getItem() instanceof FlintAndSteelItem && !state.getValue(LIT)) {
+        if (isFireStarter(heldItem) && !state.getValue(LIT)) {
             ItemStack herb1 = censer.getItem(0);
             ItemStack herb2 = censer.getItem(1);
             if (herb1.isEmpty() || herb2.isEmpty()) {
@@ -136,7 +139,7 @@ public class CenserBlock extends BaseEntityBlock {
             censer.setBurnTime(Configuration.CENSER_EFFECT_DURATION.get());
             sendEffectActivationMessage(level, pos, combo, player);
             CenserEffectHandler.startEffect(level, pos, combo);
-            heldItem.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
+            consumeFireStarter(heldItem, player, hand);
             level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0f, level.random.nextFloat() * 0.4F + 0.8F);
             return InteractionResult.CONSUME;
         }
@@ -189,6 +192,23 @@ public class CenserBlock extends BaseEntityBlock {
         }
 
         return InteractionResult.PASS;
+    }
+
+    private boolean isFireStarter(ItemStack stack) {
+        return stack.is(Items.FLINT_AND_STEEL)
+                || stack.is(Items.FIRE_CHARGE)
+                || stack.canPerformAction(FIRESTARTER_LIGHT);
+    }
+
+    private void consumeFireStarter(ItemStack stack, Player player, InteractionHand hand) {
+        if (stack.is(Items.FIRE_CHARGE)) {
+            if (!player.getAbilities().instabuild) {
+                stack.shrink(1);
+            }
+            return;
+        }
+
+        stack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand));
     }
 
     private void sendEffectActivationMessage(Level level, BlockPos pos, HerbCombination combo, Player activatingPlayer) {

@@ -34,9 +34,12 @@ import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.common.ToolAction;
 import org.jetbrains.annotations.Nullable;
 
 public class SmallCauldronBlock extends BaseEntityBlock {
+    private static final ToolAction FIRESTARTER_LIGHT = ToolAction.get("firestarter_light");
+
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
@@ -131,7 +134,7 @@ public class SmallCauldronBlock extends BaseEntityBlock {
             InteractionResult result;
             result = tryStirWithLadle(stack, state, level, pos, player, hand, cauldron);
             if (result != null) return result;
-            result = tryIgniteWithFlintAndSteel(stack, state, level, pos, player, hand);
+        result = tryIgniteWithFireStarter(stack, state, level, pos, player, hand);
             if (result != null) return result;
             result = tryRusticBottle(stack, level, player, hand, cauldron);
             if (result != null) return result;
@@ -181,14 +184,31 @@ public class SmallCauldronBlock extends BaseEntityBlock {
         return InteractionResult.CONSUME;
     }
 
-    private @Nullable InteractionResult tryIgniteWithFlintAndSteel(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand) {
-        if (!stack.is(Items.FLINT_AND_STEEL)) return null;
+    private @Nullable InteractionResult tryIgniteWithFireStarter(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand) {
+        if (!isFireStarter(stack)) return null;
         if (state.getValue(WATERLOGGED) || state.getValue(LIT)) return InteractionResult.PASS;
         if (level.isClientSide) return InteractionResult.SUCCESS;
         level.setBlock(pos, state.setValue(LIT, true), 3);
-        stack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND));
+        consumeFireStarter(stack, player, hand);
         level.playSound(null, pos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
         return InteractionResult.CONSUME;
+    }
+
+    private boolean isFireStarter(ItemStack stack) {
+        return stack.is(Items.FLINT_AND_STEEL)
+                || stack.is(Items.FIRE_CHARGE)
+                || stack.canPerformAction(FIRESTARTER_LIGHT);
+    }
+
+    private void consumeFireStarter(ItemStack stack, Player player, InteractionHand hand) {
+        if (stack.is(Items.FIRE_CHARGE)) {
+            if (!player.getAbilities().instabuild) {
+                stack.shrink(1);
+            }
+            return;
+        }
+
+        stack.hurtAndBreak(1, player, p -> p.broadcastBreakEvent(hand == InteractionHand.MAIN_HAND ? EquipmentSlot.MAINHAND : EquipmentSlot.OFFHAND));
     }
 
     private @Nullable InteractionResult tryRusticBottle(ItemStack stack, Level level, Player player, InteractionHand hand, SmallCauldronBlockEntity cauldron) {

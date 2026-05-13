@@ -798,7 +798,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedByItem("has_mutavis", ModItems.MUTAVIS.get())
                 .save(recipeConsumer, new ResourceLocation(HexaliaMod.MODID, ModItems.SALTSPROUT.getId().getPath() + "_from_mutation"));
 
-        MutationRecipeBuilder.mutation(Ingredient.of(Blocks.GRASS), new ItemStack(ModBlocks.WITCHWEED.get()))
+        MutationRecipeBuilder.mutation(Ingredient.of(Blocks.AZURE_BLUET), new ItemStack(ModBlocks.WITCHWEED.get()))
                 .unlockedByItem("has_mutavis", ModItems.MUTAVIS.get())
                 .save(recipeConsumer, new ResourceLocation(HexaliaMod.MODID, "witchweed_from_mutation"));
 

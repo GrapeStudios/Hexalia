@@ -231,13 +231,10 @@ public class ModItems {
             () -> new HangingSignItem(ModBlocks.COTTONWOOD_HANGING_SIGN.get(), ModBlocks.COTTONWOOD_HANGING_WALL_SIGN.get(), new Item.Properties().stacksTo(16)));
 
     // Compat Items
-    public static RegistryObject<Item> VERDANT_GRIMOIRE;
-    static {
-        if (ModList.get().isLoaded("patchouli")) {
-            VERDANT_GRIMOIRE = ITEMS.register("verdant_grimoire",
-                    () -> new GuideBookItem(new Item.Properties()));
-        }
-    }
+    public static final RegistryObject<Item> VERDANT_GRIMOIRE = ITEMS.register("verdant_grimoire",
+            () -> ModList.get().isLoaded("patchouli")
+                    ? new GuideBookItem(new Item.Properties())
+                    : new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
