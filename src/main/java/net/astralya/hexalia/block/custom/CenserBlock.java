@@ -15,9 +15,9 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.BlockEntityTicker;
 import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.FlintAndSteelItem;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -111,7 +111,7 @@ public class CenserBlock extends BlockWithEntity {
             return ActionResult.PASS;
         }
 
-        if (heldItem.getItem() instanceof FlintAndSteelItem && !state.get(LIT)) {
+        if (isFireStarter(heldItem) && !state.get(LIT)) {
             ItemStack herb1 = censer.getStack(0);
             ItemStack herb2 = censer.getStack(1);
 
@@ -139,7 +139,7 @@ public class CenserBlock extends BlockWithEntity {
                 CenserEffectHandler.startEffect(world, pos, combo);
             }
 
-            heldItem.damage(1, player, p -> p.sendToolBreakStatus(hand));
+            consumeFireStarter(heldItem, player, hand);
             world.playSound(null, pos, SoundEvents.ITEM_FLINTANDSTEEL_USE, SoundCategory.BLOCKS, 1.0f, world.random.nextFloat() * 0.4F + 0.8F);
             return ActionResult.success(world.isClient);
         }
@@ -190,6 +190,21 @@ public class CenserBlock extends BlockWithEntity {
         }
 
         return ActionResult.PASS;
+    }
+
+    private boolean isFireStarter(ItemStack stack) {
+        return stack.isOf(Items.FLINT_AND_STEEL) || stack.isOf(Items.FIRE_CHARGE);
+    }
+
+    private void consumeFireStarter(ItemStack stack, PlayerEntity player, Hand hand) {
+        if (stack.isOf(Items.FIRE_CHARGE)) {
+            if (!player.isCreative()) {
+                stack.decrement(1);
+            }
+            return;
+        }
+
+        stack.damage(1, player, p -> p.sendToolBreakStatus(hand));
     }
 
     private void sendEffectActivationMessage(World world, BlockPos pos, HerbCombination combo, PlayerEntity activatingPlayer) {

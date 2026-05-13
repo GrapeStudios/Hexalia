@@ -241,13 +241,10 @@ public class ModItems {
     public static final Item COTTONWOOD_HANGING_SIGN = registerItem("cottonwood_hanging_sign",
             new HangingSignItem(ModBlocks.COTTONWOOD_HANGING_SIGN, ModBlocks.COTTONWOOD_HANGING_WALL_SIGN, new FabricItemSettings().maxCount(16)));
 
-    public static Item VERDANT_GRIMOIRE;
-    static {
-        if (ModUtil.isModLoaded("patchouli")) {
-            VERDANT_GRIMOIRE = registerItem("verdant_grimoire",
-                    new GuideBookItem(new FabricItemSettings()));
-        }
-    }
+    public static final Item VERDANT_GRIMOIRE = registerItem("verdant_grimoire",
+            ModUtil.isModLoaded("patchouli")
+                    ? new GuideBookItem(new FabricItemSettings())
+                    : new Item(new FabricItemSettings()));
 
     private static Item registerItem(String name, Item item) {
         return Registry.register(Registries.ITEM, new Identifier(HexaliaMod.MODID, name), item);

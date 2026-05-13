@@ -3,6 +3,7 @@ package net.astralya.hexalia;
 import net.astralya.hexalia.block.ModBlockProperties;
 import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
+import net.astralya.hexalia.block.custom.InfusedDirtBlock;
 import net.astralya.hexalia.effect.ModMobEffects;
 import net.astralya.hexalia.entity.ModBoats;
 import net.astralya.hexalia.entity.ModEntities;
@@ -65,6 +66,7 @@ public class HexaliaMod implements ModInitializer {
 	}
 
 	private static void registerGameplay() {
+		InfusedDirtBlock.init();
 		ModVanillaBehaviors.register();
 		CenserServerTickHandler.register();
 		RootshaperEventHandler.register();

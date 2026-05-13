@@ -25,7 +25,9 @@ import java.util.List;
 
 public class BottleMothItem extends Item {
 
-    public static final String MOTH_NAME = "EntityName";
+    public static final String TAG_NAME = "MothName";
+    public static final String TAG_VARIANT = "SilkMothVariant";
+    private static final String LEGACY_TAG_NAME = "EntityName";
 
     public BottleMothItem(Settings settings) {
         super(settings);
@@ -45,9 +47,15 @@ public class BottleMothItem extends Item {
 
             NbtCompound nbt = itemStack.getNbt();
             if (nbt != null) {
-                SilkMothVariant variant = SilkMothVariant.byId(nbt.getInt("SilkMothVariant"));
-                silkMothEntity.setVariant(variant);
-                silkMothEntity.readNbt(nbt);
+                if (nbt.contains(TAG_VARIANT)) {
+                    silkMothEntity.setVariant(SilkMothVariant.byId(nbt.getInt(TAG_VARIANT)));
+                }
+
+                if (nbt.contains(TAG_NAME)) {
+                    silkMothEntity.setCustomName(Text.literal(nbt.getString(TAG_NAME)));
+                } else if (nbt.contains(LEGACY_TAG_NAME)) {
+                    silkMothEntity.setCustomName(Text.literal(nbt.getString(LEGACY_TAG_NAME)));
+                }
             }
 
             silkMothEntity.refreshPositionAndAngles(spawnPos.getX() + 0.5, spawnPos.getY(), spawnPos.getZ() + 0.5, 0, 0);
@@ -67,8 +75,8 @@ public class BottleMothItem extends Item {
         super.appendTooltip(stack, world, tooltip, context);
         if (stack.hasNbt()) {
             NbtCompound nbt = stack.getNbt();
-            if (nbt != null && nbt.contains(MOTH_NAME)) {
-                String entityName = nbt.getString(MOTH_NAME);
+            if (nbt != null && (nbt.contains(TAG_NAME) || nbt.contains(LEGACY_TAG_NAME))) {
+                String entityName = nbt.contains(TAG_NAME) ? nbt.getString(TAG_NAME) : nbt.getString(LEGACY_TAG_NAME);
                 MutableText nameTooltip = Text.translatable("tooltip.hexalia.bottled_moth", entityName)
                         .formatted(Formatting.ITALIC, Formatting.GREEN);
                 tooltip.add(nameTooltip);

@@ -10,6 +10,7 @@ import net.minecraft.block.dispenser.FallibleItemDispenserBehavior;
 import net.minecraft.block.dispenser.ItemDispenserBehavior;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.ActionResult;
@@ -56,6 +57,8 @@ public final class ModVanillaBehaviors {
         registerUseOnBehavior(ModItems.CELESTIAL_CRYSTAL);
         registerUseOnBehavior(ModItems.HEX_FOCUS);
         registerUseOnBehavior(ModItems.LOTUS_BLOSSOM);
+        registerUseOnBehavior(Items.FLINT_AND_STEEL);
+        registerUseOnBehavior(Items.FIRE_CHARGE);
     }
 
     private static void registerUseOnBehavior(Item item) {

@@ -8,6 +8,7 @@ import net.astralya.hexalia.gameplay.moths.ai.HoverAroundLightGoal;
 import net.astralya.hexalia.gameplay.moths.ai.LayEggOnLeavesGoal;
 import net.astralya.hexalia.gameplay.moths.ai.UnstuckNudgeGoal;
 import net.astralya.hexalia.item.ModItems;
+import net.astralya.hexalia.item.custom.BottleMothItem;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
@@ -331,11 +332,11 @@ public class SilkMothEntity extends AnimalEntity implements GeoEntity {
         NbtCompound mothTag = bottledMoth.getOrCreateNbt();
 
         if (this.hasCustomName() && this.getCustomName() != null) {
-            mothTag.putString("MothName", this.getCustomName().getString());
+            mothTag.putString(BottleMothItem.TAG_NAME, this.getCustomName().getString());
         }
 
         SilkMothVariant variant = this.getVariant();
-        mothTag.putInt("SilkMothVariant", variant.getId());
+        mothTag.putInt(BottleMothItem.TAG_VARIANT, variant.getId());
         mothTag.putInt("CustomModelData", variant.getId());
 
         this.remove(RemovalReason.DISCARDED);
