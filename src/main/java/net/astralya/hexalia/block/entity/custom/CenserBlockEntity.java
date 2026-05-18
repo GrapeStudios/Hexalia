@@ -18,6 +18,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.Clearable;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -27,7 +28,7 @@ import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.ItemStackHandler;
 import org.jetbrains.annotations.Nullable;
 
-public class CenserBlockEntity extends SyncBlockEntity {
+public class CenserBlockEntity extends SyncBlockEntity implements Clearable {
 
     private static final int SIZE = 2;
     private static final int SLOT_0 = 0;
@@ -255,5 +256,12 @@ public class CenserBlockEntity extends SyncBlockEntity {
         setChanged();
         sendUpdate();
         return stack;
+    }
+
+    @Override
+    public void clearContent() {
+        for (int i = 0; i < inventory.getSlots(); i++) {
+            inventory.setStackInSlot(i, ItemStack.EMPTY);
+        }
     }
 }

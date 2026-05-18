@@ -16,6 +16,7 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.Clearable;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -29,7 +30,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Objects;
 import java.util.Optional;
 
-public class MortarAndPestleBlockEntity extends SyncBlockEntity {
+public class MortarAndPestleBlockEntity extends SyncBlockEntity implements Clearable {
 
     public static final int SPIN_TICKS = 20;
     public static final int REQUIRED_SPINS = 3;
@@ -374,5 +375,12 @@ public class MortarAndPestleBlockEntity extends SyncBlockEntity {
     @Override
     public int hashCode() {
         return Objects.hash(worldPosition);
+    }
+
+    @Override
+    public void clearContent() {
+        for (int i = 0; i < items.getSlots(); i++) {
+            items.setStackInSlot(i, ItemStack.EMPTY);
+        }
     }
 }

@@ -13,6 +13,7 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.Mth;
+import net.minecraft.world.Clearable;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -26,7 +27,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class SmallCauldronBlockEntity extends SyncBlockEntity {
+public class SmallCauldronBlockEntity extends SyncBlockEntity implements Clearable {
 
     public static final int STIR_ANIM_TICKS = 20;
 
@@ -365,6 +366,12 @@ public class SmallCauldronBlockEntity extends SyncBlockEntity {
     @Override
     public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
         return saveWithoutMetadata(registries);
+    }
+
+    @Override
+    public void clearContent() {
+        this.contents.resetToEmpty();
+        this.contents.clearDirty();
     }
 
     private static final class UpInputHandler implements IItemHandler {
