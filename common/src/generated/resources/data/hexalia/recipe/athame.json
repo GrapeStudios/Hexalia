@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "P": {
+      "item": "minecraft:stick"
+    },
+    "S": {
+      "item": "minecraft:flint"
+    }
+  },
+  "pattern": [
+    " S",
+    "P "
+  ],
+  "result": {
+    "count": 1,
+    "id": "hexalia:athame"
+  }
+}

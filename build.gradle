@@ -1,0 +1,106 @@
+plugins {
+    id 'dev.architectury.loom' version '1.11-SNAPSHOT' apply false
+    id 'architectury-plugin' version '3.4-SNAPSHOT'
+    id 'com.gradleup.shadow' version '8.3.6' apply false
+    id 'com.diffplug.spotless' version '6.25.0'
+}
+
+architectury {
+    minecraft = project.minecraft_version
+}
+
+spotless {
+    java {
+        target 'src/*/java/**/*.java'
+        importOrder()
+        removeUnusedImports()
+        googleJavaFormat('1.28.0')
+        formatAnnotations()
+    }
+}
+
+allprojects {
+    group = rootProject.maven_group
+    version = rootProject.mod_version
+}
+
+subprojects {
+    apply plugin: 'dev.architectury.loom'
+    apply plugin: 'architectury-plugin'
+    apply plugin: 'maven-publish'
+
+    base {
+        archivesName = "$rootProject.archives_name-$project.name"
+    }
+
+    repositories {
+        maven {
+            name = 'GeckoLib'
+            url = 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
+            content {
+                includeGroup 'software.bernie.geckolib'
+            }
+        }
+        maven {
+            name = 'BlameJared'
+            url = 'https://maven.blamejared.com/'
+            content {
+                includeGroup 'mezz.jei'
+                includeGroup 'vazkii.patchouli'
+            }
+        }
+        maven {
+            name = 'Architectury'
+            url = 'https://maven.architectury.dev/'
+            content {
+                includeGroup 'me.shedaniel'
+                includeGroup 'dev.architectury'
+            }
+        }
+        maven {
+            name = 'TerraformersMC'
+            url = 'https://maven.terraformersmc.com/releases/'
+            content {
+                includeGroup 'dev.emi'
+            }
+        }
+    }
+
+    loom {
+        silentMojangMappingsLicense()
+    }
+
+    dependencies {
+        minecraft "net.minecraft:minecraft:$rootProject.minecraft_version"
+        mappings loom.officialMojangMappings()
+    }
+
+    java {
+        withSourcesJar()
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        it.options.release = 21
+        it.options.compilerArgs += ['-Xlint:deprecation']
+    }
+
+    tasks.withType(JavaExec).configureEach {
+        javaLauncher = javaToolchains.launcherFor {
+            languageVersion = JavaLanguageVersion.of(21)
+        }
+    }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                artifactId = base.archivesName.get()
+                from components.java
+            }
+        }
+
+        repositories {
+        }
+    }
+}

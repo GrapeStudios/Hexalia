@@ -1,0 +1,33 @@
+{
+  "parent": "hexalia:root",
+  "criteria": {
+    "has_mortar": {
+      "conditions": {
+        "items": [
+          {
+            "items": "hexalia:mortar_and_pestle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.hexalia.crush_course.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "hexalia:mortar_and_pestle"
+    },
+    "title": {
+      "translate": "advancements.hexalia.crush_course.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_mortar"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

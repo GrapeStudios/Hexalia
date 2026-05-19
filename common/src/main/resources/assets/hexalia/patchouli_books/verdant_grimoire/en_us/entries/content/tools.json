@@ -1,0 +1,67 @@
+{
+  "name": "Tools",
+  "icon": "hexalia:hex_focus",
+  "category": "hexalia:content",
+  "sortnum": 2,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Tools",
+      "text": "Hexalia introduces specialized tools used for rituals, gathering, and utility. Each serves a distinct purpose, often interacting directly with the natural and magical systems of the world."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:hex_focus",
+      "title": "Hex Focus",
+      "anchor": "hex_focus",
+      "text": "The Hex Focus is the primary magical tool used to activate rituals and interactions. It is used in $(l:hexalia:core_mechanics/celestial_infusion)Celestial Infusion$(/l), $(l:hexalia:core_mechanics/natures_ritual)Nature's Ritual$(/l), and to trigger certain enchanted plants. It can also transform Deepslate into a Ritual Table."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:athame",
+      "title": "Athame",
+      "anchor": "athame",
+      "text": "A precision tool used in both gathering and crafting. It extracts Tree Resin from specific logs, harvests Lotus Blossoms, and can shape planks into a Ritual Brazier when used carefully."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:briar_sickle",
+      "title": "Briar Sickle",
+      "anchor": "briar_sickle",
+      "text": "A harvesting tool designed for clearing vegetation. It cuts through plants in a wide area and can be used with care to gather resources directly from blocks."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:rootshaper",
+      "title": "Rootshaper",
+      "anchor": "rootshaper",
+      "text": "A shifting tool that adapts to the material being mined. It functions as both a pickaxe and shovel, and can expand its reach to affect a wider area when used with intent."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:spiritroot_tether",
+      "title": "Spiritroot Tether",
+      "anchor": "spiritroot_tether",
+      "text": "A tool for capturing and relocating creatures. It stores a creature's essence and allows it to be released elsewhere, preserving its state. When bound to a Spirit Bloom, it can return creatures to that location."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:ladle",
+      "title": "Ladle",
+      "anchor": "ladle",
+      "text": "A simple but essential tool used in $(l:hexalia:core_mechanics/brewing)Brewing$(/l). It is required to stir mixtures within the Small Cauldron and begin the cooking process."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:sage_pendant",
+      "title": "Sage Pendant",
+      "anchor": "sage_pendant",
+      "text": "A magical artifact that enhances experience gained when worn. Its power draws from the experience itself, gradually wearing down with use."
+    },
+    {
+      "type": "text",
+      "title": "On Craft",
+      "text": "Hexalia tools are closely tied to its systems. Mastery of them allows deeper interaction with rituals, resources, and the world itself."
+    }
+  ]
+}

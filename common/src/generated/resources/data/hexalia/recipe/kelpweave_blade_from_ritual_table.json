@@ -1,0 +1,21 @@
+{
+  "type": "hexalia:natures_ritual",
+  "ingredients": [
+    {
+      "item": "hexalia:ancient_seed"
+    },
+    {
+      "item": "hexalia:water_node"
+    },
+    {
+      "item": "minecraft:wooden_sword"
+    },
+    {
+      "item": "minecraft:kelp"
+    },
+    {
+      "item": "hexalia:siren_paste"
+    }
+  ],
+  "output": "hexalia:kelpweave_blade"
+}

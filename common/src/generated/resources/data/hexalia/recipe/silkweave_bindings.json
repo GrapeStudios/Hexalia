@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "L": {
+      "item": "minecraft:leather_leggings"
+    },
+    "S": {
+      "item": "hexalia:silk_fiber"
+    },
+    "T": {
+      "item": "minecraft:string"
+    },
+    "W": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "pattern": [
+    " S ",
+    "SLS",
+    "TWT"
+  ],
+  "result": {
+    "count": 1,
+    "id": "hexalia:silkweave_bindings"
+  }
+}

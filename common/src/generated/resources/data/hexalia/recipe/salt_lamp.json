@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:copper_ingot"
+    },
+    "P": {
+      "item": "minecraft:torch"
+    },
+    "S": {
+      "tag": "c:salt"
+    }
+  },
+  "pattern": [
+    " A ",
+    " P ",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "hexalia:salt_lamp"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "name": "Mortar and Pestle",
+  "icon": "hexalia:mortar_and_pestle",
+  "category": "hexalia:core_mechanics",
+  "sortnum": 0,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Mortar and Pestle",
+      "text": "The Mortar and Pestle is used to break down natural materials into refined forms such as powders and pastes. These outputs are essential for many Hexalia systems, including brewing and ritual work."
+    },
+    {
+      "type": "text",
+      "title": "Processing",
+      "anchor": "processing",
+      "text": "Place up to three items into the mortar, then crouch and right-click to begin crushing. Each use advances the process until the materials are fully refined."
+    },
+    {
+      "type": "text",
+      "title": "Collection",
+      "anchor": "collection",
+      "text": "Once processing is complete, the resulting items remain in the mortar until they are manually collected."
+    },
+    {
+      "type": "text",
+      "title": "Characteristics",
+      "anchor": "mechanics",
+      "text": "$(li)Holds up to three items$(li)Manual activation required$(li)No fuel or external power$(li)Produces refined materials used across Hexalia"
+    },
+    {
+      "type": "text",
+      "title": "On Use",
+      "text": "The Mortar and Pestle serves as one of the earliest processing tools, transforming raw resources into forms suitable for more advanced systems."
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:brambleguard_salve_from_mortar",
+      "layout": "mortar_and_pestle"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:dream_paste_from_mortar",
+      "layout": "mortar_and_pestle"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:fragrant_nectar_from_mortar",
+      "layout": "mortar_and_pestle"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:ghost_powder_from_mortar",
+      "layout": "mortar_and_pestle"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:menders_salve_from_mortar",
+      "layout": "mortar_and_pestle"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:mutavis_from_mortar",
+      "layout": "mortar_and_pestle"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:salt_from_mortar",
+      "layout": "mortar_and_pestle"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:siren_paste_from_mortar",
+      "layout": "mortar_and_pestle"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:spirit_powder_from_mortar",
+      "layout": "mortar_and_pestle"
+    }
+  ]
+}

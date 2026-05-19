@@ -1,0 +1,21 @@
+{
+  "type": "hexalia:natures_ritual",
+  "ingredients": [
+    {
+      "item": "minecraft:dandelion"
+    },
+    {
+      "item": "minecraft:gunpowder"
+    },
+    {
+      "item": "hexalia:ghost_powder"
+    },
+    {
+      "item": "hexalia:lotus_blossom"
+    },
+    {
+      "item": "minecraft:moss_block"
+    }
+  ],
+  "output": "hexalia:aegiflora"
+}

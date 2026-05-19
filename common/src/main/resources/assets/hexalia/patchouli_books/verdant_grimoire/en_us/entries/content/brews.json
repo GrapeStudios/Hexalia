@@ -1,0 +1,79 @@
+{
+  "name": "Brews",
+  "icon": "hexalia:rustic_bottle",
+  "category": "hexalia:content",
+  "sortnum": 7,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Brewing",
+      "text": "Brewing in Hexalia is performed using the $(l:hexalia:core_mechanics/brewing)Small Cauldron$(/l). Ingredients are combined and stirred with a Ladle, transforming into powerful consumable brews."
+    },
+    {
+      "type": "text",
+      "title": "Process",
+      "anchor": "process",
+      "text": "Add ingredients to the cauldron, stir with a Ladle, and allow the mixture to cook. Once complete, the result can be collected using a Rustic Bottle."
+    },
+    {
+      "type": "text",
+      "title": "On Brews",
+      "text": "Brews provide powerful but often balanced effects. Most last for a moderate duration, which can be extended when wearing the Moonweave set."
+    },
+
+    {
+      "type": "spotlight",
+      "item": "hexalia:brew_of_bloodlust",
+      "title": "Brew of Bloodlust",
+      "text": "Grants Bloodlust, allowing you to heal from damage dealt while preventing natural regeneration."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:brew_of_spikeskin",
+      "title": "Brew of Spikeskin",
+      "text": "Increases armor and reflects a portion of incoming damage, at the cost of reduced movement speed."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:brew_of_slimewalker",
+      "title": "Brew of Slimewalker",
+      "text": "Negates fall damage and enables bouncing movement, while slowing movement when grounded."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:brew_of_homestead",
+      "title": "Brew of Homestead",
+      "text": "Returns you to your bound location upon use. The effect is disorienting and is not affected by duration bonuses."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:brew_of_siphon",
+      "title": "Brew of Siphon",
+      "text": "Increases mining speed and pulls nearby items toward you, while increasing exhaustion as you mine."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:brew_of_daybloom",
+      "title": "Brew of Daybloom",
+      "text": "Grants regeneration and speed in daylight, but becomes harmful in low light conditions."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:brew_of_arachnid_grace",
+      "title": "Brew of Arachnid Grace",
+      "text": "Allows wall climbing, removes poison, and enables free movement through cobwebs, but weakens you in water."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:brew_of_hollow_silence",
+      "title": "Brew of Hollow Silence",
+      "text": "Silences your presence near sound-sensitive entities such as the Warden, while occasionally applying darkness."
+    },
+
+    {
+      "type": "text",
+      "title": "On Discovery",
+      "text": "Brews are best discovered through experimentation. Use recipe viewers for exact ingredient combinations."
+    }
+  ]
+}

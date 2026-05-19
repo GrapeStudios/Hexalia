@@ -1,0 +1,7 @@
+{
+  "type": "hexalia:celestial_infusion",
+  "input": {
+    "item": "hexalia:silkweave_hood"
+  },
+  "output": "hexalia:moonweave_hood"
+}

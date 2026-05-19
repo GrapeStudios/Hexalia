@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "waterlogged=false": {
+      "model": "hexalia:block/nautilite"
+    },
+    "waterlogged=true": {
+      "model": "hexalia:block/nautilite"
+    }
+  }
+}

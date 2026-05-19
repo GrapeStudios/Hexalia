@@ -1,0 +1,15 @@
+{
+  "type": "hexalia:natures_ritual",
+  "ingredients": [
+    {
+      "item": "minecraft:diamond"
+    },
+    {
+      "item": "minecraft:echo_shard"
+    },
+    {
+      "item": "minecraft:emerald"
+    }
+  ],
+  "output": "minecraft:nether_star"
+}

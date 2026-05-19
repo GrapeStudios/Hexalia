@@ -1,0 +1,33 @@
+{
+  "parent": "hexalia:small_beginnings",
+  "criteria": {
+    "has_rustic_bottle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "hexalia:rustic_bottle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.hexalia.brewbie_award.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "hexalia:rustic_bottle"
+    },
+    "title": {
+      "translate": "advancements.hexalia.brewbie_award.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_rustic_bottle"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

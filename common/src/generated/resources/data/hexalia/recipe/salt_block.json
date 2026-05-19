@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "salt",
+  "ingredients": [
+    {
+      "item": "hexalia:salt_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "hexalia:salt"
+  }
+}

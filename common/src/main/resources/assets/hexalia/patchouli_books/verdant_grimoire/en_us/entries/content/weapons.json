@@ -1,0 +1,25 @@
+{
+  "name": "Weapons",
+  "icon": "hexalia:kelpweave_blade",
+  "category": "hexalia:content",
+  "sortnum": 5,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Weapons",
+      "text": "Hexalia weapons focus on utility and effects, offering control over combat rather than raw damage alone."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:kelpweave_blade",
+      "title": "Kelpweave Blade",
+      "text": "A fluid weapon that slows enemies and allows rapid movement through water and rain, echoing the pull of the tides."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:thornbow",
+      "title": "Thornbow",
+      "text": "Fires thorn arrows using its own durability instead of ammunition, inflicting Bleeding on targets."
+    }
+  ]
+}

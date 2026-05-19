@@ -1,0 +1,168 @@
+package net.astralya.hexalia.item.custom.armor;
+
+import java.util.List;
+import java.util.function.Consumer;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.astralya.hexalia.Hexalia;
+import net.astralya.hexalia.client.renderer.item.HexaliaArmorRenderer;
+import net.astralya.hexalia.util.MagicResistanceHelper;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.HumanoidModel;
+import net.minecraft.client.model.geom.ModelLayers;
+import net.minecraft.core.Holder;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.ArmorMaterial;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
+import software.bernie.geckolib.animatable.GeoItem;
+import software.bernie.geckolib.animatable.SingletonGeoAnimatable;
+import software.bernie.geckolib.animatable.client.GeoRenderProvider;
+import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
+import software.bernie.geckolib.animatable.instance.SingletonAnimatableInstanceCache;
+import software.bernie.geckolib.animation.AnimatableManager;
+import software.bernie.geckolib.animation.Animation;
+import software.bernie.geckolib.animation.AnimationController;
+import software.bernie.geckolib.animation.PlayState;
+import software.bernie.geckolib.animation.RawAnimation;
+import software.bernie.geckolib.renderer.GeoArmorRenderer;
+
+public class HexaliaGeoArmorItem extends ArmorItem implements GeoItem {
+  private final AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
+  private final ResourceLocation modelResource;
+  private final ResourceLocation textureResource;
+  private final ResourceLocation animationResource;
+
+  public HexaliaGeoArmorItem(
+      Holder<ArmorMaterial> material,
+      Type type,
+      Properties properties,
+      String name,
+      String texture) {
+    this(material, type, properties, name, texture, "animations/" + name + ".animation.json");
+  }
+
+  public HexaliaGeoArmorItem(
+      Holder<ArmorMaterial> material,
+      Type type,
+      Properties properties,
+      String name,
+      String texture,
+      String animationPath) {
+    super(material, type, properties);
+    modelResource =
+        ResourceLocation.fromNamespaceAndPath(
+            Hexalia.MOD_ID, "geo/item/armor/" + name + ".geo.json");
+    textureResource =
+        ResourceLocation.fromNamespaceAndPath(Hexalia.MOD_ID, "textures/armor/" + texture + ".png");
+    animationResource = ResourceLocation.fromNamespaceAndPath(Hexalia.MOD_ID, animationPath);
+    SingletonGeoAnimatable.registerSyncedAnimatable(this);
+  }
+
+  public ResourceLocation modelResource() {
+    return modelResource;
+  }
+
+  public ResourceLocation textureResource() {
+    return textureResource;
+  }
+
+  public ResourceLocation animationResource() {
+    return animationResource;
+  }
+
+  @Override
+  public void appendHoverText(
+      ItemStack stack, TooltipContext context, List<Component> tooltip, TooltipFlag flag) {
+    float magicResistance = MagicResistanceHelper.getMagicResistancePct(stack);
+    if (magicResistance > 0.0F) {
+      tooltip.add(
+          Component.translatable(
+                  "tooltip.hexalia.magic_resistance",
+                  MagicResistanceHelper.formatPercent(magicResistance))
+              .withStyle(ChatFormatting.BLUE));
+    }
+    LivingEntity player = Minecraft.getInstance().player;
+    ResourceLocation setId = MagicResistanceHelper.getSetId(stack);
+    if (player != null && setId != null && MagicResistanceHelper.isWearingFullSet(player, setId)) {
+      float fullSetBonus = MagicResistanceHelper.getFullSetBonusPct(player, setId);
+      if (fullSetBonus > 0.0F) {
+        tooltip.add(
+            Component.translatable(
+                    "tooltip.hexalia.magic_resistance_full_set",
+                    MagicResistanceHelper.formatPercent(fullSetBonus))
+                .withStyle(ChatFormatting.DARK_AQUA));
+      }
+    }
+  }
+
+  @Override
+  public void createGeoRenderer(Consumer<GeoRenderProvider> consumer) {
+    consumer.accept(
+        new GeoRenderProvider() {
+          private GeoArmorRenderer<?> renderer;
+          private HumanoidModel<?> firstPersonHiddenRenderer;
+
+          @Override
+          public <T extends LivingEntity> HumanoidModel<?> getGeoArmorRenderer(
+              T livingEntity, ItemStack stack, EquipmentSlot slot, HumanoidModel<T> original) {
+            if (isLocalFirstPerson(livingEntity)) {
+              if (firstPersonHiddenRenderer == null) {
+                firstPersonHiddenRenderer = createFirstPersonHiddenRenderer();
+              }
+              return firstPersonHiddenRenderer;
+            }
+            if (renderer == null) {
+              renderer = new HexaliaArmorRenderer(HexaliaGeoArmorItem.this);
+            }
+            return renderer;
+          }
+        });
+  }
+
+  private static boolean isLocalFirstPerson(LivingEntity livingEntity) {
+    Minecraft minecraft = Minecraft.getInstance();
+    return minecraft.player != null
+        && minecraft.player == livingEntity
+        && minecraft.getCameraEntity() == livingEntity
+        && minecraft.options.getCameraType().isFirstPerson();
+  }
+
+  private static HumanoidModel<?> createFirstPersonHiddenRenderer() {
+    return new HumanoidModel<>(
+        Minecraft.getInstance().getEntityModels().bakeLayer(ModelLayers.PLAYER_INNER_ARMOR)) {
+      @Override
+      public void renderToBuffer(
+          PoseStack poseStack,
+          VertexConsumer buffer,
+          int packedLight,
+          int packedOverlay,
+          int color) {}
+    };
+  }
+
+  @Override
+  public void registerControllers(AnimatableManager.ControllerRegistrar controllers) {
+    controllers.add(
+        new AnimationController<>(
+            this,
+            "controller",
+            0,
+            state -> {
+              state
+                  .getController()
+                  .setAnimation(RawAnimation.begin().then("idle", Animation.LoopType.LOOP));
+              return PlayState.CONTINUE;
+            }));
+  }
+
+  @Override
+  public AnimatableInstanceCache getAnimatableInstanceCache() {
+    return cache;
+  }
+}

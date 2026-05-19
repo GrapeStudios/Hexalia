@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "stage=0": {
+      "model": "hexalia:block/willow_sapling"
+    },
+    "stage=1": {
+      "model": "hexalia:block/willow_sapling"
+    }
+  }
+}

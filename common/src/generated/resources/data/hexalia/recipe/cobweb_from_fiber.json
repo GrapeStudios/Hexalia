@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "P": {
+      "item": "hexalia:silk_fiber"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "pattern": [
+    " S ",
+    "SPS",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "minecraft:cobweb"
+  }
+}

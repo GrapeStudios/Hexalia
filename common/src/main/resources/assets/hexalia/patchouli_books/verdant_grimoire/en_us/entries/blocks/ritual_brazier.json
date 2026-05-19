@@ -1,0 +1,24 @@
+{
+  "name": "Ritual Brazier",
+  "icon": "hexalia:ritual_brazier",
+  "category": "hexalia:core_mechanics",
+  "sortnum": 3,
+  "pages": [
+    {
+      "type": "spotlight",
+      "item": "hexalia:ritual_brazier",
+      "title": "Ritual Brazier",
+      "text": "Ritual Braziers hold the ingredients used by Nature's Ritual. Place them in the cardinal directions around a Ritual Table, then prepare each brazier with the required item and salt."
+    },
+    {
+      "type": "text",
+      "title": "Preparation",
+      "text": "A prepared brazier stores one ritual ingredient and can be salted. When the ritual succeeds, its contents are consumed and the brazier returns to an idle state."
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:air_node_from_ritual_table",
+      "layout": "ritual_brazier"
+    }
+  ]
+}

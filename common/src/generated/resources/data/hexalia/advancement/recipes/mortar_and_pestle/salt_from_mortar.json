@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_saltsprout": {
+      "conditions": {
+        "items": [
+          {
+            "items": "hexalia:saltsprout"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "hexalia:salt_from_mortar"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_saltsprout"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "hexalia:salt_from_mortar"
+    ]
+  }
+}

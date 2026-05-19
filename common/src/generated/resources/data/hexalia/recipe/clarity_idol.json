@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "hexalia:silk_idol"
+    },
+    {
+      "item": "hexalia:air_node"
+    },
+    {
+      "item": "hexalia:celestial_crystal"
+    },
+    {
+      "item": "minecraft:sunflower"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "hexalia:clarity_idol"
+  }
+}

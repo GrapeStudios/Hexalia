@@ -1,0 +1,33 @@
+{
+  "parent": "hexalia:crush_course",
+  "criteria": {
+    "has_mutavis": {
+      "conditions": {
+        "items": [
+          {
+            "items": "hexalia:mutavis"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.hexalia.change_of_plans.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "hexalia:mutavis"
+    },
+    "title": {
+      "translate": "advancements.hexalia.change_of_plans.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_mutavis"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "active=false": {
+      "model": "hexalia:block/windsong"
+    },
+    "active=true": {
+      "model": "hexalia:block/windsong"
+    }
+  }
+}

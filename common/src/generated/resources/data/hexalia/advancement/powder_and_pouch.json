@@ -1,0 +1,33 @@
+{
+  "parent": "hexalia:brewbie_award",
+  "criteria": {
+    "has_foul_sac": {
+      "conditions": {
+        "items": [
+          {
+            "items": "hexalia:foul_sac"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.hexalia.powder_and_pouch.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "hexalia:foul_sac"
+    },
+    "title": {
+      "translate": "advancements.hexalia.powder_and_pouch.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_foul_sac"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

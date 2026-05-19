@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:chain"
+    },
+    "P": {
+      "item": "hexalia:stripped_cottonwood_log"
+    }
+  },
+  "pattern": [
+    "C C",
+    "PPP",
+    "PPP"
+  ],
+  "result": {
+    "count": 6,
+    "id": "hexalia:cottonwood_hanging_sign"
+  }
+}

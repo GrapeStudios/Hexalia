@@ -1,0 +1,21 @@
+{
+  "type": "hexalia:natures_ritual",
+  "ingredients": [
+    {
+      "item": "minecraft:leather_boots"
+    },
+    {
+      "item": "minecraft:dandelion"
+    },
+    {
+      "item": "hexalia:air_node"
+    },
+    {
+      "item": "hexalia:silk_fiber"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "output": "hexalia:bloomwrap_boots"
+}

@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "net.astralya.hexalia.fabric.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "CropBlockMixin",
+    "ExperienceOrbMixin",
+    "LivingEntityMixin",
+    "MobMixin",
+    "StemBlockMixin",
+    "SugarCaneBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

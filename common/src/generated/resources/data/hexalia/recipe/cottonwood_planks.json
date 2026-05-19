@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "tag": "hexalia:cottonwood_logs"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "hexalia:cottonwood_planks"
+  }
+}

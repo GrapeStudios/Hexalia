@@ -1,0 +1,33 @@
+{
+  "parent": "hexalia:root",
+  "criteria": {
+    "has_athame": {
+      "conditions": {
+        "items": [
+          {
+            "items": "hexalia:athame"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.hexalia.knife_to_tree_you.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "hexalia:athame"
+    },
+    "title": {
+      "translate": "advancements.hexalia.knife_to_tree_you.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_athame"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

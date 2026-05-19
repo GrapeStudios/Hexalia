@@ -1,0 +1,84 @@
+{
+  "name": "Armor & Wearables",
+  "icon": "hexalia:ghostveil",
+  "category": "hexalia:content",
+  "sortnum": 4,
+  "pages": [
+    {
+      "type": "text",
+      "title": "Armor & Wearables",
+      "text": "Hexalia armor provides situational advantages rather than raw strength, enhancing mobility, resistance, and interaction with the world."
+    },
+
+    {
+      "type": "spotlight",
+      "item": "hexalia:ghostveil",
+      "title": "Ghost Veil",
+      "text": "A spectral chestpiece that reduces how easily creatures detect you, making it useful for stealth and escape."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:bogshade_boots",
+      "title": "Bogshade Boots",
+      "text": "Improves movement through wetlands, greatly increasing swim speed and granting additional speed on mud."
+    },
+    {
+      "type": "spotlight",
+      "item": "hexalia:earplugs",
+      "title": "Earplugs",
+      "text": "Protects the wearer from the harmful cries of Mandrakes, making them essential for safe harvesting."
+    },
+
+    {
+      "type": "spotlight",
+      "item": [
+        "hexalia:silkweave_hood",
+        "hexalia:silkweave_mantle",
+        "hexalia:silkweave_bindings",
+        "hexalia:silkweave_footwraps"
+      ],
+      "title": "Silkweave Set",
+      "anchor": "silkweave",
+      "text": "A lightweight set offering moderate protection while increasing resistance to magical damage per piece. Wearing the full set grants an additional bonus."
+    },
+
+    {
+      "type": "spotlight",
+      "item": [
+        "hexalia:moonweave_hood",
+        "hexalia:moonweave_mantle",
+        "hexalia:moonweave_bindings",
+        "hexalia:moonweave_footwraps"
+      ],
+      "title": "Moonweave Set",
+      "anchor": "moonweave",
+      "text": "A refined set that provides strong protection against magical damage. Wearing the full set extends the duration of brews."
+    },
+
+    {
+      "type": "text",
+      "title": "Bloomwrap Set",
+      "anchor": "bloomwrap",
+      "text": "A nature-bound set where each piece grants a unique effect, rewarding flexible use rather than relying only on full-set bonuses."
+    },
+
+    {
+      "type": "spotlight",
+      "item": [
+        "hexalia:bloomwrap_hat",
+        "hexalia:bloomwrap_robes"
+      ],
+      "title": "Upper Garments",
+      "text": "The Hat reduces knockback and grants resistance to stuns, while the Robes reflect a portion of incoming damage back to attackers."
+    },
+    {
+      "type": "spotlight",
+      "item": [
+        "hexalia:bloomwrap_leggings",
+        "hexalia:bloomwrap_boots"
+      ],
+      "title": "Lower Garments",
+      "text": "The Leggings grant regeneration when near flowers, and the Boots increase movement speed on leaves."
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "L": {
+      "item": "minecraft:leather_boots"
+    },
+    "S": {
+      "item": "hexalia:silk_fiber"
+    },
+    "T": {
+      "item": "minecraft:string"
+    },
+    "W": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "pattern": [
+    " W ",
+    "SLS",
+    "TST"
+  ],
+  "result": {
+    "count": 1,
+    "id": "hexalia:silkweave_footwraps"
+  }
+}

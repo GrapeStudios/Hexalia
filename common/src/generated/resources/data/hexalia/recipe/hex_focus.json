@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:stick"
+    },
+    "P": {
+      "tag": "minecraft:leaves"
+    },
+    "S": {
+      "item": "minecraft:amethyst_shard"
+    }
+  },
+  "pattern": [
+    "  S",
+    " P ",
+    "A  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "hexalia:hex_focus"
+  }
+}

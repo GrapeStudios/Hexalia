@@ -1,0 +1,7 @@
+{
+  "type": "hexalia:celestial_infusion",
+  "input": {
+    "item": "minecraft:amethyst_shard"
+  },
+  "output": "hexalia:celestial_crystal"
+}

@@ -1,0 +1,33 @@
+{
+  "parent": "hexalia:table_manners",
+  "criteria": {
+    "has_kelpweave_blade": {
+      "conditions": {
+        "items": [
+          {
+            "items": "hexalia:kelpweave_blade"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "advancements.hexalia.kelp_yourself.description"
+    },
+    "icon": {
+      "count": 1,
+      "id": "hexalia:kelpweave_blade"
+    },
+    "title": {
+      "translate": "advancements.hexalia.kelp_yourself.title"
+    }
+  },
+  "requirements": [
+    [
+      "has_kelpweave_blade"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

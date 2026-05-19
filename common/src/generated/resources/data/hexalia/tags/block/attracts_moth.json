@@ -1,0 +1,11 @@
+{
+  "values": [
+    "minecraft:lantern",
+    "minecraft:sea_lantern",
+    "minecraft:soul_lantern",
+    "hexalia:salt_lamp",
+    "hexalia:ghost_fern",
+    "minecraft:end_rod",
+    "minecraft:torch"
+  ]
+}

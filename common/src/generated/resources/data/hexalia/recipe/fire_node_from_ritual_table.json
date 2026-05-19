@@ -1,0 +1,15 @@
+{
+  "type": "hexalia:natures_ritual",
+  "ingredients": [
+    {
+      "item": "minecraft:amethyst_shard"
+    },
+    {
+      "item": "minecraft:coal"
+    },
+    {
+      "item": "minecraft:sunflower"
+    }
+  ],
+  "output": "hexalia:fire_node"
+}

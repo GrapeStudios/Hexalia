@@ -1,0 +1,105 @@
+plugins {
+    id 'com.gradleup.shadow'
+}
+
+architectury {
+    platformSetupLoomIde()
+    neoForge()
+}
+
+configurations {
+    common {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+    compileClasspath.extendsFrom common
+    runtimeClasspath.extendsFrom common
+    developmentNeoForge.extendsFrom common
+
+    shadowBundle {
+        canBeResolved = true
+        canBeConsumed = false
+    }
+}
+
+repositories {
+    maven {
+        name = 'NeoForged'
+        url = 'https://maven.neoforged.net/releases'
+    }
+}
+
+loom {
+    runs {
+        data {
+            data()
+            configName = "NeoForge Data"
+            ideConfigGenerated = true
+            runDir = "run"
+
+            programArg "--mod"
+            programArg "hexalia"
+
+            programArg "--output"
+            programArg project(":common").file("src/generated/resources").absolutePath
+
+            programArg "--existing"
+            programArg file("src/main/resources").absolutePath
+
+            programArg "--existing"
+            programArg project(":common").file("src/main/resources").absolutePath
+        }
+    }
+}
+
+tasks.named("runData", JavaExec).configure {
+    classpath = classpath.filter { file ->
+        def name = file.name.toLowerCase(Locale.ROOT)
+        !name.contains("emi") && !name.contains("patchouli")
+    }
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir "src/generated/resources"
+        }
+    }
+}
+
+dependencies {
+    neoForge "net.neoforged:neoforge:$rootProject.neoforge_version"
+    modImplementation "dev.architectury:architectury-neoforge:$rootProject.architectury_api_version"
+    modImplementation "software.bernie.geckolib:geckolib-neoforge-${rootProject.minecraft_version}:$rootProject.geckolib_version"
+    compileOnly "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
+    modCompileOnly "mezz.jei:jei-${rootProject.minecraft_version}-common-api:$rootProject.jei_version"
+    modCompileOnly "mezz.jei:jei-${rootProject.minecraft_version}-neoforge-api:$rootProject.jei_version"
+    modCompileOnly "me.shedaniel:RoughlyEnoughItems-api-neoforge:$rootProject.rei_version"
+    modCompileOnly "dev.emi:emi-neoforge:${rootProject.emi_version}"
+    modRuntimeOnly "dev.emi:emi-neoforge:${rootProject.emi_version}"
+    modRuntimeOnly "vazkii.patchouli:Patchouli:${rootProject.patchouli_version}-NEOFORGE"
+
+    common(project(path: ':common', configuration: 'namedElements')) { transitive = false }
+    shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
+}
+
+processResources {
+    inputs.property 'version', project.version
+
+    filesMatching('META-INF/neoforge.mods.toml') {
+        expand version: inputs.properties.version
+    }
+
+    from(project(":common").file("src/main/resources/data/hexalia/patchouli_books")) {
+        into "data/hexalia/patchouli_books"
+    }
+}
+
+shadowJar {
+    configurations = [project.configurations.shadowBundle]
+    archiveClassifier = 'dev-shadow'
+}
+
+remapJar {
+    inputFile.set shadowJar.archiveFile
+}

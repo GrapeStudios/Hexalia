@@ -1,0 +1,14 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "hexalia:item/spiritroot_tether"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "custom_model_data": 1
+      },
+      "model": "hexalia:item/spiritroot_tether_bound"
+    }
+  ]
+}
