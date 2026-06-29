@@ -13,7 +13,7 @@
     {
       "type": "text",
       "title": "Crafting",
-      "text": "A Ritual Brazier is shaped directly in the world. Right-click a plank block with an $(l:hexalia:content/tools#athame)Athame$(/l) to carve it into a brazier."
+      "text": "A Ritual Brazier is shaped directly in the world. Crouch and right-click any plank block with an $(l:hexalia:content/tools#athame)Athame$(/l) to carve it into a brazier."
     },
     {
       "type": "text",

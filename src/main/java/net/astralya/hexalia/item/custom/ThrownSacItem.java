@@ -25,7 +25,7 @@ public class ThrownSacItem extends Item {
 
     public ThrownSacItem(Settings settings,
                          BiFunction<World, PlayerEntity, ? extends ThrownItemEntity> projectileFactory) {
-        this(settings, projectileFactory, true);
+        this(settings, projectileFactory, false);
     }
 
     public ThrownSacItem(Settings settings,

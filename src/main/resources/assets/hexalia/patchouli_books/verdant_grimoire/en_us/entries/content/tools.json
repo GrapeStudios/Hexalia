@@ -21,7 +21,7 @@
       "item": "hexalia:athame",
       "title": "Athame",
       "anchor": "athame",
-      "text": "A precision tool used in both gathering and crafting. It extracts Tree Resin from specific logs, harvests Lotus Blossoms, and can shape planks into a Ritual Brazier when used carefully."
+      "text": "A precision tool used in both gathering and crafting. It extracts Tree Resin from specific logs, harvests Lotus Blossoms, and can shape planks into a Ritual Brazier when used while crouching."
     },
     {
       "type": "spotlight",

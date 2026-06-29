@@ -846,7 +846,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .criterion("has_mutavis", InventoryChangedCriterion.Conditions.items(ModItems.MUTAVIS))
                 .offerTo(exporter, id("saltsprout_from_mutation"));
 
-        MutationRecipeBuilder.mutation(Ingredient.ofItems(Blocks.GRASS), new ItemStack(ModBlocks.WITCHWEED))
+        MutationRecipeBuilder.mutation(Ingredient.ofItems(Blocks.AZURE_BLUET), new ItemStack(ModBlocks.WITCHWEED))
                 .criterion("has_mutavis", InventoryChangedCriterion.Conditions.items(ModItems.MUTAVIS))
                 .offerTo(exporter, id("witchweed_from_mutation"));
 
