@@ -84,6 +84,30 @@ public class RootshaperItem extends ShovelItem {
     return MODE_PICKAXE;
   }
 
+  @Override
+  public float getDestroySpeed(ItemStack stack, BlockState state) {
+    int mode = getMode(stack);
+    if (mode == MODE_PICKAXE && state.is(BlockTags.MINEABLE_WITH_PICKAXE)) {
+      return MINING_SPEED;
+    }
+    if (mode == MODE_SHOVEL && state.is(BlockTags.MINEABLE_WITH_SHOVEL)) {
+      return MINING_SPEED;
+    }
+    return 1.0F;
+  }
+
+  @Override
+  public boolean isCorrectToolForDrops(ItemStack stack, BlockState state) {
+    int mode = getMode(stack);
+    if (mode == MODE_PICKAXE) {
+      return state.is(BlockTags.MINEABLE_WITH_PICKAXE);
+    }
+    if (mode == MODE_SHOVEL) {
+      return state.is(BlockTags.MINEABLE_WITH_SHOVEL);
+    }
+    return false;
+  }
+
   public static int getMode(ItemStack stack) {
     CustomModelData customModelData =
         stack.getOrDefault(DataComponents.CUSTOM_MODEL_DATA, CustomModelData.DEFAULT);

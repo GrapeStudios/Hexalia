@@ -8,12 +8,12 @@
       "type": "spotlight",
       "item": "hexalia:ritual_brazier",
       "title": "Ritual Brazier",
-      "text": "Ritual Braziers hold the ingredients used by Nature's Ritual. Place them in the cardinal directions around a Ritual Table, then prepare each brazier with the required item and salt."
+      "text": "Ritual Braziers hold the ingredients used by Nature's Ritual. To create one, crouch and right-click any plank block with an $(l:hexalia:content/tools#athame)Athame$(/l)."
     },
     {
       "type": "text",
       "title": "Preparation",
-      "text": "A prepared brazier stores one ritual ingredient and can be salted. When the ritual succeeds, its contents are consumed and the brazier returns to an idle state."
+      "text": "Place Ritual Braziers in the cardinal directions around a Ritual Table, then prepare each brazier with the required item and salt. When the ritual succeeds, its contents are consumed and the brazier returns to an idle state."
     },
     {
       "type": "hexalia:recipe_page",

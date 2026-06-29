@@ -13,13 +13,18 @@
       "type": "text",
       "title": "Using Mutavis",
       "anchor": "usage",
-      "text": "Mutavis can be applied directly to blocks to trigger a transformation. The result depends on the material, often revealing new plants, altered terrain, or unexpected resources."
+      "text": "Mutavis is made with the $(l:hexalia:core_mechanics/mortar_and_pestle)Mortar and Pestle$(/l) from Tree Resin, a Slimeball, and any crushed herb. It can then be applied directly to blocks to trigger a transformation."
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:mutavis_from_mortar",
+      "layout": "mortar_and_pestle"
     },
     {
       "type": "text",
       "title": "Area Mutation",
       "anchor": "area",
-      "text": "When used on a $(l:hexalia:content/enchanted_plants#morphora)Morphora$(/l), Mutavis spreads outward, affecting nearby blocks at once. This allows large-scale transformation of the surrounding environment."
+      "text": "When used on a $(l:hexalia:core_mechanics/enchanted_plants#morphora)Morphora$(/l), Mutavis spreads outward, affecting nearby blocks at once. This allows large-scale transformation of the surrounding environment."
     },
     {
       "type": "text",

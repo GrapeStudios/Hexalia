@@ -5,6 +5,7 @@ import net.astralya.hexalia.entity.ModEntities;
 import net.astralya.hexalia.entity.custom.CacofeyEntity;
 import net.astralya.hexalia.entity.custom.SilkMothEntity;
 import net.astralya.hexalia.fabric.worldgen.FabricEntitySpawns;
+import net.astralya.hexalia.fabric.worldgen.FabricNaturalGeneration;
 import net.astralya.hexalia.util.ModVanillaBehaviors;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
@@ -17,6 +18,7 @@ public final class HexaliaFabric implements ModInitializer {
     FabricDefaultAttributeRegistry.register(ModEntities.SILK_MOTH.get(), SilkMothEntity.setAttributes());
     FabricDefaultAttributeRegistry.register(ModEntities.CACOFEY.get(), CacofeyEntity.setAttributes());
     FabricEntitySpawns.register();
+    FabricNaturalGeneration.register();
     ModVanillaBehaviors.register();
   }
 }
