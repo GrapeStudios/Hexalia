@@ -24,7 +24,7 @@ public class FrostSacProjectile extends ThrowableItemProjectile {
     }
 
     public FrostSacProjectile(Level level, LivingEntity owner) {
-        super(ModEntities.FOUL_SAC.get(), owner, level);
+        super(ModEntities.FROST_SAC.get(), owner, level);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class FrostSacProjectile extends ThrowableItemProjectile {
                     ModSoundEvents.SAC_IMPACT.get(), SoundSource.PLAYERS,
                     0.9F, 0.8F + this.level().getRandom().nextFloat() * 0.4F
             );
-            int durationSeconds = Math.max(1, Configuration.FOUL_SAC_DURATION.get());
+            int durationSeconds = Math.max(1, Configuration.FROST_SAC_DURATION.get());
             FrostCloud cloud = new FrostCloud(this.level(), this.getX(), this.getY(), this.getZ(), durationSeconds);
             if (this.getOwner() instanceof LivingEntity le) cloud.setCloudOwner(le);
             this.level().addFreshEntity(cloud);

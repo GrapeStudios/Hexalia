@@ -13,7 +13,7 @@
       "type": "text",
       "title": "Brewing Process",
       "anchor": "process",
-      "text": "Water is placed into the cauldron, followed by ingredients. Using a $(l:hexalia:content/tools#ladle)Ladle$(/l), the mixture is stirred and begins to cook when heat is applied from below."
+      "text": "Fill the cauldron with water first, then light or heat it from below. Add the ingredients after water is present, then use a $(l:hexalia:content/tools#ladle)Ladle$(/l) to stir the heated mixture and begin cooking."
     },
     {
       "type": "text",
@@ -37,7 +37,7 @@
       "type": "text",
       "title": "Ladle",
       "anchor": "ladle",
-      "text": "A Ladle is required to stir the cauldron and begin the brewing process. Without it, mixtures will not properly combine or progress."
+      "text": "A Ladle only stirs a prepared cauldron: it must contain water, be heated, and hold at least one ingredient. Without that setup, mixtures will not properly combine or progress."
     },
     {
       "type": "text",

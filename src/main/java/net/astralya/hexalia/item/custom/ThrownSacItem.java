@@ -25,7 +25,7 @@ public class ThrownSacItem extends Item {
 
     public ThrownSacItem(Properties props,
                          BiFunction<Level, Player, ? extends ThrowableItemProjectile> projectileFactory) {
-        this(props, projectileFactory, true);
+        this(props, projectileFactory, false);
     }
 
     public ThrownSacItem(Properties props,

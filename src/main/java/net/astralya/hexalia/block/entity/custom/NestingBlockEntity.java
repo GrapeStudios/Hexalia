@@ -3,6 +3,7 @@ package net.astralya.hexalia.block.entity.custom;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.menu.NestingBlockMenu;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -20,8 +21,12 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.ContainerOpenersCounter;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.wrapper.InvWrapper;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class NestingBlockEntity extends BlockEntity implements Container, MenuProvider {
@@ -32,6 +37,7 @@ public class NestingBlockEntity extends BlockEntity implements Container, MenuPr
 
     private final NonNullList<ItemStack> items = NonNullList.withSize(SIZE, ItemStack.EMPTY);
     private final IItemHandler itemHandler = new InvWrapper(this);
+    private final LazyOptional<IItemHandler> itemHandlerOptional = LazyOptional.of(() -> this.itemHandler);
 
     private float openProgress;
     private float openProgressOld;
@@ -65,8 +71,22 @@ public class NestingBlockEntity extends BlockEntity implements Container, MenuPr
     }
 
     @SuppressWarnings("unused")
-    public IItemHandler getItemHandler(@Nullable net.minecraft.core.Direction side) {
+    public IItemHandler getItemHandler(@Nullable Direction side) {
         return this.itemHandler;
+    }
+
+    @Override
+    public @NotNull <T> LazyOptional<T> getCapability(@NotNull Capability<T> capability, @Nullable Direction side) {
+        if (capability == ForgeCapabilities.ITEM_HANDLER) {
+            return this.itemHandlerOptional.cast();
+        }
+        return super.getCapability(capability, side);
+    }
+
+    @Override
+    public void setRemoved() {
+        super.setRemoved();
+        this.itemHandlerOptional.invalidate();
     }
 
     public float getOpenProgress(float partialTick) {
