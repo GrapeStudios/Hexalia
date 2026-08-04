@@ -6,6 +6,7 @@ import net.astralya.hexalia.util.ModTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.BiomeTagsProvider;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BiomeTags;
 import net.minecraft.world.level.biome.Biomes;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -24,32 +25,45 @@ public class ModBiomeTagsProvider extends BiomeTagsProvider {
         .add(Biomes.MEADOW)
         .add(Biomes.OLD_GROWTH_BIRCH_FOREST)
         .add(Biomes.BIRCH_FOREST)
-        .add(Biomes.FLOWER_FOREST);
+        .add(Biomes.FLOWER_FOREST)
+        .addOptionalTag(conventional("is_flower_forest"))
+        .addOptionalTag(conventional("is_floral"));
 
     tag(ModTags.Biomes.HAS_COOL_BIOME_VEGETATION)
-        .add(Biomes.TAIGA)
-        .add(Biomes.OLD_GROWTH_SPRUCE_TAIGA)
-        .add(Biomes.SNOWY_TAIGA)
+        .addTag(BiomeTags.IS_TAIGA)
         .add(Biomes.SNOWY_PLAINS);
 
     tag(ModTags.Biomes.HAS_DRY_BIOME_VEGETATION)
         .add(Biomes.DESERT)
         .add(Biomes.BADLANDS)
         .add(Biomes.WINDSWEPT_SAVANNA)
-        .add(Biomes.SAVANNA);
+        .add(Biomes.SAVANNA)
+        .addOptionalTag(conventional("is_dry/overworld"));
 
-    tag(ModTags.Biomes.HAS_SHROOMS).add(Biomes.OLD_GROWTH_PINE_TAIGA).add(Biomes.MUSHROOM_FIELDS);
+    tag(ModTags.Biomes.HAS_SHROOMS).add(Biomes.OLD_GROWTH_PINE_TAIGA).add(Biomes.MUSHROOM_FIELDS)
+        .addOptionalTag(conventional("is_mushroom"));
 
     tag(ModTags.Biomes.HAS_SIREN_KELP).addTag(BiomeTags.IS_OCEAN);
 
-    tag(ModTags.Biomes.HAS_SWAMP_VEGETATION).add(Biomes.MANGROVE_SWAMP).add(Biomes.SWAMP);
+    tag(ModTags.Biomes.HAS_SWAMP_VEGETATION).add(Biomes.MANGROVE_SWAMP).add(Biomes.SWAMP)
+        .addOptionalTag(conventional("is_swamp"));
 
-    tag(ModTags.Biomes.HAS_SHADED_VEGETATION).add(Biomes.DARK_FOREST);
+    tag(ModTags.Biomes.HAS_SHADED_VEGETATION).add(Biomes.DARK_FOREST)
+        .addOptionalTag(conventional("is_old_growth"))
+        .addOptionalTag(conventional("is_dense_vegetation/overworld"))
+        .addOptionalTag(conventional("is_dark_forest"));
 
-    tag(ModTags.Biomes.HAS_DECORATIVE_FLOWERS).add(Biomes.SUNFLOWER_PLAINS).add(Biomes.PLAINS);
+    tag(ModTags.Biomes.HAS_DECORATIVE_FLOWERS).add(Biomes.SUNFLOWER_PLAINS).add(Biomes.PLAINS)
+        .addOptionalTag(conventional("is_flower_forest"))
+        .addOptionalTag(conventional("is_floral"))
+        .addOptionalTag(conventional("is_plains"));
 
     tag(ModTags.Biomes.SILK_MOTH_SPAWNS).addTag(BiomeTags.IS_FOREST);
 
     tag(ModTags.Biomes.CACOFEY_SPAWNS).addTag(BiomeTags.IS_JUNGLE);
+  }
+
+  private static ResourceLocation conventional(String path) {
+    return ResourceLocation.fromNamespaceAndPath("c", path);
   }
 }
