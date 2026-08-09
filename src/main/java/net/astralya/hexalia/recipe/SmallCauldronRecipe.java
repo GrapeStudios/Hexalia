@@ -24,14 +24,14 @@ public final class SmallCauldronRecipe implements Recipe<SimpleInventory> {
     private final DefaultedList<Ingredient> ingredients;
     private final ItemStack output;
     private final float experience;
-    private final int brewTime;
+    private final int duration;
 
-    public SmallCauldronRecipe(Identifier id, DefaultedList<Ingredient> ingredients, ItemStack output, float experience, int brewTime) {
+    public SmallCauldronRecipe(Identifier id, DefaultedList<Ingredient> ingredients, ItemStack output, float experience, int duration) {
         this.id = id;
         this.ingredients = ingredients;
         this.output = output;
         this.experience = experience;
-        this.brewTime = brewTime;
+        this.duration = duration;
     }
 
     @Override
@@ -96,8 +96,12 @@ public final class SmallCauldronRecipe implements Recipe<SimpleInventory> {
         return experience;
     }
 
+    public int getDuration() {
+        return duration;
+    }
+
     public int getBrewTime() {
-        return brewTime;
+        return duration;
     }
 
     @Override
@@ -133,9 +137,9 @@ public final class SmallCauldronRecipe implements Recipe<SimpleInventory> {
 
             ItemStack output = outputFromJson(JsonHelper.getObject(json, "result"));
             float experience = JsonHelper.getFloat(json, "experience", 0.0F);
-            int brewTime = JsonHelper.getInt(json, "brewtime", 200);
+            int duration = JsonHelper.getInt(json, "duration", 200);
 
-            return new SmallCauldronRecipe(id, ingredients, output, experience, brewTime);
+            return new SmallCauldronRecipe(id, ingredients, output, experience, duration);
         }
 
         @Override
@@ -149,9 +153,9 @@ public final class SmallCauldronRecipe implements Recipe<SimpleInventory> {
 
             ItemStack output = buf.readItemStack();
             float experience = buf.readFloat();
-            int brewTime = buf.readVarInt();
+            int duration = buf.readInt();
 
-            return new SmallCauldronRecipe(id, ingredients, output, experience, brewTime);
+            return new SmallCauldronRecipe(id, ingredients, output, experience, duration);
         }
 
         @Override
@@ -164,7 +168,7 @@ public final class SmallCauldronRecipe implements Recipe<SimpleInventory> {
 
             buf.writeItemStack(recipe.output.copy());
             buf.writeFloat(recipe.experience);
-            buf.writeVarInt(recipe.brewTime);
+            buf.writeInt(recipe.duration);
         }
 
         private static ItemStack outputFromJson(JsonObject json) {

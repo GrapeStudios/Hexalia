@@ -36,7 +36,7 @@ public final class SmallCauldronContents {
     public static final int MAX_INGREDIENTS = 4;
     public static final int SERVINGS_PER_MIXTURE = 2;
     public static final int DEFAULT_REQUIRED_WATER_MB = 1000;
-    public static final int DEFAULT_COOK_TIME_TICKS = Configuration.BREWING_DURATION.get();
+    public static final int DEFAULT_COOK_TIME_TICKS = 200;
     public static final int DEFAULT_OVERCOOK_AFTER_TICKS = Configuration.OVERCOOKED_DURATION.get();
     public static final int DEFAULT_CAPACITY_MB = 1000;
     public static final int BUCKET_MB = 1000;
@@ -460,7 +460,7 @@ public final class SmallCauldronContents {
             SmallCauldronRecipe recipe = match.get();
             lockedRecipeId = recipe.getId().toString();
             mixtureResult = recipe.getOutput(world.getRegistryManager()).copy();
-            cookTimeTicks = Math.max(1, recipe.getBrewTime());
+            cookTimeTicks = Math.max(1, recipe.getDuration());
         } else {
             lockedRecipeId = null;
             mixtureResult = ItemStack.EMPTY;

@@ -1,0 +1,10 @@
+{
+  "type": "hexalia:mortar_and_pestle",
+  "count": 5,
+  "ingredients": [
+    {
+      "item": "minecraft:bone"
+    }
+  ],
+  "result": "minecraft:bone_meal"
+}

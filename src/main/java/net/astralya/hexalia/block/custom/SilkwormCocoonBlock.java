@@ -114,7 +114,18 @@ public class SilkwormCocoonBlock extends Block {
             return false;
         }
         BlockPos attachedPos = pos.offset(facing.getOpposite());
-        return world.getBlockState(attachedPos).isIn(BlockTags.LOGS);
+        return world.getBlockState(attachedPos).isIn(BlockTags.LOGS)
+                && !hasOtherCocoonAttached(world, attachedPos, pos);
+    }
+
+    private static boolean hasOtherCocoonAttached(WorldView world, BlockPos attachedPos, BlockPos pos) {
+        for (Direction direction : new Direction[]{Direction.NORTH, Direction.SOUTH, Direction.WEST, Direction.EAST}) {
+            BlockPos neighborPos = attachedPos.offset(direction);
+            if (!neighborPos.equals(pos) && world.getBlockState(neighborPos).getBlock() instanceof SilkwormCocoonBlock) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

@@ -1,0 +1,10 @@
+{
+  "type": "hexalia:mortar_and_pestle",
+  "count": 3,
+  "ingredients": [
+    {
+      "item": "minecraft:blaze_rod"
+    }
+  ],
+  "result": "minecraft:blaze_powder"
+}

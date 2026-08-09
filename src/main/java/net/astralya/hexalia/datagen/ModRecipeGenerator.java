@@ -454,7 +454,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                         Ingredient.ofItems(ModItems.TREE_RESIN),
                         Ingredient.ofItems(Items.ROTTEN_FLESH),
                         new ItemStack(ModItems.BREW_OF_BLOODLUST)
-                )
+                ).brewTime(4800)
                 .criterion("has_rustic_bottle", InventoryChangedCriterion.Conditions.items(ModItems.RUSTIC_BOTTLE))
                 .offerTo(exporter, new Identifier("hexalia",
                         Registries.ITEM.getId(ModItems.BREW_OF_BLOODLUST).getPath() + "_from_small_cauldron"));
@@ -465,7 +465,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                         Ingredient.ofItems(Items.SWEET_BERRIES),
                         Ingredient.ofItems(ModItems.TREE_RESIN),
                         new ItemStack(ModItems.BREW_OF_SPIKESKIN)
-                )
+                ).brewTime(4800)
                 .criterion("has_rustic_bottle", InventoryChangedCriterion.Conditions.items(ModItems.RUSTIC_BOTTLE))
                 .offerTo(exporter, new Identifier("hexalia",
                         Registries.ITEM.getId(ModItems.BREW_OF_SPIKESKIN).getPath() + "_from_small_cauldron"));
@@ -476,7 +476,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                         Ingredient.ofItems(ModItems.TREE_RESIN),
                         Ingredient.ofItems(Items.FEATHER),
                         new ItemStack(ModItems.BREW_OF_SLIMEWALKER)
-                )
+                ).brewTime(4800)
                 .criterion("has_rustic_bottle", InventoryChangedCriterion.Conditions.items(ModItems.RUSTIC_BOTTLE))
                 .offerTo(exporter, new Identifier("hexalia",
                         Registries.ITEM.getId(ModItems.BREW_OF_SLIMEWALKER).getPath() + "_from_small_cauldron"));
@@ -487,7 +487,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                         Ingredient.ofItems(ModItems.SPIRIT_POWDER),
                         Ingredient.ofItems(ModItems.GALEBERRIES),
                         new ItemStack(ModItems.BREW_OF_HOMESTEAD)
-                )
+                ).brewTime(4800)
                 .criterion("has_rustic_bottle", InventoryChangedCriterion.Conditions.items(ModItems.RUSTIC_BOTTLE))
                 .offerTo(exporter, new Identifier("hexalia",
                         Registries.ITEM.getId(ModItems.BREW_OF_HOMESTEAD).getPath() + "_from_small_cauldron"));
@@ -498,7 +498,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                         Ingredient.ofItems(Items.IRON_INGOT),
                         Ingredient.ofItems(Items.REDSTONE),
                         new ItemStack(ModItems.BREW_OF_SIPHON)
-                )
+                ).brewTime(4800)
                 .criterion("has_rustic_bottle", InventoryChangedCriterion.Conditions.items(ModItems.RUSTIC_BOTTLE))
                 .offerTo(exporter, new Identifier("hexalia",
                         Registries.ITEM.getId(ModItems.BREW_OF_SIPHON).getPath() + "_from_small_cauldron"));
@@ -509,7 +509,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                         Ingredient.ofItems(Items.GLOW_BERRIES),
                         Ingredient.ofItems(ModBlocks.WITCHWEED),
                         new ItemStack(ModItems.BREW_OF_DAYBLOOM)
-                )
+                ).brewTime(4800)
                 .criterion("has_rustic_bottle", InventoryChangedCriterion.Conditions.items(ModItems.RUSTIC_BOTTLE))
                 .offerTo(exporter, new Identifier("hexalia",
                         Registries.ITEM.getId(ModItems.BREW_OF_DAYBLOOM).getPath() + "_from_small_cauldron"));
@@ -520,7 +520,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                         Ingredient.ofItems(Items.BLACK_DYE),
                         Ingredient.ofItems(Items.STRING),
                         new ItemStack(ModItems.BREW_OF_ARACHNID_GRACE)
-                )
+                ).brewTime(4800)
                 .criterion("has_rustic_bottle", InventoryChangedCriterion.Conditions.items(ModItems.RUSTIC_BOTTLE))
                 .offerTo(exporter, new Identifier("hexalia",
                         Registries.ITEM.getId(ModItems.BREW_OF_ARACHNID_GRACE).getPath() + "_from_small_cauldron"));
@@ -531,7 +531,7 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                         Ingredient.ofItems(ModItems.CHILLBERRIES),
                         Ingredient.ofItems(Items.SCULK),
                         new ItemStack(ModItems.BREW_OF_HOLLOW_SILENCE)
-                )
+                ).brewTime(4800)
                 .criterion("has_rustic_bottle", InventoryChangedCriterion.Conditions.items(ModItems.RUSTIC_BOTTLE))
                 .offerTo(exporter, new Identifier("hexalia",
                         Registries.ITEM.getId(ModItems.BREW_OF_HOLLOW_SILENCE).getPath() + "_from_small_cauldron"));
@@ -701,6 +701,24 @@ public class ModRecipeGenerator extends FabricRecipeProvider {
                 .offerTo(exporter, id(pathOf(ModItems.BLOOMWRAP_BOOTS) + "_from_ritual_table"));
 
         // Mortar and Pestle Recipes (using custom builder)
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.ofItems(Items.BONE),
+                        new ItemStack(Items.BONE_MEAL, 5)
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE)
+                .offerTo(exporter, id("bone_meal_from_mortar"));
+
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.ofItems(Items.SUGAR_CANE),
+                        new ItemStack(Items.SUGAR, 2)
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE)
+                .offerTo(exporter, id("sugar_from_mortar"));
+
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.ofItems(Items.BLAZE_ROD),
+                        new ItemStack(Items.BLAZE_POWDER, 3)
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE)
+                .offerTo(exporter, id("blaze_powder_from_mortar"));
+
         MortarAndPestleRecipeBuilder.mortar(
                         Ingredient.ofItems(ModBlocks.SPIRIT_BLOOM),
                         new ItemStack(ModItems.SPIRIT_POWDER)

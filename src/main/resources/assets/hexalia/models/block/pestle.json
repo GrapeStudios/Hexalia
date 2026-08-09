@@ -2,8 +2,8 @@
 	"format_version": "1.9.0",
 	"credit": "Made with Blockbench",
 	"textures": {
-		"1": "block/stone",
-		"particle": "block/stone"
+		"1": "minecraft:block/stone",
+		"particle": "minecraft:block/stone"
 	},
 	"elements": [
 		{
