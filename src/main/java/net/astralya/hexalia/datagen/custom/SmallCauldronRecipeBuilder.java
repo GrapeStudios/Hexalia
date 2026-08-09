@@ -150,9 +150,7 @@ public class SmallCauldronRecipeBuilder implements RecipeBuilder {
             if (this.experience != 0.0F) {
                 json.addProperty("experience", this.experience);
             }
-            if (this.brewTime != 200) {
-                json.addProperty("brewtime", this.brewTime);
-            }
+            json.addProperty("duration", this.brewTime);
         }
 
         @Override

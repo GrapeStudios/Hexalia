@@ -34,7 +34,7 @@ public final class SmallCauldronContents {
     public static final int SERVINGS_PER_MIXTURE = 2;
 
     public static final int DEFAULT_REQUIRED_WATER_MB = 1000;
-    public static final int DEFAULT_COOK_TIME_TICKS = Configuration.BREWING_DURATION.get();
+    public static final int DEFAULT_COOK_TIME_TICKS = 200;
     public static final int DEFAULT_OVERCOOK_AFTER_TICKS = Configuration.OVERCOOKED_DURATION.get();
 
     public static final int DEFAULT_CAPACITY_MB = 1000;
@@ -677,9 +677,11 @@ public final class SmallCauldronContents {
             SmallCauldronRecipe recipe = match.get();
             this.lockedRecipeId = recipe.getId().toString();
             this.mixtureResult = recipe.getResultItem(level.registryAccess()).copy();
+            this.cookTimeTicks = Math.max(1, recipe.getDuration());
         } else {
             this.lockedRecipeId = null;
             this.mixtureResult = ItemStack.EMPTY;
+            this.cookTimeTicks = DEFAULT_COOK_TIME_TICKS;
         }
 
         this.clearIngredientsAndCount();

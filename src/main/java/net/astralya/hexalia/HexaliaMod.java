@@ -2,11 +2,6 @@ package net.astralya.hexalia;
 
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.block.ModBlocks;
-import net.astralya.hexalia.client.renderer.entity.CacofeyRenderer;
-import net.astralya.hexalia.client.renderer.entity.ModBoatRenderer;
-import net.astralya.hexalia.client.renderer.entity.SilkMothRenderer;
-import net.astralya.hexalia.client.renderer.entity.ThornArrowRenderer;
-import net.astralya.hexalia.client.screen.NestingBlockScreen;
 import net.astralya.hexalia.effect.ModMobEffects;
 import net.astralya.hexalia.entity.ModEntities;
 import net.astralya.hexalia.item.ModCreativeModeTabs;
@@ -19,15 +14,9 @@ import net.astralya.hexalia.sound.ModSoundEvents;
 import net.astralya.hexalia.util.*;
 import net.astralya.hexalia.worldgen.ModFeatures;
 import net.astralya.hexalia.worldgen.gen.decorator.ModTreeDecorators;
-import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.renderer.Sheets;
-import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ModelEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -37,10 +26,8 @@ import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import org.slf4j.Logger;
 import com.mojang.logging.LogUtils;
 
@@ -112,34 +99,5 @@ public class HexaliaMod {
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         LOGGER.info("HELLO from server starting");
-    }
-
-    @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-            MenuScreens.register(ModMenuTypes.NESTING_BLOCK_MENU.get(), NestingBlockScreen::new);
-
-            EntityRenderers.register(ModEntities.RABBAGE.get(), ThrownItemRenderer::new);
-            EntityRenderers.register(ModEntities.PURIFYING_SAC.get(), ThrownItemRenderer::new);
-            EntityRenderers.register(ModEntities.FOUL_SAC.get(), ThrownItemRenderer::new);
-            EntityRenderers.register(ModEntities.FROST_SAC.get(), ThrownItemRenderer::new);
-            EntityRenderers.register(ModEntities.SEARING_SAC.get(), ThrownItemRenderer::new);
-            EntityRenderers.register(ModEntities.MOD_BOAT.get(), context -> new ModBoatRenderer(context, false));
-            EntityRenderers.register(ModEntities.MOD_CHEST_BOAT.get(), context -> new ModBoatRenderer(context, true));
-            EntityRenderers.register(ModEntities.THORN_ARROW.get(), ThornArrowRenderer::new);
-            EntityRenderers.register(ModEntities.SILK_MOTH_ENTITY.get(), SilkMothRenderer::new);
-            EntityRenderers.register(ModEntities.CACOFEY_ENTITY.get(), CacofeyRenderer::new);
-
-            Sheets.addWoodType(ModWoodTypes.COTTONWOOD);
-            Sheets.addWoodType(ModWoodTypes.WILLOW);
-
-            event.enqueueWork(ModItemProperties::addCustomItemProperties);
-        }
-
-        @SubscribeEvent
-        public static void registerAdditionalModels(ModelEvent.RegisterAdditional event) {
-            event.register(new ResourceLocation(HexaliaMod.MODID, "block/pestle"));
-        }
     }
 }

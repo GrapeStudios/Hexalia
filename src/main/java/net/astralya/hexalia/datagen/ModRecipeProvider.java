@@ -461,7 +461,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         Ingredient.of(ModItems.TREE_RESIN.get()),
                         Ingredient.of(Items.ROTTEN_FLESH),
                         new ItemStack(ModItems.BREW_OF_BLOODLUST.get())
-                ).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
+                ).brewTime(4800).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
                 .save(recipeConsumer, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.BREW_OF_BLOODLUST.getId().getPath() + "_from_small_cauldron"));
 
@@ -471,7 +471,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         Ingredient.of(Items.SWEET_BERRIES),
                         Ingredient.of(ModItems.TREE_RESIN.get()),
                         new ItemStack(ModItems.BREW_OF_SPIKESKIN.get())
-                ).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
+                ).brewTime(4800).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
                 .save(recipeConsumer, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.BREW_OF_SPIKESKIN.getId().getPath() + "_from_small_cauldron"));
 
@@ -481,7 +481,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         Ingredient.of(ModItems.TREE_RESIN.get()),
                         Ingredient.of(Items.FEATHER),
                         new ItemStack(ModItems.BREW_OF_SLIMEWALKER.get())
-                ).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
+                ).brewTime(4800).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
                 .save(recipeConsumer, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.BREW_OF_SLIMEWALKER.getId().getPath() + "_from_small_cauldron"));
 
@@ -491,7 +491,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         Ingredient.of(ModItems.SPIRIT_POWDER.get()),
                         Ingredient.of(ModItems.GALEBERRIES.get()),
                         new ItemStack(ModItems.BREW_OF_HOMESTEAD.get())
-                ).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
+                ).brewTime(4800).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
                 .save(recipeConsumer, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.BREW_OF_HOMESTEAD.getId().getPath() + "_from_small_cauldron"));
 
@@ -501,7 +501,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         Ingredient.of(Items.IRON_INGOT),
                         Ingredient.of(Items.REDSTONE),
                         new ItemStack(ModItems.BREW_OF_SIPHON.get())
-                ).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
+                ).brewTime(4800).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
                 .save(recipeConsumer, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.BREW_OF_SIPHON.getId().getPath() + "_from_small_cauldron"));
 
@@ -511,7 +511,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         Ingredient.of(Items.GLOW_BERRIES),
                         Ingredient.of(ModBlocks.WITCHWEED.get()),
                         new ItemStack(ModItems.BREW_OF_DAYBLOOM.get())
-                ).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
+                ).brewTime(4800).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
                 .save(recipeConsumer, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.BREW_OF_DAYBLOOM.getId().getPath() + "_from_small_cauldron"));
 
@@ -521,7 +521,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         Ingredient.of(Items.BLACK_DYE),
                         Ingredient.of(Items.STRING),
                         new ItemStack(ModItems.BREW_OF_ARACHNID_GRACE.get())
-                ).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
+                ).brewTime(4800).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
                 .save(recipeConsumer, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.BREW_OF_ARACHNID_GRACE.getId().getPath() + "_from_small_cauldron"));
 
@@ -531,7 +531,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         Ingredient.of(ModItems.CHILLBERRIES.get()),
                         Ingredient.of(Items.SCULK),
                         new ItemStack(ModItems.BREW_OF_HOLLOW_SILENCE.get())
-                ).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
+                ).brewTime(4800).unlockedByItem("has_rustic_bottle", ModItems.RUSTIC_BOTTLE.get())
                 .save(recipeConsumer, ResourceLocation.fromNamespaceAndPath("hexalia",
                         ModItems.BREW_OF_HOLLOW_SILENCE.getId().getPath() + "_from_small_cauldron"));
 
@@ -654,6 +654,24 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy("has_silkweave_footwraps", has(ModItems.SILKWEAVE_FOOTWRAPS.get())).save(recipeConsumer);
 
         // Mortar and Pestle Recipes
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.of(Items.BONE),
+                        new ItemStack(Items.BONE_MEAL, 5)
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE.get())
+                .save(recipeConsumer, ResourceLocation.fromNamespaceAndPath("hexalia", "bone_meal_from_mortar"));
+
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.of(Items.SUGAR_CANE),
+                        new ItemStack(Items.SUGAR, 2)
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE.get())
+                .save(recipeConsumer, ResourceLocation.fromNamespaceAndPath("hexalia", "sugar_from_mortar"));
+
+        MortarAndPestleRecipeBuilder.mortar(
+                        Ingredient.of(Items.BLAZE_ROD),
+                        new ItemStack(Items.BLAZE_POWDER, 3)
+                ).unlockedByItem("has_mortar_and_pestle", ModItems.MORTAR_AND_PESTLE.get())
+                .save(recipeConsumer, ResourceLocation.fromNamespaceAndPath("hexalia", "blaze_powder_from_mortar"));
+
         MortarAndPestleRecipeBuilder.mortar(
                         Ingredient.of(ModBlocks.SPIRIT_BLOOM.get()),
                         new ItemStack(ModItems.SPIRIT_POWDER.get())

@@ -23,14 +23,14 @@ public class SmallCauldronRecipe implements Recipe<SimpleContainer> {
     private final NonNullList<Ingredient> ingredients;
     private final ItemStack output;
     private final float experience;
-    private final int brewTime;
+    private final int duration;
 
-    public SmallCauldronRecipe(ResourceLocation id, NonNullList<Ingredient> ingredients, ItemStack output, float experience, int brewTime) {
+    public SmallCauldronRecipe(ResourceLocation id, NonNullList<Ingredient> ingredients, ItemStack output, float experience, int duration) {
         this.id = id;
         this.ingredients = ingredients;
         this.output = output;
         this.experience = experience;
-        this.brewTime = brewTime;
+        this.duration = duration;
     }
 
     @Override
@@ -95,8 +95,12 @@ public class SmallCauldronRecipe implements Recipe<SimpleContainer> {
         return this.experience;
     }
 
+    public int getDuration() {
+        return this.duration;
+    }
+
     public int getBrewTime() {
-        return this.brewTime;
+        return this.duration;
     }
 
     @Override
@@ -138,9 +142,9 @@ public class SmallCauldronRecipe implements Recipe<SimpleContainer> {
 
             ItemStack output = ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(json, "result"));
             float experience = GsonHelper.getAsFloat(json, "experience", 0.0F);
-            int brewTime = GsonHelper.getAsInt(json, "brewtime", 200);
+            int duration = GsonHelper.getAsInt(json, "duration", 200);
 
-            return new SmallCauldronRecipe(id, ingredients, output, experience, brewTime);
+            return new SmallCauldronRecipe(id, ingredients, output, experience, duration);
         }
 
         @Override
@@ -154,9 +158,9 @@ public class SmallCauldronRecipe implements Recipe<SimpleContainer> {
 
             ItemStack output = buffer.readItem();
             float experience = buffer.readFloat();
-            int brewTime = buffer.readVarInt();
+            int duration = buffer.readInt();
 
-            return new SmallCauldronRecipe(id, ingredients, output, experience, brewTime);
+            return new SmallCauldronRecipe(id, ingredients, output, experience, duration);
         }
 
         @Override
@@ -169,7 +173,7 @@ public class SmallCauldronRecipe implements Recipe<SimpleContainer> {
 
             buffer.writeItem(recipe.output);
             buffer.writeFloat(recipe.experience);
-            buffer.writeVarInt(recipe.brewTime);
+            buffer.writeInt(recipe.duration);
         }
     }
 }

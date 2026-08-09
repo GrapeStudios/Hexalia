@@ -1,0 +1,12 @@
+{
+  "type": "hexalia:mortar_and_pestle",
+  "ingredients": [
+    {
+      "item": "minecraft:sugar_cane"
+    }
+  ],
+  "output": {
+    "count": 2,
+    "item": "minecraft:sugar"
+  }
+}
