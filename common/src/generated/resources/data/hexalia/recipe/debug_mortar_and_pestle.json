@@ -1,9 +1,0 @@
-{
-  "type": "hexalia:mortar_and_pestle",
-  "ingredients": [
-    {
-      "item": "minecraft:wheat_seeds"
-    }
-  ],
-  "result": "hexalia:salt"
-}

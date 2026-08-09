@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_mortar_and_pestle": {
+    "has_glow_berries": {
       "conditions": {
         "items": [
           {
-            "items": "hexalia:mortar_and_pestle"
+            "items": "minecraft:glow_berries"
           }
         ]
       },
@@ -13,20 +13,22 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "hexalia:debug_mortar_and_pestle"
+        "recipe": "hexalia:galeberries_from_celestial_infusion"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_the_recipe",
-      "has_mortar_and_pestle"
+      "has_the_recipe"
+    ],
+    [
+      "has_glow_berries"
     ]
   ],
   "rewards": {
     "recipes": [
-      "hexalia:debug_mortar_and_pestle"
+      "hexalia:galeberries_from_celestial_infusion"
     ]
   }
 }

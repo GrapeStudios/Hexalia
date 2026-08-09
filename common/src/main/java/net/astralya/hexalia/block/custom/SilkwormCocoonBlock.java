@@ -129,7 +129,18 @@ public class SilkwormCocoonBlock extends Block {
   protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
     Direction facing = state.getValue(FACING);
     BlockPos attachedPos = pos.relative(facing.getOpposite());
-    return level.getBlockState(attachedPos).is(BlockTags.LOGS);
+    return level.getBlockState(attachedPos).is(BlockTags.LOGS)
+        && !hasOtherCocoonAttached(level, attachedPos, pos);
+  }
+
+  private static boolean hasOtherCocoonAttached(LevelReader level, BlockPos attachedPos, BlockPos pos) {
+    for (Direction direction : Direction.Plane.HORIZONTAL) {
+      BlockPos neighborPos = attachedPos.relative(direction);
+      if (!neighborPos.equals(pos) && level.getBlockState(neighborPos).getBlock() instanceof SilkwormCocoonBlock) {
+        return true;
+      }
+    }
+    return false;
   }
 
   @Override

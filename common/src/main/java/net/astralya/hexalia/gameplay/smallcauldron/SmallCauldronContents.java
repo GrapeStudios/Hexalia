@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Optional;
 import net.astralya.hexalia.HexaliaConfig;
 import net.astralya.hexalia.item.ModItems;
+import net.astralya.hexalia.item.custom.BrewItem;
 import net.astralya.hexalia.recipe.ModRecipeTypes;
 import net.astralya.hexalia.recipe.SmallCauldronRecipe;
 import net.astralya.hexalia.recipe.SmallCauldronRecipeInput;
@@ -338,7 +339,11 @@ public final class SmallCauldronContents {
         return;
       }
       cookProgress++;
-      if (cookProgress >= HexaliaConfig.brewingDuration()) {
+      int duration =
+          findLockedRecipe(level)
+              .map(holder -> holder.value().getDuration())
+              .orElse(DEFAULT_COOK_TIME_TICKS);
+      if (cookProgress >= Math.max(1, duration)) {
         if (!finalizeCook(level)) {
           makeSpoiled();
         }
@@ -460,11 +465,19 @@ public final class SmallCauldronContents {
     drainWater(DEFAULT_REQUIRED_WATER_MB);
     kind = ContentsKind.MIXTURE;
     servings = SERVINGS_PER_MIXTURE;
-    mixtureColor = WATER_RGB;
+    mixtureColor = getMixtureColor(mixtureResult);
     cookProgress = 0;
     mixtureAgeTicks = 0;
     overcooked = false;
     return true;
+  }
+
+  private static int getMixtureColor(ItemStack result) {
+    if (result.getItem() instanceof BrewItem brewItem) {
+      int color = brewItem.getBrewColor();
+      return color != 0 ? color : WATER_RGB;
+    }
+    return WATER_RGB;
   }
 
   private void makeSpoiled() {

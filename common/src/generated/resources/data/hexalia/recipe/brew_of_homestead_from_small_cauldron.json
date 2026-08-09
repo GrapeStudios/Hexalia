@@ -1,5 +1,6 @@
 {
   "type": "hexalia:small_cauldron",
+  "duration": 4800,
   "ingredients": [
     {
       "item": "hexalia:tree_resin"

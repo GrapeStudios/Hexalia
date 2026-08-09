@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_book": {
+    "has_mortar_and_pestle": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:book"
+            "items": "hexalia:mortar_and_pestle"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "hexalia:verdant_grimoire"
+        "recipe": "hexalia:sugar_from_mortar"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_book"
+      "has_mortar_and_pestle"
     ]
   ],
   "rewards": {
     "recipes": [
-      "hexalia:verdant_grimoire"
+      "hexalia:sugar_from_mortar"
     ]
   }
 }

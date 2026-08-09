@@ -8,9 +8,11 @@ import net.astralya.hexalia.neoforge.event.NeoForgeArmorEvents;
 import net.astralya.hexalia.neoforge.event.NeoForgeSagePendantEvents;
 import net.astralya.hexalia.util.ModVanillaBehaviors;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
 import net.minecraft.world.entity.SpawnPlacementTypes;
@@ -27,7 +29,9 @@ public final class HexaliaNeoForge {
     modEventBus.addListener(HexaliaNeoForge::commonSetup);
     modEventBus.addListener(HexaliaNeoForge::registerAttributes);
     modEventBus.addListener(HexaliaNeoForge::registerSpawnPlacements);
-    HexaliaNeoForgeClient.init(modEventBus);
+    if (FMLEnvironment.dist == Dist.CLIENT) {
+      HexaliaNeoForgeClient.init(modEventBus);
+    }
   }
 
   private static void commonSetup(FMLCommonSetupEvent event) {

@@ -33,6 +33,10 @@ public final class ModRecipeTypes {
       NATURES_RITUAL_SERIALIZER =
           RECIPE_SERIALIZERS.register("natures_ritual", NaturesRitualRecipe.Serializer::new);
 
+  public static final RegistrySupplier<RecipeSerializer<NaturesRitualRecipe>>
+      LEGACY_RITUAL_TABLE_SERIALIZER =
+          RECIPE_SERIALIZERS.register("ritual_table", NaturesRitualRecipe.Serializer::new);
+
   public static final RegistrySupplier<RecipeType<NaturesRitualRecipe>> NATURES_RITUAL =
       RECIPE_TYPES.register(
           "natures_ritual",

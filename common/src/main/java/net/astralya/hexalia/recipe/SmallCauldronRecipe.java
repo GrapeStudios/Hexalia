@@ -21,14 +21,14 @@ public final class SmallCauldronRecipe implements Recipe<RecipeInput> {
   private final NonNullList<Ingredient> ingredients;
   private final ItemStack output;
   private final float experience;
-  private final int brewTime;
+  private final int duration;
 
   public SmallCauldronRecipe(
-      NonNullList<Ingredient> ingredients, ItemStack output, float experience, int brewTime) {
+      NonNullList<Ingredient> ingredients, ItemStack output, float experience, int duration) {
     this.ingredients = ingredients;
     this.output = output;
     this.experience = experience;
-    this.brewTime = brewTime;
+    this.duration = duration;
   }
 
   @Override
@@ -40,8 +40,12 @@ public final class SmallCauldronRecipe implements Recipe<RecipeInput> {
     return experience;
   }
 
+  public int getDuration() {
+    return duration;
+  }
+
   public int getBrewTime() {
-    return brewTime;
+    return duration;
   }
 
   @Override
@@ -142,8 +146,8 @@ public final class SmallCauldronRecipe implements Recipe<RecipeInput> {
                             .optionalFieldOf("experience", 0.0F)
                             .forGetter(SmallCauldronRecipe::getExperience),
                         Codec.INT
-                            .optionalFieldOf("brewtime", 200)
-                            .forGetter(SmallCauldronRecipe::getBrewTime))
+                            .optionalFieldOf("duration", 200)
+                            .forGetter(SmallCauldronRecipe::getDuration))
                     .apply(instance, SmallCauldronRecipe::new));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, SmallCauldronRecipe> STREAM_CODEC =
@@ -167,8 +171,8 @@ public final class SmallCauldronRecipe implements Recipe<RecipeInput> {
       }
       ItemStack output = ItemStack.STREAM_CODEC.decode(buffer);
       float experience = buffer.readFloat();
-      int brewTime = buffer.readVarInt();
-      return new SmallCauldronRecipe(ingredients, output, experience, brewTime);
+      int duration = buffer.readVarInt();
+      return new SmallCauldronRecipe(ingredients, output, experience, duration);
     }
 
     private static void toNetwork(RegistryFriendlyByteBuf buffer, SmallCauldronRecipe recipe) {
@@ -178,7 +182,7 @@ public final class SmallCauldronRecipe implements Recipe<RecipeInput> {
       }
       ItemStack.STREAM_CODEC.encode(buffer, recipe.output);
       buffer.writeFloat(recipe.experience);
-      buffer.writeVarInt(recipe.brewTime);
+      buffer.writeVarInt(recipe.duration);
     }
   }
 }

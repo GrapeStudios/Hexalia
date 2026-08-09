@@ -36,6 +36,11 @@
       "type": "hexalia:recipe_page",
       "recipe_id": "hexalia:celestial_crystal_from_celestial_infusion",
       "layout": "ritual_brazier"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:galeberries_from_celestial_infusion",
+      "layout": "ritual_brazier"
     }
   ]
 }

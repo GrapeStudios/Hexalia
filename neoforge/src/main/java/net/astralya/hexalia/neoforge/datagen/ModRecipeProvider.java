@@ -510,6 +510,13 @@ public final class ModRecipeProvider extends RecipeProvider implements IConditio
 
   private void buildCelestialInfusionRecipes(RecipeOutput recipeOutput) {
     CelestialInfusionRecipeBuilder.infusion(
+                    RecipeCategory.FOOD, Ingredient.of(Items.GLOW_BERRIES), ModItems.GALEBERRIES.get())
+            .unlockedBy(
+                    "has_glow_berries",
+                    inventoryTrigger(ItemPredicate.Builder.item().of(Items.GLOW_BERRIES).build()))
+            .save(recipeOutput, id("galeberries_from_celestial_infusion"));
+
+    CelestialInfusionRecipeBuilder.infusion(
                     RecipeCategory.MISC, Ingredient.of(Items.AMETHYST_SHARD), ModItems.CELESTIAL_CRYSTAL.get())
             .unlockedBy(
                     "has_amethyst_shard",
@@ -851,6 +858,7 @@ public final class ModRecipeProvider extends RecipeProvider implements IConditio
             .requiresIngredient(second)
             .requiresIngredient(third)
             .requiresIngredient(fourth)
+            .brewTime(4800)
             .unlockedBy(
                     "has_rustic_bottle",
                     inventoryTrigger(ItemPredicate.Builder.item().of(ModItems.RUSTIC_BOTTLE.get()).build()))
@@ -865,12 +873,28 @@ public final class ModRecipeProvider extends RecipeProvider implements IConditio
             .save(recipeOutput);
 
     MortarAndPestleRecipeBuilder.mortar(
-                    Ingredient.of(Items.WHEAT_SEEDS), new ItemStack(ModItems.SALT.get()))
+                    Ingredient.of(Items.BONE), new ItemStack(Items.BONE_MEAL, 5))
             .unlockedBy(
                     "has_mortar_and_pestle",
                     inventoryTrigger(
                             ItemPredicate.Builder.item().of(ModItems.MORTAR_AND_PESTLE.get()).build()))
-            .save(recipeOutput, id("debug_mortar_and_pestle"));
+            .save(recipeOutput, id("bone_meal_from_mortar"));
+
+    MortarAndPestleRecipeBuilder.mortar(
+                    Ingredient.of(Items.SUGAR_CANE), new ItemStack(Items.SUGAR, 2))
+            .unlockedBy(
+                    "has_mortar_and_pestle",
+                    inventoryTrigger(
+                            ItemPredicate.Builder.item().of(ModItems.MORTAR_AND_PESTLE.get()).build()))
+            .save(recipeOutput, id("sugar_from_mortar"));
+
+    MortarAndPestleRecipeBuilder.mortar(
+                    Ingredient.of(Items.BLAZE_ROD), new ItemStack(Items.BLAZE_POWDER, 3))
+            .unlockedBy(
+                    "has_mortar_and_pestle",
+                    inventoryTrigger(
+                            ItemPredicate.Builder.item().of(ModItems.MORTAR_AND_PESTLE.get()).build()))
+            .save(recipeOutput, id("blaze_powder_from_mortar"));
 
     MortarAndPestleRecipeBuilder.mortar(
                     Ingredient.of(ModItems.SALTSPROUT.get()), new ItemStack(ModItems.SALT.get()))
