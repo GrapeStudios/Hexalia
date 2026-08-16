@@ -3,6 +3,7 @@ package net.astralya.hexalia;
 import com.terraformersmc.terraform.boat.api.client.TerraformBoatClientHelper;
 import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
+import net.astralya.hexalia.client.model.PestleModel;
 import net.astralya.hexalia.client.renderer.blockentity.CenserBlockEntityRenderer;
 import net.astralya.hexalia.client.renderer.blockentity.MortarAndPestleBlockEntityRenderer;
 import net.astralya.hexalia.client.renderer.blockentity.RitualBrazierBlockEntityRenderer;
@@ -30,9 +31,9 @@ import net.astralya.hexalia.util.ModWoodTypes;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.item.v1.ItemTooltipCallback;
-import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.color.world.BiomeColors;
@@ -44,16 +45,13 @@ import net.minecraft.client.render.block.entity.HangingSignBlockEntityRenderer;
 import net.minecraft.client.render.block.entity.SignBlockEntityRenderer;
 import net.minecraft.client.render.entity.FlyingItemEntityRenderer;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.Identifier;
 import net.minecraft.client.color.world.FoliageColors;
 
 public class HexaliaModClient implements ClientModInitializer {
 
-    public static final Identifier PESTLE_MODEL_ID = new Identifier(HexaliaMod.MODID, "block/pestle");
-
     @Override
     public void onInitializeClient() {
-        registerModels();
+        registerModelLayers();
         registerBlockRenderLayers();
         registerParticles();
         registerColorProviders();
@@ -65,8 +63,9 @@ public class HexaliaModClient implements ClientModInitializer {
         registerItemProperties();
     }
 
-    private static void registerModels() {
-        ModelLoadingPlugin.register(context -> context.addModels(PESTLE_MODEL_ID));
+    private static void registerModelLayers() {
+        EntityModelLayerRegistry.registerModelLayer(
+                PestleModel.LAYER_LOCATION, PestleModel::createModelData);
     }
 
     private static void registerBlockRenderLayers() {

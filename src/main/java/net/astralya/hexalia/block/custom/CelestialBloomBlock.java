@@ -8,11 +8,18 @@ import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldView;
 
 public class CelestialBloomBlock extends HerbBlock {
 
     public CelestialBloomBlock(StatusEffect suspiciousStewEffect, int effectDuration, Settings settings) {
         super(suspiciousStewEffect, effectDuration, settings);
+    }
+
+    @Override
+    public boolean isFertilizable(WorldView world, BlockPos pos, BlockState state, boolean isClient) {
+        return state.isOf(ModBlocks.CELESTIAL_BLOOM)
+                && super.isFertilizable(world, pos, state, isClient);
     }
 
     @Override

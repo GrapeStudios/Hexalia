@@ -307,6 +307,7 @@
   "advancements.hexalia.brewed_awakening.description": "Drink every Hexalia Brew — magic beans not included.",
 
   "message.hexalia.ritual.invalid_crops": "Natural energy is weak; fully grown crops are missing.",
+  "message.hexalia.ritual.missing_ingredients": "The ritual table lacks its central ingredient.",
   "message.hexalia.ritual.missing_salt": "The braziers lack the salt to channel energy.",
   "message.hexalia.ritual.wrong_recipe": "The ritual ingredients resonate incorrectly.",
   "message.hexalia.ritual.stopped_ritual": "The ritual falters as an item is removed.",
@@ -320,6 +321,7 @@
   "message.hexalia.ritual_brazier.no_sky": "The infusion requires an open view to the sky.",
   "message.hexalia.censer_not_full": "The censer must be filled with herbs before lighting!",
   "message.hexalia.invalid_herb_combination": "This combination of herbs does not work.",
+  "message.hexalia.censer.generic_effect": "The censer releases a faint, indistinct aura.",
     "message.hexalia.censer.tidewarden": "A gentle tide lifts the spirit, carrying it beyond harm",
   "message.hexalia.censer.undead_veil": "Unnatural stillness quiets the restless dead",
   "message.hexalia.censer.ethereal_grazing": "A pale tranquility settles over the herd, and life renews itself without need",

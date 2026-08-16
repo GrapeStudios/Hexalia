@@ -1,40 +1,32 @@
 package net.astralya.hexalia.client.renderer.blockentity;
 
-import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.block.entity.custom.MortarAndPestleBlockEntity;
-import net.minecraft.block.BlockState;
-import net.minecraft.client.MinecraftClient;
+import net.astralya.hexalia.client.model.PestleModel;
 import net.minecraft.client.render.LightmapTextureManager;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.render.VertexConsumerProvider;
-import net.minecraft.client.render.block.BlockRenderManager;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.block.entity.BlockEntityRendererFactory;
 import net.minecraft.client.render.item.ItemRenderer;
-import net.minecraft.client.render.model.BakedModel;
-import net.minecraft.client.render.model.BakedModelManager;
 import net.minecraft.client.render.model.json.ModelTransformationMode;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
-import net.minecraft.util.math.random.Random;
 import net.minecraft.world.World;
 
 public class MortarAndPestleBlockEntityRenderer implements BlockEntityRenderer<MortarAndPestleBlockEntity> {
-
-    private static final Identifier PESTLE_MODEL_ID =
-            Identifier.of(HexaliaMod.MODID, "block/pestle");
 
     private static final float PESTLE_PIVOT_X = 6.0F / 16.0F;
     private static final float PESTLE_PIVOT_Y = 4.69344F / 16.0F;
     private static final float PESTLE_PIVOT_Z = 9.5412F / 16.0F;
 
     private final ItemRenderer itemRenderer;
+    private final PestleModel pestleModel;
 
     public MortarAndPestleBlockEntityRenderer(BlockEntityRendererFactory.Context context) {
         this.itemRenderer = context.getItemRenderer();
+        this.pestleModel = new PestleModel(context.getLayerModelPart(PestleModel.LAYER_LOCATION));
     }
 
     @Override
@@ -48,7 +40,7 @@ public class MortarAndPestleBlockEntityRenderer implements BlockEntityRenderer<M
         int packedLight = LightmapTextureManager.pack(blockLight, skyLight);
         renderInputs(be, world, matrices, vertexConsumers, packedLight, overlay, partialTicks);
         renderOutput(be, world, matrices, vertexConsumers, packedLight, overlay);
-        renderPestle(be, world, partialTicks, matrices, vertexConsumers, packedLight, overlay);
+        renderPestle(be, partialTicks, matrices, vertexConsumers, packedLight, overlay);
     }
 
     private void renderInputs(MortarAndPestleBlockEntity be, World world, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int packedLight, int overlay, float partialTicks) {
@@ -147,9 +139,7 @@ public class MortarAndPestleBlockEntityRenderer implements BlockEntityRenderer<M
         matrices.pop();
     }
 
-    private void renderPestle(MortarAndPestleBlockEntity be, World world, float partialTicks, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int packedLight, int overlay) {
-        BlockState state = be.getCachedState();
-
+    private void renderPestle(MortarAndPestleBlockEntity be, float partialTicks, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int packedLight, int overlay) {
         float tick = be.getPestleTick();
         float t = 0.0F;
         if (tick > 0.0F) {
@@ -171,29 +161,11 @@ public class MortarAndPestleBlockEntityRenderer implements BlockEntityRenderer<M
         matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(5.0F));
         matrices.translate(-PESTLE_PIVOT_X, -PESTLE_PIVOT_Y, -PESTLE_PIVOT_Z);
 
-        MinecraftClient mc = MinecraftClient.getInstance();
-        BlockRenderManager dispatcher = mc.getBlockRenderManager();
-        BakedModelManager modelManager = mc.getBakedModelManager();
-        BakedModel pestleModel = ((net.fabricmc.fabric.api.client.model.loading.v1.FabricBakedModelManager) modelManager).getModel(PESTLE_MODEL_ID);
-
-        if (pestleModel != null) {
-            RenderLayer renderType = RenderLayer.getSolid();
-            Random random = Random.create();
-            long seed = state.getRenderingSeed(be.getPos());
-
-            dispatcher.getModelRenderer().render(
-                    world,
-                    pestleModel,
-                    state,
-                    be.getPos(),
-                    matrices,
-                    vertexConsumers.getBuffer(renderType),
-                    false,
-                    random,
-                    seed,
-                    overlay
-            );
-        }
+        pestleModel.render(
+                matrices,
+                vertexConsumers.getBuffer(RenderLayer.getEntitySolid(PestleModel.TEXTURE)),
+                packedLight,
+                overlay);
 
         matrices.pop();
     }

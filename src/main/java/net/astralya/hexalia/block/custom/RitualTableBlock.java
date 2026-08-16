@@ -1,5 +1,6 @@
 package net.astralya.hexalia.block.custom;
 
+import net.astralya.hexalia.Configuration;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
 import net.astralya.hexalia.block.entity.custom.RitualBrazierBlockEntity;
 import net.astralya.hexalia.block.entity.custom.RitualTableBlockEntity;
@@ -163,8 +164,11 @@ public class RitualTableBlock extends BlockWithEntity {
             }
         }
 
-        List<BlockPos> grownCrops = findFullyGrownCrops(world, pos, 8, 8);
-        if (grownCrops.size() < 8) {
+        int cropRequirement = Configuration.NATURES_RITUAL_CROP_REQUIREMENT.get();
+        List<BlockPos> grownCrops = cropRequirement == 0
+                ? List.of()
+                : findFullyGrownCrops(world, pos, cropRequirement, 8);
+        if (grownCrops.size() < cropRequirement) {
             fail(world, pos, player, "message.hexalia.ritual.invalid_crops");
             return true;
         }

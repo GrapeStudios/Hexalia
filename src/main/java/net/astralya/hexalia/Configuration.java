@@ -77,6 +77,10 @@ public final class Configuration implements ConfigData {
     @ConfigEntry.BoundedDiscrete(min = 20, max = 24000)
     public int eggClusterHatchDuration = 9600;
 
+    @ConfigEntry.Category("functional_blocks")
+    @ConfigEntry.BoundedDiscrete(min = 0, max = 32)
+    public int naturesRitualCropRequirement = 8;
+
     @ConfigEntry.Category("plants")
     @ConfigEntry.BoundedDiscrete(min = 100, max = 24000)
     public int nautiliteDuration = 2400;
@@ -155,6 +159,7 @@ public final class Configuration implements ConfigData {
     public static IntValue DREAMCATCHER_RADIUS = () -> get().dreamcatcherRadius;
     public static IntValue PHANTOM_IGNITE_DURATION = () -> get().phantomIgniteDuration;
     public static IntValue EGG_CLUSTER_HATCH_DURATION = () -> get().eggClusterHatchDuration;
+    public static IntValue NATURES_RITUAL_CROP_REQUIREMENT = () -> get().naturesRitualCropRequirement;
     public static IntValue NAUTILITE_DURATION = () -> get().nautiliteDuration;
     public static IntValue NAUTILITE_EFFECT_RADIUS = () -> get().nautiliteEffectRadius;
     public static IntValue WINDSONG_DURATION = () -> get().windsongDuration;
