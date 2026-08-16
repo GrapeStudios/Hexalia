@@ -33,6 +33,26 @@
       "text": "The Mortar and Pestle serves as one of the earliest processing tools, transforming raw resources into forms suitable for more advanced systems."
     },
     {
+      "type": "text",
+      "title": "Efficient Processing",
+      "text": "The Mortar and Pestle improves several familiar yields: one Bone makes 5 Bone Meal, one Sugar Cane makes 2 Sugar, and one Blaze Rod makes 3 Blaze Powder."
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:bone_meal_from_mortar",
+      "layout": "mortar_and_pestle"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:sugar_from_mortar",
+      "layout": "mortar_and_pestle"
+    },
+    {
+      "type": "hexalia:recipe_page",
+      "recipe_id": "hexalia:blaze_powder_from_mortar",
+      "layout": "mortar_and_pestle"
+    },
+    {
       "type": "hexalia:recipe_page",
       "recipe_id": "hexalia:brambleguard_salve_from_mortar",
       "layout": "mortar_and_pestle"

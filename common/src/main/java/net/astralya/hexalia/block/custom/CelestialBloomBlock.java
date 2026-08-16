@@ -7,11 +7,18 @@ import net.minecraft.core.Holder;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class CelestialBloomBlock extends HerbBlock {
   public CelestialBloomBlock(Holder<MobEffect> effect, float seconds, Properties properties) {
     super(effect, seconds, properties);
+  }
+
+  @Override
+  public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
+    return state.is(ModBlocks.CELESTIAL_BLOOM.get())
+        && super.isValidBonemealTarget(level, pos, state);
   }
 
   @Override

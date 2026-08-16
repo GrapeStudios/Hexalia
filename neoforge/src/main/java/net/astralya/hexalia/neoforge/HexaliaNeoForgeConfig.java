@@ -21,6 +21,7 @@ final class HexaliaNeoForgeConfig {
   private static final ModConfigSpec.DoubleValue SIPHON_RADIUS;
   private static final ModConfigSpec.DoubleValue BLEEDING_DAMAGE;
   private static final ModConfigSpec.IntValue CACOFEY_HARVEST_RADIUS;
+  private static final ModConfigSpec.IntValue NATURES_RITUAL_CROP_REQUIREMENT;
 
   private static final ModConfigSpec.IntValue CENSER_EFFECT_RADIUS;
   private static final ModConfigSpec.IntValue CENSER_EFFECT_DURATION;
@@ -123,6 +124,12 @@ final class HexaliaNeoForgeConfig {
             defaults.eggClusterHatchDuration(),
             20,
             24000);
+    NATURES_RITUAL_CROP_REQUIREMENT =
+        builder.defineInRange(
+            HexaliaConfig.NATURES_RITUAL_CROP_REQUIREMENT_KEY,
+            defaults.naturesRitualCropRequirement(),
+            0,
+            32);
     builder.pop();
 
     builder.push(HexaliaConfig.PLANTS_CATEGORY);
@@ -238,6 +245,7 @@ final class HexaliaNeoForgeConfig {
             DREAMSHROOM_EMITS_PARTICLES.get(),
             LOURDES_DURATION.get(),
             LOURDES_EFFECT_RADIUS.get(),
-            CACOFEY_HARVEST_RADIUS.get()));
+            CACOFEY_HARVEST_RADIUS.get(),
+            NATURES_RITUAL_CROP_REQUIREMENT.get()));
   }
 }

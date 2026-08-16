@@ -3,6 +3,7 @@ package net.astralya.hexalia.gameplay.naturesritual;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import net.astralya.hexalia.HexaliaConfig;
 import net.astralya.hexalia.block.custom.RitualBrazierBlock;
 import net.astralya.hexalia.block.entity.custom.RitualBrazierBlockEntity;
 import net.astralya.hexalia.block.entity.custom.RitualTableBlockEntity;
@@ -86,8 +87,10 @@ public final class NaturesRitual {
       }
     }
 
-    List<BlockPos> grownCrops = findFullyGrownCrops(level, pos, 8, 8);
-    if (grownCrops.size() < 8) {
+    int cropRequirement = HexaliaConfig.naturesRitualCropRequirement();
+    List<BlockPos> grownCrops =
+        cropRequirement == 0 ? List.of() : findFullyGrownCrops(level, pos, cropRequirement, 8);
+    if (grownCrops.size() < cropRequirement) {
       fail(level, pos, player, "message.hexalia.natures_ritual.invalid_crops");
       return true;
     }

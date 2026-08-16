@@ -3,6 +3,7 @@ package net.astralya.hexalia.neoforge;
 import net.astralya.hexalia.Hexalia;
 import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
+import net.astralya.hexalia.client.model.PestleModel;
 import net.astralya.hexalia.client.renderer.blockentity.CenserBlockEntityRenderer;
 import net.astralya.hexalia.client.renderer.blockentity.MortarAndPestleBlockEntityRenderer;
 import net.astralya.hexalia.client.renderer.blockentity.RitualBrazierBlockEntityRenderer;
@@ -35,14 +36,11 @@ import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
-import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.FoliageColor;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.neoforge.client.event.ModelEvent;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
@@ -54,7 +52,6 @@ public final class HexaliaNeoForgeClient {
     Hexalia.initClient();
     modEventBus.addListener(HexaliaNeoForgeClient::registerRenderers);
     modEventBus.addListener(HexaliaNeoForgeClient::registerParticles);
-    modEventBus.addListener(HexaliaNeoForgeClient::registerAdditionalModels);
     modEventBus.addListener(HexaliaNeoForgeClient::registerLayerDefinitions);
     modEventBus.addListener(HexaliaNeoForgeClient::registerScreens);
     modEventBus.addListener(HexaliaNeoForgeClient::registerBlockColors);
@@ -102,6 +99,7 @@ public final class HexaliaNeoForgeClient {
   }
 
   private static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
+    event.registerLayerDefinition(PestleModel.LAYER_LOCATION, PestleModel::createLayer);
     for (ModBoatEntity.Type type : ModBoatEntity.Type.values()) {
       event.registerLayerDefinition(
           ModBoatRenderer.createBoatModelName(type), BoatModel::createBodyModel);
@@ -129,13 +127,6 @@ public final class HexaliaNeoForgeClient {
         (stack, tintIndex) -> FoliageColor.getDefaultColor(),
         ModItems.COTTONWOOD_LEAVES.get(),
         ModItems.WILLOW_LEAVES.get());
-  }
-
-  private static void registerAdditionalModels(ModelEvent.RegisterAdditional event) {
-    event.register(
-        new ModelResourceLocation(
-            ResourceLocation.fromNamespaceAndPath(Hexalia.MOD_ID, "block/pestle"),
-            "standalone"));
   }
 
   private static void setupClient(FMLClientSetupEvent event) {

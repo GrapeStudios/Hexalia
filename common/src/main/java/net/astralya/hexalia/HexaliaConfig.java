@@ -23,6 +23,7 @@ public final class HexaliaConfig {
   public static final String DREAMCATCHER_RADIUS_KEY = "dreamcatcherRadius";
   public static final String PHANTOM_IGNITE_DURATION_KEY = "phantomIgniteDuration";
   public static final String EGG_CLUSTER_HATCH_DURATION_KEY = "eggClusterHatchDuration";
+  public static final String NATURES_RITUAL_CROP_REQUIREMENT_KEY = "naturesRitualCropRequirement";
 
   public static final String NAUTILITE_DURATION_KEY = "nautiliteDuration";
   public static final String NAUTILITE_EFFECT_RADIUS_KEY = "nautiliteEffectRadius";
@@ -117,6 +118,10 @@ public final class HexaliaConfig {
 
   public static int eggClusterHatchDuration() {
     return values.eggClusterHatchDuration();
+  }
+
+  public static int naturesRitualCropRequirement() {
+    return values.naturesRitualCropRequirement();
   }
 
   public static int nautiliteDuration() {

@@ -64,7 +64,8 @@ final class HexaliaFabricConfig {
         getBoolean(properties, plants(HexaliaConfig.DREAMSHROOM_EMITS_PARTICLES_KEY), defaults.dreamshroomEmitsParticles()),
         getInt(properties, plants(HexaliaConfig.LOURDES_DURATION_KEY), defaults.lourdesDuration()),
         getDouble(properties, plants(HexaliaConfig.LOURDES_EFFECT_RADIUS_KEY), defaults.lourdesEffectRadius()),
-        getInt(properties, others(HexaliaConfig.CACOFEY_HARVEST_RADIUS_KEY), defaults.cacofeyHarvestRadius()));
+        getInt(properties, others(HexaliaConfig.CACOFEY_HARVEST_RADIUS_KEY), defaults.cacofeyHarvestRadius()),
+        getInt(properties, functional(HexaliaConfig.NATURES_RITUAL_CROP_REQUIREMENT_KEY), defaults.naturesRitualCropRequirement()));
   }
 
   private static void write(Path configPath, HexaliaCommonConfig.Values values) {
@@ -79,6 +80,7 @@ final class HexaliaFabricConfig {
     properties.setProperty(others(HexaliaConfig.SIPHON_RADIUS_KEY), Double.toString(values.siphonRadius()));
     properties.setProperty(others(HexaliaConfig.BLEEDING_DAMAGE_KEY), Double.toString(values.bleedingDamage()));
     properties.setProperty(others(HexaliaConfig.CACOFEY_HARVEST_RADIUS_KEY), Integer.toString(values.cacofeyHarvestRadius()));
+    properties.setProperty(functional(HexaliaConfig.NATURES_RITUAL_CROP_REQUIREMENT_KEY), Integer.toString(values.naturesRitualCropRequirement()));
     properties.setProperty(functional(HexaliaConfig.CENSER_EFFECT_RADIUS_KEY), Integer.toString(values.censerEffectRadius()));
     properties.setProperty(functional(HexaliaConfig.CENSER_EFFECT_DURATION_KEY), Integer.toString(values.censerEffectDuration()));
     properties.setProperty(functional(HexaliaConfig.BREWING_DURATION_KEY), Integer.toString(values.brewingDuration()));

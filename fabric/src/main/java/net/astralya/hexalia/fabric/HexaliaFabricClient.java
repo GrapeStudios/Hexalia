@@ -3,6 +3,7 @@ package net.astralya.hexalia.fabric;
 import net.astralya.hexalia.Hexalia;
 import net.astralya.hexalia.block.ModBlocks;
 import net.astralya.hexalia.block.entity.ModBlockEntityTypes;
+import net.astralya.hexalia.client.model.PestleModel;
 import net.astralya.hexalia.item.ModItems;
 import net.astralya.hexalia.client.renderer.blockentity.CenserBlockEntityRenderer;
 import net.astralya.hexalia.client.renderer.blockentity.MortarAndPestleBlockEntityRenderer;
@@ -31,7 +32,6 @@ import dev.architectury.registry.client.particle.ParticleProviderRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
-import net.fabricmc.fabric.api.client.model.loading.v1.ModelLoadingPlugin;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -45,7 +45,6 @@ import net.minecraft.world.level.FoliageColor;
 import net.minecraft.client.renderer.blockentity.HangingSignRenderer;
 import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
-import net.minecraft.resources.ResourceLocation;
 
 public final class HexaliaFabricClient implements ClientModInitializer {
   @Override
@@ -54,9 +53,6 @@ public final class HexaliaFabricClient implements ClientModInitializer {
     registerLeafColors();
     registerCutoutBlocks();
     registerWoodTypes();
-    ModelLoadingPlugin.register(
-        context ->
-            context.addModels(ResourceLocation.fromNamespaceAndPath(Hexalia.MOD_ID, "block/pestle")));
     BlockEntityRenderers.register(
         ModBlockEntityTypes.RITUAL_TABLE.get(), RitualTableBlockEntityRenderer::new);
     BlockEntityRenderers.register(
@@ -187,6 +183,8 @@ public final class HexaliaFabricClient implements ClientModInitializer {
   }
 
   private static void registerBoatLayers() {
+    EntityModelLayerRegistry.registerModelLayer(
+        PestleModel.LAYER_LOCATION, PestleModel::createLayer);
     for (ModBoatEntity.Type type : ModBoatEntity.Type.values()) {
       EntityModelLayerRegistry.registerModelLayer(
           ModBoatRenderer.createBoatModelName(type), BoatModel::createBodyModel);

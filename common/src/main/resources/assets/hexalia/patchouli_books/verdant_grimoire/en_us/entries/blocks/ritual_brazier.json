@@ -14,11 +14,6 @@
       "type": "text",
       "title": "Preparation",
       "text": "Place Ritual Braziers in the cardinal directions around a Ritual Table, then prepare each brazier with the required item and salt. When the ritual succeeds, its contents are consumed and the brazier returns to an idle state."
-    },
-    {
-      "type": "hexalia:recipe_page",
-      "recipe_id": "hexalia:air_node_from_ritual_table",
-      "layout": "ritual_brazier"
     }
   ]
 }

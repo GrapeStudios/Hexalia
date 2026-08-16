@@ -2,7 +2,11 @@ package net.astralya.hexalia.block.custom;
 
 import net.astralya.hexalia.block.ModBlocks;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SeagrassBlock;
@@ -27,5 +31,23 @@ public class SirenKelpBlock extends SeagrassBlock {
   protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
     BlockState below = level.getBlockState(pos.below());
     return below.is(ModBlocks.INFUSED_DIRT.get()) || super.canSurvive(state, level, pos);
+  }
+
+  @Override
+  public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state) {
+    return level.getBlockState(pos.below()).is(ModBlocks.INFUSED_DIRT.get())
+        && state.canSurvive(level, pos);
+  }
+
+  @Override
+  public boolean isBonemealSuccess(
+      Level level, RandomSource random, BlockPos pos, BlockState state) {
+    return true;
+  }
+
+  @Override
+  public void performBonemeal(
+      ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+    popResource(level, pos, new ItemStack(this));
   }
 }

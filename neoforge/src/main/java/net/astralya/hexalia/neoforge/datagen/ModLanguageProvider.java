@@ -386,10 +386,13 @@ public final class ModLanguageProvider extends LanguageProvider {
   private void addMessageTranslations() {
     add("message.hexalia.ritual.invalid_crops", "Natural energy is weak; fully grown crops are missing.");
     add("message.hexalia.natures_ritual.invalid_crops", "Natural energy is weak; fully grown crops are missing.");
+    add("message.hexalia.natures_ritual.missing_ingredients", "The ritual table lacks its central ingredient.");
     add("message.hexalia.ritual.missing_salt", "The braziers lack the salt to channel energy.");
     add("message.hexalia.natures_ritual.missing_salt", "The braziers lack the salt to channel energy.");
     add("message.hexalia.ritual.wrong_recipe", "The ritual ingredients resonate incorrectly.");
+    add("message.hexalia.natures_ritual.wrong_recipe", "The ritual ingredients resonate incorrectly.");
     add("message.hexalia.ritual.stopped_ritual", "The ritual falters as an item is removed.");
+    add("message.hexalia.natures_ritual.stopped_ritual", "The ritual falters as an item is removed.");
 
     add("message.hexalia.rainfall_idol", "The skies darken as rain begins to fall...");
     add("message.hexalia.clarity_idol", "The clouds part, revealing a clear sky...");
@@ -413,6 +416,18 @@ public final class ModLanguageProvider extends LanguageProvider {
 
     add(
             "message.hexalia.ritual_brazier.no_sky",
+            "The infusion requires an open view of the sky.");
+
+    add(
+            "message.hexalia.celestial_infusion.invalid_item",
+            "The item placed on the brazier cannot be infused.");
+
+    add(
+            "message.hexalia.celestial_infusion.no_celestial_blooms",
+            "There are not enough Celestial Blooms nearby.");
+
+    add(
+            "message.hexalia.celestial_infusion.no_sky",
             "The infusion requires an open view of the sky.");
 
     add(

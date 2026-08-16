@@ -6,7 +6,7 @@ public final class HexaliaCommonConfig {
   public static Values defaults() {
     return new Values(
         true, 5.0D, 6, 8, 8, 8, 8, 5.0D, 0.5D, 16, 7200, 4800, 4800, 16, 100, 9600, 2400, 16, 600,
-        6, 1200, 240, 6, 2400, 16, true, true, true, 600, 8.0D, 16);
+        6, 1200, 240, 6, 2400, 16, true, true, true, 600, 8.0D, 16, 8);
   }
 
   public static Values sanitize(Values values) {
@@ -41,7 +41,8 @@ public final class HexaliaCommonConfig {
         values.dreamshroomEmitsParticles(),
         clamp(values.lourdesDuration(), 100, 24000),
         clamp(values.lourdesEffectRadius(), 1.0D, 64.0D),
-        clamp(values.cacofeyHarvestRadius(), 4, 64));
+        clamp(values.cacofeyHarvestRadius(), 4, 64),
+        clamp(values.naturesRitualCropRequirement(), 0, 32));
   }
 
   private static double clamp(double value, double min, double max) {
@@ -83,5 +84,6 @@ public final class HexaliaCommonConfig {
       boolean dreamshroomEmitsParticles,
       int lourdesDuration,
       double lourdesEffectRadius,
-      int cacofeyHarvestRadius) {}
+      int cacofeyHarvestRadius,
+      int naturesRitualCropRequirement) {}
 }
