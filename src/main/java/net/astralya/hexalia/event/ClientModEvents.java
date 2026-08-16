@@ -1,6 +1,7 @@
 package net.astralya.hexalia.event;
 
 import net.astralya.hexalia.HexaliaMod;
+import net.astralya.hexalia.client.model.PestleModel;
 import net.astralya.hexalia.client.renderer.entity.CacofeyRenderer;
 import net.astralya.hexalia.client.renderer.entity.ModBoatRenderer;
 import net.astralya.hexalia.client.renderer.entity.SilkMothRenderer;
@@ -17,10 +18,8 @@ import net.minecraft.client.model.ChestBoatModel;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.ModelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -50,14 +49,11 @@ public class ClientModEvents {
 
     @SubscribeEvent
     public static void registerLayers(EntityRenderersEvent.RegisterLayerDefinitions event) {
+        event.registerLayerDefinition(PestleModel.LAYER_LOCATION, PestleModel::createLayer);
         event.registerLayerDefinition(ModModelLayers.COTTONWOOD_BOAT_LAYER, BoatModel::createBodyModel);
         event.registerLayerDefinition(ModModelLayers.COTTONWOOD_CHEST_BOAT_LAYER, ChestBoatModel::createBodyModel);
         event.registerLayerDefinition(ModModelLayers.WILLOW_BOAT_LAYER, BoatModel::createBodyModel);
         event.registerLayerDefinition(ModModelLayers.WILLOW_CHEST_BOAT_LAYER, ChestBoatModel::createBodyModel);
     }
 
-    @SubscribeEvent
-    public static void registerAdditionalModels(ModelEvent.RegisterAdditional event) {
-        event.register(new ResourceLocation(HexaliaMod.MODID, "block/pestle"));
-    }
 }

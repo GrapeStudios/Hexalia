@@ -8,6 +8,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.function.Supplier;
@@ -22,6 +23,11 @@ public class CelestialBloomBlock extends HerbBlock {
 
     public CelestialBloomBlock(Supplier<MobEffect> effectSupplier, int effectDuration, Properties properties) {
         super(effectSupplier, effectDuration, properties);
+    }
+
+    @Override
+    public boolean isValidBonemealTarget(LevelReader level, BlockPos pos, BlockState state, boolean isClient) {
+        return state.is(ModBlocks.CELESTIAL_BLOOM.get()) && super.isValidBonemealTarget(level, pos, state, isClient);
     }
 
     @Override

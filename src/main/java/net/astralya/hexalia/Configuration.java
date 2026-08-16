@@ -34,6 +34,7 @@ public final class Configuration {
     public static ForgeConfigSpec.IntValue PHANTOM_IGNITE_DURATION;
 
     public static ForgeConfigSpec.IntValue EGG_CLUSTER_HATCH_DURATION;
+    public static ForgeConfigSpec.IntValue NATURES_RITUAL_CROP_REQUIREMENT;
 
     public static ForgeConfigSpec.IntValue NAUTILITE_DURATION;
     public static ForgeConfigSpec.IntValue NAUTILITE_EFFECT_RADIUS;
@@ -142,6 +143,10 @@ public final class Configuration {
         EGG_CLUSTER_HATCH_DURATION = builder
                 .comment("Time in ticks required for Egg Clusters to hatch. Default: 9600 ticks (8 minutes)")
                 .defineInRange("eggClusterHatchDuration", 9600, 20, 24000);
+
+        NATURES_RITUAL_CROP_REQUIREMENT = builder
+                .comment("Number of mature crops required for Nature's Ritual. Set to 0 to disable the crop requirement")
+                .defineInRange("naturesRitualCropRequirement", 8, 0, 32);
 
         builder.pop();
 

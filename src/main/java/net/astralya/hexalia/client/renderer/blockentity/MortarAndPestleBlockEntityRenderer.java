@@ -2,40 +2,32 @@ package net.astralya.hexalia.client.renderer.blockentity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
-import net.astralya.hexalia.HexaliaMod;
 import net.astralya.hexalia.block.entity.custom.MortarAndPestleBlockEntity;
-import net.minecraft.client.Minecraft;
+import net.astralya.hexalia.client.model.PestleModel;
 import net.minecraft.client.renderer.LevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.block.BlockRenderDispatcher;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.client.resources.model.BakedModel;
-import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.ItemStackHandler;
 
 public class MortarAndPestleBlockEntityRenderer implements BlockEntityRenderer<MortarAndPestleBlockEntity> {
-
-    private static final ResourceLocation PESTLE_MODEL =
-            new ResourceLocation(HexaliaMod.MODID, "block/pestle");
 
     private static final float PESTLE_PIVOT_X = 6.0F / 16.0F;
     private static final float PESTLE_PIVOT_Y = 4.69344F / 16.0F;
     private static final float PESTLE_PIVOT_Z = 9.5412F / 16.0F;
 
     private final ItemRenderer itemRenderer;
+    private final PestleModel pestleModel;
 
     public MortarAndPestleBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
         this.itemRenderer = context.getItemRenderer();
+        this.pestleModel = new PestleModel(context.bakeLayer(PestleModel.LAYER_LOCATION));
     }
 
     @Override
@@ -45,7 +37,7 @@ public class MortarAndPestleBlockEntityRenderer implements BlockEntityRenderer<M
         int light = LevelRenderer.getLightColor(level, be.getBlockPos().above());
         renderInputs(be, level, poseStack, buffer, light, packedOverlay, partialTicks);
         renderOutput(be, level, poseStack, buffer, light, packedOverlay);
-        renderPestle(be, level, partialTicks, poseStack, buffer, light, packedOverlay);
+        renderPestle(be, partialTicks, poseStack, buffer, light, packedOverlay);
     }
 
     private void renderInputs(MortarAndPestleBlockEntity be, Level level, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay, float partialTicks) {
@@ -121,8 +113,7 @@ public class MortarAndPestleBlockEntityRenderer implements BlockEntityRenderer<M
         poseStack.popPose();
     }
 
-    private void renderPestle(MortarAndPestleBlockEntity be, Level level, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
-        BlockState state = be.getBlockState();
+    private void renderPestle(MortarAndPestleBlockEntity be, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight, int packedOverlay) {
         float tick = be.getPestleTick();
         float t = 0.0F;
         if (tick > 0.0F) {
@@ -141,22 +132,11 @@ public class MortarAndPestleBlockEntityRenderer implements BlockEntityRenderer<M
         poseStack.mulPose(Axis.XP.rotationDegrees(-20.0F - tilt));
         poseStack.mulPose(Axis.ZP.rotationDegrees(5.0F));
         poseStack.translate(-PESTLE_PIVOT_X, -PESTLE_PIVOT_Y, -PESTLE_PIVOT_Z);
-        Minecraft mc = Minecraft.getInstance();
-        BlockRenderDispatcher dispatcher = mc.getBlockRenderer();
-        BakedModel pestleModel = mc.getModelManager().getModel(PESTLE_MODEL);
-        RenderType renderType = RenderType.solid();
-
-        dispatcher.getModelRenderer().renderModel(
-                poseStack.last(),
-                buffer.getBuffer(renderType),
-                state,
-                pestleModel,
-                1.0F, 1.0F, 1.0F,
+        pestleModel.render(
+                poseStack,
+                buffer.getBuffer(RenderType.entitySolid(PestleModel.TEXTURE)),
                 packedLight,
-                packedOverlay,
-                net.minecraftforge.client.model.data.ModelData.EMPTY,
-                renderType
-        );
+                packedOverlay);
         poseStack.popPose();
     }
 }
