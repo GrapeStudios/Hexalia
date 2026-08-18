@@ -141,7 +141,7 @@
   "container.hexalia.nesting_block": "Bloco de Ninho",
   "container.hexalia.small_cauldron": "Caldeirão Pequeno",
   "effect.hexalia.arachnid_grace": "Graça Aracnídea",
-  "effect.hexalia.arachnid_grace.description": "Permite escalar paredes e concede imunidade a Veneno. Teias irão desacelerar o usuário, mas a água te enfraquece",
+  "effect.hexalia.arachnid_grace.description": "Permite escalar paredes e concede imunidade a Veneno. Teias não irão desacelerar o usuário, mas a água irá enfraquecê-lo",
   "effect.hexalia.bleeding": "Sangramento",
   "effect.hexalia.bleeding.description": "Dá dano com o passar do tempo, similar ao Veneno",
   "effect.hexalia.bloodlust": "Sede de Sangue",
